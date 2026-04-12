@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>Redakcja, korekta, skład by Studio Tari | Natalia Szoppa</title>
+    <title>Redakcja, korekta, skład by Natalia Szoppa</title>
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "url": "https://nataliaszoppa.com/",
-      "name": "Redakcja, korekta, skład by Studio Tari | Natalia Szoppa",
-      "alternateName": "Studio Tari | Natalia Szoppa"
+      "name": "Redakcja, korekta, skład by Natalia Szoppa",
+      "alternateName": "Natalia Szoppa"
     }
     </script>
 
-    <meta property="og:title" content="Redakcja, korekta, skład by Studio Tari | Natalia Szoppa">
-    <meta property="og:site_name" content="Redakcja, korekta, skład by Studio Tari | Natalia Szoppa">
+    <meta property="og:title" content="Redakcja, korekta, skład by Natalia Szoppa">
+    <meta property="og:site_name" content="Natalia Szoppa">
     <meta property="og:url" content="https://nataliaszoppa.com/">
     <meta property="og:type" content="website">
-    <meta name="apple-mobile-web-app-title" content="Studio Tari">
+    <meta name="apple-mobile-web-app-title" content="Natalia Szoppa">
     
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
@@ -153,7 +153,7 @@
 
         .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
         .section { padding: 110px 0; }
-        #o-mnie, #misja, #proces, .tiles-section { background: var(--paper); }
+        #o-mnie, #misja, #proces, .tiles-section, #blog { background: var(--paper); }
         #uslugi, #opinie, #portfolio { background: var(--paper-warm); }
 
         .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
@@ -233,6 +233,20 @@
         .slide-card em { position: absolute; top: 20px; right: 20px; background: rgba(107,53,200,0.85); color: #fff; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 2px; font-style: normal; z-index: 1; }
         @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+        /* ── BLOG SECTION ── */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 40px; }
+        .blog-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; text-decoration: none; }
+        .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-med); border-color: rgba(107, 53, 200, 0.3); }
+        .blog-img { width: 100%; aspect-ratio: 16/10; overflow: hidden; }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .blog-card:hover .blog-img img { transform: scale(1.05); }
+        .blog-info { padding: 32px 28px; display: flex; flex-direction: column; flex-grow: 1; }
+        .blog-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; line-height: 1.4; transition: color 0.2s;}
+        .blog-excerpt { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+        .blog-readmore { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); display: flex; align-items: center; gap: 8px; transition: color 0.2s; }
+        .blog-card:hover .blog-title { color: var(--grad-start); }
+        .blog-card:hover .blog-readmore { color: var(--grad-end); }
+
         .tiles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .tile { display: flex; flex-direction: column; align-items: flex-start; padding: 44px 36px; border-radius: var(--radius-lg); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
         .tile:hover { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
@@ -256,15 +270,15 @@
         .tile--warm .tile-arrow { color: var(--green); }
 
         .grad-line-footer { height: 3px; background: var(--grad); }
+        
+        /* ── FOOTER ── */
         footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; max-width: 1180px; margin-left: auto; margin-right: auto; padding-left: 40px; padding-right: 40px; }
+        .footer-container { max-width: 1180px; margin: 0 auto; padding: 0 40px; width: 100%; }
+        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
         .footer-left { display: flex; flex-direction: column; }
         .footer-right { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-        
         .footer-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .footer-logo .footer-grad { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-style: normal; }
-        .footer-logo .sep { color: rgba(255,255,255,0.5); font-weight: 400; font-family: var(--sans); }
-        
         .footer-desc { font-family: var(--sans); font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
         .footer-socials { display: flex; gap: 10px; }
         .footer-socials a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 1rem; transition: all 0.2s; }
@@ -276,10 +290,12 @@
         .footer-links a:hover { color: #fff; }
         .footer-bottom { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.25); align-items: center; }
 
+
         @media (max-width: 1024px) and (min-width: 601px) { 
             .services-grid { grid-template-columns: repeat(2, 1fr); } 
             .service-card { grid-column: span 1 !important; } 
             .tiles-grid { grid-template-columns: repeat(2, 1fr); }
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 860px) {
             :root { --nav-h: 64px; }
@@ -318,6 +334,7 @@
             .service-card { grid-column: span 1 !important; } 
             .tiles-grid { grid-template-columns: 1fr; }
             .hero-stats { gap: 30px; }
+            .blog-grid { grid-template-columns: 1fr; }
             
             .nav-logo, .footer-logo { flex-direction: row; align-items: center; text-align: left; gap: 6px; }
             .nav-logo em { display: inline; }
@@ -531,6 +548,48 @@
     </div>
 </section>
 
+<section class="section bg-white" id="blog">
+    <div class="container">
+        <div class="eyebrow reveal">Baza wiedzy</div>
+        <h2 class="section-h2 reveal delay-1">Najnowsze <em>artykuły</em></h2>
+        
+        <div class="blog-grid">
+            <a href="moj-pierwszy-post.html" class="blog-card reveal delay-1">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=600&auto=format&fit=crop" alt="Pisanie na klawiaturze">
+                </div>
+                <div class="blog-info">
+                    <h3 class="blog-title">Jak przygotować plik Worda przed wysłaniem do korektora?</h3>
+                    <p class="blog-excerpt">Zanim wyślesz swój gotowy, wymuskany tekst do redakcji, warto poświęcić dosłownie piętnaście minut na podstawowe uporządkowanie pliku.</p>
+                    <span class="blog-readmore">Czytaj dalej <i class="las la-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card reveal delay-2">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop" alt="Stare pióro">
+                </div>
+                <div class="blog-info">
+                    <h3 class="blog-title">Scena w książce — jak ją dobrze napisać?</h3>
+                    <p class="blog-excerpt">W tym krótkim poradniku pokażę Ci, jak napisać scenę według uniwersalnego schematu, który z pewnością przełamie Twoją pisarską blokadę.</p>
+                    <span class="blog-readmore">Czytaj dalej <i class="las la-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card reveal delay-3">
+                <div class="blog-img">
+                    <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?q=80&w=600&auto=format&fit=crop" alt="Notatki">
+                </div>
+                <div class="blog-info">
+                    <h3 class="blog-title">Co z tej rozmowy warto zabrać dla siebie?</h3>
+                    <p class="blog-excerpt">Podsumowanie najciekawszych wniosków z naszej ostatniej dyskusji o self-publishingu i rynku wydawniczym w Polsce.</p>
+                    <span class="blog-readmore">Czytaj dalej <i class="las la-arrow-right"></i></span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
 <section class="section tiles-section">
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
@@ -546,7 +605,7 @@
 
 <div class="grad-line-footer"></div>
 <footer>
-    <div class="container" style="max-width: 1180px !important;">
+    <div class="footer-container">
         <div class="footer-grid">
             <div class="footer-left">
                 <span class="footer-logo">
