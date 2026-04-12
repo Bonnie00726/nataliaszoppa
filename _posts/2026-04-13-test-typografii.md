@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Testujemy nową typografię na blogu!"
-date: 2026-04-13
+date: 2026-04-12
 tags: [design, css, jekyll]
 image: "https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
 ---
