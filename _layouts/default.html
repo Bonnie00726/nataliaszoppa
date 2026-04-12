@@ -32,14 +32,21 @@
             revealAll();
         }
 
-        // 2. SCROLLOWANA NAWIGACJA
-        window.addEventListener('scroll', function() {
+        // 2. SCROLLOWANA NAWIGACJA + auto-ciemna na podstronach bez hero
+        (function() {
             var nav = document.getElementById('main-nav');
-            if (nav) {
-                if (window.scrollY > 50) { nav.classList.add('scrolled'); }
-                else { nav.classList.remove('scrolled'); }
+            if (!nav) return;
+            // Jeśli strona nie ma sekcji .hero — nav od razu ciemna
+            if (!document.querySelector('.hero')) {
+                nav.classList.add('scrolled');
             }
-        });
+            window.addEventListener('scroll', function() {
+                if (document.querySelector('.hero')) {
+                    if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+                    else { nav.classList.remove('scrolled'); }
+                }
+            });
+        })();
 
         // 3. MENU MOBILNE
         var mobileToggle = document.querySelector('.mobile-toggle');
