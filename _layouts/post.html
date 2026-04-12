@@ -1,1 +1,39 @@
+---
+layout: default
+---
+<header class="blog-header">
+    <div class="blog-meta">Artykuł <span>• {{ page.date | date: "%d.%m.%Y" }}</span></div>
+    <h1 class="blog-title">{{ page.title }}</h1>
+</header>
 
+{% if page.image %}
+<img src="{{ page.image }}" alt="{{ page.title }}" class="blog-image">
+{% endif %}
+
+<div class="blog-container">
+    
+    <main class="blog-content">
+        {{ content }}
+    </main>
+
+    <aside class="blog-sidebar">
+        <div class="sidebar-widget author-bio">
+            <h4 class="widget-title">O autorce</h4>
+            <img src="https://i.imgur.com/blcFNFU.jpeg" alt="Natalia Szoppa" class="author-avatar">
+            <div class="author-name">Natalia Szoppa</div>
+            <p class="author-desc">Redaktorka i korektorka z 6-letnim doświadczeniem. Pomagam twórcom szlifować ich historie, by brzmiały profesjonalnie i wciągająco.</p>
+            <a href="o-mnie.html" class="author-link">Więcej o mnie <i class="las la-arrow-right"></i></a>
+        </div>
+
+        {% if page.tags %}
+        <div class="sidebar-widget">
+            <h4 class="widget-title">Tagi</h4>
+            <div class="tag-cloud">
+                {% for tag in page.tags %}
+                <span class="tag-pill">#{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </aside>
+</div>
