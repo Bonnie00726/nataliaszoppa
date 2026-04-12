@@ -3,33 +3,67 @@
 <head>
     {% include head.html %}
 </head>
-<body class="js-loaded">
-
-    {% include nav.html %}
+<body> {% include nav.html %}
 
     {{ content }}
 
     {% include footer.html %}
 
     <script>
-        // Inicjalizacja animacji reveal
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // 1. MASZYNA DO PISANIA (Typewriter) - Naprawia nachodzący tekst
+        const words = ["teksty", "opowieści", "książki", "projekty", "e-booki"];
+        let wordIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const element = document.getElementById('typewriter-word');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('active');
-                    observer.unobserve(e.target); // Animuj tylko raz
-                }
-            });
-        }, observerOptions);
+        function type() {
+            if (!element) return;
+            
+            const currentWord = words[wordIdx];
+            if (isDeleting) {
+                element.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                element.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
+            }
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            let typeSpeed = isDeleting ? 50 : 150;
 
-        // Efekt scrollowanej nawigacji
+            if (!isDeleting && charIdx === currentWord.length) {
+                typeSpeed = 2000; // Czas wyświetlenia całego słowa
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // 2. REVEAL ANIMACJE I JS-LOADED
+        document.addEventListener('DOMContentLoaded', () => {
+            // Dodajemy klasę js-loaded dopiero gdy JS faktycznie działa
+            document.documentElement.classList.add('js-loaded');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('active');
+                        observer.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // Start maszyny do pisania
+            if (element) type();
+        });
+
+        // 3. EFEKT SCROLLOWANEJ NAWIGACJI
         window.addEventListener('scroll', function() {
             var nav = document.getElementById('main-nav');
             if (window.scrollY > 50) {
@@ -39,17 +73,17 @@
             }
         });
 
-        // Menu mobilne
+        // 4. MENU MOBILNE
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
-        const toggleIcon = mobileToggle ? mobileToggle.querySelector('i') : null;
-
+        
         if (mobileToggle && navLinks) {
             mobileToggle.addEventListener('click', () => {
                 const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
                 mobileToggle.setAttribute('aria-expanded', !isExpanded);
                 navLinks.classList.toggle('nav-open');
                 
+                const toggleIcon = mobileToggle.querySelector('i');
                 if (toggleIcon) {
                     if (navLinks.classList.contains('nav-open')) {
                         toggleIcon.classList.replace('la-bars', 'la-times');
@@ -60,17 +94,13 @@
             });
         }
 
-        // Akordeon FAQ
+        // 5. AKORDEON FAQ
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.closest('.accordion-item');
                 if(item) {
                     const body = item.querySelector('.accordion-body');
                     const isOpen = item.classList.contains('open');
-                    
-                    // Zamknij inne (opcjonalne)
-                    // document.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('open'); i.querySelector('.accordion-body').classList.remove('open'); });
-
                     item.classList.toggle('open', !isOpen);
                     if(body) body.classList.toggle('open', !isOpen);
                 }
