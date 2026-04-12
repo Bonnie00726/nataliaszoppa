@@ -1,0 +1,15 @@
+# Informacje o Twojej stronie
+title: Natalia Szoppa
+email: natalia.szoppa@gmail.com
+description: Redakcja, korekta i skład DTP.
+
+# USTAWIENIA ADRESU (Kluczowe, żeby CSS działał!)
+# Jeśli Twój adres to bonnie00726.github.io/nataliaszoppa/
+# to baseurl musi być nazwą Twojego projektu z ukośnikiem na początku:
+baseurl: "/nataliaszoppa" 
+url: "https://bonnie00726.github.io"
+
+# Techniczne rzeczy
+markdown: kramdown
+theme: null
+exclude: [Gemfile, Gemfile.lock]
