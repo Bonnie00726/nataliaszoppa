@@ -10,6 +10,25 @@ layout: default
 <img src="{{ page.image }}" alt="{{ page.title }}" class="blog-image">
 {% endif %}
 
+<nav class="post-toc" id="post-toc"></nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var toc = document.getElementById('post-toc');
+    var headings = document.querySelectorAll('.blog-content h2, .blog-content h3');
+    if (headings.length < 2) { toc.style.display = 'none'; return; }
+    
+    var html = '<p class="toc-title">Spis treści</p><ul>';
+    headings.forEach(function(h, i) {
+        h.id = h.id || 'section-' + i;
+        var indent = h.tagName === 'H3' ? ' class="toc-sub"' : '';
+        html += '<li' + indent + '><a href="#' + h.id + '">' + h.textContent + '</a></li>';
+    });
+    html += '</ul>';
+    toc.innerHTML = html;
+});
+</script>
+
 <div class="blog-container">
     
     <main class="blog-content">
