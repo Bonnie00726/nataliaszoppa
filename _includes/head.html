@@ -204,9 +204,37 @@
     .tile--warm .tile-arrow { color: var(--green); }
 
     /* STOPKA */
+    /* BLOG POST */
+    .blog-header { padding: calc(var(--nav-h) + 56px) 40px 48px; max-width: 1180px; margin: 0 auto; }
+    .blog-meta { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grad-start); margin-bottom: 16px; }
+    .blog-meta span { color: var(--ink-muted); font-weight: 400; text-transform: none; letter-spacing: 0; }
+    .blog-header .blog-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--ink); line-height: 1.15; max-width: 800px; }
+    .blog-image { width: 100%; max-height: 480px; object-fit: cover; display: block; }
+    .blog-container { max-width: 1180px; margin: 0 auto; padding: 56px 40px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 64px; align-items: start; }
+    .blog-content { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); line-height: 1.85; font-weight: 300; }
+    .blog-content h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--ink); margin: 48px 0 16px; }
+    .blog-content h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin: 36px 0 12px; }
+    .blog-content p { margin-bottom: 24px; }
+    .blog-content strong { font-weight: 700; color: var(--ink); }
+    .blog-content a { color: var(--grad-start); text-decoration: underline; }
+    .blog-content ul, .blog-content ol { padding-left: 24px; margin-bottom: 24px; }
+    .blog-content li { margin-bottom: 8px; }
+    .blog-sidebar { position: sticky; top: calc(var(--nav-h) + 32px); display: flex; flex-direction: column; gap: 24px; }
+    .sidebar-widget { background: var(--paper-warm); border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--paper-mid); }
+    .widget-title { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-muted); margin-bottom: 20px; }
+    .author-avatar { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 14px; border: 2px solid var(--paper-mid); }
+    .author-name { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .author-desc { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); line-height: 1.6; margin-bottom: 16px; }
+    .author-link { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .author-link:hover { opacity: 0.75; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--grad-start); background: var(--gold-pale); padding: 4px 12px; border-radius: 100px; }
+
+    /* STOPKA */
     .grad-line-footer { height: 3px; background: var(--grad); }
     footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; max-width: 1180px; margin-left: auto; margin-right: auto; padding-left: 40px; padding-right: 40px; }
+    .footer-container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
     .footer-left { display: flex; flex-direction: column; }
     .footer-right { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -245,6 +273,9 @@
         :root { --nav-h: 64px; }
         .hero-content { padding: 0 24px; }
         .about-grid, .mission-wrap, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+        .blog-container { grid-template-columns: 1fr; gap: 40px; padding: 32px 20px 56px; }
+        .blog-header { padding: calc(var(--nav-h) + 32px) 20px 32px; }
+        .blog-sidebar { position: static; }
         .about-img-caption { position: static; margin-top: 12px; max-width: 100%; }
         .reviews-grid { grid-template-columns: 1fr; }
         .steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
