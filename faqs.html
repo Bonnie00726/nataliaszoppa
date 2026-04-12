@@ -1,7 +1,44 @@
 ---
 layout: default
-title: Często zadawane pytania
+title: FAQs
 ---
+<style>
+    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
+    .faq-group { margin-bottom: 60px; }
+    .faq-group-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--paper-mid); display: flex; align-items: center; gap: 14px; }
+    .faq-group-title i { color: var(--grad-start); font-size: 1.8rem; }
+    .accordion-item { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); margin-bottom: 18px; overflow: hidden; transition: all 0.3s ease; }
+    .accordion-item:hover:not(.open) { border-color: rgba(107,53,200,0.2); box-shadow: 0 4px 12px rgba(107,53,200,0.06); transform: translateY(-1px); }
+    .accordion-item.open { border-color: var(--grad-start); box-shadow: var(--shadow-soft); }
+    .accordion-header { display: flex; justify-content: space-between; align-items: center; padding: 26px 36px; cursor: pointer; user-select: none; background: #fff; transition: background 0.2s; }
+    .accordion-header:hover .accordion-question { color: var(--grad-start); }
+    .accordion-question { font-family: var(--sans); font-size: 1.15rem; font-weight: 600; color: var(--ink); transition: color 0.2s; padding-right: 24px; line-height: 1.4; }
+    .accordion-item.open .accordion-question { color: var(--grad-start); font-weight: 700; }
+    .accordion-icon { width: 38px; height: 38px; position: relative; flex-shrink: 0; background: var(--grad); border-radius: 50%; transition: transform 0.3s ease, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; }
+    .accordion-header:hover .accordion-icon { box-shadow: 0 0 0 5px rgba(107,53,200,0.1); }
+    .accordion-icon::before, .accordion-icon::after { content: ''; position: absolute; background: #fff; transition: transform 0.3s ease-out; border-radius: 4px; }
+    .accordion-icon::before { top: 18px; left: 10px; width: 18px; height: 3px; }
+    .accordion-icon::after { top: 10px; left: 18px; width: 3px; height: 18px; }
+    .accordion-item.open .accordion-icon { transform: rotate(135deg); }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1), padding 0.4s ease; background: var(--paper-warm); }
+    .accordion-body.open { max-height: 1000px; padding: 10px 36px 36px 36px; border-top: 1px solid rgba(107,53,200,0.1); }
+    .accordion-body p { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 18px; }
+    .accordion-body p:last-child { margin-bottom: 0; }
+    .accordion-body strong { color: var(--ink); font-weight: 700; }
+    .accordion-body a { color: var(--grad-start); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
+    .cta-content { position: relative; z-index: 2; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+    @media (max-width: 860px) { .accordion-header { padding: 22px 28px; } .accordion-body.open { padding: 0 28px 30px 28px; } }
+    @media (max-width: 600px) { .faq-group-title { font-size: 1.4rem; } .accordion-question { font-size: 1.05rem; } }
+</style>
 
 <header class="hero">
     <div class="hero-bg">
@@ -30,7 +67,6 @@ title: Często zadawane pytania
 
         <div class="faq-group reveal">
             <div class="faq-group-title"><i class="las la-calculator"></i> Wycena i płatności</div>
-            
             <div class="accordion-item open">
                 <div class="accordion-header">
                     <span class="accordion-question">Jak wygląda wycena?</span>
@@ -38,10 +74,9 @@ title: Często zadawane pytania
                 </div>
                 <div class="accordion-body open">
                     <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu. Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin.</p>
-                    <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="cennik.html">Cennik</a>.</p>
+                    <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="{{ site.baseurl }}/cennik.html">Cennik</a>.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Co wpływa na ostateczną cenę?</span>
@@ -52,7 +87,6 @@ title: Często zadawane pytania
                     <p>Pamiętaj, że <strong>redakcja nie obejmuje plików PDF</strong> — muszę otrzymać edytowalny plik.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Jakie są formy płatności?</span>
@@ -62,7 +96,6 @@ title: Często zadawane pytania
                     <p>Rozliczam się przelewem bankowym. Po zakończeniu zlecenia wystawiam fakturę VAT (jestem zwolniona z VAT-u). Faktura trafia do Ciebie mejlem.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Czy wystawiasz faktury?</span>
@@ -76,7 +109,6 @@ title: Często zadawane pytania
 
         <div class="faq-group reveal">
             <div class="faq-group-title"><i class="las la-project-diagram"></i> Proces pracy</div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Jak wygląda współpraca krok po kroku?</span>
@@ -89,7 +121,6 @@ title: Często zadawane pytania
                     <p><strong>4. Odbiór</strong> — przesyłam gotowy plik. Możesz zaakceptować lub odrzucić zaproponowane zmiany — decyzja należy do Ciebie.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Jak długo trwa realizacja?</span>
@@ -100,7 +131,6 @@ title: Często zadawane pytania
                     <p>Dostępna jest też opcja trybu <strong>przyspieszonego i ekspresowego</strong> — wiąże się z dopłatą, ale gwarantuje szybszą realizację. Zapytaj o szczegóły.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">W jakim formacie powinienem/powinnam przesłać tekst?</span>
@@ -111,7 +141,6 @@ title: Często zadawane pytania
                     <p>Poprawki oznaczam funkcją „Śledź zmiany" w Wordzie lub „Tryb sugestii" w Google Docs — dzięki temu widzisz każdą zmianę i możesz ją zaakceptować lub odrzucić.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Czy zachowasz mój styl pisania?</span>
@@ -125,7 +154,6 @@ title: Często zadawane pytania
 
         <div class="faq-group reveal">
             <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Czym różni się korekta od redakcji?</span>
@@ -137,7 +165,6 @@ title: Często zadawane pytania
                     <p>Nie wiesz, czego potrzebujesz? Napisz — na podstawie próbki doradzę, co będzie lepszym wyborem dla Twojego tekstu.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Jakie rodzaje tekstów obsługujesz?</span>
@@ -148,7 +175,6 @@ title: Często zadawane pytania
                     <p>Jeśli masz wątpliwości czy przyjmę Twój tekst — po prostu zapytaj.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Czy zajmujesz się też składem DTP?</span>
@@ -158,7 +184,6 @@ title: Często zadawane pytania
                     <p>Tak — oferuję skład DTP, czyli przygotowanie pliku do druku lub publikacji cyfrowej. Dbam o typografię, estetykę i czytelność. Efektem jest plik gotowy do przekazania do drukarni lub dystrybucji jako e-book.</p>
                 </div>
             </div>
-            
             <div class="accordion-item">
                 <div class="accordion-header">
                     <span class="accordion-question">Czy uczysz angielskiego online?</span>
@@ -179,8 +204,10 @@ title: Często zadawane pytania
         <h2 class="reveal delay-1">Pisz śmiało!</h2>
         <p class="reveal delay-2">Twoja twórczość nie zawsze mieści się w schematach. Masz nietypowe pytanie? Odpowiem na nie podczas krótkiej konsultacji mailowej.</p>
         <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz do mnie</a>
-            <a href="cennik.html" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
+            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+            <a href="{{ site.baseurl }}/cennik.html" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
         </div>
     </div>
 </section>
+
+<div class="grad-line-footer"></div>
