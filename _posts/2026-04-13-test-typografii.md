@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: "Testujemy nową typografię na blogu!"
 date: 2026-04-13
 tags: [design, css, jekyll]
