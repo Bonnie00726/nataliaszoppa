@@ -3,7 +3,7 @@
 <head>
     {% include head.html %}
 </head>
-<body>
+<body class="js-loaded">
 
     {% include nav.html %}
 
@@ -12,13 +12,24 @@
     {% include footer.html %}
 
     <script>
-        document.documentElement.classList.add('js-loaded');
-        
+        // Inicjalizacja animacji reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.1 });
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('active');
+                    observer.unobserve(e.target); // Animuj tylko raz
+                }
+            });
+        }, observerOptions);
+
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+        // Efekt scrollowanej nawigacji
         window.addEventListener('scroll', function() {
             var nav = document.getElementById('main-nav');
             if (window.scrollY > 50) {
@@ -28,9 +39,10 @@
             }
         });
 
+        // Menu mobilne
         const mobileToggle = document.querySelector('.mobile-toggle');
         const navLinks = document.querySelector('.nav-links');
-        const toggleIcon = mobileToggle.querySelector('i');
+        const toggleIcon = mobileToggle ? mobileToggle.querySelector('i') : null;
 
         if (mobileToggle && navLinks) {
             mobileToggle.addEventListener('click', () => {
@@ -38,20 +50,27 @@
                 mobileToggle.setAttribute('aria-expanded', !isExpanded);
                 navLinks.classList.toggle('nav-open');
                 
-                if (navLinks.classList.contains('nav-open')) {
-                    toggleIcon.classList.replace('la-bars', 'la-times');
-                } else {
-                    toggleIcon.classList.replace('la-times', 'la-bars');
+                if (toggleIcon) {
+                    if (navLinks.classList.contains('nav-open')) {
+                        toggleIcon.classList.replace('la-bars', 'la-times');
+                    } else {
+                        toggleIcon.classList.replace('la-times', 'la-bars');
+                    }
                 }
             });
         }
 
+        // Akordeon FAQ
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.closest('.accordion-item');
                 if(item) {
                     const body = item.querySelector('.accordion-body');
                     const isOpen = item.classList.contains('open');
+                    
+                    // Zamknij inne (opcjonalne)
+                    // document.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('open'); i.querySelector('.accordion-body').classList.remove('open'); });
+
                     item.classList.toggle('open', !isOpen);
                     if(body) body.classList.toggle('open', !isOpen);
                 }
