@@ -10,40 +10,40 @@ layout: default
 <img src="{{ page.image }}" alt="{{ page.title }}" class="blog-image">
 {% endif %}
 
-<div class="post-toc" id="post-toc-wrap"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var wrap = document.getElementById('post-toc-wrap');
-    var headings = document.querySelectorAll('.blog-content h2, .blog-content h3');
-    if (headings.length < 2) return;
-
-    var items = '';
-    headings.forEach(function(h, i) {
-        h.id = h.id || 'section-' + i;
-        var sub = h.tagName === 'H3' ? ' class="toc-sub"' : '';
-        items += '<li' + sub + '><a href="#' + h.id + '">' + h.textContent + '</a></li>';
-    });
-
-    wrap.innerHTML = '<div class="toc-box open">'
-        + '<div class="toc-toggle">'
-        +   '<div class="toc-toggle-left">'
-        +     '<i class="las la-list-ul"></i>'
-        +     '<span>Spis treści</span>'
-        +   '</div>'
-        +   '<i class="las la-angle-up toc-chevron"></i>'
-        + '</div>'
-        + '<div class="toc-body"><ol>' + items + '</ol></div>'
-        + '</div>';
-
-    wrap.querySelector('.toc-toggle').addEventListener('click', function() {
-        wrap.querySelector('.toc-box').classList.toggle('open');
-    });
-});
-</script>
-
 <div class="blog-container">
     <main class="blog-content">
+        
+        <div class="post-toc" id="post-toc-wrap"></div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var wrap = document.getElementById('post-toc-wrap');
+            var headings = document.querySelectorAll('.blog-content h2, .blog-content h3');
+            if (headings.length < 2) return;
+
+            var items = '';
+            headings.forEach(function(h, i) {
+                h.id = h.id || 'section-' + i;
+                var sub = h.tagName === 'H3' ? ' class="toc-sub"' : '';
+                items += '<li' + sub + '><a href="#' + h.id + '">' + h.textContent + '</a></li>';
+            });
+
+            wrap.innerHTML = '<div class="toc-box open">'
+                + '<div class="toc-toggle">'
+                +   '<div class="toc-toggle-left">'
+                +     '<i class="las la-list-ul"></i>'
+                +     '<span>Spis treści</span>'
+                +   '</div>'
+                +   '<i class="las la-angle-up toc-chevron"></i>'
+                + '</div>'
+                + '<div class="toc-body"><ol>' + items + '</ol></div>'
+                + '</div>';
+
+            wrap.querySelector('.toc-toggle').addEventListener('click', function() {
+                wrap.querySelector('.toc-box').classList.toggle('open');
+            });
+        });
+        </script>
         {{ content }}
     </main>
 
