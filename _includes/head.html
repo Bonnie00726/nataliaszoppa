@@ -4,89 +4,59 @@
 
 <title>{% if page.title %}{{ page.title }} | {% endif %}Natalia Szoppa</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 <style>
+    /* TU SĄ WSZYSTKIE TWOJE KOLORY I USTAWIENIA */
     :root {
-        --ink:        #0D0D0D;
-        --ink-soft:   #333333;
-        --ink-muted:  #666666;
-        --paper:      #FFFFFF;
-        --paper-warm: #F7F7F7;
-        --paper-mid:  #E5E5E5;
-        --grad-start: #6B35C8;
-        --grad-mid:   #B8409A; 
-        --grad-end:   #E8772A;
-        --grad:       linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
-        --grad-text:  linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
-        --shadow-soft:   0 4px 24px rgba(13,13,13,0.06);
-        --shadow-med:    0 8px 40px rgba(13,13,13,0.10);
-        --nav-h: 76px;
-        --serif: 'Lora', Georgia, serif;
-        --sans:  'Mulish', sans-serif;
-        --radius-lg: 12px;
+        --ink: #0D0D0D; --ink-soft: #333333; --ink-muted: #666666;
+        --paper: #FFFFFF; --paper-warm: #F7F7F7; --paper-mid: #E5E5E5;
+        --grad-start: #6B35C8; --grad-mid: #B8409A; --grad-end: #E8772A;
+        --grad: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
+        --grad-text: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
+        --shadow-soft: 0 4px 24px rgba(13,13,13,0.06);
+        --shadow-med: 0 8px 40px rgba(13,13,13,0.10);
+        --nav-h: 76px; --serif: 'Lora', Georgia, serif; --sans: 'Mulish', sans-serif;
+        --radius: 4px; --radius-lg: 12px; --gold-pale: #F5F0FF;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
     body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; overflow-x: hidden; }
 
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
-    .section { padding: 100px 0; }
-    .bg-white { background: var(--paper); }
-    .bg-warm { background: var(--paper-warm); }
+    /* STYLE DLA REVEAL (Animacje wyłaniania) */
+    .reveal { opacity: 0; transform: translateY(32px); transition: all 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .reveal.active { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
 
-    /* Nagłówki */
-    .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; margin-bottom: 24px; }
-    .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
-    .eyebrow { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--grad-start); margin-bottom: 16px; display: block; }
+    /* STYLE DLA MASZYNY DO PISANIA */
+    .grad-type { font-style: italic; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; padding-right: 8px; }
+    .cursor { display: inline-block; width: 3px; height: 1em; background-color: #FFFFFF; vertical-align: middle; margin-left: 5px; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
 
-    /* --- SIATKA USŁUG (To naprawia Twój błąd!) --- */
-    .services-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-        gap: 32px; 
-        margin-top: 48px; 
-    }
-    .service-card { 
-        background: #fff; 
-        padding: 48px 40px; 
-        border-radius: var(--radius-lg); 
-        border: 1px solid var(--paper-mid); 
-        transition: all 0.3s ease; 
-    }
-    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-med); border-color: transparent; }
-    .service-icon { 
-        font-size: 2.5rem; 
-        background: var(--grad); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent; 
-        margin-bottom: 24px; 
-        display: inline-block;
-    }
-    .service-card h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 16px; }
+    /* NAWIGACJA */
+    .nav { position: fixed; top: 0; width: 100%; z-index: 1000; height: var(--nav-h); transition: 0.3s; }
+    .nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(10px); }
+    .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: #fff; text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+    .nav-cta { background: var(--grad); color: #fff; padding: 10px 22px; border-radius: 100px; text-decoration: none; font-weight: 700; font-size: 0.8rem; }
 
-    /* --- O MNIE (Sekcja o Tobie) --- */
-    .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-    .about-img-wrap img { width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
+    /* SIATKA USŁUG I SEKCJE */
+    .section { padding: 110px 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; }
+    .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-    /* --- PROCES (Kroki współpracy) --- */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 48px; }
-    .step-num { font-family: var(--serif); font-size: 3rem; font-weight: 700; opacity: 0.2; margin-bottom: -20px; display: block; }
-    .step-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 12px; display: block; }
+    /* STOPKA */
+    footer { background: #0D0D0D; color: #fff; padding: 56px 0; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 
-    /* --- REVEAL ANIMACJA --- */
-    .reveal { opacity: 1; transform: none; transition: all 0.8s ease; }
-    .js-loaded .reveal { opacity: 0; transform: translateY(30px); }
-    .js-loaded .reveal.active { opacity: 1; transform: translateY(0); }
-
-    /* Responsywność mobilna */
+    /* RESPONSYWNOŚĆ */
     @media (max-width: 860px) {
-        .about-grid { grid-template-columns: 1fr; }
-        .container { padding: 0 24px; }
-        .section { padding: 60px 0; }
+        .nav-links { display: none; }
+        .mobile-toggle { display: block; color: #fff; }
+        .footer-grid { grid-template-columns: 1fr; }
     }
 </style>
