@@ -153,8 +153,10 @@
 
         .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
         .section { padding: 110px 0; }
-        #o-mnie, #misja, #proces, .tiles-section, #blog { background: var(--paper); }
-        #uslugi, #opinie, #portfolio { background: var(--paper-warm); }
+        
+        /* Zmienione tło dla .tiles-section */
+        #o-mnie, #misja, #proces, #blog { background: var(--paper); }
+        #uslugi, #opinie, #portfolio, .tiles-section { background: var(--paper-warm); }
 
         .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
         .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 3px 4px 3px 6px; display: inline-block; }
@@ -289,7 +291,6 @@
         .footer-links a { font-family: var(--sans); color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
         .footer-links a:hover { color: #fff; }
         .footer-bottom { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.25); align-items: center; }
-
 
         @media (max-width: 1024px) and (min-width: 601px) { 
             .services-grid { grid-template-columns: repeat(2, 1fr); } 
@@ -604,6 +605,7 @@
 </section>
 
 <div class="grad-line-footer"></div>
+
 <footer>
     <div class="footer-container">
         <div class="footer-grid">
