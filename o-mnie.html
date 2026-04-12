@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O mnie | Natalia Szoppa</title>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://nataliaszoppa.com/#website",
+          "url": "https://nataliaszoppa.com/",
+          "name": "Natalia Szoppa",
+          "alternateName": "Natalia Szoppa"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://nataliaszoppa.com/o-mnie.html#webpage",
+          "url": "https://nataliaszoppa.com/o-mnie.html",
+          "name": "O mnie | Natalia Szoppa | Redakcja, korekta, skład",
+          "isPartOf": {
+            "@id": "https://nataliaszoppa.com/#website"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Natalia Szoppa",
+              "item": "https://nataliaszoppa.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "O mnie"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <meta property="og:title" content="O mnie | Natalia Szoppa">
+    <meta property="og:site_name" content="Natalia Szoppa">
+    <meta property="og:url" content="https://nataliaszoppa.com/o-mnie.html">
+    <meta property="og:type" content="website">
+    <meta name="apple-mobile-web-app-title" content="Natalia Szoppa">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --ink: #000000;
+      --ink-soft: #222222;
+      --ink-muted: #555555;
+      --white: #ffffff;
+      /* Gradient: Fiolet do Pomarańcz */
+      --gradient-start: #7e22ce; 
+      --gradient-end: #ea580c;
+      --gradient: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    html { overflow: hidden; height: 100%; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      height: 100%;
+      overflow: hidden;
+      cursor: default;
+      background-image: url('https://i.imgur.com/TsNT8b2.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    /* ===== HORIZONTAL SCROLL WRAPPER ===== */
+    .horizontal-scroll {
+      display: flex;
+      height: 100vh;
+      width: max-content;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .panel {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent; 
+    }
+
+    /* ===== NAVIGATION ===== */
+    .top-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      pointer-events: none;
+    }
+    .top-bar > * { pointer-events: auto; }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .logo em { font-style: italic; font-weight: 400; }
+
+    .nav-lang {
+      display: flex;
+      gap: 12px;
+      color: var(--white);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-right: 20px;
+    }
+    .nav-lang span { opacity: 0.5; cursor: pointer; }
+    .nav-lang span.active { opacity: 1; }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      background: var(--gradient);
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 24px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5); }
+
+    /* ===== ARROWS ===== */
+    .nav-arrows {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      gap: 16px;
+    }
+    .nav-arrows button {
+      width: 52px; height: 52px;
+      border: 1.5px solid var(--white);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+      color: var(--white);
+      font-size: 1.3rem;
+      border-radius: 50%; 
+    }
+    .nav-arrows button:hover { background: var(--white); color: var(--ink); }
+    .nav-arrows button:disabled { opacity: 0.2; cursor: default; background: transparent; color: var(--white); }
+
+    /* ===== TIMELINE BAR ===== */
+    .timeline-bar {
+      position: fixed;
+      top: 50%;
+      left: 48px;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .timeline-dot {
+      display: flex; 
+      flex-direction: row; 
+      align-items: center;
+      cursor: pointer;
+      padding: 6px 0;
+      transition: all 0.3s;
+    }
+    .timeline-dot .label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5);
+      margin-left: 16px;
+      transition: color 0.4s;
+      white-space: nowrap;
+    }
+    .timeline-dot .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.5);
+      background: transparent;
+      transition: all 0.4s;
+      flex-shrink: 0;
+    }
+    .timeline-dot.active .label { color: var(--white); font-weight: 700; }
+    .timeline-dot.active .dot {
+      background: var(--gradient-end);
+      border-color: var(--gradient-end);
+      transform: scale(1.4);
+      box-shadow: 0 0 10px rgba(234, 88, 12, 0.5);
+    }
+    .timeline-dot:hover .label { color: var(--white); }
+    .timeline-connector {
+      width: 2px; height: 20px;
+      background: rgba(255,255,255,0.3);
+      margin-left: 4px;
+    }
+
+    /* ===== HERO WRAPPER ===== */
+    .hero-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+      padding: 40px;
+    }
+    .hero-subtitle {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .hero-title-name {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+    .hero-main-box {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .hero-logo-big {
+      font-family: var(--serif);
+      font-size: 5.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      text-align: right;
+    }
+    .hero-divider {
+      width: 2px; height: 120px;
+      background: var(--gradient);
+    }
+    .hero-services {
+      font-family: var(--sans);
+      font-size: 1.5rem;
+      font-weight: 300;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* ===== KARTY INFORMACYJNE ===== */
+    .info-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 60px;
+      max-width: 850px;
+      width: 90%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .card-with-image { grid-template-columns: 1fr 1fr; align-items: center; }
+
+    .card-image-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 100%;
+      min-height: 350px;
+    }
+    .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .card-content { display: flex; flex-direction: column; justify-content: center; }
+    .card-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .card-title em { font-style: italic; font-weight: 400; }
+    .card-text {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .card-list { list-style: none; margin-top: 10px; }
+    .card-list li {
+      font-family: var(--sans);
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card-list li::before {
+      content: '✦';
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 1.2rem;
+    }
+
+    /* CTA Card */
+    .card-cta { text-align: center; padding: 80px 40px; align-items: center; }
+    .card-cta .card-title { font-size: 3.5rem; }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.d1 { transition-delay: 0.1s; }
+    .fade-up.d2 { transition-delay: 0.2s; }
+    .fade-up.d3 { transition-delay: 0.3s; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width: 900px) {
+      .info-card.card-with-image { grid-template-columns: 1fr; }
+      
+      /* Zmniejszamy minimalną wysokość zdjęcia, żeby tekst miał więcej miejsca */
+      .card-image-wrapper { min-height: 220px; } 
+      
+      .hero-main-box { flex-direction: column; gap: 20px; text-align: center; }
+      .hero-logo-big { text-align: center; font-size: 3.5rem; }
+      .hero-divider { width: 100px; height: 2px; }
+      .hero-services { text-align: center; font-size: 1.2rem; }
+      .timeline-bar { display: none; }
+      
+      /* KLUCZOWE ZMIANY DLA TELEFONÓW */
+      .info-card { 
+        padding: 35px 24px; 
+        margin-bottom: 90px; /* Zostawiamy miejsce na strzałki nawigacyjne na dole */
+        max-height: 75vh; /* Karta zajmie maksymalnie 75% wysokości ekranu */
+        overflow-y: auto; /* Jeśli treści jest więcej, włącza się pionowy scroll wewnątrz karty */
+        border-radius: 12px; /* Odrobinę mniejsze zaokrąglenia na małych ekranach */
+      }
+      
+      /* Dostosowanie wielkości czcionek, żeby ładniej leżały na telefonie */
+      .card-title { font-size: 2.2rem; margin-bottom: 16px; }
+      .card-text { font-size: 0.95rem; }
+      .card-list li { font-size: 0.95rem; }
+      
+      .card-cta { padding: 50px 24px; }
+      .card-cta .card-title { font-size: 2.5rem; }
+      
+      /* Obniżenie strzałek i przycisków */
+      .nav-arrows { bottom: 20px; gap: 24px; }
+      .nav-arrows button { width: 48px; height: 48px; }
+      
+      /* Ukrycie zmiany języka na bardzo wąskich ekranach na rzecz przycisku "Napisz do mnie" */
+      .nav-lang { display: none; }
+      .top-bar { padding: 20px; }
+    }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="logo" id="logo">Natalia <em>Szoppa</em></a>
+  <div style="display:flex; align-items:center;">
+    <div class="nav-lang">
+      <span class="active">PL</span> | <span>ENG</span>
+    </div>
+    <a href="mailto:natalia.szoppa@gmail.com" class="nav-cta">Napisz do mnie</a>
+  </div>
+</div>
+
+<div class="timeline-bar" id="timeline">
+  <div class="timeline-dot active" data-panel="0"><div class="dot"></div><span class="label">Start</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="1"><div class="dot"></div><span class="label">O mnie</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="2"><div class="dot"></div><span class="label">Kwalifikacje</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="3"><div class="dot"></div><span class="label">Historia</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="4"><div class="dot"></div><span class="label">O nazwie</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="5"><div class="dot"></div><span class="label">Ciekawostki</span></div>
+  <div class="timeline-connector"></div>
+  <div class="timeline-dot" data-panel="6"><div class="dot"></div><span class="label">Kontakt</span></div>
+</div>
+
+<div class="horizontal-scroll" id="scroll-container">
+
+  <section class="panel">
+    <div class="hero-wrapper">
+      <div class="hero-subtitle fade-up">O mnie</div>
+      <div class="hero-title-name fade-up d1">Natalia Szoppa</div>
+      <div class="hero-main-box fade-up d2">
+        <div class="hero-logo-big">Natalia<br>Szoppa</div>
+        <div class="hero-divider"></div>
+        <div class="hero-services">Korekta<br>Redakcja<br>Skład DTP</div>
+      </div>
+      <div class="hero-bottom-text fade-up d3">Poznajmy się. Zobacz, kto zadba o Twoje słowa.</div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card card-with-image fade-up">
+      <div class="card-image-wrapper fade-up d1">
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=900&auto=format" alt="Natalia Szoppa">
+      </div>
+      <div class="card-content">
+        
+        <h2 class="card-title fade-up d2">Cześć, tu <em>Natalia</em></h2>
+        <p class="card-text fade-up d3">Absolwentka filologii angielskiej, która od kilku lat stara nauczyć się japońskiego, od 10 lat uczy innych angielskiego i od 5 lat pomaga pisać ciekawe historie. W międzyczasie rozpieszcza psa, dogadza sobie, kupując książki i uzupełnia kolekcję Nendroidów. Oprócz tego lubi spać, jeść, stawiać sobie tarota i oglądać Ukrytą prawdę, Detektywów lub anime. No i to właściwie byłoby na tyle… szału nie ma, co?</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card fade-up">
+      <div class="card-content">
+        
+        <h2 class="card-title fade-up d1">Moje <em>kwalifikacje</em></h2>
+        <ul class="card-list fade-up d2">
+          <li>Magister filologii angielskiej z trzema specjalizacjami</li>
+          <li>Tłumaczka, redaktorka, składaczka i lektorka języka angielskiego </li>
+          <li>Ukończyłam certyfikowane kursy z zakresu korekty tekstów i nauczania języków obcych</li>
+          <li>Szkoliłam się u Ewy Bindy (korekta), a w British Council zdobyłam certyfikat CELTA</li>
+          <li>Przerobiłam też niezliczoną liczbę kursów na Udemy, można tam znaleźć wartościowe materiały</li>
+          <li>Japoński to mój trzeci język, a nauka tego języka wyostrza moją czujność na niuanse w języku ojczystym, ale na też na sposoby przekazywania historii</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card card-with-image fade-up">
+      <div class="card-content" style="order: 2;">
+        
+        <h2 class="card-title fade-up d1">Blogowanie</h2>
+        <p class="card-text fade-up d2">Podczas pierwszego lockdownu miałam tyle wolnego czasu, że postanowiłam uporządkować swoje notatki, materiały dydaktyczne, pomysły i plany lekcji. Przeglądając wszystko, pomyślałam, że fajnie byłoby podzielić się ze światem swoimi pomysłami i wnioskami, i tak zaczęłam blogować – dla zabawy.
+
+Blog stał się – zupełnym przypadkiem – popularny, a ja postanowiłam, że wykorzystam tę okazję do zaprezentowania swoich usług i o to jestem!</p>
+      </div>
+      <div class="card-image-wrapper fade-up d2" style="order: 1;">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=900&auto=format" alt="Pisanie">
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card fade-up">
+      <div class="card-content">
+        
+        <h2 class="card-title fade-up d1">Dlaczego NORI Studio?</h2>
+        <p class="card-text fade-up d2">
+          Wszystko zaczęło się od japońskiego. Nori-nori oznacza działanie z entuzjazmem i cieszenie się chwilą.
+
+Chciałam, by nazwa mojego studia przypominała mi o tym, że to, co robię, po prostu mnie jara. Ale to nie wszystko. </p>
+ <p class="card-text fade-up d3">
+NORI to także mój osobisty kod, który rozwijam jako:
+
+<b>Natalia odkrywa, redaguje, inspiruje</b> – każda historia to nowa podróż, a dobry tekst ma moc zmieniania świata.</p>
+ <p class="card-text fade-up d4">
+
+Słowo „Studio” daje mi za to przestrzeń. Zaczynałam od blogowania o Japonii, dziś szlifuję Twoje treści, a jutro? Jutro NORI Studio będzie tam, gdzie zaprowadzi mnie Twoja opowieść.
+        </p>
+        <p class="card-text fade-up d5">
+          NORI to nie tylko redakcja. To miejsce, które rośnie razem z moimi pasjami i Twoimi historiami.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card fade-up">
+      <div class="card-content">
+        
+        <h2 class="card-title fade-up d1">Kilka <em>ciekawostek</em></h2>
+        <ul class="card-list fade-up d2">
+          <li>Piję hektolitry czarnej i zielonej herbaty</li>
+          <li>Jestem psychofanką Ataku Tytanów </li>
+          <li>Moja ulubiona karta tarota to Księżyc</li>
+          <li>Mój pies ma 17 lat i rozpieszczam ją, jak tylko mogę</li>
+          <li>Mieszkałam we Włoszech i na północy Anglii</li>
+          <li>Nie mam jednej ulubionej książki, ale Frankestein i Green Bone Saga są w moim TOP 10</li>
+          <li>Uważam, że scenariusz Piratów z Karaibów za konstrukcyjny majstersztyk. To rzadki przykład opowieści, która w pełni ufa inteligencji widza, a każdy detal, okazuje się kluczowy dla finału </li>
+          <li>Krok pierwszy: trzeba robić. Tak, to zdanie przypomina mi, dlaczego to wszystko zaczęłam</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="info-card card-cta fade-up">
+      <span class="card-eyebrow fade-up d1">Gotowa/-y na współpracę?</span>
+      <h2 class="card-title fade-up d1">Oddaj swój tekst<br><em>w dobre ręce</em></h2>
+      <p class="card-text fade-up d2">Zadbajmy wspólnie o to, by Twoje słowa wybrzmiały tak, jak zaplanowałeś.</p>
+      <div class="fade-up d3" style="margin-top: 30px;">
+        <a href="mailto:natalia.szoppa@gmail.com" class="nav-cta" style="padding: 18px 40px;">Napisz do mnie</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav-arrows" id="arrows">
+  <button id="prev-btn" disabled>&#8592;</button>
+  <button id="next-btn">&#8594;</button>
+</div>
+
+<script>
+(function(){
+  const container = document.getElementById('scroll-container');
+  const panels = document.querySelectorAll('.panel');
+  const dots = document.querySelectorAll('.timeline-dot');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  let current = 0;
+  const total = panels.length;
+
+  function resetAnimations() {
+    panels.forEach(panel => {
+      panel.querySelectorAll('.fade-up').forEach(el => el.classList.remove('visible'));
+    });
+  }
+
+  function goTo(index){
+    if(index < 0 || index >= total) return;
+    current = index;
+    container.style.transform = `translateX(-${current * 100}vw)`;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === total - 1;
+    dots.forEach(d => d.classList.remove('active'));
+    dots.forEach(d => { if(parseInt(d.dataset.panel) === current) d.classList.add('active'); });
+    resetAnimations();
+    setTimeout(() => {
+      panels[current].querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+    }, 200);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(dot => { dot.addEventListener('click', () => goTo(parseInt(dot.dataset.panel))); });
+  document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+    if(e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1);
+  });
+  let scrollCooldown = false;
+  window.addEventListener('wheel', e => {
+    if(scrollCooldown) return;
+    scrollCooldown = true;
+    if(e.deltaY > 20) goTo(current + 1);
+    else if(e.deltaY < -20) goTo(current - 1);
+    setTimeout(() => scrollCooldown = false, 800);
+  }, {passive: true});
+
+  goTo(0);
+})();
+</script>
+</body>
+</html>
