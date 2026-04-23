@@ -239,14 +239,14 @@
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--grad-start); background: var(--gold-pale); padding: 4px 12px; border-radius: 100px; }
 
-   /* =========================================
+  /* =========================================
        TYPOGRAFIA WE WPISACH (BAJERY)
        ========================================= */
 
-    /* 1. Piękne listy punktowane (wiszące wcięcie akapitowe) */
+    /* 1. Piękne listy punktowane (wiszące wcięcie akapitowe) - BEZ ZMIAN */
     .blog-content ul {
         list-style: none;
-        padding-left: 2.5rem; /* Odsunięcie całej listy od lewej krawędzi */
+        padding-left: 2.5rem;
         margin-bottom: 1.5rem;
     }
 
@@ -255,173 +255,215 @@
         margin-bottom: 0.6rem;
         line-height: 1.6;
         color: var(--ink);
-        padding-left: 0.5rem; /* Odsunięcie samego tekstu od strzałki */
+        padding-left: 0.5rem;
     }
 
     .blog-content ul li::before {
         content: '→';
         position: absolute;
-        left: -1.5rem; /* Cofnięcie strzałki, żeby tekst łamał się równo (hanging indent) */
+        left: -1.5rem;
         color: var(--grad-mid);
         font-weight: 900;
     }
 
-    /* 2. Eleganckie cytaty (dyskretne, z mniejszą czcionką i znakiem cudzysłowu) */
+    /* 2. Eleganckie cytaty (w stylu obrazu_2.png, ale bez ciemnego tła, font Mulish) */
     .blog-content blockquote {
-        border-left: 3px solid var(--grad-mid);
-        background: rgba(184, 64, 154, 0.03); 
-        margin: 2rem 0;
-        padding: 1.2rem 1.5rem 1.2rem 3.5rem; /* Dodatkowe miejsce po lewej na ikonę */
-        border-radius: 0 8px 8px 0;
-        font-style: italic;
-        color: var(--ink-muted);
+        margin: 3rem auto;
+        padding: 1.5rem 0;
+        border: none;
+        background: none;
+        text-align: center;
         position: relative;
+        width: max-content;
+        max-width: 80%;
     }
 
     .blog-content blockquote::before {
-        content: '\201C'; /* Znak wielkiego cudzysłowu w tle */
+        content: '\201C'; /* Otwierający cudzysłów */
+        font-family: 'Mulish', sans-serif;
+        font-size: 3rem;
+        font-weight: 900;
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
         position: absolute;
-        left: 12px;
-        top: 10px;
-        font-family: var(--serif);
-        font-size: 3.5rem;
-        color: rgba(184, 64, 154, 0.15); /* Dyskretny kolor */
+        top: -10px;
+        left: -40px;
         line-height: 1;
     }
 
     .blog-content blockquote p {
-        margin: 0;
-        font-size: 0.95rem; /* Zmniejszona czcionka, żeby nie krzyczała */
+        font-family: 'Mulish', sans-serif;
+        font-size: 1.25rem; /* Zwiększona, ale dyskretna */
+        font-style: italic;
+        color: var(--ink);
         line-height: 1.7;
-    }
-
-    /* 3. Ramka ostrzegawcza (Magenta) - z ikoną wykrzyknika */
-    .alert-magenta {
-        background-color: #ffe6fb;
-        border: 1px solid #ffb3f0;
-        border-left: 6px solid var(--grad-mid);
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: #800080;
-        font-weight: 500;
-        box-shadow: 0 4px 12px rgba(184, 64, 154, 0.08);
+        margin: 0;
+        display: inline-block;
+        padding: 1rem 0;
         position: relative;
     }
 
-    .alert-magenta::before {
-        content: '\f071'; /* Ikona wykrzyknika w trójkącie (Line Awesome) */
-        font-family: 'Line Awesome Free';
+    .blog-content blockquote::after {
+        content: '\201D'; /* Zamykający cudzysłów */
+        font-family: 'Mulish', sans-serif;
+        font-size: 3rem;
         font-weight: 900;
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
         position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
+        bottom: -20px;
+        right: -40px;
+        line-height: 1;
     }
 
-    /* 4. Ramka "Zwróć uwagę, to ważne" - wybija treść do przemyślenia */
-    .notice-box {
-        background-color: var(--paper-warm);
-        border: 1px solid var(--paper-mid);
-        border-left: 6px solid var(--grad-start);
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: var(--ink);
-        position: relative;
-    }
-
-    .notice-box::before {
-        content: '\f05a'; /* Ikona info (Line Awesome) */
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-        color: var(--grad-start);
-    }
-
-    /* 5. Ramka "Rada, pomysł" - z animowaną żarówką */
-    .idea-box {
-        background-color: #fffdf2;
-        border: 1px solid #ffe8a1;
-        border-left: 6px solid #fbbc05;
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: var(--ink-soft);
-        position: relative;
-    }
-
-    .idea-box::before {
-        content: '\f0eb'; /* Ikona żarówki (Line Awesome) */
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-        color: #fbbc05;
-        animation: pulse-glow 2s infinite ease-in-out;
-    }
-
-    @keyframes pulse-glow {
-        0% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; }
-        50% { filter: drop-shadow(0 0 8px rgba(251, 188, 5, 0.9)); opacity: 1; }
-        100% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; }
-    }
-
-    /* 6. Takeaways (Sticky Note) - Lawendowa, zaokrąglone rogi i przezroczysta tasiemka */
-    .sticky-note {
-        background: #EBE4F7; /* Lawendowy kolor */
-        padding: 25px 30px;
-        margin: 3rem auto;
-        width: 85%;
-        color: var(--ink);
-        font-family: var(--sans);
-        border-radius: 12px; /* Zaokrąglone rogi */
-        box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.08);
-        transform: rotate(-1.5deg); /* Lekko przekręcona */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-    }
-
-    .sticky-note:hover {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Tasiemka przyklejająca */
-    .sticky-note::before {
+    .blog-content blockquote p::before,
+    .blog-content blockquote p::after {
         content: '';
         display: block;
-        width: 80px;
-        height: 25px;
-        background: rgba(255, 255, 255, 0.4); /* Półprzezroczysta taśma */
+        height: 2px;
+        background: var(--grad);
         position: absolute;
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%) rotate(2deg);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05), inset 0 0 5px rgba(255,255,255,0.6);
-        border-radius: 2px;
+        width: 100%;
+        left: 0;
     }
 
-    /* 7. Efekt zakreślacza (Highlighter) - pomarańczowe zakreślenie, nie psuje czytelności */
+    .blog-content blockquote p::before {
+        top: -5px;
+    }
+
+    .blog-content blockquote p::after {
+        bottom: -5px;
+    }
+
+    /* 3. Nowe Ramki Powiadomień (styl image_1.png) - wspólna klasa bazowa */
+    .box-notification {
+        border-radius: 20px;
+        padding: 40px;
+        margin: 3rem auto;
+        width: 85%;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        font-family: var(--sans);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Pasek górny z kropkami */
+    .box-notification::before {
+        content: '● ●';
+        color: rgba(0,0,0,0.1);
+        font-size: 1rem;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-family: monospace;
+    }
+
+    /* Emotikona ikona (Line Awesome) */
+    .box-icon {
+        font-size: 3rem;
+        margin-bottom: 25px;
+    }
+
+    /* Nagłówek ramki */
+    .box-notification h4 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    /* Opis ramki */
+    .box-notification p {
+        font-size: 0.95rem;
+        color: rgba(0,0,0,0.6);
+        line-height: 1.6;
+        margin-bottom: 30px;
+        max-width: 80%;
+    }
+
+    /* Przycisk ramki */
+    .box-notification .btn-primary {
+        margin-top: auto;
+    }
+
+    /* Ostrzeżenie / Błąd (Lekki czerwony gradient, smutna minka) */
+    .box-alert {
+        background: linear-gradient(135deg, #FFBDBD 0%, #FF9797 100%);
+        color: #B22222;
+    }
+
+    .box-alert .box-icon::before {
+        content: '\f11a'; /* la-frown (smutna minka) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        color: #B22222;
+    }
+
+    .box-alert h4, .box-alert .btn-primary {
+        background: var(--grad-text); /* Można dostosować, ale zostawiłem Twój grad */
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
+
+    /* Pro Tip (Żółty gradient, minka z żarówką) */
+    .box-tip {
+        background: linear-gradient(135deg, #FFF6BD 0%, #FFF197 100%);
+        color: #CC9900;
+    }
+
+    .box-tip .box-icon::before {
+        content: '\f118'; /* la-smile-wink (minka z żarówką) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        color: #CC9900;
+    }
+
+    .box-tip h4, .box-tip .btn-primary {
+        color: #CC9900;
+    }
+
+    /* Informacja / Sukces (Zielony gradient, wesoła minka) */
+    .box-info {
+        background: linear-gradient(135deg, #BBF5E0 0%, #90EECF 100%);
+        color: #008080;
+    }
+
+    .box-info .box-icon::before {
+        content: '\f118'; /* la-smile (wesoła minka) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        color: #008080;
+    }
+
+    .box-info h4, .box-info .btn-primary {
+        color: #008080;
+    }
+
+    /* Usunięcie starego Takeaways (Sticky Note) i starych ramek alert-magenta itp. */
+
+    /* Efekt zakreślacza - BEZ ZMIAN */
     .highlight-marker {
         background: linear-gradient(120deg, rgba(255, 152, 0, 0.3) 0%, rgba(255, 193, 7, 0.3) 100%);
         background-repeat: no-repeat;
-        background-size: 100% 40%; /* Podkreśla dolną połowę tekstu */
+        background-size: 100% 40%;
         background-position: 0 90%;
         padding: 0 4px;
         border-radius: 3px;
         font-weight: 600;
     }
 
-    /* 8. Kolor zaznaczenia tekstu myszką */
+    /* Kolor zaznaczenia - BEZ ZMIAN */
     ::selection {
         background: var(--grad-mid);
         color: #ffffff;
