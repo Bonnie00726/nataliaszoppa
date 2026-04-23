@@ -47,31 +47,20 @@ layout: default
         
         {{ content }}
 
-        <div class="post-navigation">
+      <div class="post-navigation">
             {% if page.previous %}
-                <a href="{{ page.previous.url | relative_url }}" class="post-nav-btn nav-prev">
+                <a href="{{ page.previous.url | relative_url }}" class="post-nav-btn nav-prev" title="{{ page.previous.title }}">
                     <i class="las la-arrow-left"></i>
-                    <div class="nav-content">
-                        <span class="nav-label">Poprzedni wpis</span>
-               
-                    </div>
                 </a>
-            {% else %}
-                <div class="post-nav-empty"></div>
             {% endif %}
 
             {% if page.next %}
-                <a href="{{ page.next.url | relative_url }}" class="post-nav-btn nav-next">
-                    <div class="nav-content text-right">
-                        <span class="nav-label">Następny wpis</span>
-                      
-                    </div>
+                <a href="{{ page.next.url | relative_url }}" class="post-nav-btn nav-next" title="{{ page.next.title }}">
                     <i class="las la-arrow-right"></i>
                 </a>
-            {% else %}
-                <div class="post-nav-empty"></div>
             {% endif %}
         </div>
+      
         </main>
 
     <aside class="blog-sidebar">
