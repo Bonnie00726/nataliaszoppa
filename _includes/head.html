@@ -554,6 +554,95 @@
         font-size: 0.9rem; 
         color: var(--ink-muted); 
     }
+    /* =========================================
+       NAWIGACJA: POPRZEDNI / NASTĘPNY WPIS
+       ========================================= */
+    .post-navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 24px;
+        margin-top: 80px;
+        padding-top: 40px;
+        border-top: 1px solid var(--paper-mid);
+    }
+
+    .post-nav-empty {
+        flex: 1; /* Wypełnia przestrzeń, gdy brakuje jednego z przycisków */
+    }
+
+    .post-nav-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 24px;
+        background: #fff;
+        border: 1px solid var(--paper-mid);
+        border-radius: var(--radius-lg);
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .post-nav-btn:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-med);
+        border-color: rgba(107, 53, 200, 0.3); /* Lekko lawendowa ramka na hover (var(--grad-start)) */
+    }
+
+    .post-nav-btn i {
+        font-size: 1.8rem;
+        color: var(--grad-start);
+        transition: transform 0.3s ease;
+    }
+
+    /* Subtelny ruch strzałek na hover */
+    .nav-prev:hover i { transform: translateX(-4px); }
+    .nav-next:hover i { transform: translateX(4px); }
+
+    .nav-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .text-right {
+        text-align: right;
+    }
+
+    .nav-label {
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--ink-muted);
+        margin-bottom: 6px;
+    }
+
+    .nav-title {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ink);
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Dodaje "..." jeśli tytuł jest za długi */
+    }
+
+    /* Responsywność dla komórek */
+    @media (max-width: 768px) {
+        .post-navigation {
+            flex-direction: column; /* Na telefonie przyciski ustawią się jeden pod drugim */
+            gap: 16px;
+        }
+        
+        .post-nav-empty {
+            display: none; /* Ukrywamy puste miejsce na telefonie */
+        }
+    }
     /* STOPKA */
     .grad-line-footer { height: 3px; background: var(--grad); }
     footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
