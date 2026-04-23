@@ -570,24 +570,28 @@
     .post-nav-btn {
         width: 64px;
         height: 64px;
-        border-radius: 50%; /* Tworzy idealne koło */
-        background: var(--grad); /* Wypełnienie Twoim gradientem */
+        border-radius: 50%;
+        background: var(--grad);
         display: flex;
         justify-content: center;
         align-items: center;
-        text-decoration: none;
+        text-decoration: none !important; /* Wymuszenie braku podkreślenia dla linku */
+        border-bottom: none !important;   /* Zabezpieczenie przed dolną ramką */
         box-shadow: var(--shadow-soft);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .post-nav-btn:hover {
-        transform: translateY(-4px) scale(1.05); /* Lekkie uniesienie i powiększenie */
+        transform: translateY(-4px) scale(1.05);
         box-shadow: var(--shadow-med);
+        text-decoration: none !important; /* Brak podkreślenia również po najechaniu myszką */
     }
 
     .post-nav-btn i {
         font-size: 1.8rem;
-        color: #fff; /* Biała strzałka na kolorowym tle */
+        color: #fff;
+        text-decoration: none !important; 
+        border-bottom: none !important;
         transition: transform 0.3s ease;
     }
 
