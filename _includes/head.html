@@ -475,12 +475,12 @@
     .toc-chevron { 
         font-size: 1rem; 
         color: var(--ink-muted); 
-        transform: rotate(0deg); /* Domyślnie strzałka patrzy w dół (przy założeniu ikony 'la-angle-down') */
+        transform: rotate(180deg); /* Domyślnie strzałka obrócona w górę */
         transition: transform 0.3s ease; 
     }
     
     .toc-box.open .toc-chevron { 
-        transform: rotate(180deg); /* Kiedy div dostanie klasę .open, obraca się o 180 stopni w górę */
+        transform: rotate(0deg); /* Po otwarciu (klasa .open) obraca się w dół */
     }
     
     /* Wygląd listy */
