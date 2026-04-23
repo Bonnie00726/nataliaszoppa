@@ -266,35 +266,26 @@
         font-weight: 900;
     }
 
-    /* 2. Eleganckie cytaty (dyskretne, z mniejszą czcionką i znakiem cudzysłowu) */
+   /* 2. Cytaty / Key Takeaway (jasnoszare tło, czarna ramka, zaokrąglone rogi) */
     .blog-content blockquote {
-        border-left: 3px solid var(--grad-mid);
-        background: rgba(184, 64, 154, 0.03); 
-        margin: 2rem 0;
-        padding: 1.2rem 1.5rem 1.2rem 3.5rem; /* Dodatkowe miejsce po lewej na ikonę */
-        border-radius: 0 8px 8px 0;
-        font-style: italic;
-        color: var(--ink-muted);
-        position: relative;
-    }
-
-    .blog-content blockquote::before {
-        content: '\201C'; /* Znak wielkiego cudzysłowu w tle */
-        position: absolute;
-        left: 12px;
-        top: 10px;
-        font-family: var(--serif);
-        font-size: 3.5rem;
-        color: rgba(184, 64, 154, 0.15); /* Dyskretny kolor */
-        line-height: 1;
+        background-color: #fafafa; /* Bardzo jasny, neutralny szary */
+        border: 1.5px solid var(--ink); /* Ciemne obramowanie (z Twojej zmiennej) */
+        border-radius: 12px; /* Zaokrąglone rogi */
+        margin: 2.5rem 0;
+        padding: 28px 32px; /* Odpowiednia przestrzeń wewnątrz ramki */
+        color: var(--ink-soft);
+        font-family: var(--sans); /* Bezszeryfowy font (Mulish) */
+        font-style: normal; /* Usuwamy kursywę, żeby wyglądało jak na zdjęciu */
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04); /* Subtelny cień pod ramką */
     }
 
     .blog-content blockquote p {
         margin: 0;
-        font-size: 0.95rem; /* Zmniejszona czcionka, żeby nie krzyczała */
+        font-size: 1.05rem; 
         line-height: 1.7;
     }
 
+   
     /* 3. Ramka ostrzegawcza (Magenta) - z ikoną wykrzyknika */
     .alert-magenta {
         background-color: #ffe6fb;
