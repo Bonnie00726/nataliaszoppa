@@ -7,26 +7,7 @@ author: Natalia Szoppa
 
 Cześć! Dzisiaj mamy **23 kwietnia 2026 roku** i z tej okazji wrzucam na produkcję zupełnie nowe elementy wizualne. Poniżej znajduje się test wszystkich wdrożonych bajerów typograficznych, które urozmaicą nadchodzące wpisy. Sprawdźmy, jak to wszystko wygląda w praktyce!
 
-<div class="post-toc">
-    <div class="toc-box" id="tocBox">
-        <div class="toc-toggle" onclick="document.getElementById('tocBox').classList.toggle('open')">
-            <div class="toc-toggle-left">
-                <i class="las la-list"></i>
-                <span>Spis treści</span>
-            </div>
-            <i class="las la-angle-down toc-chevron"></i>
-        </div>
-        <div class="toc-body">
-            <ol>
-                <li><a href="#listy-punktowane">Piękne listy punktowane</a></li>
-                <li><a href="#cytaty">Dyskretne cytaty</a></li>
-                <li><a href="#ramki-informacyjne">Kolorowe ramki (Ostrzeżenie, Uwaga, Pomysł)</a></li>
-                <li><a href="#karteczka">Lawendowa karteczka (Takeaways)</a></li>
-                <li><a href="#zakreslacz">Efekt zakreślacza</a></li>
-            </ol>
-        </div>
-    </div>
-</div>
+
 
 <h2 id="listy-punktowane">1. Piękne listy punktowane</h2>
 
