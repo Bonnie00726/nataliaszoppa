@@ -239,14 +239,14 @@
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--grad-start); background: var(--gold-pale); padding: 4px 12px; border-radius: 100px; }
 
-    /* =========================================
+   /* =========================================
        TYPOGRAFIA WE WPISACH (BAJERY)
        ========================================= */
 
-    /* 1. Piękne listy punktowane */
+    /* 1. Piękne listy punktowane (wiszące wcięcie akapitowe) */
     .blog-content ul {
         list-style: none;
-        padding-left: 1.5rem;
+        padding-left: 2.5rem; /* Odsunięcie całej listy od lewej krawędzi */
         margin-bottom: 1.5rem;
     }
 
@@ -254,79 +254,174 @@
         position: relative;
         margin-bottom: 0.6rem;
         line-height: 1.6;
-        color: var(--ink); 
+        color: var(--ink);
+        padding-left: 0.5rem; /* Odsunięcie samego tekstu od strzałki */
     }
 
     .blog-content ul li::before {
         content: '→';
         position: absolute;
-        left: -1.5rem;
-        color: var(--grad-mid); /* Użyłem Twojego gradientu zdefiniowanego na górze */
+        left: -1.5rem; /* Cofnięcie strzałki, żeby tekst łamał się równo (hanging indent) */
+        color: var(--grad-mid);
         font-weight: 900;
     }
 
-    /* 2. Eleganckie cytaty */
+    /* 2. Eleganckie cytaty (dyskretne, z mniejszą czcionką i znakiem cudzysłowu) */
     .blog-content blockquote {
-        border-left: 4px solid var(--grad-mid);
+        border-left: 3px solid var(--grad-mid);
         background: rgba(184, 64, 154, 0.03); 
         margin: 2rem 0;
-        padding: 1.2rem 1.5rem;
+        padding: 1.2rem 1.5rem 1.2rem 3.5rem; /* Dodatkowe miejsce po lewej na ikonę */
         border-radius: 0 8px 8px 0;
         font-style: italic;
         color: var(--ink-muted);
+        position: relative;
+    }
+
+    .blog-content blockquote::before {
+        content: '\201C'; /* Znak wielkiego cudzysłowu w tle */
+        position: absolute;
+        left: 12px;
+        top: 10px;
+        font-family: var(--serif);
+        font-size: 3.5rem;
+        color: rgba(184, 64, 154, 0.15); /* Dyskretny kolor */
+        line-height: 1;
     }
 
     .blog-content blockquote p {
         margin: 0;
+        font-size: 0.95rem; /* Zmniejszona czcionka, żeby nie krzyczała */
+        line-height: 1.7;
     }
 
-    /* 3. Ramka ostrzegawcza (Magenta) */
+    /* 3. Ramka ostrzegawcza (Magenta) - z ikoną wykrzyknika */
     .alert-magenta {
         background-color: #ffe6fb;
         border: 1px solid #ffb3f0;
         border-left: 6px solid var(--grad-mid);
-        padding: 15px 20px;
+        padding: 15px 20px 15px 50px;
         margin: 2rem 0;
         border-radius: 6px;
         color: #800080;
         font-weight: 500;
         box-shadow: 0 4px 12px rgba(184, 64, 154, 0.08);
+        position: relative;
     }
 
-    /* 4. Takeaways (Sticky Note) */
+    .alert-magenta::before {
+        content: '\f071'; /* Ikona wykrzyknika w trójkącie (Line Awesome) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+    }
+
+    /* 4. Ramka "Zwróć uwagę, to ważne" - wybija treść do przemyślenia */
+    .notice-box {
+        background-color: var(--paper-warm);
+        border: 1px solid var(--paper-mid);
+        border-left: 6px solid var(--grad-start);
+        padding: 15px 20px 15px 50px;
+        margin: 2rem 0;
+        border-radius: 6px;
+        color: var(--ink);
+        position: relative;
+    }
+
+    .notice-box::before {
+        content: '\f05a'; /* Ikona info (Line Awesome) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--grad-start);
+    }
+
+    /* 5. Ramka "Rada, pomysł" - z animowaną żarówką */
+    .idea-box {
+        background-color: #fffdf2;
+        border: 1px solid #ffe8a1;
+        border-left: 6px solid #fbbc05;
+        padding: 15px 20px 15px 50px;
+        margin: 2rem 0;
+        border-radius: 6px;
+        color: var(--ink-soft);
+        position: relative;
+    }
+
+    .idea-box::before {
+        content: '\f0eb'; /* Ikona żarówki (Line Awesome) */
+        font-family: 'Line Awesome Free';
+        font-weight: 900;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: #fbbc05;
+        animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+        0% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; }
+        50% { filter: drop-shadow(0 0 8px rgba(251, 188, 5, 0.9)); opacity: 1; }
+        100% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; }
+    }
+
+    /* 6. Takeaways (Sticky Note) - Lawendowa, zaokrąglone rogi i przezroczysta tasiemka */
     .sticky-note {
-        background: #fff8a6;
+        background: #EBE4F7; /* Lawendowy kolor */
         padding: 25px 30px;
         margin: 3rem auto;
         width: 85%;
-        color: #333;
+        color: var(--ink);
         font-family: var(--sans);
-        border-radius: 2px 15px 15px 2px;
-        box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.1);
-        transform: rotate(-1.5deg);
+        border-radius: 12px; /* Zaokrąglone rogi */
+        box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.08);
+        transform: rotate(-1.5deg); /* Lekko przekręcona */
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative;
     }
 
     .sticky-note:hover {
         transform: rotate(0deg) scale(1.02);
-        box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.15);
+        box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.12);
     }
 
+    /* Tasiemka przyklejająca */
     .sticky-note::before {
         content: '';
         display: block;
-        width: 60px;
-        height: 15px;
-        background: rgba(255, 255, 255, 0.6);
+        width: 80px;
+        height: 25px;
+        background: rgba(255, 255, 255, 0.4); /* Półprzezroczysta taśma */
         position: absolute;
-        top: -6px;
+        top: -10px;
         left: 50%;
         transform: translateX(-50%) rotate(2deg);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05), inset 0 0 5px rgba(255,255,255,0.6);
+        border-radius: 2px;
     }
 
-    /* 5. Kolor zaznaczenia tekstu */
+    /* 7. Efekt zakreślacza (Highlighter) - pomarańczowe zakreślenie, nie psuje czytelności */
+    .highlight-marker {
+        background: linear-gradient(120deg, rgba(255, 152, 0, 0.3) 0%, rgba(255, 193, 7, 0.3) 100%);
+        background-repeat: no-repeat;
+        background-size: 100% 40%; /* Podkreśla dolną połowę tekstu */
+        background-position: 0 90%;
+        padding: 0 4px;
+        border-radius: 3px;
+        font-weight: 600;
+    }
+
+    /* 8. Kolor zaznaczenia tekstu myszką */
     ::selection {
         background: var(--grad-mid);
         color: #ffffff;
@@ -385,14 +480,16 @@
         color: var(--ink); 
     }
     
+    /* Mechanika odwracania strzałki TOC */
     .toc-chevron { 
         font-size: 1rem; 
         color: var(--ink-muted); 
-        transition: transform 0.3s; 
+        transform: rotate(0deg); /* Domyślnie strzałka patrzy w dół (przy założeniu ikony 'la-angle-down') */
+        transition: transform 0.3s ease; 
     }
     
     .toc-box.open .toc-chevron { 
-        transform: rotate(180deg); 
+        transform: rotate(180deg); /* Kiedy div dostanie klasę .open, obraca się o 180 stopni w górę */
     }
     
     /* Wygląd listy */
