@@ -679,4 +679,127 @@
         .tiles-grid { grid-template-columns: 1fr; }
         .hero-stats { gap: 30px; }
     }
+    /* ========================================= */
+/* SEKCJA PRZED I PO (REDAKCJA W PRAKTYCE)   */
+/* ========================================= */
+
+.comparison-container {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+}
+
+/* Wersja mobilna: ramki jedna pod drugą */
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+    }
+}
+
+.comparison-box {
+    flex: 1;
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    border: 1px solid var(--paper-mid);
+    background: var(--paper); /* Zawsze białe tło dla czytelności */
+}
+
+/* Wersja PRZED - delikatnie "ostrzegawcza" */
+.comparison-box.before {
+    border-color: #FAD4D4;
+}
+
+/* Wersja PO - nawiązująca do Twojego gradientu i stylu kafelków */
+.comparison-box.after {
+    border-color: rgba(107, 53, 200, 0.2); /* var(--grad-start) zzezroczystością */
+    box-shadow: var(--shadow-med);
+    overflow: hidden; /* Żeby ucięło rogi górnej belki */
+}
+
+/* Cienka linia z Twoim gradientem na górze ramki "PO" */
+.comparison-box.after::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--grad);
+}
+
+/* Nagłówki nad tekstem */
+.box-header {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.comparison-box.before .box-header { color: #E53E3E; }
+.comparison-box.after .box-header { color: var(--grad-start); }
+
+/* Główny tekst do czytania */
+.box-content {
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-soft);
+}
+
+/* Kolorowanie poszczególnych słów w tekście */
+.highlight-red {
+    background-color: #FEE2E2;
+    color: #991B1B;
+    padding: 2px 6px;
+    border-radius: var(--radius);
+    text-decoration: line-through; /* Przekreślenie błędu */
+    text-decoration-color: rgba(153, 27, 27, 0.4);
+}
+
+.highlight-purple {
+    background-color: var(--gold-pale); /* Wykorzystałam Twoją zmienną (#F5F0FF) */
+    color: var(--grad-start);
+    padding: 2px 6px;
+    border-radius: var(--radius);
+    font-weight: 500;
+}
+
+/* Tagi na dole okienek */
+.box-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--paper-mid);
+}
+
+.box-tags span {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+}
+
+.comparison-box.before .box-tags span {
+    background: #FFF5F5;
+    color: #C53030;
+    border: 1px solid #FEE2E2;
+}
+
+.comparison-box.after .box-tags span {
+    background: var(--gold-pale);
+    color: var(--grad-start);
+    border: 1px solid rgba(107, 53, 200, 0.15);
+}
+    
 </style>
