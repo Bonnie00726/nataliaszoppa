@@ -352,7 +352,22 @@
     /* ========================================= */
     /* NOWOŚĆ: PASEK CALL TO ACTION              */
     /* ========================================= */
-    .cta-strip { background: var(--ink); border-radius: var(--radius-lg); padding: 56px 64px; display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; overflow: hidden; box-shadow: var(--shadow-strong); margin-bottom: 40px;}
+    .cta-strip { 
+        background: var(--ink); 
+        border-radius: var(--radius-lg); 
+        padding: 56px 64px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 40px; 
+        position: relative; 
+        overflow: hidden; 
+        box-shadow: var(--shadow-strong); 
+        
+        /* Zmodyfikowane marginesy: */
+        margin: 60px auto; 
+        max-width: 100%; /* Zabezpiecza przed "wylaniem się" poza ekran */
+    }
     .cta-strip::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 6px; background: var(--grad); }
     .cta-text { flex: 1; }
     .cta-text h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #ffffff; margin-bottom: 16px; line-height: 1.2; }
