@@ -868,6 +868,131 @@
         margin: 0 auto;
  
         }
+        /* ========================================= */
+/* PASEK NA DOLE HERO (STATYSTYKI I GATUNKI) */
+/* ========================================= */
+
+.hero-bottom-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 8, 18, 0.65); /* Półprzezroczyste ciemne tło (Glassmorphism) */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    z-index: 10;
+}
+
+/* Sekcja z kwadratami (Liczby) */
+.strip-stats {
+    display: flex;
+    flex: 1; 
+}
+
+.strip-square {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    border-right: 1px solid rgba(255,255,255,0.08); /* Oddzielające linie kwadratów */
+    transition: background 0.3s;
+}
+
+.strip-square:hover {
+    background: rgba(255,255,255,0.05); /* Lekkie podświetlenie po najechaniu */
+}
+
+.strip-square .num {
+    font-family: var(--serif);
+    font-size: 2.4rem;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.strip-square .num em {
+    color: var(--grad-start); /* Fioletowy plusik */
+    font-style: italic;
+}
+
+.strip-square .label {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+}
+
+/* Sekcja z tagami (Gatunki) */
+.strip-genres {
+    flex: 1.5; /* Odrobinę szersza, by pomieścić wszystkie tagi */
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 24px;
+}
+
+.genres-title {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.8);
+    white-space: nowrap;
+}
+
+.genres-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.genre-tag {
+    background: var(--grad-start); /* Fiolet zaczerpnięty z Twojego screena */
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: var(--radius); /* Lekko zaokrąglone rogi */
+    transition: transform 0.2s, background 0.2s;
+    cursor: default;
+}
+
+.genre-tag:hover {
+    transform: translateY(-2px);
+    background: var(--grad-mid); /* Zmiana odcienia z Twojego gradientu przy najechaniu */
+}
+
+/* Responsywność dla ekranów mobilnych */
+@media (max-width: 992px) {
+    .hero-bottom-strip {
+        position: relative; /* Na komórce ląduje pod zdjęciem, a nie na nim, by nie zasłaniać twarzy/tła */
+        flex-direction: column;
+    }
+    .strip-stats {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .strip-genres {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px 20px;
+        text-align: center;
+    }
+    .genres-tags {
+        justify-content: center;
+    }
         
     
 </style>
+
