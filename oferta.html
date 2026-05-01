@@ -22,15 +22,22 @@ title: Oferta
     .analogy-box { background: var(--paper); border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
     .analogy-box h4 { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--ink); margin-bottom: 12px; }
     .analogy-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.65; }
-    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
+    
+    /* Poprawiona ramka Warning (Ostrzeżenie) */
+    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .warning-box i { font-size: 2.2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
     .warning-box p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.65; margin: 0; }
     .warning-box strong { color: var(--ink); font-weight: 700; }
-    .not-included-box { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; margin: 40px 0; box-shadow: var(--shadow-soft); }
-    .not-included-box h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; border-bottom: 1px solid var(--paper-mid); padding-bottom: 16px; }
-    .not-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; list-style: none; padding: 0; margin: 0; }
+    
+    /* Poprawiona ramka Czego nie obejmuje */
+    .not-included-box { background: var(--paper-warm); border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 40px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
+    .not-included-box h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; text-align: center; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
+    
+    /* Poprawiona lista na pionową */
+    .not-list { display: flex; flex-direction: column; gap: 16px; list-style: none; padding: 0; margin: 0; }
     .not-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
     .not-list li::before { content: '✕'; color: #d9534f; font-weight: 700; margin-top: 2px; }
+    
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
     .feature-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
@@ -141,6 +148,7 @@ title: Oferta
                 </div>
             </div>
         </div>
+        
         <div class="container--wide">
             <h3 class="sub-section-title reveal">Co zyskujesz na tym etapie?</h3>
             <div class="feature-grid reveal">
@@ -166,13 +174,13 @@ title: Oferta
         </div>
 
         <div class="not-included-box reveal">
-    <h3>Czego recenzja nie obejmuje?</h3>
-    <ul class="not-list">
-        <li><strong>Poprawiania błędów:</strong> Nie wyłapuję literówek, błędów ortograficznych ani interpunkcyjnych.</li>
-        <li><strong>Redakcji językowej:</strong> Nie zmieniam szyku zdań ani nie szlifuję Twojego stylu na tym etapie.</li>
-        <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do rynku.</li>
-    </ul>
-</div>
+            <h3>Czego recenzja nie obejmuje?</h3>
+            <ul class="not-list">
+                <li><strong>Poprawiania błędów:</strong> Nie wyłapuję literówek, błędów ortograficznych ani interpunkcyjnych.</li>
+                <li><strong>Redakcji językowej:</strong> Nie zmieniam szyku zdań ani nie szlifuję Twojego stylu na tym etapie.</li>
+                <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do czytelnika.</li>
+            </ul>
+        </div>
         
     </section>
 
@@ -190,6 +198,7 @@ title: Oferta
                 <p>Wierzę, że Twój tekst zasługuje na wszystko, co najlepsze. Wypuszczenie w świat książki poprawionej pod kątem gramatyki, ale kulejącej pod kątem rytmu, byłoby niedźwiedzią przysługą. Pracuję tylko w pełnym procesie, bo tylko wtedy mogę podpisać się pod Twoim sukcesem.</p>
             </div>
         </div>
+        
         <div class="container--wide">
             <h3 class="sub-section-title reveal">Co wchodzi w skład pełnego procesu?</h3>
             <div class="compare-grid reveal">
@@ -211,6 +220,15 @@ title: Oferta
                 </div>
             </div>
         </div>
+
+        <div class="warning-box reveal">
+            <i class="las la-exclamation-triangle"></i>
+            <div>
+                <p><strong>Czego redakcja nie zapewni?</strong></p>
+                <p>Redakcja to „otwarta operacja” na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
+            </div>
+        </div>
+
     </section>
 
     <section id="korekta" class="section bg-white toc-section">
@@ -226,6 +244,16 @@ title: Oferta
                 </div>
             </div>
         </div>
+
+        <div class="not-included-box reveal">
+            <h3>Czego korekta nie naprawi?</h3>
+            <ul class="not-list">
+                <li><strong>Struktury opowieści:</strong> Jeśli fabuła jest nielogiczna lub tempo siada, korekta tego nie zmieni.</li>
+                <li><strong>Głębokiego stylu:</strong> Nie modyfikuję brzmienia Twojego głosu ani zasobu słownictwa, poprawiam jedynie poprawność techniczną.</li>
+                <li><strong>Dziur fabularnych:</strong> Na tym etapie skupiam się na znakach i literach, a nie na wiarygodności postaci i świata.</li>
+            </ul>
+        </div>
+
     </section>
 
     <section id="dtp" class="section bg-warm toc-section">
