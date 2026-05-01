@@ -79,17 +79,12 @@ title: Oferta
     .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
     .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
 
-    /* Pasek Filozofii Współpracy */
-    .collab-banner { background: var(--ink); padding: 28px 40px; position: relative; overflow: hidden; }
-    .collab-banner::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: var(--grad); }
-    .collab-banner-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
-    .collab-banner-text { flex: 1; min-width: 260px; }
-    .collab-banner-text p { font-family: var(--serif); font-size: 1.1rem; font-style: italic; color: rgba(255,255,255,0.9); margin: 0; line-height: 1.6; }
-    .collab-banner-text p strong { font-style: normal; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700; }
-    .collab-pillars { display: flex; gap: 32px; flex-shrink: 0; flex-wrap: wrap; }
-    .collab-pillar { display: flex; align-items: center; gap: 10px; }
-    .collab-pillar i { font-size: 1.4rem; color: var(--grad-end); flex-shrink: 0; }
-    .collab-pillar span { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); }
+    /* Pasek Filozofii Współpracy — tylko filary */
+    .collab-banner { background: var(--ink); padding: 22px 40px; }
+    .collab-banner-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .collab-pillar { display: flex; align-items: center; gap: 12px; }
+    .collab-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+    .collab-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
 
     /* Pakiet Dostawy */
     .delivery-pack { margin: 56px auto 0; max-width: 860px; }
@@ -111,7 +106,7 @@ title: Oferta
        SEKCJA CTA NA KOŃCU KAŻDEJ SEKCJI
        ========================================= */
     .section-footer {
-        padding: 56px 0 0;
+        padding: 56px 0 64px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -123,128 +118,18 @@ title: Oferta
         padding: 20px 52px;
     }
 
-    /* =========================================
-       SEPARATOR Z ANIMOWANĄ STRZAŁKĄ
-       ========================================= */
-    .section-separator {
-        position: relative;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        overflow: visible;
-    }
-
-    /* Lewa strona */
-    .section-separator--left {
-        justify-content: flex-start;
-        padding-left: 10%;
-    }
-
-    /* Prawa strona */
-    .section-separator--right {
-        justify-content: flex-end;
-        padding-right: 10%;
-    }
-
-    .separator-inner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .separator-text {
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: 0.92rem;
-        color: var(--ink-muted);
-        white-space: nowrap;
-        opacity: 0;
-        transform: translateY(-6px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .separator-text.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Kontener strzałki SVG */
-    .arrow-svg-wrap {
-        width: 80px;
-        height: 64px;
-        flex-shrink: 0;
-    }
-
-    .arrow-svg-wrap svg {
-        width: 100%;
-        height: 100%;
-        overflow: visible;
-    }
-
-    /* Sam path strzałki — rysuje się przez JS */
-    .arrow-draw {
-        fill: none;
-        stroke: url(#arrowGrad);
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 300;
-        stroke-dashoffset: 300;
-        transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .arrow-draw.drawn {
-        stroke-dashoffset: 0;
-    }
-
-    /* Grot strzałki */
-    .arrow-tip {
-        fill: none;
-        stroke: url(#arrowGrad);
-        stroke-width: 2.2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        opacity: 0;
-        transition: opacity 0.3s ease 0.55s;
-    }
-
-    .arrow-tip.drawn {
-        opacity: 1;
-    }
-
     /* RWD */
     @media (max-width: 900px) {
         .compare-grid { grid-template-columns: 1fr; }
         .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px;}
         .delivery-items { grid-template-columns: 1fr; }
-        .section-separator--left { padding-left: 5%; }
-        .section-separator--right { padding-right: 5%; }
     }
     @media (max-width: 860px) { 
         .container--wide { padding: 0 24px; }
         .collab-banner { padding: 24px 20px; }
         .collab-pillars { gap: 20px; }
     }
-    @media (max-width: 600px) {
-        .section-separator--left,
-        .section-separator--right {
-            justify-content: center;
-            padding: 0;
-        }
-        .separator-text { white-space: normal; text-align: center; max-width: 200px; }
-    }
 </style>
-
-<!-- GRADIENTY DLA SVG -->
-<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6B35C8" />
-      <stop offset="100%" stop-color="#E8772A" />
-    </linearGradient>
-  </defs>
-</svg>
 
 <!-- HERO SEKCJA -->
 <header class="hero hero--short">
@@ -271,22 +156,17 @@ title: Oferta
 <!-- PASEK FILOZOFII WSPÓŁPRACY -->
 <div class="collab-banner reveal delay-1">
     <div class="collab-banner-inner">
-        <div class="collab-banner-text">
-            <p>Nie poprawiam tekstu <strong>za Ciebie</strong> — pracuję <strong>razem z Tobą</strong>, żebyś rozumiał każdą zmianę i wychodził z procesu lepszym autorem.</p>
+        <div class="collab-pillar">
+            <i class="las la-comments"></i>
+            <span>Transparentny proces</span>
         </div>
-        <div class="collab-pillars">
-            <div class="collab-pillar">
-                <i class="las la-comments"></i>
-                <span>Transparentny proces</span>
-            </div>
-            <div class="collab-pillar">
-                <i class="las la-graduation-cap"></i>
-                <span>Aspekt edukacyjny</span>
-            </div>
-            <div class="collab-pillar">
-                <i class="las la-handshake"></i>
-                <span>Partnerstwo</span>
-            </div>
+        <div class="collab-pillar">
+            <i class="las la-graduation-cap"></i>
+            <span>Aspekt edukacyjny</span>
+        </div>
+        <div class="collab-pillar">
+            <i class="las la-handshake"></i>
+            <span>Partnerstwo</span>
         </div>
     </div>
 </div>
@@ -358,26 +238,6 @@ title: Oferta
             </div>
         </div>
     </section>
-
-    <!-- SEPARATOR: strzałka LEWA → prowadzi do Redakcji -->
-    <div class="section-separator section-separator--left bg-white" data-target="#redakcja">
-        <div class="separator-inner">
-            <span class="separator-text">a może potrzebujesz czegoś więcej?</span>
-            <!-- Zawijas biegnący w lewo i opadający w dół -->
-            <div class="arrow-svg-wrap">
-                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Krzywa: zaczyna się górą-lewą, zawija i schodzi w dół -->
-                    <path class="arrow-draw"
-                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
-                    />
-                    <!-- Grot na końcu ścieżki -->
-                    <polyline class="arrow-tip"
-                        points="28,57 36,60 33,52"
-                    />
-                </svg>
-            </div>
-        </div>
-    </div>
 
     <!-- ==================== 2. REDAKCJA ==================== -->
     <section id="redakcja" class="section bg-warm toc-section">
@@ -467,24 +327,6 @@ title: Oferta
         </div>
     </section>
 
-    <!-- SEPARATOR: strzałka PRAWA → prowadzi do Korekty -->
-    <div class="section-separator section-separator--right bg-warm" data-target="#korekta">
-        <div class="separator-inner">
-            <span class="separator-text">tekst zredagowany — co dalej?</span>
-            <!-- Zawijas z prawej strony — lustrzane odbicie -->
-            <div class="arrow-svg-wrap" style="transform: scaleX(-1);">
-                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
-                    <path class="arrow-draw"
-                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
-                    />
-                    <polyline class="arrow-tip"
-                        points="28,57 36,60 33,52"
-                    />
-                </svg>
-            </div>
-        </div>
-    </div>
-
     <!-- ==================== 3. KOREKTA ==================== -->
     <section id="korekta" class="section bg-white toc-section">
         <div class="container">
@@ -518,23 +360,6 @@ title: Oferta
         </div>
     </section>
 
-    <!-- SEPARATOR: strzałka LEWA → prowadzi do DTP -->
-    <div class="section-separator section-separator--left bg-white" data-target="#dtp">
-        <div class="separator-inner">
-            <span class="separator-text">ostatnia prosta do wydania</span>
-            <div class="arrow-svg-wrap">
-                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
-                    <path class="arrow-draw"
-                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
-                    />
-                    <polyline class="arrow-tip"
-                        points="28,57 36,60 33,52"
-                    />
-                </svg>
-            </div>
-        </div>
-    </div>
-
     <!-- ==================== 4. DTP ==================== -->
     <section id="dtp" class="section bg-warm toc-section">
         <div class="container">
@@ -549,10 +374,10 @@ title: Oferta
             </div>
         </div>
 
-        <!-- CTA sekcji — ostatnia, mocniejsza -->
+        <!-- CTA sekcji — ostatnia -->
         <div class="container">
-            <div class="section-footer reveal" style="padding-bottom: 32px;">
-                <a href="/kontakt" class="btn-gradient" style="font-size: 1.05rem; padding: 22px 60px;">Wypełnij brief i rozpocznij współpracę</a>
+            <div class="section-footer reveal">
+                <a href="/kontakt" class="btn-gradient">Wypełnij brief i rozpocznij współpracę</a>
                 <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300; text-align: center; max-width: 360px;">Nie wiesz, od którego etapu zacząć? Napisz — ocenię Twój tekst i zaproponuję właściwy plan działania.</p>
             </div>
         </div>
@@ -562,7 +387,7 @@ title: Oferta
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- 1. TOC HIGHLIGHTING ---
+        // TOC HIGHLIGHTING
         const sections = document.querySelectorAll('.toc-section');
         const navLinks = document.querySelectorAll('.top-toc a');
         
@@ -585,33 +410,6 @@ title: Oferta
             });
         }
 
-        // --- 2. ANIMOWANE STRZAŁKI ---
-        // IntersectionObserver — wyzwala animację gdy separator wchodzi w viewport
-        const separators = document.querySelectorAll('.section-separator');
-
-        const arrowObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sep = entry.target;
-                    const arrowPath = sep.querySelector('.arrow-draw');
-                    const arrowTip  = sep.querySelector('.arrow-tip');
-                    const label     = sep.querySelector('.separator-text');
-
-                    if (label)     label.classList.add('visible');
-                    if (arrowPath) arrowPath.classList.add('drawn');
-                    if (arrowTip)  arrowTip.classList.add('drawn');
-
-                    // Odłącz po pierwszym wyzwoleniu — strzałka rysuje się tylko raz
-                    arrowObserver.unobserve(sep);
-                }
-            });
-        }, {
-            threshold: 0.4   // Odpala gdy 40% separatora jest widoczne
-        });
-
-        separators.forEach(sep => arrowObserver.observe(sep));
-
-        // --- 3. BINDING SCROLL ---
         window.addEventListener('scroll', updateTOC);
         updateTOC();
 
