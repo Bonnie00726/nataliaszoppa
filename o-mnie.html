@@ -67,12 +67,14 @@
     .horizontal-scroll {
       display: flex;
       height: 100vh;
+      height: 100dvh; /* Naprawa dla pasków przeglądarki Safari/Chrome */
       width: max-content;
       transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .panel {
       width: 100vw;
       height: 100vh;
+      height: 100dvh; /* Naprawa j.w. */
       flex-shrink: 0;
       display: flex;
       justify-content: center;
@@ -255,16 +257,18 @@
       grid-template-columns: 1fr;
       gap: 32px;
       position: relative;
-      overflow: hidden;
+      /* OCHRONA PRZED UCIĘCIEM NA TABLETACH/LAPTOPACH */
+      max-height: calc(100vh - 180px);
+      max-height: calc(100dvh - 180px); /* Gwarantuje luz u góry i na dole */
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
-    /* Karta z obrazkiem — mniejszy padding po bokach żeby obraz miał więcej miejsca */
     .card-with-image {
       grid-template-columns: 1fr 1fr;
       align-items: center;
       padding: 0;
       gap: 0;
-      overflow: hidden;
     }
     .card-with-image .card-content {
       padding: 44px 40px;
@@ -301,7 +305,7 @@
     }
     .card-text:last-child { margin-bottom: 0; }
 
-    /* ===== SIATKA KART (kwalifikacje / ciekawostki) ===== */
+    /* ===== SIATKA KART ===== */
     .mini-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -341,13 +345,12 @@
       line-height: 1.5;
     }
 
-    /* Karta pełnoekranowa (kwalifikacje / ciekawostki) — mniej paddingu żeby siatka się zmieściła */
     .info-card--grid {
       padding: 40px 44px;
       max-width: 900px;
     }
 
-    /* ===== BLOG CARD — bez obrazka, wyróżnione liczby ===== */
+    /* ===== BLOG CARD ===== */
     .blog-stats {
       display: flex;
       gap: 40px;
@@ -391,7 +394,7 @@
     }
     .blog-link:hover { opacity: 0.85; transform: translateY(-1px); }
 
-    /* ===== GENEZA CARD — cytat + timeline ===== */
+    /* ===== GENEZA CARD ===== */
     .genesis-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -469,19 +472,11 @@
     .fade-up.d4 { transition-delay: 0.4s; }
     .fade-up.visible { opacity: 1; transform: none; }
 
-    /* ===== RESPONSIVE ===== */
-
-    /* Tablet szeroki (do 1024px) — timeline schowany, karty nieco mniejsze */
+    /* ===== RESPONSIVE DLA WSZYSTKICH TABLETÓW I TELEFONÓW ===== */
+    /* Poszerzyliśmy breakpoint do 1024px, aby obejmował iPad Pro */
     @media (max-width: 1024px) {
       .timeline-bar { display: none; }
-      .info-card { padding: 44px 44px; }
-      .info-card--grid { padding: 36px 36px; }
-    }
-
-    /* Tablet wąski + mobile (do 900px) */
-    @media (max-width: 900px) {
-      /* Panel: górny padding = top-bar (~80px), dolny = strzałki (~90px)
-         Dzięki temu karta jest wyśrodkowana w DOSTĘPNEJ przestrzeni, nie w całym 100vh */
+      
       .panel {
         align-items: flex-start;
         padding-top: 88px;
@@ -490,8 +485,8 @@
       }
 
       .card-with-image { grid-template-columns: 1fr; }
-      .card-with-image .card-image-wrapper { min-height: 200px; max-height: 220px; }
-      .card-with-image .card-content { padding: 28px 24px; }
+      .card-with-image .card-image-wrapper { min-height: 200px; max-height: 240px; }
+      .card-with-image .card-content { padding: 32px 28px; }
 
       .hero-wrapper { padding: 0 24px; }
       .hero-main-box { flex-direction: column; gap: 20px; text-align: center; }
@@ -502,12 +497,11 @@
       .info-card {
         padding: 28px 22px;
         width: 92%;
-        /* Karta nie wyższa niż dostępna przestrzeń między paskami */
+        /* Karta zajmuje idealnie dostępną przestrzeń i sama w sobie przewija treść */
         max-height: calc(100vh - 88px - 96px - 16px);
-        overflow-y: auto;
+        max-height: calc(100dvh - 88px - 96px - 16px);
         border-radius: 12px;
-        /* Wyśrodkowanie w pionie wewnątrz dostępnego obszaru */
-        margin: auto;
+        margin: auto; /* Automatyczne centrowanie góra/dół jeśli miejsca jest pod dostatkiem */
       }
       .info-card--grid { padding: 24px 18px; }
       .mini-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -525,24 +519,19 @@
       .card-cta { padding: 40px 20px; }
       .card-cta .card-title { font-size: 2rem; }
 
-      .nav-arrows {
-        bottom: 16px;
-        gap: 20px;
-      }
+      .nav-arrows { bottom: 16px; gap: 20px; }
       .nav-arrows button { width: 46px; height: 46px; font-size: 1.1rem; }
       .top-bar { padding: 16px 20px; }
     }
 
     /* Bardzo małe ekrany (do 480px) */
     @media (max-width: 480px) {
-      .panel {
-        padding-top: 76px;
-        padding-bottom: 88px;
-      }
+      .panel { padding-top: 76px; padding-bottom: 88px; }
       .info-card {
         width: 95%;
         padding: 22px 18px;
         max-height: calc(100vh - 76px - 88px - 12px);
+        max-height: calc(100dvh - 76px - 88px - 12px);
       }
       .mini-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
       .card-title { font-size: 1.6rem; }
@@ -591,7 +580,7 @@
     </div>
   </section>
 
-  <!-- 1: O MNIE — karta z obrazkiem, mniejsze paddingi -->
+  <!-- 1: O MNIE -->
   <section class="panel">
     <div class="info-card card-with-image fade-up">
       <div class="card-image-wrapper">
@@ -605,7 +594,7 @@
     </div>
   </section>
 
-  <!-- 2: KWALIFIKACJE — siatka 2×3 -->
+  <!-- 2: KWALIFIKACJE -->
   <section class="panel">
     <div class="info-card info-card--grid fade-up">
       <div class="card-content">
@@ -640,7 +629,7 @@
     </div>
   </section>
 
-  <!-- 3: BLOGI — bez zdjęcia, wyróżnione statystyki -->
+  <!-- 3: BLOGI -->
   <section class="panel">
     <div class="info-card fade-up">
       <div class="card-content">
@@ -659,13 +648,13 @@
         </div>
         <div class="blog-links fade-up d4">
           <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">Language Study Materials</a>
-          <a href="{{ site.baseurl }}/#blog" class="blog-link external-link">Za kulisami dobrej historii</a>
+          <a href="/#blog" class="blog-link external-link">Za kulisami dobrej historii</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4: GENEZA — skąd wzięła się ta działalność -->
+  <!-- 4: GENEZA -->
   <section class="panel">
     <div class="info-card fade-up">
       <div class="card-content">
@@ -703,7 +692,7 @@
     </div>
   </section>
 
-  <!-- 5: CIEKAWOSTKI — siatka 2×4 -->
+  <!-- 5: CIEKAWOSTKI -->
   <section class="panel">
     <div class="info-card info-card--grid fade-up">
       <div class="card-content">
@@ -810,7 +799,7 @@
     if(Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
   }, {passive: true});
 
-  // Obsługa linków zewnętrznych — omijają blokadę overflow:hidden
+  // Obsługa linków zewnętrznych
   document.querySelectorAll('a.external-link').forEach(link => {
     link.addEventListener('click', e => {
       e.stopPropagation();
