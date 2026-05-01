@@ -20,7 +20,7 @@ title: Zasady współpracy
     .eyebrow-label { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 18px; color: var(--grad-start); }
     /* Pasek kroków — część treści sekcji */
     .summary-bar { display: flex; flex-wrap: nowrap; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); overflow: visible; background: #fff; box-shadow: var(--shadow-soft); margin: 0 0 56px 0; }
-    .summary-step { flex: 1; min-width: 0; padding: 20px 12px; text-align: center; border-right: 1px solid var(--paper-mid); transition: background 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s; position: relative; cursor: default; }
+    .summary-step { flex: 1; min-width: 0; padding: 20px 12px; text-align: center; border-right: 1px solid var(--paper-mid); transition: background 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s; position: relative; cursor: pointer; text-decoration: none; display: block; }
     .summary-step:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
     .summary-step:last-child { border-right: none; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
     .summary-step:hover { background: var(--paper-warm); }
@@ -130,25 +130,25 @@ title: Zasady współpracy
 
         <!-- PASEK KROKÓW — nawigacja po timeline -->
         <div class="summary-bar reveal delay-3" id="steps-bar">
-            <div class="summary-step active" data-step="1"><span class="s-num">01</span><span class="s-label">Kontakt</span></div>
-            <div class="summary-step" data-step="2"><span class="s-num">02</span><span class="s-label">Omówienie</span></div>
-            <div class="summary-step" data-step="3"><span class="s-num">03</span><span class="s-label">Próbka</span></div>
-            <div class="summary-step" data-step="4"><span class="s-num">04</span><span class="s-label">Zakres</span></div>
-            <div class="summary-step" data-step="5"><span class="s-num">05</span><span class="s-label">Wycena</span></div>
-            <div class="summary-step" data-step="6"><span class="s-num">06</span><span class="s-label">Umowa</span></div>
-            <div class="summary-step" data-step="7"><span class="s-num">07</span><span class="s-label">Płatność</span></div>
-            <div class="summary-step" data-step="8"><span class="s-num">08</span><span class="s-label">Praca</span></div>
+            <a class="summary-step active" data-step="1" href="#step-1"><span class="s-num">01</span><span class="s-label">Kontakt</span></a>
+            <a class="summary-step" data-step="2" href="#step-2"><span class="s-num">02</span><span class="s-label">Omówienie</span></a>
+            <a class="summary-step" data-step="3" href="#step-3"><span class="s-num">03</span><span class="s-label">Próbka</span></a>
+            <a class="summary-step" data-step="4" href="#step-4"><span class="s-num">04</span><span class="s-label">Zakres</span></a>
+            <a class="summary-step" data-step="5" href="#step-5"><span class="s-num">05</span><span class="s-label">Wycena</span></a>
+            <a class="summary-step" data-step="6" href="#step-6"><span class="s-num">06</span><span class="s-label">Umowa</span></a>
+            <a class="summary-step" data-step="7" href="#step-7"><span class="s-num">07</span><span class="s-label">Płatność</span></a>
+            <a class="summary-step" data-step="8" href="#step-8"><span class="s-num">08</span><span class="s-label">Praca</span></a>
         </div>
 
         <div class="timeline">
-            <div class="timeline-item reveal delay-1" data-step="1"><div class="timeline-num"><span>01</span></div><div class="timeline-card"><span class="timeline-tag">Pierwszy krok</span><h3>Kontakt</h3><p>Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu ani wiedzieć dokładnie, czego potrzebujesz. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach.</p><ul class="card-details"><li>Czas odpowiedzi: zazwyczaj do 24-48 godzin w dni robocze</li><li>Bez zobowiązań z Twojej strony</li></ul></div></div>
-            <div class="timeline-item reveal delay-2" data-step="2"><div class="timeline-num"><span>02</span></div><div class="timeline-card"><span class="timeline-tag">Rozmowa wstępna</span><h3>Omówienie problemu</h3><p>Zadaję pytania, Ty opowiadasz o tekście, mam też przygotowany formularz z pytaniami, który pomoże Ci podsumować efekty Twojej pracy. Na podstawie tej rozmowy oceniamy razem, czy potrzebujesz redakcji, korekty, a może najpierw beta-readingu.</p><ul class="card-details"><li>Forma: wymiana maili</li><li>Efekt: wstępna orientacja, jaka usługa będzie optymalna</li></ul></div></div>
-            <div class="timeline-item reveal delay-1" data-step="3"><div class="timeline-num"><span>03</span></div><div class="timeline-card"><span class="timeline-tag">Analiza materiału</span><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu. Oceniam jakość języka, styl, typ błędów i orientacyjny nakład pracy. Tylko na tej podstawie jestem w stanie rzetelnie wycenić zlecenie.</p><ul class="card-details"><li>Format: .docx (Word) lub link do Google Docs</li><li>Objętość próbki: całość lub 9 rozdziałów (3 pierwsze, 3 ze środka, 3 ostatnie)</li><li>Im więcej materiału, tym dokładniejsza wycena</li></ul><div class="card-note">Nie wyceniam „w ciemno" na podstawie samej liczby znaków. Dwa teksty o tej samej objętości mogą wymagać zupełnie różnego nakładu pracy.</div></div></div>
-            <div class="timeline-item reveal delay-2" data-step="4"><div class="timeline-num"><span>04</span></div><div class="timeline-card"><span class="timeline-tag">Ustalenia</span><h3>Omówienie zakresu prac</h3><p>Dokładnie ustalamy, co wchodzi w zakres zlecenia – jakie elementy tekstu wymagają pracy, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul><div class="card-note">Jeśli po zakończeniu pracy dodasz nowe rozdziały – te fragmenty wymagają osobnej wyceny i oddzielnego zlecenia.</div></div></div>
-            <div class="timeline-item reveal delay-1" data-step="5"><div class="timeline-num"><span>05</span></div><div class="timeline-card"><span class="timeline-tag">Finanse</span><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę. Cena zależy od objętości tekstu, stopnia trudności oraz rodzaju usługi.</p><ul class="card-details"><li>Wycena jest ważna przez 14 dni</li><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li><li>Wystawiam faktury (bez VAT)</li></ul></div></div>
-            <div class="timeline-item reveal delay-2" data-step="6"><div class="timeline-num"><span>06</span></div><div class="timeline-card"><span class="timeline-tag">Formalności</span><h3>Podpisanie umowy</h3><p>Przed przystąpieniem do pracy podpisujemy umowę o świadczenie usług. Reguluje ona zakres prac, termin, warunki płatności oraz kwestie poufności. Twój tekst jest w 100% bezpieczny.</p><ul class="card-details"><li>Umowa podpisywana elektronicznie (profil zaufany)</li></ul><div class="card-note">Nie zaczynam pracy bez podpisanej umowy. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</div></div></div>
-            <div class="timeline-item reveal delay-1" data-step="7"><div class="timeline-num"><span>07</span></div><div class="timeline-card"><span class="timeline-tag">Płatność</span><h3>Płatność z góry</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę na całą kwotę. Po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w swoim grafiku i przygotowuję się do pracy.</p><ul class="card-details"><li>Masz 14 dni na odstąpienie od umowy</li><li>W tym czasie nie przystępuję do pracy</li></ul></div></div>
-            <div class="timeline-item reveal delay-2" data-step="8"><div class="timeline-num"><span>08</span></div><div class="timeline-card" style="border-color:var(--grad-start); box-shadow:var(--shadow-soft);"><span class="timeline-tag">Realizacja</span><h3>Przystępuję do pracy</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami oraz krótkie omówienie najważniejszych zmian i/lub wskazówki redaktorskie.</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji każdej zmiany należy do Ciebie</li></ul><div class="card-note">Moje zmiany to nie słowo ostateczne, zawsze możesz je zmieniać i negocjować.</div></div></div>
+            <div class="timeline-item reveal delay-1" data-step="1" id="step-1"><div class="timeline-num"><span>01</span></div><div class="timeline-card"><span class="timeline-tag">Pierwszy krok</span><h3>Kontakt</h3><p>Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu ani wiedzieć dokładnie, czego potrzebujesz. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach.</p><ul class="card-details"><li>Czas odpowiedzi: zazwyczaj do 24-48 godzin w dni robocze</li><li>Bez zobowiązań z Twojej strony</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="2" id="step-2"><div class="timeline-num"><span>02</span></div><div class="timeline-card"><span class="timeline-tag">Rozmowa wstępna</span><h3>Omówienie problemu</h3><p>Zadaję pytania, Ty opowiadasz o tekście, mam też przygotowany formularz z pytaniami, który pomoże Ci podsumować efekty Twojej pracy. Na podstawie tej rozmowy oceniamy razem, czy potrzebujesz redakcji, korekty, a może najpierw beta-readingu.</p><ul class="card-details"><li>Forma: wymiana maili</li><li>Efekt: wstępna orientacja, jaka usługa będzie optymalna</li></ul></div></div>
+            <div class="timeline-item reveal delay-1" data-step="3" id="step-3"><div class="timeline-num"><span>03</span></div><div class="timeline-card"><span class="timeline-tag">Analiza materiału</span><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu. Oceniam jakość języka, styl, typ błędów i orientacyjny nakład pracy. Tylko na tej podstawie jestem w stanie rzetelnie wycenić zlecenie.</p><ul class="card-details"><li>Format: .docx (Word) lub link do Google Docs</li><li>Objętość próbki: całość lub 9 rozdziałów (3 pierwsze, 3 ze środka, 3 ostatnie)</li><li>Im więcej materiału, tym dokładniejsza wycena</li></ul><div class="card-note">Nie wyceniam „w ciemno" na podstawie samej liczby znaków. Dwa teksty o tej samej objętości mogą wymagać zupełnie różnego nakładu pracy.</div></div></div>
+            <div class="timeline-item reveal delay-2" data-step="4" id="step-4"><div class="timeline-num"><span>04</span></div><div class="timeline-card"><span class="timeline-tag">Ustalenia</span><h3>Omówienie zakresu prac</h3><p>Dokładnie ustalamy, co wchodzi w zakres zlecenia – jakie elementy tekstu wymagają pracy, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul><div class="card-note">Jeśli po zakończeniu pracy dodasz nowe rozdziały – te fragmenty wymagają osobnej wyceny i oddzielnego zlecenia.</div></div></div>
+            <div class="timeline-item reveal delay-1" data-step="5" id="step-5"><div class="timeline-num"><span>05</span></div><div class="timeline-card"><span class="timeline-tag">Finanse</span><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę. Cena zależy od objętości tekstu, stopnia trudności oraz rodzaju usługi.</p><ul class="card-details"><li>Wycena jest ważna przez 14 dni</li><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li><li>Wystawiam faktury (bez VAT)</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="6" id="step-6"><div class="timeline-num"><span>06</span></div><div class="timeline-card"><span class="timeline-tag">Formalności</span><h3>Podpisanie umowy</h3><p>Przed przystąpieniem do pracy podpisujemy umowę o świadczenie usług. Reguluje ona zakres prac, termin, warunki płatności oraz kwestie poufności. Twój tekst jest w 100% bezpieczny.</p><ul class="card-details"><li>Umowa podpisywana elektronicznie (profil zaufany)</li></ul><div class="card-note">Nie zaczynam pracy bez podpisanej umowy. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</div></div></div>
+            <div class="timeline-item reveal delay-1" data-step="7" id="step-7"><div class="timeline-num"><span>07</span></div><div class="timeline-card"><span class="timeline-tag">Płatność</span><h3>Płatność z góry</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę na całą kwotę. Po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w swoim grafiku i przygotowuję się do pracy.</p><ul class="card-details"><li>Masz 14 dni na odstąpienie od umowy</li><li>W tym czasie nie przystępuję do pracy</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="8" id="step-8"><div class="timeline-num"><span>08</span></div><div class="timeline-card" style="border-color:var(--grad-start); box-shadow:var(--shadow-soft);"><span class="timeline-tag">Realizacja</span><h3>Przystępuję do pracy</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami oraz krótkie omówienie najważniejszych zmian i/lub wskazówki redaktorskie.</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji każdej zmiany należy do Ciebie</li></ul><div class="card-note">Moje zmiany to nie słowo ostateczne, zawsze możesz je zmieniać i negocjować.</div></div></div>
         </div>
     </div>
 </section>
@@ -186,15 +186,15 @@ title: Zasady współpracy
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const timelineItems = document.querySelectorAll('.timeline-item[data-step]');
-        const stepDots = document.querySelectorAll('.summary-step[data-step]');
+        const stepLinks = document.querySelectorAll('.summary-step[data-step]');
 
+        // --- Podświetlanie przy scrollu ---
         function setActiveStep(stepNum) {
-            stepDots.forEach(dot => {
-                dot.classList.toggle('active', dot.dataset.step === String(stepNum));
+            stepLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.step === String(stepNum));
             });
         }
 
-        // Aktywuje krok gdy timeline-item znajdzie się mniej więcej w centrum viewportu
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -207,5 +207,23 @@ title: Zasady współpracy
         });
 
         timelineItems.forEach(item => observer.observe(item));
+
+        // --- Płynne przewijanie z offsetem pod sticky nav ---
+        stepLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                // Offset: wysokość sticky nava + trochę luzu
+                const navHeight = parseInt(
+                    getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '0'
+                ) + 24;
+
+                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
+        });
     });
 </script>
