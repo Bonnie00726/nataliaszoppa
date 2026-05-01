@@ -93,91 +93,60 @@ title: Oferta
     .collab-pillar span { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); }
 
     /* =========================================
-       NOWOŚĆ: RĘCZNIE RYSOWANE MOSTKI (INFOGRAFIKA)
+       NOWOŚĆ: SCROLLYTELLING ŚCIEŻKA KROKÓW
        ========================================= */
-    .hd-bridge {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        max-width: 700px;
-        margin: -20px auto 20px;
+    .scroll-bridge {
         position: relative;
+        width: 100%;
+        height: 160px; /* Wysokość ścieżki przejścia */
+        margin: 20px 0 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
         z-index: 10;
-        text-decoration: none;
-        padding: 20px;
-    }
-    .hd-bridge:hover .hd-svg {
-        transform: translateY(5px);
-    }
-    .hd-bridge:hover .hd-text strong {
-        color: var(--grad-start);
+        overflow: hidden;
     }
     
-    /* Naprzemienne ułożenie (Prawo / Lewo) */
-    .hd-bridge.right-side {
-        transform: translateX(12%);
-    }
-    .hd-bridge.left-side {
-        transform: translateX(-12%);
-        flex-direction: row-reverse;
+    .bridge-svg-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
     
-    /* Tekst w stylu notatki autora */
-    .hd-text {
-        padding: 0 20px;
-        text-align: center;
+    .bridge-svg-wrap svg {
+        width: 100%;
+        height: 100%;
     }
-    .hd-bridge.right-side .hd-text { transform: rotate(-3deg); }
-    .hd-bridge.left-side .hd-text { transform: rotate(3deg); }
-    
-    .hd-text span {
+
+    /* Animowana lina rysowana przez scroll */
+    .draw-path {
+        stroke-dasharray: 2000; /* Zostanie nadpisane przez JS na dokładną długość */
+        stroke-dashoffset: 2000; /* Ustawia linię na "ukrytą" na start */
+        transition: stroke-dashoffset 0.1s ease-out; /* Daje płynność podczas machania kółkiem myszy */
+    }
+
+    /* Guzik / Kontent na środku ścieżki */
+    .bridge-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        transform: translateY(10px); /* Przesunięcie lekko na dół do kolejnej sekcji */
+    }
+
+    .bridge-label {
         font-family: var(--serif);
         font-style: italic;
         font-size: 1.1rem;
         color: var(--ink-muted);
-    }
-    .hd-text strong {
-        display: block;
-        font-family: var(--sans);
-        font-style: normal;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        background: var(--grad-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-top: 4px;
-        transition: transform 0.3s;
-    }
-    
-    /* SVG Animowana Strzałka */
-    .hd-svg {
-        width: 70px;
-        height: 100px;
-        overflow: visible;
-        transition: transform 0.3s ease;
-        animation: float-arrow 3s ease-in-out infinite;
-    }
-    .hd-svg path {
-        fill: none;
-        stroke: url(#arrowGrad);
-        stroke-width: 3;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 300;
-        stroke-dashoffset: 300;
-        animation: draw-hand 1.5s ease-out forwards;
-        animation-delay: 0.3s; /* Czeka ułamek sekundy by się wyrysować po wczytaniu */
-    }
-    
-    @keyframes float-arrow {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(6px); }
-    }
-    @keyframes draw-hand {
-        to { stroke-dashoffset: 0; }
+        background: var(--paper); /* Maskuje linię pod tekstem */
+        padding: 0 15px;
     }
 
     /* Pakiet Dostawy */
@@ -206,26 +175,15 @@ title: Oferta
         .container--wide { padding: 0 24px; }
         .collab-banner { padding: 24px 20px; }
         .collab-pillars { gap: 20px; }
-        
-        /* Centrowanie strzałek na mobile, by nie wychodziły poza ekran */
-        .hd-bridge.right-side, .hd-bridge.left-side {
-            transform: none;
-            flex-direction: column;
-            gap: 15px;
-            margin: 20px auto;
-        }
-        .hd-bridge.right-side .hd-text, .hd-bridge.left-side .hd-text {
-            transform: none;
-        }
     }
 </style>
 
-<!-- DEFS DLA SVG (Zawsze ukryte, definiuje gradient dla strzałek) -->
+<!-- DEFINICJA GRADIENTU DLA ŚCIEŻEK SVG -->
 <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#6B35C8" />
-      <stop offset="100%" stop-color="#B8409A" />
+      <stop offset="100%" stop-color="#E8772A" />
     </linearGradient>
   </defs>
 </svg>
@@ -333,24 +291,23 @@ title: Oferta
                 <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do czytelnika.</li>
             </ul>
         </div>
-        
-        <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient">Zamów recenzję tekstu</a>
-        </div>
     </section>
 
-    <!-- MOSTEK: Recenzja -> Redakcja (Prawa strona) -->
-    <a href="#redakcja" class="hd-bridge right-side reveal">
-        <div class="hd-text">
-            <span>Gotowy na kolejny krok?</span>
-            <strong>Redakcja z Warsztatem</strong>
+    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Lewej -->
+    <div class="scroll-bridge bg-white">
+        <div class="bridge-svg-wrap">
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                <!-- Szara ścieżka z krokami (kropkami w tle) -->
+                <path d="M 100,0 C 100,150 500,50 500,200" stroke="#e5e5e5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
+                <!-- Wypełniający się wężyk -->
+                <path class="draw-path" d="M 100,0 C 100,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
+            </svg>
         </div>
-        <!-- Ręcznie rysowana strzałka opadająca w dół i w prawo -->
-        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15,10 C50,20 80,60 60,110" />
-            <path d="M40,95 L60,110 L75,85" />
-        </svg>
-    </a>
+        <div class="bridge-content">
+            <span class="bridge-label">Gotowy na kolejny krok?</span>
+            <a href="#redakcja" class="btn-gradient">Redakcja z Warsztatem</a>
+        </div>
+    </div>
 
     <!-- ==================== 2. REDAKCJA ==================== -->
     <section id="redakcja" class="section bg-warm toc-section">
@@ -391,7 +348,6 @@ title: Oferta
             </div>
         </div>
 
-        <!-- PAKIET DOSTAWY -->
         <div class="container--wide">
             <div class="delivery-pack reveal">
                 <div class="delivery-pack-header">
@@ -420,27 +376,6 @@ title: Oferta
                             <p>Twoje indywidualne wzorce językowe i ćwiczenia, które pomagają je przełamać.</p>
                         </div>
                     </div>
-                    <div class="delivery-item reveal delay-1">
-                        <div class="delivery-item-icon"><i class="las la-book-open"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Słownik stylu świata</h4>
-                            <p>Zestawienie decyzji stylistycznych podjętych podczas redakcji — spójność na całą serię.</p>
-                        </div>
-                    </div>
-                    <div class="delivery-item reveal delay-2">
-                        <div class="delivery-item-icon"><i class="las la-comments"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Komentarze w tekście</h4>
-                            <p>Każda większa zmiana jest wyjaśniona — wiesz, co i dlaczego zostało zmodyfikowane.</p>
-                        </div>
-                    </div>
-                    <div class="delivery-item reveal delay-3">
-                        <div class="delivery-item-icon"><i class="las la-video"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Sesja 1:1 (opcjonalna)</h4>
-                            <p>60 minut na żywo — omówienie węzłów fabularnych i odpowiedzi na Twoje pytania.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -452,24 +387,22 @@ title: Oferta
                 <p>Redakcja to „otwarta operacja" na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
             </div>
         </div>
-
-        <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient">Zarezerwuj Redakcję z Warsztatem</a>
-        </div>
     </section>
 
-    <!-- MOSTEK: Redakcja -> Korekta (Lewa strona) -->
-    <a href="#korekta" class="hd-bridge left-side reveal">
-        <div class="hd-text">
-            <span>Tekst zredagowany? Czas na...</span>
-            <strong>Korektę Techniczną</strong>
+    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Prawej -->
+    <div class="scroll-bridge bg-warm">
+        <div class="bridge-svg-wrap">
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                <!-- Ścieżka meandrująca z prawego rogu -->
+                <path d="M 900,0 C 900,150 500,50 500,200" stroke="#d5d5d5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
+                <path class="draw-path" d="M 900,0 C 900,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
+            </svg>
         </div>
-        <!-- Ręcznie rysowana strzałka opadająca w dół i w lewo -->
-        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M85,10 C50,20 20,60 40,110" />
-            <path d="M25,85 L40,110 L60,95" />
-        </svg>
-    </a>
+        <div class="bridge-content">
+            <span class="bridge-label" style="background: var(--paper-warm);">Tekst zredagowany? Czas na...</span>
+            <a href="#korekta" class="btn-gradient">Korektę Techniczną</a>
+        </div>
+    </div>
 
     <!-- ==================== 3. KOREKTA ==================== -->
     <section id="korekta" class="section bg-white toc-section">
@@ -494,23 +427,21 @@ title: Oferta
                 <li><strong>Dziur fabularnych:</strong> Na tym etapie skupiam się na znakach i literach, a nie na wiarygodności postaci i świata.</li>
             </ul>
         </div>
-
-        <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient">Zadbaj o techniczny szlif</a>
-        </div>
     </section>
 
-    <!-- MOSTEK: Korekta -> DTP (Prawa strona) -->
-    <a href="#dtp" class="hd-bridge right-side reveal">
-        <div class="hd-text">
-            <span>Ostatnia prosta do wydania</span>
-            <strong>Skład DTP</strong>
+    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Lewej -->
+    <div class="scroll-bridge bg-white">
+        <div class="bridge-svg-wrap">
+            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+                <path d="M 100,0 C 100,150 500,50 500,200" stroke="#e5e5e5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
+                <path class="draw-path" d="M 100,0 C 100,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
+            </svg>
         </div>
-        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15,10 C50,20 80,60 60,110" />
-            <path d="M40,95 L60,110 L75,85" />
-        </svg>
-    </a>
+        <div class="bridge-content">
+            <span class="bridge-label">Ostatnia prosta do wydania</span>
+            <a href="#dtp" class="btn-gradient">Skład DTP</a>
+        </div>
+    </div>
 
     <!-- ==================== 4. DTP ==================== -->
     <section id="dtp" class="section bg-warm toc-section">
@@ -527,13 +458,14 @@ title: Oferta
         </div>
 
         <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient">Przygotuj książkę do druku</a>
+            <a href="/kontakt" class="btn-gradient" style="transform: scale(1.1); margin-top: 20px;">Wypełnij brief i rozpocznij współpracę</a>
         </div>
     </section>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. TOC HIGHLIGHTING ---
         const sections = document.querySelectorAll('.toc-section');
         const navLinks = document.querySelectorAll('.top-toc a');
         
@@ -556,11 +488,54 @@ title: Oferta
             });
         }
 
-        window.addEventListener('scroll', updateTOC);
-        updateTOC();
+        // --- 2. SCROLLYTELLING ANIMATION (Wężyki) ---
+        const drawPaths = document.querySelectorAll('.draw-path');
+        
+        // Inicjalizacja długości ścieżek
+        drawPaths.forEach(path => {
+            const length = path.getTotalLength();
+            path.style.strokeDasharray = length;
+            path.style.strokeDashoffset = length;
+            // Zapisujemy długość jako atrybut data dla wygody
+            path.setAttribute('data-length', length);
+        });
 
-        // Płynne przewijanie dla nowych infograficznych mostków
-        document.querySelectorAll('.hd-bridge').forEach(btn => {
+        function animatePaths() {
+            drawPaths.forEach(path => {
+                const length = parseFloat(path.getAttribute('data-length'));
+                // Pobieramy kontener, który trzyma nasze SVG (żeby wiedzieć, gdzie jest na ekranie)
+                const bridge = path.closest('.scroll-bridge');
+                const rect = bridge.getBoundingClientRect();
+                
+                // Obliczamy % przescrollowania sekcji
+                // Zaczyna rysować, gdy górna krawędź mostka pojawi się u dołu ekranu
+                const startDraw = window.innerHeight; 
+                // Kończy rysować, gdy środek mostka dotrze do środka ekranu
+                const endDraw = window.innerHeight / 2;
+                
+                let scrollPercent = (startDraw - rect.top) / (startDraw - endDraw + rect.height);
+                
+                // Zabezpieczenie przed wyjściem poza 0 i 1
+                if (scrollPercent < 0) scrollPercent = 0;
+                if (scrollPercent > 1) scrollPercent = 1;
+                
+                // Ustawiamy nowe przesunięcie - dzięki temu ścieżka płynnie się "rysuje"
+                path.style.strokeDashoffset = length - (length * scrollPercent);
+            });
+        }
+
+        // --- BINDING EVENTS ---
+        window.addEventListener('scroll', () => {
+            updateTOC();
+            animatePaths();
+        });
+        
+        // Odpalamy na start, by zaktualizować stany po załadowaniu
+        updateTOC();
+        animatePaths();
+
+        // Płynne przewijanie z mostków (dla przycisków CTA)
+        document.querySelectorAll('.bridge-content a').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(btn.getAttribute('href'));
