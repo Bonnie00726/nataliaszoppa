@@ -73,31 +73,7 @@ title: Oferta
     .compare-list li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-muted); font-weight: 300; }
     .compare-list strong { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 6px; }
 
-    /* PAKIET PREMIUM (Tło białe, cienka ramka w kolorze gradientu) */
-    .compare-card--premium { 
-        position: relative; 
-        background: #fff; 
-        border: none; 
-        border-radius: var(--radius-lg); 
-        box-shadow: var(--shadow-soft); 
-        /* Usunięcie górnego paska z podstawowej karty */
-    }
-    .compare-card--premium::before { display: none; }
-    /* Utworzenie gradientowego obramowania za pomocą pseudo-elementu pod spodem */
-    .compare-card--premium::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: var(--radius-lg);
-        padding: 2px; /* Grubość ramki */
-        background: var(--grad);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-    }
-    .compare-card--premium:hover { box-shadow: 0 10px 30px rgba(107,53,200,0.15); transform: translateY(-4px); }
-/* PAKIET PREMIUM (Tło białe, grubsza ramka w kolorze gradientu) */
+    /* PAKIET PREMIUM (Tło białe, grubsza ramka w kolorze gradientu) */
     .compare-card--premium { 
         position: relative; 
         background: #fff; 
@@ -107,7 +83,7 @@ title: Oferta
     }
     .compare-card--premium::before { display: none; }
     
-    /* Gradientowe obramowanie - teraz grubsze (padding: 4px) */
+    /* Gradientowe obramowanie - grubosć regulowana przez padding */
     .compare-card--premium::after {
         content: '';
         position: absolute;
@@ -122,7 +98,7 @@ title: Oferta
     }
     .compare-card--premium:hover { box-shadow: 0 10px 30px rgba(107,53,200,0.15); transform: translateY(-4px); }
 
-    /* Nagłówek w karcie Premium */
+    /* Nowy nagłówek w karcie Premium */
     .premium-title {
         font-family: var(--serif); 
         font-size: 1.6rem; 
@@ -152,6 +128,7 @@ title: Oferta
         background-clip: text;
         display: inline-block;
     }
+
     /* Call to Action - Przyciski */
     .section-cta { text-align: center; margin-top: 48px; padding-bottom: 32px; }
     .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
@@ -279,12 +256,11 @@ title: Oferta
                     </ul>
                 </div>
                 
-                <!-- BOX PREMIUM Z NOWYM OBRAMOWANIEM GRADIENTOWYM -->
+                <!-- BOX PREMIUM -->
                 <div class="compare-card--premium reveal delay-2">
-                    <!-- Dodajemy wewnętrzny div dla paddingu, aby tło karty przysłaniało wnętrze -->
                     <div style="padding: 40px 32px;">
-                        <h3 style="font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--paper-mid);">
-                            Twoje <em>Bonusy</em>
+                        <h3 class="premium-title">
+                            Twoje <span class="text-gradient">Bonusy</span> Premium
                         </h3>
                         <ul class="compare-list">
                             <li><strong>Raport „Okiem Czytelnika”</strong><br>Otrzymujesz PDF z oceną wpływu tekstu na odbiorcę (gdzie jest znudzenie, a gdzie zachwyt).</li>
@@ -360,33 +336,39 @@ title: Oferta
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Pobieramy wszystkie sekcje, które mają ID odpowiadające menu
         const sections = document.querySelectorAll('.toc-section');
-        // Pobieramy wszystkie linki z naszego menu TOC
         const navLinks = document.querySelectorAll('.top-toc a');
         
-        // Offset to margines od góry (wysokość Twojego głównego menu + paska TOC)
-        // Dzięki temu klasa active zmieni się zanim sekcja wjedzie pod samo menu
-        const headerOffset = 180; 
-
-        window.addEventListener('scroll', () => {
+        function updateTOC() {
             let current = '';
-
+            
+            // Sprawdzamy położenie każdej sekcji
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                // Sprawdzamy, czy scroll minął początek danej sekcji
-                if (window.scrollY >= (sectionTop - headerOffset)) {
+                const rect = section.getBoundingClientRect();
+                // 250px od góry ekranu – to moment, w którym menu uzna, że jesteśmy w nowej sekcji
+                if (rect.top <= 250) { 
                     current = section.getAttribute('id');
                 }
             });
 
-            // Usuwamy klasę 'active' ze wszystkich linków i nadajemy ją temu właściwemu
+            // Zabezpieczenie, jeśli jesteśmy na samej górze strony
+            if (!current && sections.length > 0) {
+                current = sections[0].getAttribute('id');
+            }
+
+            // Podświetlenie odpowiedniego linku
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
             });
-        });
+        }
+
+        // Odpalamy nasłuchiwanie na przewijanie
+        window.addEventListener('scroll', updateTOC);
+        
+        // Odpalamy raz od razu po załadowaniu, żeby menu nie było puste na start
+        updateTOC();
     });
 </script>
