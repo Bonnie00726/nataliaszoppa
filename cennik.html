@@ -3,6 +3,17 @@ layout: default
 title: Cennik
 ---
 <style>
+    /* Pasek dostępności */
+    .availability-bar { background: var(--paper-warm); border-bottom: 1px solid var(--paper-mid); padding: 14px 20px; display: flex; justify-content: center; align-items: center; gap: 14px; }
+    .availability-bar span { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+
+    /* Credibility bar */
+    .credibility-bar { background: var(--ink); padding: 22px 40px; }
+    .credibility-bar-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .cred-pillar { display: flex; align-items: center; gap: 12px; }
+    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
+
     .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
     .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
@@ -41,28 +52,49 @@ title: Cennik
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    @media (max-width: 860px) { .info-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) { .info-grid { grid-template-columns: 1fr; } .credibility-bar { padding: 18px 20px; } .credibility-bar-inner { gap: 24px; } }
     @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
 </style>
 
+<!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1170&auto=format&fit=crop" alt="Tło">
     </div>
     <div class="hero-content">
-        <div class="hero-notice reveal">
-            <div class="dots-wrap">
-                <span class="dot dot-1"></span>
-                <span class="dot dot-2"></span>
-                <span class="dot dot-3"></span>
-            </div>
-            <span>Przyjmuję nowe zlecenia</span>
-        </div>
         <div class="hero-eyebrow reveal delay-1">Cennik</div>
         <h1 class="reveal delay-2">Przejrzyste <em class="grad-type">stawki</em></h1>
         <p class="hero-sub reveal delay-3">Każde zlecenie wyceniam indywidualnie. Cena zależy od jakości tekstu, objętości oraz stopnia trudności.</p>
     </div>
 </header>
+
+<!-- PASEK DOSTĘPNOŚCI -->
+<div class="availability-bar reveal">
+    <div class="dots-wrap">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+    </div>
+    <span>Aktualnie przyjmuję nowe zlecenia</span>
+</div>
+
+<!-- CREDIBILITY BAR -->
+<div class="credibility-bar reveal delay-1">
+    <div class="credibility-bar-inner">
+        <div class="cred-pillar">
+            <i class="las la-shield-alt"></i>
+            <span>Bezpieczna płatność</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-file-contract"></i>
+            <span>Podpisanie umowy</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-undo-alt"></i>
+            <span>14 dni na odstąpienie</span>
+        </div>
+    </div>
+</div>
 
 <section class="section">
     <div class="container">
@@ -156,4 +188,3 @@ title: Cennik
         </div>
     </div>
 </section>
-
