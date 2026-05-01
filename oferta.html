@@ -33,10 +33,27 @@ title: Oferta
     .not-included-box { background: var(--paper-warm); border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 40px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .not-included-box h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; text-align: center; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
     
-    /* Poprawiona lista na pionową */
-    .not-list { display: flex; flex-direction: column; gap: 16px; list-style: none; padding: 0; margin: 0; }
-    .not-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
-    .not-list li::before { content: '✕'; color: #d9534f; font-weight: 700; margin-top: 2px; }
+    /* Poprawiona lista z naturalnym opływaniem tekstu */
+    .not-list { list-style: none; padding: 0; margin: 0; }
+    .not-list li { 
+        position: relative; 
+        padding-left: 28px; /* Robi miejsce na krzyżyk */
+        margin-bottom: 16px; /* Odstęp między punktami */
+        font-size: 0.95rem; 
+        color: var(--ink-soft); 
+        font-weight: 300; 
+        line-height: 1.6; 
+    }
+    .not-list li:last-child { margin-bottom: 0; }
+    .not-list li::before { 
+        content: '✕'; 
+        color: #d9534f; 
+        font-weight: 700; 
+        position: absolute; 
+        left: 0; 
+        top: 1px; /* Równa krzyżyk do pierwszej linii tekstu */
+        font-size: 1.1rem;
+    }
     
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
     .feature-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
