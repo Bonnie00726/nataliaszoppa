@@ -470,32 +470,86 @@
     .fade-up.visible { opacity: 1; transform: none; }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .card-with-image { grid-template-columns: 1fr; }
-      .card-with-image .card-image-wrapper { min-height: 220px; max-height: 240px; }
-      .card-with-image .card-content { padding: 32px 28px; }
-      .hero-main-box { flex-direction: column; gap: 20px; text-align: center; }
-      .hero-logo-big { text-align: center; font-size: 3.5rem; }
-      .hero-divider { width: 100px; height: 2px; }
-      .hero-services { text-align: center; font-size: 1.2rem; }
+
+    /* Tablet szeroki (do 1024px) — timeline schowany, karty nieco mniejsze */
+    @media (max-width: 1024px) {
       .timeline-bar { display: none; }
+      .info-card { padding: 44px 44px; }
+      .info-card--grid { padding: 36px 36px; }
+    }
+
+    /* Tablet wąski + mobile (do 900px) */
+    @media (max-width: 900px) {
+      /* Panel: górny padding = top-bar (~80px), dolny = strzałki (~90px)
+         Dzięki temu karta jest wyśrodkowana w DOSTĘPNEJ przestrzeni, nie w całym 100vh */
+      .panel {
+        align-items: flex-start;
+        padding-top: 88px;
+        padding-bottom: 96px;
+        overflow-y: auto;
+      }
+
+      .card-with-image { grid-template-columns: 1fr; }
+      .card-with-image .card-image-wrapper { min-height: 200px; max-height: 220px; }
+      .card-with-image .card-content { padding: 28px 24px; }
+
+      .hero-wrapper { padding: 0 24px; }
+      .hero-main-box { flex-direction: column; gap: 20px; text-align: center; }
+      .hero-logo-big { text-align: center; font-size: 3rem; }
+      .hero-divider { width: 80px; height: 2px; }
+      .hero-services { text-align: center; font-size: 1.1rem; }
+
       .info-card {
-        padding: 32px 24px;
-        max-height: 78vh;
+        padding: 28px 22px;
+        width: 92%;
+        /* Karta nie wyższa niż dostępna przestrzeń między paskami */
+        max-height: calc(100vh - 88px - 96px - 16px);
         overflow-y: auto;
         border-radius: 12px;
+        /* Wyśrodkowanie w pionie wewnątrz dostępnego obszaru */
+        margin: auto;
       }
-      .info-card--grid { padding: 28px 20px; }
-      .mini-grid { grid-template-columns: repeat(2, 1fr); }
-      .genesis-layout { grid-template-columns: 1fr; gap: 20px; }
-      .card-title { font-size: 2rem; }
-      .card-text { font-size: 0.93rem; }
-      .card-cta { padding: 50px 24px; }
-      .card-cta .card-title { font-size: 2.3rem; }
-      .blog-stats { gap: 20px; }
-      .nav-arrows { bottom: 20px; gap: 24px; }
-      .nav-arrows button { width: 48px; height: 48px; }
-      .top-bar { padding: 20px; }
+      .info-card--grid { padding: 24px 18px; }
+      .mini-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .mini-card { padding: 14px 12px; }
+      .mini-card-text { font-size: 0.82rem; }
+
+      .genesis-layout { grid-template-columns: 1fr; gap: 16px; }
+      .genesis-quote { font-size: 1.15rem; }
+
+      .card-title { font-size: 1.8rem; margin-bottom: 14px; }
+      .card-text { font-size: 0.92rem; line-height: 1.7; }
+      .blog-stats { gap: 16px; flex-wrap: wrap; }
+      .blog-stat-num { font-size: 0.9rem; }
+
+      .card-cta { padding: 40px 20px; }
+      .card-cta .card-title { font-size: 2rem; }
+
+      .nav-arrows {
+        bottom: 16px;
+        gap: 20px;
+      }
+      .nav-arrows button { width: 46px; height: 46px; font-size: 1.1rem; }
+      .top-bar { padding: 16px 20px; }
+    }
+
+    /* Bardzo małe ekrany (do 480px) */
+    @media (max-width: 480px) {
+      .panel {
+        padding-top: 76px;
+        padding-bottom: 88px;
+      }
+      .info-card {
+        width: 95%;
+        padding: 22px 18px;
+        max-height: calc(100vh - 76px - 88px - 12px);
+      }
+      .mini-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .card-title { font-size: 1.6rem; }
+      .hero-logo-big { font-size: 2.5rem; }
+      .hero-services { font-size: 1rem; }
+      .blog-links { flex-direction: column; }
+      .blog-link { text-align: center; justify-content: center; }
     }
     </style>
 </head>
@@ -604,11 +658,9 @@
           </div>
         </div>
         <div class="blog-links fade-up d4">
-    <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">Language Study Materials</a>
-    
-    <!-- Dodany ukośnik przed hashem kieruje prosto do root-a strony -->
-    <a href="/#blog" class="blog-link external-link">Za kulisami dobrej historii</a>
-</div>
+          <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">Language Study Materials</a>
+          <a href="{{ site.baseurl }}/#blog" class="blog-link external-link">Za kulisami dobrej historii</a>
+        </div>
       </div>
     </div>
   </section>
