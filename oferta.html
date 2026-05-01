@@ -64,7 +64,7 @@ title: Oferta
     .feature-card p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
     .feature-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); background: rgba(107,53,200,0.08); padding: 6px 12px; border-radius: 4px; }
 
-    /* Grid Porównawczy (Uporządkowany, bez powtórek) */
+    /* Grid Porównawczy */
     .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 40px 0; }
     .compare-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow-soft); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .compare-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--paper-mid); transition: background 0.3s; }
@@ -93,49 +93,91 @@ title: Oferta
     .collab-pillar span { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); }
 
     /* =========================================
-       NOWE ELEGANCKIE PRZEJŚCIA (Mostki)
+       NOWOŚĆ: RĘCZNIE RYSOWANE MOSTKI (INFOGRAFIKA)
        ========================================= */
-    .elegant-bridge {
+    .hd-bridge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 700px;
+        margin: -20px auto 20px;
         position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: -10px 0 20px 0;
         z-index: 10;
-    }
-    .bridge-line {
-        width: 1px;
-        height: 50px;
-        background: linear-gradient(to bottom, transparent, var(--grad-start));
-        margin-bottom: 12px;
-    }
-    .bridge-btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
         text-decoration: none;
-        transition: transform 0.3s ease;
+        padding: 20px;
     }
-    .bridge-btn span {
+    .hd-bridge:hover .hd-svg {
+        transform: translateY(5px);
+    }
+    .hd-bridge:hover .hd-text strong {
+        color: var(--grad-start);
+    }
+    
+    /* Naprzemienne ułożenie (Prawo / Lewo) */
+    .hd-bridge.right-side {
+        transform: translateX(12%);
+    }
+    .hd-bridge.left-side {
+        transform: translateX(-12%);
+        flex-direction: row-reverse;
+    }
+    
+    /* Tekst w stylu notatki autora */
+    .hd-text {
+        padding: 0 20px;
+        text-align: center;
+    }
+    .hd-bridge.right-side .hd-text { transform: rotate(-3deg); }
+    .hd-bridge.left-side .hd-text { transform: rotate(3deg); }
+    
+    .hd-text span {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--ink-muted);
+    }
+    .hd-text strong {
+        display: block;
         font-family: var(--sans);
-        font-size: 0.72rem;
+        font-style: normal;
+        font-size: 0.85rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--ink-muted);
-        transition: color 0.3s;
-    }
-    .bridge-btn i {
-        font-size: 1.4rem;
-        color: var(--grad-start);
+        letter-spacing: 0.12em;
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-top: 4px;
         transition: transform 0.3s;
     }
-    .bridge-btn:hover {
-        transform: translateY(6px);
+    
+    /* SVG Animowana Strzałka */
+    .hd-svg {
+        width: 70px;
+        height: 100px;
+        overflow: visible;
+        transition: transform 0.3s ease;
+        animation: float-arrow 3s ease-in-out infinite;
     }
-    .bridge-btn:hover span {
-        color: var(--grad-start);
+    .hd-svg path {
+        fill: none;
+        stroke: url(#arrowGrad);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        animation: draw-hand 1.5s ease-out forwards;
+        animation-delay: 0.3s; /* Czeka ułamek sekundy by się wyrysować po wczytaniu */
+    }
+    
+    @keyframes float-arrow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(6px); }
+    }
+    @keyframes draw-hand {
+        to { stroke-dashoffset: 0; }
     }
 
     /* Pakiet Dostawy */
@@ -164,8 +206,29 @@ title: Oferta
         .container--wide { padding: 0 24px; }
         .collab-banner { padding: 24px 20px; }
         .collab-pillars { gap: 20px; }
+        
+        /* Centrowanie strzałek na mobile, by nie wychodziły poza ekran */
+        .hd-bridge.right-side, .hd-bridge.left-side {
+            transform: none;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px auto;
+        }
+        .hd-bridge.right-side .hd-text, .hd-bridge.left-side .hd-text {
+            transform: none;
+        }
     }
 </style>
+
+<!-- DEFS DLA SVG (Zawsze ukryte, definiuje gradient dla strzałek) -->
+<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B35C8" />
+      <stop offset="100%" stop-color="#B8409A" />
+    </linearGradient>
+  </defs>
+</svg>
 
 <!-- HERO SEKCJA -->
 <header class="hero hero--short">
@@ -179,7 +242,7 @@ title: Oferta
     </div>
 </header>
 
-<!-- PASEK DOSTĘPNOŚCI (przeniesiony z Hero) -->
+<!-- PASEK DOSTĘPNOŚCI -->
 <div class="availability-bar reveal">
     <div class="dots-wrap">
         <span class="dot dot-1"></span>
@@ -223,7 +286,7 @@ title: Oferta
 </div>
 
 <main>
-    <!-- 1. RECENZJA -->
+    <!-- ==================== 1. RECENZJA ==================== -->
     <section id="recenzja" class="section bg-white toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">01 — Pierwszy kontakt</div>
@@ -276,16 +339,20 @@ title: Oferta
         </div>
     </section>
 
-    <!-- NOWY, ELEGANCKI MOSTEK -->
-    <div class="elegant-bridge reveal">
-        <div class="bridge-line"></div>
-        <a href="#redakcja" class="bridge-btn">
-            <span>Kolejny krok</span>
-            <i class="las la-arrow-down"></i>
-        </a>
-    </div>
+    <!-- MOSTEK: Recenzja -> Redakcja (Prawa strona) -->
+    <a href="#redakcja" class="hd-bridge right-side reveal">
+        <div class="hd-text">
+            <span>Gotowy na kolejny krok?</span>
+            <strong>Redakcja z Warsztatem</strong>
+        </div>
+        <!-- Ręcznie rysowana strzałka opadająca w dół i w prawo -->
+        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15,10 C50,20 80,60 60,110" />
+            <path d="M40,95 L60,110 L75,85" />
+        </svg>
+    </a>
 
-    <!-- 2. REDAKCJA -->
+    <!-- ==================== 2. REDAKCJA ==================== -->
     <section id="redakcja" class="section bg-warm toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">02 — Architektura wrażeń</div>
@@ -303,8 +370,6 @@ title: Oferta
         
         <div class="container--wide">
             <h3 class="sub-section-title reveal">Jak przebiega praca na tekście?</h3>
-            
-            <!-- Zmieniony Grid - bez powtórek, podzielony logicznie na etapy -->
             <div class="compare-grid reveal">
                 <div class="compare-card reveal delay-1">
                     <h3>1. Redakcja Merytoryczna (Makro)</h3>
@@ -393,16 +458,20 @@ title: Oferta
         </div>
     </section>
 
-    <!-- NOWY, ELEGANCKI MOSTEK -->
-    <div class="elegant-bridge reveal">
-        <div class="bridge-line"></div>
-        <a href="#korekta" class="bridge-btn">
-            <span>Kolejny krok</span>
-            <i class="las la-arrow-down"></i>
-        </a>
-    </div>
+    <!-- MOSTEK: Redakcja -> Korekta (Lewa strona) -->
+    <a href="#korekta" class="hd-bridge left-side reveal">
+        <div class="hd-text">
+            <span>Tekst zredagowany? Czas na...</span>
+            <strong>Korektę Techniczną</strong>
+        </div>
+        <!-- Ręcznie rysowana strzałka opadająca w dół i w lewo -->
+        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M85,10 C50,20 20,60 40,110" />
+            <path d="M25,85 L40,110 L60,95" />
+        </svg>
+    </a>
 
-    <!-- 3. KOREKTA -->
+    <!-- ==================== 3. KOREKTA ==================== -->
     <section id="korekta" class="section bg-white toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">03 — Ostatnia linia obrony</div>
@@ -431,16 +500,19 @@ title: Oferta
         </div>
     </section>
 
-    <!-- NOWY, ELEGANCKI MOSTEK -->
-    <div class="elegant-bridge reveal">
-        <div class="bridge-line"></div>
-        <a href="#dtp" class="bridge-btn">
-            <span>Kolejny krok</span>
-            <i class="las la-arrow-down"></i>
-        </a>
-    </div>
+    <!-- MOSTEK: Korekta -> DTP (Prawa strona) -->
+    <a href="#dtp" class="hd-bridge right-side reveal">
+        <div class="hd-text">
+            <span>Ostatnia prosta do wydania</span>
+            <strong>Skład DTP</strong>
+        </div>
+        <svg class="hd-svg" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15,10 C50,20 80,60 60,110" />
+            <path d="M40,95 L60,110 L75,85" />
+        </svg>
+    </a>
 
-    <!-- 4. DTP -->
+    <!-- ==================== 4. DTP ==================== -->
     <section id="dtp" class="section bg-warm toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">04 — Forma fizyczna i cyfrowa</div>
@@ -487,8 +559,8 @@ title: Oferta
         window.addEventListener('scroll', updateTOC);
         updateTOC();
 
-        // Płynne przewijanie dla nowych eleganckich mostków
-        document.querySelectorAll('.bridge-btn').forEach(btn => {
+        // Płynne przewijanie dla nowych infograficznych mostków
+        document.querySelectorAll('.hd-bridge').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const target = document.querySelector(btn.getAttribute('href'));
