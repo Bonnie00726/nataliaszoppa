@@ -97,7 +97,61 @@ title: Oferta
         pointer-events: none;
     }
     .compare-card--premium:hover { box-shadow: 0 10px 30px rgba(107,53,200,0.15); transform: translateY(-4px); }
+/* PAKIET PREMIUM (Tło białe, grubsza ramka w kolorze gradientu) */
+    .compare-card--premium { 
+        position: relative; 
+        background: #fff; 
+        border: none; 
+        border-radius: var(--radius-lg); 
+        box-shadow: var(--shadow-soft); 
+    }
+    .compare-card--premium::before { display: none; }
+    
+    /* Gradientowe obramowanie - teraz grubsze (padding: 4px) */
+    .compare-card--premium::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: var(--radius-lg);
+        padding: 4px; /* <--- Zwiększona grubość ramki */
+        background: var(--grad);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+    .compare-card--premium:hover { box-shadow: 0 10px 30px rgba(107,53,200,0.15); transform: translateY(-4px); }
 
+    /* Nagłówek w karcie Premium */
+    .premium-title {
+        font-family: var(--serif); 
+        font-size: 1.6rem; 
+        font-weight: 700; 
+        color: var(--ink); 
+        margin-bottom: 24px; 
+        padding-bottom: 16px; 
+        position: relative; /* Potrzebne dla gradientowej linii pod spodem */
+    }
+    
+    /* Gradientowa linia pod nagłówkiem */
+    .premium-title::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px; /* Grubość linii pod nagłówkiem */
+        background: var(--grad);
+    }
+    
+    /* Gradientowy tekst dla pojedynczych słów */
+    .text-gradient {
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+    }
     /* Call to Action - Przyciski */
     .section-cta { text-align: center; margin-top: 48px; padding-bottom: 32px; }
     .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
