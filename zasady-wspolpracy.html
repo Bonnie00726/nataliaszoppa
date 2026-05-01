@@ -3,6 +3,18 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
+    /* Pasek dostępności */
+    .availability-bar { background: var(--paper-warm); border-bottom: 1px solid var(--paper-mid); padding: 14px 20px; display: flex; justify-content: center; align-items: center; gap: 14px; }
+    .availability-bar span { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+
+    /* Credibility bar */
+    .credibility-bar { background: var(--ink); padding: 22px 40px; }
+    .credibility-bar-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .cred-pillar { display: flex; align-items: center; gap: 12px; }
+    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
+
+    /* Reszta styli */
     .container--wide { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
     .bg-warm { background: var(--paper-warm); }
     .eyebrow-label { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 18px; color: var(--grad-start); }
@@ -49,6 +61,7 @@ title: Zasady współpracy
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
     @media (max-width: 900px) { .rules-grid { grid-template-columns: 1fr; } .timeline-card { padding: 24px; } }
     @media (max-width: 860px) {
         .summary-bar-wrapper { margin-top: 0; padding: 0 24px; }
@@ -60,28 +73,52 @@ title: Zasady współpracy
         .timeline-num span { width: 50px; height: 50px; font-size: 1rem; }
         .timeline-card:hover { transform: none; }
         .container--wide { padding: 0 24px; }
+        .credibility-bar { padding: 18px 20px; }
+        .credibility-bar-inner { gap: 24px; }
     }
 </style>
 
+<!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1170&auto=format&fit=crop" alt="Tło">
     </div>
     <div class="hero-content">
-        <div class="hero-notice reveal">
-            <div class="dots-wrap">
-                <span class="dot dot-1"></span>
-                <span class="dot dot-2"></span>
-                <span class="dot dot-3"></span>
-            </div>
-            <span>Przyjmuję nowe zlecenia</span>
-        </div>
         <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
         <h1 class="reveal delay-2">Jasne zasady,<br><em class="grad-type">spokojna głowa</em></h1>
         <p class="hero-sub reveal delay-3">Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
     </div>
 </header>
 
+<!-- PASEK DOSTĘPNOŚCI -->
+<div class="availability-bar reveal">
+    <div class="dots-wrap">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+    </div>
+    <span>Aktualnie przyjmuję nowe zlecenia</span>
+</div>
+
+<!-- CREDIBILITY BAR -->
+<div class="credibility-bar reveal delay-1">
+    <div class="credibility-bar-inner">
+        <div class="cred-pillar">
+            <i class="las la-balance-scale"></i>
+            <span>Jasne zasady</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-file-contract"></i>
+            <span>Umowa przed startem</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-tags"></i>
+            <span>Bez ukrytych opłat</span>
+        </div>
+    </div>
+</div>
+
+<!-- PASEK KROKÓW -->
 <div class="container--wide summary-bar-wrapper">
     <div class="summary-bar reveal delay-3">
         <div class="summary-step"><span class="s-num">01</span><span class="s-label">Kontakt</span></div>
@@ -106,7 +143,7 @@ title: Zasady współpracy
             <div class="timeline-item reveal delay-1"><div class="timeline-num"><span>03</span></div><div class="timeline-card"><span class="timeline-tag">Analiza materiału</span><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu. Oceniam jakość języka, styl, typ błędów i orientacyjny nakład pracy. Tylko na tej podstawie jestem w stanie rzetelnie wycenić zlecenie.</p><ul class="card-details"><li>Format: .docx (Word) lub link do Google Docs</li><li>Objętość próbki: całość lub 9 rozdziałów (3 pierwsze, 3 ze środka, 3 ostatnie)</li><li>Im więcej materiału, tym dokładniejsza wycena</li></ul><div class="card-note">Nie wyceniam „w ciemno" na podstawie samej liczby znaków. Dwa teksty o tej samej objętości mogą wymagać zupełnie różnego nakładu pracy.</div></div></div>
             <div class="timeline-item reveal delay-2"><div class="timeline-num"><span>04</span></div><div class="timeline-card"><span class="timeline-tag">Ustalenia</span><h3>Omówienie zakresu prac</h3><p>Dokładnie ustalamy, co wchodzi w zakres zlecenia – jakie elementy tekstu wymagają pracy, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul><div class="card-note">Jeśli po zakończeniu pracy dodasz nowe rozdziały – te fragmenty wymagają osobnej wyceny i oddzielnego zlecenia.</div></div></div>
             <div class="timeline-item reveal delay-1"><div class="timeline-num"><span>05</span></div><div class="timeline-card"><span class="timeline-tag">Finanse</span><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę. Cena zależy od objętości tekstu, stopnia trudności oraz rodzaju usługi.</p><ul class="card-details"><li>Wycena jest ważna przez 14 dni</li><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li><li>Wystawiam faktury (bez VAT)</li></ul></div></div>
-            <div class="timeline-item reveal delay-2"><div class="timeline-num"><span>06</span></div><div class="timeline-card"><span class="timeline-tag">Formalności</span><h3>Podpisanie umowy</h3><p>Przed przystąpieniem do pracy podpisujemy umowę o świadczenie usług. Reguluje ona zakres prac, termin, warunki płatności oraz kwestie poufności. Twój tekst jest w 100% bezpieczny.</p><ul class="card-details"><li>Umowa podpisywana elektronicznie (profil zaufany)</li></ul><div class="card-note">Nie zaczynam pracy bez podpisanej umowy. To podstawowa ochrona dla Ciebie i dla mnie.</div></div></div>
+            <div class="timeline-item reveal delay-2"><div class="timeline-num"><span>06</span></div><div class="timeline-card"><span class="timeline-tag">Formalności</span><h3>Podpisanie umowy</h3><p>Przed przystąpieniem do pracy podpisujemy umowę o świadczenie usług. Reguluje ona zakres prac, termin, warunki płatności oraz kwestie poufności. Twój tekst jest w 100% bezpieczny.</p><ul class="card-details"><li>Umowa podpisywana elektronicznie (profil zaufany)</li></ul><div class="card-note">Nie zaczynam pracy bez podpisanej umowy. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</div></div></div>
             <div class="timeline-item reveal delay-1"><div class="timeline-num"><span>07</span></div><div class="timeline-card"><span class="timeline-tag">Płatność</span><h3>Płatność z góry</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę na całą kwotę. Po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w swoim grafiku i przygotowuję się do pracy.</p><ul class="card-details"><li>Masz 14 dni na odstąpienie od umowy</li><li>W tym czasie nie przystępuję do pracy</li></ul></div></div>
             <div class="timeline-item reveal delay-2"><div class="timeline-num"><span>08</span></div><div class="timeline-card" style="border-color:var(--grad-start); box-shadow:var(--shadow-soft);"><span class="timeline-tag">Realizacja</span><h3>Przystępuję do pracy</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami oraz krótkie omówienie najważniejszych zmian i/lub wskazówki redaktorskie.</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji każdej zmiany należy do Ciebie</li></ul><div class="card-note">Moje zmiany to nie słowo ostateczne, zawsze możesz je zmieniać i negocjować.</div></div></div>
         </div>
