@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Cennik
+title: Zasady współpracy
 ---
 <style>
     /* Pasek dostępności */
@@ -14,57 +14,83 @@ title: Cennik
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
 
-    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
-    .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
-    .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-    .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); border-color: transparent; }
-    .pricing-card:hover::before { transform: scaleX(1); }
-    .pricing-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--ink); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--paper-mid); }
-    .price-main { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; line-height: 1; display: inline-block; margin-bottom: 6px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 4px 6px 4px 0px; }
-    .price-unit { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); display: block; margin-bottom: 24px; }
-    .price-alt { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .price-alt-unit { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 16px; }
-    .price-note { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; font-weight: 300; line-height: 1.6; margin-top: auto; padding-top: 24px; border-top: 1px solid var(--paper-mid); }
-    .pricing-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
-    .pricing-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
-    .pricing-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .info-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; }
-    .info-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
-    .definitions-list { list-style: none; padding: 0; margin: 0; }
-    .definitions-list li { background: var(--paper-warm); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600; color: var(--ink); }
-    .definitions-list li span { font-weight: 300; color: var(--ink-muted); font-size: 0.88rem; display: block; margin-top: 4px; }
-    .factors-list { list-style: none; padding: 0; margin: 0; }
-    .factors-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
-    .factors-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin-top: 60px; border-top: 1px solid var(--paper-mid); border-right: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); }
-    .warning-box i { font-size: 2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
+    /* Reszta styli */
+    .container--wide { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+    .bg-warm { background: var(--paper-warm); }
+    .eyebrow-label { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 18px; color: var(--grad-start); }
+    /* Pasek kroków — część treści sekcji */
+    .summary-bar { display: flex; flex-wrap: nowrap; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); overflow: visible; background: #fff; box-shadow: var(--shadow-soft); margin: 0 0 56px 0; }
+    .summary-step { flex: 1; min-width: 0; padding: 20px 12px; text-align: center; border-right: 1px solid var(--paper-mid); transition: background 0.25s, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s; position: relative; cursor: pointer; text-decoration: none; display: block; }
+    .summary-step:first-child { border-radius: var(--radius-lg) 0 0 var(--radius-lg); }
+    .summary-step:last-child { border-right: none; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; }
+    .summary-step:hover { background: var(--paper-warm); }
+    .summary-step.active { background: #fff; transform: translateY(-5px) scale(1.05); box-shadow: 0 8px 24px rgba(107,53,200,0.16); z-index: 2; border-radius: var(--radius-lg); }
+    .summary-step.active .s-num { font-size: 1.9rem; }
+    .summary-step.active .s-label { color: var(--grad-start); }
+    .summary-step .s-num { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; margin-bottom: 4px; transition: font-size 0.3s ease; }
+    .summary-step .s-label { font-family: var(--sans); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); transition: color 0.25s; }
+    .timeline { position: relative; margin: 40px 0; }
+    .timeline::before { content: ''; position: absolute; left: 29px; top: 54px; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--grad-start) 0%, var(--paper-mid) 40%, transparent 100%); }
+    .timeline-item { display: grid; grid-template-columns: 60px 1fr; gap: 32px; margin-bottom: 32px; position: relative; }
+    .timeline-num { display: flex; justify-content: center; position: relative; z-index: 1; }
+    .timeline-num span { width: 60px; height: 60px; background: #fff; border: 2px solid var(--paper-mid); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.2rem; font-weight: 700; font-style: italic; color: var(--ink-muted); transition: all 0.3s; }
+    .timeline-item:hover .timeline-num span { background: var(--grad-start); border-color: var(--grad-start); color: #fff; box-shadow: 0 4px 16px rgba(107,53,200,0.3); }
+    .timeline-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 36px 40px; transition: transform 0.3s, box-shadow 0.3s; }
+    .timeline-card:hover { transform: translateX(6px); box-shadow: var(--shadow-med); }
+    .timeline-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grad-start); background: rgba(107,53,200,0.08); border-radius: 4px; padding: 4px 12px; margin-bottom: 16px; }
+    .timeline-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .timeline-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.75; margin-bottom: 20px; }
+    .card-details { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .card-details li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+    .card-details li::before { content: '●'; color: var(--grad-start); font-size: 0.4rem; margin-top: 8px; }
+    .card-note { margin-top: 24px; padding: 16px 20px; background: var(--paper-warm); border-left: 3px solid var(--grad-start); border-radius: 0 8px 8px 0; font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.6; }
+    .rules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 40px 0; }
+    .rule-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 36px 32px; transition: transform 0.3s, box-shadow 0.3s; }
+    .rule-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+    .rule-icon { width: 56px; height: 56px; background: var(--paper-warm); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; color: var(--grad-start); }
+    .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
+    .warning-box i { font-size: 2.2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
     .warning-box p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.65; margin: 0; }
     .warning-box strong { color: var(--ink); font-weight: 700; }
-    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
+    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
+    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
     .cta-content { position: relative; z-index: 2; }
     .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
     .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-cta-white { display: inline-flex; align-items: center; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    @media (max-width: 860px) { .info-grid { grid-template-columns: 1fr; } .credibility-bar { padding: 18px 20px; } .credibility-bar-inner { gap: 24px; } }
-    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+
+    @media (max-width: 900px) { .rules-grid { grid-template-columns: 1fr; } .timeline-card { padding: 24px; } }
+    @media (max-width: 860px) {
+        .summary-bar { flex-wrap: wrap; overflow: hidden; }
+        .summary-step { flex: 1 1 25%; border-bottom: 1px solid var(--paper-mid); padding: 14px 8px; }
+        .summary-step:nth-child(4n) { border-right: none; }
+        .summary-step.active { transform: scale(1.03); }
+        .timeline::before { left: 24px; }
+        .timeline-item { grid-template-columns: 50px 1fr; gap: 16px; }
+        .timeline-num span { width: 50px; height: 50px; font-size: 1rem; }
+        .timeline-card:hover { transform: none; }
+        .container--wide { padding: 0 24px; }
+        .credibility-bar { padding: 18px 20px; }
+        .credibility-bar-inner { gap: 24px; }
+    }
 </style>
 
 <!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1170&auto=format&fit=crop" alt="Tło">
+        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1170&auto=format&fit=crop" alt="Tło">
     </div>
     <div class="hero-content">
-        <div class="hero-eyebrow reveal delay-1">Cennik</div>
-        <h1 class="reveal delay-2">Przejrzyste <em class="grad-type">stawki</em></h1>
-        <p class="hero-sub reveal delay-3">Każde zlecenie wyceniam indywidualnie. Cena zależy od jakości tekstu, objętości oraz stopnia trudności.</p>
+        <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
+        <h1 class="reveal delay-2">Jasne zasady,<br><em class="grad-type">spokojna głowa</em></h1>
+        <p class="hero-sub reveal delay-3">Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
     </div>
 </header>
 
@@ -82,109 +108,122 @@ title: Cennik
 <div class="credibility-bar reveal delay-1">
     <div class="credibility-bar-inner">
         <div class="cred-pillar">
-            <i class="las la-shield-alt"></i>
-            <span>Bezpieczna płatność</span>
+            <i class="las la-balance-scale"></i>
+            <span>Jasne zasady</span>
         </div>
         <div class="cred-pillar">
             <i class="las la-file-contract"></i>
-            <span>Podpisanie umowy</span>
+            <span>Umowa przed startem</span>
         </div>
         <div class="cred-pillar">
-            <i class="las la-undo-alt"></i>
-            <span>14 dni na odstąpienie</span>
+            <i class="las la-tags"></i>
+            <span>Bez ukrytych opłat</span>
         </div>
     </div>
 </div>
 
-<section class="section">
+<section class="section bg-white" style="padding-top:40px;">
     <div class="container">
-        <div class="eyebrow reveal">Pakiety usług</div>
-        <h2 class="section-h2 reveal delay-1">Co mogę dla Ciebie <em>zrobić</em>?</h2>
-        <p class="section-lead reveal delay-2">Poniżej znajdziesz orientacyjne stawki za każdą usługę. Napisz do mnie – wycenię projekt bezpłatnie.</p>
+        <div class="eyebrow-label reveal">Etapy współpracy</div>
+        <h2 class="section-h2 reveal delay-1">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
+        <p class="section-lead reveal delay-2">Każdy etap ma swój cel. Nie pomijam żadnego – dzięki temu obie strony wiedzą, czego się spodziewać, a praca przebiega sprawnie i bez nieporozumień.</p>
 
-        <div class="pricing-grid">
-            <div class="pricing-card reveal">
-                <h3>Korekta</h3>
-                <span class="price-main">od 15 zł</span>
-                <span class="price-unit">za stronę normatywną</span>
-                <div class="price-alt">od 90 zł</div>
-                <span class="price-alt-unit">za arkusz wydawniczy</span>
-                <p class="price-note">Cena liczona na podstawie arkusza wydawniczego przy zleceniach o objętości min. 3 arkuszy.</p>
-            </div>
-            <div class="pricing-card reveal delay-1">
-                <h3>Redakcja</h3>
-                <span class="price-main">od 20 zł</span>
-                <span class="price-unit">za stronę normatywną</span>
-                <div class="price-alt">od 210 zł</div>
-                <span class="price-alt-unit">za arkusz wydawniczy</span>
-                <p class="price-note">Cena liczona na podstawie arkusza wydawniczego przy zleceniach o objętości min. 3 arkuszy.</p>
-            </div>
-            <div class="pricing-card reveal delay-2">
-                <h3>Recenzja</h3>
-                <span class="price-main">od 15 zł</span>
-                <span class="price-unit">za stronę normatywną</span>
-                <div class="price-alt">od 160 zł</div>
-                <span class="price-alt-unit">za arkusz wydawniczy</span>
-                <p class="price-note">Cena liczona na podstawie arkusza wydawniczego przy zleceniach o objętości min. 3 arkuszy.</p>
-            </div>
-            <div class="pricing-card reveal delay-3">
-                <h3>Skład DTP</h3>
-                <span class="price-main">XXX zł</span>
-                <span class="price-unit">W przygotowaniu</span>
-                <ul class="pricing-list">
-                    <li>???</li>
-                    <li>???</li>
-                    <li>???</li>
-                </ul>
-                <p class="price-note">Ze względu na specyfikę składu, wycenę podaję po wstępnym zapoznaniu się z materiałem. Cena liczona na podstawie arkusza wydawniczego.</p>
-            </div>
-            <div class="pricing-card reveal delay-4">
-                <h3>Angielski online</h3>
-                <span class="price-main">95 zł</span>
-                <span class="price-unit">za 50 minut</span>
-                <ul class="pricing-list">
-                    <li>zajęcia w aplikacji Google Meet</li>
-                    <li>materiały zapewniam ja</li>
-                    <li>udostępniane przez Google Docs lub mailem</li>
-                </ul>
-                <p class="price-note">Indywidualne podejście dopasowane do Twojego poziomu i celów.</p>
-            </div>
+        <!-- PASEK KROKÓW — nawigacja po timeline -->
+        <div class="summary-bar reveal delay-3" id="steps-bar">
+            <a class="summary-step active" data-step="1" href="#step-1"><span class="s-num">01</span><span class="s-label">Kontakt</span></a>
+            <a class="summary-step" data-step="2" href="#step-2"><span class="s-num">02</span><span class="s-label">Omówienie</span></a>
+            <a class="summary-step" data-step="3" href="#step-3"><span class="s-num">03</span><span class="s-label">Próbka</span></a>
+            <a class="summary-step" data-step="4" href="#step-4"><span class="s-num">04</span><span class="s-label">Zakres</span></a>
+            <a class="summary-step" data-step="5" href="#step-5"><span class="s-num">05</span><span class="s-label">Wycena</span></a>
+            <a class="summary-step" data-step="6" href="#step-6"><span class="s-num">06</span><span class="s-label">Umowa</span></a>
+            <a class="summary-step" data-step="7" href="#step-7"><span class="s-num">07</span><span class="s-label">Płatność</span></a>
+            <a class="summary-step" data-step="8" href="#step-8"><span class="s-num">08</span><span class="s-label">Praca</span></a>
         </div>
 
-        <div class="info-grid reveal">
-            <div class="info-card">
-                <h3>Jednostki rozliczeniowe</h3>
-                <ul class="definitions-list">
-                    <li>1 strona normatywna <span>= 1800 znaków ze spacjami</span></li>
-                    <li>1 arkusz wydawniczy <span>= 40 000 znaków ze spacjami</span></li>
-                </ul>
-            </div>
-            <div class="info-card">
-                <h3>Wycena zależy od:</h3>
-                <ul class="factors-list">
-                    <li>objętości tekstu;</li>
-                    <li>ilości błędów (im więcej błędów, tym więcej pracy);</li>
-                    <li>stopnia trudności (artykuły naukowe, instrukcje, przypisy);</li>
-                    <li>oczekiwanej formy dostarczenia zlecenia;</li>
-                    <li>dodatkowych życzeń podnoszących pracochłonność.</li>
-                </ul>
-            </div>
+        <div class="timeline">
+            <div class="timeline-item reveal delay-1" data-step="1" id="step-1"><div class="timeline-num"><span>01</span></div><div class="timeline-card"><span class="timeline-tag">Pierwszy krok</span><h3>Kontakt</h3><p>Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu ani wiedzieć dokładnie, czego potrzebujesz. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach.</p><ul class="card-details"><li>Czas odpowiedzi: zazwyczaj do 24-48 godzin w dni robocze</li><li>Bez zobowiązań z Twojej strony</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="2" id="step-2"><div class="timeline-num"><span>02</span></div><div class="timeline-card"><span class="timeline-tag">Rozmowa wstępna</span><h3>Omówienie problemu</h3><p>Zadaję pytania, Ty opowiadasz o tekście, mam też przygotowany formularz z pytaniami, który pomoże Ci podsumować efekty Twojej pracy. Na podstawie tej rozmowy oceniamy razem, czy potrzebujesz redakcji, korekty, a może najpierw beta-readingu.</p><ul class="card-details"><li>Forma: wymiana maili</li><li>Efekt: wstępna orientacja, jaka usługa będzie optymalna</li></ul></div></div>
+            <div class="timeline-item reveal delay-1" data-step="3" id="step-3"><div class="timeline-num"><span>03</span></div><div class="timeline-card"><span class="timeline-tag">Analiza materiału</span><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu. Oceniam jakość języka, styl, typ błędów i orientacyjny nakład pracy. Tylko na tej podstawie jestem w stanie rzetelnie wycenić zlecenie.</p><ul class="card-details"><li>Format: .docx (Word) lub link do Google Docs</li><li>Objętość próbki: całość lub 9 rozdziałów (3 pierwsze, 3 ze środka, 3 ostatnie)</li><li>Im więcej materiału, tym dokładniejsza wycena</li></ul><div class="card-note">Nie wyceniam „w ciemno" na podstawie samej liczby znaków. Dwa teksty o tej samej objętości mogą wymagać zupełnie różnego nakładu pracy.</div></div></div>
+            <div class="timeline-item reveal delay-2" data-step="4" id="step-4"><div class="timeline-num"><span>04</span></div><div class="timeline-card"><span class="timeline-tag">Ustalenia</span><h3>Omówienie zakresu prac</h3><p>Dokładnie ustalamy, co wchodzi w zakres zlecenia – jakie elementy tekstu wymagają pracy, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul><div class="card-note">Jeśli po zakończeniu pracy dodasz nowe rozdziały – te fragmenty wymagają osobnej wyceny i oddzielnego zlecenia.</div></div></div>
+            <div class="timeline-item reveal delay-1" data-step="5" id="step-5"><div class="timeline-num"><span>05</span></div><div class="timeline-card"><span class="timeline-tag">Finanse</span><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę. Cena zależy od objętości tekstu, stopnia trudności oraz rodzaju usługi.</p><ul class="card-details"><li>Wycena jest ważna przez 14 dni</li><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li><li>Wystawiam faktury (bez VAT)</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="6" id="step-6"><div class="timeline-num"><span>06</span></div><div class="timeline-card"><span class="timeline-tag">Formalności</span><h3>Podpisanie umowy</h3><p>Przed przystąpieniem do pracy podpisujemy umowę o świadczenie usług. Reguluje ona zakres prac, termin, warunki płatności oraz kwestie poufności. Twój tekst jest w 100% bezpieczny.</p><ul class="card-details"><li>Umowa podpisywana elektronicznie (profil zaufany)</li></ul><div class="card-note">Nie zaczynam pracy bez podpisanej umowy. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</div></div></div>
+            <div class="timeline-item reveal delay-1" data-step="7" id="step-7"><div class="timeline-num"><span>07</span></div><div class="timeline-card"><span class="timeline-tag">Płatność</span><h3>Płatność z góry</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę na całą kwotę. Po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w swoim grafiku i przygotowuję się do pracy.</p><ul class="card-details"><li>Masz 14 dni na odstąpienie od umowy</li><li>W tym czasie nie przystępuję do pracy</li></ul></div></div>
+            <div class="timeline-item reveal delay-2" data-step="8" id="step-8"><div class="timeline-num"><span>08</span></div><div class="timeline-card" style="border-color:var(--grad-start); box-shadow:var(--shadow-soft);"><span class="timeline-tag">Realizacja</span><h3>Przystępuję do pracy</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami oraz krótkie omówienie najważniejszych zmian i/lub wskazówki redaktorskie.</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji każdej zmiany należy do Ciebie</li></ul><div class="card-note">Moje zmiany to nie słowo ostateczne, zawsze możesz je zmieniać i negocjować.</div></div></div>
         </div>
+    </div>
+</section>
 
+<section class="section bg-warm">
+    <div class="container--wide">
+        <div class="eyebrow-label reveal" style="justify-content:center;">Ważne zasady</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align:center;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
+        <div class="rules-grid">
+            <div class="rule-card reveal delay-1"><div class="rule-icon"><i class="las la-calendar-check"></i></div><h3>Termin to termin</h3><p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p></div>
+            <div class="rule-card reveal delay-2"><div class="rule-icon"><i class="las la-user-shield"></i></div><h3>Pełna poufność</h3><p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p></div>
+            <div class="rule-card reveal delay-1"><div class="rule-icon"><i class="las la-users"></i></div><h3>Dwie pary oczu</h3><p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba. Mogę zrobić to ja, ale będę potrzebowała ok. 3 tygodni przerwy.</p></div>
+            <div class="rule-card reveal delay-2"><div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div><h3>Zmiana zakresu = nowa wycena</h3><p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p></div>
+            <div class="rule-card reveal delay-1"><div class="rule-icon"><i class="las la-comments"></i></div><h3>Komunikacja to podstawa</h3><p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p></div>
+            <div class="rule-card reveal delay-2"><div class="rule-icon"><i class="las la-check-circle"></i></div><h3>Decyzje należą do Ciebie</h3><p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p></div>
+        </div>
         <div class="warning-box reveal">
-            <i class="las la-balance-scale"></i>
-            <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
+            <i class="las la-exclamation-circle"></i>
+            <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
         </div>
     </div>
 </section>
 
 <section class="cta-section">
     <div class="cta-content">
-        <h2 class="reveal delay-1">Opowiedz mi o swoim projekcie</h2>
-        <p class="reveal delay-2">Nie musisz od razu wiedzieć, jakiej usługi potrzebujesz. Opisz krótko swój projekt i prześlij fragment tekstu – wspólnie zastanowimy się, jaki zakres prac będzie dla Ciebie najlepszy.</p>
+        <h2 class="reveal delay-1">Twój tekst w dobrych rękach</h2>
+        <p class="reveal delay-2">Nie musisz znać się na edytorstwie czy narzędziach retoryki. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę.</p>
         <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Wyślij materiały</a>
-            <a href="{{ site.baseurl }}/zasady-wspolpracy.html" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
+            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+            <a href="{{ site.baseurl }}/cennik.html" class="btn-ghost">Sprawdź cennik <i class="las la-arrow-right"></i></a>
         </div>
     </div>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const timelineItems = document.querySelectorAll('.timeline-item[data-step]');
+        const stepLinks = document.querySelectorAll('.summary-step[data-step]');
+
+        // --- Podświetlanie przy scrollu ---
+        function setActiveStep(stepNum) {
+            stepLinks.forEach(link => {
+                link.classList.toggle('active', link.dataset.step === String(stepNum));
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveStep(entry.target.dataset.step);
+                }
+            });
+        }, {
+            rootMargin: '-35% 0px -55% 0px',
+            threshold: 0
+        });
+
+        timelineItems.forEach(item => observer.observe(item));
+
+        // --- Płynne przewijanie z offsetem pod sticky nav ---
+        stepLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                // Offset: wysokość sticky nava + trochę luzu
+                const navHeight = parseInt(
+                    getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '0'
+                ) + 24;
+
+                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
+        });
+    });
+</script>
