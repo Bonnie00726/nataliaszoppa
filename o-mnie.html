@@ -280,17 +280,8 @@
     }
 
     .card-content { display: flex; flex-direction: column; justify-content: center; }
-    .card-eyebrow {
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 14px;
-    }
+    .card-eyebrow { display: none; }
+
     .card-title {
       font-family: var(--serif);
       font-size: 2.6rem;
@@ -368,10 +359,9 @@
       gap: 2px;
     }
     .blog-stat-num {
-      font-family: var(--serif);
-      font-size: 2.4rem;
+      font-family: var(--sans);
+      font-size: 2.2rem;
       font-weight: 700;
-      font-style: italic;
       background: var(--gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -558,7 +548,6 @@
         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=900&auto=format" alt="Natalia Szoppa">
       </div>
       <div class="card-content">
-        <span class="card-eyebrow fade-up d1">Kim jestem</span>
         <h2 class="card-title fade-up d2">Cześć, tu <em>Natalia</em></h2>
         <p class="card-text fade-up d3">Absolwentka filologii angielskiej, która od kilku lat stara się nauczyć japońskiego, od 10 lat uczy innych angielskiego i od 5 lat pomaga pisać ciekawe historie. W międzyczasie rozpieszcza psa, dogadza sobie kupując książki i uzupełnia kolekcję Nendroidów.</p>
         <p class="card-text fade-up d4">Lubi spać, jeść, stawiać sobie tarota i oglądać Ukrytą prawdę, Detektywów lub anime. No i to właściwie byłoby na tyle… szału nie ma, co?</p>
@@ -570,7 +559,6 @@
   <section class="panel">
     <div class="info-card info-card--grid fade-up">
       <div class="card-content">
-        <span class="card-eyebrow fade-up d1">Wykształcenie i doświadczenie</span>
         <h2 class="card-title fade-up d2">Moje <em>kwalifikacje</em></h2>
         <div class="mini-grid fade-up d3">
           <div class="mini-card">
@@ -606,29 +594,28 @@
   <section class="panel">
     <div class="info-card fade-up">
       <div class="card-content">
-        <span class="card-eyebrow fade-up d1">Skąd mnie znasz?</span>
-        <h2 class="card-title fade-up d2">Dwa blogi,<br><em>jedna pasja</em></h2>
-        <p class="card-text fade-up d3">Podczas pierwszego lockdownu postanowiłam uporządkować notatki i materiały dydaktyczne — i wrzucić je w świat. Blog stał się zupełnym przypadkiem popularny. Dziś prowadzę dwa: jeden o nauce języka japońskiego, drugi o pisaniu i literaturze. Razem budują publiczność, która trafia do mnie z konkretnymi projektami.</p>
+        <h2 class="card-title fade-up d1">Dwa blogi,<br><em>jedna pasja</em></h2>
+        <p class="card-text fade-up d2">Podczas pierwszego lockdownu postanowiłam uporządkować notatki i materiały dydaktyczne — i wrzucić je w świat. Blog stał się zupełnym przypadkiem popularny. Dziś prowadzę dwa: jeden o nauce języka japońskiego, drugi o pisaniu i literaturze. Razem budują publiczność, która trafia do mnie z konkretnymi projektami.</p>
         <div class="blog-stats fade-up d3">
           <div class="blog-stat">
             <span class="blog-stat-num">2</span>
             <span class="blog-stat-label">aktywne blogi</span>
           </div>
           <div class="blog-stat">
-            <span class="blog-stat-num">5+</span>
+            <span class="blog-stat-num">6</span>
             <span class="blog-stat-label">lat publikowania</span>
           </div>
           <div class="blog-stat">
-            <span class="blog-stat-num">PL&nbsp;+&nbsp;EN</span>
+            <span class="blog-stat-num">PL · EN · JP</span>
             <span class="blog-stat-label">języki treści</span>
           </div>
         </div>
         <div class="blog-links fade-up d4">
           <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">
-            <i class="fas fa-arrow-right"></i> languagestudymaterials — nauka japońskiego
+            <i class="fas fa-arrow-right"></i> Language Study Materials
           </a>
           <a href="#" class="blog-link">
-            <i class="fas fa-arrow-right"></i> Blog o pisaniu i literaturze
+            <i class="fas fa-arrow-right"></i> Za kulisami dobrej historii
           </a>
         </div>
       </div>
@@ -639,7 +626,6 @@
   <section class="panel">
     <div class="info-card fade-up">
       <div class="card-content">
-        <span class="card-eyebrow fade-up d1">Moja historia</span>
         <h2 class="card-title fade-up d2">Jak to się <em>zaczęło</em></h2>
         <div class="genesis-layout fade-up d3">
           <div>
@@ -678,7 +664,6 @@
   <section class="panel">
     <div class="info-card info-card--grid fade-up">
       <div class="card-content">
-        <span class="card-eyebrow fade-up d1">Trochę prywaty</span>
         <h2 class="card-title fade-up d2">Kilka <em>ciekawostek</em></h2>
         <div class="mini-grid fade-up d3">
           <div class="mini-card">
@@ -713,7 +698,6 @@
   <!-- 6: CTA -->
   <section class="panel">
     <div class="info-card card-cta fade-up">
-      <span class="card-eyebrow fade-up d1">Gotowa/-y na współpracę?</span>
       <h2 class="card-title fade-up d2">Oddaj swój tekst<br><em>w dobre ręce</em></h2>
       <p class="card-text fade-up d3" style="max-width: 480px; margin: 0 auto 30px;">Zadbajmy wspólnie o to, by Twoje słowa wybrzmiały tak, jak zaplanowałeś.</p>
       <div class="fade-up d4">
