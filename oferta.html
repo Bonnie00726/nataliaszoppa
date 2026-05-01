@@ -303,3 +303,36 @@ title: Oferta
         </div>
     </section>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Pobieramy wszystkie sekcje, które mają ID odpowiadające menu
+        const sections = document.querySelectorAll('.toc-section');
+        // Pobieramy wszystkie linki z naszego menu TOC
+        const navLinks = document.querySelectorAll('.top-toc a');
+        
+        // Offset to margines od góry (wysokość Twojego głównego menu + paska TOC)
+        // Dzięki temu klasa active zmieni się zanim sekcja wjedzie pod samo menu
+        const headerOffset = 180; 
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                // Sprawdzamy, czy scroll minął początek danej sekcji
+                if (window.scrollY >= (sectionTop - headerOffset)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Usuwamy klasę 'active' ze wszystkich linków i nadajemy ją temu właściwemu
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
