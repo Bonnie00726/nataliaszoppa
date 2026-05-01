@@ -76,7 +76,6 @@ title: Oferta
     .compare-list strong { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 6px; }
 
     /* Call to Action */
-    .section-cta { text-align: center; margin-top: 48px; padding-bottom: 32px; }
     .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
     .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
 
@@ -91,63 +90,6 @@ title: Oferta
     .collab-pillar { display: flex; align-items: center; gap: 10px; }
     .collab-pillar i { font-size: 1.4rem; color: var(--grad-end); flex-shrink: 0; }
     .collab-pillar span { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); }
-
-    /* =========================================
-       NOWOŚĆ: SCROLLYTELLING ŚCIEŻKA KROKÓW
-       ========================================= */
-    .scroll-bridge {
-        position: relative;
-        width: 100%;
-        height: 160px; /* Wysokość ścieżki przejścia */
-        margin: 20px 0 40px 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        z-index: 10;
-        overflow: hidden;
-    }
-    
-    .bridge-svg-wrap {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
-    
-    .bridge-svg-wrap svg {
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Animowana lina rysowana przez scroll */
-    .draw-path {
-        stroke-dasharray: 2000; /* Zostanie nadpisane przez JS na dokładną długość */
-        stroke-dashoffset: 2000; /* Ustawia linię na "ukrytą" na start */
-        transition: stroke-dashoffset 0.1s ease-out; /* Daje płynność podczas machania kółkiem myszy */
-    }
-
-    /* Guzik / Kontent na środku ścieżki */
-    .bridge-content {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        transform: translateY(10px); /* Przesunięcie lekko na dół do kolejnej sekcji */
-    }
-
-    .bridge-label {
-        font-family: var(--serif);
-        font-style: italic;
-        font-size: 1.1rem;
-        color: var(--ink-muted);
-        background: var(--paper); /* Maskuje linię pod tekstem */
-        padding: 0 15px;
-    }
 
     /* Pakiet Dostawy */
     .delivery-pack { margin: 56px auto 0; max-width: 860px; }
@@ -165,23 +107,139 @@ title: Oferta
     .delivery-item-body p { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-muted); line-height: 1.55; margin: 0; font-weight: 300; }
     .delivery-item--highlight { background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%); border-color: rgba(107,53,200,0.2); }
 
-    /* RWD dla Oferty */
+    /* =========================================
+       SEKCJA CTA NA KOŃCU KAŻDEJ SEKCJI
+       ========================================= */
+    .section-footer {
+        padding: 56px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .section-footer .btn-gradient {
+        font-size: 1rem;
+        padding: 20px 52px;
+    }
+
+    /* =========================================
+       SEPARATOR Z ANIMOWANĄ STRZAŁKĄ
+       ========================================= */
+    .section-separator {
+        position: relative;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        overflow: visible;
+    }
+
+    /* Lewa strona */
+    .section-separator--left {
+        justify-content: flex-start;
+        padding-left: 10%;
+    }
+
+    /* Prawa strona */
+    .section-separator--right {
+        justify-content: flex-end;
+        padding-right: 10%;
+    }
+
+    .separator-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .separator-text {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 0.92rem;
+        color: var(--ink-muted);
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(-6px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .separator-text.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Kontener strzałki SVG */
+    .arrow-svg-wrap {
+        width: 80px;
+        height: 64px;
+        flex-shrink: 0;
+    }
+
+    .arrow-svg-wrap svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    /* Sam path strzałki — rysuje się przez JS */
+    .arrow-draw {
+        fill: none;
+        stroke: url(#arrowGrad);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 300;
+        stroke-dashoffset: 300;
+        transition: stroke-dashoffset 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .arrow-draw.drawn {
+        stroke-dashoffset: 0;
+    }
+
+    /* Grot strzałki */
+    .arrow-tip {
+        fill: none;
+        stroke: url(#arrowGrad);
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.55s;
+    }
+
+    .arrow-tip.drawn {
+        opacity: 1;
+    }
+
+    /* RWD */
     @media (max-width: 900px) {
         .compare-grid { grid-template-columns: 1fr; }
         .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px;}
         .delivery-items { grid-template-columns: 1fr; }
+        .section-separator--left { padding-left: 5%; }
+        .section-separator--right { padding-right: 5%; }
     }
     @media (max-width: 860px) { 
         .container--wide { padding: 0 24px; }
         .collab-banner { padding: 24px 20px; }
         .collab-pillars { gap: 20px; }
     }
+    @media (max-width: 600px) {
+        .section-separator--left,
+        .section-separator--right {
+            justify-content: center;
+            padding: 0;
+        }
+        .separator-text { white-space: normal; text-align: center; max-width: 200px; }
+    }
 </style>
 
-<!-- DEFINICJA GRADIENTU DLA ŚCIEŻEK SVG -->
+<!-- GRADIENTY DLA SVG -->
 <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#6B35C8" />
       <stop offset="100%" stop-color="#E8772A" />
     </linearGradient>
@@ -291,21 +349,33 @@ title: Oferta
                 <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do czytelnika.</li>
             </ul>
         </div>
+
+        <!-- CTA sekcji -->
+        <div class="container">
+            <div class="section-footer reveal">
+                <a href="/kontakt" class="btn-gradient">Zamów recenzję swojego tekstu</a>
+                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Nie wiesz, czego potrzebujesz? Napisz — razem znajdziemy właściwy punkt wejścia.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Lewej -->
-    <div class="scroll-bridge bg-white">
-        <div class="bridge-svg-wrap">
-            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
-                <!-- Szara ścieżka z krokami (kropkami w tle) -->
-                <path d="M 100,0 C 100,150 500,50 500,200" stroke="#e5e5e5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
-                <!-- Wypełniający się wężyk -->
-                <path class="draw-path" d="M 100,0 C 100,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <div class="bridge-content">
-            <span class="bridge-label">Gotowy na kolejny krok?</span>
-            <a href="#redakcja" class="btn-gradient">Redakcja z Warsztatem</a>
+    <!-- SEPARATOR: strzałka LEWA → prowadzi do Redakcji -->
+    <div class="section-separator section-separator--left bg-white" data-target="#redakcja">
+        <div class="separator-inner">
+            <span class="separator-text">a może potrzebujesz czegoś więcej?</span>
+            <!-- Zawijas biegnący w lewo i opadający w dół -->
+            <div class="arrow-svg-wrap">
+                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Krzywa: zaczyna się górą-lewą, zawija i schodzi w dół -->
+                    <path class="arrow-draw"
+                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
+                    />
+                    <!-- Grot na końcu ścieżki -->
+                    <polyline class="arrow-tip"
+                        points="28,57 36,60 33,52"
+                    />
+                </svg>
+            </div>
         </div>
     </div>
 
@@ -387,20 +457,31 @@ title: Oferta
                 <p>Redakcja to „otwarta operacja" na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
             </div>
         </div>
+
+        <!-- CTA sekcji -->
+        <div class="container">
+            <div class="section-footer reveal">
+                <a href="/kontakt" class="btn-gradient">Rozpocznij redakcję z warsztatem</a>
+                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Chcesz wiedzieć, co po redakcji? Zajrzyj niżej — korekta to następny naturalny krok.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Prawej -->
-    <div class="scroll-bridge bg-warm">
-        <div class="bridge-svg-wrap">
-            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
-                <!-- Ścieżka meandrująca z prawego rogu -->
-                <path d="M 900,0 C 900,150 500,50 500,200" stroke="#d5d5d5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
-                <path class="draw-path" d="M 900,0 C 900,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <div class="bridge-content">
-            <span class="bridge-label" style="background: var(--paper-warm);">Tekst zredagowany? Czas na...</span>
-            <a href="#korekta" class="btn-gradient">Korektę Techniczną</a>
+    <!-- SEPARATOR: strzałka PRAWA → prowadzi do Korekty -->
+    <div class="section-separator section-separator--right bg-warm" data-target="#korekta">
+        <div class="separator-inner">
+            <span class="separator-text">tekst zredagowany — co dalej?</span>
+            <!-- Zawijas z prawej strony — lustrzane odbicie -->
+            <div class="arrow-svg-wrap" style="transform: scaleX(-1);">
+                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-draw"
+                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
+                    />
+                    <polyline class="arrow-tip"
+                        points="28,57 36,60 33,52"
+                    />
+                </svg>
+            </div>
         </div>
     </div>
 
@@ -427,19 +508,30 @@ title: Oferta
                 <li><strong>Dziur fabularnych:</strong> Na tym etapie skupiam się na znakach i literach, a nie na wiarygodności postaci i świata.</li>
             </ul>
         </div>
+
+        <!-- CTA sekcji -->
+        <div class="container">
+            <div class="section-footer reveal">
+                <a href="/kontakt" class="btn-gradient">Zamów korektę techniczną</a>
+                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Ostatni krok przed drukiem to skład DTP — sprawdź, co to oznacza dla Twojej książki.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- MOSTEK SCROLLYTELLING: Ścieżka z Lewej -->
-    <div class="scroll-bridge bg-white">
-        <div class="bridge-svg-wrap">
-            <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
-                <path d="M 100,0 C 100,150 500,50 500,200" stroke="#e5e5e5" fill="none" vector-effect="non-scaling-stroke" stroke-width="4" stroke-dasharray="0 18" stroke-linecap="round"/>
-                <path class="draw-path" d="M 100,0 C 100,150 500,50 500,200" stroke="url(#pathGrad)" fill="none" vector-effect="non-scaling-stroke" stroke-width="5" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <div class="bridge-content">
-            <span class="bridge-label">Ostatnia prosta do wydania</span>
-            <a href="#dtp" class="btn-gradient">Skład DTP</a>
+    <!-- SEPARATOR: strzałka LEWA → prowadzi do DTP -->
+    <div class="section-separator section-separator--left bg-white" data-target="#dtp">
+        <div class="separator-inner">
+            <span class="separator-text">ostatnia prosta do wydania</span>
+            <div class="arrow-svg-wrap">
+                <svg viewBox="0 0 80 64" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-draw"
+                        d="M 10,4 C 5,18 55,20 50,38 C 46,52 30,56 36,60"
+                    />
+                    <polyline class="arrow-tip"
+                        points="28,57 36,60 33,52"
+                    />
+                </svg>
+            </div>
         </div>
     </div>
 
@@ -457,14 +549,19 @@ title: Oferta
             </div>
         </div>
 
-        <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient" style="transform: scale(1.1); margin-top: 20px;">Wypełnij brief i rozpocznij współpracę</a>
+        <!-- CTA sekcji — ostatnia, mocniejsza -->
+        <div class="container">
+            <div class="section-footer reveal" style="padding-bottom: 32px;">
+                <a href="/kontakt" class="btn-gradient" style="font-size: 1.05rem; padding: 22px 60px;">Wypełnij brief i rozpocznij współpracę</a>
+                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300; text-align: center; max-width: 360px;">Nie wiesz, od którego etapu zacząć? Napisz — ocenię Twój tekst i zaproponuję właściwy plan działania.</p>
+            </div>
         </div>
     </section>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
         // --- 1. TOC HIGHLIGHTING ---
         const sections = document.querySelectorAll('.toc-section');
         const navLinks = document.querySelectorAll('.top-toc a');
@@ -488,62 +585,35 @@ title: Oferta
             });
         }
 
-        // --- 2. SCROLLYTELLING ANIMATION (Wężyki) ---
-        const drawPaths = document.querySelectorAll('.draw-path');
-        
-        // Inicjalizacja długości ścieżek
-        drawPaths.forEach(path => {
-            const length = path.getTotalLength();
-            path.style.strokeDasharray = length;
-            path.style.strokeDashoffset = length;
-            // Zapisujemy długość jako atrybut data dla wygody
-            path.setAttribute('data-length', length);
-        });
+        // --- 2. ANIMOWANE STRZAŁKI ---
+        // IntersectionObserver — wyzwala animację gdy separator wchodzi w viewport
+        const separators = document.querySelectorAll('.section-separator');
 
-        function animatePaths() {
-            drawPaths.forEach(path => {
-                const length = parseFloat(path.getAttribute('data-length'));
-                // Pobieramy kontener, który trzyma nasze SVG (żeby wiedzieć, gdzie jest na ekranie)
-                const bridge = path.closest('.scroll-bridge');
-                const rect = bridge.getBoundingClientRect();
-                
-                // Obliczamy % przescrollowania sekcji
-                // Zaczyna rysować, gdy górna krawędź mostka pojawi się u dołu ekranu
-                const startDraw = window.innerHeight; 
-                // Kończy rysować, gdy środek mostka dotrze do środka ekranu
-                const endDraw = window.innerHeight / 2;
-                
-                let scrollPercent = (startDraw - rect.top) / (startDraw - endDraw + rect.height);
-                
-                // Zabezpieczenie przed wyjściem poza 0 i 1
-                if (scrollPercent < 0) scrollPercent = 0;
-                if (scrollPercent > 1) scrollPercent = 1;
-                
-                // Ustawiamy nowe przesunięcie - dzięki temu ścieżka płynnie się "rysuje"
-                path.style.strokeDashoffset = length - (length * scrollPercent);
-            });
-        }
+        const arrowObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const sep = entry.target;
+                    const arrowPath = sep.querySelector('.arrow-draw');
+                    const arrowTip  = sep.querySelector('.arrow-tip');
+                    const label     = sep.querySelector('.separator-text');
 
-        // --- BINDING EVENTS ---
-        window.addEventListener('scroll', () => {
-            updateTOC();
-            animatePaths();
-        });
-        
-        // Odpalamy na start, by zaktualizować stany po załadowaniu
-        updateTOC();
-        animatePaths();
+                    if (label)     label.classList.add('visible');
+                    if (arrowPath) arrowPath.classList.add('drawn');
+                    if (arrowTip)  arrowTip.classList.add('drawn');
 
-        // Płynne przewijanie z mostków (dla przycisków CTA)
-        document.querySelectorAll('.bridge-content a').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(btn.getAttribute('href'));
-                if (target) {
-                    const offset = target.getBoundingClientRect().top + window.scrollY - 120;
-                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                    // Odłącz po pierwszym wyzwoleniu — strzałka rysuje się tylko raz
+                    arrowObserver.unobserve(sep);
                 }
             });
+        }, {
+            threshold: 0.4   // Odpala gdy 40% separatora jest widoczne
         });
+
+        separators.forEach(sep => arrowObserver.observe(sep));
+
+        // --- 3. BINDING SCROLL ---
+        window.addEventListener('scroll', updateTOC);
+        updateTOC();
+
     });
 </script>
