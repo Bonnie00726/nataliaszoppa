@@ -605,7 +605,7 @@
         </div>
         <div class="blog-links fade-up d4">
           <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">Language Study Materials</a>
-          <a href="{{ site.baseurl }}/#blog" class="blog-link">Za kulisami dobrej historii</a>
+          <a href="{{ site.baseurl }}/#blog" class="blog-link external-link">Za kulisami dobrej historii</a>
         </div>
       </div>
     </div>
@@ -755,6 +755,14 @@
     const diff = touchStartX - e.changedTouches[0].clientX;
     if(Math.abs(diff) > 50) diff > 0 ? goTo(current + 1) : goTo(current - 1);
   }, {passive: true});
+
+  // Obsługa linków zewnętrznych — omijają blokadę overflow:hidden
+  document.querySelectorAll('a.external-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.stopPropagation();
+      window.location.href = link.getAttribute('href');
+    });
+  });
 
   goTo(0);
 })();
