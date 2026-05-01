@@ -350,50 +350,46 @@
     /* ===== BLOG CARD — bez obrazka, wyróżnione liczby ===== */
     .blog-stats {
       display: flex;
-      gap: 32px;
+      gap: 40px;
       margin-top: 8px;
+      align-items: baseline;
     }
     .blog-stat {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 4px;
     }
     .blog-stat-num {
       font-family: var(--sans);
-      font-size: 2.2rem;
+      font-size: 1rem;
       font-weight: 700;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-    }
-    .blog-stat-label {
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--ink-muted);
+      color: var(--ink);
+      line-height: 1.4;
+      white-space: nowrap;
     }
     .blog-links {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 16px;
+      flex-direction: row;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
     .blog-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       font-family: var(--sans);
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      color: var(--gradient-start);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fff;
+      background: var(--gradient-start);
       text-decoration: none;
-      transition: gap 0.2s;
+      padding: 10px 20px;
+      border-radius: 6px;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .blog-link:hover { gap: 14px; }
-    .blog-link i { font-size: 0.75rem; }
+    .blog-link:hover { opacity: 0.85; transform: translateY(-1px); }
 
     /* ===== GENEZA CARD — cytat + timeline ===== */
     .genesis-layout {
@@ -594,29 +590,22 @@
   <section class="panel">
     <div class="info-card fade-up">
       <div class="card-content">
-        <h2 class="card-title fade-up d1">Dwa blogi,<br><em>jedna pasja</em></h2>
+        <h2 class="card-title fade-up d1">Dwa blogi, <em>jedna pasja</em></h2>
         <p class="card-text fade-up d2">Podczas pierwszego lockdownu postanowiłam uporządkować notatki i materiały dydaktyczne — i wrzucić je w świat. Blog stał się zupełnym przypadkiem popularny. Dziś prowadzę dwa: jeden o nauce języka japońskiego, drugi o pisaniu i literaturze. Razem budują publiczność, która trafia do mnie z konkretnymi projektami.</p>
         <div class="blog-stats fade-up d3">
           <div class="blog-stat">
-            <span class="blog-stat-num">2</span>
-            <span class="blog-stat-label">aktywne blogi</span>
+            <span class="blog-stat-num">2 aktywne blogi</span>
           </div>
           <div class="blog-stat">
-            <span class="blog-stat-num">6</span>
-            <span class="blog-stat-label">lat publikowania</span>
+            <span class="blog-stat-num">6 lat publikowania</span>
           </div>
           <div class="blog-stat">
             <span class="blog-stat-num">PL · EN · JP</span>
-            <span class="blog-stat-label">języki treści</span>
           </div>
         </div>
         <div class="blog-links fade-up d4">
-          <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">
-            <i class="fas fa-arrow-right"></i> Language Study Materials
-          </a>
-          <a href="#" class="blog-link">
-            <i class="fas fa-arrow-right"></i> Za kulisami dobrej historii
-          </a>
+          <a href="https://languagestudymaterials.tumblr.com" target="_blank" class="blog-link">Language Study Materials</a>
+          <a href="#" class="blog-link">Za kulisami dobrej historii</a>
         </div>
       </div>
     </div>
