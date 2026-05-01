@@ -3,8 +3,28 @@ layout: default
 title: FAQs
 ---
 <style>
+    /* TOC */
+    .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
+    .top-toc a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; position: relative; display: inline-block; }
+    .top-toc a:hover, .top-toc a.active { color: var(--grad-start); }
+    .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
+    .top-toc a.active::after { width: 100%; }
+
+    /* Pasek dostępności */
+    .availability-bar { background: var(--paper-warm); border-bottom: 1px solid var(--paper-mid); padding: 14px 20px; display: flex; justify-content: center; align-items: center; gap: 14px; }
+    .availability-bar span { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+
+    /* Credibility bar */
+    .credibility-bar { background: var(--ink); padding: 22px 40px; }
+    .credibility-bar-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .cred-pillar { display: flex; align-items: center; gap: 12px; }
+    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
+
+    /* Treść FAQ */
     .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
-    .faq-group { margin-bottom: 60px; }
+    .faq-group { margin-bottom: 60px; scroll-margin-top: 120px; }
     .faq-group-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--paper-mid); display: flex; align-items: center; gap: 14px; }
     .faq-group-title i { color: var(--grad-start); font-size: 1.8rem; }
     .accordion-item { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); margin-bottom: 18px; overflow: hidden; transition: all 0.3s ease; }
@@ -26,6 +46,8 @@ title: FAQs
     .accordion-body p:last-child { margin-bottom: 0; }
     .accordion-body strong { color: var(--ink); font-weight: 700; }
     .accordion-body a { color: var(--grad-start); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* CTA */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
     .cta-content { position: relative; z-index: 2; }
@@ -36,167 +58,204 @@ title: FAQs
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    @media (max-width: 860px) { .accordion-header { padding: 22px 28px; } .accordion-body.open { padding: 0 28px 30px 28px; } }
+
+    /* RWD */
+    @media (max-width: 860px) { .accordion-header { padding: 22px 28px; } .accordion-body.open { padding: 0 28px 30px 28px; } .credibility-bar { padding: 18px 20px; } .credibility-bar-inner { gap: 24px; } .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px; } }
     @media (max-width: 600px) { .faq-group-title { font-size: 1.4rem; } .accordion-question { font-size: 1.05rem; } }
 </style>
 
+<!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=731&auto=format&fit=crop" alt="Tło">
+        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1170&auto=format&fit=crop" alt="Tło — otwarta księga z piórem">
     </div>
     <div class="hero-content">
-        <div class="hero-notice reveal">
-            <div class="dots-wrap">
-                <span class="dot dot-1"></span>
-                <span class="dot dot-2"></span>
-                <span class="dot dot-3"></span>
-            </div>
-            <span>Przyjmuję nowe zlecenia</span>
-        </div>
         <div class="hero-eyebrow reveal delay-1">Wątpliwości?</div>
         <h1 class="reveal delay-2">O co najczęściej <em class="grad-type">pytacie</em></h1>
         <p class="hero-sub reveal delay-3">Zebrałam w jednym miejscu wszystko, co warto wiedzieć przed startem. Sprawdź, jak wyglądają kulisy naszej współpracy.</p>
     </div>
 </header>
 
-<section class="section">
-    <div class="container">
-        <div class="eyebrow reveal">Współpraca</div>
-        <h2 class="section-h2 reveal delay-1">Wszystko, co chcesz <em>wiedzieć</em></h2>
-        <p class="section-lead reveal delay-2">Pytania pogrupowałam tematycznie. Kliknij pytanie, żeby rozwinąć odpowiedź.</p>
+<!-- PASEK DOSTĘPNOŚCI -->
+<div class="availability-bar reveal">
+    <div class="dots-wrap">
+        <span class="dot dot-1"></span>
+        <span class="dot dot-2"></span>
+        <span class="dot dot-3"></span>
+    </div>
+    <span>Aktualnie przyjmuję nowe zlecenia</span>
+</div>
 
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-calculator"></i> Wycena i płatności</div>
-            <div class="accordion-item open">
-                <div class="accordion-header">
-                    <span class="accordion-question">Jak wygląda wycena?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body open">
-                    <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu. Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin.</p>
-                    <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="{{ site.baseurl }}/cennik.html">Cennik</a>.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Co wpływa na ostateczną cenę?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Na cenę wpływa kilka czynników: objętość tekstu, ilość błędów (więcej błędów = więcej pracy), stopień trudności (teksty specjalistyczne, naukowe, instrukcje), oczekiwany termin realizacji oraz dodatkowe życzenia zwiększające pracochłonność.</p>
-                    <p>Pamiętaj, że <strong>redakcja nie obejmuje plików PDF</strong> — muszę otrzymać edytowalny plik.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Jakie są formy płatności?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Rozliczam się przelewem bankowym. Po zakończeniu zlecenia wystawiam fakturę VAT (jestem zwolniona z VAT-u). Faktura trafia do Ciebie mejlem.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Czy wystawiasz faktury?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Tak — prowadzę jednoosobową działalność gospodarczą i wystawiam faktury. Nie jestem płatnikiem VAT, więc na fakturze nie ma podatku VAT. Jeśli potrzebujesz faktury na firmę, prześlij mi dane do faktury przy zleceniu.</p>
-                </div>
-            </div>
+<!-- CREDIBILITY BAR -->
+<div class="credibility-bar reveal delay-1">
+    <div class="credibility-bar-inner">
+        <div class="cred-pillar">
+            <i class="las la-clock"></i>
+            <span>Odpowiedź w 48 godzin</span>
         </div>
-
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-project-diagram"></i> Proces pracy</div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Jak wygląda współpraca krok po kroku?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p><strong>1. Zapytanie</strong> — piszesz do mnie z opisem zlecenia i przesyłasz próbkę lub cały tekst.</p>
-                    <p><strong>2. Wycena</strong> — odpiszę z wyceną i orientacyjnym terminem realizacji w ciągu 24h w dni robocze.</p>
-                    <p><strong>3. Realizacja</strong> — po Twojej akceptacji zabieram się do pracy. Pracuję w Google Docs lub Word z włączonymi zmianami śledzonymi.</p>
-                    <p><strong>4. Odbiór</strong> — przesyłam gotowy plik. Możesz zaakceptować lub odrzucić zaproponowane zmiany — decyzja należy do Ciebie.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Jak długo trwa realizacja?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Czas realizacji zależy od objętości i stopnia trudności tekstu. Standardowo pracuję w tempie ok. 1–2 arkuszy wydawniczych dziennie. Terminy ustalamy indywidualnie przed zleceniem.</p>
-                    <p>Dostępna jest też opcja trybu <strong>przyspieszonego i ekspresowego</strong> — wiąże się z dopłatą, ale gwarantuje szybszą realizację. Zapytaj o szczegóły.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">W jakim formacie powinienem/powinnam przesłać tekst?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Przyjmuję pliki w formatach <strong>.docx (Word), .odt lub Google Docs</strong>. Nie pracuję na plikach PDF — jeśli masz PDF, sprawdź czy możliwa jest jego konwersja do edytowalnego formatu.</p>
-                    <p>Poprawki oznaczam funkcją „Śledź zmiany" w Wordzie lub „Tryb sugestii" w Google Docs — dzięki temu widzisz każdą zmianę i możesz ją zaakceptować lub odrzucić.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Czy zachowasz mój styl pisania?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Tak — to dla mnie priorytet. Redakcja i korekta mają na celu udoskonalenie tekstu, nie zastąpienie Twojego głosu moim. Poprawiam błędy, doprecyzowuję, dbam o spójność — ale styl, ton i charakter tekstu pozostaje Twój.</p>
-                </div>
-            </div>
+        <div class="cred-pillar">
+            <i class="las la-comments"></i>
+            <span>Odpowiadam na wszystkie pytania</span>
         </div>
-
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Czym różni się korekta od redakcji?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p><strong>Korekta</strong> to końcowy etap pracy nad tekstem — sprawdzam ortografię, interpunkcję, literówki i drobne błędy językowe. Nie ingeruję w strukturę ani styl.</p>
-                    <p><strong>Redakcja</strong> to głębsza praca — oceniam logikę wywodu, spójność stylu, poprawność językową, klarowność zdań. To szerszy zakres i większa ingerencja w tekst.</p>
-                    <p>Nie wiesz, czego potrzebujesz? Napisz — na podstawie próbki doradzę, co będzie lepszym wyborem dla Twojego tekstu.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Jakie rodzaje tekstów obsługujesz?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Pracowałam z bardzo różnymi formatami: <strong>powieści, e-booki, kursy online, artykuły eksperckie, materiały korporacyjne, prace naukowe i dyplomowe</strong>. Każdy tekst traktuję z taką samą starannością.</p>
-                    <p>Jeśli masz wątpliwości czy przyjmę Twój tekst — po prostu zapytaj.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Czy zajmujesz się też składem DTP?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Tak — oferuję skład DTP, czyli przygotowanie pliku do druku lub publikacji cyfrowej. Dbam o typografię, estetykę i czytelność. Efektem jest plik gotowy do przekazania do drukarni lub dystrybucji jako e-book.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header">
-                    <span class="accordion-question">Czy uczysz angielskiego online?</span>
-                    <div class="accordion-icon"></div>
-                </div>
-                <div class="accordion-body">
-                    <p>Tak — prowadzę zajęcia z angielskiego przez Google Meet (50 minut, 95 zł). Materiały przygotowuję i udostępniam ja. Zajęcia dostosowuję do potrzeb i poziomu ucznia.</p>
-                    <p>Jeśli jesteś zainteresowana/zainteresowany — napisz, a ustalimy szczegóły i termin pierwszego spotkania.</p>
-                </div>
-            </div>
+        <div class="cred-pillar">
+            <i class="las la-envelope"></i>
+            <span>Kontakt mailowy i telefoniczny</span>
         </div>
     </div>
-</section>
+</div>
+
+<!-- TOC -->
+<div class="top-toc-wrapper reveal">
+    <ul class="top-toc" id="toc-list">
+        <li><a href="#wycena" class="active">1. Wycena i płatności</a></li>
+        <li><a href="#proces">2. Proces pracy</a></li>
+        <li><a href="#uslugi">3. Usługi</a></li>
+    </ul>
+</div>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <div class="eyebrow reveal">Współpraca</div>
+            <h2 class="section-h2 reveal delay-1">Wszystko, co chcesz <em>wiedzieć</em></h2>
+            <p class="section-lead reveal delay-2">Pytania pogrupowałam tematycznie. Kliknij pytanie, żeby rozwinąć odpowiedź.</p>
+
+            <!-- SEKCJA 1: WYCENA -->
+            <div class="faq-group reveal" id="wycena">
+                <div class="faq-group-title"><i class="las la-calculator"></i> Wycena i płatności</div>
+                <div class="accordion-item open">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Jak wygląda wycena?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body open">
+                        <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu. Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin.</p>
+                        <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="{{ site.baseurl }}/cennik.html">Cennik</a>.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Co wpływa na ostateczną cenę?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Na cenę wpływa kilka czynników: objętość tekstu, ilość błędów (więcej błędów = więcej pracy), stopień trudności (teksty specjalistyczne, naukowe, instrukcje), oczekiwany termin realizacji oraz dodatkowe życzenia zwiększające pracochłonność.</p>
+                        <p>Pamiętaj, że <strong>redakcja nie obejmuje plików PDF</strong> — muszę otrzymać edytowalny plik.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Jakie są formy płatności?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Rozliczam się przelewem bankowym. Po zakończeniu zlecenia wystawiam fakturę VAT (jestem zwolniona z VAT-u). Faktura trafia do Ciebie mejlem.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Czy wystawiasz faktury?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Tak — prowadzę jednoosobową działalność gospodarczą i wystawiam faktury. Nie jestem płatnikiem VAT, więc na fakturze nie ma podatku VAT. Jeśli potrzebujesz faktury na firmę, prześlij mi dane do faktury przy zleceniu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA 2: PROCES -->
+            <div class="faq-group reveal" id="proces">
+                <div class="faq-group-title"><i class="las la-project-diagram"></i> Proces pracy</div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Jak wygląda współpraca krok po kroku?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p><strong>1. Zapytanie</strong> — piszesz do mnie z opisem zlecenia i przesyłasz próbkę lub cały tekst.</p>
+                        <p><strong>2. Wycena</strong> — odpiszę z wyceną i orientacyjnym terminem realizacji w ciągu 24h w dni robocze.</p>
+                        <p><strong>3. Realizacja</strong> — po Twojej akceptacji zabieram się do pracy. Pracuję w Google Docs lub Word z włączonymi zmianami śledzonymi.</p>
+                        <p><strong>4. Odbiór</strong> — przesyłam gotowy plik. Możesz zaakceptować lub odrzucić zaproponowane zmiany — decyzja należy do Ciebie.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Jak długo trwa realizacja?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Czas realizacji zależy od objętości i stopnia trudności tekstu. Standardowo pracuję w tempie ok. 1–2 arkuszy wydawniczych dziennie. Terminy ustalamy indywidualnie przed zleceniem.</p>
+                        <p>Dostępna jest też opcja trybu <strong>przyspieszonego i ekspresowego</strong> — wiąże się z dopłatą, ale gwarantuje szybszą realizację. Zapytaj o szczegóły.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">W jakim formacie powinienem/powinnam przesłać tekst?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Przyjmuję pliki w formatach <strong>.docx (Word), .odt lub Google Docs</strong>. Nie pracuję na plikach PDF — jeśli masz PDF, sprawdź czy możliwa jest jego konwersja do edytowalnego formatu.</p>
+                        <p>Poprawki oznaczam funkcją „Śledź zmiany" w Wordzie lub „Tryb sugestii" w Google Docs — dzięki temu widzisz każdą zmianę i możesz ją zaakceptować lub odrzucić.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Czy zachowasz mój styl pisania?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Tak — to dla mnie priorytet. Redakcja i korekta mają na celu udoskonalenie tekstu, nie zastąpienie Twojego głosu moim. Poprawiam błędy, doprecyzowuję, dbam o spójność — ale styl, ton i charakter tekstu pozostaje Twój.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA 3: USŁUGI -->
+            <div class="faq-group reveal" id="uslugi">
+                <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Czym różni się korekta od redakcji?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p><strong>Korekta</strong> to końcowy etap pracy nad tekstem — sprawdzam ortografię, interpunkcję, literówki i drobne błędy językowe. Nie ingeruję w strukturę ani styl.</p>
+                        <p><strong>Redakcja</strong> to głębsza praca — oceniam logikę wywodu, spójność stylu, poprawność językową, klarowność zdań. To szerszy zakres i większa ingerencja w tekst.</p>
+                        <p>Nie wiesz, czego potrzebujesz? Napisz — na podstawie próbki doradzę, co będzie lepszym wyborem dla Twojego tekstu.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Jakie rodzaje tekstów obsługujesz?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Pracowałam z bardzo różnymi formatami: <strong>powieści, e-booki, kursy online, artykuły eksperckie, materiały korporacyjne, prace naukowe i dyplomowe</strong>. Każdy tekst traktuję z taką samą starannością.</p>
+                        <p>Jeśli masz wątpliwości czy przyjmę Twój tekst — po prostu zapytaj.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Czy zajmujesz się też składem DTP?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Tak — oferuję skład DTP, czyli przygotowanie pliku do druku lub publikacji cyfrowej. Dbam o typografię, estetykę i czytelność. Efektem jest plik gotowy do przekazania do drukarni lub dystrybucji jako e-book.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span class="accordion-question">Czy uczysz angielskiego online?</span>
+                        <div class="accordion-icon"></div>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Tak — prowadzę zajęcia z angielskiego przez Google Meet (50 minut, 95 zł). Materiały przygotowuję i udostępniam ja. Zajęcia dostosowuję do potrzeb i poziomu ucznia.</p>
+                        <p>Jeśli jesteś zainteresowana/zainteresowany — napisz, a ustalimy szczegóły i termin pierwszego spotkania.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <section class="cta-section">
     <div class="cta-content">
@@ -210,4 +269,56 @@ title: FAQs
     </div>
 </section>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
 
+        // ACCORDION
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const body = item.querySelector('.accordion-body');
+                const isOpen = item.classList.contains('open');
+
+                // Zamknij wszystkie w tej samej grupie
+                const group = item.closest('.faq-group');
+                group.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.accordion-body').classList.remove('open');
+                });
+
+                // Otwórz kliknięty (jeśli był zamknięty)
+                if (!isOpen) {
+                    item.classList.add('open');
+                    body.classList.add('open');
+                }
+            });
+        });
+
+        // TOC HIGHLIGHTING
+        const groups = document.querySelectorAll('.faq-group');
+        const navLinks = document.querySelectorAll('.top-toc a');
+
+        function updateTOC() {
+            let current = '';
+            groups.forEach(group => {
+                const rect = group.getBoundingClientRect();
+                if (rect.top <= 250) {
+                    current = group.getAttribute('id');
+                }
+            });
+            if (!current && groups.length > 0) {
+                current = groups[0].getAttribute('id');
+            }
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateTOC);
+        updateTOC();
+
+    });
+</script>
