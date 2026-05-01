@@ -6,7 +6,6 @@ title: Oferta
 <style>
     /* =========================================
        STYLE SPECYFICZNE DLA PODSTRONY "OFERTA"
-       Korzystają ze zmiennych globalnych (--ink, --grad itp.)
        ========================================= */
 
     /* TOC dla Oferty */
@@ -35,13 +34,13 @@ title: Oferta
     .analogy-box h4 { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--ink); margin-bottom: 12px; }
     .analogy-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.65; }
 
-    /* Ramka Warning (Ostrzeżenie z wykrzyknikiem) */
+    /* Ramka Warning */
     .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .warning-box i { font-size: 2.2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
     .warning-box p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.65; margin: 0; }
     .warning-box strong { color: var(--ink); font-weight: 700; }
 
-    /* Ramka Czego usługa nie obejmuje (z krzyżykami) */
+    /* Ramka Czego usługa nie obejmuje */
     .not-included-box { background: var(--paper-warm); border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 40px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .not-included-box h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; text-align: center; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
     .not-list { list-style: none; padding: 0; margin: 0; }
@@ -55,14 +54,13 @@ title: Oferta
     .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
     .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
     .feature-card:hover::before { transform: scaleX(1); }
-    
     .feature-icon { margin-bottom: 20px; }
     .feature-icon i { font-size: 2.8rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
     .feature-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
     .feature-card p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
     .feature-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); background: rgba(107,53,200,0.08); padding: 6px 12px; border-radius: 4px; }
 
-    /* Grid Porównawczy i Karta Premium */
+    /* Grid Porównawczy i Karta z gradientem */
     .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 40px 0; }
     .compare-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow-soft); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .compare-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--paper-mid); transition: background 0.3s; }
@@ -73,74 +71,269 @@ title: Oferta
     .compare-list li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-muted); font-weight: 300; }
     .compare-list strong { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 6px; }
 
-    /* PAKIET PREMIUM (Tło białe, grubsza ramka w kolorze gradientu) */
-    .compare-card--premium { 
-        position: relative; 
-        background: #fff; 
-        border: none; 
-        border-radius: var(--radius-lg); 
-        box-shadow: var(--shadow-soft); 
-    }
+    /* PAKIET z gradientowym obramowaniem */
+    .compare-card--premium { position: relative; background: #fff; border: none; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); }
     .compare-card--premium::before { display: none; }
-    
-    /* Gradientowe obramowanie - grubosć regulowana przez padding */
-    .compare-card--premium::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-radius: var(--radius-lg);
-        padding: 4px; /* <--- Zwiększona grubość ramki */
-        background: var(--grad);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-    }
+    .compare-card--premium::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-lg); padding: 4px; background: var(--grad); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
     .compare-card--premium:hover { box-shadow: 0 10px 30px rgba(107,53,200,0.15); transform: translateY(-4px); }
+    .premium-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; padding-bottom: 16px; position: relative; }
+    .premium-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: var(--grad); }
+    .text-gradient { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
 
-    /* Nowy nagłówek w karcie Premium */
-    .premium-title {
-        font-family: var(--serif); 
-        font-size: 1.6rem; 
-        font-weight: 700; 
-        color: var(--ink); 
-        margin-bottom: 24px; 
-        padding-bottom: 16px; 
-        position: relative; /* Potrzebne dla gradientowej linii pod spodem */
+    /* Call to Action */
+    .section-cta { text-align: center; margin-top: 48px; padding-bottom: 32px; }
+    .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
+    .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
+
+    /* =========================================
+       NOWOŚĆ 1: PASEK FILOZOFII WSPÓŁPRACY
+       ========================================= */
+    .collab-banner {
+        background: var(--ink);
+        padding: 28px 40px;
+        position: relative;
+        overflow: hidden;
     }
-    
-    /* Gradientowa linia pod nagłówkiem */
-    .premium-title::after {
+    .collab-banner::before {
         content: '';
         position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 2px; /* Grubość linii pod nagłówkiem */
+        top: 0; left: 0; bottom: 0;
+        width: 4px;
         background: var(--grad);
     }
-    
-    /* Gradientowy tekst dla pojedynczych słów */
-    .text-gradient {
+    .collab-banner-inner {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+    .collab-banner-text {
+        flex: 1;
+        min-width: 260px;
+    }
+    .collab-banner-text p {
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        font-style: italic;
+        color: rgba(255,255,255,0.9);
+        margin: 0;
+        line-height: 1.6;
+    }
+    .collab-banner-text p strong {
+        font-style: normal;
         background: var(--grad-text);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        display: inline-block;
+        font-weight: 700;
+    }
+    .collab-pillars {
+        display: flex;
+        gap: 32px;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+    }
+    .collab-pillar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .collab-pillar i {
+        font-size: 1.4rem;
+        color: var(--grad-end);
+        flex-shrink: 0;
+    }
+    .collab-pillar span {
+        font-family: var(--sans);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.65);
+    }
+    @media (max-width: 768px) {
+        .collab-banner { padding: 24px 20px; }
+        .collab-pillars { gap: 20px; }
     }
 
-    /* Call to Action - Przyciski */
-    .section-cta { text-align: center; margin-top: 48px; padding-bottom: 32px; }
-    .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
-    .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
+    /* =========================================
+       NOWOŚĆ 2: STRZAŁKA "CO TERAZ" MIĘDZY SEKCJAMI
+       ========================================= */
+    .next-step-bridge {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        z-index: 10;
+    }
+    .next-step-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        background: var(--paper);
+        border: 1px solid var(--paper-mid);
+        border-radius: 100px;
+        padding: 14px 28px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        text-decoration: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+        top: -1px;
+    }
+    .next-step-pill:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(107,53,200,0.15);
+    }
+    .next-step-pill .pill-label {
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--ink-muted);
+    }
+    .next-step-pill .pill-name {
+        font-family: var(--serif);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--ink);
+    }
+    .next-step-pill .pill-arrow {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--grad);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+    }
+    .next-step-pill:hover .pill-arrow { transform: translateX(3px); }
+    .next-step-pill .pill-arrow i {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+    /* Separator między sekcjami z mostkiem */
+    .section-bridge {
+        position: relative;
+    }
+    .section-bridge::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 48px;
+        background: linear-gradient(to bottom, var(--paper-mid), transparent);
+    }
+
+    /* =========================================
+       NOWOŚĆ 3: WIZUALNY PAKIET DOSTAWY
+       ========================================= */
+    .delivery-pack {
+        margin: 56px auto 0;
+        max-width: 860px;
+    }
+    .delivery-pack-header {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+    .delivery-pack-header h3 {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 8px;
+    }
+    .delivery-pack-header p {
+        font-family: var(--sans);
+        font-size: 0.92rem;
+        color: var(--ink-muted);
+        font-weight: 300;
+    }
+    .delivery-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+    }
+    .delivery-item {
+        background: #fff;
+        border: 1px solid var(--paper-mid);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px;
+        display: flex;
+        gap: 18px;
+        align-items: flex-start;
+        transition: transform 0.25s, box-shadow 0.25s;
+        position: relative;
+        overflow: hidden;
+    }
+    .delivery-item::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: var(--grad);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s ease;
+    }
+    .delivery-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-med);
+    }
+    .delivery-item:hover::before { transform: scaleX(1); }
+    .delivery-item-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius);
+        background: rgba(107,53,200,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    .delivery-item-icon i {
+        font-size: 1.5rem;
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .delivery-item-body h4 {
+        font-family: var(--sans);
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 6px;
+    }
+    .delivery-item-body p {
+        font-family: var(--sans);
+        font-size: 0.82rem;
+        color: var(--ink-muted);
+        line-height: 1.55;
+        margin: 0;
+        font-weight: 300;
+    }
+    .delivery-item--highlight {
+        background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%);
+        border-color: rgba(107,53,200,0.2);
+    }
 
     /* RWD dla Oferty */
     @media (max-width: 900px) {
         .compare-grid { grid-template-columns: 1fr; }
         .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px;}
+        .delivery-items { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) { 
-        .container--wide { padding: 0 24px; } 
+        .container--wide { padding: 0 24px; }
+        .next-step-pill { padding: 12px 20px; gap: 10px; }
     }
 </style>
 
@@ -160,15 +353,38 @@ title: Oferta
         </div>
         <div class="hero-eyebrow reveal delay-1">Standard wydawniczy dla Twojej wizji</div>
         <h1 class="reveal delay-2">Przekuj swój pomysł w<br><em class="grad-type">przeżycie</em></h1>
-        <p class="hero-sub reveal delay-3">Dowiedz się, jak pracuję nad tekstem, by wydobyć z niego to, co najlepsze – od eksperckiej diagnozy po pełną architekturę wrażeń i finalny skład.</p>
+        <p class="hero-sub reveal delay-3">Pracuję razem z autorem, nie zamiast niego. Każdy etap — od diagnozy po skład — to wspólna praca nad tym, żeby Twój czytelnik nie mógł odłożyć książki.</p>
     </div>
 </header>
 
+<!-- PASEK FILOZOFII WSPÓŁPRACY -->
+<div class="collab-banner reveal">
+    <div class="collab-banner-inner">
+        <div class="collab-banner-text">
+            <p>Nie poprawiam tekstu <strong>za Ciebie</strong> — pracuję <strong>razem z Tobą</strong>, żebyś rozumiał każdą zmianę i wychodził z procesu lepszym autorem.</p>
+        </div>
+        <div class="collab-pillars">
+            <div class="collab-pillar">
+                <i class="las la-comments"></i>
+                <span>Transparentny proces</span>
+            </div>
+            <div class="collab-pillar">
+                <i class="las la-graduation-cap"></i>
+                <span>Aspekt edukacyjny</span>
+            </div>
+            <div class="collab-pillar">
+                <i class="las la-handshake"></i>
+                <span>Partnerstwo</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- TOC MENU -->
-<div class="top-toc-wrapper reveal delay-3" id="sticky-toc">
+<div class="top-toc-wrapper reveal" id="sticky-toc">
     <ul class="top-toc" id="toc-list">
         <li><a href="#recenzja" class="active">1. Recenzja</a></li>
-        <li><a href="#redakcja">2. Redakcja (Premium)</a></li>
+        <li><a href="#redakcja">2. Redakcja z Warsztatem</a></li>
         <li><a href="#korekta">3. Korekta</a></li>
         <li><a href="#dtp">4. Skład DTP</a></li>
     </ul>
@@ -176,13 +392,13 @@ title: Oferta
 
 <main>
     <!-- 1. RECENZJA -->
-    <section id="recenzja" class="section bg-white toc-section">
+    <section id="recenzja" class="section bg-white toc-section section-bridge">
         <div class="container">
             <div class="eyebrow-label reveal">01 — Pierwszy kontakt</div>
             <h2 class="section-h2 reveal delay-1">Recenzja: zanim wejdziemy <br>w głąb <em>zdania</em></h2>
             <div class="text-content reveal delay-2">
-                <p>Zanim zaczniemy przesuwać przecinki, musimy wiedzieć, czy fundamenty są stabilne. Recenzja (beta-reading premium) to moment, w którym Twój tekst trafia do pierwszego, bardzo wymagającego czytelnika.</p>
-                <p>Nie oceniam tu poprawności językowej. Sprawdzam, czy Twój „hak” na czytelnika działa, czy tempo narracji nie siada i czy bohaterowie budzą autentyczne emocje. To idealny krok, jeśli nie wiesz, czy Twój tekst jest już gotowy na pełną redakcję.</p>
+                <p>Zanim zaczniemy przesuwać przecinki, musimy wiedzieć, czy fundamenty są stabilne. Recenzja to moment, w którym Twój tekst trafia do pierwszego, bardzo wymagającego czytelnika.</p>
+                <p>Nie oceniam tu poprawności językowej. Sprawdzam, czy Twój „hak" na czytelnika działa, czy tempo narracji nie siada i czy bohaterowie budzą autentyczne emocje. To idealny krok, jeśli nie wiesz, czy Twój tekst jest już gotowy na pełną redakcję.</p>
                 <div class="def-box">
                     <h4>Diagnoza potencjału</h4>
                     <p>Czytam Twój tekst, notując na bieżąco moje reakcje. Otrzymujesz ode mnie szczerą, ekspercką odpowiedź na najważniejsze pytanie: "Czy czytelnik będzie chciał przewrócić kolejną stronę?".</p>
@@ -228,19 +444,30 @@ title: Oferta
         </div>
     </section>
 
+    <!-- MOSTEK: Recenzja → Redakcja -->
+    <div class="next-step-bridge">
+        <a href="#redakcja" class="next-step-pill">
+            <div>
+                <div class="pill-label">Następny etap</div>
+                <div class="pill-name">Redakcja z Warsztatem</div>
+            </div>
+            <div class="pill-arrow"><i class="las la-arrow-down"></i></div>
+        </a>
+    </div>
+
     <!-- 2. REDAKCJA -->
-    <section id="redakcja" class="section bg-warm toc-section">
+    <section id="redakcja" class="section bg-warm toc-section section-bridge">
         <div class="container">
             <div class="eyebrow-label reveal">02 — Architektura wrażeń</div>
-            <h2 class="section-h2 reveal delay-1">Redakcja Narracyjna:<br>Twój <em>flagowy</em> proces</h2>
+            <h2 class="section-h2 reveal delay-1">Redakcja z Warsztatem:<br>Twój <em>flagowy</em> proces</h2>
             <div class="text-content reveal delay-2">
                 <p>Większość autorów pisze pod siebie. Moim zadaniem jest sprawić, by ten sam dreszcz poczuł Twój czytelnik. Inspiruję się twórczością autorów takich jak Fonda Lee czy R.F. Kuang, dla których technika służy opowieści.</p>
-                <p>To nie jest usługa usuwania błędów. To <strong>kompleksowy szlif wydawniczy</strong>. Usuwam wszystko, co stoi na drodze między Twoją wizją a emocjami czytelnika. Czasami wymaga to bolesnych cięć, ale tylko tak powstają historie, których nie da się odłożyć.</p>
+                <p>To nie jest usługa usuwania błędów. To <strong>kompleksowy szlif wydawniczy połączony z Twoim rozwojem jako autora</strong>. Usuwam wszystko, co stoi na drodze między Twoją wizją a emocjami czytelnika — i wyjaśniam Ci, dlaczego każda zmiana ma sens.</p>
             </div>
             
             <div class="analogy-box reveal delay-3">
-                <h4>Dlaczego nie oferuję "zwykłej" redakcji?</h4>
-                <p>Wierzę, że Twój tekst zasługuje na wszystko, co najlepsze. Wypuszczenie w świat książki poprawionej pod kątem gramatyki, ale kulejącej pod kątem rytmu, byłoby niedźwiedzią przysługą. Pracuję tylko w pełnym procesie, bo tylko wtedy mogę podpisać się pod Twoim sukcesem.</p>
+                <h4>Dlaczego „z Warsztatem"?</h4>
+                <p>Każda decyzja redaktorska to lekcja, nie wyrok. Wychodzisz z procesu nie tylko z lepszą książką, ale też z wiedzą, jak samodzielnie unikać tych samych pułapek w przyszłości. Dlatego dostajesz ode mnie dokumenty — nie jako biurokrację, ale jako narzędzia do dalszej pracy.</p>
             </div>
         </div>
         
@@ -250,23 +477,76 @@ title: Oferta
                 <div class="compare-card reveal delay-1">
                     <h3>Praca na tekście</h3>
                     <ul class="compare-list">
-                        <li><strong>Głęboka przebudowa struktury</strong><br>Dbamy o rytm, zmysły, zasadę „show, don't tell” i usuwamy narracyjne zapychacze.</li>
+                        <li><strong>Głęboka przebudowa struktury</strong><br>Dbamy o rytm, zmysły, zasadę „show, don't tell" i usuwamy narracyjne zapychacze.</li>
                         <li><strong>Szlif stylistyczny i językowy</strong><br>Eliminacja powtórzeń, dynamizacja czasowników, dopasowanie języka do klimatu świata.</li>
                         <li><strong>Dwuetapowe czytanie</strong><br>Najpierw pracujemy nad mięsem (fabuła/mechanika), potem nad detalami (styl).</li>
                     </ul>
                 </div>
                 
-                <!-- BOX PREMIUM -->
                 <div class="compare-card--premium reveal delay-2">
                     <div style="padding: 40px 32px;">
                         <h3 class="premium-title">
-                            Twoje <span class="text-gradient">Bonusy</span> Premium
+                            Co dostajesz <span class="text-gradient">po zakończeniu</span>
                         </h3>
                         <ul class="compare-list">
-                            <li><strong>Raport „Okiem Czytelnika”</strong><br>Otrzymujesz PDF z oceną wpływu tekstu na odbiorcę (gdzie jest znudzenie, a gdzie zachwyt).</li>
-                            <li><strong>Indywidualny Arkusz Warsztatowy</strong><br>Zestawienie Twoich nawyków językowych wraz z instrukcją, jak ich unikać. Inwestycja w Twój warsztat.</li>
-                            <li><strong>Opcjonalna Sesja 1:1</strong><br>Możliwość wykupienia 60-minutowej konsultacji, by omówić najtrudniejsze węzły fabularne.</li>
+                            <li><strong>Raport „Okiem Czytelnika"</strong><br>PDF z oceną wpływu tekstu na odbiorcę — gdzie jest znudzenie, gdzie zachwyt i dlaczego.</li>
+                            <li><strong>Indywidualny Arkusz Warsztatowy</strong><br>Zestawienie Twoich nawyków językowych wraz z instrukcją, jak ich unikać w kolejnych projektach.</li>
+                            <li><strong>Opcjonalna Sesja 1:1</strong><br>60-minutowa konsultacja, by omówić najtrudniejsze węzły fabularne i Twoje pytania.</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAKIET DOSTAWY -->
+        <div class="container--wide">
+            <div class="delivery-pack reveal">
+                <div class="delivery-pack-header">
+                    <h3>Twój pakiet po zakończeniu współpracy</h3>
+                    <p>Konkretne dokumenty, które trzymasz w rękach — nie obietnice, a narzędzia</p>
+                </div>
+                <div class="delivery-items">
+                    <div class="delivery-item delivery-item--highlight reveal delay-1">
+                        <div class="delivery-item-icon"><i class="las la-file-alt"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Zredagowany manuskrypt</h4>
+                            <p>Plik z uwagami i śledzonymi zmianami — akceptujesz lub odrzucasz każdą z nich sam.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item reveal delay-2">
+                        <div class="delivery-item-icon"><i class="las la-chart-line"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Raport Czytelniczy (PDF)</h4>
+                            <p>Mapa emocji czytelnika: napięcie, znudzenie, zachwyt — rozdział po rozdziale.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item reveal delay-3">
+                        <div class="delivery-item-icon"><i class="las la-chalkboard-teacher"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Arkusz Warsztatowy</h4>
+                            <p>Twoje indywidualne wzorce językowe i ćwiczenia, które pomagają je przełamać.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item reveal delay-1">
+                        <div class="delivery-item-icon"><i class="las la-book-open"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Słownik stylu świata</h4>
+                            <p>Zestawienie decyzji stylistycznych podjętych podczas redakcji — spójność na całą serię.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item reveal delay-2">
+                        <div class="delivery-item-icon"><i class="las la-comments"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Komentarze w tekście</h4>
+                            <p>Każda większa zmiana jest wyjaśniona — wiesz, co i dlaczego zostało zmodyfikowane.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-item reveal delay-3">
+                        <div class="delivery-item-icon"><i class="las la-video"></i></div>
+                        <div class="delivery-item-body">
+                            <h4>Sesja 1:1 (opcjonalna)</h4>
+                            <p>60 minut na żywo — omówienie węzłów fabularnych i odpowiedzi na Twoje pytania.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,17 +556,28 @@ title: Oferta
             <i class="las la-exclamation-triangle"></i>
             <div>
                 <p><strong>Czego redakcja nie zapewni?</strong></p>
-                <p>Redakcja to „otwarta operacja” na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
+                <p>Redakcja to „otwarta operacja" na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
             </div>
         </div>
 
         <div class="container section-cta reveal">
-            <a href="/kontakt" class="btn-gradient">Zarezerwuj redakcję narracyjną</a>
+            <a href="/kontakt" class="btn-gradient">Zarezerwuj Redakcję z Warsztatem</a>
         </div>
     </section>
 
+    <!-- MOSTEK: Redakcja → Korekta -->
+    <div class="next-step-bridge">
+        <a href="#korekta" class="next-step-pill">
+            <div>
+                <div class="pill-label">Następny etap</div>
+                <div class="pill-name">Korekta Techniczna</div>
+            </div>
+            <div class="pill-arrow"><i class="las la-arrow-down"></i></div>
+        </a>
+    </div>
+
     <!-- 3. KOREKTA -->
-    <section id="korekta" class="section bg-white toc-section">
+    <section id="korekta" class="section bg-white toc-section section-bridge">
         <div class="container">
             <div class="eyebrow-label reveal">03 — Ostatnia linia obrony</div>
             <h2 class="section-h2 reveal delay-1">Korekta Techniczna: <br>Finałowy <em>szlif</em></h2>
@@ -313,6 +604,17 @@ title: Oferta
             <a href="/kontakt" class="btn-gradient">Zadbaj o techniczny szlif</a>
         </div>
     </section>
+
+    <!-- MOSTEK: Korekta → DTP -->
+    <div class="next-step-bridge">
+        <a href="#dtp" class="next-step-pill">
+            <div>
+                <div class="pill-label">Następny etap</div>
+                <div class="pill-name">Skład DTP</div>
+            </div>
+            <div class="pill-arrow"><i class="las la-arrow-down"></i></div>
+        </a>
+    </div>
 
     <!-- 4. DTP -->
     <section id="dtp" class="section bg-warm toc-section">
@@ -341,22 +643,15 @@ title: Oferta
         
         function updateTOC() {
             let current = '';
-            
-            // Sprawdzamy położenie każdej sekcji
             sections.forEach(section => {
                 const rect = section.getBoundingClientRect();
-                // 250px od góry ekranu – to moment, w którym menu uzna, że jesteśmy w nowej sekcji
                 if (rect.top <= 250) { 
                     current = section.getAttribute('id');
                 }
             });
-
-            // Zabezpieczenie, jeśli jesteśmy na samej górze strony
             if (!current && sections.length > 0) {
                 current = sections[0].getAttribute('id');
             }
-
-            // Podświetlenie odpowiedniego linku
             navLinks.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
@@ -365,10 +660,19 @@ title: Oferta
             });
         }
 
-        // Odpalamy nasłuchiwanie na przewijanie
         window.addEventListener('scroll', updateTOC);
-        
-        // Odpalamy raz od razu po załadowaniu, żeby menu nie było puste na start
         updateTOC();
+
+        // Płynne przewijanie dla mostków
+        document.querySelectorAll('.next-step-pill').forEach(pill => {
+            pill.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(pill.getAttribute('href'));
+                if (target) {
+                    const offset = target.getBoundingClientRect().top + window.scrollY - 120;
+                    window.scrollTo({ top: offset, behavior: 'smooth' });
+                }
+            });
+        });
     });
 </script>
