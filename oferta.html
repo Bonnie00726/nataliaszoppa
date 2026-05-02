@@ -4,11 +4,7 @@ title: Oferta
 ---
 
 <style>
-    /* =========================================
-       STYLE SPECYFICZNE DLA PODSTRONY "OFERTA"
-       ========================================= */
-
-    /* TOC dla Oferty */
+    /* TOC */
     .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
     .top-toc a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; position: relative; display: inline-block; }
@@ -16,11 +12,35 @@ title: Oferta
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* Pasek dostępności (pod Hero) */
-    .availability-bar { background: var(--paper-warm); border-bottom: 1px solid var(--paper-mid); padding: 14px 20px; display: flex; justify-content: center; align-items: center; gap: 14px; }
-    .availability-bar span { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
+    /* ===== BELL NOTICE ===== */
+    .bell-notice { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-bottom: 24px; }
+    .bell-wrap { position: relative; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+    .bell-icon { font-size: 2rem; display: inline-block; transform-origin: top center; filter: sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1) drop-shadow(0 0 8px rgba(212,175,55,0.65)); }
+    @keyframes bell-ring {
+        0%   { transform: rotate(0deg); }
+        5%   { transform: rotate(20deg); }
+        10%  { transform: rotate(-18deg); }
+        15%  { transform: rotate(15deg); }
+        20%  { transform: rotate(-12deg); }
+        25%  { transform: rotate(8deg); }
+        30%  { transform: rotate(-5deg); }
+        35%  { transform: rotate(3deg); }
+        40%  { transform: rotate(0deg); }
+        100% { transform: rotate(0deg); }
+    }
+    .bell-icon.ringing { animation: bell-ring 1.2s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
+    .bell-dot { position: absolute; top: 4px; right: 4px; width: 10px; height: 10px; background: #f5c518; border-radius: 50%; border: 2px solid rgba(255,255,255,0.7); opacity: 0; transform: scale(0); transition: opacity 0.3s ease, transform 0.3s ease; }
+    .bell-dot.visible { opacity: 1; transform: scale(1); }
+    .bell-pill { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.15); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); border: 1px solid rgba(255,255,255,0.28); border-radius: 100px; white-space: nowrap; max-width: 0; overflow: hidden; opacity: 0; padding: 10px 0; transition: max-width 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease, padding 0.4s ease; }
+    .bell-pill.expanded { max-width: 380px; opacity: 1; padding: 10px 22px; }
+    .bell-pill-dots { display: flex; gap: 5px; flex-shrink: 0; }
+    .bell-pill-dots span { width: 8px; height: 8px; border-radius: 50%; display: block; }
+    .bell-pill-dots .d1 { background: #7e22ce; }
+    .bell-pill-dots .d2 { background: #c026d3; }
+    .bell-pill-dots .d3 { background: #ea580c; }
+    .bell-pill-text { font-family: var(--sans); font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.92); letter-spacing: 0.06em; text-transform: uppercase; }
 
-    /* Układ sekcji i tekstu */
+    /* Reszta styli */
     .container--wide { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
     .bg-warm { background: var(--paper-warm); }
     .bg-white { background: var(--paper); }
@@ -28,31 +48,22 @@ title: Oferta
     .sub-section-title { font-family: var(--serif); font-size: clamp(1.6rem, 2.2vw, 2rem); font-weight: 700; color: var(--ink); margin: 80px 0 32px; text-align: center; }
     .text-content p { font-size: 1.05rem; font-weight: 300; color: var(--ink-soft); margin-bottom: 20px; line-height: 1.75; }
     .text-content p strong { font-weight: 700; color: var(--ink); }
-
-    /* Boxy z definicjami i analogiami */
     .def-box { padding: 24px 32px; border-left: 3px solid var(--grad-start); background: var(--paper-warm); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 32px 0; }
     .def-box h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
     .def-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
-    
     .analogy-box { background: var(--paper); border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
     .analogy-box h4 { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--ink); margin-bottom: 12px; }
     .analogy-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.65; }
-
-    /* Ramka Warning */
     .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .warning-box i { font-size: 2.2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
     .warning-box p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.65; margin: 0; }
     .warning-box strong { color: var(--ink); font-weight: 700; }
-
-    /* Ramka Czego usługa nie obejmuje */
     .not-included-box { background: var(--paper-warm); border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 40px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
     .not-included-box h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; text-align: center; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
     .not-list { list-style: none; padding: 0; margin: 0; }
     .not-list li { position: relative; padding-left: 28px; margin-bottom: 16px; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
     .not-list li:last-child { margin-bottom: 0; }
     .not-list li::before { content: '\f00d'; font-family: 'Line Awesome Free'; font-weight: 900; color: #d9534f; position: absolute; left: 0; top: 1px; font-size: 1.1rem; }
-
-    /* Grid i karty (Recenzja / Feature) */
     .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
     .feature-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
@@ -63,8 +74,6 @@ title: Oferta
     .feature-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
     .feature-card p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
     .feature-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); background: rgba(107,53,200,0.08); padding: 6px 12px; border-radius: 4px; }
-
-    /* Grid Porównawczy */
     .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 40px 0; }
     .compare-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow-soft); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .compare-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--paper-mid); transition: background 0.3s; }
@@ -74,19 +83,13 @@ title: Oferta
     .compare-list { list-style: none; padding: 0; margin: 0; }
     .compare-list li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-muted); font-weight: 300; }
     .compare-list strong { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 6px; }
-
-    /* Call to Action */
     .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
     .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
-
-    /* Pasek Filozofii Współpracy — tylko filary */
     .collab-banner { background: var(--ink); padding: 22px 40px; }
     .collab-banner-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .collab-pillar { display: flex; align-items: center; gap: 12px; }
     .collab-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .collab-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
-
-    /* Pakiet Dostawy */
     .delivery-pack { margin: 56px auto 0; max-width: 860px; }
     .delivery-pack-header { text-align: center; margin-bottom: 32px; }
     .delivery-pack-header h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
@@ -101,79 +104,59 @@ title: Oferta
     .delivery-item-body h4 { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
     .delivery-item-body p { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-muted); line-height: 1.55; margin: 0; font-weight: 300; }
     .delivery-item--highlight { background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%); border-color: rgba(107,53,200,0.2); }
+    .section-footer { padding: 56px 0 64px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    .section-footer .btn-gradient { font-size: 1rem; padding: 20px 52px; }
 
-    /* =========================================
-       SEKCJA CTA NA KOŃCU KAŻDEJ SEKCJI
-       ========================================= */
-    .section-footer {
-        padding: 56px 0 64px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .section-footer .btn-gradient {
-        font-size: 1rem;
-        padding: 20px 52px;
-    }
-
-    /* RWD */
     @media (max-width: 900px) {
         .compare-grid { grid-template-columns: 1fr; }
-        .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px;}
+        .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px; }
         .delivery-items { grid-template-columns: 1fr; }
     }
-    @media (max-width: 860px) { 
+    @media (max-width: 860px) {
         .container--wide { padding: 0 24px; }
         .collab-banner { padding: 24px 20px; }
-        .collab-pillars { gap: 20px; }
     }
 </style>
 
-<!-- HERO SEKCJA -->
+<!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1663341124289-07f994d6841d?q=80&w=659&auto=format&fit=crop" alt="schody, proces, baby steps">
     </div>
     <div class="hero-content">
+
+        <!-- DZWONECZEK — zastępuje stary .availability-bar z kropkami -->
+        <div class="bell-notice">
+            <div class="bell-wrap">
+                <span class="bell-icon" id="bell-icon">🔔</span>
+                <span class="bell-dot" id="bell-dot"></span>
+            </div>
+            <div class="bell-pill" id="bell-pill">
+                <div class="bell-pill-dots">
+                    <span class="d1"></span>
+                    <span class="d2"></span>
+                    <span class="d3"></span>
+                </div>
+                <span class="bell-pill-text">Aktualnie przyjmuję nowe zlecenia</span>
+            </div>
+        </div>
+
         <div class="hero-eyebrow reveal delay-1">Standard wydawniczy dla Twojej wizji</div>
         <h1 class="reveal delay-2">Od <em class="grad-type">brudnopisu</em> po półki sklepowe</h1>
         <p class="hero-sub reveal delay-3">Każdy etap, od diagnozy po skład, to wspólna praca nad tym, żeby Twój czytelnik nie mógł odłożyć książki.</p>
     </div>
 </header>
 
-<!-- PASEK DOSTĘPNOŚCI -->
-<div class="availability-bar reveal">
-    <div class="dots-wrap">
-        <span class="dot dot-1"></span>
-        <span class="dot dot-2"></span>
-        <span class="dot dot-3"></span>
-    </div>
-    <span>Aktualnie przyjmuję nowe zlecenia</span>
-</div>
-
 <!-- PASEK FILOZOFII WSPÓŁPRACY -->
 <div class="collab-banner reveal delay-1">
-    <div class="collab-banner-inner" style="justify-content: center;">
-        <div class="collab-pillars" style="display: flex; flex-direction: row; justify-content: center; align-items: center; width: 100%; gap: 60px; flex-wrap: wrap;">
-            <div class="collab-pillar">
-                <i class="las la-layer-group"></i>
-                <span>4 rzetelne etapy</span>
-            </div>
-            <div class="collab-pillar">
-                <i class="las la-graduation-cap"></i>
-                <span>Aspekt edukacyjny</span>
-            </div>
-            <div class="collab-pillar">
-                <i class="las la-comments"></i>
-                <span>Stały kontakt</span>
-            </div>
-        </div>
+    <div class="collab-banner-inner">
+        <div class="collab-pillar"><i class="las la-layer-group"></i><span>4 rzetelne etapy</span></div>
+        <div class="collab-pillar"><i class="las la-graduation-cap"></i><span>Aspekt edukacyjny</span></div>
+        <div class="collab-pillar"><i class="las la-comments"></i><span>Stały kontakt</span></div>
     </div>
 </div>
 
-<!-- TOC MENU -->
+<!-- TOC -->
 <div class="top-toc-wrapper reveal" id="sticky-toc">
     <ul class="top-toc" id="toc-list">
         <li><a href="#recenzja" class="active">1. Recenzja</a></li>
@@ -184,7 +167,7 @@ title: Oferta
 </div>
 
 <main>
-    <!-- ==================== 1. RECENZJA ==================== -->
+    <!-- 1. RECENZJA -->
     <section id="recenzja" class="section bg-white toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">01 — Pierwszy kontakt</div>
@@ -198,7 +181,6 @@ title: Oferta
                 </div>
             </div>
         </div>
-        
         <div class="container--wide">
             <h3 class="sub-section-title reveal">Co zyskujesz na tym etapie?</h3>
             <div class="feature-grid reveal">
@@ -222,7 +204,6 @@ title: Oferta
                 </div>
             </div>
         </div>
-
         <div class="not-included-box reveal">
             <h3>Czego recenzja nie obejmuje?</h3>
             <ul class="not-list">
@@ -231,8 +212,6 @@ title: Oferta
                 <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do czytelnika.</li>
             </ul>
         </div>
-
-        <!-- CTA sekcji -->
         <div class="container">
             <div class="section-footer reveal">
                 <a href="/kontakt" class="btn-gradient">Zamów recenzję swojego tekstu</a>
@@ -241,7 +220,7 @@ title: Oferta
         </div>
     </section>
 
-    <!-- ==================== 2. REDAKCJA ==================== -->
+    <!-- 2. REDAKCJA -->
     <section id="redakcja" class="section bg-warm toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">02 — Architektura wrażeń</div>
@@ -250,13 +229,11 @@ title: Oferta
                 <p>Większość autorów pisze pod siebie. Moim zadaniem jest sprawić, by ten sam dreszcz poczuł Twój czytelnik. Inspiruję się twórczością autorów takich jak Fonda Lee czy R.F. Kuang, dla których technika służy opowieści.</p>
                 <p>To nie jest usługa usuwania błędów. To <strong>kompleksowy szlif wydawniczy połączony z Twoim rozwojem jako autora</strong>. Usuwam wszystko, co stoi na drodze między Twoją wizją a emocjami czytelnika — i wyjaśniam Ci, dlaczego każda zmiana ma sens.</p>
             </div>
-            
             <div class="analogy-box reveal delay-3">
                 <h4>Dlaczego „z Warsztatem"?</h4>
                 <p>Każda decyzja redaktorska to lekcja, nie wyrok. Wychodzisz z procesu nie tylko z lepszą książką, ale też z wiedzą, jak samodzielnie unikać tych samych pułapek w przyszłości. Dlatego dostajesz ode mnie dokumenty — nie jako biurokrację, ale jako narzędzia do dalszej pracy.</p>
             </div>
         </div>
-        
         <div class="container--wide">
             <h3 class="sub-section-title reveal">Jak przebiega praca na tekście?</h3>
             <div class="compare-grid reveal">
@@ -268,7 +245,6 @@ title: Oferta
                         <li><strong>Spójność logiki</strong><br>Eliminuję luki fabularne i pilnuję, by motywacje bohaterów były zawsze w 100% wiarygodne.</li>
                     </ul>
                 </div>
-                
                 <div class="compare-card reveal delay-2">
                     <h3>2. Szlif Stylistyczny (Mikro)</h3>
                     <ul class="compare-list">
@@ -279,7 +255,6 @@ title: Oferta
                 </div>
             </div>
         </div>
-
         <div class="container--wide">
             <div class="delivery-pack reveal">
                 <div class="delivery-pack-header">
@@ -289,29 +264,19 @@ title: Oferta
                 <div class="delivery-items">
                     <div class="delivery-item delivery-item--highlight reveal delay-1">
                         <div class="delivery-item-icon"><i class="las la-file-alt"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Zredagowany manuskrypt</h4>
-                            <p>Plik z uwagami i śledzonymi zmianami — akceptujesz lub odrzucasz każdą z nich sam.</p>
-                        </div>
+                        <div class="delivery-item-body"><h4>Zredagowany manuskrypt</h4><p>Plik z uwagami i śledzonymi zmianami — akceptujesz lub odrzucasz każdą z nich sam.</p></div>
                     </div>
                     <div class="delivery-item reveal delay-2">
                         <div class="delivery-item-icon"><i class="las la-chart-line"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Raport Czytelniczy (PDF)</h4>
-                            <p>Mapa emocji czytelnika: napięcie, znudzenie, zachwyt — rozdział po rozdziale.</p>
-                        </div>
+                        <div class="delivery-item-body"><h4>Raport Czytelniczy (PDF)</h4><p>Mapa emocji czytelnika: napięcie, znudzenie, zachwyt — rozdział po rozdziale.</p></div>
                     </div>
                     <div class="delivery-item reveal delay-3">
                         <div class="delivery-item-icon"><i class="las la-chalkboard-teacher"></i></div>
-                        <div class="delivery-item-body">
-                            <h4>Arkusz Warsztatowy</h4>
-                            <p>Twoje indywidualne wzorce językowe i ćwiczenia, które pomagają je przełamać.</p>
-                        </div>
+                        <div class="delivery-item-body"><h4>Arkusz Warsztatowy</h4><p>Twoje indywidualne wzorce językowe i ćwiczenia, które pomagają je przełamać.</p></div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="warning-box reveal">
             <i class="las la-exclamation-triangle"></i>
             <div>
@@ -319,8 +284,6 @@ title: Oferta
                 <p>Redakcja to „otwarta operacja" na tekście. Po jej zakończeniu i naniesieniu przez Ciebie zmian, książka <strong>nie jest jeszcze gotowa do druku</strong>. Każdy profesjonalnie przygotowany tekst po etapie redakcji musi przejść przez korektę techniczną, aby wyeliminować błędy powstałe podczas przebudowy zdań.</p>
             </div>
         </div>
-
-        <!-- CTA sekcji -->
         <div class="container">
             <div class="section-footer reveal">
                 <a href="/kontakt" class="btn-gradient">Rozpocznij redakcję z warsztatem</a>
@@ -329,21 +292,19 @@ title: Oferta
         </div>
     </section>
 
-    <!-- ==================== 3. KOREKTA ==================== -->
+    <!-- 3. KOREKTA -->
     <section id="korekta" class="section bg-white toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">03 — Ostatnia linia obrony</div>
             <h2 class="section-h2 reveal delay-1">Korekta Techniczna: <br>Finałowy <em>szlif</em></h2>
             <div class="text-content reveal delay-2">
                 <p>Korekta to polerowanie diamentu, który został już oszlifowany. To etap w 100% techniczny. Nie przesuwam tu ścian, tylko sprawdzam, czy zamki działają. Dbam o to, by najdrobniejsze błędy interpunkcyjne czy literówki nie wybiły czytelnika z rytmu lektury.</p>
-                
                 <div class="warning-box reveal delay-3">
                     <i class="las la-exclamation-circle"></i>
                     <p><strong>Ważna zasada:</strong> Tę usługę oferuję <strong>wyłącznie</strong> dla tekstów, które przeszły już profesjonalną redakcję (u mnie lub u innego redaktora). Nie podejmuję się korekty tekstów surowych, ponieważ same poprawki przecinków nie uratują struktury opowieści.</p>
                 </div>
             </div>
         </div>
-
         <div class="not-included-box reveal">
             <h3>Czego korekta nie naprawi?</h3>
             <ul class="not-list">
@@ -352,8 +313,6 @@ title: Oferta
                 <li><strong>Dziur fabularnych:</strong> Na tym etapie skupiam się na znakach i literach, a nie na wiarygodności postaci i świata.</li>
             </ul>
         </div>
-
-        <!-- CTA sekcji -->
         <div class="container">
             <div class="section-footer reveal">
                 <a href="/kontakt" class="btn-gradient">Zamów korektę techniczną</a>
@@ -362,7 +321,7 @@ title: Oferta
         </div>
     </section>
 
-    <!-- ==================== 4. DTP ==================== -->
+    <!-- 4. DTP -->
     <section id="dtp" class="section bg-warm toc-section">
         <div class="container">
             <div class="eyebrow-label reveal">04 — Forma fizyczna i cyfrowa</div>
@@ -375,8 +334,6 @@ title: Oferta
                 </div>
             </div>
         </div>
-
-        <!-- CTA sekcji — ostatnia -->
         <div class="container">
             <div class="section-footer reveal">
                 <a href="/kontakt" class="btn-gradient">Wypełnij brief i rozpocznij współpracę</a>
@@ -385,35 +342,38 @@ title: Oferta
         </div>
     </section>
 </main>
+
 <div class="grad-line-footer"></div>
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
+        // BELL ANIMATION
+        const bellIcon = document.getElementById('bell-icon');
+        const bellDot  = document.getElementById('bell-dot');
+        const bellPill = document.getElementById('bell-pill');
+
+        setTimeout(() => bellIcon.classList.add('ringing'), 400);
+        setTimeout(() => bellDot.classList.add('visible'), 550);
+        setTimeout(() => bellPill.classList.add('expanded'), 1500);
 
         // TOC HIGHLIGHTING
         const sections = document.querySelectorAll('.toc-section');
         const navLinks = document.querySelectorAll('.top-toc a');
-        
+
         function updateTOC() {
             let current = '';
             sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top <= 250) { 
-                    current = section.getAttribute('id');
-                }
+                if (section.getBoundingClientRect().top <= 250) current = section.getAttribute('id');
             });
-            if (!current && sections.length > 0) {
-                current = sections[0].getAttribute('id');
-            }
+            if (!current && sections.length > 0) current = sections[0].getAttribute('id');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
             });
         }
 
         window.addEventListener('scroll', updateTOC);
         updateTOC();
-
     });
 </script>
