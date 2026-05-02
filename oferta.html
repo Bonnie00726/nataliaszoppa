@@ -184,6 +184,48 @@ title: Oferta
     .section-footer { padding: 56px 0 64px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
     .section-footer .btn-gradient { font-size: 1rem; padding: 20px 52px; }
 
+    /* Zapewnia, że karta jest kontenerem flex i wypełnia całą wysokość */
+.compare-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Lista rozciąga się, by wypełnić dostępną przestrzeń w karcie */
+.compare-list {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Każdy punkt (li) zajmuje dokładnie 1/3 wysokości (przy 3 elementach) */
+.compare-list li {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Tekst zaczyna się od góry */
+    margin-bottom: 32px; /* Odstęp między sekcjami */
+}
+
+.compare-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Styl nagłówków wewnątrz listy (zgodnie z obraz_4.png) */
+.compare-list strong {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    min-height: 1.5em; /* Zapewnia stałą wysokość nagłówka */
+}
+
     @media (max-width: 900px) {
         .compare-grid { grid-template-columns: 1fr; }
         .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px; }
