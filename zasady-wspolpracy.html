@@ -3,6 +3,18 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
+    /* ===== BELL NOTICE ===== */
+    .bell-notice-wrap { display: flex; justify-content: center; align-items: center; margin-bottom: 28px; height: 56px; }
+    .bell-notice { display: inline-flex; align-items: center; position: relative; opacity: 0; transform: scale(0.85); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+    .bell-notice.visible { opacity: 1; transform: scale(1); }
+    .bell-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25); }
+    .bell-icon { font-size: 1.6rem; display: inline-block; transform-origin: top center; filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2) drop-shadow(0 0 6px rgba(245,197,24,0.7)); line-height: 1; }
+    @keyframes bell-ring { 0% { transform: rotate(0deg); } 10% { transform: rotate(24deg); } 20% { transform: rotate(-21deg); } 30% { transform: rotate(17deg); } 40% { transform: rotate(-11deg); } 50% { transform: rotate(6deg); } 60% { transform: rotate(-3deg); } 70% { transform: rotate(1deg); } 80% { transform: rotate(0deg); } 100% { transform: rotate(0deg); } }
+    .bell-icon.ring1, .bell-icon.ring2 { animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
+    .bell-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.14); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 0 100px 100px 0; padding: 0 24px 0 0; height: 40px; margin-left: -26px; padding-left: 32px; white-space: nowrap; overflow: hidden; max-width: 0; opacity: 0; transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
+    .bell-pill.expanded { max-width: 360px; opacity: 1; }
+    .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+
     /* TOC */
     .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
     .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
@@ -96,21 +108,24 @@ title: Zasady współpracy
         <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1170&auto=format&fit=crop" alt="Tło">
     </div>
     <div class="hero-content">
+
+        <!-- DZWONECZEK -->
+        <div class="bell-notice-wrap">
+            <div class="bell-notice" id="bell-notice">
+                <div class="bell-circle">
+                    <span class="bell-icon" id="bell-icon">🔔</span>
+                </div>
+                <div class="bell-pill" id="bell-pill">
+                    <span class="bell-pill-text">Przyjmuję nowe zlecenia</span>
+                </div>
+            </div>
+        </div>
+
         <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
         <h1 class="reveal delay-2">Jasne zasady,<br><em class="grad-type">spokojna głowa</em></h1>
         <p class="hero-sub reveal delay-3">Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
     </div>
 </header>
-
-<!-- PASEK DOSTĘPNOŚCI -->
-<div class="availability-bar reveal">
-    <div class="dots-wrap">
-        <span class="dot dot-1"></span>
-        <span class="dot dot-2"></span>
-        <span class="dot dot-3"></span>
-    </div>
-    <span>Aktualnie przyjmuję nowe zlecenia</span>
-</div>
 
 <!-- CREDIBILITY BAR -->
 <div class="credibility-bar reveal delay-1">
@@ -201,6 +216,17 @@ title: Zasady współpracy
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // BELL ANIMATION
+        const bellIcon   = document.getElementById('bell-icon');
+        const bellNotice = document.getElementById('bell-notice');
+        const bellPill   = document.getElementById('bell-pill');
+
+        setTimeout(() => bellNotice.classList.add('visible'), 200);
+        setTimeout(() => bellIcon.classList.add('ring1'), 400);
+        setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
+        setTimeout(() => bellIcon.classList.add('ring2'), 1300);
+        setTimeout(() => bellPill.classList.add('expanded'), 1700);
+
         const timelineItems = document.querySelectorAll('.timeline-item[data-step]');
         const stepLinks = document.querySelectorAll('.summary-step[data-step]');
 
