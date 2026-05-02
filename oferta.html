@@ -35,26 +35,30 @@ title: Oferta
         transform: scale(1);
     }
 
-    /* Kółko z dzwoneczkiem — zachodzi na pill */
+    /* Kółko z dzwoneczkiem — frosted glass */
     .bell-circle {
         width: 52px;
         height: 52px;
         border-radius: 50%;
-        background: var(--grad);
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(20px) saturate(1.8);
+        -webkit-backdrop-filter: blur(20px) saturate(1.8);
+        border: 1px solid rgba(255,255,255,0.3);
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
         position: relative;
         z-index: 2;
-        box-shadow: 0 4px 16px rgba(107,53,200,0.45);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
     }
 
     .bell-icon {
         font-size: 1.6rem;
         display: inline-block;
         transform-origin: top center;
-        filter: brightness(0) invert(1); /* białe emoji na gradiencie */
+        filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2)
+                drop-shadow(0 0 6px rgba(245,197,24,0.7));
         line-height: 1;
     }
 
