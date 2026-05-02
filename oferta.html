@@ -12,40 +12,49 @@ title: Oferta
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* ===== BELL NOTICE — sekwencja animacji ===== */
+    /* ===== BELL NOTICE — styl YouTube ===== */
     .bell-notice-wrap {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 28px;
-        height: 52px; /* rezerwuje miejsce żeby reszta hero nie skakała */
-        position: relative;
+        height: 56px;
     }
 
-    /* Dzwoneczek — zaczyna na środku */
-    .bell-badge {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 2;
+    .bell-notice {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        opacity: 0;
+        transform: scale(0.85);
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .bell-notice.visible {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    /* Kółko z dzwoneczkiem — zachodzi na pill */
+    .bell-circle {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--grad);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: left 0.5s cubic-bezier(0.22,1,0.36,1), transform 0.5s cubic-bezier(0.22,1,0.36,1);
-    }
-
-    .bell-badge.moved {
-        left: 0;
-        transform: translateX(-30%); /* Lekko nachodzi na lewą krawędź pill */
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 4px 16px rgba(107,53,200,0.45);
     }
 
     .bell-icon {
-        font-size: 2.2rem;
+        font-size: 1.6rem;
         display: inline-block;
         transform-origin: top center;
-        filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2)
-                drop-shadow(0 0 8px rgba(245,197,24,0.7));
-        cursor: default;
+        filter: brightness(0) invert(1); /* białe emoji na gradiencie */
         line-height: 1;
     }
 
@@ -62,74 +71,43 @@ title: Oferta
         100% { transform: rotate(0deg); }
     }
 
-    .bell-icon.ring1 {
-        animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
-    }
+    .bell-icon.ring1,
     .bell-icon.ring2 {
         animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
     }
 
-    /* Badge */
-    .bell-dot {
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        width: 10px;
-        height: 10px;
-        background: #f5c518;
-        border-radius: 50%;
-        border: 2px solid rgba(255,255,255,0.6);
-        opacity: 0;
-        transform: scale(0);
-        transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .bell-dot.visible { opacity: 1; transform: scale(1); }
-
-    /* Pill — rozwijana z prawej strony dzwoneczka */
+    /* Pill — zaczyna spod kółka, zachodzi pod nie lewą krawędzią */
     .bell-pill {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        background: rgba(255,255,255,0.13);
+        background: rgba(255,255,255,0.14);
         backdrop-filter: blur(20px) saturate(1.8);
         -webkit-backdrop-filter: blur(20px) saturate(1.8);
-        border: 1px solid rgba(255,255,255,0.25);
-        border-radius: 100px;
+        border: 1px solid rgba(255,255,255,0.28);
+        border-radius: 0 100px 100px 0;
+        padding: 0 24px 0 0;
+        height: 40px;
+        margin-left: -26px; /* zachodzi pod kółko */
+        padding-left: 32px; /* odsuwa tekst od krawędzi kółka */
         white-space: nowrap;
         overflow: hidden;
-        /* Zwinięta na start */
         max-width: 0;
         opacity: 0;
-        padding: 10px 0;
-        padding-left: 28px; /* miejsce na dzwoneczek który nachodzi */
         transition:
-            max-width 0.6s cubic-bezier(0.22,1,0.36,1),
-            opacity 0.4s ease,
-            padding-right 0.4s ease;
+            max-width 0.55s cubic-bezier(0.22,1,0.36,1),
+            opacity 0.35s ease;
     }
 
     .bell-pill.expanded {
-        max-width: 400px;
+        max-width: 360px;
         opacity: 1;
-        padding: 10px 22px 10px 28px;
     }
-
-    .bell-pill-dots {
-        display: flex;
-        gap: 5px;
-        align-items: center;
-        flex-shrink: 0;
-    }
-    .bell-pill-dots span { width: 7px; height: 7px; border-radius: 50%; display: block; }
-    .bell-pill-dots .d1 { background: #7e22ce; }
-    .bell-pill-dots .d2 { background: #c026d3; }
-    .bell-pill-dots .d3 { background: #ea580c; }
 
     .bell-pill-text {
         font-family: var(--sans);
-        font-size: 0.76rem;
+        font-size: 0.78rem;
         font-weight: 700;
-        color: rgba(255,255,255,0.9);
+        color: rgba(255,255,255,0.92);
         letter-spacing: 0.1em;
         text-transform: uppercase;
         white-space: nowrap;
@@ -220,19 +198,15 @@ title: Oferta
     </div>
     <div class="hero-content">
 
-        <!-- DZWONECZEK — sekwencja 3-aktowa -->
+        <!-- DZWONECZEK — styl YouTube -->
         <div class="bell-notice-wrap">
-            <div class="bell-badge" id="bell-badge">
-                <span class="bell-icon" id="bell-icon">🔔</span>
-                <span class="bell-dot" id="bell-dot"></span>
-            </div>
-            <div class="bell-pill" id="bell-pill">
-                <div class="bell-pill-dots">
-                    <span class="d1"></span>
-                    <span class="d2"></span>
-                    <span class="d3"></span>
+            <div class="bell-notice" id="bell-notice">
+                <div class="bell-circle">
+                    <span class="bell-icon" id="bell-icon">🔔</span>
                 </div>
-                <span class="bell-pill-text">Aktualnie przyjmuję nowe zlecenia</span>
+                <div class="bell-pill" id="bell-pill">
+                    <span class="bell-pill-text">Przyjmuję nowe zlecenia</span>
+                </div>
             </div>
         </div>
 
@@ -443,37 +417,25 @@ title: Oferta
 <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // BELL — sekwencja 3-aktowa
-        const bellIcon  = document.getElementById('bell-icon');
-        const bellDot   = document.getElementById('bell-dot');
-        const bellBadge = document.getElementById('bell-badge');
-        const bellPill  = document.getElementById('bell-pill');
+        // BELL — sekwencja
+        const bellIcon   = document.getElementById('bell-icon');
+        const bellNotice = document.getElementById('bell-notice');
+        const bellPill   = document.getElementById('bell-pill');
 
-        // Akt 1: dzwoni na środku (300ms po załadowaniu)
+        // Pojawia się
+        setTimeout(() => bellNotice.classList.add('visible'), 200);
+
+        // Dzwoni pierwszy raz
         setTimeout(() => {
             bellIcon.classList.add('ring1');
-        }, 300);
+        }, 400);
 
-        // Reset klasy żeby można dodać ponownie
-        setTimeout(() => {
-            bellIcon.classList.remove('ring1');
-        }, 1100);
+        // Reset i drugie dzwonienie
+        setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
+        setTimeout(() => bellIcon.classList.add('ring2'), 1300);
 
-        // Akt 2: przesuwa się w lewo
-        setTimeout(() => {
-            bellBadge.classList.add('moved');
-        }, 1200);
-
-        // Akt 3: dzwoni drugi raz po przesunięciu
-        setTimeout(() => {
-            bellIcon.classList.add('ring2');
-            bellDot.classList.add('visible');
-        }, 1700);
-
-        // Akt 4: pill rozwija się z prawej strony dzwoneczka
-        setTimeout(() => {
-            bellPill.classList.add('expanded');
-        }, 2000);
+        // Pill rozwija się
+        setTimeout(() => bellPill.classList.add('expanded'), 1700);
 
         // TOC HIGHLIGHTING
         const sections = document.querySelectorAll('.toc-section');
