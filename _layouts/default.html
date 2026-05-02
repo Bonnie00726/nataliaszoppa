@@ -2,6 +2,20 @@
 <html lang="pl">
 <head>
     {% include head.html %}
+
+    <style>
+        /* ===== BELL NOTICE ===== */
+        .bell-notice-wrap { display: flex; justify-content: center; align-items: center; margin-bottom: 28px; height: 56px; }
+        .bell-notice { display: inline-flex; align-items: center; position: relative; opacity: 0; transform: scale(0.85); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+        .bell-notice.visible { opacity: 1; transform: scale(1); }
+        .bell-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25); }
+        .bell-icon { font-size: 1.6rem; display: inline-block; transform-origin: top center; filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2) drop-shadow(0 0 6px rgba(245,197,24,0.7)); line-height: 1; }
+        @keyframes bell-ring { 0% { transform: rotate(0deg); } 10% { transform: rotate(24deg); } 20% { transform: rotate(-21deg); } 30% { transform: rotate(17deg); } 40% { transform: rotate(-11deg); } 50% { transform: rotate(6deg); } 60% { transform: rotate(-3deg); } 70% { transform: rotate(1deg); } 80% { transform: rotate(0deg); } 100% { transform: rotate(0deg); } }
+        .bell-icon.ring1, .bell-icon.ring2 { animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
+        .bell-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.14); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 0 100px 100px 0; padding: 0 24px 0 0; height: 40px; margin-left: -26px; padding-left: 32px; white-space: nowrap; overflow: hidden; max-width: 0; opacity: 0; transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
+        .bell-pill.expanded { max-width: 360px; opacity: 1; }
+        .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+    </style>
 </head>
 <body>
 
@@ -12,7 +26,7 @@
     {% include footer.html %}
 
     <script>
-        // 1. REVEAL — dodaj js-loaded tylko na desktop (mobilne zawsze widoczne)
+        // 1. REVEAL
         if (window.innerWidth > 860) {
             document.documentElement.classList.add('js-loaded');
         }
@@ -32,11 +46,10 @@
             revealAll();
         }
 
-        // 2. SCROLLOWANA NAWIGACJA + auto-ciemna na podstronach bez hero
+        // 2. NAWIGACJA
         (function() {
             var nav = document.getElementById('main-nav');
             if (!nav) return;
-            // Jeśli strona nie ma sekcji .hero — nav od razu ciemna
             if (!document.querySelector('.hero')) {
                 nav.classList.add('scrolled');
             }
@@ -106,6 +119,19 @@
                     if (body) body.classList.toggle('open', !isOpen);
                 }
             });
+        });
+
+        // 6. BELL NOTICE
+        document.addEventListener('DOMContentLoaded', function() {
+            var bellIcon   = document.getElementById('bell-icon');
+            var bellNotice = document.getElementById('bell-notice');
+            var bellPill   = document.getElementById('bell-pill');
+            if (!bellNotice) return;
+            setTimeout(function() { bellNotice.classList.add('visible'); }, 200);
+            setTimeout(function() { bellIcon.classList.add('ring1'); }, 400);
+            setTimeout(function() { bellIcon.classList.remove('ring1'); }, 1200);
+            setTimeout(function() { bellIcon.classList.add('ring2'); }, 1300);
+            setTimeout(function() { bellPill.classList.add('expanded'); }, 1700);
         });
     </script>
 </body>
