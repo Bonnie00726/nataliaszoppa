@@ -3,7 +3,7 @@ layout: default
 title: Redakcja - od mikro po makro
 ---
 
-<!-- Definicja gradientu dla ikon -->
+<!-- Definicja gradientu dla ikon i akcentów -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
   <defs>
     <linearGradient id="grad-icon" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -18,7 +18,6 @@ title: Redakcja - od mikro po makro
    ZMIENNE & BAZA
 ══════════════════════════════════════ */
 :root {
-  /* TWOJE NOWE ZDJĘCIE Z LEONARDO/IMGUR */
   --bg-image: url('https://i.imgur.com/ecKof53.jpeg');
 }
 
@@ -36,10 +35,14 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   DYNAMICZNE MENU
+   DYNAMICZNE MENU (Frosted Glass -> Black)
 ══════════════════════════════════════ */
 header {
-  background-color: transparent !important;
+  /* ZMIANA: Zamiast pełnej przezroczystości, eleganckie mleczne szkło */
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
   transition: background-color 0.4s ease, box-shadow 0.4s ease !important;
   box-shadow: none !important;
   position: fixed;
@@ -57,8 +60,10 @@ header:not(.header-scrolled) .site-title {
   color: var(--ink) !important;
 }
 
+/* Czarny pasek po scrollu */
 header.header-scrolled {
   background-color: var(--ink) !important;
+  border-bottom: 1px solid transparent !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
 }
 
@@ -69,7 +74,7 @@ header.header-scrolled .site-title {
 }
 
 /* ══════════════════════════════════════
-   TŁO NA CAŁEJ STRONIE (Fixed Background)
+   TŁO NA CAŁEJ STRONIE
 ══════════════════════════════════════ */
 .fixed-bg {
   position: fixed;
@@ -82,12 +87,12 @@ header.header-scrolled .site-title {
 }
 
 /* ══════════════════════════════════════
-   OCHRONNA MASKA (Gwarancja czytelności)
+   OCHRONNA MASKA 
 ══════════════════════════════════════ */
 .hero-fade-mask {
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 55vh;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0) 100%);
+  top: 0; left: 0; width: 100vw; height: 60vh;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.85) 40%, rgba(255,255,255,0) 100%);
   z-index: -3;
   pointer-events: none; 
 }
@@ -100,22 +105,6 @@ header.header-scrolled .site-title {
   z-index: 2;
   text-align: center;
   padding: 160px 20px 80px; 
-}
-
-.hero-pill {
-  display: inline-block;
-  background: #fff;
-  color: var(--grad-start);
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 8px 24px;
-  border-radius: 100px;
-  margin-bottom: 28px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  border: 1px solid rgba(107, 53, 200, 0.1);
 }
 
 .page-hero h1 {
@@ -133,27 +122,16 @@ header.header-scrolled .site-title {
   font-weight: 300;
   color: var(--ink-soft);
   max-width: 680px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   line-height: 1.7;
 }
 
-.btn-hero {
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--ink); color: #fff !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 18px 44px; border-radius: 100px; text-decoration: none; font-size: 0.9rem;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-}
-.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.15); background: var(--grad-start); }
-
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY
+   PASEK CREDIBILITY (Teraz pod tekstem!)
 ══════════════════════════════════════ */
 .cred-bar-wrapper {
-  position: relative;
-  z-index: 3;
   max-width: 1000px;
-  margin: 0 auto 80px;
-  padding: 0 20px;
+  margin: 40px auto 50px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -179,6 +157,47 @@ header.header-scrolled .site-title {
 .cred-icon { display: flex; align-items: center; justify-content: center; }
 .cred-icon svg { width: 22px; height: 22px; stroke: url(#grad-icon); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .cred-text { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
+
+/* ══════════════════════════════════════
+   SKACZĄCA STRZAŁKA (Bouncing Button)
+══════════════════════════════════════ */
+.scroll-down-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: var(--ink);
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  animation: bounce 2.5s infinite;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.scroll-down-btn svg {
+  width: 28px;
+  height: 28px;
+  stroke: #fff;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* Delikatne przesunięcie strzałki w dół, żeby była idealnie na środku */
+  transform: translateY(2px);
+}
+
+.scroll-down-btn:hover {
+  background: var(--grad-start);
+  box-shadow: 0 12px 30px rgba(107, 53, 200, 0.4);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
 
 /* ══════════════════════════════════════
    GŁÓWNA KARTA
@@ -207,7 +226,6 @@ header.header-scrolled .site-title {
 
 .story-visual { display: flex; justify-content: center; align-items: center; }
 
-/* Prześwitujące cyfry */
 .cutout-number {
   font-family: var(--serif);
   font-size: clamp(12rem, 20vw, 22rem);
@@ -224,7 +242,7 @@ header.header-scrolled .site-title {
 }
 
 /* ══════════════════════════════════════
-   TABELA MIKRO / MAKRO
+   TABELA MIKRO / MAKRO (GRADIENTOWE AKCENTY)
 ══════════════════════════════════════ */
 .table-section { margin-top: 120px; padding-top: 120px; border-top: 1px solid var(--paper-mid); }
 .section-header { text-align: center; margin-bottom: 80px; max-width: 700px; margin-inline: auto; }
@@ -234,9 +252,22 @@ header.header-scrolled .site-title {
 .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
 .mm-card {
-  background: var(--paper-warm); border-radius: var(--radius-lg); padding: 50px 40px; border-top: 4px solid var(--grad-start); box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden; /* Przycina gradientowy pasek do zaokrągleń */
+  background: var(--paper-warm); 
+  border-radius: var(--radius-lg); 
+  padding: 50px 40px; 
+  box-shadow: var(--shadow-soft);
 }
-.mm-card.alt { border-top-color: var(--grad-end); }
+
+/* Pasek gradientowy na samej górze obu kart */
+.mm-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 5px;
+  background: var(--grad);
+}
+
 .mm-card h3 { font-family: var(--serif); font-size: 1.9rem; margin-bottom: 30px; color: var(--ink); border-bottom: 1px solid var(--paper-mid); padding-bottom: 15px;}
 
 .mm-list { display: flex; flex-direction: column; gap: 30px; }
@@ -307,27 +338,30 @@ header.header-scrolled .site-title {
 
 <!-- HERO -->
 <section class="page-hero reveal">
-  <span class="hero-pill">Zwolnij. Jesteś w dobrych rękach.</span>
   <h1>Redakcja od mikro po makro</h1>
   <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
-  <a href="#proces" class="btn-hero">Poznaj mój proces</a>
-</section>
+  
+  <!-- CREDIBILITY BAR ZAMIAST PRZYCISKU -->
+  <div class="cred-bar-wrapper">
+    <div class="cred-item">
+      <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <span class="cred-text">Aspekt Edukacyjny</span>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <span class="cred-text">Twarde Dane</span>
+    </div>
+    <div class="cred-item">
+      <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+      <span class="cred-text">Bezpośredni Kontakt</span>
+    </div>
+  </div>
 
-<!-- CREDIBILITY BAR -->
-<div class="cred-bar-wrapper reveal">
-  <div class="cred-item">
-    <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-    <span class="cred-text">Aspekt Edukacyjny</span>
-  </div>
-  <div class="cred-item">
-    <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-    <span class="cred-text">Twarde Dane</span>
-  </div>
-  <div class="cred-item">
-    <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-    <span class="cred-text">Bezpośredni Kontakt</span>
-  </div>
-</div>
+  <!-- SKACZĄCA STRZAŁKA W DÓŁ -->
+  <a href="#proces" class="scroll-down-btn" aria-label="Poznaj mój proces">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </a>
+</section>
 
 <!-- GŁÓWNA KARTA -->
 <div class="container">
@@ -394,7 +428,7 @@ header.header-scrolled .site-title {
           </div>
         </div>
 
-        <div class="mm-card alt reveal">
+        <div class="mm-card reveal">
           <h3>2. Mikro (Język)</h3>
           <div class="mm-list">
             <div class="mm-item">
@@ -462,6 +496,7 @@ header.header-scrolled .site-title {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  // Animacje reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -470,9 +505,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }, { threshold: 0.15 });
-
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  // Bezpieczny chwyt globalnego nagłówka
   const globalHeader = document.querySelector('header');
   if (globalHeader && !globalHeader.classList.contains('page-hero')) {
     window.addEventListener('scroll', () => {
