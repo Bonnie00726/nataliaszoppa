@@ -3,7 +3,6 @@ layout: default
 title: Redakcja - od mikro po makro
 ---
 
-<!-- Definicja gradientu dla ikon i akcentów -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
   <defs>
     <linearGradient id="grad-icon" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -26,23 +25,16 @@ title: Redakcja - od mikro po makro
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-.gtext {
-  background: var(--grad-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
 /* ══════════════════════════════════════
-   DYNAMICZNE MENU - OVERRIDE GŁÓWNEGO STYLU
+   DYNAMICZNE MENU - POPRAWIONE
 ══════════════════════════════════════ */
-/* Stan 1: Na samej górze (Białe mleczne szkło, czarne napisy) */
+/* Stan 1: Na samej górze (Pełna przeźroczystość) */
 .nav {
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(0,0,0,0.05) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  transition: background 0.3s ease, color 0.3s ease !important;
 }
 
 .nav .nav-logo,
@@ -51,14 +43,11 @@ title: Redakcja - od mikro po makro
   color: var(--ink) !important;
 }
 
-/* Zabezpieczenie, żeby gradientowy akcent w logo pozostał kolorowy */
-.nav .nav-logo em {
-  color: var(--grad-start) !important;
-}
-
-/* Stan 2: Po scrollu (Czarny pasek, białe napisy - korzysta z globalnej klasy .scrolled) */
+/* Stan 2: Po scrollu (Czarny pasek) */
 .nav.scrolled {
   background: rgba(13, 13, 13, 0.98) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid transparent !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
 }
@@ -82,9 +71,6 @@ title: Redakcja - od mikro po makro
   z-index: -4;
 }
 
-/* ══════════════════════════════════════
-   OCHRONNA MASKA 
-══════════════════════════════════════ */
 .hero-fade-mask {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 60vh;
@@ -94,7 +80,7 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   CZYSTE HERO 
+   HERO - POCHYLONY NAGŁÓWEK
 ══════════════════════════════════════ */
 .page-hero {
   position: relative;
@@ -110,6 +96,7 @@ title: Redakcja - od mikro po makro
   line-height: 1.1;
   color: var(--ink);
   margin-bottom: 1.2rem;
+  font-style: italic; /* Eleganckie pochylenie */
 }
 
 .page-hero p {
@@ -123,79 +110,7 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY
-══════════════════════════════════════ */
-.cred-bar-wrapper {
-  max-width: 1000px;
-  margin: 40px auto 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px; 
-}
-
-.cred-item { 
-  display: flex; 
-  align-items: center; 
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 100px; 
-  padding: 14px 28px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06); 
-  border: 1px solid rgba(255,255,255,0.8);
-  transition: transform 0.3s ease;
-}
-
-.cred-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
-
-.cred-icon { display: flex; align-items: center; justify-content: center; }
-.cred-icon svg { width: 22px; height: 22px; stroke: url(#grad-icon); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.cred-text { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
-
-/* ══════════════════════════════════════
-   SKACZĄCA STRZAŁKA
-══════════════════════════════════════ */
-.scroll-down-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  background: var(--ink);
-  color: #fff;
-  border-radius: 50%;
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  animation: bounce 2.5s infinite;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.scroll-down-btn svg {
-  width: 28px;
-  height: 28px;
-  stroke: #fff;
-  stroke-width: 2;
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transform: translateY(2px);
-}
-
-.scroll-down-btn:hover {
-  background: var(--grad-start);
-  box-shadow: 0 12px 30px rgba(107, 53, 200, 0.4);
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-12px); }
-  60% { transform: translateY(-6px); }
-}
-
-/* ══════════════════════════════════════
-   GŁÓWNA KARTA
+   STORYTELLING I CYFRY
 ══════════════════════════════════════ */
 .main-card {
   position: relative;
@@ -208,18 +123,12 @@ title: Redakcja - od mikro po makro
   padding: 100px 80px;
 }
 
-/* ══════════════════════════════════════
-   STORYTELLING ZIG-ZAG
-══════════════════════════════════════ */
 .story-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 120px; }
-.story-row:last-of-type { margin-bottom: 0; }
 .story-row.alt .story-text { order: 2; }
 .story-row.alt .story-visual { order: 1; }
 
 .story-text h3 { font-family: var(--serif); font-size: clamp(2.2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.2rem; }
 .story-text p { font-size: 1.1rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
-
-.story-visual { display: flex; justify-content: center; align-items: center; }
 
 .cutout-number {
   font-family: var(--serif);
@@ -242,8 +151,6 @@ title: Redakcja - od mikro po makro
 .table-section { margin-top: 120px; padding-top: 120px; border-top: 1px solid var(--paper-mid); }
 .section-header { text-align: center; margin-bottom: 80px; max-width: 700px; margin-inline: auto; }
 .section-header h2 { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem;}
-.section-header p { color: var(--ink-muted); font-weight: 300; font-size: 1.15rem; }
-
 .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
 .mm-card {
@@ -255,21 +162,14 @@ title: Redakcja - od mikro po makro
   box-shadow: var(--shadow-soft);
 }
 
-.mm-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 5px;
-  background: var(--grad);
-}
-
+.mm-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--grad); }
 .mm-card h3 { font-family: var(--serif); font-size: 1.9rem; margin-bottom: 30px; color: var(--ink); border-bottom: 1px solid var(--paper-mid); padding-bottom: 15px;}
-
 .mm-list { display: flex; flex-direction: column; gap: 30px; }
 .mm-item h4 { font-size: 0.95rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 8px;}
 .mm-item p { font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
 
 /* ══════════════════════════════════════
-   PAKIET
+   PAKIET I OSTRZEŻENIE (Z OBRAZKA)
 ══════════════════════════════════════ */
 .pack-section { margin-top: 120px; }
 .del-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
@@ -284,58 +184,60 @@ title: Redakcja - od mikro po makro
 .del-icon svg { width: 28px; height: 28px; stroke: url(#grad-icon); stroke-width: 2; fill: none; }
 
 .del-card h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: var(--ink); }
-.del-card p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
+
+/* Styl bloku "Czego redakcja nie zapewni" */
+.warning-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 40px;
+  margin-top: 60px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  border-left: 4px solid #6B35C8;
+}
+
+.warning-icon svg { width: 32px; height: 32px; stroke: #6B35C8; stroke-width: 2; fill: none; flex-shrink: 0; }
+.warning-text h4 { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+.warning-text p { font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; margin: 0; }
 
 /* ══════════════════════════════════════
-   WYŚRODKOWANE CTA
+   POZOSTAŁE ELEMENTY
 ══════════════════════════════════════ */
-.cta-box {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 70px 40px;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center;    
-  text-align: center;
-  gap: 30px;
-  margin-top: 120px;
-}
+.cred-bar-wrapper { max-width: 1000px; margin: 40px auto 50px; display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+.cred-item { display: flex; align-items: center; gap: 12px; background: rgba(255, 255, 255, 0.98); border-radius: 100px; padding: 14px 28px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); border: 1px solid rgba(255,255,255,0.8); transition: transform 0.3s; }
+.cred-icon svg { width: 22px; height: 22px; stroke: url(#grad-icon); stroke-width: 2.2; fill: none; }
+.cred-text { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
 
+.cta-box { background: var(--ink); border-radius: var(--radius-lg); padding: 70px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 30px; margin-top: 120px; }
 .cta-box h2 { font-family: var(--serif); font-size: 2.4rem; color: #fff; margin-bottom: 5px; }
-.cta-box p { color: rgba(255,255,255,0.7); font-size: 1.1rem; font-weight: 300; margin-bottom: 0; max-width: 600px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-weight: 800; text-transform: uppercase; padding: 18px 44px; border-radius: 100px; text-decoration: none; transition: transform 0.2s; }
 
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--grad); color: #fff !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 18px 44px; border-radius: 100px; text-decoration: none; font-size: 0.95rem;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(107, 53, 200, 0.4); }
-
-/* ── RESPONSIVE ── */
+/* ── RESPONSIVE - POPRAWKA DLA TABLETÓW ── */
 @media (max-width: 900px) {
   .page-hero { padding: 140px 20px 40px; }
   .main-card { padding: 60px 30px; border-radius: 16px; margin-bottom: 80px; }
   .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 50px; }
-  .story-row { margin-bottom: 80px; }
   .story-row.alt .story-text, .story-row.alt .story-visual { order: unset; }
-  .cutout-number { font-size: 16rem; }
-  .cta-box { padding: 50px 30px; }
+  
+  /* Poprawka tła pod cyframi dla urządzeń mobilnych */
+  .cutout-number { 
+    font-size: 16rem; 
+    background-attachment: scroll; 
+  }
+  
+  .warning-box { flex-direction: column; padding: 30px 24px; gap: 16px; }
 }
 </style>
 
-<!-- Tło dla całej strony -->
 <div class="fixed-bg"></div>
-
-<!-- Ochronna biała maska u góry -->
 <div class="hero-fade-mask"></div>
 
-<!-- HERO -->
 <section class="page-hero reveal">
   <h1>Redakcja od mikro po makro</h1>
   <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
   
-  <!-- CREDIBILITY BAR -->
   <div class="cred-bar-wrapper">
     <div class="cred-item">
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
@@ -345,19 +247,9 @@ title: Redakcja - od mikro po makro
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
       <span class="cred-text">Twarde Dane</span>
     </div>
-    <div class="cred-item">
-      <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-      <span class="cred-text">Bezpośredni Kontakt</span>
-    </div>
   </div>
-
-  <!-- SKACZĄCA STRZAŁKA W DÓŁ -->
-  <a href="#proces" class="scroll-down-btn" aria-label="Poznaj mój proces">
-    <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-  </a>
 </section>
 
-<!-- GŁÓWNA KARTA -->
 <div class="container">
   <main class="main-card">
     
@@ -366,7 +258,6 @@ title: Redakcja - od mikro po makro
         <div class="story-text">
           <h3>Samotność na szlaku</h3>
           <p>Opisy się dłużą, bohaterowie brzmią sztywno, a fabuła gubi tempo. Sprawdzasz to sam: zmieniasz słowa, przestawiasz akapity. I nic. Dalej nie działa.</p>
-          <p>To nie brak talentu. Twój mózg jest dla Ciebie zbyt lojalny: podświadomie uzupełnia luki w logice. Czytasz to, co chciałeś napisać, a nie to, co faktycznie widzi czytelnik. Tu kończy się intuicja, a zaczyna frustracja.</p>
         </div>
         <div class="story-visual">
           <div class="cutout-number">01</div>
@@ -377,72 +268,40 @@ title: Redakcja - od mikro po makro
         <div class="story-text">
           <h3>Inżynieria opowieści</h3>
           <p>Wkraczam ja z „Laboratorium Tekstu”. Nie oceniam Twojego talentu – analizuję mechanizmy, które rządzą Twoją opowieścią. Dzielę tekst na Makro (fundamenty) i Mikro (detale).</p>
-          <p>Zamieniamy „wydaje mi się” na twarde dane m.in. z programu AntConc i strukturę Beat Sheet. Przestajesz zgadywać po omacku. Zaczynasz operować na konkretach.</p>
         </div>
         <div class="story-visual">
           <div class="cutout-number">02</div>
         </div>
       </div>
-
-      <div class="story-row reveal">
-        <div class="story-text">
-          <h3>Twój tekst oddycha</h3>
-          <p>Twoja historia odzyskuje rytm. Wychodzisz z procesu z tekstem, który jest płynny, wiarygodny i trzyma w napięciu. Ale zyskujesz coś więcej: wiedzę.</p>
-          <p>Dowiesz się, jak samodzielnie unikać pułapek językowych w przyszłości. Nie dostajesz tylko poprawionego pliku – stajesz się świadomym rzemieślnikiem swojego słowa.</p>
-        </div>
-        <div class="story-visual">
-          <div class="cutout-number">03</div>
-        </div>
-      </div>
     </section>
 
-    <!-- TABELA MIKRO MAKRO -->
     <section class="table-section">
       <div class="section-header reveal">
         <h2>Architektura i tkanka</h2>
         <p>Oto co dokładnie dzieje się pod maską Twojego tekstu podczas mojej pracy.</p>
       </div>
-
       <div class="mm-grid">
         <div class="mm-card reveal">
           <h3>1. Makro (Fabuła)</h3>
           <div class="mm-list">
             <div class="mm-item">
               <h4>Struktura i tempo</h4>
-              <p>Sprawdzam, czy historia ma solidny stelaż (np. Beat Sheet). Weryfikuję punkty zwrotne i dbam, by napięcie nie opadało w połowie książki.</p>
-            </div>
-            <div class="mm-item">
-              <h4>Bohaterowie i motywacje</h4>
-              <p>Analizuję łuk postaci. Upewniam się, że decyzje bohaterów są wiarygodne, a ich cele odczuwalne dla czytelnika.</p>
-            </div>
-            <div class="mm-item">
-              <h4>Dynamika scen</h4>
-              <p>Wskazuję fragmenty, które nic nie wnoszą do fabuły. Pomagam usunąć przestoje i wzmocnić sceny o kluczowym znaczeniu.</p>
+              <p>Sprawdzam, czy historia ma solidny stelaż (np. Beat Sheet). Weryfikuję punkty zwrotne.</p>
             </div>
           </div>
         </div>
-
         <div class="mm-card reveal">
           <h3>2. Mikro (Język)</h3>
           <div class="mm-list">
             <div class="mm-item">
               <h4>Dywersyfikacja leksykalna</h4>
-              <p>Dzięki analizie wyłapuję Twoje nawykowe powtórzenia i zastępuję „suche” czasowniki mocniejszymi odpowiednikami.</p>
-            </div>
-            <div class="mm-item">
-              <h4>Logika i flow zdania</h4>
-              <p>Przestawiam szyk i porządkuję akapity tak, aby myśl płynęła gładko, a styl był dopasowany do klimatu opowieści.</p>
-            </div>
-            <div class="mm-item">
-              <h4>Zasada „Show, don't tell”</h4>
-              <p>Pracuję nad tym, by tekst przestał raportować fakty, a zaczął budować żywe obrazy w wyobraźni odbiorcy.</p>
+              <p>Dzięki analizie wyłapuję Twoje nawykowe powtórzenia i zastępuję „suche” czasowniki.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PAKIET -->
     <section class="pack-section">
       <div class="section-header reveal">
         <h2>Twój ekwipunek</h2>
@@ -455,33 +314,41 @@ title: Redakcja - od mikro po makro
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
           </div>
           <h4>Zredagowany Manuskrypt</h4>
-          <p>Plik ze śledzonymi zmianami i uwagami na marginesach. To tutaj widzisz każdą, najdrobniejszą interwencję w tkankę tekstu.</p>
+          <p>Plik ze śledzonymi zmianami i uwagami na marginesach. Widzisz każdą ingerencję.</p>
         </div>
-
         <div class="del-card reveal">
           <div class="del-icon">
             <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></svg>
           </div>
           <h4>Raport Merytoryczny</h4>
-          <p>Diagnoza Makro w PDF. Rozpisane na osi czasu tempo Twojej opowieści, analiza łuków postaci i obiektywny feedback strukturalny.</p>
+          <p>Diagnoza Makro w PDF. Analiza łuków postaci i obiektywny feedback strukturalny.</p>
         </div>
-
         <div class="del-card reveal">
           <div class="del-icon">
             <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
           </div>
           <h4>Raport Językowy</h4>
-          <p>Twoje nawyki w liczbach. Analiza Mikro z programu AntConc. Dowiesz się, jakich słów nadużywasz i jak wzmocnić swój głos.</p>
+          <p>Twoje nawyki w liczbach. Analiza z programu AntConc. Dowiesz się, jakich słów nadużywasz.</p>
+        </div>
+      </div>
+
+      <div class="warning-box reveal">
+        <div class="warning-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+        </div>
+        <div class="warning-text">
+          <h4>Czego redakcja nie zapewni?</h4>
+          <p>Redakcja to głęboka praca na tkance tekstu. Po jej zakończeniu i naniesieniu poprawek, książka wymaga jeszcze <strong>korekty technicznej</strong>. To niezbędny etap, by wyłapać drobne błędy, które mogły powstać podczas przebudowy zdań.</p>
         </div>
       </div>
     </section>
 
-    <!-- WYŚRODKOWANE CTA -->
     <div class="cta-box reveal">
-      <div class="cta-content">
-        <h2>Gotowy do drogi?</h2>
-        <p>Opowiedz mi o swoim tekście. Wrócę do Ciebie z planem i wyceną.</p>
-      </div>
+      <h2>Gotowy do drogi?</h2>
       <a href="/kontakt/" class="btn">Rozpocznij transformację</a>
     </div>
 
@@ -490,7 +357,6 @@ title: Redakcja - od mikro po makro
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Animacje reveal (Pojawianie się sekcji przy scrollowaniu)
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -500,9 +366,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  
-  // Z Twojego globalnego pliku HTML wynika, że klasa `.scrolled` jest nadawana 
-  // automatycznie przez skrypt w głównym layoucie.
-  // Dlatego skasowałem stąd nasz dodatkowy, konfliktujący skrypt menu!
 });
 </script>
