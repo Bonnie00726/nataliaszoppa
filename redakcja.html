@@ -37,36 +37,34 @@ title: Redakcja - od mikro po makro
 /* ══════════════════════════════════════
    DYNAMICZNE MENU - OVERRIDE GŁÓWNEGO STYLU
 ══════════════════════════════════════ */
-/* Celujemy we właściwe klasy z Twojego globalnego CSS */
+/* Stan 1: Na samej górze (Białe mleczne szkło, czarne napisy) */
 .nav {
-  background-color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(0,0,0,0.05) !important;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease !important;
 }
 
-.nav:not(.scrolled) .nav-links a:not(.nav-cta) {
+.nav .nav-logo,
+.nav .nav-links a:not(.nav-cta),
+.nav .mobile-toggle {
   color: var(--ink) !important;
 }
 
-.nav:not(.scrolled) .nav-logo {
-  color: var(--ink) !important;
+/* Zabezpieczenie, żeby gradientowy akcent w logo pozostał kolorowy */
+.nav .nav-logo em {
+  color: var(--grad-start) !important;
 }
 
-.nav:not(.scrolled) .mobile-toggle {
-    color: var(--ink) !important;
-}
-
-/* Czarny pasek po scrollu - korzystamy z natywnej klasy Twojego szablonu */
+/* Stan 2: Po scrollu (Czarny pasek, białe napisy - korzysta z globalnej klasy .scrolled) */
 .nav.scrolled {
-  background-color: rgba(13,13,13,0.98) !important;
+  background: rgba(13, 13, 13, 0.98) !important;
   border-bottom: 1px solid transparent !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
 }
 
-.nav.scrolled .nav-links a:not(.nav-cta),
 .nav.scrolled .nav-logo,
+.nav.scrolled .nav-links a:not(.nav-cta),
 .nav.scrolled .mobile-toggle {
   color: #fff !important;
 }
@@ -492,6 +490,7 @@ title: Redakcja - od mikro po makro
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+  // Animacje reveal (Pojawianie się sekcji przy scrollowaniu)
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -501,5 +500,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  
+  // Z Twojego globalnego pliku HTML wynika, że klasa `.scrolled` jest nadawana 
+  // automatycznie przez skrypt w głównym layoucie.
+  // Dlatego skasowałem stąd nasz dodatkowy, konfliktujący skrypt menu!
 });
 </script>
