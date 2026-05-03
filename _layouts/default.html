@@ -26,6 +26,44 @@
     {% include footer.html %}
 
     <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Obsługa modali w sekcji Usług
+  const readMoreBtns = document.querySelectorAll('.read-more-btn');
+  const closeBtns = document.querySelectorAll('.close-btn');
+  const modals = document.querySelectorAll('.modal');
+
+  // Otwieranie
+  readMoreBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      const modal = document.getElementById(targetId);
+      if(modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Blokuje przewijanie strony w tle
+      }
+    });
+  });
+
+  // Zamykanie przez przycisk X
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.modal').classList.remove('show');
+      document.body.style.overflow = ''; // Przywraca przewijanie
+    });
+  });
+
+  // Zamykanie kliknięciem w przyciemnione tło
+  modals.forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+});
+        
         // 1. REVEAL
         if (window.innerWidth > 860) {
             document.documentElement.classList.add('js-loaded');
@@ -134,5 +172,7 @@
             setTimeout(function() { bellPill.classList.add('expanded'); }, 1700);
         });
     </script>
+
+
 </body>
 </html>
