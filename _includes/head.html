@@ -1027,9 +1027,30 @@
   position: relative; /* Wymagane dla badge'a */
 }
 
+/* =========================================
+   WYRÓŻNIONA KARTA (GRADIENTOWA RAMKA)
+   ========================================= */
+
+.service-card--popular {
+  position: relative;
+  /* Tworzymy gradientową ramkę za pomocą podwójnego tła */
+  border: 1.5px solid transparent !important; 
+  background: 
+    linear-gradient(#fff, #fff) padding-box, 
+    var(--grad) border-box !important;
+  box-shadow: 0 4px 24px rgba(107,53,200,0.12) !important;
+}
+
+/* Usuwamy standardowy pasek hover dla tej konkretnej karty, 
+   ponieważ ma już pełną, gradientową ramkę */
+.service-card--popular::before {
+  display: none !important;
+}
+
 .popular-badge {
   position: absolute;
-  top: -12px;
+  /* Ustawiamy odznakę tak, aby idealnie nachodziła na górną ramkę */
+  top: -15px; 
   right: 24px;
   background: var(--grad);
   color: #fff;
@@ -1038,10 +1059,20 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  padding: 6px 16px;
+  padding: 8px 20px;
   border-radius: 100px;
-  box-shadow: 0 4px 15px rgba(107,53,200,0.3);
+  /* Dodajemy miękki cień, który widać na screenie */
+  box-shadow: 0 6px 15px rgba(107,53,200,0.3);
   z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .popular-badge { 
+    right: 16px; 
+    top: -12px; 
+    font-size: 0.65rem;
+    padding: 6px 14px;
+  }
 }
 
 .read-more-btn {
