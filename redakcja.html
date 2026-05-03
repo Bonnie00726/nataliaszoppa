@@ -21,48 +21,43 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   FLOATING HERO (Z Twoim zdjęciem)
+   HERO NA CAŁĄ SZEROKOŚĆ
 ══════════════════════════════════════ */
-.hero-wrapper {
-  padding: 60px 40px;
-  background: var(--paper-warm);
-  display: flex;
-  justify-content: center;
-}
-
-.hero-floating {
+.hero-full {
   position: relative;
-  width: 100%;
-  max-width: 1200px;
   min-height: 85vh;
-  border-radius: 32px;
-  
-  /* TU WPISZ ŚCIEŻKĘ DO ZDJĘCIA */
-  background-image: url('https://i.imgur.com/d03rqjZ.jpeg'); 
-  background-size: cover;
-  background-position: center bottom;
-  box-shadow: 0 30px 60px rgba(107, 53, 200, 0.15);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px;
-  overflow: hidden;
+  padding: 100px 40px;
+  /* Podmień ten link na bezpośredni link do Twojego zdjęcia lub lokalną ścieżkę w Jekyllu */
+  background-image: url('https://i.imgur.com/G5qQ3uV.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Opcjonalny efekt paralaksy dla Hero */
 }
 
-/* Glassmorphism panel dla tekstu */
+/* Przyciemnienie tła dla lepszej czytelności */
+.hero-full::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.4); /* Delikatnie przyciemnia zdjęcie */
+  z-index: 1;
+}
+
 .hero-glass-panel {
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 60px 50px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 70px 60px;
   border-radius: 24px;
   text-align: center;
-  max-width: 800px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  max-width: 840px;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.1);
 }
 
 .hero-pill {
@@ -71,62 +66,62 @@ title: Redakcja - od mikro po makro
   color: var(--grad-start);
   font-family: var(--sans);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 8px 20px;
+  padding: 8px 24px;
   border-radius: 100px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(107, 53, 200, 0.08);
 }
 
 .hero-glass-panel h1 {
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--ink);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .hero-glass-panel p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--ink-soft);
   line-height: 1.8;
-  font-weight: 400;
-  margin-bottom: 2.5rem;
-  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 2.8rem;
+  max-width: 640px;
   margin-inline: auto;
 }
 
 .btn-hero {
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--ink); color: #fff !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 18px 40px; border-radius: 100px; text-decoration: none; font-size: 0.85rem;
+  padding: 18px 44px; border-radius: 100px; text-decoration: none; font-size: 0.9rem;
   transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
-.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); background: var(--grad-start); }
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); background: var(--grad-start); }
 
 /* ══════════════════════════════════════
    CREDIBILITY BAR
 ══════════════════════════════════════ */
 .credibility-bar {
   background: var(--paper);
-  padding: 40px 0;
+  padding: 48px 0;
   border-bottom: 1px solid var(--paper-mid);
 }
 
 .cred-inner {
-  display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px;
+  display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 32px;
 }
 
 .cred-item { display: flex; align-items: center; gap: 16px; }
-.cred-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; }
-.cred-icon svg { width: 22px; height: 22px; stroke: var(--grad-start); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.cred-text { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
+.cred-icon { width: 52px; height: 52px; border-radius: 50%; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; }
+.cred-icon svg { width: 24px; height: 24px; stroke: var(--grad-start); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.cred-text { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
 
 /* ══════════════════════════════════════
-   STORYTELLING ZIG-ZAG
+   STORYTELLING (KROKI) - CZYSTA TYPOGRAFIA
 ══════════════════════════════════════ */
 .story-section { padding: 120px 0; }
 .bg-gray { background: var(--paper-warm); }
@@ -139,33 +134,33 @@ title: Redakcja - od mikro po makro
 .story-kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grad-end); display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
 .story-kicker::before { content: ''; display: block; width: 30px; height: 2px; background: var(--grad-end); }
 
-.story-text h3 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
-.story-text p { font-size: 1.05rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+.story-text h3 { font-family: var(--serif); font-size: clamp(2.2rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.4rem; }
+.story-text p { font-size: 1.1rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
 
+/* Duże numery typograficzne zamiast wycinanek ze zdjęć */
 .story-visual { display: flex; justify-content: center; align-items: center; position: relative; }
 
-.cutout-number {
-  font-family: var(--sans);
-  font-size: clamp(14rem, 22vw, 24rem);
-  font-weight: 900;
+.big-number {
+  font-family: var(--serif);
+  font-size: clamp(14rem, 24vw, 26rem);
+  font-weight: 700;
   line-height: 0.8;
-  letter-spacing: -0.05em;
-  background-size: cover;
-  background-position: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  /* TU TEŻ UŻYWAMY TWOJEGO ZDJĘCIA DLA SPÓJNOŚCI */
-  background-image: url('/assets/images/krajobraz.jpg'); 
+  color: var(--paper-mid); /* Bardzo jasny szary, subtelny w tle */
+  opacity: 0.4;
+  user-select: none;
 }
+.bg-gray .big-number {
+    color: #d1d1d1; /* Nieco ciemniejszy na szarym tle */
+}
+
 
 /* ══════════════════════════════════════
    TABELA MIKRO / MAKRO
 ══════════════════════════════════════ */
 .table-section { padding: 120px 0; background: var(--paper); }
 .section-header { text-align: center; margin-bottom: 80px; max-width: 700px; margin-inline: auto; }
-.section-header h2 { font-family: var(--serif); font-size: 2.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem;}
-.section-header p { color: var(--ink-muted); font-weight: 300; font-size: 1.1rem; }
+.section-header h2 { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--ink); margin-bottom: 1.2rem;}
+.section-header p { color: var(--ink-muted); font-weight: 300; font-size: 1.15rem; }
 
 .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
@@ -173,44 +168,32 @@ title: Redakcja - od mikro po makro
   background: var(--paper-warm); border-radius: var(--radius-lg); padding: 50px 40px; border-top: 4px solid var(--grad-start); box-shadow: var(--shadow-soft);
 }
 .mm-card.alt { border-top-color: var(--grad-end); }
-.mm-card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 30px; color: var(--ink); border-bottom: 1px solid var(--paper-mid); padding-bottom: 15px;}
+.mm-card h3 { font-family: var(--serif); font-size: 1.9rem; margin-bottom: 30px; color: var(--ink); border-bottom: 1px solid var(--paper-mid); padding-bottom: 15px;}
 
 .mm-list { display: flex; flex-direction: column; gap: 30px; }
-.mm-item h4 { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 8px;}
-.mm-item p { font-size: 1rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
+.mm-item h4 { font-size: 0.95rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 8px;}
+.mm-item p { font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
 
 /* ══════════════════════════════════════
-   PAKIET Z EFEKTEM PARALAKSY
+   PAKIET (Ciemne szare tło)
 ══════════════════════════════════════ */
-.parallax-section {
+.pack-section {
   position: relative;
   padding: 120px 0 160px;
-  /* TU ZNÓW TWOJE ZDJĘCIE - EFEKT PARALAKSY */
-  background-image: url('/assets/images/krajobraz.jpg');
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  background-color: #444444; /* Ciemnoszare tło zgodne ze zrzutem 3 */
 }
 
-/* Ciemny overlay, żeby pakiety były czytelne */
-.parallax-overlay {
-  position: absolute; inset: 0; background: rgba(13, 13, 13, 0.75); z-index: 1;
-}
-
-.parallax-content { position: relative; z-index: 2; }
-.parallax-content .section-header h2, .parallax-content .section-header p { color: #fff; }
+.pack-section .section-header h2, .pack-section .section-header p { color: #fff; }
 
 .del-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
 .del-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: var(--paper-warm); /* Jasne tło karty */
   border-radius: var(--radius-lg);
   padding: 50px 40px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.del-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.del-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
 
 .del-icon { width: 60px; height: 60px; border-radius: 16px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 30px; }
 .del-icon svg { width: 28px; height: 28px; stroke: var(--grad-start); stroke-width: 1.5; fill: none; }
@@ -219,53 +202,50 @@ title: Redakcja - od mikro po makro
 .del-card p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
 
 /* ══════════════════════════════════════
-   CTA (Ciemny boks wyciągnięty w górę)
+   CTA BOX NA DOLE
 ══════════════════════════════════════ */
 .cta-box {
   background: var(--grad);
   border-radius: var(--radius-lg);
   padding: 60px 80px;
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;
-  margin: -80px auto 80px; /* Nachodzi na paralaksę */
+  margin: -80px auto 80px; 
   position: relative; z-index: 10;
   box-shadow: 0 30px 60px rgba(107, 53, 200, 0.3);
 }
 
 .cta-box h2 { font-family: var(--serif); font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
-.cta-box p { color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 300; margin-bottom: 0; }
+.cta-box p { color: rgba(255,255,255,0.9); font-size: 1.05rem; font-weight: 300; margin-bottom: 0; }
 
 .btn-white {
   display: inline-flex; align-items: center; justify-content: center;
   background: #fff; color: var(--grad-start) !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 18px 40px; border-radius: 100px; text-decoration: none; font-size: 0.85rem;
+  padding: 18px 40px; border-radius: 100px; text-decoration: none; font-size: 0.9rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero-wrapper { padding: 20px; }
-  .hero-floating { padding: 30px 20px; min-height: 70vh;}
-  .hero-glass-panel { padding: 40px 20px; }
-  .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-full { padding: 80px 20px; }
+  .hero-glass-panel { padding: 50px 30px; }
+  .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 50px; }
   .story-row.alt .story-text, .story-row.alt .story-visual { order: unset; }
-  .cutout-number { font-size: 14rem; }
-  .cta-box { padding: 40px 30px; text-align: center; justify-content: center; }
+  .big-number { font-size: 16rem; }
+  .cta-box { padding: 50px 30px; text-align: center; justify-content: center; }
   .cred-inner { flex-direction: column; align-items: flex-start; }
 }
 </style>
 
-<!-- ══ FLOATING HERO ══ -->
-<div class="hero-wrapper">
-  <div class="hero-floating reveal">
-    <div class="hero-glass-panel">
-      <span class="hero-pill">Zwolnij. Jesteś w dobrych rękach.</span>
-      <h1>Tekst, który wreszcie <br><em class="gtext">działa.</em></h1>
-      <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
-      <a href="#proces" class="btn-hero">Poznaj mój proces</a>
-    </div>
+<!-- ══ FULL WIDTH HERO ══ -->
+<header class="hero-full reveal">
+  <div class="hero-glass-panel">
+    <span class="hero-pill">Zwolnij. Jesteś w dobrych rękach.</span>
+    <h1>Tekst, który wreszcie <br><em class="gtext">działa.</em></h1>
+    <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
+    <a href="#proces" class="btn-hero">Poznaj mój proces</a>
   </div>
-</div>
+</header>
 
 <!-- ══ CREDIBILITY BAR ══ -->
 <div class="credibility-bar reveal">
@@ -290,12 +270,12 @@ title: Redakcja - od mikro po makro
   <div class="container story-row reveal">
     <div class="story-text">
       <span class="story-kicker">01. Punkt wyjścia</span>
-      <h3>Samotność na <em>szlaku</em></h3>
+      <h3>Samotność na szlaku</h3>
       <p>Opisy się dłużą, bohaterowie brzmią sztywno, a fabuła gubi tempo. Sprawdzasz to sam: zmieniasz słowa, przestawiasz akapity. I nic. Dalej nie działa.</p>
-      <p>To nie brak talentu. Twój mózg jest dla Ciebie zbyt lojalny: podświadomie uzupełnia luki w logice. Czytasz to, co <strong>chciałeś napisać</strong>, a nie to, co faktycznie widzi czytelnik. Tu kończy się intuicja, a zaczyna frustracja.</p>
+      <p>To nie brak talentu. Twój mózg jest dla Ciebie zbyt lojalny: podświadomie uzupełnia luki w logice. Czytasz to, co chciałeś napisać, a nie to, co faktycznie widzi czytelnik. Tu kończy się intuicja, a zaczyna frustracja.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number">01</span>
+      <div class="big-number">01</div>
     </div>
   </div>
 </section>
@@ -304,12 +284,12 @@ title: Redakcja - od mikro po makro
   <div class="container story-row alt reveal">
     <div class="story-text">
       <span class="story-kicker">02. Przełom</span>
-      <h3>Inżynieria <em>opowieści</em></h3>
-      <p>Wkraczam ja z „Laboratorium Tekstu”. Nie oceniam Twojego talentu – analizuję mechanizmy, które rządzą Twoją opowieścią. Dzielę tekst na <strong>Makro</strong> (fundamenty) i <strong>Mikro</strong> (detale).</p>
+      <h3>Inżynieria opowieści</h3>
+      <p>Wkraczam ja z „Laboratorium Tekstu”. Nie oceniam Twojego talentu – analizuję mechanizmy, które rządzą Twoją opowieścią. Dzielę tekst na Makro (fundamenty) i Mikro (detale).</p>
       <p>Zamieniamy „wydaje mi się” na twarde dane m.in. z programu AntConc i strukturę Beat Sheet. Przestajesz zgadywać po omacku. Zaczynasz operować na konkretach.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number">02</span>
+      <div class="big-number">02</div>
     </div>
   </div>
 </section>
@@ -318,12 +298,12 @@ title: Redakcja - od mikro po makro
   <div class="container story-row reveal">
     <div class="story-text">
       <span class="story-kicker">03. Efekt</span>
-      <h3>Twój tekst <em>oddycha</em></h3>
+      <h3>Twój tekst oddycha</h3>
       <p>Twoja historia odzyskuje rytm. Wychodzisz z procesu z tekstem, który jest płynny, wiarygodny i trzyma w napięciu. Ale zyskujesz coś więcej: wiedzę.</p>
       <p>Dowiesz się, jak samodzielnie unikać pułapek językowych w przyszłości. Nie dostajesz tylko poprawionego pliku – stajesz się świadomym rzemieślnikiem swojego słowa.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number">03</span>
+      <div class="big-number">03</div>
     </div>
   </div>
 </section>
@@ -376,10 +356,9 @@ title: Redakcja - od mikro po makro
   </div>
 </section>
 
-<!-- ══ PAKIET Z PARALAKSĄ ══ -->
-<section class="parallax-section">
-  <div class="parallax-overlay"></div>
-  <div class="container parallax-content">
+<!-- ══ PAKIET ══ -->
+<section class="pack-section">
+  <div class="container">
     <div class="section-header reveal">
       <h2>Twój ekwipunek</h2>
       <p>Z czym wychodzisz na szczyt po zakończeniu naszej współpracy?</p>
