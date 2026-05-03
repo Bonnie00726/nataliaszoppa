@@ -264,7 +264,6 @@ title: Redakcja - od mikro po makro
   line-height: 0.8;
   letter-spacing: -0.05em;
   position: relative;
-  /* Kolor tekstu jako maska — czarny = widoczne tło, przezroczysty = nic */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -272,13 +271,6 @@ title: Redakcja - od mikro po makro
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  /* Fade-in po załadowaniu */
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-.cutout-number.loaded {
-  opacity: 1;
 }
 
 /* Fallback dla tabletów/iOS — background-attachment: fixed nie działa na mobile */
@@ -628,36 +620,6 @@ title: Redakcja - od mikro po makro
 </div>
 
 <script>
-(function() {
-  var BG_URL = '{{ site.baseurl }}/assets/img/Stacks_of_old_and_new_202605022204.jpeg';
-
-  function showNumbers() {
-    document.querySelectorAll('.cutout-number').forEach(function(el) {
-      el.classList.add('loaded');
-    });
-  }
-
-  // Sprawdzamy czy przeglądarka już ma obrazek w cache
-  // (fixed-bg go pobiera, więc często będzie już gotowy)
-  var cached = false;
-  try {
-    var entries = performance.getEntriesByName(BG_URL, 'resource');
-    if (entries.length > 0) cached = true;
-  } catch(e) {}
-
-  if (cached) {
-    // Obraz w cache — pokaż natychmiast bez czekania
-    showNumbers();
-  } else {
-    // Nie ma w cache — pobierz przez new Image() i czekaj
-    var img = new Image();
-    img.onload = showNumbers;
-    img.onerror = showNumbers;
-    img.src = BG_URL;
-    if (img.complete) showNumbers();
-  }
-})();
-
 document.addEventListener("DOMContentLoaded", function() {
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) {
