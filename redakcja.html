@@ -5,15 +5,13 @@ title: Redakcja - od mikro po makro
 
 <style>
 /* ══════════════════════════════════════
-   Style specyficzne dla podstrony Redakcji
+   ZMIENNE & BAZA
 ══════════════════════════════════════ */
 .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
 
-/* ── REVEAL ANIMATION ── */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-/* ── GRADIENT TEXT ── */
 .gtext {
   background: var(--grad-text);
   -webkit-background-clip: text;
@@ -23,267 +21,266 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   HERO — Lekkie, delikatne
+   FLOATING HERO (Z Twoim zdjęciem)
 ══════════════════════════════════════ */
-.hero-light {
-  padding: 120px 0 80px;
-  background: radial-gradient(circle at top right, rgba(107,53,200,0.05) 0%, transparent 40%),
-              radial-gradient(circle at bottom left, rgba(232,119,42,0.05) 0%, transparent 40%);
+.hero-wrapper {
+  padding: 60px 40px;
+  background: var(--paper-warm);
+  display: flex;
+  justify-content: center;
 }
 
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+.hero-floating {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 85vh;
+  border-radius: 32px;
+  
+  /* TU WPISZ ŚCIEŻKĘ DO ZDJĘCIA */
+  background-image: url('https://i.imgur.com/d03rqjZ.jpeg'); 
+  background-size: cover;
+  background-position: center bottom;
+  box-shadow: 0 30px 60px rgba(107, 53, 200, 0.15);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
 }
 
-.hero-eyebrow {
+/* Glassmorphism panel dla tekstu */
+.hero-glass-panel {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 60px 50px;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 800px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.hero-pill {
+  display: inline-block;
+  background: #fff;
+  color: var(--grad-start);
+  font-family: var(--sans);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--grad-start);
-  display: block;
-  margin-bottom: 1rem;
+  padding: 8px 20px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.hero-light h1 {
+.hero-glass-panel h1 {
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   line-height: 1.1;
   color: var(--ink);
   margin-bottom: 1.5rem;
 }
 
-.hero-light h1 em { font-style: italic; font-weight: 400; color: var(--ink-soft); }
-
-.hero-light p {
+.hero-glass-panel p {
   font-size: 1.1rem;
-  color: var(--ink-muted);
+  color: var(--ink-soft);
   line-height: 1.8;
-  font-weight: 300;
-  margin-bottom: 2rem;
-  max-width: 90%;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-inline: auto;
 }
 
-.hero-image {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-med);
+.btn-hero {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--ink); color: #fff !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 18px 40px; border-radius: 100px; text-decoration: none; font-size: 0.85rem;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
 }
-
-.hero-image img { width: 100%; height: auto; display: block; }
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); background: var(--grad-start); }
 
 /* ══════════════════════════════════════
    CREDIBILITY BAR
 ══════════════════════════════════════ */
 .credibility-bar {
   background: var(--paper);
-  border-top: 1px solid var(--paper-mid);
+  padding: 40px 0;
   border-bottom: 1px solid var(--paper-mid);
-  padding: 30px 0;
 }
 
 .cred-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 30px;
 }
 
-.cred-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.cred-icon {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  background: var(--gold-pale);
-  display: flex; align-items: center; justify-content: center;
-}
-
-.cred-icon svg { width: 20px; height: 20px; stroke: var(--grad-start); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-
-.cred-text {
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-}
+.cred-item { display: flex; align-items: center; gap: 16px; }
+.cred-icon { width: 48px; height: 48px; border-radius: 50%; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; }
+.cred-icon svg { width: 22px; height: 22px; stroke: var(--grad-start); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.cred-text { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
 
 /* ══════════════════════════════════════
    STORYTELLING ZIG-ZAG
 ══════════════════════════════════════ */
-.story-section { padding: 100px 0; }
+.story-section { padding: 120px 0; }
 .bg-gray { background: var(--paper-warm); }
 .bg-white { background: var(--paper); }
 
-.story-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
+.story-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .story-row.alt .story-text { order: 2; }
 .story-row.alt .story-visual { order: 1; }
 
-.story-kicker {
-  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grad-end);
-  display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;
-}
-.story-kicker::before { content: ''; display: block; width: 24px; height: 1px; background: var(--grad-end); }
+.story-kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grad-end); display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.story-kicker::before { content: ''; display: block; width: 30px; height: 2px; background: var(--grad-end); }
 
-.story-text h3 {
-  font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem;
-}
-.story-text h3 em { font-style: italic; font-weight: 400; color: var(--grad-start); }
+.story-text h3 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+.story-text p { font-size: 1.05rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
 
-.story-text p { font-size: 1.05rem; color: var(--ink-muted); line-height: 1.8; font-weight: 300; }
-
-.story-visual { display: flex; justify-content: center; align-items: center; }
+.story-visual { display: flex; justify-content: center; align-items: center; position: relative; }
 
 .cutout-number {
   font-family: var(--sans);
-  font-size: clamp(12rem, 20vw, 20rem);
+  font-size: clamp(14rem, 22vw, 24rem);
   font-weight: 900;
-  line-height: 1;
+  line-height: 0.8;
   letter-spacing: -0.05em;
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  background-color: var(--paper-mid); 
+  /* TU TEŻ UŻYWAMY TWOJEGO ZDJĘCIA DLA SPÓJNOŚCI */
+  background-image: url('/assets/images/krajobraz.jpg'); 
 }
-
-/* Wstaw linki do swoich zdjęć w tle cyfr */
-.num-1 { background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=800&auto=format&fit=crop'); }
-.num-2 { background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=800&auto=format&fit=crop'); }
-.num-3 { background-image: url('https://images.unsplash.com/photo-1456406644174-8ddd4cd52a06?q=80&w=800&auto=format&fit=crop'); }
 
 /* ══════════════════════════════════════
    TABELA MIKRO / MAKRO
 ══════════════════════════════════════ */
-.table-section { padding: 100px 0; background: var(--paper); }
-.section-header { text-align: center; margin-bottom: 60px; max-width: 700px; margin-inline: auto; }
+.table-section { padding: 120px 0; background: var(--paper); }
+.section-header { text-align: center; margin-bottom: 80px; max-width: 700px; margin-inline: auto; }
 .section-header h2 { font-family: var(--serif); font-size: 2.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem;}
 .section-header p { color: var(--ink-muted); font-weight: 300; font-size: 1.1rem; }
 
 .mm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
 .mm-card {
-  background: var(--paper-warm);
-  border-radius: var(--radius-lg);
-  padding: 50px 40px;
-  border-top: 4px solid var(--grad-start);
-  box-shadow: var(--shadow-soft);
+  background: var(--paper-warm); border-radius: var(--radius-lg); padding: 50px 40px; border-top: 4px solid var(--grad-start); box-shadow: var(--shadow-soft);
 }
 .mm-card.alt { border-top-color: var(--grad-end); }
-
 .mm-card h3 { font-family: var(--serif); font-size: 1.8rem; margin-bottom: 30px; color: var(--ink); border-bottom: 1px solid var(--paper-mid); padding-bottom: 15px;}
 
-.mm-list { display: flex; flex-direction: column; gap: 24px; }
-.mm-item h4 { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 8px;}
-.mm-item p { font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
+.mm-list { display: flex; flex-direction: column; gap: 30px; }
+.mm-item h4 { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 8px;}
+.mm-item p { font-size: 1rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
 
 /* ══════════════════════════════════════
-   PAKIET (Ekwipunek)
+   PAKIET Z EFEKTEM PARALAKSY
 ══════════════════════════════════════ */
-.pack-section { padding: 80px 0 120px; background: var(--paper-warm); }
-.del-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.parallax-section {
+  position: relative;
+  padding: 120px 0 160px;
+  /* TU ZNÓW TWOJE ZDJĘCIE - EFEKT PARALAKSY */
+  background-image: url('/assets/images/krajobraz.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Ciemny overlay, żeby pakiety były czytelne */
+.parallax-overlay {
+  position: absolute; inset: 0; background: rgba(13, 13, 13, 0.75); z-index: 1;
+}
+
+.parallax-content { position: relative; z-index: 2; }
+.parallax-content .section-header h2, .parallax-content .section-header p { color: #fff; }
+
+.del-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
 .del-card {
-  background: var(--paper);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-mid);
-  padding: 40px 32px;
-  transition: transform 0.3s;
+  padding: 50px 40px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
-.del-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); }
+.del-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
 
-.del-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
-.del-icon svg { width: 24px; height: 24px; stroke: var(--grad-start); stroke-width: 1.5; fill: none; }
+.del-icon { width: 60px; height: 60px; border-radius: 16px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 30px; }
+.del-icon svg { width: 28px; height: 28px; stroke: var(--grad-start); stroke-width: 1.5; fill: none; }
 
-.del-card h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; color: var(--ink); }
-.del-card p { font-size: 0.9rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
+.del-card h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; color: var(--ink); }
+.del-card p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
 
 /* ══════════════════════════════════════
-   CTA (Ciemny boks)
+   CTA (Ciemny boks wyciągnięty w górę)
 ══════════════════════════════════════ */
 .cta-box {
-  background: var(--ink);
+  background: var(--grad);
   border-radius: var(--radius-lg);
   padding: 60px 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin: -60px auto 60px; /* nachodzi na sekcję wyżej */
-  position: relative;
-  z-index: 10;
-  box-shadow: var(--shadow-strong);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px;
+  margin: -80px auto 80px; /* Nachodzi na paralaksę */
+  position: relative; z-index: 10;
+  box-shadow: 0 30px 60px rgba(107, 53, 200, 0.3);
 }
 
-.cta-box h2 { font-family: var(--serif); font-size: 2rem; color: #fff; margin-bottom: 10px; }
-.cta-box p { color: rgba(255,255,255,0.7); font-size: 0.95rem; font-weight: 300; margin-bottom: 0; }
+.cta-box h2 { font-family: var(--serif); font-size: 2.2rem; color: #fff; margin-bottom: 10px; }
+.cta-box p { color: rgba(255,255,255,0.9); font-size: 1rem; font-weight: 300; margin-bottom: 0; }
 
-.btn {
+.btn-white {
   display: inline-flex; align-items: center; justify-content: center;
-  background: var(--grad); color: #fff !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-  padding: 16px 36px; border-radius: 100px; text-decoration: none; font-size: 0.85rem;
+  background: #fff; color: var(--grad-start) !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 18px 40px; border-radius: 100px; text-decoration: none; font-size: 0.85rem;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(107,53,200,0.4); }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .hero-inner, .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 40px; }
+  .hero-wrapper { padding: 20px; }
+  .hero-floating { padding: 30px 20px; min-height: 70vh;}
+  .hero-glass-panel { padding: 40px 20px; }
+  .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 40px; }
   .story-row.alt .story-text, .story-row.alt .story-visual { order: unset; }
-  .cutout-number { font-size: 10rem; }
-  .cta-box { padding: 40px; text-align: center; justify-content: center; margin-top: 0; }
+  .cutout-number { font-size: 14rem; }
+  .cta-box { padding: 40px 30px; text-align: center; justify-content: center; }
   .cred-inner { flex-direction: column; align-items: flex-start; }
 }
 </style>
 
-<!-- ══ HERO ══ -->
-<header class="hero-light">
-  <div class="container hero-inner">
-    <div class="hero-text reveal">
-      <span class="hero-eyebrow">Redakcja z Warsztatem</span>
+<!-- ══ FLOATING HERO ══ -->
+<div class="hero-wrapper">
+  <div class="hero-floating reveal">
+    <div class="hero-glass-panel">
+      <span class="hero-pill">Zwolnij. Jesteś w dobrych rękach.</span>
       <h1>Tekst, który wreszcie <br><em class="gtext">działa.</em></h1>
-      <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – jesteś w dobrym miejscu. Przestańmy zgadywać, zacznijmy diagnozować.</p>
-      <a href="#proces" class="btn">Poznaj mój proces</a>
-    </div>
-    <div class="hero-image reveal">
-      <!-- Podmień link na swoje zdjęcie -->
-      <img src="https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=800&auto=format&fit=crop" alt="Redakcja tekstu">
+      <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
+      <a href="#proces" class="btn-hero">Poznaj mój proces</a>
     </div>
   </div>
-</header>
+</div>
 
 <!-- ══ CREDIBILITY BAR ══ -->
 <div class="credibility-bar reveal">
   <div class="container cred-inner">
     <div class="cred-item">
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-      <span class="cred-text">Aspekt Edukacyjny</span>
+      <span class="cred-text">Edukacyjny wymiar redakcji</span>
     </div>
     <div class="cred-item">
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <span class="cred-text">Konkretne Raporty</span>
+      <span class="cred-text">Twarde dane i raporty</span>
     </div>
     <div class="cred-item">
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
-      <span class="cred-text">Współpraca i Dialog</span>
+      <span class="cred-text">Rozmowa o projekcie</span>
     </div>
   </div>
 </div>
@@ -298,7 +295,7 @@ title: Redakcja - od mikro po makro
       <p>To nie brak talentu. Twój mózg jest dla Ciebie zbyt lojalny: podświadomie uzupełnia luki w logice. Czytasz to, co <strong>chciałeś napisać</strong>, a nie to, co faktycznie widzi czytelnik. Tu kończy się intuicja, a zaczyna frustracja.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number num-1">01</span>
+      <span class="cutout-number">01</span>
     </div>
   </div>
 </section>
@@ -312,7 +309,7 @@ title: Redakcja - od mikro po makro
       <p>Zamieniamy „wydaje mi się” na twarde dane m.in. z programu AntConc i strukturę Beat Sheet. Przestajesz zgadywać po omacku. Zaczynasz operować na konkretach.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number num-2">02</span>
+      <span class="cutout-number">02</span>
     </div>
   </div>
 </section>
@@ -321,12 +318,12 @@ title: Redakcja - od mikro po makro
   <div class="container story-row reveal">
     <div class="story-text">
       <span class="story-kicker">03. Efekt</span>
-      <h3>Korona dla <em>Twojej pracy</em></h3>
+      <h3>Twój tekst <em>oddycha</em></h3>
       <p>Twoja historia odzyskuje rytm. Wychodzisz z procesu z tekstem, który jest płynny, wiarygodny i trzyma w napięciu. Ale zyskujesz coś więcej: wiedzę.</p>
       <p>Dowiesz się, jak samodzielnie unikać pułapek językowych w przyszłości. Nie dostajesz tylko poprawionego pliku – stajesz się świadomym rzemieślnikiem swojego słowa.</p>
     </div>
     <div class="story-visual">
-      <span class="cutout-number num-3">03</span>
+      <span class="cutout-number">03</span>
     </div>
   </div>
 </section>
@@ -379,12 +376,13 @@ title: Redakcja - od mikro po makro
   </div>
 </section>
 
-<!-- ══ PAKIET (EKWIPUNEK) ══ -->
-<section class="pack-section">
-  <div class="container">
+<!-- ══ PAKIET Z PARALAKSĄ ══ -->
+<section class="parallax-section">
+  <div class="parallax-overlay"></div>
+  <div class="container parallax-content">
     <div class="section-header reveal">
       <h2>Twój ekwipunek</h2>
-      <p>Co otrzymasz po zakończeniu naszej współpracy?</p>
+      <p>Z czym wychodzisz na szczyt po zakończeniu naszej współpracy?</p>
     </div>
 
     <div class="del-grid">
@@ -409,21 +407,21 @@ title: Redakcja - od mikro po makro
           <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
         </div>
         <h4>Raport Językowy</h4>
-        <p>Twoje nawyki w liczbach. Analiza Mikro wyciągnięta z AntConc. Dowiesz się, jakich słów nadużywasz i jak wzmocnić swój indywidualny głos.</p>
+        <p>Twoje nawyki w liczbach. Analiza Mikro z programu AntConc. Dowiesz się, jakich słów nadużywasz i jak wzmocnić swój głos.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA BOX ══ -->
+<!-- ══ CTA BOX NA DOLE ══ -->
 <div class="container">
   <div class="cta-box reveal">
     <div>
-      <h2>Skontaktuj się ze mną</h2>
-      <p>Opowiedz mi o swoim projekcie. Wrócę do Ciebie z wyceną i planem działania.</p>
+      <h2>Gotowy do drogi?</h2>
+      <p>Opowiedz mi o swoim tekście. Wrócę do Ciebie z planem i wyceną.</p>
     </div>
     <div>
-      <a href="/kontakt/" class="btn">Chcę dopracować tekst z Tobą</a>
+      <a href="/kontakt/" class="btn-white">Rozpocznij transformację</a>
     </div>
   </div>
 </div>
