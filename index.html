@@ -61,7 +61,6 @@ title: Redakcja, korekta, skład
 </header>
    
 
-
 <section class="section" id="o-mnie">
     <div class="container">
         <div class="about-grid">
@@ -88,31 +87,34 @@ title: Redakcja, korekta, skład
             <div class="reveal">
                 <div class="eyebrow">Oferta</div>
                 <h2 class="section-h2">Co mogę dla <em>Ciebie</em> zrobić?</h2>
-                <p class="services-desc">Jeśli potrzebujesz więcej informacji, przewiń stronę na sam koniec.</p>
+                <p class="services-desc">Kliknij w wybraną usługę, aby poznać więcej szczegółów.</p>
             </div>
         </div>
         <div class="services-grid reveal delay-2">
-            <div class="service-card">
+            <div class="service-card service-card--flex">
                 <div class="service-icon"><i class="las la-highlighter"></i></div>
                 <h3>Redakcja</h3>
                 <p>Pracuję nad stylem, logiką i spójnością. Porządkuję treść, by była płynna, wciągająca i łatwa w odbiorze.</p>
+                <button class="read-more-btn" data-target="modal-redakcja">Dowiedz się więcej <i class="las la-arrow-right"></i></button>
             </div>
-            <div class="service-card">
+            <div class="service-card service-card--flex">
                 <div class="service-icon"><i class="las la-spell-check"></i></div>
                 <h3>Korekta</h3>
                 <p>Eliminuję błędy ortograficzne i interpunkcyjne, wprowadzam drobne poprawki stylistyczne. Ostatni szlif przed oddaniem tekstu do publikacji.</p>
+                <button class="read-more-btn" data-target="modal-korekta">Dowiedz się więcej <i class="las la-arrow-right"></i></button>
             </div>
-            <div class="service-card">
+            <div class="service-card service-card--flex">
                 <div class="service-icon"><i class="las la-book-open"></i></div>
                 <h3>Skład DTP</h3>
                 <p>W PRZYGOTOWANIU</p>
+                <button class="read-more-btn" data-target="modal-dtp">Dowiedz się więcej <i class="las la-arrow-right"></i></button>
             </div>
-            <div class="service-card">
+            <div class="service-card service-card--flex">
                 <div class="service-icon"><i class="las la-glasses"></i></div>
                 <h3>Beta reading</h3>
-                <p>Krytyczne spojrzenie na fabułę, budowę postaci, logikę narracji i jakość języka jeszcze przed redakcją. Pomagam wyłapać wszystkie nieścisłości i problematyczne kwestie.</p>
+                <p>Krytyczne spojrzenie na fabułę, budowę postaci, logikę narracji i jakość języka jeszcze przed redakcją. Pomagam wyłapać wszystkie nieścisłości.</p>
+                <button class="read-more-btn" data-target="modal-beta">Dowiedz się więcej <i class="las la-arrow-right"></i></button>
             </div>
-            
         </div>
     </div>
 </section>
@@ -178,8 +180,6 @@ title: Redakcja, korekta, skład
         </div>
     </div>
 </section>
-
-
 
 <section class="section" id="opinie">
     <div class="container">
@@ -292,4 +292,78 @@ title: Redakcja, korekta, skład
         </div>
     </div>
 </section>
+
+
+<div id="modal-redakcja" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Redakcja</h3>
+    <h4><i class="las la-check-circle" style="color: var(--grad-start);"></i> Co zyskujesz na tym etapie?</h4>
+    <p>[Wpisz swój tekst] Twój tekst zyska płynność, odpowiednie tempo i pożądaną logikę. Uporządkuję strukturę akapitów, wyeliminuję powtórzenia i zadbam o to, aby Twoja historia wciągała od pierwszych stron. Otrzymujesz plik z zaznaczonymi zmianami.</p>
+    
+    <h4><i class="las la-times-circle" style="color: #E53E3E;"></i> Czego usługa nie obejmuje?</h4>
+    <ul class="modal-list">
+      <li>Ghostwritingu (nie napiszę książki za Ciebie).</li>
+      <li>Gwarancji wyeliminowania wszystkich literówek (od tego jest korekta).</li>
+    </ul>
+    <div style="text-align: center; margin-top: 32px;">
+        <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz i wyceń projekt</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-korekta" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Korekta</h3>
+    <h4><i class="las la-check-circle" style="color: var(--grad-start);"></i> Co zyskujesz na tym etapie?</h4>
+    <p>[Wpisz swój tekst] To ostateczny szlif Twojego pliku. Zyskujesz pewność, że w tekście nie ma rażących błędów ortograficznych, zjedzonych liter, podwójnych spacji czy błędnie postawionych przecinków.</p>
+    
+    <h4><i class="las la-times-circle" style="color: #E53E3E;"></i> Czego usługa nie obejmuje?</h4>
+    <ul class="modal-list">
+      <li>Głębokiej ingerencji w strukturę tekstu czy logikę fabuły.</li>
+      <li>Przepisywania zdań, by brzmiały lepiej (to zadanie redakcji).</li>
+    </ul>
+    <div style="text-align: center; margin-top: 32px;">
+        <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz i wyceń projekt</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-dtp" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Skład DTP</h3>
+    <h4><i class="las la-check-circle" style="color: var(--grad-start);"></i> Co zyskujesz na tym etapie?</h4>
+    <p>[Wpisz swój tekst] Profesjonalnie złożony plik gotowy do druku lub czytników. Twój tekst zyska odpowiednią typografię, światło i marginesy, dzięki czemu będzie po prostu wyglądał jak prawdziwa książka.</p>
+    
+    <h4><i class="las la-times-circle" style="color: #E53E3E;"></i> Czego usługa nie obejmuje?</h4>
+    <ul class="modal-list">
+      <li>Naniesienia poprawek ortograficznych (tekst musi być już po korekcie).</li>
+      <li>Projektowania okładki czy ilustracji.</li>
+    </ul>
+    <div style="text-align: center; margin-top: 32px;">
+        <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz i wyceń projekt</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-beta" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h3>Beta reading</h3>
+    <h4><i class="las la-check-circle" style="color: var(--grad-start);"></i> Co zyskujesz na tym etapie?</h4>
+    <p>[Wpisz swój tekst] Obszerny feedback z perspektywy czytelnika. Dowiesz się, gdzie tempo akcji siada i w którym momencie bohaterowie stają się niewiarygodni. Otrzymasz cenne uwagi przed redakcją.</p>
+    
+    <h4><i class="las la-times-circle" style="color: #E53E3E;"></i> Czego usługa nie obejmuje?</h4>
+    <ul class="modal-list">
+      <li>Poprawiania przecinków i błędów językowych w pliku.</li>
+      <li>Przeformułowywania zdań.</li>
+    </ul>
+    <div style="text-align: center; margin-top: 32px;">
+        <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz i wyceń projekt</a>
+    </div>
+  </div>
+</div>
+
 <div class="grad-line-footer"></div>
