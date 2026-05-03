@@ -18,7 +18,6 @@ title: Redakcja - od mikro po makro
    ZMIENNE & BAZA
 ══════════════════════════════════════ */
 :root {
-  /* TO JEST TWOJE NOWE ZDJĘCIE Z BIBLIOTEKĄ */
   --bg-image: url('https://i.imgur.com/Sykax2D.jpeg');
 }
 
@@ -38,7 +37,7 @@ title: Redakcja - od mikro po makro
 /* ══════════════════════════════════════
    DYNAMICZNE MENU (Jekyll Header Override)
 ══════════════════════════════════════ */
-/* Zakładamy, że Twój nagłówek używa tagu <header> */
+/* Celuje w główny nagłówek Twojego szablonu */
 header {
   background-color: transparent !important;
   transition: background-color 0.4s ease, box-shadow 0.4s ease !important;
@@ -49,24 +48,20 @@ header {
   z-index: 999;
 }
 
-/* Kolor linków w menu na samej górze (Czarne na białym tle) */
 header:not(.header-scrolled) a:not(.btn) {
   color: var(--ink) !important;
 }
 
-/* Kolor logo na samej górze (jeśli masz SVG lub tekstowe logo) */
 header:not(.header-scrolled) .logo,
 header:not(.header-scrolled) .site-title {
   color: var(--ink) !important;
 }
 
-/* Czarny pasek po scrollu */
 header.header-scrolled {
   background-color: var(--ink) !important;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
 }
 
-/* Białe litery po scrollu */
 header.header-scrolled a:not(.btn),
 header.header-scrolled .logo,
 header.header-scrolled .site-title {
@@ -81,20 +76,20 @@ header.header-scrolled .site-title {
   top: 0; left: 0; width: 100vw; height: 100vh;
   background-image: var(--bg-image);
   background-size: cover;
-  /* KRYTYCZNE: wyrównanie do góry, by zachować białą przestrzeń */
-  background-position: center top; 
-  background-color: #fff; /* Fallback, by góra zawsze była jasna */
+  /* Zmienione na center, by wypośrodkować zdjęcie i pokazać regały */
+  background-position: center; 
+  background-color: #fff;
   z-index: -3;
 }
 
 /* ══════════════════════════════════════
-   CZYSTE HERO (Pływający tekst)
+   CZYSTE HERO (Teraz używa <section> zamiast <header>)
 ══════════════════════════════════════ */
 .page-hero {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 180px 20px 80px; /* Zwiększony odstęp od góry pod przezroczyste menu */
+  padding: 180px 20px 80px; 
 }
 
 .hero-pill {
@@ -114,7 +109,7 @@ header.header-scrolled .site-title {
 
 .page-hero h1 {
   font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5.2rem); /* Jeszcze większy nagłówek */
+  font-size: clamp(3rem, 6vw, 5.2rem); 
   font-weight: 700;
   line-height: 1.1;
   color: var(--ink);
@@ -140,7 +135,7 @@ header.header-scrolled .site-title {
 .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.15); background: var(--grad-start); }
 
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY (Osobne przyciski)
+   PASEK CREDIBILITY
 ══════════════════════════════════════ */
 .cred-bar-wrapper {
   position: relative;
@@ -151,7 +146,7 @@ header.header-scrolled .site-title {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20px; /* Przestrzeń między osobnymi pastylkami */
+  gap: 20px;
 }
 
 .cred-item { 
@@ -161,16 +156,14 @@ header.header-scrolled .site-title {
   background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 100px; /* Pełne zaokrąglenie - styl "pill" */
+  border-radius: 100px; 
   padding: 14px 28px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06); /* Delikatny, luksusowy cień */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06); 
   border: 1px solid rgba(255,255,255,0.8);
   transition: transform 0.3s ease;
 }
 
-.cred-item:hover {
-  transform: translateY(-3px);
-}
+.cred-item:hover { transform: translateY(-3px); }
 
 .cred-icon { display: flex; align-items: center; justify-content: center; }
 .cred-icon svg { width: 22px; height: 22px; stroke: url(#grad-icon); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
@@ -186,7 +179,7 @@ header.header-scrolled .site-title {
   margin: 0 auto 120px;
   background: var(--paper);
   border-radius: 24px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.15); /* Mocniejszy cień, by odciąć kartę od książek z tła */
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15); 
   padding: 100px 80px;
 }
 
@@ -212,7 +205,8 @@ header.header-scrolled .site-title {
   letter-spacing: -0.05em;
   background-image: var(--bg-image);
   background-size: cover;
-  background-position: center top;
+  /* Zmienione na center, by idealnie pasowało do tła pod spodem */
+  background-position: center;
   background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
@@ -298,15 +292,15 @@ header.header-scrolled .site-title {
 <!-- Tło dla całej strony -->
 <div class="fixed-bg"></div>
 
-<!-- HERO (Bez żadnego tła panelu - pływający tekst na white space) -->
-<header class="page-hero reveal">
+<!-- HERO (Zmiana tagu naprawiła błąd z czarnym tłem) -->
+<section class="page-hero reveal">
   <span class="hero-pill">Zwolnij. Jesteś w dobrych rękach.</span>
   <h1>Redakcja od mikro po makro</h1>
   <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
   <a href="#proces" class="btn-hero">Poznaj mój proces</a>
-</header>
+</section>
 
-<!-- CREDIBILITY BAR (Osobne przyciski pigułki) -->
+<!-- CREDIBILITY BAR -->
 <div class="cred-bar-wrapper reveal">
   <div class="cred-item">
     <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
@@ -455,7 +449,7 @@ header.header-scrolled .site-title {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Animacje reveal (Pojawianie się sekcji od dołu)
+  // Animacje reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -466,14 +460,14 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Dynamiczne menu (zmieniające się po scrollu)
-  const header = document.querySelector('header');
-  if (header) {
+  // Bezpieczny chwyt globalnego nagłówka z uwzględnieniem struktury strony
+  const globalHeader = document.querySelector('header');
+  if (globalHeader && !globalHeader.classList.contains('page-hero')) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
-        header.classList.add('header-scrolled');
+        globalHeader.classList.add('header-scrolled');
       } else {
-        header.classList.remove('header-scrolled');
+        globalHeader.classList.remove('header-scrolled');
       }
     });
   }
