@@ -4,7 +4,7 @@ title: Redakcja - od mikro po makro
 ---
 
 <!-- Preload tła dla cyferek — bez tego obraz ładuje się po renderze -->
-<link rel="preload" as="image" href="https://i.imgur.com/ecKof53.jpeg" fetchpriority="high">
+<link rel="preload" as="image" href="{{ site.baseurl }}/assets/img/Stacks_of_old_and_new_202605022204.jpeg" fetchpriority="high">
 
 <!-- Definicja gradientu dla ikon i akcentów -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
@@ -21,7 +21,7 @@ title: Redakcja - od mikro po makro
    ZMIENNE & BAZA
 ══════════════════════════════════════ */
 :root {
-  --bg-image: url('https://i.imgur.com/ecKof53.jpeg');
+  --bg-image: url('{{ site.baseurl }}/assets/img/Stacks_of_old_and_new_202605022204.jpeg');
 }
 
 .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
@@ -79,7 +79,7 @@ title: Redakcja - od mikro po makro
 }
 
 .nav.scrolled .nav-logo em {
-  color: var(--grad-end, #E8772A) !important;
+  color: var(--grad-start, #6B35C8) !important;
 }
 
 /* ══════════════════════════════════════
@@ -629,7 +629,7 @@ title: Redakcja - od mikro po makro
 
 <script>
 (function() {
-  var BG_URL = 'https://i.imgur.com/ecKof53.jpeg';
+  var BG_URL = '{{ site.baseurl }}/assets/img/Stacks_of_old_and_new_202605022204.jpeg';
 
   function showNumbers() {
     document.querySelectorAll('.cutout-number').forEach(function(el) {
