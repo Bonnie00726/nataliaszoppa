@@ -3,7 +3,7 @@ layout: default
 title: Redakcja - od mikro po makro
 ---
 
-<!-- Definicja gradientu dla ikon (niewidoczna na stronie) -->
+<!-- Definicja gradientu dla ikon -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
   <defs>
     <linearGradient id="grad-icon" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -22,14 +22,6 @@ title: Redakcja - od mikro po makro
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-.gtext {
-  background: var(--grad-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
-}
-
 /* ══════════════════════════════════════
    TŁO NA CAŁEJ STRONIE (Fixed Background)
 ══════════════════════════════════════ */
@@ -38,57 +30,68 @@ title: Redakcja - od mikro po makro
   top: 0; left: 0; width: 100vw; height: 100vh;
   background-image: url('https://i.imgur.com/d03rqjZ.jpeg');
   background-size: cover;
-  background-position: center;
-  z-index: -2;
+  background-position: center top;
+  z-index: -3;
 }
 
+/* Delikatne rozmycie całości */
 .fixed-overlay {
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-  z-index: -1;
+  z-index: -2;
 }
 
 /* ══════════════════════════════════════
-   SEKCJA HERO (Na zewnątrz karty)
+   MAGIA: BIAŁY GRADIENT U GÓRY
+══════════════════════════════════════ */
+.hero-fade-mask {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 65vh;
+  /* Od 100% bieli u góry, płynnie do pełnej przezroczystości w dół */
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 15%, rgba(255,255,255,0.85) 35%, rgba(255,255,255,0) 100%);
+  z-index: -1;
+  pointer-events: none; /* Żeby nie blokowało klikania */
+}
+
+/* ══════════════════════════════════════
+   SEKCJA HERO (Teraz na czystym tle!)
 ══════════════════════════════════════ */
 .page-hero {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 120px 20px 50px;
+  padding: 140px 20px 60px; /* Więcej oddechu od góry */
 }
 
 .page-hero h1 {
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
-  font-weight: 600; /* Delikatniejszy nagłówek */
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 700;
   line-height: 1.1;
   color: var(--ink);
-  margin-bottom: 0.8rem;
-  text-shadow: 0 4px 20px rgba(255,255,255,0.8);
+  margin-bottom: 1rem;
+  /* Usunięte cienie - tekst jest teraz ostry jak brzytwa na białym tle */
 }
 
 .page-hero p {
   font-family: var(--sans);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  font-weight: 400; /* Normalne pismo */
-  text-transform: none; /* Brak kapitalików */
-  letter-spacing: 0.05em;
-  color: var(--grad-start);
-  text-shadow: 0 2px 10px rgba(255,255,255,0.9);
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  font-weight: 300;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
 }
 
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY (Pill nad kartą)
+   PASEK CREDIBILITY
 ══════════════════════════════════════ */
 .cred-bar-wrapper {
   position: relative;
   z-index: 3;
   max-width: 1000px;
-  margin: 0 auto 40px;
+  margin: 0 auto 50px;
   padding: 0 20px;
 }
 
@@ -109,7 +112,6 @@ title: Redakcja - od mikro po makro
 
 .cred-item { display: flex; align-items: center; gap: 12px; }
 .cred-icon { display: flex; align-items: center; justify-content: center; }
-/* Zastosowanie gradientu z SVG w stroke */
 .cred-icon svg { width: 24px; height: 24px; stroke: url(#grad-icon); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .cred-text { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink); }
 
@@ -120,7 +122,7 @@ title: Redakcja - od mikro po makro
   position: relative;
   z-index: 2;
   max-width: 1180px;
-  margin: 0 auto 120px; /* Duży odstęp przed stopką */
+  margin: 0 auto 120px;
   background: var(--paper);
   border-radius: 24px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.12);
@@ -128,7 +130,7 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   STORYTELLING ZIG-ZAG (Wewnątrz karty)
+   STORYTELLING ZIG-ZAG
 ══════════════════════════════════════ */
 .story-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 120px; }
 .story-row:last-of-type { margin-bottom: 0; }
@@ -149,7 +151,7 @@ title: Redakcja - od mikro po makro
   letter-spacing: -0.05em;
   background-image: url('https://i.imgur.com/d03rqjZ.jpeg');
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
@@ -202,8 +204,8 @@ title: Redakcja - od mikro po makro
   border-radius: var(--radius-lg);
   padding: 70px 40px;
   display: flex; 
-  flex-direction: column; /* Ustawia elementy w kolumnie */
-  align-items: center;    /* Centruje w poziomie */
+  flex-direction: column; 
+  align-items: center;    
   text-align: center;
   gap: 30px;
   margin-top: 120px;
@@ -222,6 +224,7 @@ title: Redakcja - od mikro po makro
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
+  .hero-fade-mask { height: 80vh; }
   .main-card { padding: 60px 30px; border-radius: 16px; margin-bottom: 80px; }
   .cred-bar { border-radius: 24px; flex-direction: column; align-items: flex-start; padding: 30px; }
   .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 50px; }
@@ -232,17 +235,20 @@ title: Redakcja - od mikro po makro
 }
 </style>
 
-<!-- Tło dla całej strony (znajduje się "pod" strukturą) -->
+<!-- Tło dla całej strony -->
 <div class="fixed-bg"></div>
 <div class="fixed-overlay"></div>
 
-<!-- HERO (Poza kartą, wycentrowane nad nią) -->
+<!-- MAGIA: Gradient, który sprawia, że tekst jest super czytelny -->
+<div class="hero-fade-mask"></div>
+
+<!-- HERO -->
 <header class="page-hero reveal">
   <h1>Redakcja od mikro po makro</h1>
   <p>Zobacz, jak pracuję nad Twoim tekstem</p>
 </header>
 
-<!-- CREDIBILITY BAR (Pill nad kartą) -->
+<!-- CREDIBILITY BAR -->
 <div class="cred-bar-wrapper reveal">
   <div class="cred-bar">
     <div class="cred-item">
@@ -264,7 +270,6 @@ title: Redakcja - od mikro po makro
 <div class="container">
   <main class="main-card">
     
-    <!-- STORYTELLING -->
     <section id="proces">
       <div class="story-row reveal">
         <div class="story-text">
