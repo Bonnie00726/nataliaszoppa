@@ -18,8 +18,8 @@ title: Redakcja - od mikro po makro
    ZMIENNE & BAZA
 ══════════════════════════════════════ */
 :root {
-  /* TWOJE NOWE IDEALNE, POZIOME ZDJĘCIE */
-  --bg-image: url('https://i.imgur.com/poDJ6Dc.jpeg');
+  /* TWOJE NOWE ZDJĘCIE Z LEONARDO/IMGUR */
+  --bg-image: url('https://i.imgur.com/ecKof53.jpeg');
 }
 
 .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
@@ -76,7 +76,6 @@ header.header-scrolled .site-title {
   top: 0; left: 0; width: 100vw; height: 100vh;
   background-image: var(--bg-image);
   background-size: cover;
-  /* Wyrównanie do środka, idealne dla dużych, poziomych zdjęć */
   background-position: center; 
   background-color: #fff;
   z-index: -4;
@@ -463,7 +462,6 @@ header.header-scrolled .site-title {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Animacje reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -472,9 +470,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   }, { threshold: 0.15 });
+
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Bezpieczny chwyt globalnego nagłówka
   const globalHeader = document.querySelector('header');
   if (globalHeader && !globalHeader.classList.contains('page-hero')) {
     window.addEventListener('scroll', () => {
