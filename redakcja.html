@@ -3,6 +3,9 @@ layout: default
 title: Redakcja - od mikro po makro
 ---
 
+<!-- Preload tła dla cyferek — bez tego obraz ładuje się po renderze -->
+<link rel="preload" as="image" href="https://i.imgur.com/ecKof53.jpeg">
+
 <!-- Definicja gradientu dla ikon i akcentów -->
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
   <defs>
@@ -109,8 +112,12 @@ title: Redakcja - od mikro po makro
 .page-hero {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 180px 20px 80px; 
+  gap: 0;
 }
 
 .page-hero h1 {
@@ -129,26 +136,25 @@ title: Redakcja - od mikro po makro
   color: var(--ink);
 }
 
-.page-hero p {
+.page-hero > p {
   font-family: var(--sans);
   font-size: clamp(1.15rem, 2vw, 1.35rem);
   font-weight: 300;
   color: var(--ink-soft);
   max-width: 680px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   line-height: 1.7;
 }
 
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY
+   PASEK CREDIBILITY — pionowo (stacked)
 ══════════════════════════════════════ */
 .cred-bar-wrapper {
-  max-width: 1000px;
-  margin: 40px auto 50px;
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px; 
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 50px;
 }
 
 .cred-item { 
@@ -163,6 +169,8 @@ title: Redakcja - od mikro po makro
   box-shadow: 0 8px 24px rgba(0,0,0,0.06); 
   border: 1px solid rgba(255,255,255,0.8);
   transition: transform 0.3s ease;
+  min-width: 260px;
+  justify-content: flex-start;
 }
 
 .cred-item:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
@@ -244,13 +252,21 @@ title: Redakcja - od mikro po makro
   font-weight: 900;
   line-height: 0.8;
   letter-spacing: -0.05em;
+  /* Używamy tego samego obrazka co .fixed-bg — jeden zasób, brak opóźnienia */
   background-image: var(--bg-image);
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* Cyfra pojawia się dopiero gdy obraz gotowy */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.cutout-number.loaded {
+  opacity: 1;
 }
 
 /* Fallback dla tabletów/iOS — background-attachment: fixed nie działa na mobile */
@@ -600,15 +616,34 @@ title: Redakcja - od mikro po makro
 </div>
 
 <script>
+// Preload obrazka — odpala się od razu, nie czekając na DOMContentLoaded
+(function() {
+  var BG_URL = 'https://i.imgur.com/ecKof53.jpeg';
+
+  function showNumbers() {
+    document.querySelectorAll('.cutout-number').forEach(function(el) {
+      el.classList.add('loaded');
+    });
+  }
+
+  var img = new Image();
+  img.onload = showNumbers;
+  img.onerror = showNumbers; // nawet przy błędzie pokaż (fallback: przeźroczyste tło)
+  img.src = BG_URL;
+
+  // Obraz już w cache przeglądarki — nie czekamy
+  if (img.complete) showNumbers();
+})();
+
 document.addEventListener("DOMContentLoaded", function() {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
         io.unobserve(e.target);
       }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 });
 </script>
