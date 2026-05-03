@@ -1,14 +1,18 @@
 <meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <title>{% if page.title %}{{ page.title }} | {% endif %}Natalia Szoppa</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 
 <style>
-    :root {
+
+:root {
         --ink:        #0D0D0D;
         --ink-soft:   #333333;
         --ink-muted:  #666666;
@@ -71,7 +75,7 @@
     .hero-content { 
         position: relative; 
         z-index: 2; 
-        padding: 0 40px 40px 40px; /* 60px to optymalny odstęp na dole */
+        padding: 0 40px 40px 40px;
         width: 100%; 
         max-width: 900px; 
         display: flex; 
@@ -105,12 +109,9 @@
     .hero-stat-num em { font-style: italic; color: var(--grad-start); font-size: 1.8rem; }
     .hero-stat-txt { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); }
 
-    /* ========================================= */
-    /* NOWOŚĆ: LEKKIE STATYSTYKI W HERO          */
-    /* ========================================= */
-   .hero-stats-clean {
-        margin-top: 20px;  /* Odstęp między tekstem a cienką kreską (zmniejszony z 40px) */
-        padding-top: 24px; /* Odstęp między kreską a statystykami (zmniejszony z 40px) */
+    .hero-stats-clean {
+        margin-top: 20px;
+        padding-top: 24px;
         border-top: 1px solid rgba(255, 255, 255, 0.15); 
         display: flex;
         flex-direction: column;
@@ -122,7 +123,7 @@
     .stats-numbers {
         display: flex;
         justify-content: center;
-        gap: 64px; /* Odstęp między poszczególnymi statystykami */
+        gap: 64px;
         flex-wrap: wrap;
     }
 
@@ -199,28 +200,16 @@
         background: var(--grad-mid);
     }
 
-    /* RWD dla mniejszych ekranów */
     @media (max-width: 768px) {
-        .stats-numbers {
-            gap: 32px;
-        }
-        .stats-tags {
-            flex-direction: column;
-            gap: 12px;
-        }
+        .stats-numbers { gap: 32px; }
+        .stats-tags { flex-direction: column; gap: 12px; }
     }
 
     /* LAYOUT */
     .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
     .section { padding: 110px 0; }
-    /* Automatyczne naprzemienne tła sekcji */
-    .section:nth-of-type(odd) { 
-        background: var(--paper); /* Nieparzyste sekcje: 1, 3, 5... (Białe) */
-    }
-    
-    .section:nth-of-type(even) { 
-        background: var(--paper-warm); /* Parzyste sekcje: 2, 4, 6... (Szare) */
-    }
+    .section:nth-of-type(odd) { background: var(--paper); }
+    .section:nth-of-type(even) { background: var(--paper-warm); }
     
     .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
     .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 3px 4px 3px 6px; display: inline-block; }
@@ -232,20 +221,14 @@
     .about-img-caption { position: absolute; bottom: 0; right: 0; background: var(--grad); color: #fff; padding: 18px 22px; border-radius: var(--radius); font-family: var(--serif); font-size: 0.85rem; font-weight: 600; max-width: 180px; line-height: 1.4; box-shadow: var(--shadow-med); }
     .about-text p { font-family: var(--sans); color: var(--ink-soft); font-size: 1.0rem; margin-bottom: 20px; font-weight: 300; }
 
-   /* USŁUGI */
+    /* USŁUGI */
     .services-intro { margin-bottom: 60px; }
     .services-desc { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; margin-top: 10px; max-width: 600px; }
-    
-    /* Układ mobilny: kafelki jeden pod drugim lub po 2 (zależy od szerokości ekranu) */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-
-    /* Układ dla komputerów (powyżej 900px) */
     @media (min-width: 900px) {
         .services-grid { grid-template-columns: repeat(4, 1fr); }
-        /* Usuwamy sztywne przypisania, żeby kafelki układały się automatycznie jeden obok drugiego */
         .service-card { grid-column: auto !important; }
     }
-
     .service-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
     .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
     .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
@@ -329,9 +312,7 @@
     .tile--dark .tile-arrow, .tile--gold .tile-arrow { color: rgba(255,255,255,0.7); }
     .tile--warm .tile-arrow { color: var(--green); }
 
-    /* ========================================= */
-    /* NOWOŚĆ: SEKCJA PRZED I PO                 */
-    /* ========================================= */
+    /* PRZED I PO */
     .comparison-container { display: flex; gap: 24px; margin-top: 40px; }
     @media (max-width: 768px) { .comparison-container { flex-direction: column; } }
     .comparison-box { flex: 1; border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-soft); position: relative; border: 1px solid var(--paper-mid); background: var(--paper); }
@@ -349,25 +330,8 @@
     .comparison-box.before .box-tags span { background: #FFF5F5; color: #C53030; border: 1px solid #FEE2E2; }
     .comparison-box.after .box-tags span { background: var(--gold-pale); color: var(--grad-start); border: 1px solid rgba(107, 53, 200, 0.15); }
 
-    /* ========================================= */
-    /* NOWOŚĆ: PASEK CALL TO ACTION              */
-    /* ========================================= */
-    .cta-strip { 
-        background: var(--ink); 
-        border-radius: var(--radius-lg); 
-        padding: 56px 64px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between; 
-        gap: 40px; 
-        position: relative; 
-        overflow: hidden; 
-        box-shadow: var(--shadow-strong); 
-        
-        /* Zmodyfikowane marginesy: */
-        margin: 60px auto; 
-        max-width: 100%; /* Zabezpiecza przed "wylaniem się" poza ekran */
-    }
+    /* CTA */
+    .cta-strip { background: var(--ink); border-radius: var(--radius-lg); padding: 56px 64px; display: flex; align-items: center; justify-content: space-between; gap: 40px; position: relative; overflow: hidden; box-shadow: var(--shadow-strong); margin: 60px auto; max-width: 100%; }
     .cta-strip::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 6px; background: var(--grad); }
     .cta-text { flex: 1; }
     .cta-text h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: #ffffff; margin-bottom: 16px; line-height: 1.2; }
@@ -404,397 +368,61 @@
     .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
     .tag-pill { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; color: var(--grad-start); background: var(--gold-pale); padding: 4px 12px; border-radius: 100px; }
 
-  /* =========================================
-       TYPOGRAFIA WE WPISACH (BAJERY)
-       ========================================= */
+    /* TYPOGRAFIA WE WPISACH */
+    .blog-content ul { list-style: none; padding-left: 2.5rem; margin-bottom: 1.5rem; }
+    .blog-content ul li { position: relative; margin-bottom: 0.6rem; line-height: 1.6; color: var(--ink); padding-left: 0.5rem; }
+    .blog-content ul li::before { content: '→'; position: absolute; left: -1.5rem; color: var(--grad-mid); font-weight: 900; }
 
-    /* 1. Piękne listy punktowane (wiszące wcięcie akapitowe) */
-    .blog-content ul {
-        list-style: none;
-        padding-left: 2.5rem; /* Odsunięcie całej listy od lewej krawędzi */
-        margin-bottom: 1.5rem;
-    }
+    .blog-content blockquote { background-color: #fafafa; border: 1.5px solid var(--ink); border-radius: 12px; margin: 2.5rem 0; padding: 28px 32px; color: var(--ink-soft); font-family: var(--sans); font-style: normal; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04); }
+    .blog-content blockquote p { margin: 0; font-size: 1.05rem; line-height: 1.7; }
 
-    .blog-content ul li {
-        position: relative;
-        margin-bottom: 0.6rem;
-        line-height: 1.6;
-        color: var(--ink);
-        padding-left: 0.5rem; /* Odsunięcie samego tekstu od strzałki */
-    }
+    .alert-magenta { background-color: #ffe6fb; border: 1px solid #ffb3f0; border-left: 6px solid var(--grad-mid); padding: 15px 20px 15px 50px; margin: 2rem 0; border-radius: 6px; color: #800080; font-weight: 500; box-shadow: 0 4px 12px rgba(184, 64, 154, 0.08); position: relative; }
+    .alert-magenta::before { content: '\f071'; font-family: 'Line Awesome Free'; font-weight: 900; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; }
 
-    .blog-content ul li::before {
-        content: '→';
-        position: absolute;
-        left: -1.5rem; /* Cofnięcie strzałki, żeby tekst łamał się równo (hanging indent) */
-        color: var(--grad-mid);
-        font-weight: 900;
-    }
+    .notice-box { background-color: var(--paper-warm); border: 1px solid var(--paper-mid); border-left: 6px solid var(--grad-start); padding: 15px 20px 15px 50px; margin: 2rem 0; border-radius: 6px; color: var(--ink); position: relative; }
+    .notice-box::before { content: '\f05a'; font-family: 'Line Awesome Free'; font-weight: 900; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--grad-start); }
 
-   /* 2. Cytaty / Key Takeaway (jasnoszare tło, czarna ramka, zaokrąglone rogi) */
-    .blog-content blockquote {
-        background-color: #fafafa;
-        /* Bardzo jasny, neutralny szary */
-        border: 1.5px solid var(--ink);
-        /* Ciemne obramowanie (z Twojej zmiennej) */
-        border-radius: 12px;
-        /* Zaokrąglone rogi */
-        margin: 2.5rem 0;
-        padding: 28px 32px;
-        /* Odpowiednia przestrzeń wewnątrz ramki */
-        color: var(--ink-soft);
-        font-family: var(--sans);
-        /* Bezszeryfowy font (Mulish) */
-        font-style: normal;
-        /* Usuwamy kursywę, żeby wyglądało jak na zdjęciu */
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-        /* Subtelny cień pod ramką */
-    }
+    .idea-box { background-color: #fffdf2; border: 1px solid #ffe8a1; border-left: 6px solid #fbbc05; padding: 15px 20px 15px 50px; margin: 2rem 0; border-radius: 6px; color: var(--ink-soft); position: relative; }
+    .idea-box::before { content: '\f0eb'; font-family: 'Line Awesome Free'; font-weight: 900; position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: #fbbc05; animation: pulse-glow 2s infinite ease-in-out; }
+    @keyframes pulse-glow { 0% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; } 50% { filter: drop-shadow(0 0 8px rgba(251, 188, 5, 0.9)); opacity: 1; } 100% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3)); opacity: 0.8; } }
 
-    .blog-content blockquote p {
-        margin: 0;
-        font-size: 1.05rem; 
-        line-height: 1.7;
-    }
+    .sticky-note { background: #EBE4F7; padding: 25px 30px; margin: 3rem auto; width: 85%; color: var(--ink); font-family: var(--sans); border-radius: 12px; box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.08); transform: rotate(-1.5deg); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
+    .sticky-note:hover { transform: rotate(0deg) scale(1.02); box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.12); }
+    .sticky-note::before { content: ''; display: block; width: 80px; height: 25px; background: rgba(255, 255, 255, 0.4); position: absolute; top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg); box-shadow: 0 1px 3px rgba(0,0,0,0.05), inset 0 0 5px rgba(255,255,255,0.6); border-radius: 2px; }
 
-   
-    /* 3. Ramka ostrzegawcza (Magenta) - z ikoną wykrzyknika */
-    .alert-magenta {
-        background-color: #ffe6fb;
-        border: 1px solid #ffb3f0;
-        border-left: 6px solid var(--grad-mid);
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: #800080;
-        font-weight: 500;
-        box-shadow: 0 4px 12px rgba(184, 64, 154, 0.08);
-        position: relative;
-    }
+    .highlight-marker { background: linear-gradient(120deg, rgba(255, 152, 0, 0.3) 0%, rgba(255, 193, 7, 0.3) 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 90%; padding: 0 4px; border-radius: 3px; font-weight: 600; }
+    ::selection { background: var(--grad-mid); color: #ffffff; }
 
-    .alert-magenta::before {
-        content: '\f071';
-        /* Ikona wykrzyknika w trójkącie (Line Awesome) */
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-    }
+    /* TOC */
+    .post-toc { width: 100%; margin: 0 0 48px 0; padding: 0; }
+    .toc-box { border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); background: #ffffff; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .toc-toggle { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; cursor: pointer; user-select: none; background: #fafafa; border-bottom: 1px solid var(--paper-mid); transition: background 0.2s; }
+    .toc-toggle:hover { background: var(--paper-warm); }
+    .toc-toggle-left { display: flex; align-items: center; gap: 12px; }
+    .toc-toggle-left i { color: var(--grad-start); font-size: 1.2rem; }
+    .toc-toggle-left span { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
+    .toc-chevron { font-size: 1rem; color: var(--ink-muted); transform: rotate(180deg); transition: transform 0.3s ease; }
+    .toc-box.open .toc-chevron { transform: rotate(0deg); }
+    .toc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .toc-box.open .toc-body { max-height: 800px; }
+    .toc-body ol { list-style: none; padding: 24px; margin: 0; display: flex; flex-direction: column; gap: 16px; counter-reset: toc-counter; background: #ffffff; }
+    .toc-body li { display: flex; align-items: flex-start; gap: 12px; padding: 0; counter-increment: toc-counter; border: none; }
+    .toc-body li::before { content: counter(toc-counter) "."; font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--grad-start); min-width: 20px; flex-shrink: 0; line-height: 1.5; }
+    .toc-body li a { font-family: var(--sans); font-size: 1rem; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; line-height: 1.5; }
+    .toc-body li a:hover { color: var(--grad-start); }
+    .toc-body li.toc-sub { padding-left: 32px; gap: 8px; margin-top: -8px; }
+    .toc-body li.toc-sub::before { content: ''; min-width: 0; display: none; }
+    .toc-body li.toc-sub a { font-size: 0.9rem; color: var(--ink-muted); }
 
-    /* 4. Ramka "Zwróć uwagę, to ważne" - wybija treść do przemyślenia */
-    .notice-box {
-        background-color: var(--paper-warm);
-        border: 1px solid var(--paper-mid);
-        border-left: 6px solid var(--grad-start);
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: var(--ink);
-        position: relative;
-    }
-
-    .notice-box::before {
-        content: '\f05a';
-        /* Ikona info (Line Awesome) */
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-        color: var(--grad-start);
-    }
-
-    /* 5. Ramka "Rada, pomysł" - z animowaną żarówką */
-    .idea-box {
-        background-color: #fffdf2;
-        border: 1px solid #ffe8a1;
-        border-left: 6px solid #fbbc05;
-        padding: 15px 20px 15px 50px;
-        margin: 2rem 0;
-        border-radius: 6px;
-        color: var(--ink-soft);
-        position: relative;
-    }
-
-    .idea-box::before {
-        content: '\f0eb';
-        /* Ikona żarówki (Line Awesome) */
-        font-family: 'Line Awesome Free';
-        font-weight: 900;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 1.5rem;
-        color: #fbbc05;
-        animation: pulse-glow 2s infinite ease-in-out;
-    }
-
-    @keyframes pulse-glow {
-        0% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3));
-        opacity: 0.8; }
-        50% { filter: drop-shadow(0 0 8px rgba(251, 188, 5, 0.9));
-        opacity: 1; }
-        100% { filter: drop-shadow(0 0 2px rgba(251, 188, 5, 0.3));
-        opacity: 0.8; }
-    }
-
-    /* 6. Takeaways (Sticky Note) - Lawendowa, zaokrąglone rogi i przezroczysta tasiemka */
-    .sticky-note {
-        background: #EBE4F7;
-        /* Lawendowy kolor */
-        padding: 25px 30px;
-        margin: 3rem auto;
-        width: 85%;
-        color: var(--ink);
-        font-family: var(--sans);
-        border-radius: 12px; /* Zaokrąglone rogi */
-        box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.08);
-        transform: rotate(-1.5deg); /* Lekko przekręcona */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-    }
-
-    .sticky-note:hover {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Tasiemka przyklejająca */
-    .sticky-note::before {
-        content: '';
-        display: block;
-        width: 80px;
-        height: 25px;
-        background: rgba(255, 255, 255, 0.4);
-        /* Półprzezroczysta taśma */
-        position: absolute;
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%) rotate(2deg);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05), inset 0 0 5px rgba(255,255,255,0.6);
-        border-radius: 2px;
-    }
-
-    /* 7. Efekt zakreślacza (Highlighter) - pomarańczowe zakreślenie, nie psuje czytelności */
-    .highlight-marker {
-        background: linear-gradient(120deg, rgba(255, 152, 0, 0.3) 0%, rgba(255, 193, 7, 0.3) 100%);
-        background-repeat: no-repeat;
-        background-size: 100% 40%; /* Podkreśla dolną połowę tekstu */
-        background-position: 0 90%;
-        padding: 0 4px;
-        border-radius: 3px;
-        font-weight: 600;
-    }
-
-    /* 8. Kolor zaznaczenia tekstu myszką */
-    ::selection {
-        background: var(--grad-mid);
-        color: #ffffff;
-    }
-
-    /* =========================================
-       TOC - ZAKTUALIZOWANY WYGLĄD
-       ========================================= */
-    .post-toc { 
-        width: 100%;
-        margin: 0 0 48px 0; 
-        padding: 0; 
-    }
-    
-    .toc-box { 
-        border: 1px solid var(--paper-mid);
-        border-radius: var(--radius-lg); 
-        background: #ffffff; 
-        overflow: hidden; 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-    }
-    
-    .toc-toggle { 
-        display: flex;
-        align-items: center; 
-        justify-content: space-between; 
-        padding: 18px 24px; 
-        cursor: pointer; 
-        user-select: none; 
-        background: #fafafa; 
-        border-bottom: 1px solid var(--paper-mid); 
-        transition: background 0.2s;
-    }
-    
-    .toc-toggle:hover { 
-        background: var(--paper-warm);
-    }
-    
-    .toc-toggle-left { 
-        display: flex;
-        align-items: center; 
-        gap: 12px; 
-    }
-    
-    .toc-toggle-left i { 
-        color: var(--grad-start);
-        font-size: 1.2rem; 
-    }
-    
-    .toc-toggle-left span { 
-        font-family: var(--sans);
-        font-size: 0.85rem; 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 0.1em; 
-        color: var(--ink);
-    }
-    
-    /* Mechanika odwracania strzałki TOC */
-    .toc-chevron { 
-        font-size: 1rem;
-        color: var(--ink-muted); 
-        transform: rotate(180deg); /* Domyślnie strzałka obrócona w górę */
-        transition: transform 0.3s ease;
-    }
-    
-    .toc-box.open .toc-chevron { 
-        transform: rotate(0deg);
-        /* Po otwarciu (klasa .open) obraca się w dół */
-    }
-    
-    /* Wygląd listy */
-    .toc-body { 
-        max-height: 0;
-        overflow: hidden; 
-        transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); 
-    }
-    
-    .toc-box.open .toc-body { 
-        max-height: 800px;
-    }
-    
-    .toc-body ol { 
-        list-style: none;
-        padding: 24px; 
-        margin: 0; 
-        display: flex; 
-        flex-direction: column; 
-        gap: 16px; 
-        counter-reset: toc-counter; 
-        background: #ffffff;
-    }
-    
-    .toc-body li { 
-        display: flex;
-        align-items: flex-start; 
-        gap: 12px; 
-        padding: 0; 
-        counter-increment: toc-counter; 
-        border: none;
-    }
-    
-    .toc-body li::before { 
-        content: counter(toc-counter) ".";
-        font-family: var(--sans); 
-        font-size: 1rem; 
-        font-weight: 700; 
-        color: var(--grad-start); 
-        min-width: 20px; 
-        flex-shrink: 0; 
-        line-height: 1.5;
-    }
-    
-    .toc-body li a { 
-        font-family: var(--sans);
-        font-size: 1rem; 
-        color: var(--ink-soft); 
-        text-decoration: none; 
-        transition: color 0.2s; 
-        line-height: 1.5;
-    }
-    
-    .toc-body li a:hover { 
-        color: var(--grad-start);
-    }
-    
-    .toc-body li.toc-sub { 
-        padding-left: 32px;
-        gap: 8px; 
-        margin-top: -8px; 
-    }
-    
-    .toc-body li.toc-sub::before { 
-        content: '';
-        min-width: 0; 
-        display: none; 
-    }
-    
-    .toc-body li.toc-sub a { 
-        font-size: 0.9rem;
-        color: var(--ink-muted); 
-    }
-    /* =========================================
-       NAWIGACJA: POPRZEDNI / NASTĘPNY WPIS (KÓŁKA)
-       ========================================= */
-    .post-navigation {
-        display: flex;
-        justify-content: center; /* Wyśrodkowanie przycisków */
-        align-items: center;
-        gap: 24px;
-        /* Odstęp między kółkami */
-        margin-top: 80px;
-        padding-top: 40px;
-        border-top: 1px solid var(--paper-mid);
-    }
-
-    .post-nav-btn {
-        width: 64px;
-        height: 64px;
-        border-radius: 50%;
-        background: var(--grad);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none !important;
-        /* Wymuszenie braku podkreślenia dla linku */
-        border-bottom: none !important;
-        /* Zabezpieczenie przed dolną ramką */
-        box-shadow: var(--shadow-soft);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .post-nav-btn:hover {
-        transform: translateY(-4px) scale(1.05);
-        box-shadow: var(--shadow-med);
-        text-decoration: none !important; /* Brak podkreślenia również po najechaniu myszką */
-    }
-
-    .post-nav-btn i {
-        font-size: 1.8rem;
-        color: #fff;
-        text-decoration: none !important; 
-        border-bottom: none !important;
-        transition: transform 0.3s ease;
-    }
-
-    /* Subtelny ruch strzałek na hover, żeby zachęcały do kliknięcia */
+    /* NAWIGACJA POPRZEDNI/NASTĘPNY */
+    .post-navigation { display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--paper-mid); }
+    .post-nav-btn { width: 64px; height: 64px; border-radius: 50%; background: var(--grad); display: flex; justify-content: center; align-items: center; text-decoration: none !important; border-bottom: none !important; box-shadow: var(--shadow-soft); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .post-nav-btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: var(--shadow-med); text-decoration: none !important; }
+    .post-nav-btn i { font-size: 1.8rem; color: #fff; text-decoration: none !important; border-bottom: none !important; transition: transform 0.3s ease; }
     .nav-prev:hover i { transform: translateX(-3px); }
     .nav-next:hover i { transform: translateX(3px); }
-    /* Responsywność dla komórek */
-    @media (max-width: 768px) {
-        .post-navigation {
-            flex-direction: column;
-            /* Na telefonie przyciski ustawią się jeden pod drugim */
-            gap: 16px;
-        }
-        
-        .post-nav-empty {
-            display: none;
-            /* Ukrywamy puste miejsce na telefonie */
-        }
-    }
+    @media (max-width: 768px) { .post-navigation { flex-direction: column; gap: 16px; } .post-nav-empty { display: none; } }
+
     /* STOPKA */
     .grad-line-footer { height: 3px; background: var(--grad); }
     footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
@@ -865,439 +493,105 @@
         .tiles-grid { grid-template-columns: 1fr; }
         .hero-stats { gap: 30px; }
     }
+
     /* =========================================
-   STYLE DLA KART USŁUG I MODALI
-   ========================================= */
+       KARTY USŁUG I MODALE
+       ========================================= */
 
-.service-card--flex {
-  display: flex;
-  flex-direction: column;
-}
+    .services-grid-2x2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+    @media (min-width: 800px) { .services-grid-2x2 { grid-template-columns: repeat(2, 1fr); } }
 
-.read-more-btn {
-  background: none;
-  border: none;
-  color: var(--grad-start);
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  padding: 20px 0 0 0;
-  margin-top: auto; 
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s, transform 0.2s;
-}
-.read-more-btn:hover {
-  color: var(--grad-end);
-  transform: translateX(4px);
-}
+    .service-card--flex { display: flex; flex-direction: column; }
 
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 9999; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(13, 13, 13, 0.7); 
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.modal.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-}
+    .read-more-btn { background: none; border: none; color: var(--grad-start); font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; padding: 20px 0 0 0; margin-top: auto; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s, transform 0.2s; }
+    .read-more-btn:hover { color: var(--grad-end); transform: translateX(4px); }
 
-.modal-content {
-  background-color: var(--paper);
-  padding: 40px 48px;
-  border-radius: var(--radius-lg); 
-  width: 90%;
-  max-width: 550px; 
-  position: relative;
-  box-shadow: var(--shadow-strong);
-  transform: translateY(30px);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  border: 1px solid var(--paper-mid);
-}
-.modal.show .modal-content {
-  transform: translateY(0);
-}
+    /* WYRÓŻNIONA KARTA */
+    .service-card--popular {
+        position: relative;
+        border: 1.5px solid transparent !important;
+        background:
+            linear-gradient(#fff, #fff) padding-box,
+            var(--grad) border-box !important;
+        box-shadow: 0 4px 24px rgba(107,53,200,0.12) !important;
+        overflow: visible;
+        padding-top: 52px;
+    }
 
-.close-btn {
-  color: var(--ink-muted);
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.close-btn:hover {
-  color: #E53E3E;
-}
+    .service-card--popular::before { display: none !important; }
 
-.modal-content h3 {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  color: var(--ink);
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--paper-mid);
-}
+    .popular-badge {
+        position: absolute;
+        top: -16px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--grad);
+        color: #fff;
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        padding: 8px 20px;
+        border-radius: 100px;
+        white-space: nowrap;
+        box-shadow: 0 6px 15px rgba(107,53,200,0.3);
+        z-index: 2;
+    }
 
-.modal-content h4 {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin: 24px 0 12px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+    @media (max-width: 768px) {
+        .popular-badge { font-size: 0.65rem; padding: 6px 14px; }
+    }
 
-.modal-content p {
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  font-weight: 300;
-}
+    /* MODALE */
+    .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(13, 13, 13, 0.75); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
+    .modal.show { display: flex; align-items: center; justify-content: center; opacity: 1; }
 
-.modal-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px 0;
-}
+    .modal-content { background-color: var(--paper); padding: 40px 48px; border-radius: var(--radius-lg); width: 90%; max-width: 550px; position: relative; box-shadow: var(--shadow-strong); transform: translateY(30px); transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); border: 1px solid var(--paper-mid); }
+    .modal.show .modal-content { transform: translateY(0); }
 
-.modal-list li {
-  position: relative;
-  padding-left: 28px;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-  color: var(--ink-soft);
-  font-weight: 300;
-  line-height: 1.5;
-}
+    .modal-content.modal-large { background-color: var(--paper-warm); padding: 48px; width: 95%; max-width: 900px; max-height: 90vh; overflow-y: auto; }
 
-.modal-list li::before {
-  content: '\f00d'; 
-  font-family: 'Line Awesome Free';
-  font-weight: 900;
-  color: #E53E3E;
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-size: 1.1rem;
-}
+    .close-btn { color: var(--ink-muted); position: absolute; top: 24px; right: 28px; font-size: 36px; line-height: 1; cursor: pointer; transition: color 0.2s; z-index: 10; }
+    .close-btn:hover { color: #E53E3E; }
 
-@media (max-width: 600px) {
-  .modal-content {
-    padding: 32px 24px;
-  }
-}
-    /* =========================================
-   STYLE DLA KART USŁUG (Siatka 2x2) I ODZNAK
-   ========================================= */
+    .modal-header { text-align: center; margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--paper-mid); }
+    .modal-header h3 { font-family: var(--serif); font-size: 2.2rem; color: var(--ink); margin-bottom: 12px; }
+    .modal-header p { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 600px; margin: 0 auto; }
 
-.services-grid-2x2 { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 32px; 
-}
+    .eyebrow-label { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grad-start); margin-bottom: 8px; }
 
-@media (min-width: 800px) {
-    .services-grid-2x2 { grid-template-columns: repeat(2, 1fr); }
-}
+    .modal-h4 { font-family: var(--sans); font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: 24px; }
 
-.service-card--flex {
-  display: flex;
-  flex-direction: column;
-  position: relative; /* Wymagane dla badge'a */
-}
+    .modal-features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 32px; }
+    .modal-features .feature-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 28px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+    .modal-features .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--paper-mid); transition: background 0.3s ease; }
+    .modal-features .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); }
+    .modal-features .feature-card:hover::before { background: var(--grad); }
+    .feature-card--highlight { background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%) !important; border-color: rgba(107,53,200,0.2) !important; }
+    .modal-features .feature-icon { margin-bottom: 16px; }
+    .modal-features .feature-icon i { font-size: 2.4rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .modal-features h4 { font-family: var(--sans); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .modal-features p { font-family: var(--sans); font-size: 0.9rem; line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
 
-/* =========================================
-   WYRÓŻNIONA KARTA (GRADIENTOWA RAMKA)
-   ========================================= */
+    .notice-box-modal { display: flex; align-items: flex-start; gap: 16px; background: #fff; border-left: 4px solid var(--grad-start); padding: 24px 28px; border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin-bottom: 32px; box-shadow: var(--shadow-soft); }
+    .notice-box-modal i { font-size: 2rem; color: var(--grad-start); margin-top: -2px; }
+    .notice-box-modal div { font-family: var(--sans); font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); font-weight: 300; }
+    .notice-box-modal strong { font-weight: 700; color: var(--ink); }
 
-.service-card--popular {
-  position: relative;
-  /* Tworzymy gradientową ramkę za pomocą podwójnego tła */
-  border: 1.5px solid transparent !important; 
-  background: 
-    linear-gradient(#fff, #fff) padding-box, 
-    var(--grad) border-box !important;
-  box-shadow: 0 4px 24px rgba(107,53,200,0.12) !important;
-}
+    .modal-action { text-align: center; padding-top: 24px; border-top: 1px solid var(--paper-mid); }
 
-/* Usuwamy standardowy pasek hover dla tej konkretnej karty, 
-   ponieważ ma już pełną, gradientową ramkę */
-.service-card--popular::before {
-  display: none !important;
-}
+    .modal-list { list-style: none; padding: 0; margin: 0 0 16px 0; }
+    .modal-list li { position: relative; padding-left: 28px; margin-bottom: 8px; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+    .modal-list li::before { content: '\f00d'; font-family: 'Line Awesome Free'; font-weight: 900; color: #E53E3E; position: absolute; left: 0; top: 2px; font-size: 1.1rem; }
 
-.popular-badge {
-  position: absolute;
-  /* Ustawiamy odznakę tak, aby idealnie nachodziła na górną ramkę */
-  top: -15px; 
-  right: 24px;
-  background: var(--grad);
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 8px 20px;
-  border-radius: 100px;
-  /* Dodajemy miękki cień, który widać na screenie */
-  box-shadow: 0 6px 15px rgba(107,53,200,0.3);
-  z-index: 2;
-}
+    .modal-content h4 { font-family: var(--sans); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 24px 0 12px 0; display: flex; align-items: center; gap: 8px; }
+    .modal-content p { font-family: var(--sans); font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; font-weight: 300; }
 
-@media (max-width: 768px) {
-  .popular-badge { 
-    right: 16px; 
-    top: -12px; 
-    font-size: 0.65rem;
-    padding: 6px 14px;
-  }
-}
-
-.read-more-btn {
-  background: none;
-  border: none;
-  color: var(--grad-start);
-  font-family: var(--sans);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  padding: 20px 0 0 0;
-  margin-top: auto; 
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: color 0.2s, transform 0.2s;
-}
-.read-more-btn:hover {
-  color: var(--grad-end);
-  transform: translateX(4px);
-}
-
-/* =========================================
-   POWIĘKSZONE MODALE I ICH WNĘTRZE
-   ========================================= */
-
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 9999; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(13, 13, 13, 0.75); 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.modal.show {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 1;
-}
-
-.modal-content.modal-large {
-  background-color: var(--paper-warm); /* Tło jak w sekcji Twój pakiet */
-  padding: 48px;
-  border-radius: var(--radius-lg); 
-  width: 95%;
-  max-width: 900px; /* Zwiększona szerokość z 550px na 900px */
-  max-height: 90vh;
-  overflow-y: auto; /* Pasek przewijania jeśli ekran jest mały */
-  position: relative;
-  box-shadow: var(--shadow-strong);
-  transform: translateY(30px);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  border: 1px solid var(--paper-mid);
-}
-
-.modal.show .modal-content {
-  transform: translateY(0);
-}
-
-.close-btn {
-  color: var(--ink-muted);
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  font-size: 36px;
-  line-height: 1;
-  cursor: pointer;
-  transition: color 0.2s;
-  z-index: 10;
-}
-.close-btn:hover {
-  color: #E53E3E;
-}
-
-/* --- Typografia i nagłówki w Modalu --- */
-
-.modal-header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--paper-mid);
-}
-
-.modal-header h3 {
-  font-family: var(--serif);
-  font-size: 2.2rem;
-  color: var(--ink);
-  margin-bottom: 12px;
-}
-
-.modal-header p {
-  font-family: var(--sans);
-  font-size: 1.05rem;
-  color: var(--ink-muted);
-  font-weight: 300;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.modal-h4 {
-  font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 24px;
-}
-
-/* --- Kafelki wewnątrz modala --- */
-
-.modal-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-bottom: 32px;
-}
-
-.modal-features .feature-card {
-  background: #fff;
-  border: 1px solid var(--paper-mid);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.modal-features .feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--paper-mid);
-  transition: background 0.3s ease;
-}
-
-.modal-features .feature-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-soft);
-}
-
-.modal-features .feature-card:hover::before {
-  background: var(--grad);
-}
-
-.feature-card--highlight {
-  background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%) !important;
-  border-color: rgba(107,53,200,0.2) !important;
-}
-
-.modal-features .feature-icon i {
-  font-size: 2.4rem;
-  background: var(--grad-text);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.modal-features h4 {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.modal-features p {
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  font-weight: 300;
-}
-
-/* --- Blok informacyjny / ostrzegawczy wewnątrz modala --- */
-
-.notice-box-modal {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  background: #fff;
-  border-left: 4px solid var(--grad-start);
-  padding: 24px 28px;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-  margin-bottom: 32px;
-  box-shadow: var(--shadow-soft);
-}
-
-.notice-box-modal i {
-  font-size: 2rem;
-  color: var(--grad-start);
-  margin-top: -2px;
-}
-
-.notice-box-modal div {
-  font-family: var(--sans);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--ink-soft);
-  font-weight: 300;
-}
-
-.notice-box-modal strong {
-  font-weight: 700;
-  color: var(--ink);
-}
-
-/* --- Akcja / Przycisk --- */
-
-.modal-action {
-  text-align: center;
-  padding-top: 24px;
-  border-top: 1px solid var(--paper-mid);
-}
-
-@media (max-width: 768px) {
-  .modal-content.modal-large { padding: 32px 24px; }
-  .popular-badge { right: 10px; top: -10px; font-size: 0.65rem;}
-}
-</style>
+    @media (max-width: 768px) {
+        .modal-content.modal-large { padding: 32px 24px; }
+    }
+    @media (max-width: 600px) {
+        .modal-content { padding: 32px 24px; }
+    }
+    </style>
