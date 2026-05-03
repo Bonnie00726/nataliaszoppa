@@ -35,41 +35,39 @@ title: Redakcja - od mikro po makro
 }
 
 /* ══════════════════════════════════════
-   DYNAMICZNE MENU (Frosted Glass -> Black)
+   DYNAMICZNE MENU - OVERRIDE GŁÓWNEGO STYLU
 ══════════════════════════════════════ */
-header {
-  /* ZMIANA: Zamiast pełnej przezroczystości, eleganckie mleczne szkło */
+/* Celujemy we właściwe klasy z Twojego globalnego CSS */
+.nav {
   background-color: rgba(255, 255, 255, 0.85) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(0,0,0,0.05) !important;
   transition: background-color 0.4s ease, box-shadow 0.4s ease !important;
-  box-shadow: none !important;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 999;
 }
 
-header:not(.header-scrolled) a:not(.btn) {
+.nav:not(.scrolled) .nav-links a:not(.nav-cta) {
   color: var(--ink) !important;
 }
 
-header:not(.header-scrolled) .logo,
-header:not(.header-scrolled) .site-title {
+.nav:not(.scrolled) .nav-logo {
   color: var(--ink) !important;
 }
 
-/* Czarny pasek po scrollu */
-header.header-scrolled {
-  background-color: var(--ink) !important;
+.nav:not(.scrolled) .mobile-toggle {
+    color: var(--ink) !important;
+}
+
+/* Czarny pasek po scrollu - korzystamy z natywnej klasy Twojego szablonu */
+.nav.scrolled {
+  background-color: rgba(13,13,13,0.98) !important;
   border-bottom: 1px solid transparent !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15) !important;
 }
 
-header.header-scrolled a:not(.btn),
-header.header-scrolled .logo,
-header.header-scrolled .site-title {
+.nav.scrolled .nav-links a:not(.nav-cta),
+.nav.scrolled .nav-logo,
+.nav.scrolled .mobile-toggle {
   color: #fff !important;
 }
 
@@ -104,7 +102,7 @@ header.header-scrolled .site-title {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 160px 20px 80px; 
+  padding: 180px 20px 80px; 
 }
 
 .page-hero h1 {
@@ -127,7 +125,7 @@ header.header-scrolled .site-title {
 }
 
 /* ══════════════════════════════════════
-   PASEK CREDIBILITY (Teraz pod tekstem!)
+   PASEK CREDIBILITY
 ══════════════════════════════════════ */
 .cred-bar-wrapper {
   max-width: 1000px;
@@ -159,7 +157,7 @@ header.header-scrolled .site-title {
 .cred-text { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink); }
 
 /* ══════════════════════════════════════
-   SKACZĄCA STRZAŁKA (Bouncing Button)
+   SKACZĄCA STRZAŁKA
 ══════════════════════════════════════ */
 .scroll-down-btn {
   display: inline-flex;
@@ -184,7 +182,6 @@ header.header-scrolled .site-title {
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  /* Delikatne przesunięcie strzałki w dół, żeby była idealnie na środku */
   transform: translateY(2px);
 }
 
@@ -242,7 +239,7 @@ header.header-scrolled .site-title {
 }
 
 /* ══════════════════════════════════════
-   TABELA MIKRO / MAKRO (GRADIENTOWE AKCENTY)
+   TABELA MIKRO / MAKRO 
 ══════════════════════════════════════ */
 .table-section { margin-top: 120px; padding-top: 120px; border-top: 1px solid var(--paper-mid); }
 .section-header { text-align: center; margin-bottom: 80px; max-width: 700px; margin-inline: auto; }
@@ -253,14 +250,13 @@ header.header-scrolled .site-title {
 
 .mm-card {
   position: relative;
-  overflow: hidden; /* Przycina gradientowy pasek do zaokrągleń */
+  overflow: hidden; 
   background: var(--paper-warm); 
   border-radius: var(--radius-lg); 
   padding: 50px 40px; 
   box-shadow: var(--shadow-soft);
 }
 
-/* Pasek gradientowy na samej górze obu kart */
 .mm-card::before {
   content: '';
   position: absolute;
@@ -320,7 +316,7 @@ header.header-scrolled .site-title {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .page-hero { padding: 120px 20px 40px; }
+  .page-hero { padding: 140px 20px 40px; }
   .main-card { padding: 60px 30px; border-radius: 16px; margin-bottom: 80px; }
   .story-row, .mm-grid, .del-grid { grid-template-columns: 1fr; gap: 50px; }
   .story-row { margin-bottom: 80px; }
@@ -341,7 +337,7 @@ header.header-scrolled .site-title {
   <h1>Redakcja od mikro po makro</h1>
   <p>Piszesz intuicyjnie. Czasem niesie Cię wena, a czasem walczysz o każdą stronę. Jeśli czujesz, że Twój tekst zgrzyta, ale nie potrafisz wskazać gdzie – przestańmy zgadywać, zacznijmy diagnozować.</p>
   
-  <!-- CREDIBILITY BAR ZAMIAST PRZYCISKU -->
+  <!-- CREDIBILITY BAR -->
   <div class="cred-bar-wrapper">
     <div class="cred-item">
       <div class="cred-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
@@ -496,7 +492,6 @@ header.header-scrolled .site-title {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // Animacje reveal
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -506,17 +501,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Bezpieczny chwyt globalnego nagłówka
-  const globalHeader = document.querySelector('header');
-  if (globalHeader && !globalHeader.classList.contains('page-hero')) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        globalHeader.classList.add('header-scrolled');
-      } else {
-        globalHeader.classList.remove('header-scrolled');
-      }
-    });
-  }
 });
 </script>
