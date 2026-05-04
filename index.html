@@ -59,6 +59,105 @@ title: Redakcja, korekta, skład
         display: none; /* Ukrywa strzałki na telefonach, by kafelki ładnie układały się w siatkę */
     }
 }
+/* Pasek Specjalizacji (Jasny) pod Hero */
+.specializations-bar {
+    background: var(--paper-warm, #fdfbf7); /* Ciepła biel dopasowana do strony */
+    padding: 30px 20px;
+    border-bottom: 1px solid var(--paper-mid, #eaeaea);
+}
+.spec-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink, #222);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+.spec-item i {
+    /* Nakładamy motyw gradientowy fiolet-róż ze zmiennych Twojej strony */
+    background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.6rem;
+}
+
+/* Pasek Statystyk (Ciemny) */
+.stats-bar {
+    background: var(--ink, #1a1525); /* Głęboki, elegancki odcień pasujący do tekstu na stronie */
+    padding: 60px 0;
+    color: #fff;
+}
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.stat-block {
+    text-align: center;
+    flex: 1;
+    padding: 0 15px;
+}
+.stat-num {
+    font-family: var(--serif, Georgia, serif);
+    font-size: 3.8rem;
+    font-weight: 700;
+    /* Główny gradient strony w liczbach */
+    background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 50%, #e8772a 100%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    line-height: 1;
+    display: inline-block; /* Ważne, by gradient poprawnie uciął się do tekstu */
+}
+.stat-num sup {
+    font-size: 0.5em;
+    vertical-align: super;
+}
+.stat-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+.stat-sub {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+}
+.stat-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15); /* Delikatnie przezroczysta linia */
+}
+
+/* Responsywność na telefony i tablety */
+@media (max-width: 992px) {
+    .stats-container {
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+    }
+    .stat-block {
+        min-width: 40%;
+    }
+    .stat-divider {
+        display: none;
+    }
+}
+
 </style>
 
 <header class="hero">
@@ -116,6 +215,54 @@ title: Redakcja, korekta, skład
     </div>
 </div>
 </header>
+
+<!-- Krok pod Hero: Pasek specjalizacji (jasny) -->
+<div class="specializations-bar reveal">
+    <div class="spec-container">
+        <div class="spec-item"><i class="las la-book"></i> Beletrystyka</div>
+        <div class="spec-item"><i class="las la-dice-d20"></i> Gry Fabularne</div>
+        <div class="spec-item"><i class="las la-comment-dots"></i> Komiksy</div>
+        <div class="spec-item"><i class="las la-graduation-cap"></i> Edukacja</div>
+        <div class="spec-item"><i class="las la-file-alt"></i> Artykuły</div>
+    </div>
+</div>
+
+<!-- Krok pod Hero: Pasek statystyk (ciemny ze złotym) -->
+<div class="stats-bar reveal delay-1">
+    <div class="stats-container">
+        
+        <div class="stat-block">
+            <div class="stat-num">10<sup>+</sup></div>
+            <div class="stat-title">Lat doświadczenia</div>
+            <div class="stat-sub">nieprzerwanie w branży</div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-block">
+            <div class="stat-num">120<sup>+</sup></div>
+            <div class="stat-title">Zrealizowanych projektów</div>
+            <div class="stat-sub">od beletrystyki po gry</div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-block">
+            <div class="stat-num">100<sup>%</sup></div>
+            <div class="stat-title">Zaangażowania</div>
+            <div class="stat-sub">w każdy powierzony tekst</div>
+        </div>
+
+        <div class="stat-divider"></div>
+        
+        <div class="stat-block">
+            <div class="stat-num">70<sup>+</sup></div>
+            <div class="stat-title">Złożonych figurek</div>
+            <div class="stat-sub">kolekcja wciąż rośnie</div>
+        </div>
+
+    </div>
+</div>
    
 <section class="section" id="o-mnie">
     <div class="container">
