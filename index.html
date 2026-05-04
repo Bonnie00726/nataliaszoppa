@@ -3,6 +3,22 @@ layout: default
 title: Redakcja, korekta, skład
 ---
 
+<style>
+/* Style dla nowych sekcji: Ścieżka Autora i Autodiagnostyka */
+.author-path { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-top: 40px; }
+.path-step { background: #fff; border: 1px solid #eaeaea; padding: 15px 20px; border-radius: 8px; text-align: center; flex: 1 1 140px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.path-step span { display: block; font-size: 0.8em; font-weight: normal; color: #666; margin-bottom: 5px; }
+.path-arrow { color: var(--grad-end, #d4af37); font-size: 1.5rem; }
+.diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.diag-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--grad-end, #d4af37); display: flex; flex-direction: column; }
+.diag-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+.diag-card h3 i { font-size: 1.5em; color: var(--grad-end, #d4af37); }
+.diag-card ul { margin-bottom: 30px; padding-left: 20px; flex-grow: 1; color: #444; }
+.diag-card ul li { margin-bottom: 10px; }
+.services-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+@media (max-width: 768px) { .path-arrow { transform: rotate(90deg); } }
+</style>
+
 <header class="hero">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1520179432903-03d08e6ef07a?q=80&w=1170&auto=format&fit=crop" alt="Tło">
@@ -26,7 +42,6 @@ title: Redakcja, korekta, skład
             zasługują na najlepszą oprawę
         </h1>
          <p class="hero-sub">Pomagam twórcom publikować teksty, które robią trwałe wrażenie.</p>
-   
    
     <div class="hero-stats-clean">
         
@@ -80,90 +95,110 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- SEKCJA USŁUG (Siatka 2x2) — wersja z index__5_ -->
-<section class="section" id="uslugi">
+<!-- CO MOGĘ DLA CIEBIE ZROBIĆ + ŚCIEŻKA AUTORA -->
+<section class="section" id="sciezka-autora" style="background: var(--paper-warm, #fdfbf7);">
     <div class="container">
         <div class="services-intro">
             <div class="reveal">
-                <div class="eyebrow">Oferta</div>
+                <div class="eyebrow">Współpraca</div>
                 <h2 class="section-h2">Co mogę dla <em>Ciebie</em> zrobić?</h2>
-                <p class="services-desc">Wybierz usługę, aby sprawdzić pełny zakres paczki i narzędzi, które otrzymasz.</p>
+                <p class="services-desc">Kompleksowo przygotowuję Twoje teksty do publikacji. Zobacz, jak wygląda pełny proces wydawniczy i zlokalizuj, w którym miejscu obecnie się znajdujesz.</p>
             </div>
         </div>
-        <div class="services-grid-2x2 reveal delay-2">
-            
-            <!-- 1. RECENZJA -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-glasses"></i></div>
-                <h3>1. Recenzja / Beta-reading</h3>
-                <p>Krytyczne spojrzenie na fabułę, budowę postaci, logikę narracji i jakość języka jeszcze przed głęboką redakcją. Diagnoza potencjału opowieści.</p>
-                <button class="read-more-btn" data-target="modal-recenzja">Sprawdź pakiety <i class="las la-arrow-right"></i></button>
-            </div>
-
-           <!-- 2. REDAKCJA (Z odznaką) -->
-<div class="service-card service-card--flex service-card--popular">
-    <div class="popular-badge">Najczęściej wybierany</div>
-    <div class="service-icon"><i class="las la-highlighter"></i></div>
-    <h3>2. Redakcja</h3>
-    <p>Pracuję nad stylem, logiką i spójnością. Porządkuję treść, by była płynna i wciągająca. Szlif od detali językowych po ogólną strukturę.</p>
-    <button class="read-more-btn" data-target="modal-redakcja">Sprawdź pakiety <i class="las la-arrow-right"></i></button>
-</div>
-
-            <!-- 3. KOREKTA -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-spell-check"></i></div>
-                <h3>3. Korekta</h3>
-                <p>Ostatnia linia obrony. Eliminuję błędy ortograficzne, wyłapuję literówki i koryguję interpunkcję przed oddaniem tekstu do publikacji.</p>
-                <button class="read-more-btn" data-target="modal-korekta">Sprawdź pakiety <i class="las la-arrow-right"></i></button>
-            </div>
-
-            <!-- 4. SKŁAD DTP -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-book-open"></i></div>
-                <h3>4. Skład DTP</h3>
-                <p>Zamieniam plik tekstowy w profesjonalną książkę. Opracowuję typografię, rozkładam tekst i przygotowuję pliki cyfrowe (EPUB/PDF).</p>
-                <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiety <i class="las la-arrow-right"></i></button>
-            </div>
-
+        
+        <div class="author-path reveal delay-2">
+            <div class="path-step"><span>Krok 1</span> Autodiagnostyka<br>(Fabuła)</div>
+            <i class="las la-angle-right path-arrow"></i>
+            <div class="path-step"><span>Krok 2</span> Redakcja<br>językowa</div>
+            <i class="las la-angle-right path-arrow"></i>
+            <div class="path-step"><span>Krok 3</span> Autodiagnostyka<br>(Język)</div>
+            <i class="las la-angle-right path-arrow"></i>
+            <div class="path-step"><span>Krok 4</span> Korekta<br>techniczna</div>
+            <i class="las la-angle-right path-arrow"></i>
+            <div class="path-step"><span>Krok 5</span> Skład<br>DTP</div>
+            <i class="las la-angle-right path-arrow"></i>
+            <div class="path-step"><span>Krok 6</span> Korekta<br>poskładowa</div>
         </div>
     </div>
 </section>
 
-<section class="section" id="misja">
+<!-- AUTODIAGNOSTYKA (DWIE SEKCJE OBOK SIEBIE) -->
+<section class="section" id="autodiagnostyka">
     <div class="container">
-        <div class="mission-wrap">
-            <div class="mission-text reveal">
-                <div class="eyebrow">Moja filozofia</div>
-                <h2 class="section-h2">Dlaczego korekta i<em>redakcja</em>?</h2>
-                <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.
- </p>
-                <div class="blockquote">
-                    <p>Nieważne, czy tworzysz kurs, piszesz książkę, czy tekst sprzedażowy – Twoja treść musi być zrozumiała i spójna. Moim zadaniem jest zadbać o to, by struktura była logiczna, a język nienaganny. Tylko wtedy Twoja treść obroni się sama, czytelnik zaś poczuje, że szanujesz jego czas.
-                    </p>
-                </div>
-                <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko natchnienie jest najważniejsze w procesie twórczym. Dlatego do każdego tekstu podchodzę analitycznie: badam rytm zdań, spójność argumentacji i poprawność językową, aby wydobyć z niego to, co najlepsze, i podać w taki sposób, by nic nie odciągało uwagi czytelnika od meritum.
-                    </p>
+        <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę, <em>sprawdź się</em></h2>
+        <p class="services-desc reveal delay-2" style="text-align: center;">Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz i upewnij się, że tekst ma solidne fundamenty gotowe na kolejny etap prac.</p>
+        
+        <div class="diag-grid reveal delay-3">
+            <!-- Diagnostyka przed Redakcją -->
+            <div class="diag-card">
+                <h3><i class="las la-project-diagram"></i> Autodiagnostyka przed Redakcją</h3>
+                <p>Redakcja językowa nie uratuje dziur w logice ani płaskich bohaterów. Wykonaj test fabularny, zanim zlecę polerowanie Twojego stylu.</p>
+                <ul>
+                    <li>Weryfikacja głównego problemu i motywów</li>
+                    <li>Oś czasu i spójność wykreowanego świata</li>
+                    <li>Sprawdzenie „czerwonych flag” i logiki</li>
+                </ul>
+                <a href="#" class="btn-primary" style="text-align: center; width: 100%;">Pobierz formularz fabularny (Word)</a>
             </div>
-            <div class="mission-aside reveal delay-2">
-                <div class="mission-aside-card">
-                    <h4>Zobacz, jak pracuję</h4>
-                    <p>Pobierz fragment przykładowej korekty lub redakcji. Zapoznaj się z moim stylem pracy.</p>
-                    <a href="{{ site.baseurl }}/kontakt.html" class="btn-primary">Pobierz fragment</a>
-                </div>
+
+            <!-- Diagnostyka przed Korektą -->
+            <div class="diag-card">
+                <h3><i class="las la-spell-check"></i> Autodiagnostyka przed Korektą</h3>
+                <p>Twój tekst przeszedł już redakcję u kogoś innego? Upewnij się, że styl faktycznie został wygładzony i tekst nie wymaga ponownej przebudowy.</p>
+                <ul>
+                    <li>Wykrywanie „wydmuszek słownych” (zaimków)</li>
+                    <li>Analiza czasowników (zasada Show, Don't Tell)</li>
+                    <li>Test powtórzeń i dynamiki dialogów</li>
+                </ul>
+                <a href="#" class="btn-primary" style="text-align: center; width: 100%;">Pobierz formularz językowy (Word)</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OFERTA: 3 KAFELKI -->
+<section class="section" id="uslugi" style="background: var(--paper-warm, #fdfbf7);">
+    <div class="container">
+        <div class="eyebrow reveal" style="text-align: center;">Moja oferta</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Wybierz usługę dla <em>siebie</em></h2>
+        
+        <div class="services-grid-3 reveal delay-2">
+            <!-- 1. REDAKCJA -->
+            <div class="service-card service-card--flex service-card--popular">
+                <div class="popular-badge">Najczęściej wybierany</div>
+                <div class="service-icon"><i class="las la-highlighter"></i></div>
+                <h3>1. Redakcja</h3>
+                <p>Pracuję nad stylem, logiką i spójnością. Porządkuję treść, by była płynna i wciągająca. Szlif od detali językowych po ogólną strukturę zdań.</p>
+                <button class="read-more-btn" data-target="modal-redakcja">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
+            </div>
+
+            <!-- 2. KOREKTA -->
+            <div class="service-card service-card--flex">
+                <div class="service-icon"><i class="las la-spell-check"></i></div>
+                <h3>2. Korekta</h3>
+                <p>Ostatnia linia obrony. Eliminuję błędy ortograficzne, wyłapuję literówki i koryguję interpunkcję przed oddaniem tekstu do publikacji.</p>
+                <button class="read-more-btn" data-target="modal-korekta">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
+            </div>
+
+            <!-- 3. SKŁAD DTP -->
+            <div class="service-card service-card--flex">
+                <div class="service-icon"><i class="las la-book-open"></i></div>
+                <h3>3. Skład DTP</h3>
+                <p>Zamieniam plik tekstowy w profesjonalną książkę. Opracowuję typografię, rozkładam tekst i przygotowuję pliki cyfrowe (EPUB/PDF).</p>
+                <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
             </div>
         </div>
     </div>
 </section>
 
 <!-- SEKCJA PRZED/PO -->
-<section class="section" style="background: var(--paper-warm);">
+<section class="section">
     <div class="container">
-        
-        <h2 class="section-h2">Redakcja w<em>praktyce</em></h2>
-        <p class="services-desc" style="margin-bottom: 40px;">Spójrz na przykład poniżej. Wersja po lewej informuje, tak po prostu. Wersja po prawej – obrazuje, wciąga w klimat karczmy. </p>
+        <h2 class="section-h2 reveal">Redakcja w <em>praktyce</em></h2>
+        <p class="services-desc reveal delay-1" style="margin-bottom: 40px;">Spójrz na przykład poniżej. Wersja po lewej informuje, tak po prostu. Wersja po prawej – obrazuje, wciąga w klimat karczmy.</p>
 
-        <div class="comparison-container">
-            
+        <div class="comparison-container reveal delay-2">
             <div class="comparison-box before">
                 <div class="box-header"><i class="las la-times-circle"></i> Przed redakcją</div>
                 <div class="box-content">
@@ -187,7 +222,32 @@ title: Redakcja, korekta, skład
                     <span>✔ Immersja</span>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
 
+<!-- DLACZEGO KOREKTA I REDAKCJA -->
+<section class="section" id="misja" style="background: var(--paper-warm, #fdfbf7);">
+    <div class="container">
+        <div class="mission-wrap">
+            <div class="mission-text reveal">
+                <div class="eyebrow">Moja filozofia</div>
+                <h2 class="section-h2">Dlaczego korekta i <em>redakcja</em>?</h2>
+                <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
+                <div class="blockquote">
+                    <p>Nieważne, czy tworzysz kurs, piszesz książkę, czy tekst sprzedażowy – Twoja treść musi być zrozumiała i spójna. Moim zadaniem jest zadbać o to, by struktura była logiczna, a język nienaganny. Tylko wtedy Twoja treść obroni się sama, czytelnik zaś poczuje, że szanujesz jego czas.
+                    </p>
+                </div>
+                <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko natchnienie jest najważniejsze w procesie twórczym. Dlatego do każdego tekstu podchodzę analitycznie: badam rytm zdań, spójność argumentacji i poprawność językową, aby wydobyć z niego to, co najlepsze, i podać w taki sposób, by nic nie odciągało uwagi czytelnika od meritum.
+                    </p>
+            </div>
+            <div class="mission-aside reveal delay-2">
+                <div class="mission-aside-card">
+                    <h4>Zobacz, jak pracuję</h4>
+                    <p>Pobierz fragment przykładowej korekty lub redakcji. Zapoznaj się z moim stylem pracy.</p>
+                    <a href="{{ site.baseurl }}/kontakt.html" class="btn-primary">Pobierz fragment</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -196,7 +256,7 @@ title: Redakcja, korekta, skład
 <section class="section" id="opinie">
     <div class="container">
         <div class="eyebrow reveal">Opinie</div>
-        <h2 class="section-h2 reveal delay-1">Co mówią<em>twórcy</em>?</h2>
+        <h2 class="section-h2 reveal delay-1">Co mówią <em>twórcy</em>?</h2>
         
         <div class="reviews-desc reveal delay-2">
             <p>Od lat współpracuję z wydawnictwami. Moje nazwisko znajdziesz w stopkach redakcyjnych dziesiątek książek.</p>
@@ -226,8 +286,8 @@ title: Redakcja, korekta, skład
 <!-- ETAPY WSPÓŁPRACY -->
 <section class="section" id="proces">
     <div class="container">
-        <div class="eyebrow reveal" style="text-align: center; justify-content: center;">Proces</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align: center; margin-bottom: 64px;">Współpraca w<em>skrócie</em></h2>
+        <div class="eyebrow reveal" style="text-align: center; justify-content: center;">Proces realizacji</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center; margin-bottom: 64px;">Współpraca w <em>skrócie</em></h2>
         <div class="steps">
             <div class="step reveal delay-1"><div class="step-num"><span>1</span></div><div class="step-name">Zapytanie</div><p class="step-desc">Wysyłasz mail z opisem projektu i kilkoma rozdziałami do wglądu. Podajesz objętość, rodzaj tekstu, opisujesz problemy i dodajesz inne informacje, które pomogą mi zrozumieć, czego potrzebujesz.</p></div>
             <div class="step reveal delay-2"><div class="step-num"><span>2</span></div><div class="step-name">Wycena</div><p class="step-desc">Otrzymujesz przejrzystą ofertę, czyli cenę, zakres prac, krótkie wyjaśnienie, jakich zmian będzie wymagał tekst, oraz informację o dostępnych terminach.</p></div>
@@ -241,7 +301,7 @@ title: Redakcja, korekta, skład
 <section class="section" id="portfolio">
     <div class="container">
         <div class="eyebrow reveal">Realizacje</div>
-        <h2 class="section-h2 reveal delay-1">Wybrane<em>projekty</em></h2>
+        <h2 class="section-h2 reveal delay-1">Wybrane <em>projekty</em></h2>
     </div>
     <div class="slider-wrap">
         <div class="slider-track">
@@ -278,7 +338,7 @@ title: Redakcja, korekta, skład
 <section class="section bg-white" id="blog">
     <div class="container">
         <div class="eyebrow reveal">Baza wiedzy | Za kulisami dobrej historii</div>
-        <h2 class="section-h2 reveal delay-1">Najnowsze<em>artykuły</em></h2>
+        <h2 class="section-h2 reveal delay-1">Najnowsze <em>artykuły</em></h2>
         
         <div class="blog-grid">
             {% for post in site.posts limit:3 %}
@@ -297,11 +357,11 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- KAFELKI -->
+<!-- KAFELKI DOWIEDZ SIĘ WIĘCEJ -->
 <section class="section tiles-section">
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
-        <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej<em>informacji</em>?</h2>
+        <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej <em>informacji</em>?</h2>
         <div class="tiles-grid">
             <a href="cennik.html" class="tile tile--warm reveal delay-1"><i class="las la-wallet"></i><h3>Cennik</h3><p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
             <a href="faqs.html" class="tile tile--dark reveal delay-2"><i class="las la-question-circle"></i><h3>Baza wiedzy (FAQ)</h3><p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
@@ -312,53 +372,16 @@ title: Redakcja, korekta, skład
 </section>
 
 <!-- ========================================= -->
-<!-- MODALE Z KAFELKAMI 2x2                    -->
+<!-- MODALE Z KAFELKAMI (3 USŁUGI)             -->
 <!-- ========================================= -->
 
-<!-- 1. MODAL: RECENZJA -->
-<div id="modal-recenzja" class="modal">
-  <div class="modal-content modal-large">
-    <span class="close-btn">&times;</span>
-    <div class="modal-header">
-        <div class="eyebrow-label">Etap 1</div>
-        <h3>Recenzja (Beta Reading)</h3>
-        <p>Zanim zaczniemy przesuwać przecinki, sprawdzam czy fundamenty historii są stabilne.</p>
-    </div>
-
-    <h4 class="modal-h4">Co zyskujesz na tym etapie?</h4>
-    <div class="modal-features">
-        <div class="feature-card">
-            <div class="feature-icon"><i class="las la-heartbeat"></i></div>
-            <h4>Audyt „Haka" i Emocji</h4>
-            <p>Analizuję otwarcie tekstu i kluczowe momenty zwrotne. Wskazuję miejsca, w których czytelnik wstrzymuje oddech.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon"><i class="las la-project-diagram"></i></div>
-            <h4>Weryfikacja Świata i Logiki</h4>
-            <p>Sprawdzam spójność zasad świata przedstawionego (lore) i wiarygodność motywacji postaci.</p>
-        </div>
-        <div class="feature-card" style="grid-column: 1 / -1; display: flex; gap: 20px; align-items: center; padding: 24px;">
-            <i class="las la-file-excel" style="font-size: 2.5rem; color: #107c41;"></i>
-            <div>
-                <h4 style="margin-bottom: 5px;">Materiały dodatkowe w cenie</h4>
-                <p style="margin: 0;">Otrzymujesz pliki PDF lub Excel z obszernie omówionymi zmianami i mapą drogową poprawek. <br><strong>Opcja dodatkowa:</strong> Możliwość dokupienia konsultacji na żywo.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal-action">
-        <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz i wyceń recenzję</a>
-    </div>
-  </div>
-</div>
-
-<!-- 2. MODAL: REDAKCJA -->
+<!-- 1. MODAL: REDAKCJA -->
 <div id="modal-redakcja" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
     <div class="modal-header">
         <div class="eyebrow-label" style="color: var(--grad-end);">Najczęściej wybierany</div>
-        <h3>Redakcja</h3>
+        <h3>Redakcja językowa</h3>
         <p>Głęboka praca na tkance tekstu. Porządkuję treść i styl, poprawiam błędy leksykalne i dbam o naturalny flow.</p>
     </div>
 
@@ -371,15 +394,15 @@ title: Redakcja, korekta, skład
         </div>
         <div class="feature-card">
             <div class="feature-icon"><i class="las la-chart-bar"></i></div>
-            <h4>Raport Językowy / Merytoryczny</h4>
-            <p>Statystyka nadużywanych fraz, analiza dynamiki dialogów i indywidualna lista „do poprawy".</p>
+            <h4>Raport Językowy</h4>
+            <p>Statystyka nadużywanych fraz, analiza dynamiki dialogów i indywidualna lista obszarów „do poprawy".</p>
         </div>
     </div>
 
     <div class="notice-box-modal">
         <i class="las la-clock"></i>
         <div>
-            <strong>Dodatkowo w ramach redakcji:</strong> Masz pełne <u>dwa tygodnie</u> na sprawdzenie poprawek. Następnie wprowadzam je za Ciebie do pliku głównego i wykonuję ostatnie, kontrolne czytanie. <em>(Możliwość dokupienia godzinnej konsultacji)</em>.
+            <strong>Dodatkowo w ramach redakcji:</strong> Masz pełne <u>dwa tygodnie</u> na sprawdzenie poprawek. Następnie wprowadzam je za Ciebie do pliku głównego i wykonuję ostatnie, kontrolne czytanie (tzw. ostateczna rewizja).
         </div>
     </div>
 
@@ -389,12 +412,12 @@ title: Redakcja, korekta, skład
   </div>
 </div>
 
-<!-- 3. MODAL: KOREKTA -->
+<!-- 2. MODAL: KOREKTA -->
 <div id="modal-korekta" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
     <div class="modal-header">
-        <div class="eyebrow-label">Etap 3</div>
+        <div class="eyebrow-label">Usługa uzupełniająca</div>
         <h3>Korekta Techniczna</h3>
         <p>Ostatni szlif przed publikacją. Przeznaczony dla tekstów, które przeszły już głęboką redakcję.</p>
     </div>
@@ -416,27 +439,27 @@ title: Redakcja, korekta, skład
   </div>
 </div>
 
-<!-- 4. MODAL: SKŁAD DTP -->
+<!-- 3. MODAL: SKŁAD DTP -->
 <div id="modal-dtp" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
     <div class="modal-header">
-        <div class="eyebrow-label">Etap 4</div>
+        <div class="eyebrow-label">Finalny format</div>
         <h3>Skład DTP</h3>
-        <p>Przekształcam Twój plik w gotowy do druku materiał lub profesjonalnego e-booka (EPUB/MOBI).</p>
+        <p>Przekształcam Twój plik w gotowy do druku materiał lub profesjonalnego e-booka (EPUB/PDF).</p>
     </div>
 
     <h4 class="modal-h4">Co wchodzi w skład usługi?</h4>
     <div class="modal-features">
         <div class="feature-card">
             <div class="feature-icon"><i class="las la-swatchbook"></i></div>
-            <h4>Typografia (4 fonty w cenie)</h4>
+            <h4>Typografia z licencją</h4>
             <p>Dobieram układ strony, marginesy oraz licencjonowane fonty idealnie pasujące do gatunku i nastroju książki.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon"><i class="las la-search"></i></div>
             <h4>Kontrola jakości</h4>
-            <p>Poprawiam typowe błędy składu (wdowy, sieroty), wyłapuję ocalałe literówki oraz błędy interpunkcyjne przed samym drukiem.</p>
+            <p>Poprawiam typowe błędy składu (wdowy, sieroty, bękarty), wyłapuję ocalałe literówki oraz formatuję oprawę graficzną rozdziałów.</p>
         </div>
     </div>
     
