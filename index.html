@@ -5,10 +5,39 @@ title: Redakcja, korekta, skład
 
 <style>
 /* Style dla nowych sekcji: Ścieżka Autora i Autodiagnostyka */
-.author-path { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-top: 40px; }
-.path-step { background: #fff; border: 1px solid #eaeaea; padding: 15px 20px; border-radius: 8px; text-align: center; flex: 1 1 140px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-.path-step span { display: block; font-size: 0.8em; font-weight: normal; color: #666; margin-bottom: 5px; }
-.path-arrow { color: var(--grad-end, #d4af37); font-size: 1.5rem; }
+.author-path { 
+    display: flex; 
+    flex-wrap: nowrap; /* Wymusza jedną linię na komputerach */
+    gap: 10px; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 40px; 
+    width: 100%;
+    overflow-x: auto; /* Na małych ekranach pozwala na eleganckie przewijanie palcem w bok */
+    padding-bottom: 15px; /* Miejsce na pasek przewijania, by nie uciąć cieni */
+}
+.path-step { 
+    background: #fff; 
+    border: 1px solid #eaeaea; 
+    padding: 15px 10px; 
+    border-radius: 8px; 
+    text-align: center; 
+    flex: 1 0 130px; /* Kafelki mają równą szerokość i nie zgniatają się za bardzo */
+    font-weight: bold; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02); 
+}
+.path-step span { 
+    display: block; 
+    font-size: 0.8em; 
+    font-weight: normal; 
+    color: #666; 
+    margin-bottom: 5px; 
+}
+.path-arrow { 
+    color: var(--grad-end, #d4af37); 
+    font-size: 1.5rem; 
+    flex-shrink: 0; /* Strzałki nie będą się kurczyć */
+}
 .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .diag-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--grad-end, #d4af37); display: flex; flex-direction: column; }
 .diag-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
@@ -16,7 +45,20 @@ title: Redakcja, korekta, skład
 .diag-card ul { margin-bottom: 30px; padding-left: 20px; flex-grow: 1; color: #444; }
 .diag-card ul li { margin-bottom: 10px; }
 .services-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-@media (max-width: 768px) { .path-arrow { transform: rotate(90deg); } }
+
+/* Poprawka dla telefonów, gdyby ktoś nie lubił przewijania w bok */
+@media (max-width: 768px) { 
+    .author-path { 
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    .path-step {
+        flex: 0 0 140px; /* Na telefonach zapobiega rozciąganiu na cały ekran! */
+    }
+    .path-arrow { 
+        display: none; /* Ukrywa strzałki na telefonach, by kafelki ładnie układały się w siatkę */
+    }
+}
 </style>
 
 <header class="hero">
@@ -97,7 +139,8 @@ title: Redakcja, korekta, skład
 
 <!-- CO MOGĘ DLA CIEBIE ZROBIĆ + ŚCIEŻKA AUTORA -->
 <section class="section" id="sciezka-autora" style="background: var(--paper-warm, #fdfbf7);">
-    <div class="container">
+    <!-- Dodałem szeroki max-width, żeby sekcja miała miejsce na oddech -->
+    <div class="container" style="max-width: 1400px;">
         <div class="services-intro">
             <div class="reveal">
                 <div class="eyebrow">Współpraca</div>
@@ -127,7 +170,11 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
         <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę, <em>sprawdź się</em></h2>
-        <p class="services-desc reveal delay-2" style="text-align: center;">Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz i upewnij się, że tekst ma solidne fundamenty gotowe na kolejny etap prac.</p>
+        
+        <!-- POPRAWKA 1: Wymuszone wyśrodkowanie tekstu nad ramkami -->
+        <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 40px auto; max-width: 800px;">
+            Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz i upewnij się, że tekst ma solidne fundamenty gotowe na kolejny etap prac.
+        </p>
         
         <div class="diag-grid reveal delay-3">
             <!-- Diagnostyka przed Redakcją -->
@@ -139,7 +186,8 @@ title: Redakcja, korekta, skład
                     <li>Oś czasu i spójność wykreowanego świata</li>
                     <li>Sprawdzenie „czerwonych flag” i logiki</li>
                 </ul>
-                <a href="#" class="btn-primary" style="text-align: center; width: 100%;">Pobierz formularz fabularny (Word)</a>
+                <!-- POPRAWKA 2: Wymuszone wyśrodkowanie przycisku i tekstu w nim -->
+                <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz fabularny (Word)</a>
             </div>
 
             <!-- Diagnostyka przed Korektą -->
@@ -151,7 +199,8 @@ title: Redakcja, korekta, skład
                     <li>Analiza czasowników (zasada Show, Don't Tell)</li>
                     <li>Test powtórzeń i dynamiki dialogów</li>
                 </ul>
-                <a href="#" class="btn-primary" style="text-align: center; width: 100%;">Pobierz formularz językowy (Word)</a>
+                <!-- POPRAWKA 2: Wymuszone wyśrodkowanie przycisku i tekstu w nim -->
+                <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz językowy (Word)</a>
             </div>
         </div>
     </div>
@@ -362,11 +411,31 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
         <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej <em>informacji</em>?</h2>
-        <div class="tiles-grid">
-            <a href="cennik.html" class="tile tile--warm reveal delay-1"><i class="las la-wallet"></i><h3>Cennik</h3><p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
-            <a href="faqs.html" class="tile tile--dark reveal delay-2"><i class="las la-question-circle"></i><h3>Baza wiedzy (FAQ)</h3><p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
-            <a href="zasady-wspolpracy.html" class="tile tile--gold reveal delay-3"><i class="las la-tools"></i><h3>Więcej o współpracy</h3><p>Dowiedz się, jak przebiega współpraca krok po kroku. </p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
-            <a href="oferta.html" class="tile tile--warm reveal delay-4"><i class="las la-file-contract" style="color: var(--grad-start);"></i><h3>Oferta w szczegółach</h3><p>Nadal nie wiesz, którą usługę wybrać? Przeczytaj ten poradnik, aby podjąć najlepszą dla siebie decyzję.</p><div class="tile-arrow"><i class="las la-arrow-right"></i></div></a>
+        
+        <!-- Dodany styl inline, który wymusza równe rozłożenie 3 kafelków -->
+        <div class="tiles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <a href="cennik.html" class="tile tile--warm reveal delay-1">
+                <i class="las la-wallet"></i>
+                <h3>Cennik</h3>
+                <p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p>
+                <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
+            </a>
+            
+            <a href="faqs.html" class="tile tile--dark reveal delay-2">
+                <i class="las la-question-circle"></i>
+                <h3>Baza wiedzy (FAQ)</h3>
+                <p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p>
+                <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
+            </a>
+            
+            <a href="zasady-wspolpracy.html" class="tile tile--gold reveal delay-3">
+                <i class="las la-tools"></i>
+                <h3>Więcej o współpracy</h3>
+                <p>Dowiedz się, jak przebiega współpraca krok po kroku.</p>
+                <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
+            </a>
+
         </div>
     </div>
 </section>
