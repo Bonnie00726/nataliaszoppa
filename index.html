@@ -287,23 +287,20 @@ title: Redakcja, korekta, skład
 <section class="section" id="autodiagnostyka">
     <div class="container">
         
-        <!-- OPAKOWANIE NAGŁÓWKA - POTRZEBNE DO WYPOZYCJONOWANIA NOTATKI -->
-        <div class="title-wrapper" style="position: relative; max-width: 900px; margin: 0 auto;">
-            
-            <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
-            <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę,<br><em>sprawdź się</em></h2>
-            
-
+        <!-- Nagłówek -->
+        <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę,<br><em>sprawdź się</em></h2>
+        
         <!-- Opis pod nagłówkiem -->
         <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 50px auto; max-width: 800px;">
             Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz pytań i sprawdź, czy Twoja historia ma solidne fundamenty, bez których za wcześnie na redakcję językową. <br> <br>
             Nie zapomnij odesłać mi swoich odpowiedzi!<br>
-        Przeanalizuję je i <b>całkowicie bezpłatnie</b> doradzę Ci, co dalej. 
+            Przeanalizuję je i <b>całkowicie bezpłatnie</b> doradzę Ci, co dalej. 
         </p>
 
         <!-- TUTAJ ZACZYNA SIĘ TWOJA SIATKA Z KAFELKAMI (diag-grid) -->
-        
         <div class="diag-grid reveal delay-3">
+            
             <!-- Diagnostyka przed Redakcją -->
             <div class="diag-card">
                 <h3><i class="las la-project-diagram"></i> Autodiagnostyka przed redakcją</h3>
@@ -313,7 +310,6 @@ title: Redakcja, korekta, skład
                     <li>oś czasu i spójność wykreowanego świata</li>
                     <li>bio postaci i ich rola w powieści</li>
                 </ul>
-                <!-- POPRAWKA 2: Wymuszone wyśrodkowanie przycisku i tekstu w nim -->
                 <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz fabularny</a>
             </div>
 
@@ -326,47 +322,42 @@ title: Redakcja, korekta, skład
                     <li>płaskie czasowniki i generyczne rzeczowniki</li>
                     <li>liczbę powtórzeń</li>
                 </ul>
-                <!-- POPRAWKA 2: Wymuszone wyśrodkowanie przycisku i tekstu w nim -->
                 <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz językowy</a>
             </div>
-        </div> <!-- TUTAJ ZAMYKAMY KONTENER diag-grid -->
+            
+        </div> <!-- Zamknięcie diag-grid -->
+    </div> <!-- Zamknięcie container -->
+</section> <!-- Zamknięcie section -->
 
-</section>
-
-<!-- OFERTA: 3 KAFELKI -->
-<section class="section" id="uslugi" style="background: var(--paper-warm, #fdfbf7);">
+            <!-- DLACZEGO KOREKTA I REDAKCJA -->
+<section class="section" id="misja" style="background: var(--paper-warm, #fdfbf7);">
     <div class="container">
-        <div class="eyebrow reveal" style="text-align: center;">Moja oferta</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Wybierz usługę dla <em>siebie</em></h2>
-        
-        <div class="services-grid-3 reveal delay-2">
-            <!-- 1. REDAKCJA -->
-            <div class="service-card service-card--flex service-card--popular">
-                <div class="popular-badge">Najczęściej wybierany</div>
-                <div class="service-icon"><i class="las la-highlighter"></i></div>
-                <h3>1. Redakcja</h3>
-                <p>Pracuję nad prezycją słów i opisami, aby były dynamiczne, a całość płynna i wciągająca. Usuwam nadmierne powtórzenia, a długie akapity dzielę na krótsze.</p>
-                <button class="read-more-btn" data-target="modal-redakcja">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
-            </div>
+        <div class="mission-wrap">
+            <div class="mission-text reveal">
+                <div class="eyebrow">Moja filozofia</div>
+                <h2 class="section-h2">Jak pracuję z Twoim <em>tekstem</em></h2>
+                <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
+                <div class="blockquote">
+                    <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. 
 
-            <!-- 2. KOREKTA -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-spell-check"></i></div>
-                <h3>2. Korekta</h3>
-                <p>Eliminuję błędy ortograficzne, wyłapuję literówki i koryguję interpunkcję przed oddaniem tekstu do składu.</p>
-                <button class="read-more-btn" data-target="modal-korekta">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
-            </div>
 
-            <!-- 3. SKŁAD DTP -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-book-open"></i></div>
-                <h3>3. Skład DTP</h3>
-                <p>Zamieniam plik tekstowy w profesjonalną książkę. Opracowuję typografię i przygotowuję pliki cyfrowe (EPUB/PDF).</p>
-                <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
+                    </p>
+                </div>
+                <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko wena i pomysł są najważniejsze w procesie twórczym. Każde słowo, każdy drobny gest, każdy opis pozwala czytelnikowi stać się częścią Twojej wizji, a nie tylko biernym obserwatorem. </p>
+
+            </div>
+            <div class="mission-aside reveal delay-2">
+                <div class="mission-aside-card">
+                    <h4>Zobacz, jak pracuję</h4>
+                    <p>Pobierz fragment przykładowej redakcji, korekty lub gotowego PDF-a po składzie. Zapoznaj się z moim stylem pracy.</p>
+                    <a href="{{ site.baseurl }}/kontakt.html" class="btn-primary">Pobierz fragment</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+
 
 <!-- SEKCJA PRZED/PO -->
 <section class="section">
@@ -402,29 +393,36 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- DLACZEGO KOREKTA I REDAKCJA -->
-<section class="section" id="misja" style="background: var(--paper-warm, #fdfbf7);">
+<!-- OFERTA: 3 KAFELKI -->
+<section class="section" id="uslugi" style="background: var(--paper-warm, #fdfbf7);">
     <div class="container">
-        <div class="mission-wrap">
-            <div class="mission-text reveal">
-                <div class="eyebrow">Moja filozofia</div>
-                <h2 class="section-h2">Jak pracuję z Twoim <em>tekstem</em></h2>
-                <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
-                <div class="blockquote">
-                    <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. 
-
-
-                    </p>
-                </div>
-                <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko wena i pomysł są najważniejsze w procesie twórczym. Każde słowo, każdy drobny gest, każdy opis pozwala czytelnikowi stać się częścią Twojej wizji, a nie tylko biernym obserwatorem. </p>
-
+        <div class="eyebrow reveal" style="text-align: center;">Moja oferta</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Wybierz usługę dla <em>siebie</em></h2>
+        
+        <div class="services-grid-3 reveal delay-2">
+            <!-- 1. REDAKCJA -->
+            <div class="service-card service-card--flex service-card--popular">
+                <div class="popular-badge">Najczęściej wybierany</div>
+                <div class="service-icon"><i class="las la-highlighter"></i></div>
+                <h3>1. Redakcja</h3>
+                <p>Pracuję nad prezycją słów i opisami, aby były dynamiczne, a całość płynna i wciągająca. Usuwam nadmierne powtórzenia, a długie akapity dzielę na krótsze.</p>
+                <button class="read-more-btn" data-target="modal-redakcja">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
             </div>
-            <div class="mission-aside reveal delay-2">
-                <div class="mission-aside-card">
-                    <h4>Zobacz, jak pracuję</h4>
-                    <p>Pobierz fragment przykładowej redakcji, korekty lub gotowego PDF-a po składzie. Zapoznaj się z moim stylem pracy.</p>
-                    <a href="{{ site.baseurl }}/kontakt.html" class="btn-primary">Pobierz fragment</a>
-                </div>
+
+            <!-- 2. KOREKTA -->
+            <div class="service-card service-card--flex">
+                <div class="service-icon"><i class="las la-spell-check"></i></div>
+                <h3>2. Korekta</h3>
+                <p>Eliminuję błędy ortograficzne, wyłapuję literówki i koryguję interpunkcję przed oddaniem tekstu do składu.</p>
+                <button class="read-more-btn" data-target="modal-korekta">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
+            </div>
+
+            <!-- 3. SKŁAD DTP -->
+            <div class="service-card service-card--flex">
+                <div class="service-icon"><i class="las la-book-open"></i></div>
+                <h3>3. Skład DTP</h3>
+                <p>Zamieniam plik tekstowy w profesjonalną książkę. Opracowuję typografię i przygotowuję pliki cyfrowe (EPUB/PDF).</p>
+                <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
             </div>
         </div>
     </div>
