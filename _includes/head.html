@@ -595,43 +595,45 @@
     @media (max-width: 600px) {
         .modal-content { padding: 32px 24px; }
     }
-     /* --- ODRĘCZNA NOTATKA ZE STRZAŁKĄ --- */
+    /* --- ODRĘCZNA NOTATKA (Z WYKRZYKNIKIEM, POCHYLONA W DÓŁ) --- */
 
 .handwritten-note {
     position: absolute;
-    right: -60px; /* Wysuwa notatkę w prawo poza nagłówek */
-    top: -10px;   /* Wysokość względem nagłówka */
-    width: 260px;
-    transform: rotate(9deg); /* Lekkie przechylenie */
-    font-family: 'Caveat', cursive; /* Nasz odręczny font */
+    right: -130px; /* Odsunięte bardziej w prawo, by nie najeżdżało na tytuł */
+    top: -15px;    /* Wysokość względem nagłówka */
+    width: 320px;  /* Odrobinę szersze, żeby tekst ładnie się ułożył */
+    transform: rotate(-5deg); /* Przekrzywienie w dół (wartość ujemna) */
+    font-family: 'Caveat', cursive;
     font-size: 1.5rem;
     line-height: 1.2;
-    color: var(--ink-soft); /* Ciemnoszary, żeby wyglądało jak ołówek/długopis */
+    color: var(--ink-soft);
     z-index: 10;
+    display: flex; /* Ustawia wykrzyknik i tekst obok siebie */
+    align-items: flex-start;
+    gap: 12px;     /* Odstęp między wykrzyknikiem a tekstem */
 }
 
 .handwritten-note b {
-    color: var(--grad-start); /* Akcent kolorystyczny na "bezpłatnie" */
+    color: var(--grad-start);
     font-weight: 700;
 }
 
-/* Styl dla strzałki SVG */
-.hand-arrow {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    bottom: -40px; /* Pozycja strzałki pod tekstem */
-    left: -20px;
-    transform: rotate(20deg);
-    color: var(--grad-start); /* Kolor strzałki */
+/* Styl dla dużego wykrzyknika */
+.note-exclamation {
+    font-size: 3.5rem; /* Znacznie większy niż reszta tekstu */
+    color: var(--grad-start); /* Twój fioletowy akcent */
+    line-height: 0.8;
+    font-weight: 700;
+    transform: rotate(-10deg); /* Wykrzyknik ma jeszcze swoje własne, lekkie przekrzywienie */
+    margin-top: 5px; /* Delikatne obniżenie, by zrównać z pierwszą linią tekstu */
 }
 
 /* Responsywność dla notatki na tabletach i telefonach */
-@media (max-width: 950px) {
+@media (max-width: 1024px) {
     .handwritten-note {
-        right: 0;
-        width: 220px;
-        font-size: 1.3rem;
+        right: -50px;
+        width: 280px;
+        font-size: 1.35rem;
     }
 }
 
@@ -640,13 +642,15 @@
     .handwritten-note {
         position: static;
         margin: 20px auto 0 auto;
-        transform: rotate(0); /* Zero przechylenia na komórce dla czytelności */
-        text-align: center;
+        transform: rotate(0); /* Brak przechylenia na komórce dla lepszej czytelności */
+        justify-content: center; /* Wyśrodkowanie całości */
         width: 100%;
-        max-width: 300px;
+        max-width: 340px;
     }
-    .hand-arrow {
-        display: none; /* Ukrywamy strzałkę na komórkach, bo nie ma na co wskazywać z boku */
+    .note-exclamation {
+        font-size: 2.5rem; /* Mniejszy wykrzyknik na komórce */
+        transform: rotate(0);
+        margin-top: 0;
     }
 }
     </style>
