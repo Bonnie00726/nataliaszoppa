@@ -595,86 +595,58 @@
     @media (max-width: 600px) {
         .modal-content { padding: 32px 24px; }
     }
-      /* --- ZBALANSOWANA WERSJA SEKCJI INFORMACYJNEJ --- */
+     /* --- ODRĘCZNA NOTATKA ZE STRZAŁKĄ --- */
 
-.expert-cta-wrapper {
-    max-width: 850px;
-    margin: 60px auto 40px auto;
-    background: var(--gold-pale); /* Używamy Twojego subtelnego tła z palety */
-    border: 1px solid rgba(107, 53, 200, 0.1); /* Bardzo delikatna fioletowa ramka */
-    border-radius: var(--radius-lg);
-    padding: 40px 50px;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Subtelny, cienki pasek na samej górze (nawiązanie do hovera na kartach usług) */
-.expert-cta-wrapper::before {
-    content: '';
+.handwritten-note {
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--grad);
+    right: -60px; /* Wysuwa notatkę w prawo poza nagłówek */
+    top: -10px;   /* Wysokość względem nagłówka */
+    width: 260px;
+    transform: rotate(9deg); /* Lekkie przechylenie */
+    font-family: 'Caveat', cursive; /* Nasz odręczny font */
+    font-size: 1.5rem;
+    line-height: 1.2;
+    color: var(--ink-soft); /* Ciemnoszary, żeby wyglądało jak ołówek/długopis */
+    z-index: 10;
 }
 
-.expert-cta-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.expert-cta-text {
-    font-family: var(--sans);
-    color: var(--ink-soft); /* Ciemnoszary, łagodny dla oczu tekst */
-    font-size: 1.05rem;
-    line-height: 1.7;
-    font-weight: 300;
-    margin: 0 0 30px 0;
-}
-
-.highlight-caps {
-    display: block;
-    text-transform: uppercase;
+.handwritten-note b {
+    color: var(--grad-start); /* Akcent kolorystyczny na "bezpłatnie" */
     font-weight: 700;
-    color: var(--grad-start); /* Mocniejszy fiolet z Twoich zmiennych do akcentu */
-    letter-spacing: 0.1em;
-    margin: 20px 0;
-    font-size: 0.95rem;
 }
 
-/* Ciemny przycisk, który tworzy "kotwicę" wizualną i nie gryzie się z gradientami wyżej */
-.btn-expert-action {
-    display: inline-flex;
-    align-items: center;
-    background: var(--ink); /* Twój główny, niemal czarny kolor */
-    color: #fff !important;
-    font-family: var(--sans);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    padding: 14px 36px;
-    border-radius: 100px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+/* Styl dla strzałki SVG */
+.hand-arrow {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: -40px; /* Pozycja strzałki pod tekstem */
+    left: -20px;
+    transform: rotate(20deg);
+    color: var(--grad-start); /* Kolor strzałki */
 }
 
-.btn-expert-action:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-med);
-    background: var(--ink-soft);
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-    .expert-cta-wrapper {
-        padding: 32px 24px;
+/* Responsywność dla notatki na tabletach i telefonach */
+@media (max-width: 950px) {
+    .handwritten-note {
+        right: 0;
+        width: 220px;
+        font-size: 1.3rem;
     }
-    .btn-expert-action {
+}
+
+@media (max-width: 768px) {
+    /* Na małych ekranach zdejmujemy z boku i dajemy na środek pod tekst */
+    .handwritten-note {
+        position: static;
+        margin: 20px auto 0 auto;
+        transform: rotate(0); /* Zero przechylenia na komórce dla czytelności */
+        text-align: center;
         width: 100%;
-        justify-content: center;
+        max-width: 300px;
+    }
+    .hand-arrow {
+        display: none; /* Ukrywamy strzałkę na komórkach, bo nie ma na co wskazywać z boku */
     }
 }
     </style>
