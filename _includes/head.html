@@ -594,4 +594,79 @@
     @media (max-width: 600px) {
         .modal-content { padding: 32px 24px; }
     }
+        /* Zewnętrzny kontener tworzący gradientowe paski po bokach */
+.expert-cta-wrapper {
+    max-width: 850px;
+    margin: 60px auto 40px auto; /* Marginesy do ustawienia odległości od kafelków */
+    /* Gradient pionowy na krawędzie (od fioletu do pomarańczu - dostosuj kolory) */
+    background: linear-gradient(to bottom, #8a2be2, #e85d04); 
+    padding: 0 6px; /* 0 na górze/dole, 6px po bokach - to tworzy nasze boczne ramki! */
+    border-radius: 12px; /* Zaokrąglenie zewnętrznych rogów */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* Miękki cień pod spodem, jak na screenie */
+}
+
+/* Wewnętrzny ciemny kontener z treścią */
+.expert-cta-inner {
+    background-color: #121212; /* Ciemne tło, prawie czarne */
+    border-radius: 10px; /* Musi być odrobinę mniejsze niż zaokrąglenie wrapper'a */
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column; /* Układa tekst i przycisk w kolumnie */
+    align-items: center; /* Wyśrodkowanie w poziomie */
+    text-align: center;
+}
+
+/* Styl tekstu */
+.expert-cta-text {
+    color: #e0e0e0; /* Jasnoszary tekst, łagodniejszy dla oczu niż czysta biel */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0 0 30px 0; /* Odstęp między tekstem a przyciskiem */
+}
+
+/* Osobna linijka i KAPITALIKI dla ważnej informacji */
+.highlight-caps {
+    display: block; /* Wymusza nową linijkę przed i po */
+    text-transform: uppercase; /* Zmienia na WIELKIE LITERY */
+    font-weight: 700; /* Pogrubienie */
+    color: #ffffff; /* Czysta biel dla wyróżnienia */
+    letter-spacing: 1px; /* Zwiększony odstęp między literami */
+    margin: 20px 0; /* Odstępy od góry i dołu */
+}
+
+/* Styl gradientowego przycisku */
+.btn-expert-gradient {
+    background: linear-gradient(to right, #8a2be2, #e85d04); /* Poziomy gradient */
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 16px 40px;
+    border-radius: 50px; /* Zokrąglony kształt "pigułki" */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    display: inline-block;
+}
+
+/* Efekt najechania na przycisk */
+.btn-expert-gradient:hover {
+    transform: translateY(-3px); /* Lekko unosi przycisk do góry */
+    box-shadow: 0 8px 20px rgba(232, 93, 4, 0.4); /* Dodaje poświatę w kolorze gradientu */
+}
+
+/* Responsywność dla telefonów */
+@media (max-width: 768px) {
+    .expert-cta-inner {
+        padding: 30px 20px;
+    }
+    .expert-cta-text {
+        font-size: 1rem;
+    }
+    .btn-expert-gradient {
+        width: 100%; /* Przycisk na całą szerokość na komórkach */
+        text-align: center;
+    }
+}
     </style>
