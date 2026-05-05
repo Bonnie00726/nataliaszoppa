@@ -286,13 +286,31 @@ title: Redakcja, korekta, skład
 <!-- AUTODIAGNOSTYKA (DWIE SEKCJE OBOK SIEBIE) -->
 <section class="section" id="autodiagnostyka">
     <div class="container">
-        <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę,<br><em>sprawdź się</em></h2>
         
-        <!-- POPRAWKA 1: Wymuszone wyśrodkowanie tekstu nad ramkami -->
-        <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 40px auto; max-width: 800px;">
+        <!-- OPAKOWANIE NAGŁÓWKA - POTRZEBNE DO WYPOZYCJONOWANIA NOTATKI -->
+        <div class="title-wrapper" style="position: relative; max-width: 900px; margin: 0 auto;">
+            
+            <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
+            <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę,<br><em>sprawdź się</em></h2>
+            
+            <!-- ODRĘCZNA NOTATKA -->
+            <div class="handwritten-note reveal delay-3">
+                <p>Nie zapomnij odesłać mi swoich odpowiedzi!<br>Przeanalizuję je i <b>całkowicie bezpłatnie</b> doradzę Ci, co dalej.</p>
+                <!-- Zakręcona strzałka SVG -->
+                <svg class="hand-arrow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M85 10 C60 30, 90 60, 40 80 S 15 65, 10 90" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M10 90 L25 75 M10 90 L20 95" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                </svg>
+            </div>
+
+        </div>
+
+        <!-- Opis pod nagłówkiem -->
+        <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 50px auto; max-width: 800px;">
             Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz pytań i sprawdź, czy Twoja historia ma solidne fundamenty, bez których za wcześnie na redakcję językową.
         </p>
+
+        <!-- TUTAJ ZACZYNA SIĘ TWOJA SIATKA Z KAFELKAMI (diag-grid) -->
         
         <div class="diag-grid reveal delay-3">
             <!-- Diagnostyka przed Redakcją -->
