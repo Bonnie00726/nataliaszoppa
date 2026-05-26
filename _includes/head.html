@@ -811,4 +811,80 @@
         margin: 10px 0;
     }
 }
+        /* =========================================
+   MEGA PAKIET (KROKI 3-6)
+   ========================================= */
+.path-megapackage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 44px 24px 24px;
+    border: 2px solid var(--grad-start);
+    border-radius: calc(var(--radius-lg) + 8px);
+    background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%);
+    box-shadow: var(--shadow-med);
+    margin: 10px 0;
+}
+
+.megapackage-label {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 8px 28px;
+    border-radius: 100px;
+    white-space: nowrap;
+    box-shadow: 0 6px 15px rgba(13,13,13,0.3);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.megapackage-label i {
+    color: var(--grad-end);
+    font-size: 1.1rem;
+}
+
+/* Dostosowanie małych pakietów wewnątrz mega pakietu */
+.path-megapackage .path-package {
+    background: #fff;
+    border: 1px dashed var(--grad-start);
+    box-shadow: none;
+}
+
+.path-megapackage .package-label {
+    background: #fff;
+    color: var(--grad-start);
+    border: 1px solid var(--grad-start);
+    box-shadow: none;
+}
+
+.path-arrow--mega {
+    color: var(--grad-start);
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin: 0 8px;
+}
+
+/* Responsywność dla Mega Pakietu */
+@media (max-width: 1024px) {
+    .path-megapackage {
+        flex-direction: column;
+        padding-top: 52px;
+    }
+    .path-arrow--mega {
+        margin: 10px 0;
+    }
+}
     </style>
