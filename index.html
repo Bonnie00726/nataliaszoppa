@@ -440,40 +440,57 @@ title: Redakcja, korekta, skład
 </section>
 
 <!-- OFERTA: 3 KAFELKI -->
-<section class="section" id="uslugi" style="background: var(--paper-warm, #fdfbf7);">
-    <div class="container">
-        <div class="eyebrow reveal" style="text-align: center;">Moja oferta</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Wybierz usługę dla <em>siebie</em></h2>
+<section>
+<div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 40px;">
+    
+    <div class="service-card service-card--flex">
+        <div class="service-icon"><i class="las la-edit"></i></div>
+        <h3>Pakiet: Tekst</h3>
+        <p>Opracowanie językowe, które nada Twojej książce płynność, świetny styl i bezbłędność.</p>
         
-        <div class="services-grid-3 reveal delay-2">
-            <!-- 1. REDAKCJA -->
-            <div class="service-card service-card--flex service-card--popular">
-                <div class="popular-badge">Najczęściej wybierany</div>
-                <div class="service-icon"><i class="las la-highlighter"></i></div>
-                <h3>1. Redakcja</h3>
-                <p>Pracuję nad prezycją słów i opisami, aby były dynamiczne, a całość płynna i wciągająca. Usuwam nadmierne powtórzenia, a długie akapity dzielę na krótsze.</p>
-                <button class="read-more-btn" data-target="modal-redakcja">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
-            </div>
-
-            <!-- 2. KOREKTA -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-spell-check"></i></div>
-                <h3>2. Korekta</h3>
-                <p>Eliminuję błędy ortograficzne, wyłapuję literówki i koryguję interpunkcję przed oddaniem tekstu do składu.</p>
-                <button class="read-more-btn" data-target="modal-korekta">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
-            </div>
-
-            <!-- 3. SKŁAD DTP -->
-            <div class="service-card service-card--flex">
-                <div class="service-icon"><i class="las la-book-open"></i></div>
-                <h3>3. Skład DTP</h3>
-                <p>Zamieniam plik tekstowy w profesjonalną książkę. Opracowuję typografię i przygotowuję pliki cyfrowe (EPUB/PDF).</p>
-                <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
-            </div>
-        </div>
+        <ul class="card-list">
+            <li><strong>Krok 3:</strong> Redakcja językowa</li>
+            <li><strong>Krok 4:</strong> Korekta po redakcji</li>
+        </ul>
+        
+        <button class="read-more-btn" data-modal="modal-tekst">
+            Sprawdź pakiet <i class="las la-arrow-right"></i>
+        </button>
     </div>
-</section>
 
+    <div class="service-card service-card--flex service-card--popular">
+        <div class="popular-badge">Najczęściej wybierany</div>
+        <div class="service-icon"><i class="las la-star"></i></div>
+        <h3>Pełny Pakiet Wydawniczy</h3>
+        <p>Od surowego tekstu po gotowy produkt. Oddajesz mi plik, a ja kompleksowo zajmuję się całą resztą.</p>
+        
+        <ul class="card-list">
+            <li><strong>Krok 3 i 4:</strong> Redakcja i Korekta</li>
+            <li><strong>Krok 5 i 6:</strong> Skład DTP i Korekta poskładowa</li>
+        </ul>
+        
+        <button class="read-more-btn" data-modal="modal-pelny">
+            Sprawdź pakiet <i class="las la-arrow-right"></i>
+        </button>
+    </div>
+
+    <div class="service-card service-card--flex">
+        <div class="service-icon"><i class="las la-layer-group"></i></div>
+        <h3>Pakiet: Skład</h3>
+        <p>Profesjonalne przygotowanie wnętrza książki. Tworzę pliki gotowe do druku (PDF) oraz e-booki.</p>
+        
+        <ul class="card-list">
+            <li><strong>Krok 5:</strong> Skład DTP</li>
+            <li><strong>Krok 6:</strong> Korekta poskładowa (techniczna)</li>
+        </ul>
+        
+        <button class="read-more-btn" data-modal="modal-sklad">
+            Sprawdź pakiet <i class="las la-arrow-right"></i>
+        </button>
+    </div>
+
+</div>
+</section>
 <!-- OPINIE -->
 <section class="section" id="opinie">
     <div class="container">
