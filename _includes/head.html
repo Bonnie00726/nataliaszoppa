@@ -887,4 +887,40 @@
         margin: 10px 0;
     }
 }
+        /* =========================================
+   LISTY WEWNĄTRZ KART USŁUG
+   ========================================= */
+.card-list {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 auto 0;
+    flex-grow: 1; /* Wypycha przycisk zawsze na sam dół karty */
+}
+
+.card-list li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+}
+
+.card-list li strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* Ikona ptaszka (Checkmark) z LineAwesome */
+.card-list li::before {
+    content: '\f00c';
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    color: var(--grad-start);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 1.1rem;
+}
     </style>
