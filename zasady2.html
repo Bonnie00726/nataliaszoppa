@@ -3,7 +3,7 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
-    /* ===== LEKKIE HERO W STYLU DATA EXTRACTION ===== */
+    /* ===== LEKKIE HERO ===== */
     .hero--light { 
         background-color: var(--paper-warm); 
         position: relative; 
@@ -12,7 +12,7 @@ title: Zasady współpracy
         flex-direction: column;
         align-items: center; 
         justify-content: center; 
-        min-height: 80vh; 
+        min-height: 75vh; 
         padding-top: var(--nav-h);
         padding-bottom: 60px;
     }
@@ -36,7 +36,7 @@ title: Zasady współpracy
     .hero--light .hero-sub { color: var(--ink-soft); max-width: 500px; text-align: center; }
     .hero--light .hero-eyebrow { color: var(--grad-start); text-align: center; }
 
-    /* Metka powiadomienia (nad nagłówkiem) */
+    /* Metka powiadomienia */
     .hero-bell-badge {
         display: inline-flex;
         align-items: center;
@@ -56,7 +56,7 @@ title: Zasady współpracy
     }
     .hero-bell-badge i { color: #fbbc05; font-size: 1.1rem; }
 
-    /* Przyciski w Hero (centralnie) */
+    /* Przyciski w Hero */
     .hero-btns { display: flex; gap: 16px; margin-top: 40px; }
     .hero-btn-primary { 
         background: var(--grad); 
@@ -74,7 +74,7 @@ title: Zasady współpracy
     .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
     .hero-btn-secondary { color: var(--grad-start); text-decoration: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px; }
 
-    /* ===== CREDIBILITY BAR NA ZAKŁADKĘ ===== */
+    /* ===== CREDIBILITY BAR ===== */
     .credibility-bar-overlap { background: var(--ink); padding: 22px 40px; position: relative; z-index: 10; margin-top: -46px; max-width: 1000px; margin-left: auto; margin-right: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-strong); width: calc(100% - 40px); }
     .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .cred-pillar { display: flex; align-items: center; gap: 12px; }
@@ -89,83 +89,97 @@ title: Zasady współpracy
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* ===== GRUPY OPISÓW KROKÓW (Zgradientowanymi ramkami i kółkami) ===== */
-    .step-groups-wrapper { display: flex; flex-direction: column; gap: 48px; margin-top: 40px; margin-bottom: 60px; }
+    /* ===== NOWE KARTY ETAPÓW (JAK NA ZDJĘCIU) ===== */
+    .step-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px 30px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
     
-    .step-group-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-    .step-group-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-muted); white-space: nowrap; }
-    .step-group-line { flex: 1; height: 1px; background: var(--paper-mid); }
+    .step-module {
+        position: relative;
+        padding-left: 50px; /* Miejsce na wielką cyfrę */
+    }
     
-    .step-group-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    
-    /* Zmiana kart na ramki z gradientem */
-    .roadmap-content {
+    /* Biała karta */
+    .step-card-content {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+        padding: 36px 28px;
+        position: relative;
+        z-index: 2;
+        height: 100%;
         display: flex;
         flex-direction: column;
-        background: #fff;
-        border-radius: var(--radius-lg);
-        box-shadow: var(--shadow-soft);
-        overflow: hidden;
-        transition: transform 0.3s, box-shadow 0.3s;
-        border: 2px solid transparent; /* Miejsce na gradient */
-        background-clip: padding-box;
-        position: relative;
+        justify-content: flex-start;
+        border: 1px solid var(--paper-mid);
     }
     
-    /* Gradientowa ramka via pseudo-element */
-    .roadmap-content::before {
-        content: '';
+    /* Obramowująca kreska (bracket) */
+    .step-wire {
         position: absolute;
-        inset: 0;
-        z-index: -1;
-        margin: -2px; /* Margines ujemny by stworzyć grubość ramki */
-        border-radius: inherit;
-        background: var(--grad);
+        top: 24px; 
+        bottom: 24px;
+        left: 20px; 
+        right: 20px; /* Schowane pod białą kartą */
+        border: 1.5px solid var(--grad-start); /* Kreska w kolorze marki */
+        border-radius: 24px;
+        z-index: 1;
     }
     
-    .roadmap-content:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-
-    /* Zmieniony blok numeru - okrągły z czarną cyfrą */
-    .roadmap-color-block {
-        display: flex;
-        align-items: center;
-        padding: 24px 24px 0 24px; /* Padding od góry i boków */
-    }
-    
-    .step-num-circle {
-        width: 50px;
-        height: 50px;
+    /* Kropki na końcach kreski */
+    .wire-dot {
+        position: absolute;
+        left: -4.5px;
+        width: 8px;
+        height: 8px;
+        background: var(--grad-start);
         border-radius: 50%;
-        background: #fff;
-        border: 2px solid var(--paper-mid); /* Możesz zmienić na gradient, ale czysta szara wygląda dobrze */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--serif);
-        font-size: 1.5rem;
-        font-weight: 700;
-        font-style: italic;
+    }
+    .wire-dot.top { top: 24px; }
+    .wire-dot.bottom { bottom: 24px; }
+    
+    /* Masywna cyfra po lewej */
+    .step-big-num {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--sans);
+        font-size: 6.5rem;
+        font-weight: 900;
+        line-height: 0.8;
         color: var(--ink); /* CZARNE CYFRY */
-        box-shadow: var(--shadow-soft);
+        background: #fff; /* Przykrywa kreskę z tyłu */
+        padding: 10px 0;
+        z-index: 3;
     }
-
-    /* Tekst w karcie */
-    .roadmap-text-block {
-        padding: 16px 24px 24px 24px;
-        flex-grow: 1;
-        text-align: left;
+    
+    /* Typografia w karcie (SOME TITLE) */
+    .step-title {
+        font-family: var(--sans);
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        letter-spacing: 0.05em;
+        color: var(--ink);
     }
-    .roadmap-text-block h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+    /* Drugi wyraz w tytule kolorowy */
+    .step-title span { 
+        color: var(--grad-start); 
+    }
     
-    .roadmap-text-block p { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 16px; }
-
-    /* Detale karty */
-    .card-details { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-    .card-details li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.85rem; font-weight: 300; color: var(--ink-soft); line-height: 1.5; }
-    .card-details li::before { content: '●'; font-size: 0.4rem; margin-top: 8px; color: var(--grad-start); }
-    
-    .card-note { margin-top: 24px; padding: 16px 20px; background: var(--paper-warm); border-left: 3px solid var(--grad-start); border-radius: 0 8px 8px 0; font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.6; }
-
+    .step-desc {
+        font-size: 0.9rem;
+        color: var(--ink-soft);
+        line-height: 1.6;
+        margin: 0;
+        font-weight: 300;
+    }
 
     /* ===== WAŻNE ZASADY - GRID 2x2 ===== */
     .rules-grid-2x2 {
@@ -182,7 +196,6 @@ title: Zasady współpracy
     .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
 
     /* ===== STICKY NOTE ===== */
-    .sticky-note-wrapper { display: flex; justify-content: center; margin: 60px 0; }
     .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
 
     /* ===== CTA ===== */
@@ -198,8 +211,8 @@ title: Zasady współpracy
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
     /* Responsywność */
-    @media (max-width: 860px) {
-        .step-group-cards { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+        .step-grid { grid-template-columns: 1fr; gap: 30px; }
         .rules-grid-2x2 { grid-template-columns: 1fr; }
     }
 </style>
@@ -255,68 +268,86 @@ title: Zasady współpracy
         <h2 class="section-h2 reveal delay-1">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
         <p class="section-lead reveal delay-2">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
 
-        <div class="step-groups-wrapper reveal delay-3">
+        <div class="step-grid reveal delay-3">
             
-            <div class="step-group">
-                <div class="step-group-header"><div class="step-group-label">Grupa 1: Przygotowanie</div><div class="step-group-line"></div></div>
-                <div class="step-group-cards">
-                    
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">1</div></div>
-                        <div class="roadmap-text-block"><h3>Kontakt</h3><p>Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach.</p><ul class="card-details"><li>Zazwyczaj do 24-48h (w dni robocze)</li></ul></div>
-                    </div></div>
-
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">2</div></div>
-                        <div class="roadmap-text-block"><h3>Omówienie problemu</h3><p>Rozmawiamy o tekście. Mam przygotowany formularz, który pomoże Ci podsumować efekty Twojej pracy. Oceniamy razem zakres potrzebnej redakcji/korekty.</p><ul class="card-details"><li>Forma: wymiana maili</li><li>Efekt: wstępna orientacja, jaka usługa będzie optymalna</li></ul></div>
-                    </div></div>
-
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">3</div></div>
-                        <div class="roadmap-text-block"><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu (najlepiej całość lub 3 pierwsze, 3 środkowe i 3 ostatnie rozdziały), by ocenić jego styl, błędy i nakład pracy.</p><ul class="card-details"><li>Format: .docx lub Google Docs</li></ul><div class="card-note">Nie wyceniam "w ciemno" na podstawie samej liczby znaków.</div></div>
-                    </div></div>
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">1</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Pierwszy <span>kontakt</span></h3>
+                    <p class="step-desc">Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach (odpowiadam do 48h).</p>
                 </div>
             </div>
 
-            <div class="step-group">
-                <div class="step-group-header"><div class="step-group-line"></div><div class="step-group-label">Grupa 2: Formalności & Plan</div></div>
-                <div class="step-group-cards">
-                    
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">4</div></div>
-                        <div class="roadmap-text-block"><h3>Zakres prac</h3><p>Dokładnie ustalamy zakres zlecenia – jakie elementy tekstu wymagają ingerencji, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul></div>
-                    </div></div>
-
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">5</div></div>
-                        <div class="roadmap-text-block"><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę, ważną przez 14 dni.</p><ul class="card-details"><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li></ul></div>
-                    </div></div>
-
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">6</div></div>
-                        <div class="roadmap-text-block"><h3>Umowa</h3><p>Podpisujemy umowę o świadczenie usług, regulującą termin, zakres i poufność. Nie zaczynam pracy bez podpisanej umowy.</p><ul class="card-details"><li>Podpisywana elektronicznie (profil zaufany)</li></ul></div>
-                    </div></div>
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">2</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Omówienie <span>problemu</span></h3>
+                    <p class="step-desc">Rozmawiamy o tekście i Twoich oczekiwaniach. Oceniamy wspólnie, czy tekst wymaga głębokiej redakcji, czy tylko ostatecznej korekty.</p>
                 </div>
             </div>
 
-            <div class="step-group">
-                <div class="step-group-header"><div class="step-group-label">Grupa 3: Realizacja</div><div class="step-group-line"></div></div>
-                <div class="step-group-cards">
-                    
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">7</div></div>
-                        <div class="roadmap-text-block"><h3>Płatność</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę. Po jej opłaceniu rezerwuję dla Ciebie termin w grafiku.</p><ul class="card-details"><li>Płatność z góry za całość zlecenia</li><li>Możliwość płatności w ratach (przy dużych projektach)</li></ul></div>
-                    </div></div>
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">3</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Przesłanie <span>próbki</span></h3>
+                    <p class="step-desc">Proszę o przesłanie tekstu (najlepiej w Word lub Google Docs), aby rzetelnie ocenić styl, rodzaj błędów oraz nakład potrzebnej pracy.</p>
+                </div>
+            </div>
 
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">8</div></div>
-                        <div class="roadmap-text-block"><h3>Realizacja</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami (w trybie śledzenia zmian).</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji należy do Ciebie</li></ul></div>
-                    </div></div>
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">4</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Zakres <span>prac</span></h3>
+                    <p class="step-desc">Dokładnie ustalamy zakres zlecenia – jakie elementy tekstu wymagają ingerencji, co zostawiamy bez zmian oraz ile rund poprawek przewidujemy.</p>
+                </div>
+            </div>
 
-                    <div class="roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><div class="step-num-circle">9</div></div>
-                        <div class="roadmap-text-block"><h3>Gotowy tekst & Feedback</h3><p>Przesyłam plik z poprawkami oraz krótkie omówienie zmian i wskazówki redaktorskie. To moment na Twoje pytania i ewentualne negocjacje.</p><ul class="card-details"><li>Moje zmiany to nie słowo ostateczne – zawsze możesz je zmieniać i negocjować.</li></ul></div>
-                    </div></div>
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">5</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Indywidualna <span>wycena</span></h3>
+                    <p class="step-desc">Przygotowuję ostateczną wycenę, ważną przez 14 dni. Cena zależy od stopnia trudności i nie zmienia się w trakcie naszej współpracy.</p>
+                </div>
+            </div>
+
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">6</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Podpisanie <span>umowy</span></h3>
+                    <p class="step-desc">Podpisujemy umowę (elektronicznie przez profil zaufany) regulującą terminy i poufność. Od tego momentu Twój tekst jest bezpieczny.</p>
+                </div>
+            </div>
+
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">7</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Płatność <span>z góry</span></h3>
+                    <p class="step-desc">Wystawiam fakturę pro formę. Dopiero po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w moim grafiku wydawniczym.</p>
+                </div>
+            </div>
+
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">8</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Start <span>realizacji</span></h3>
+                    <p class="step-desc">Zgodnie z harmonogramem przystępuję do pracy nad tekstem. Wszystkie poprawki nanoszę widocznie w trybie śledzenia zmian.</p>
+                </div>
+            </div>
+
+            <div class="step-module">
+                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
+                <div class="step-big-num">9</div>
+                <div class="step-card-content">
+                    <h3 class="step-title">Gotowy <span>tekst</span></h3>
+                    <p class="step-desc">Przesyłam plik oraz wskazówki. To czas na dialog – masz pełne prawo zaakceptować, odrzucić lub negocjować każdą wprowadzoną zmianę.</p>
                 </div>
             </div>
 
@@ -349,7 +380,7 @@ title: Zasady współpracy
         <p class="reveal delay-2">Zadbaj o jakość języka i profesjonalne przygotowanie swojej książki do publikacji. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę.</p>
         <div class="cta-btns reveal delay-3">
             <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
-            <a href="{{ site.baseurl }}/cennik.html" class="btn-ghost">Sprawdź cennik <i class="las la-arrow-right"></i></a>
+            <a href="{{ '/cennik.html' | relative_url }}" class="btn-ghost">Sprawdź cennik <i class="las la-arrow-right"></i></a>
         </div>
     </div>
 </section>
