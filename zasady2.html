@@ -3,23 +3,22 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
-    /* ===== HERO ZE ZDJĘCIEM I OVERLAYEM ===== */
+    /* ===== HERO ŚCIŚNIĘTE I ZMINIMALIZOWANE ===== */
     .hero { 
         position: relative; 
-        min-height: 80vh; 
         display: flex; 
         flex-direction: column;
         align-items: center; 
         justify-content: center; 
         overflow: hidden; 
-        padding-bottom: 60px;
+        padding-top: calc(var(--nav-h) + 60px); /* Odstęp od nawigacji */
+        padding-bottom: 100px; /* Miejsce na nałożenie się czarnego paska */
     }
     
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* Ciemny gradient + fioletowa poświata dla lepszej czytelności tekstu */
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,18,0.7) 0%, rgba(10,8,18,0.4) 100%); }
-    .hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(107,53,200,0.35) 0%, transparent 70%); }
+    /* Jednolity, przyciemniony overlay na zdjęciu */
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(50, 35, 75, 0.7); }
     
     .hero-content { 
         position: relative; 
@@ -30,75 +29,57 @@ title: Zasady współpracy
         align-items: center;
         text-align: center;
         padding: 0 20px;
-        margin-top: calc(var(--nav-h) - 20px);
     }
 
-    .hero h1 { color: #fff; margin-bottom: 24px; font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; line-height: 1.1; }
-    .hero .grad-type { 
-        font-style: italic; 
-        font-weight: 700; 
-        background: var(--grad-text); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent; 
-        background-clip: text; 
+    .hero h1 { 
+        color: #fff; 
+        margin-bottom: 16px; 
+        font-family: var(--serif);
+        font-size: clamp(2.5rem, 4.5vw, 4rem); 
+        text-align: center; 
+        line-height: 1.1;
     }
     
-    .hero .hero-sub { color: rgba(255,255,255,0.75); max-width: 500px; text-align: center; line-height: 1.7; font-weight: 300;}
-    .hero .hero-eyebrow { color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 16px; }
+    .hero .hero-sub { 
+        color: rgba(255,255,255,0.85); 
+        max-width: 600px; 
+        text-align: center; 
+        line-height: 1.6; 
+        font-weight: 300;
+        font-size: 1.05rem;
+    }
+    
+    .hero .hero-eyebrow { 
+        color: rgba(255,255,255,0.9); 
+        text-align: center; 
+        margin-bottom: 16px; 
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+    }
 
-    /* Metka powiadomienia - efekt szkła (Glassmorphism) na ciemnym tle */
+    /* Minimalistyczna metka powiadomienia (szkło na zdjęciu) */
     .hero-bell-badge {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: rgba(255,255,255,0.1);
+        background: rgba(255,255,255,0.12);
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.25);
         border-radius: 100px;
-        padding: 8px 18px;
+        padding: 8px 24px;
         font-family: var(--sans);
         font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
         color: #fff;
-        box-shadow: var(--shadow-soft);
         margin-bottom: 28px;
     }
     .hero-bell-badge i { color: #fbbc05; font-size: 1.1rem; }
-
-    /* Przyciski w Hero */
-    .hero-btns { display: flex; gap: 16px; margin-top: 40px; }
-    .hero-btn-primary { 
-        background: var(--grad); 
-        color: #fff; 
-        font-family: var(--sans); 
-        font-size: 0.8rem; 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 0.12em; 
-        text-decoration: none; 
-        padding: 12px 28px; 
-        border-radius: 100px; 
-        transition: transform 0.2s; 
-    }
-    .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
-    .hero-btn-secondary { 
-        color: #fff; 
-        background: rgba(255,255,255,0.1); 
-        border: 1px solid rgba(255,255,255,0.3); 
-        text-decoration: none; 
-        font-family: var(--sans); 
-        font-size: 0.8rem; 
-        font-weight: 600; 
-        text-transform: uppercase; 
-        letter-spacing: 0.1em; 
-        padding: 11px 28px; 
-        border-radius: 100px;
-        transition: background 0.2s;
-    }
-    .hero-btn-secondary:hover { background: rgba(255,255,255,0.2); }
 
     /* ===== CREDIBILITY BAR ===== */
     .credibility-bar-overlap { background: var(--ink); padding: 22px 40px; position: relative; z-index: 10; margin-top: -46px; max-width: 1000px; margin-left: auto; margin-right: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-strong); width: calc(100% - 40px); }
@@ -267,11 +248,9 @@ title: Zasady współpracy
             <span>Przyjmuję nowe zlecenia</span>
         </div>
 
-        <div class="eyebrow reveal delay-1" style="text-align: center; color: rgba(255,255,255,0.9);">Zasady współpracy</div>
+        <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
         <h1 class="reveal delay-2">Twój tekst, moja pasja</h1>
         <p class="hero-sub reveal delay-3">Zrozumiały proces, rzetelna redakcja i pełna poufność. Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
-        
-      
     </div>
 </header>
 
