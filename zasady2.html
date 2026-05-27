@@ -89,13 +89,13 @@ title: Zasady współpracy
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* ===== NOWE KARTY ETAPÓW (Minimalistyczne) ===== */
+    /* ===== NOWE KARTY ETAPÓW (Ściśnięte) ===== */
     .step-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 50px 30px;
-        margin-top: 60px;
-        margin-bottom: 60px;
+        max-width: 1050px; /* Zmniejszona maksymalna szerokość */
+        margin: 60px auto; /* Wyśrodkowanie */
     }
     
     .step-module {
@@ -167,12 +167,13 @@ title: Zasady współpracy
     
     .step-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; margin: 0; font-weight: 300; }
 
-    /* ===== WAŻNE ZASADY - GRID 6 KART ===== */
+    /* ===== WAŻNE ZASADY - GRID 6 KART (Ściśnięte) ===== */
     .rules-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
-        margin: 40px 0;
+        max-width: 900px; /* Zmniejszona maksymalna szerokość */
+        margin: 40px auto; /* Wyśrodkowanie */
     }
     
     .rule-card { 
@@ -188,7 +189,6 @@ title: Zasady współpracy
         border-color: rgba(107,53,200,0.3); 
     }
     
-    /* Ikony z delikatnym fioletowym tłem jak na obrazku */
     .rule-icon { 
         width: 48px; 
         height: 48px; 
@@ -206,7 +206,7 @@ title: Zasady współpracy
     .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
 
     /* ===== STICKY NOTE (Płatność i umowa) ===== */
-    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); border-right: 1px solid var(--paper-mid); }
+    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 900px; box-shadow: var(--shadow-soft); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); border-right: 1px solid var(--paper-mid); }
 
     /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
@@ -273,10 +273,9 @@ title: Zasady współpracy
 </div>
 
 <section id="etapy" class="section bg-white toc-section" style="padding-top:60px;">
-    <div class="container">
-        <div class="eyebrow-label reveal">Etapy współpracy</div>
-        <h2 class="section-h2 reveal delay-1">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
-        <p class="section-lead reveal delay-2">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
+    <div class="container" style="max-width: 1050px;"> <div class="eyebrow-label reveal" style="justify-content:center;">Etapy współpracy</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align:center;">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
+        <p class="section-lead reveal delay-2" style="margin: 0 auto 60px; text-align:center;">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
 
         <div class="step-grid reveal delay-3">
             
@@ -403,8 +402,9 @@ title: Zasady współpracy
             </div>
         </div>
 
-        <div class="container reveal delay-3" style="max-width: 900px; margin: 40px auto; width: calc(100% - 48px);">
-            <div class="warning-box"><i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i><div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div></div>
+        <div class="warning-box reveal delay-3">
+            <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
+            <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
         </div>
         
     </div>
