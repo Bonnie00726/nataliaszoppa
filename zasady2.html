@@ -12,8 +12,9 @@ title: Zasady współpracy
         flex-direction: column;
         align-items: center; 
         justify-content: center; 
-        min-height: 85vh; 
+        min-height: 80vh; 
         padding-top: var(--nav-h);
+        padding-bottom: 60px;
     }
     
     .hero-blob-1 { position: absolute; width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(107,53,200,0.06) 0%, transparent 70%); top: -10%; left: -10%; border-radius: 50%; z-index: 0; }
@@ -28,12 +29,12 @@ title: Zasady współpracy
         align-items: center;
         justify-content: center;
     }
-    .hero--light h1 { color: var(--ink); margin-bottom: 24px; font-size: clamp(2.5rem, 4.5vw, 4rem); }
-    .hero--light .grad-type { -webkit-text-fill-color: var(--grad-start); color: var(--grad-start); background: none;} /* Wyłączam gradient na mobile dla czytelności, jeśli trzeba */
+    .hero--light h1 { color: var(--ink); margin-bottom: 24px; font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; }
+    .hero--light .grad-type { -webkit-text-fill-color: var(--grad-start); color: var(--grad-start); background: none;}
     @media (min-width: 861px) { .hero--light .grad-type { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;} }
     
-    .hero--light .hero-sub { color: var(--ink-soft); max-width: 500px; }
-    .hero--light .hero-eyebrow { color: var(--grad-start); }
+    .hero--light .hero-sub { color: var(--ink-soft); max-width: 500px; text-align: center; }
+    .hero--light .hero-eyebrow { color: var(--grad-start); text-align: center; }
 
     /* Metka powiadomienia (nad nagłówkiem) */
     .hero-bell-badge {
@@ -56,7 +57,7 @@ title: Zasady współpracy
     .hero-bell-badge i { color: #fbbc05; font-size: 1.1rem; }
 
     /* Przyciski w Hero (centralnie) */
-    .hero-btns { display: flex; gap: 16px; margin-top: 40px; margin-bottom: 60px; }
+    .hero-btns { display: flex; gap: 16px; margin-top: 40px; }
     .hero-btn-primary { 
         background: var(--grad); 
         color: #fff; 
@@ -73,22 +74,14 @@ title: Zasady współpracy
     .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
     .hero-btn-secondary { color: var(--grad-start); text-decoration: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px; }
 
-    /* Ikony partnerów/narzędzi (na dole Hero) */
-    .hero-bottom-strip { width: 100%; border-top: 1px solid rgba(0,0,0,0.06); padding: 24px 0; display: flex; justify-content: center; background: rgba(0,0,0,0.01); }
-    .tool-icons { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
-    .tool-icon {
-        width: 50px; height: 50px; background: #fff; border-radius: 10px; border: 1px solid var(--paper-mid); display: flex; align-items: center; justify-content: center; color: var(--paper-mid); font-size: 1.6rem; transition: color 0.3s, border-color 0.3s, transform 0.3s;
-    }
-    .tool-icon:hover { color: var(--grad-start); border-color: rgba(107,53,200,0.2); transform: translateY(-3px); }
-
-    /* ===== CREDIBILITY BAR NA ZAKŁADKĘ (Zostaje bez zmian) ===== */
+    /* ===== CREDIBILITY BAR NA ZAKŁADKĘ ===== */
     .credibility-bar-overlap { background: var(--ink); padding: 22px 40px; position: relative; z-index: 10; margin-top: -46px; max-width: 1000px; margin-left: auto; margin-right: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-strong); width: calc(100% - 40px); }
     .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .cred-pillar { display: flex; align-items: center; gap: 12px; }
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
-    /* ===== TOC (Zostaje bez zmian) ===== */
+    /* ===== TOC ===== */
     .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-top: 40px;}
     .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
     .top-toc a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; position: relative; display: inline-block; }
@@ -96,45 +89,8 @@ title: Zasady współpracy
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* ===== NOWY FLOW CHART (9 KROKÓW) ===== */
-    .flow-chart-wrapper { width: 100%; overflow: hidden; margin: 60px 0; }
-    .flow-chart { display: flex; justify-content: center; gap: 0; padding: 20px 40px 30px; margin: 0 -40px; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-    
-    .flow-item { display: flex; align-items: center; min-width: 90px; position: relative; scroll-snap-align: center; }
-    
-    /* Koło flow z gradientem wewnątrz */
-    .flow-icon-wrap {
-        width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; color: #fff; flex-shrink: 0; position: relative; z-index: 3;
-        background-image: linear-gradient(135deg, rgba(107,53,200,0.08) 0%, rgba(232,119,42,0.08) 100%);
-        border: 1.5px solid var(--paper-mid);
-    }
-    
-    .flow-icon {
-        width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        background-image: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
-    }
-
-    /* Strzałka i numer na grotach */
-    .flow-arrow-wrap {
-        width: 60px; height: 1px; display: flex; align-items: center; position: relative; margin: 0 -10px; z-index: 1;
-    }
-    .flow-arrow {
-        position: absolute; left: 0; right: 0; height: 1px; background: var(--paper-mid);
-    }
-    .flow-step-num {
-        position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-        display: flex; align-items: center; justify-content: center;
-        width: 30px; height: 30px; border-radius: 50%; background: #fff; border: 1px solid var(--paper-mid);
-        font-family: var(--sans); font-size: 0.72rem; font-weight: 700; color: var(--ink-muted);
-    }
-    
-    /* Zaznaczenie gradientu w przepływie (krok po kroku) */
-    .flow-chart .flow-item .flow-icon-wrap { background-image: var(--grad); }
-    .flow-chart .flow-item .flow-arrow { background-image: var(--grad); }
-    .flow-chart .flow-item .flow-step-num { color: var(--grad-start); border-color: rgba(107,53,200,0.2); box-shadow: 0 4px 8px rgba(107,53,200,0.1); }
-
-    /* ===== GRUPY OPISÓW KROKÓW (3x3) ===== */
-    .step-groups-wrapper { display: flex; flex-direction: column; gap: 48px; margin-bottom: 60px; }
+    /* ===== GRUPY OPISÓW KROKÓW (Zgradientowanymi ramkami i kółkami) ===== */
+    .step-groups-wrapper { display: flex; flex-direction: column; gap: 48px; margin-top: 40px; margin-bottom: 60px; }
     
     .step-group-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
     .step-group-label { font-family: var(--sans); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--ink-muted); white-space: nowrap; }
@@ -142,46 +98,60 @@ title: Zasady współpracy
     
     .step-group-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     
+    /* Zmiana kart na ramki z gradientem */
     .roadmap-content {
         display: flex;
+        flex-direction: column;
         background: #fff;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-soft);
         overflow: hidden;
         transition: transform 0.3s, box-shadow 0.3s;
-        border: 1px solid var(--paper-mid);
+        border: 2px solid transparent; /* Miejsce na gradient */
+        background-clip: padding-box;
         position: relative;
     }
-    .roadmap-content:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-
-    .roadmap-item:nth-child(even) .roadmap-content { flex-direction: row-reverse; }
-
-    /* Kolorowy blok */
-    .roadmap-color-block {
-        width: 110px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        flex-shrink: 0;
-        padding: 20px 10px;
-        text-align: center;
-    }
-    .step-num {
-        font-family: var(--serif);
-        font-size: 1.9rem;
-        font-style: italic;
-        font-weight: 700;
-        line-height: 1.1;
+    
+    /* Gradientowa ramka via pseudo-element */
+    .roadmap-content::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        margin: -2px; /* Margines ujemny by stworzyć grubość ramki */
+        border-radius: inherit;
+        background: var(--grad);
     }
     
-    .flow-item:nth-child(even) .roadmap-color-block { background: var(--grad); }
-    .flow-item:nth-child(odd) .roadmap-color-block { background: var(--grad); }
+    .roadmap-content:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
+
+    /* Zmieniony blok numeru - okrągły z czarną cyfrą */
+    .roadmap-color-block {
+        display: flex;
+        align-items: center;
+        padding: 24px 24px 0 24px; /* Padding od góry i boków */
+    }
+    
+    .step-num-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2px solid var(--paper-mid); /* Możesz zmienić na gradient, ale czysta szara wygląda dobrze */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--ink); /* CZARNE CYFRY */
+        box-shadow: var(--shadow-soft);
+    }
 
     /* Tekst w karcie */
     .roadmap-text-block {
-        padding: 24px;
+        padding: 16px 24px 24px 24px;
         flex-grow: 1;
         text-align: left;
     }
@@ -196,35 +166,26 @@ title: Zasady współpracy
     
     .card-note { margin-top: 24px; padding: 16px 20px; background: var(--paper-warm); border-left: 3px solid var(--grad-start); border-radius: 0 8px 8px 0; font-size: 0.88rem; font-weight: 500; color: var(--ink); line-height: 1.6; }
 
-    /* Responsywność */
-    @media (max-width: 860px) {
-        .flow-item { flex-direction: column !important; min-width: 280px; gap: 0 !important;}
-        .step-group-cards { grid-template-columns: 1fr; }
-        .roadmap-item { flex-direction: column-reverse !important; }
-        .roadmap-content { flex-direction: column !important; max-width: 100%; }
-        .roadmap-color-block { width: 100%; height: auto; flex-direction: row; gap: 16px; padding: 16px; justify-content: start;}
-        .flow-arrow-wrap { display: none; } /* Usuwamy strzałki flow chartu na mobile */
-        .tool-icon { width: 44px; height: 44px; font-size: 1.4rem; gap: 24px;}
-        .tool-icons { gap: 16px;}
-    }
 
-    /* ===== SLIDER ZASAD, STICKY NOTE, CTA (Zostają bez zmian) ===== */
-    .rules-slider-container { width: 100%; overflow: hidden; margin: 40px 0; position: relative; }
-    .rules-slider { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 10px 40px 30px 40px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; margin: 0 -40px; }
-    .rules-slider::-webkit-scrollbar { height: 6px; }
-    .rules-slider::-webkit-scrollbar-track { background: var(--paper-mid); border-radius: 10px; margin: 0 40px; }
-    .rules-slider::-webkit-scrollbar-thumb { background: var(--grad-start); border-radius: 10px; }
-    .rules-slider:hover::-webkit-scrollbar-thumb { background: var(--grad-end); }
+    /* ===== WAŻNE ZASADY - GRID 2x2 ===== */
+    .rules-grid-2x2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin: 40px 0;
+    }
     
-    .rule-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 36px 32px; transition: transform 0.3s, box-shadow 0.3s; min-width: 340px; max-width: 380px; flex-shrink: 0; scroll-snap-align: center; }
+    .rule-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 36px 32px; transition: transform 0.3s, box-shadow 0.3s; }
     .rule-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); border-color: rgba(107,53,200,0.3); }
     .rule-icon { width: 56px; height: 56px; background: var(--paper-warm); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; color: var(--grad-start); }
     .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
     .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
 
+    /* ===== STICKY NOTE ===== */
     .sticky-note-wrapper { display: flex; justify-content: center; margin: 60px 0; }
     .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
-    
+
+    /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
     .cta-content { position: relative; z-index: 2; }
@@ -236,6 +197,11 @@ title: Zasady współpracy
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
+    /* Responsywność */
+    @media (max-width: 860px) {
+        .step-group-cards { grid-template-columns: 1fr; }
+        .rules-grid-2x2 { grid-template-columns: 1fr; }
+    }
 </style>
 
 <header class="hero hero--light">
@@ -255,16 +221,6 @@ title: Zasady współpracy
         <div class="hero-btns reveal delay-4">
             <a href="mailto:natalia.szoppa@gmail.com" class="hero-btn-primary">Napisz do mnie</a>
             <a href="{{ '/cennik.html' | relative_url }}" class="hero-btn-secondary">Sprawdź cennik →</a>
-        </div>
-    </div>
-    
-    <div class="hero-bottom-strip reveal delay-4">
-        <div class="tool-icons">
-            <div class="tool-icon" title="Microsoft Word"><i class="lab la-microsoft"></i></div>
-            <div class="tool-icon" title="Google Docs"><i class="lab la-google-drive"></i></div>
-            <div class="tool-icon" title="Adobe InDesign"><i class="lab la-adobe"></i></div>
-            <div class="tool-icon" title="Format PDF"><i class="las la-file-pdf"></i></div>
-            <div class="tool-icon" title="E-book (EPUB)"><i class="las la-book"></i></div>
         </div>
     </div>
 </header>
@@ -299,46 +255,24 @@ title: Zasady współpracy
         <h2 class="section-h2 reveal delay-1">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
         <p class="section-lead reveal delay-2">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
 
-        <div class="flow-chart-wrapper reveal delay-3">
-            <div class="flow-chart">
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-envelope"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">01</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-comments"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">02</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-search"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">03</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-tasks"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">04</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-file-invoice-dollar"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">05</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-file-signature"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">06</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-credit-card"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">07</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-laptop-code"></i></div></div></div>
-                <div class="flow-arrow-wrap"><div class="flow-arrow"></div><div class="flow-step-num">08</div></div>
-                <div class="flow-item"><div class="flow-icon-wrap"><div class="flow-icon"><i class="las la-paper-plane"></i></div></div></div>
-            </div>
-        </div>
-
         <div class="step-groups-wrapper reveal delay-3">
             
             <div class="step-group">
                 <div class="step-group-header"><div class="step-group-label">Grupa 1: Przygotowanie</div><div class="step-group-line"></div></div>
                 <div class="step-group-cards">
                     
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">01</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">1</div></div>
                         <div class="roadmap-text-block"><h3>Kontakt</h3><p>Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach.</p><ul class="card-details"><li>Zazwyczaj do 24-48h (w dni robocze)</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">02</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">2</div></div>
                         <div class="roadmap-text-block"><h3>Omówienie problemu</h3><p>Rozmawiamy o tekście. Mam przygotowany formularz, który pomoże Ci podsumować efekty Twojej pracy. Oceniamy razem zakres potrzebnej redakcji/korekty.</p><ul class="card-details"><li>Forma: wymiana maili</li><li>Efekt: wstępna orientacja, jaka usługa będzie optymalna</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">03</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">3</div></div>
                         <div class="roadmap-text-block"><h3>Przesłanie próbki tekstu</h3><p>Proszę o fragment tekstu (najlepiej całość lub 3 pierwsze, 3 środkowe i 3 ostatnie rozdziały), by ocenić jego styl, błędy i nakład pracy.</p><ul class="card-details"><li>Format: .docx lub Google Docs</li></ul><div class="card-note">Nie wyceniam "w ciemno" na podstawie samej liczby znaków.</div></div>
                     </div></div>
                 </div>
@@ -348,18 +282,18 @@ title: Zasady współpracy
                 <div class="step-group-header"><div class="step-group-line"></div><div class="step-group-label">Grupa 2: Formalności & Plan</div></div>
                 <div class="step-group-cards">
                     
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">04</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">4</div></div>
                         <div class="roadmap-text-block"><h3>Zakres prac</h3><p>Dokładnie ustalamy zakres zlecenia – jakie elementy tekstu wymagają ingerencji, co zostawiamy bez zmian, jaki jest cel końcowy.</p><ul class="card-details"><li>Zakres ingerencji w tekst (redakcja vs korekta)</li><li>Liczba rund poprawek wliczonych w cenę</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">05</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">5</div></div>
                         <div class="roadmap-text-block"><h3>Wycena</h3><p>Na podstawie próbki i ustalonego zakresu prac przygotowuję ostateczną wycenę, ważną przez 14 dni.</p><ul class="card-details"><li>Cena nie zmienia się w trakcie realizacji (chyba że zmienisz zakres)</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">06</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">6</div></div>
                         <div class="roadmap-text-block"><h3>Umowa</h3><p>Podpisujemy umowę o świadczenie usług, regulującą termin, zakres i poufność. Nie zaczynam pracy bez podpisanej umowy.</p><ul class="card-details"><li>Podpisywana elektronicznie (profil zaufany)</li></ul></div>
                     </div></div>
                 </div>
@@ -369,18 +303,18 @@ title: Zasady współpracy
                 <div class="step-group-header"><div class="step-group-label">Grupa 3: Realizacja</div><div class="step-group-line"></div></div>
                 <div class="step-group-cards">
                     
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">07</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">7</div></div>
                         <div class="roadmap-text-block"><h3>Płatność</h3><p>Po podpisaniu umowy wystawiam fakturę pro formę. Po jej opłaceniu rezerwuję dla Ciebie termin w grafiku.</p><ul class="card-details"><li>Płatność z góry za całość zlecenia</li><li>Możliwość płatności w ratach (przy dużych projektach)</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">08</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">8</div></div>
                         <div class="roadmap-text-block"><h3>Realizacja</h3><p>Zabieram się do tekstu zgodnie z harmonogramem. Po zakończeniu przesyłam plik z poprawkami (w trybie śledzenia zmian).</p><ul class="card-details"><li>Poprawki nanoszone w trybie śledzenia zmian</li><li>Ostateczna decyzja o akceptacji należy do Ciebie</li></ul></div>
                     </div></div>
 
-                    <div class="flow-item roadmap-item"><div class="roadmap-content">
-                        <div class="roadmap-color-block"><span class="step-num">09</span></div>
+                    <div class="roadmap-item"><div class="roadmap-content">
+                        <div class="roadmap-color-block"><div class="step-num-circle">9</div></div>
                         <div class="roadmap-text-block"><h3>Gotowy tekst & Feedback</h3><p>Przesyłam plik z poprawkami oraz krótkie omówienie zmian i wskazówki redaktorskie. To moment na Twoje pytania i ewentualne negocjacje.</p><ul class="card-details"><li>Moje zmiany to nie słowo ostateczne – zawsze możesz je zmieniać i negocjować.</li></ul></div>
                     </div></div>
                 </div>
@@ -395,18 +329,14 @@ title: Zasady współpracy
         <div class="eyebrow-label reveal" style="justify-content:center;">Ważne zasady</div>
         <h2 class="section-h2 reveal delay-1" style="text-align:center; margin-bottom: 20px;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
         
-        <div class="rules-slider-container reveal delay-2">
-            <div class="rules-slider">
-                <div class="rule-card"><div class="rule-icon"><i class="las la-calendar-check"></i></div><h3>Termin to termin</h3><p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p></div>
-                <div class="rule-card"><div class="rule-icon"><i class="las la-user-shield"></i></div><h3>Pełna poufność</h3><p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go i nie cytuję fragmentów bez Twojej wyraźnej zgody.</p></div>
-                <div class="rule-card"><div class="rule-icon"><i class="las la-users"></i></div><h3>Dwie pary oczu</h3><p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Po redakcji korektę powinna wykonać inna osoba, np. ja – po 3 tygodniach przerwy.</p></div>
-                <div class="rule-card"><div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div><h3>Zmiana = nowa wycena</h3><p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę.</p></div>
-                <div class="rule-card"><div class="rule-icon"><i class="las la-comments"></i></div><h3>Komunikacja</h3><p>Masz pytania, wątpliwość? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p></div>
-                <div class="rule-card"><div class="rule-icon"><i class="las la-check-circle"></i></div><h3>Ty masz ostatnie słowo</h3><p>Każda zmiana to tylko propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty decydujesz.</p></div>
-            </div>
+        <div class="rules-grid-2x2 reveal delay-2">
+            <div class="rule-card"><div class="rule-icon"><i class="las la-calendar-check"></i></div><h3>Termin to termin</h3><p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p></div>
+            <div class="rule-card"><div class="rule-icon"><i class="las la-user-shield"></i></div><h3>Pełna poufność</h3><p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go i nie cytuję fragmentów bez Twojej wyraźnej zgody.</p></div>
+            <div class="rule-card"><div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div><h3>Zmiana = nowa wycena</h3><p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę.</p></div>
+            <div class="rule-card"><div class="rule-icon"><i class="las la-comments"></i></div><h3>Ty masz ostatnie słowo</h3><p>Każda zmiana to tylko propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty decydujesz.</p></div>
         </div>
 
-        <div class="containerreveal delay-3" style="max-width: 900px; margin: 40px auto; width: calc(100% - 48px);">
+        <div class="container reveal delay-3" style="max-width: 900px; margin: 40px auto; width: calc(100% - 48px);">
             <div class="warning-box"><i class="las la-exclamation-circle"></i><div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div></div>
         </div>
         
@@ -426,7 +356,6 @@ title: Zasady współpracy
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const timelineItems = document.querySelectorAll('.flow-item[data-step]');
         const tocSections = document.querySelectorAll('.toc-section');
         const tocLinks = document.querySelectorAll('.top-toc a');
 
