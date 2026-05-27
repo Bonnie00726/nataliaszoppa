@@ -34,7 +34,6 @@ title: Zasady współpracy
     @media (min-width: 861px) { .hero--light .grad-type { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;} }
     
     .hero--light .hero-sub { color: var(--ink-soft); max-width: 500px; text-align: center; }
-    .hero--light .hero-eyebrow { color: var(--grad-start); text-align: center; }
 
     /* Metka powiadomienia */
     .hero-bell-badge {
@@ -89,13 +88,16 @@ title: Zasady współpracy
     .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
     .top-toc a.active::after { width: 100%; }
 
-    /* ===== NOWE KARTY ETAPÓW (Ściśnięte) ===== */
+    /* ===== TYPOGRAFIA LOKALNA ===== */
+    .section-lead { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin: 0 auto 60px; text-align: center; }
+
+    /* ===== NOWE KARTY ETAPÓW (Ściśnięte, bez ikon) ===== */
     .step-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 50px 30px;
-        max-width: 1050px; /* Zmniejszona maksymalna szerokość */
-        margin: 60px auto; /* Wyśrodkowanie */
+        max-width: 1050px;
+        margin: 60px auto;
     }
     
     .step-module {
@@ -172,8 +174,8 @@ title: Zasady współpracy
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
-        max-width: 900px; /* Zmniejszona maksymalna szerokość */
-        margin: 40px auto; /* Wyśrodkowanie */
+        max-width: 900px;
+        margin: 40px auto;
     }
     
     .rule-card { 
@@ -237,7 +239,7 @@ title: Zasady współpracy
             <span>Przyjmuję nowe zlecenia</span>
         </div>
 
-        <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
+        <div class="eyebrow reveal delay-1" style="text-align: center;">Zasady współpracy</div>
         <h1 class="reveal delay-2">Twój tekst, moja pasja.<br><em class="grad-type">Jasne zasady</em>, spokojna głowa</h1>
         <p class="hero-sub reveal delay-3">Zrozumiały proces, rzetelna redakcja i pełna poufność. Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
         
@@ -273,9 +275,10 @@ title: Zasady współpracy
 </div>
 
 <section id="etapy" class="section bg-white toc-section" style="padding-top:60px;">
-    <div class="container" style="max-width: 1050px;"> <div class="eyebrow-label reveal" style="justify-content:center;">Etapy współpracy</div>
+    <div class="container" style="max-width: 1050px;"> 
+        <div class="eyebrow reveal" style="text-align: center;">Etapy współpracy</div>
         <h2 class="section-h2 reveal delay-1" style="text-align:center;">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
-        <p class="section-lead reveal delay-2" style="margin: 0 auto 60px; text-align:center;">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
+        <p class="section-lead reveal delay-2">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
 
         <div class="step-grid reveal delay-3">
             
@@ -366,7 +369,7 @@ title: Zasady współpracy
 
 <section id="zasady" class="section bg-warm toc-section">
     <div class="container--wide">
-        <div class="eyebrow-label reveal" style="justify-content:center;">Ważne zasady</div>
+        <div class="eyebrow reveal" style="text-align: center;">Ważne zasady</div>
         <h2 class="section-h2 reveal delay-1" style="text-align:center; margin-bottom: 20px;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
         
         <div class="rules-grid reveal delay-2">
