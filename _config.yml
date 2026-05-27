@@ -6,7 +6,7 @@ description: Redakcja, korekta i skład DTP.
 # USTAWIENIA ADRESU (Kluczowe, żeby CSS działał!)
 # Jeśli Twój adres to bonnie00726.github.io/nataliaszoppa/
 # to baseurl musi być nazwą Twojego projektu z ukośnikiem na początku:
-baseurl: "/nataliaszoppa" 
+baseurl: "" 
 url: "https://nataliaszoppa.com"
 
 # Techniczne rzeczy
