@@ -3,45 +3,58 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
-    /* ===== LEKKIE HERO ===== */
-    .hero--light { 
-        background-color: var(--paper-warm); 
+    /* ===== HERO ZE ZDJĘCIEM I OVERLAYEM ===== */
+    .hero { 
         position: relative; 
-        overflow: hidden; 
+        min-height: 80vh; 
         display: flex; 
         flex-direction: column;
         align-items: center; 
         justify-content: center; 
-        min-height: 75vh; 
-        padding-top: var(--nav-h);
+        overflow: hidden; 
         padding-bottom: 60px;
     }
     
-    .hero-blob-1 { position: absolute; width: 50vw; height: 50vw; max-width: 600px; max-height: 600px; background: radial-gradient(circle, rgba(107,53,200,0.06) 0%, transparent 70%); top: -10%; left: -10%; border-radius: 50%; z-index: 0; }
-    .hero-blob-2 { position: absolute; width: 60vw; height: 60vw; max-width: 700px; max-height: 700px; background: radial-gradient(circle, rgba(232,119,42,0.06) 0%, transparent 70%); bottom: -20%; right: -10%; border-radius: 50%; z-index: 0; }
+    .hero-bg { position: absolute; inset: 0; z-index: 0; }
+    .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Ciemny gradient + fioletowa poświata dla lepszej czytelności tekstu */
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,18,0.7) 0%, rgba(10,8,18,0.4) 100%); }
+    .hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(107,53,200,0.35) 0%, transparent 70%); }
     
-    .hero--light .hero-content { 
+    .hero-content { 
+        position: relative; 
         z-index: 2; 
         max-width: 800px;
-        flex-grow: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+        margin-top: calc(var(--nav-h) - 20px);
     }
-    .hero--light h1 { color: var(--ink); margin-bottom: 24px; font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; }
-    .hero--light .grad-type { -webkit-text-fill-color: var(--grad-start); color: var(--grad-start); background: none;}
-    @media (min-width: 861px) { .hero--light .grad-type { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;} }
-    
-    .hero--light .hero-sub { color: var(--ink-soft); max-width: 500px; text-align: center; }
 
-    /* Metka powiadomienia */
+    .hero h1 { color: #fff; margin-bottom: 24px; font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; line-height: 1.1; }
+    .hero .grad-type { 
+        font-style: italic; 
+        font-weight: 700; 
+        background: var(--grad-text); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        background-clip: text; 
+    }
+    
+    .hero .hero-sub { color: rgba(255,255,255,0.75); max-width: 500px; text-align: center; line-height: 1.7; font-weight: 300;}
+    .hero .hero-eyebrow { color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 16px; }
+
+    /* Metka powiadomienia - efekt szkła (Glassmorphism) na ciemnym tle */
     .hero-bell-badge {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: #fff;
-        border: 1px solid var(--paper-mid);
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.2);
         border-radius: 100px;
         padding: 8px 18px;
         font-family: var(--sans);
@@ -49,7 +62,7 @@ title: Zasady współpracy
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        color: var(--ink-muted);
+        color: #fff;
         box-shadow: var(--shadow-soft);
         margin-bottom: 28px;
     }
@@ -71,7 +84,21 @@ title: Zasady współpracy
         transition: transform 0.2s; 
     }
     .hero-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
-    .hero-btn-secondary { color: var(--grad-start); text-decoration: none; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 12px; }
+    .hero-btn-secondary { 
+        color: #fff; 
+        background: rgba(255,255,255,0.1); 
+        border: 1px solid rgba(255,255,255,0.3); 
+        text-decoration: none; 
+        font-family: var(--sans); 
+        font-size: 0.8rem; 
+        font-weight: 600; 
+        text-transform: uppercase; 
+        letter-spacing: 0.1em; 
+        padding: 11px 28px; 
+        border-radius: 100px;
+        transition: background 0.2s;
+    }
+    .hero-btn-secondary:hover { background: rgba(255,255,255,0.2); }
 
     /* ===== CREDIBILITY BAR ===== */
     .credibility-bar-overlap { background: var(--ink); padding: 22px 40px; position: relative; z-index: 10; margin-top: -46px; max-width: 1000px; margin-left: auto; margin-right: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-strong); width: calc(100% - 40px); }
@@ -229,9 +256,10 @@ title: Zasady współpracy
     }
 </style>
 
-<header class="hero hero--light">
-    <div class="hero-blob-1"></div>
-    <div class="hero-blob-2"></div>
+<header class="hero">
+    <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1588470959069-a27f6b1997a4?q=80&w=2000&auto=format&fit=crop" alt="Tło współpracy">
+    </div>
     
     <div class="hero-content">
         <div class="hero-bell-badge reveal">
@@ -239,9 +267,9 @@ title: Zasady współpracy
             <span>Przyjmuję nowe zlecenia</span>
         </div>
 
-        <div class="eyebrow reveal delay-1" style="text-align: center;"></div>
-        <h1 class="reveal delay-2">Zasady <em class="grad-type">współpracy</em></h1>
-        <p class="hero-sub reveal delay-3">Zobacz, jak krok po kroku wygląda współpraca, jeśli jednak nadal będziesz mieć pytania, pisz śmiało</p>
+        <div class="eyebrow reveal delay-1" style="text-align: center; color: rgba(255,255,255,0.9);">Zasady współpracy</div>
+        <h1 class="reveal delay-2">Twój tekst, moja pasja.<br><em class="grad-type">Jasne zasady</em>, spokojna głowa</h1>
+        <p class="hero-sub reveal delay-3">Zrozumiały proces, rzetelna redakcja i pełna poufność. Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
         
         <div class="hero-btns reveal delay-4">
             <a href="mailto:natalia.szoppa@gmail.com" class="hero-btn-primary">Napisz do mnie</a>
@@ -426,6 +454,18 @@ title: Zasady współpracy
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Obsługa przezroczystości menu nawigacji przy scrollu ---
+        const nav = document.querySelector('.nav');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        }
+
         const tocSections = document.querySelectorAll('.toc-section');
         const tocLinks = document.querySelectorAll('.top-toc a');
 
