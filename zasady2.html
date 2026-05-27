@@ -3,7 +3,7 @@ layout: default
 title: Zasady współpracy
 ---
 <style>
-    /* ===== HERO ŚCIŚNIĘTE I ZMINIMALIZOWANE ===== */
+    /* ===== HERO (AUTOMATYCZNA WYSOKOŚĆ) ===== */
     .hero { 
         position: relative; 
         display: flex; 
@@ -11,14 +11,14 @@ title: Zasady współpracy
         align-items: center; 
         justify-content: center; 
         overflow: hidden; 
-        padding-top: calc(var(--nav-h) + 60px); /* Odstęp od nawigacji */
-        padding-bottom: 100px; /* Miejsce na nałożenie się czarnego paska */
+        /* Usunięte min-height! Wysokość dopasowuje się do tekstu */
+        padding-top: calc(var(--nav-h) + 60px);
+        padding-bottom: 90px; /* Miejsce na nachodzący credibility bar */
     }
     
     .hero-bg { position: absolute; inset: 0; z-index: 0; }
     .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    /* Jednolity, przyciemniony overlay na zdjęciu */
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(50, 35, 75, 0.7); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(35, 25, 50, 0.75); } /* Ciemny, elegancki overlay */
     
     .hero-content { 
         position: relative; 
@@ -31,36 +31,14 @@ title: Zasady współpracy
         padding: 0 20px;
     }
 
-    .hero h1 { 
-        color: #fff; 
-        margin-bottom: 16px; 
-        font-family: var(--serif);
-        font-size: clamp(2.5rem, 4.5vw, 4rem); 
-        text-align: center; 
-        line-height: 1.1;
-    }
+    .hero h1 { color: #fff; margin-bottom: 16px; font-family: var(--serif); font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; line-height: 1.1; }
+    .hero .grad-type { font-style: italic; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     
-    .hero .hero-sub { 
-        color: rgba(255,255,255,0.85); 
-        max-width: 600px; 
-        text-align: center; 
-        line-height: 1.6; 
-        font-weight: 300;
-        font-size: 1.05rem;
-    }
+    .hero .hero-sub { color: rgba(255,255,255,0.85); max-width: 600px; text-align: center; line-height: 1.6; font-weight: 300; font-size: 1.05rem; }
     
-    .hero .hero-eyebrow { 
-        color: rgba(255,255,255,0.9); 
-        text-align: center; 
-        margin-bottom: 16px; 
-        font-family: var(--sans);
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-    }
+    .hero .hero-eyebrow { color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 16px; font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; }
 
-    /* Minimalistyczna metka powiadomienia (szkło na zdjęciu) */
+    /* Metka powiadomienia (Glassmorphism) */
     .hero-bell-badge {
         display: inline-flex;
         align-items: center;
@@ -177,7 +155,7 @@ title: Zasady współpracy
     
     .step-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; margin: 0; font-weight: 300; }
 
-    /* ===== WAŻNE ZASADY - GRID 6 KART (Ściśnięte) ===== */
+    /* ===== WAŻNE ZASADY - GRID 6 KART ===== */
     .rules-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -249,7 +227,7 @@ title: Zasady współpracy
         </div>
 
         <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
-        <h1 class="reveal delay-2">Twój tekst, moja pasja</h1>
+        <h1 class="reveal delay-2">Twój tekst, moja pasja.<br><em class="grad-type">Jasne zasady</em>, spokojna głowa</h1>
         <p class="hero-sub reveal delay-3">Zrozumiały proces, rzetelna redakcja i pełna poufność. Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
     </div>
 </header>
