@@ -32,12 +32,7 @@ title: Współpraca w szczegółach
         flex-wrap: wrap; 
     }
     
-    .breadcrumbs a { 
-        color: var(--ink-muted); 
-        text-decoration: none; 
-        transition: color 0.2s; 
-    }
-    
+    .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
     .breadcrumbs a:hover { color: var(--grad-start); }
     .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
     .breadcrumbs .current { color: var(--grad-start); }
@@ -51,11 +46,7 @@ title: Współpraca w szczegółach
     }
 
     /* ===== OBRAZEK HERO (NA CAŁĄ SZEROKOŚĆ) ===== */
-    .page-hero-img-wrap { 
-        width: 100%; 
-        /* Usunięto max-width i marginesy boczne */
-    }
-    
+    .page-hero-img-wrap { width: 100%; }
     .page-hero-img { 
         width: 100%; 
         height: 50vh; 
@@ -63,7 +54,6 @@ title: Współpraca w szczegółach
         max-height: 600px;
         object-fit: cover; 
         display: block; 
-        /* Usunięto zaokrąglone rogi (border-radius), żeby dolegał do krawędzi */
     }
 
     /* ===== CREDIBILITY BAR ===== */
@@ -72,7 +62,7 @@ title: Współpraca w szczegółach
         padding: 22px 40px; 
         position: relative; 
         z-index: 10; 
-        margin-top: -30px; /* Nachodzi na zdjęcie */
+        margin-top: -30px; 
         max-width: 900px; 
         margin-left: auto; 
         margin-right: auto; 
@@ -85,7 +75,7 @@ title: Współpraca w szczegółach
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
-    /* ===== GŁÓWNY KONTENER TREŚCI (1 KOLUMNA) ===== */
+    /* ===== GŁÓWNY KONTENER TREŚCI (1 KOLUMNA - BIAŁE TŁO) ===== */
     .page-content-wrapper { 
         max-width: 800px; 
         margin: 60px auto 100px; 
@@ -101,80 +91,79 @@ title: Współpraca w szczegółach
         box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
         margin-bottom: 56px; 
     }
-    .toc-toggle { 
-        display: flex; 
-        align-items: center; 
-        justify-content: space-between; 
-        padding: 18px 24px; 
-        cursor: pointer; 
-        user-select: none; 
-        background: #fafafa; 
-        transition: background 0.2s; 
-    }
+    .toc-toggle { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; cursor: pointer; user-select: none; background: #fafafa; transition: background 0.2s; }
     .toc-toggle:hover { background: var(--paper-warm); }
     .toc-toggle-left { display: flex; align-items: center; gap: 12px; }
     .toc-toggle-left i { color: var(--grad-start); font-size: 1.4rem; }
     .toc-toggle-left span { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
     .toc-chevron { font-size: 1.2rem; color: var(--ink-muted); transform: rotate(0deg); transition: transform 0.3s ease; }
     .toc-box.open .toc-chevron { transform: rotate(180deg); color: var(--grad-start); }
-    .toc-body { 
-        max-height: 0; 
-        overflow: hidden; 
-        transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); 
-        border-top: 1px solid transparent; 
-    }
+    .toc-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); border-top: 1px solid transparent; }
     .toc-box.open .toc-body { max-height: 800px; border-top-color: var(--paper-mid); }
-    .toc-body ol { 
-        list-style: none; 
-        padding: 24px; 
-        margin: 0; 
-        display: flex; 
-        flex-direction: column; 
-        gap: 16px; 
-        counter-reset: toc-counter; 
-    }
+    .toc-body ol { list-style: none; padding: 24px; margin: 0; display: flex; flex-direction: column; gap: 16px; counter-reset: toc-counter; }
     .toc-body li { display: flex; align-items: flex-start; gap: 12px; padding: 0; counter-increment: toc-counter; }
-    .toc-body li::before { 
-        content: counter(toc-counter) "."; 
-        font-family: var(--sans); 
-        font-size: 1rem; 
-        font-weight: 700; 
-        color: var(--grad-start); 
-        min-width: 20px; 
-        flex-shrink: 0; 
-        line-height: 1.5; 
-    }
+    .toc-body li::before { content: counter(toc-counter) "."; font-family: var(--sans); font-size: 1rem; font-weight: 700; color: var(--grad-start); min-width: 20px; flex-shrink: 0; line-height: 1.5; }
     .toc-body li a { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; line-height: 1.5; }
     .toc-body li a:hover { color: var(--grad-start); }
 
     /* ===== TYPOGRAFIA TREŚCI ===== */
-    .blog-content { 
-        font-family: var(--sans); 
-        font-size: 1.05rem; 
-        color: var(--ink-soft); 
-        line-height: 1.85; 
-        font-weight: 300; 
-    }
-    .blog-content h2 { 
-        font-family: var(--serif); 
-        font-size: 1.8rem; 
-        font-weight: 700; 
-        color: var(--ink); 
-        margin: 60px 0 20px; 
-        scroll-margin-top: 100px; 
-    }
-    .blog-content h2 .step-label { 
-        display: block; 
-        font-family: var(--sans); 
-        font-size: 0.8rem; 
-        font-weight: 800; 
-        text-transform: uppercase; 
-        letter-spacing: 0.15em; 
-        color: var(--grad-start); 
-        margin-bottom: 8px; 
-    }
+    .blog-content { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); line-height: 1.85; font-weight: 300; }
+    .blog-content h2 { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink); margin: 60px 0 20px; scroll-margin-top: 100px; }
+    .blog-content h2 .step-label { display: block; font-family: var(--sans); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grad-start); margin-bottom: 8px; }
     .blog-content p { margin-bottom: 24px; }
     .blog-content strong { font-weight: 700; color: var(--ink); }
+
+    /* ===== WAŻNE ZASADY - GRID 6 KART (SZARE TŁO SEKCJI) ===== */
+    .bg-warm { background: var(--paper-warm); }
+    .rules-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+    .rule-card { 
+        background: #fff; 
+        border: 1px solid var(--paper-mid); 
+        border-radius: var(--radius-lg); 
+        padding: 32px; 
+        text-align: left;
+        transition: transform 0.3s, box-shadow 0.3s; 
+    }
+    .rule-card:hover { 
+        transform: translateY(-4px); 
+        box-shadow: var(--shadow-soft); 
+        border-color: rgba(107,53,200,0.3); 
+    }
+    .rule-icon { 
+        width: 44px; 
+        height: 44px; 
+        background: rgba(107, 53, 200, 0.06); 
+        border-radius: 8px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        margin-bottom: 20px; 
+        font-size: 1.4rem; 
+        color: var(--grad-start); 
+    }
+    .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+    .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+
+    /* ===== STICKY NOTE (Płatność i umowa) ===== */
+    .warning-box { 
+        display: flex; 
+        gap: 24px; 
+        align-items: flex-start; 
+        background: #fff; 
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0; 
+        padding: 32px; 
+        margin: 40px auto; 
+        max-width: 900px; 
+        box-shadow: var(--shadow-soft); 
+        border: 1px solid var(--paper-mid); 
+        border-left: 3px solid var(--grad-start); 
+    }
 
     /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
@@ -185,6 +174,8 @@ title: Współpraca w szczegółach
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-cta-white { display: inline-flex; align-items: center; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
     /* Responsywność */
     @media (max-width: 860px) {
@@ -193,7 +184,9 @@ title: Współpraca w szczegółach
         .page-hero-img { min-height: 250px; height: 35vh; }
         .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
         .credibility-bar-inner { gap: 24px; }
-        .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
+        .page-content-wrapper { margin-top: 40px; padding: 0 20px; margin-bottom: 60px; }
+        .rules-grid { grid-template-columns: 1fr; padding: 0 20px; }
+        .warning-box { margin: 40px 20px; }
     }
 </style>
 
@@ -279,6 +272,52 @@ title: Współpraca w szczegółach
     </article>
 </main>
 
+<section id="zasady" class="section bg-warm">
+    <div class="container--wide" style="padding-top: 60px; padding-bottom: 60px;">
+        <div class="eyebrow reveal" style="text-align: center; color: var(--grad-start);">Ważne zasady</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align:center; margin-bottom: 40px;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
+        
+        <div class="rules-grid reveal delay-2">
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-calendar-check"></i></div>
+                <h3>Termin to termin</h3>
+                <p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-user-shield"></i></div>
+                <h3>Pełna poufność</h3>
+                <p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-users"></i></div>
+                <h3>Dwie pary oczu</h3>
+                <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div>
+                <h3>Zmiana zakresu = nowa wycena</h3>
+                <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-comments"></i></div>
+                <h3>Komunikacja to podstawa</h3>
+                <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p>
+            </div>
+            <div class="rule-card">
+                <div class="rule-icon"><i class="las la-check-circle"></i></div>
+                <h3>Decyzje należą do Ciebie</h3>
+                <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p>
+            </div>
+        </div>
+
+        <div class="warning-box reveal delay-3">
+            <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
+            <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
+        </div>
+        
+    </div>
+</section>
+
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="reveal delay-1">Twój tekst w dobrych rękach</h2>
@@ -292,7 +331,6 @@ title: Współpraca w szczegółach
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Automatyczne generowanie spisu treści na podstawie <h2> ---
         const tocListElement = document.getElementById('auto-toc-list');
         const headers = document.querySelectorAll('.blog-content h2');
 
@@ -332,7 +370,6 @@ title: Współpraca w szczegółach
             });
         }
 
-        // --- 2. Otwieranie/Zamykanie Spisu Treści ---
         const tocToggle = document.querySelector('.toc-toggle');
         const tocBox = document.querySelector('.toc-box');
         if (tocToggle && tocBox) {
