@@ -15,10 +15,6 @@ title: Cennik
     .bell-pill.expanded { max-width: 360px; opacity: 1; }
     .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
 
-    /* Pasek dostępności */
-    .availability-bar { background: var(--paper-warm); border-bottom: 1px solid var(--paper-mid); padding: 14px 20px; display: flex; justify-content: center; align-items: center; gap: 14px; }
-    .availability-bar span { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink); }
-
     /* Credibility bar */
     .credibility-bar { background: var(--ink); padding: 22px 40px; }
     .credibility-bar-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
@@ -26,22 +22,154 @@ title: Cennik
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
 
-    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px; }
+    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin: 0 auto 60px; text-align: center; }
+    
+    /* ===== PAKIETY "MATRIOSZKA" ===== */
+    .packages-container {
+        position: relative;
+        background: var(--gold-pale, #F5F0FF);
+        border: 2px solid var(--grad-start);
+        border-radius: var(--radius-lg);
+        padding: 50px 30px 40px;
+        margin: 60px auto 80px;
+        max-width: 1000px;
+        box-shadow: var(--shadow-med);
+        text-align: center;
+    }
+    
+    .mega-badge {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--ink);
+        color: #fff;
+        padding: 8px 28px;
+        border-radius: 100px;
+        font-family: var(--sans);
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        box-shadow: 0 6px 15px rgba(13,13,13,0.3);
+        z-index: 5;
+    }
+    .mega-badge i { color: var(--grad-end); font-size: 1.2rem;}
+
+    .mega-price-wrap {
+        margin-bottom: 36px;
+    }
+    .mega-price {
+        font-family: var(--serif);
+        font-size: 3rem;
+        font-weight: 700;
+        background: var(--grad-text);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        display: inline-block;
+    }
+    .mega-price-unit {
+        font-size: 0.9rem; 
+        color: var(--ink-muted); 
+        font-family: var(--sans); 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.1em; 
+        display: block; 
+        margin-top: 8px;
+    }
+
+    .sub-packages-grid {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 20px;
+    }
+    .sub-package {
+        background: #fff;
+        border: 1.5px dashed var(--grad-start);
+        border-radius: var(--radius-lg);
+        padding: 40px 20px 24px;
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    .sub-badge {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        color: var(--grad-start);
+        border: 1px solid var(--grad-start);
+        padding: 6px 20px;
+        border-radius: 100px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+    }
+    
+    .pkg-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: auto; /* Wypycha cenę na dół */
+    }
+    .pkg-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pkg-item i { font-size: 2.2rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+    .pkg-item span { font-family: var(--sans); font-size: 0.65rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px; }
+    .pkg-item strong { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); font-weight: 600; }
+    
+    .pkg-item-plus { color: var(--grad-start); font-size: 1.5rem; margin-top: -10px; }
+    
+    .sub-price-wrap {
+        margin-top: 32px;
+        padding-top: 20px;
+        border-top: 1px solid var(--paper-mid);
+    }
+    .sub-price {
+        font-family: var(--serif);
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--ink);
+    }
+    .sub-price span { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 4px;}
+    
+    .pkg-plus {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--grad-start);
+        font-weight: 300;
+    }
+
+    /* ===== POJEDYNCZE USŁUGI (KAFELKI) ===== */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
     .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
     .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
     .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); border-color: transparent; }
     .pricing-card:hover::before { transform: scaleX(1); }
-    .pricing-card h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: var(--ink); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--paper-mid); }
-    .price-main { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; line-height: 1; display: inline-block; margin-bottom: 6px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 4px 6px 4px 0px; }
-    .price-unit { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); display: block; margin-bottom: 24px; }
+    .pricing-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--paper-mid); }
+    .price-main { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; line-height: 1; display: inline-block; margin-bottom: 6px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 4px 6px 4px 0px; }
+    .price-unit { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); display: block; margin-bottom: 24px; }
     .price-alt { font-size: 1.1rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .price-alt-unit { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 16px; }
+    .price-alt-unit { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 16px; }
     .price-note { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; font-weight: 300; line-height: 1.6; margin-top: auto; padding-top: 24px; border-top: 1px solid var(--paper-mid); }
-    .pricing-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
-    .pricing-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
-    .pricing-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    
+    /* ===== INFO GRID & LEGAL ===== */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
     .info-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; }
     .info-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
     .definitions-list { list-style: none; padding: 0; margin: 0; }
@@ -50,10 +178,13 @@ title: Cennik
     .factors-list { list-style: none; padding: 0; margin: 0; }
     .factors-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
     .factors-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-    .legal-bar { background: var(--paper-warm); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); padding: 14px 40px; display: flex; justify-content: center; align-items: center; gap: 12px; }
+    
+    .legal-bar { background: var(--paper-warm); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); padding: 14px 40px; display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 60px; }
     .legal-bar i { font-size: 1.1rem; color: var(--grad-start); flex-shrink: 0; }
-    .legal-bar p { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin: 0; line-height: 1.5; }
+    .legal-bar p { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin: 0; line-height: 1.5; text-align: center; }
     .legal-bar strong { color: var(--ink); font-weight: 700; }
+
+    /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
     .cta-content { position: relative; z-index: 2; }
@@ -64,18 +195,25 @@ title: Cennik
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    @media (max-width: 860px) { .info-grid { grid-template-columns: 1fr; } .credibility-bar { padding: 18px 20px; } .credibility-bar-inner { gap: 24px; } }
-    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    
+    @media (max-width: 860px) { 
+        .info-grid { grid-template-columns: 1fr; } 
+        .credibility-bar { padding: 18px 20px; } 
+        .credibility-bar-inner { gap: 24px; } 
+        .sub-packages-grid { flex-direction: column; }
+        .pkg-plus { transform: rotate(90deg); margin: 10px 0; }
+    }
+    @media (max-width: 600px) { 
+        .pricing-grid { grid-template-columns: 1fr; } 
+    }
 </style>
 
-<!-- HERO -->
 <header class="hero hero--short">
     <div class="hero-bg">
         <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1170&auto=format&fit=crop" alt="Tło">
     </div>
     <div class="hero-content">
 
-        <!-- DZWONECZEK -->
         <div class="bell-notice-wrap">
             <div class="bell-notice" id="bell-notice">
                 <div class="bell-circle">
@@ -89,11 +227,10 @@ title: Cennik
 
         <div class="hero-eyebrow reveal delay-1">Cennik</div>
         <h1 class="reveal delay-2">Przejrzyste <em class="grad-type">stawki</em></h1>
-        <p class="hero-sub reveal delay-3">Każde zlecenie wyceniam indywidualnie. Cena zależy od jakości tekstu, objętości oraz stopnia trudności.</p>
+        <p class="hero-sub reveal delay-3">Wybierz usługę solo lub skorzystaj z kompleksowego pakietu wydawniczego.</p>
     </div>
 </header>
 
-<!-- CREDIBILITY BAR -->
 <div class="credibility-bar reveal delay-1">
     <div class="credibility-bar-inner">
         <div class="cred-pillar">
@@ -111,17 +248,70 @@ title: Cennik
     </div>
 </div>
 
-<!-- PASEK UWAGI PRAWNEJ -->
-<div class="legal-bar reveal">
-    <i class="las la-balance-scale"></i>
-    <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
-</div>
-
 <section class="section">
     <div class="container">
-        <div class="eyebrow reveal">Pakiety usług</div>
-        <h2 class="section-h2 reveal delay-1">Co mogę dla Ciebie <em>zrobić</em>?</h2>
-        <p class="section-lead reveal delay-2">Poniżej znajdziesz orientacyjne stawki za każdą usługę. Napisz do mnie – wycenię projekt bezpłatnie.</p>
+        
+        <div class="eyebrow reveal" style="text-align: center;">Kompleksowa obsługa</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Opłacalne <em>pakiety</em></h2>
+        <p class="section-lead reveal delay-2">Oddaj tekst w moje ręce i nie martw się o szukanie kolejnych wykonawców.</p>
+
+        <div class="packages-container reveal delay-3">
+            <div class="mega-badge"><i class="las la-star"></i> PEŁNY PAKIET WYDAWNICZY <i class="las la-star"></i></div>
+            
+            <div class="mega-price-wrap">
+                <div class="mega-price">od 450 zł</div>
+                <span class="mega-price-unit">za arkusz wydawniczy</span>
+            </div>
+
+            <div class="sub-packages-grid">
+                <div class="sub-package">
+                    <div class="sub-badge">PAKIET: TEKST</div>
+                    <div class="pkg-details">
+                        <div class="pkg-item">
+                            <i class="las la-edit"></i>
+                            <span>Krok 3</span>
+                            <strong>Redakcja</strong>
+                        </div>
+                        <div class="pkg-item-plus">+</div>
+                        <div class="pkg-item">
+                            <i class="las la-spell-check"></i>
+                            <span>Krok 4</span>
+                            <strong>Korekta</strong>
+                        </div>
+                    </div>
+                    <div class="sub-price-wrap">
+                        <div class="sub-price">od 350 zł</div>
+                        <span>za arkusz</span>
+                    </div>
+                </div>
+
+                <div class="pkg-plus">+</div>
+
+                <div class="sub-package">
+                    <div class="sub-badge">PAKIET: SKŁAD</div>
+                    <div class="pkg-details">
+                        <div class="pkg-item">
+                            <i class="las la-layer-group"></i>
+                            <span>Krok 5</span>
+                            <strong>Skład (DTP)</strong>
+                        </div>
+                        <div class="pkg-item-plus">+</div>
+                        <div class="pkg-item">
+                            <i class="las la-search-plus"></i>
+                            <span>Krok 6</span>
+                            <strong>Korekta poskł.</strong>
+                        </div>
+                    </div>
+                    <div class="sub-price-wrap">
+                        <div class="sub-price">od 200 zł</div>
+                        <span>za arkusz</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-h2 reveal" style="text-align: center; margin-top: 80px;">Usługi <em>pojedyncze</em></h2>
+        <p class="section-lead reveal delay-1">Potrzebujesz pomocy tylko na jednym etapie? Żaden problem.</p>
 
         <div class="pricing-grid">
             <div class="pricing-card reveal">
@@ -142,16 +332,18 @@ title: Cennik
                 <p class="price-note">Cena liczona na podstawie arkusza wydawniczego przy zleceniach o objętości min. 3 arkuszy.</p>
             </div>
 
-            <div class="pricing-card reveal delay-2">
+            <div class="pricing-card reveal">
                 <h3>Skład DTP</h3>
-                <span class="price-main">XXX zł</span>
-                <span class="price-unit">W przygotowaniu</span>
-                <ul class="pricing-list">
-                    <li>???</li>
-                    <li>???</li>
-                    <li>???</li>
-                </ul>
-                <p class="price-note">Ze względu na specyfikę składu, wycenę podaję po wstępnym zapoznaniu się z materiałem. Cena liczona na podstawie arkusza wydawniczego.</p>
+                <span class="price-main">wycena</span>
+                <span class="price-unit">indywidualna</span>
+                <p class="price-note" style="border-top: none; padding-top:0;">Ze względu na specyfikę składu i rygor typograficzny, wycenę podaję po wstępnym zapoznaniu się z materiałem.</p>
+            </div>
+
+            <div class="pricing-card reveal delay-1">
+                <h3>Korekta poskładowa</h3>
+                <span class="price-main">wycena</span>
+                <span class="price-unit">indywidualna</span>
+                <p class="price-note" style="border-top: none; padding-top:0;">Ostatni szlif przed drukiem. Wyłapywanie błędów technicznych: wdów, bękartów, sierot i złego dzielenia wyrazów.</p>
             </div>
         </div>
 
@@ -177,13 +369,18 @@ title: Cennik
     </div>
 </section>
 
+<div class="legal-bar reveal">
+    <i class="las la-balance-scale"></i>
+    <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
+</div>
+
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="reveal delay-1">Opowiedz mi o swoim projekcie</h2>
         <p class="reveal delay-2">Nie musisz od razu wiedzieć, jakiej usługi potrzebujesz. Opisz krótko swój projekt i prześlij fragment tekstu – wspólnie zastanowimy się, jaki zakres prac będzie dla Ciebie najlepszy.</p>
         <div class="cta-btns reveal delay-3">
             <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Wyślij materiały</a>
-            <a href="{{ site.baseurl }}/zasady-wspolpracy.html" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
+            <a href="{{ '/zasady-wspolpracy.html' | relative_url }}" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
         </div>
     </div>
 </section>
