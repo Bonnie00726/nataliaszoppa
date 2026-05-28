@@ -143,6 +143,80 @@ title: Redakcja, korekta, skład
     background: rgba(255, 255, 255, 0.15); /* Delikatnie przezroczysta linia */
 }
 
+/* ===== SZYBKIE FAQ NA STRONIE GŁÓWNEJ ===== */
+.faq-split-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-med);
+    border: 1px solid var(--paper-mid);
+}
+.faq-questions {
+    flex: 0 0 45%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.faq-q-item {
+    padding: 22px 28px;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    border-bottom: 1px solid var(--paper-mid);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.faq-q-item:last-child { border-bottom: none; }
+.faq-q-item:hover { background: var(--paper-warm); }
+.faq-q-item i { color: var(--ink-muted); font-size: 1.2rem; transition: color 0.3s; }
+.faq-q-item.active {
+    background: var(--ink);
+    color: #fff;
+}
+.faq-q-item.active i {
+    color: var(--grad-start); /* Akcent z gradientu na strzałce */
+}
+.faq-answers {
+    flex: 1;
+    background: var(--paper-warm);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.faq-a-item {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.faq-a-item.active {
+    display: block;
+}
+.faq-a-item h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin-bottom: 20px;
+}
+.faq-a-item p {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 16px;
+}
+.faq-a-item p:last-child { margin-bottom: 0; }
+
 /* Responsywność na telefony i tablety */
 @media (max-width: 992px) {
     .stats-container {
@@ -157,7 +231,12 @@ title: Redakcja, korekta, skład
         display: none;
     }
 }
-
+@media (max-width: 860px) {
+    .faq-split-container { flex-direction: column; }
+    .faq-questions { flex: none; border-bottom: 1px solid var(--paper-mid); }
+    .faq-q-item.active { border-bottom-color: transparent; }
+    .faq-answers { padding: 32px 24px; }
+}
 </style>
 
 <header class="hero">
@@ -187,7 +266,6 @@ title: Redakcja, korekta, skład
   
 </header>
 
-<!-- Krok pod Hero: Pasek specjalizacji (jasny) -->
 <div class="specializations-bar reveal">
     <div class="spec-container">
         <div class="spec-item"><i class="las la-book"></i> Beletrystyka</div>
@@ -198,7 +276,6 @@ title: Redakcja, korekta, skład
     </div>
 </div>
 
-<!-- Krok pod Hero: Pasek statystyk (ciemny ze złotym) -->
 <div class="stats-bar reveal delay-1">
     <div class="stats-container">
         
@@ -255,9 +332,7 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- CO MOGĘ DLA CIEBIE ZROBIĆ + ŚCIEŻKA AUTORA -->
 <section class="section" id="sciezka-autora" style="background: var(--paper-warm, #fdfbf7);">
-    <!-- Dodałem szeroki max-width, żeby sekcja miała miejsce na oddech -->
     <div class="container" style="max-width: 1400px;">
         <div class="services-intro">
             <div class="reveal">
@@ -329,25 +404,20 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- AUTODIAGNOSTYKA (DWIE SEKCJE OBOK SIEBIE) -->
 <section class="section" id="autodiagnostyka">
     <div class="container">
         
-        <!-- Nagłówek -->
         <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
         <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim zamówisz usługę,<br><em>sprawdź się</em></h2>
         
-        <!-- Opis pod nagłówkiem -->
         <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 50px auto; max-width: 800px;">
             Szanuję Twój czas i budżet. Zanim prześlesz mi plik, pobierz darmowy arkusz pytań i sprawdź, czy Twoja historia ma solidne fundamenty, bez których za wcześnie na redakcję językową. <br> <br>
             Nie zapomnij odesłać mi swoich odpowiedzi!<br>
             Przeanalizuję je i <b>całkowicie bezpłatnie</b> doradzę Ci, co dalej. 
         </p>
 
-        <!-- TUTAJ ZACZYNA SIĘ TWOJA SIATKA Z KAFELKAMI (diag-grid) -->
         <div class="diag-grid reveal delay-3">
             
-            <!-- Diagnostyka przed Redakcją -->
             <div class="diag-card">
                 <h3><i class="las la-project-diagram"></i> Autodiagnostyka przed redakcją</h3>
                 <p>Redakcja językowa nie naprawi dziur w logice, strukturze i papierowych bohaterów. Te pytania pomogą Ci stwierdzić, czy Twoja powieść <b>potrzebuje beta-readerów</b>. Samodzielnie zweryfikujesz i określisz:</p>
@@ -359,7 +429,6 @@ title: Redakcja, korekta, skład
                 <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz fabularny</a>
             </div>
 
-            <!-- Diagnostyka przed Korektą -->
             <div class="diag-card">
                 <h3><i class="las la-spell-check"></i> Autodiagnostyka przed korektą</h3>
                 <p>Twój tekst przeszedł już redakcję u kogoś innego? Upewnij się, że język faktycznie został naprawiony i tekst nie wymaga ponownej przebudowy. Samodzielnie zweryfikujesz:</p>
@@ -371,11 +440,10 @@ title: Redakcja, korekta, skład
                 <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz językowy</a>
             </div>
             
-        </div> <!-- Zamknięcie diag-grid -->
-    </div> <!-- Zamknięcie container -->
-</section> <!-- Zamknięcie section -->
+        </div>
+    </div> 
+</section>
 
-            <!-- DLACZEGO KOREKTA I REDAKCJA -->
 <section class="section" id="misja" style="background: var(--paper-warm, #fdfbf7);">
     <div class="container">
         <div class="mission-wrap">
@@ -384,10 +452,7 @@ title: Redakcja, korekta, skład
                 <h2 class="section-h2">Jak pracuję z Twoim <em>tekstem</em></h2>
                 <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
                 <div class="blockquote">
-                    <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. 
-
-
-                    </p>
+                    <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. </p>
                 </div>
                 <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko wena i pomysł są najważniejsze w procesie twórczym. Każde słowo, każdy drobny gest, każdy opis pozwala czytelnikowi stać się częścią Twojej wizji, a nie tylko biernym obserwatorem. </p>
 
@@ -403,9 +468,6 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-
-
-<!-- SEKCJA PRZED/PO -->
 <section class="section">
     <div class="container">
         <h2 class="section-h2 reveal">Redakcja w <em>praktyce</em></h2>
@@ -438,8 +500,6 @@ title: Redakcja, korekta, skład
         </div>
     </div>
 </section>
-
-<!-- OFERTA: 3 KAFELKI -->
 
 <section class="section"> <div class="container"> <div class="services-intro">
       <h2 class="section-h2">Wybierz usługę dla <em>siebie</em></h2>
@@ -503,7 +563,6 @@ title: Redakcja, korekta, skład
   </div>
 </section>
 
-<!-- OPINIE -->
 <section class="section" id="opinie">
     <div class="container">
         <div class="eyebrow reveal">Opinie</div>
@@ -534,7 +593,6 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- ETAPY WSPÓŁPRACY -->
 <section class="section" id="proces">
     <div class="container">
         <div class="eyebrow reveal" style="text-align: center; justify-content: center;">Proces realizacji</div>
@@ -548,7 +606,66 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- PORTFOLIO -->
+<section class="section" id="szybkie-faq" style="padding-top: 0;">
+    <div class="container">
+        <div class="eyebrow reveal" style="text-align: center; justify-content: center;">FAQ</div>
+        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Najczęściej zadawane <em>pytania</em></h2>
+        
+        <div class="faq-split-container reveal delay-2">
+            <div class="faq-questions">
+                <div class="faq-q-item active" data-target="faq-a-1">
+                    Jak wygląda wycena? <i class="las la-angle-right"></i>
+                </div>
+                <div class="faq-q-item" data-target="faq-a-2">
+                    Jak długo trwa realizacja? <i class="las la-angle-right"></i>
+                </div>
+                <div class="faq-q-item" data-target="faq-a-3">
+                    W jakim formacie przesłać tekst? <i class="las la-angle-right"></i>
+                </div>
+                <div class="faq-q-item" data-target="faq-a-4">
+                    Czym różni się korekta od redakcji? <i class="las la-angle-right"></i>
+                </div>
+                <div class="faq-q-item" data-target="faq-a-5">
+                    Czy wystawiasz faktury? <i class="las la-angle-right"></i>
+                </div>
+            </div>
+            
+            <div class="faq-answers">
+                <div class="faq-a-item active" id="faq-a-1">
+                    <h3>Jak wygląda wycena?</h3>
+                    <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu.</p>
+                    <p>Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin w dni robocze. Wycena jest całkowicie darmowa i niezobowiązująca.</p>
+                </div>
+                <div class="faq-a-item" id="faq-a-2">
+                    <h3>Jak długo trwa realizacja?</h3>
+                    <p>Czas realizacji zależy od objętości i stopnia trudności tekstu. Standardowo pracuję w tempie ok. 1–2 arkuszy wydawniczych (40-80 tys. znaków) dziennie.</p>
+                    <p>Dokładny termin realizacji ustalamy i zabezpieczamy w umowie przed rozpoczęciem prac.</p>
+                </div>
+                <div class="faq-a-item" id="faq-a-3">
+                    <h3>W jakim formacie przesłać tekst?</h3>
+                    <p>Przyjmuję pliki w formatach <strong>.docx (Word), .odt lub Google Docs</strong>. Nie pracuję na plikach PDF (chyba że jest to korekta poskładowa).</p>
+                    <p>Wszystkie poprawki oznaczam funkcją „Śledź zmiany", dzięki czemu masz pełną kontrolę nad każdą dokonaną korektą.</p>
+                </div>
+                <div class="faq-a-item" id="faq-a-4">
+                    <h3>Czym różni się korekta od redakcji?</h3>
+                    <p><strong>Redakcja</strong> to głęboka praca nad tekstem — oceniam logikę, spójność stylu, poprawność językową, usuwam powtórzenia i poprawiam dynamikę zdań.</p>
+                    <p><strong>Korekta</strong> to końcowy etap — wyłapuję w nim ocalałe literówki, sprawdzam interpunkcję i błędy ortograficzne, bez ingerencji w strukturę.</p>
+                </div>
+                <div class="faq-a-item" id="faq-a-5">
+                    <h3>Czy wystawiasz faktury?</h3>
+                    <p>Tak — prowadzę jednoosobową działalność gospodarczą i wystawiam faktury (bez VAT). Jeśli potrzebujesz faktury na firmę, po prostu prześlij mi odpowiednie dane przy zleceniu.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reveal delay-3" style="text-align: center; margin-top: 40px;">
+            <a href="faqs.html" class="btn-ghost" style="color: var(--ink); border-color: var(--paper-mid);">
+                Zobacz wszystkie pytania <i class="las la-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
 <section class="section" id="portfolio">
     <div class="container">
         <div class="eyebrow reveal">Realizacje</div>
@@ -570,7 +687,6 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- CTA -->
 <section class="section" style="padding: 60px 0;">
     <div class="container">
         <div class="cta-strip">
@@ -585,7 +701,6 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- BLOG -->
 <section class="section bg-white" id="blog">
     <div class="container">
         <div class="eyebrow reveal">Baza wiedzy | Za kulisami dobrej historii</div>
@@ -608,13 +723,11 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- KAFELKI DOWIEDZ SIĘ WIĘCEJ -->
 <section class="section tiles-section">
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
         <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej <em>informacji</em>?</h2>
         
-        <!-- Dodany styl inline, który wymusza równe rozłożenie 3 kafelków -->
         <div class="tiles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
             
             <a href="cennik.html" class="tile tile--warm reveal delay-1">
@@ -642,11 +755,6 @@ title: Redakcja, korekta, skład
     </div>
 </section>
 
-<!-- ========================================= -->
-<!-- MODALE Z KAFELKAMI (3 USŁUGI)             -->
-<!-- ========================================= -->
-
-<!-- 1. MODAL: REDAKCJA -->
 <div id="modal-redakcja" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
@@ -683,7 +791,6 @@ title: Redakcja, korekta, skład
   </div>
 </div>
 
-<!-- 2. MODAL: KOREKTA -->
 <div id="modal-korekta" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
@@ -710,7 +817,6 @@ title: Redakcja, korekta, skład
   </div>
 </div>
 
-<!-- 3. MODAL: SKŁAD DTP -->
 <div id="modal-dtp" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
@@ -743,8 +849,8 @@ title: Redakcja, korekta, skład
 <div class="grad-line-footer"></div>
 
 <script>
-// --- Obsługa Wyskakujących Okienek (Modali) ---
 document.addEventListener('DOMContentLoaded', () => {
+  // === MODALE ===
   const readMoreBtns = document.querySelectorAll('.read-more-btn');
   const closeBtns = document.querySelectorAll('.close-btn');
   const modals = document.querySelectorAll('.modal');
@@ -773,6 +879,27 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('show');
         document.body.style.overflow = '';
       }
+    });
+  });
+
+  // === OBSŁUGA SZYBKIEGO FAQ ===
+  const faqQuestions = document.querySelectorAll('.faq-q-item');
+  const faqAnswers = document.querySelectorAll('.faq-a-item');
+
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', function() {
+      // 1. Zdejmij klasę active ze wszystkich pytań
+      faqQuestions.forEach(q => q.classList.remove('active'));
+      
+      // 2. Dodaj klasę active do klikniętego pytania
+      this.classList.add('active');
+      
+      // 3. Zdejmij klasę active ze wszystkich odpowiedzi
+      faqAnswers.forEach(a => a.classList.remove('active'));
+      
+      // 4. Znajdź i pokaż odpowiedź dla klikniętego pytania
+      const targetId = this.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
     });
   });
 });
