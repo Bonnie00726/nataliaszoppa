@@ -3,6 +3,13 @@ layout: default
 title: Współpraca w szczegółach
 ---
 <style>
+    /* ===== WYMUSZENIE CZARNEGO MENU NA TEJ PODSTRONIE ===== */
+    .nav {
+        background: rgba(13,13,13,0.98) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
     /* ===== SEKCJA TYTUŁOWA ===== */
     .page-header { 
         padding: calc(var(--nav-h) + 60px) 40px 40px; 
@@ -43,12 +50,10 @@ title: Współpraca w szczegółach
         margin-bottom: 0; 
     }
 
-    /* ===== OBRAZEK HERO ===== */
+    /* ===== OBRAZEK HERO (NA CAŁĄ SZEROKOŚĆ) ===== */
     .page-hero-img-wrap { 
         width: 100%; 
-        max-width: 1180px; 
-        margin: 0 auto; 
-        padding: 0 20px; 
+        /* Usunięto max-width i marginesy boczne */
     }
     
     .page-hero-img { 
@@ -57,9 +62,8 @@ title: Współpraca w szczegółach
         min-height: 400px; 
         max-height: 600px;
         object-fit: cover; 
-        border-radius: var(--radius-lg); 
         display: block; 
-        box-shadow: var(--shadow-soft); 
+        /* Usunięto zaokrąglone rogi (border-radius), żeby dolegał do krawędzi */
     }
 
     /* ===== CREDIBILITY BAR ===== */
@@ -83,7 +87,7 @@ title: Współpraca w szczegółach
 
     /* ===== GŁÓWNY KONTENER TREŚCI (1 KOLUMNA) ===== */
     .page-content-wrapper { 
-        max-width: 800px; /* Zwężony do idealnej szerokości czytania */
+        max-width: 800px; 
         margin: 60px auto 100px; 
         padding: 0 24px; 
     }
@@ -157,7 +161,7 @@ title: Współpraca w szczegółach
         font-weight: 700; 
         color: var(--ink); 
         margin: 60px 0 20px; 
-        scroll-margin-top: 100px; /* Żeby nawigacja nie zasłaniała nagłówka przy kotwicy */
+        scroll-margin-top: 100px; 
     }
     .blog-content h2 .step-label { 
         display: block; 
@@ -288,54 +292,36 @@ title: Współpraca w szczegółach
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Obsługa przezroczystości menu nawigacji przy scrollu ---
-        const nav = document.querySelector('.nav');
-        if (nav) {
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
-            });
-        }
-
-        // --- 2. Automatyczne generowanie spisu treści na podstawie <h2> ---
+        // --- 1. Automatyczne generowanie spisu treści na podstawie <h2> ---
         const tocListElement = document.getElementById('auto-toc-list');
         const headers = document.querySelectorAll('.blog-content h2');
 
         if (tocListElement && headers.length > 0) {
             headers.forEach((header, index) => {
-                // Jeśli nagłówek nie ma ID, nadajemy mu automatyczne (krok-1, krok-2, itd.)
                 if (!header.id) {
                     header.id = 'krok-' + (index + 1);
                 }
                 
-                // Tworzymy element listy i link
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.href = '#' + header.id;
                 
-                // Wyciągamy czysty tekst (ignorujemy znacznik <span class="step-label">Krok X</span> w spisie treści)
-                // lub formatujemy go ładnie w jednej linii
                 let labelText = '';
                 const spanLabel = header.querySelector('.step-label');
                 if (spanLabel) {
                     labelText = spanLabel.innerText + ': ';
                 }
                 
-                // Klonujemy węzeł, żeby wyciągnąć tekst bez wnętrza <span>, a potem dodajemy
                 let clone = header.cloneNode(true);
                 let spans = clone.querySelectorAll('.step-label');
                 spans.forEach(s => s.remove());
                 let mainText = clone.innerText.trim();
                 
-                a.innerText = labelText + mainText; // Wynik: "KROK 1: Napisz do mnie"
+                a.innerText = labelText + mainText; 
                 
                 li.appendChild(a);
                 tocListElement.appendChild(li);
                 
-                // Płynne przewijanie do kotwicy z offsetem (żeby menu nie zasłaniało)
                 a.addEventListener('click', (e) => {
                     e.preventDefault();
                     const target = document.getElementById(header.id);
@@ -346,7 +332,7 @@ title: Współpraca w szczegółach
             });
         }
 
-        // --- 3. Otwieranie/Zamykanie Spisu Treści ---
+        // --- 2. Otwieranie/Zamykanie Spisu Treści ---
         const tocToggle = document.querySelector('.toc-toggle');
         const tocBox = document.querySelector('.toc-box');
         if (tocToggle && tocBox) {
