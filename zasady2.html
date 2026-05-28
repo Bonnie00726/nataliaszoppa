@@ -1,200 +1,176 @@
 ---
 layout: default
-title: Zasady współpracy
+title: Współpraca w szczegółach
 ---
 <style>
-    /* ===== HERO (AUTOMATYCZNA WYSOKOŚĆ) ===== */
-    .hero { 
-        position: relative; 
+    /* ===== SEKCJA TYTUŁOWA ===== */
+    .page-header { 
+        padding: calc(var(--nav-h) + 60px) 40px 40px; 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        text-align: center; 
+    }
+    
+    .breadcrumbs { 
         display: flex; 
-        flex-direction: column;
         align-items: center; 
         justify-content: center; 
-        overflow: hidden; 
-        /* Usunięte min-height! Wysokość dopasowuje się do tekstu */
-        padding-top: calc(var(--nav-h) + 60px);
-        padding-bottom: 90px; /* Miejsce na nachodzący credibility bar */
+        gap: 12px; 
+        font-family: var(--sans); 
+        font-size: 0.72rem; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.15em; 
+        margin-bottom: 24px; 
+        flex-wrap: wrap; 
     }
     
-    .hero-bg { position: absolute; inset: 0; z-index: 0; }
-    .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: rgba(35, 25, 50, 0.75); } /* Ciemny, elegancki overlay */
+    .breadcrumbs a { 
+        color: var(--ink-muted); 
+        text-decoration: none; 
+        transition: color 0.2s; 
+    }
     
-    .hero-content { 
-        position: relative; 
-        z-index: 2; 
-        max-width: 800px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 0 20px;
+    .breadcrumbs a:hover { color: var(--grad-start); }
+    .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
+    .breadcrumbs .current { color: var(--grad-start); }
+    
+    .page-title { 
+        font-family: var(--serif); 
+        font-size: clamp(2.2rem, 4vw, 3.5rem); 
+        color: var(--ink); 
+        line-height: 1.15; 
+        margin-bottom: 0; 
     }
 
-    .hero h1 { color: #fff; margin-bottom: 16px; font-family: var(--serif); font-size: clamp(2.5rem, 4.5vw, 4rem); text-align: center; line-height: 1.1; }
-    .hero .grad-type { font-style: italic; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    
-    .hero .hero-sub { color: rgba(255,255,255,0.85); max-width: 600px; text-align: center; line-height: 1.6; font-weight: 300; font-size: 1.05rem; }
-    
-    .hero .hero-eyebrow { color: rgba(255,255,255,0.9); text-align: center; margin-bottom: 16px; font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; }
-
-    /* Metka powiadomienia (Glassmorphism) */
-    .hero-bell-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255,255,255,0.12);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255,255,255,0.25);
-        border-radius: 100px;
-        padding: 8px 24px;
-        font-family: var(--sans);
-        font-size: 0.75rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: #fff;
-        margin-bottom: 28px;
+    /* ===== OBRAZEK HERO ===== */
+    .page-hero-img-wrap { 
+        width: 100%; 
+        max-width: 1180px; 
+        margin: 0 auto; 
+        padding: 0 20px; 
     }
-    .hero-bell-badge i { color: #fbbc05; font-size: 1.1rem; }
+    
+    .page-hero-img { 
+        width: 100%; 
+        height: 50vh; 
+        min-height: 400px; 
+        max-height: 600px;
+        object-fit: cover; 
+        border-radius: var(--radius-lg); 
+        display: block; 
+        box-shadow: var(--shadow-soft); 
+    }
 
     /* ===== CREDIBILITY BAR ===== */
-    .credibility-bar-overlap { background: var(--ink); padding: 22px 40px; position: relative; z-index: 10; margin-top: -46px; max-width: 1000px; margin-left: auto; margin-right: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-strong); width: calc(100% - 40px); }
+    .credibility-bar-overlap { 
+        background: var(--ink); 
+        padding: 22px 40px; 
+        position: relative; 
+        z-index: 10; 
+        margin-top: -30px; /* Nachodzi na zdjęcie */
+        max-width: 900px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        border-radius: var(--radius-lg); 
+        box-shadow: var(--shadow-strong); 
+        width: calc(100% - 40px); 
+    }
     .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .cred-pillar { display: flex; align-items: center; gap: 12px; }
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
-    /* ===== TOC ===== */
-    .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-top: 40px;}
-    .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
-    .top-toc a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; position: relative; display: inline-block; }
-    .top-toc a:hover, .top-toc a.active { color: var(--grad-start); }
-    .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
-    .top-toc a.active::after { width: 100%; }
+    /* ===== GŁÓWNY KONTENER TREŚCI (1 KOLUMNA) ===== */
+    .page-content-wrapper { 
+        max-width: 800px; /* Zwężony do idealnej szerokości czytania */
+        margin: 60px auto 100px; 
+        padding: 0 24px; 
+    }
 
-    /* ===== TYPOGRAFIA LOKALNA ===== */
-    .section-lead { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin: 0 auto 60px; text-align: center; }
-
-    /* ===== NOWE KARTY ETAPÓW (Ściśnięte, bez ikon) ===== */
-    .step-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 50px 30px;
-        max-width: 1050px;
-        margin: 60px auto;
-    }
-    
-    .step-module {
-        position: relative;
-        padding-left: 50px; 
-    }
-    
-    .step-card-content {
-        background: #fff;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-        padding: 36px 28px;
-        position: relative;
-        z-index: 2;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        border: 1px solid var(--paper-mid);
-    }
-    
-    .step-wire {
-        position: absolute;
-        top: 24px; 
-        bottom: 24px;
-        left: 20px; 
-        right: 20px;
-        border: 1.5px solid var(--grad-start);
-        border-radius: 24px;
-        z-index: 1;
-    }
-    
-    .wire-dot {
-        position: absolute;
-        left: -4.5px;
-        width: 8px;
-        height: 8px;
-        background: var(--grad-start);
-        border-radius: 50%;
-    }
-    .wire-dot.top { top: 24px; }
-    .wire-dot.bottom { bottom: 24px; }
-    
-    .step-big-num {
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        font-family: var(--sans);
-        font-size: 6.5rem;
-        font-weight: 900;
-        line-height: 0.8;
-        color: var(--ink); 
-        background: #fff;
-        padding: 10px 0;
-        z-index: 3;
-    }
-    
-    .step-title {
-        font-family: var(--sans);
-        font-size: 1.1rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        margin-bottom: 16px;
-        letter-spacing: 0.05em;
-        color: var(--ink);
-    }
-    .step-title span { color: var(--grad-start); }
-    
-    .step-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.6; margin: 0; font-weight: 300; }
-
-    /* ===== WAŻNE ZASADY - GRID 6 KART ===== */
-    .rules-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px;
-        max-width: 900px;
-        margin: 40px auto;
-    }
-    
-    .rule-card { 
-        background: #fff; 
+    /* ===== SPIS TREŚCI (DROPDOWN) ===== */
+    .toc-box { 
         border: 1px solid var(--paper-mid); 
         border-radius: var(--radius-lg); 
-        padding: 36px 32px; 
-        transition: transform 0.3s, box-shadow 0.3s; 
+        background: #ffffff; 
+        overflow: hidden; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
+        margin-bottom: 56px; 
     }
-    .rule-card:hover { 
-        transform: translateY(-4px); 
-        box-shadow: var(--shadow-soft); 
-        border-color: rgba(107,53,200,0.3); 
-    }
-    
-    .rule-icon { 
-        width: 48px; 
-        height: 48px; 
-        background: rgba(107, 53, 200, 0.06); 
-        border-radius: 8px; 
+    .toc-toggle { 
         display: flex; 
         align-items: center; 
-        justify-content: center; 
-        margin-bottom: 20px; 
-        font-size: 1.6rem; 
-        color: var(--grad-start); 
+        justify-content: space-between; 
+        padding: 18px 24px; 
+        cursor: pointer; 
+        user-select: none; 
+        background: #fafafa; 
+        transition: background 0.2s; 
     }
-    
-    .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
-    .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+    .toc-toggle:hover { background: var(--paper-warm); }
+    .toc-toggle-left { display: flex; align-items: center; gap: 12px; }
+    .toc-toggle-left i { color: var(--grad-start); font-size: 1.4rem; }
+    .toc-toggle-left span { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); }
+    .toc-chevron { font-size: 1.2rem; color: var(--ink-muted); transform: rotate(0deg); transition: transform 0.3s ease; }
+    .toc-box.open .toc-chevron { transform: rotate(180deg); color: var(--grad-start); }
+    .toc-body { 
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1); 
+        border-top: 1px solid transparent; 
+    }
+    .toc-box.open .toc-body { max-height: 800px; border-top-color: var(--paper-mid); }
+    .toc-body ol { 
+        list-style: none; 
+        padding: 24px; 
+        margin: 0; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 16px; 
+        counter-reset: toc-counter; 
+    }
+    .toc-body li { display: flex; align-items: flex-start; gap: 12px; padding: 0; counter-increment: toc-counter; }
+    .toc-body li::before { 
+        content: counter(toc-counter) "."; 
+        font-family: var(--sans); 
+        font-size: 1rem; 
+        font-weight: 700; 
+        color: var(--grad-start); 
+        min-width: 20px; 
+        flex-shrink: 0; 
+        line-height: 1.5; 
+    }
+    .toc-body li a { font-family: var(--sans); font-size: 0.95rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; line-height: 1.5; }
+    .toc-body li a:hover { color: var(--grad-start); }
 
-    /* ===== STICKY NOTE (Płatność i umowa) ===== */
-    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 900px; box-shadow: var(--shadow-soft); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); border-right: 1px solid var(--paper-mid); }
+    /* ===== TYPOGRAFIA TREŚCI ===== */
+    .blog-content { 
+        font-family: var(--sans); 
+        font-size: 1.05rem; 
+        color: var(--ink-soft); 
+        line-height: 1.85; 
+        font-weight: 300; 
+    }
+    .blog-content h2 { 
+        font-family: var(--serif); 
+        font-size: 1.8rem; 
+        font-weight: 700; 
+        color: var(--ink); 
+        margin: 60px 0 20px; 
+        scroll-margin-top: 100px; /* Żeby nawigacja nie zasłaniała nagłówka przy kotwicy */
+    }
+    .blog-content h2 .step-label { 
+        display: block; 
+        font-family: var(--sans); 
+        font-size: 0.8rem; 
+        font-weight: 800; 
+        text-transform: uppercase; 
+        letter-spacing: 0.15em; 
+        color: var(--grad-start); 
+        margin-bottom: 8px; 
+    }
+    .blog-content p { margin-bottom: 24px; }
+    .blog-content strong { font-weight: 700; color: var(--ink); }
 
     /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
@@ -205,34 +181,34 @@ title: Zasady współpracy
     .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .btn-cta-white { display: inline-flex; align-items: center; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
     .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s; }
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
     /* Responsywność */
-    @media (max-width: 900px) {
-        .step-grid { grid-template-columns: 1fr; gap: 30px; }
-        .rules-grid { grid-template-columns: 1fr; }
+    @media (max-width: 860px) {
+        .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
+        .page-title { font-size: 2.2rem; }
+        .page-hero-img { min-height: 250px; height: 35vh; }
+        .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
+        .credibility-bar-inner { gap: 24px; }
+        .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
     }
 </style>
 
-<header class="hero">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1588470959069-a27f6b1997a4?q=80&w=2000&auto=format&fit=crop" alt="Tło współpracy">
+<header class="page-header reveal">
+    <div class="breadcrumbs">
+        <a href="{{ '/' | relative_url }}">Strona główna</a> 
+        <i class="las la-angle-right"></i>
+        <a href="{{ '/zasady-wspolpracy.html' | relative_url }}">Współpraca w skrócie</a> 
+        <i class="las la-angle-right"></i>
+        <span class="current">Współpraca w szczegółach</span>
     </div>
-    
-    <div class="hero-content">
-        <div class="hero-bell-badge reveal">
-            <i class="las la-bell"></i>
-            <span>Przyjmuję nowe zlecenia</span>
-        </div>
-
-        <div class="hero-eyebrow reveal delay-1">Zasady współpracy</div>
-        <h1 class="reveal delay-2">Twój tekst, moja pasja.<br><em class="grad-type">Jasne zasady</em>, spokojna głowa</h1>
-        <p class="hero-sub reveal delay-3">Zrozumiały proces, rzetelna redakcja i pełna poufność. Zobacz, jak krok po kroku wygląda nasza współpraca.</p>
-    </div>
+    <h1 class="page-title delay-1">Dowiesz się więcej o tym, jak wygląda współpraca</h1>
 </header>
 
-<div class="credibility-bar-overlap reveal delay-1">
+<div class="page-hero-img-wrap reveal delay-2">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2000&auto=format&fit=crop" alt="Praca nad tekstem" class="page-hero-img">
+</div>
+
+<div class="credibility-bar-overlap reveal delay-3">
     <div class="credibility-bar-inner">
         <div class="cred-pillar">
             <i class="las la-user-shield"></i>
@@ -249,156 +225,60 @@ title: Zasady współpracy
     </div>
 </div>
 
-<div class="top-toc-wrapper reveal">
-    <ul class="top-toc" id="toc-list">
-        <li><a href="#etapy" class="active">1. Etapy współpracy</a></li>
-        <li><a href="#zasady">2. Ważne zasady</a></li>
-    </ul>
-</div>
-
-<section id="etapy" class="section bg-white toc-section" style="padding-top:60px;">
-    <div class="container" style="max-width: 1050px;"> 
-        <div class="eyebrow reveal" style="text-align: center;">Etapy współpracy</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align:center;">Od pierwszej wiadomości<br>do <em class="grad-type">gotowego tekstu</em></h2>
-        <p class="section-lead reveal delay-2">Praca przebiega sprawnie i bez nieporozumień. Nie pomijam żadnego z etapów – dzięki temu obie strony zawsze wiedzą, czego się spodziewać.</p>
-
-        <div class="step-grid reveal delay-3">
-            
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">1</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Pierwszy <span>kontakt</span></h3>
-                    <p class="step-desc">Napisz do mnie mailowo. Nie musisz mieć gotowego tekstu. Wystarczy, że opiszesz swoją sytuację w kilku zdaniach (odpowiadam do 48h).</p>
-                </div>
+<main class="page-content-wrapper reveal delay-4">
+    
+    <div class="toc-box">
+        <div class="toc-toggle">
+            <div class="toc-toggle-left">
+                <i class="las la-list-ul"></i>
+                <span>Spis treści</span>
             </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">2</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Omówienie <span>problemu</span></h3>
-                    <p class="step-desc">Rozmawiamy o tekście i Twoich oczekiwaniach. Oceniamy wspólnie, czy tekst wymaga głębokiej redakcji, czy tylko ostatecznej korekty.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">3</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Przesłanie <span>próbki</span></h3>
-                    <p class="step-desc">Proszę o przesłanie tekstu (najlepiej w Word lub Google Docs), aby rzetelnie ocenić styl, rodzaj błędów oraz nakład potrzebnej pracy.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">4</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Zakres <span>prac</span></h3>
-                    <p class="step-desc">Dokładnie ustalamy zakres zlecenia – jakie elementy tekstu wymagają ingerencji, co zostawiamy bez zmian oraz ile rund poprawek przewidujemy.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">5</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Indywidualna <span>wycena</span></h3>
-                    <p class="step-desc">Przygotowuję ostateczną wycenę, ważną przez 14 dni. Cena zależy od stopnia trudności i nie zmienia się w trakcie naszej współpracy.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">6</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Podpisanie <span>umowy</span></h3>
-                    <p class="step-desc">Podpisujemy umowę (elektronicznie przez profil zaufany) regulującą terminy i poufność. Od tego momentu Twój tekst jest bezpieczny.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">7</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Płatność <span>z góry</span></h3>
-                    <p class="step-desc">Wystawiam fakturę pro formę. Dopiero po jej opłaceniu oficjalnie rezerwuję dla Ciebie termin w moim grafiku wydawniczym.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">8</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Start <span>realizacji</span></h3>
-                    <p class="step-desc">Zgodnie z harmonogramem przystępuję do pracy nad tekstem. Wszystkie poprawki nanoszę widocznie w trybie śledzenia zmian.</p>
-                </div>
-            </div>
-
-            <div class="step-module">
-                <div class="step-wire"><div class="wire-dot top"></div><div class="wire-dot bottom"></div></div>
-                <div class="step-big-num">9</div>
-                <div class="step-card-content">
-                    <h3 class="step-title">Gotowy <span>tekst</span></h3>
-                    <p class="step-desc">Przesyłam plik oraz wskazówki. To czas na dialog – masz pełne prawo zaakceptować, odrzucić lub negocjować każdą wprowadzoną zmianę.</p>
-                </div>
-            </div>
-
+            <i class="las la-angle-down toc-chevron"></i>
+        </div>
+        <div class="toc-body">
+            <ol id="auto-toc-list"></ol>
         </div>
     </div>
-</section>
 
-<section id="zasady" class="section bg-warm toc-section">
-    <div class="container--wide">
-        <div class="eyebrow reveal" style="text-align: center;">Ważne zasady</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align:center; margin-bottom: 20px;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
+    <article class="blog-content">
         
-        <div class="rules-grid reveal delay-2">
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-calendar-check"></i></div>
-                <h3>Termin to termin</h3>
-                <p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-user-shield"></i></div>
-                <h3>Pełna poufność</h3>
-                <p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-users"></i></div>
-                <h3>Dwie pary oczu</h3>
-                <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba. Mogę zrobić to ja, ale będę potrzebowała ok. 3 tygodni przerwy.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div>
-                <h3>Zmiana zakresu = nowa wycena</h3>
-                <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-comments"></i></div>
-                <h3>Komunikacja to podstawa</h3>
-                <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-check-circle"></i></div>
-                <h3>Decyzje należą do Ciebie</h3>
-                <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p>
-            </div>
-        </div>
+        <h2><span class="step-label">Krok 1</span>Napisz do mnie</h2>
+        <p>Pierwszy kontakt to nic strasznego. Nie musisz mieć gotowego tekstu, idealnego planu wydawniczego ani dokładnie wiedzieć, czego potrzebujesz. Wystarczy, że napiszesz do mnie krótkiego maila i nakreślisz swoją sytuację. Ja zajmę się resztą.</p>
+        <p><strong>Czego potrzebuję na start?</strong> Informacji o gatunku, orientacyjnej objętości (jeśli znasz) oraz dacie, kiedy planujesz ukończyć pisanie. Zazwyczaj odpowiadam w ciągu 24–48 godzin w dni robocze.</p>
 
-        <div class="warning-box reveal delay-3">
-            <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
-            <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
-        </div>
-        
-    </div>
-</section>
+        <h2><span class="step-label">Krok 2</span>Omówienie problemu</h2>
+        <p>Zanim przejdziemy do wyceny, musimy poznać Twój tekst. Wyślę Ci krótki formularz z pytaniami, który pomoże nam obojgu ustrukturyzować wiedzę o projekcie. Będę pytać o Twoich docelowych odbiorców, wizję tekstu i to, co sprawiało Ci największą trudność podczas pisania.</p>
+        <p>Na tym etapie wspólnie decydujemy, czy potrzebujesz dogłębnej redakcji językowej, czy może wystarczy Ci tylko korekta techniczna.</p>
+
+        <h2><span class="step-label">Krok 3</span>Przesłanie próbki tekstu</h2>
+        <p>Aby przygotować uczciwą i precyzyjną wycenę, potrzebuję zobaczyć, z czym będziemy pracować. Oceniam Twój styl, zasób słownictwa oraz rodzaj najczęściej popełnianych błędów.</p>
+        <p>Najlepiej jeśli podeślesz plik w formacie <strong>.docx (Word)</strong> lub jako link do <strong>Google Docs</strong>. Dlaczego nie wyceniam "w ciemno" po liczbie znaków? Bo dwa teksty o tej samej długości mogą wymagać skrajnie różnego nakładu pracy redaktorskiej.</p>
+
+        <h2><span class="step-label">Krok 4</span>Ustalenie zakresu prac</h2>
+        <p>Teraz przechodzimy do konkretów. Dokładnie ustalamy, w jakim trybie będziemy pracować i co obejmuje usługa. Omawiajmy liczbę rund poprawek – to niezwykle ważne, żebyś wiedział(a), ile razy tekst będzie do Ciebie wracał do akceptacji.</p>
+
+        <h2><span class="step-label">Krok 5</span>Indywidualna wycena</h2>
+        <p>Na podstawie próbki i naszych ustaleń przesyłam Ci ostateczną propozycję cenową. Moja wycena jest <strong>ważna przez 14 dni</strong>. Gwarantuję Ci, że o ile nie zmienisz znacząco formy tekstu (np. nie dopiszesz nagle 50 stron nowych rozdziałów), cena nie ulegnie zmianie w trakcie naszej współpracy.</p>
+
+        <h2><span class="step-label">Krok 6</span>Podpisanie umowy</h2>
+        <p>Bezpieczeństwo przede wszystkim. Zanim ruszę z pracą, podpisujemy umowę o świadczenie usług. Zawieram w niej klauzulę poufności (NDA), zasady płatności i twarde ramy czasowe. Wszystko możemy załatwić w pełni elektronicznie, np. podpisując dokument przez Profil Zaufany.</p>
+
+        <h2><span class="step-label">Krok 7</span>Płatność z góry</h2>
+        <p>Na podstawie podpisanej umowy wystawiam Ci fakturę (bez VAT). Po jej opłaceniu oficjalnie "wbijam" Twój projekt do mojego kalendarza. Masz 14 dni na odstąpienie od umowy, więc w tym czasie jeszcze fizycznie nie rozpoczynam czytania materiału, chyba że poprosisz mnie o przyspieszenie prac.</p>
+
+        <h2><span class="step-label">Krok 8</span>Realizacja i praca na tekście</h2>
+        <p>Wkraczam do akcji! Analizuję Twój tekst, nanosząc poprawki. Pracuję w trybie "Śledzenia zmian" (Track Changes) w programie Word. Dzięki temu masz pełną kontrolę i widzisz każdą, nawet najdrobniejszą interwencję, którą wprowadziłam – od postawionego przecinka po zmieniony szyk zdania.</p>
+
+        <h2><span class="step-label">Krok 9</span>Gotowy produkt i Twój feedback</h2>
+        <p>Odsyłam Ci plik. Zawsze załączam do niego krótkie podsumowanie lub komentarz redaktorski. Teraz czas na Twój ruch. Pamiętaj: każda wprowadzona przeze mnie zmiana to propozycja merytoryczna. Jeśli z którąś się nie zgadzasz – dyskutujemy. Ty jako Autor masz zawsze ostateczne słowo, a moim celem jest tylko to, by Twój głos wybrzmiał profesjonalnie.</p>
+
+    </article>
+</main>
 
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="reveal delay-1">Twój tekst w dobrych rękach</h2>
-        <p class="reveal delay-2">Zadbaj o jakość języka i profesjonalne przygotowanie swojej książki do publikacji. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę.</p>
+        <p class="reveal delay-2">Nie musisz znać się na edytorstwie czy narzędziach retoryki. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę.</p>
         <div class="cta-btns reveal delay-3">
             <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
             <a href="{{ '/cennik.html' | relative_url }}" class="btn-ghost">Sprawdź cennik <i class="las la-arrow-right"></i></a>
@@ -408,7 +288,7 @@ title: Zasady współpracy
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Obsługa przezroczystości menu nawigacji przy scrollu ---
+        // --- 1. Obsługa przezroczystości menu nawigacji przy scrollu ---
         const nav = document.querySelector('.nav');
         if (nav) {
             window.addEventListener('scroll', () => {
@@ -420,37 +300,59 @@ title: Zasady współpracy
             });
         }
 
-        const tocSections = document.querySelectorAll('.toc-section');
-        const tocLinks = document.querySelectorAll('.top-toc a');
+        // --- 2. Automatyczne generowanie spisu treści na podstawie <h2> ---
+        const tocListElement = document.getElementById('auto-toc-list');
+        const headers = document.querySelectorAll('.blog-content h2');
 
-        // --- TOC highlighting ---
-        function updateTOC() {
-            let current = '';
-            tocSections.forEach(section => {
-                if (section.getBoundingClientRect().top <= 250) {
-                    current = section.getAttribute('id');
+        if (tocListElement && headers.length > 0) {
+            headers.forEach((header, index) => {
+                // Jeśli nagłówek nie ma ID, nadajemy mu automatyczne (krok-1, krok-2, itd.)
+                if (!header.id) {
+                    header.id = 'krok-' + (index + 1);
                 }
-            });
-            if (!current && tocSections.length > 0) current = tocSections[0].getAttribute('id');
-            tocLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+                
+                // Tworzymy element listy i link
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#' + header.id;
+                
+                // Wyciągamy czysty tekst (ignorujemy znacznik <span class="step-label">Krok X</span> w spisie treści)
+                // lub formatujemy go ładnie w jednej linii
+                let labelText = '';
+                const spanLabel = header.querySelector('.step-label');
+                if (spanLabel) {
+                    labelText = spanLabel.innerText + ': ';
+                }
+                
+                // Klonujemy węzeł, żeby wyciągnąć tekst bez wnętrza <span>, a potem dodajemy
+                let clone = header.cloneNode(true);
+                let spans = clone.querySelectorAll('.step-label');
+                spans.forEach(s => s.remove());
+                let mainText = clone.innerText.trim();
+                
+                a.innerText = labelText + mainText; // Wynik: "KROK 1: Napisz do mnie"
+                
+                li.appendChild(a);
+                tocListElement.appendChild(li);
+                
+                // Płynne przewijanie do kotwicy z offsetem (żeby menu nie zasłaniało)
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.getElementById(header.id);
+                    const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '76') + 24;
+                    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                });
             });
         }
-        window.addEventListener('scroll', updateTOC);
-        updateTOC();
 
-        // --- Płynne przewijanie do sekcji ---
-        const tocAnchors = document.querySelectorAll('.top-toc a');
-        tocAnchors.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href');
-                const target = document.querySelector(targetId);
-                if (!target) return;
-                const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || 'navH') + 24;
-                const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
-                window.scrollTo({ top, behavior: 'smooth' });
+        // --- 3. Otwieranie/Zamykanie Spisu Treści ---
+        const tocToggle = document.querySelector('.toc-toggle');
+        const tocBox = document.querySelector('.toc-box');
+        if (tocToggle && tocBox) {
+            tocToggle.addEventListener('click', () => {
+                tocBox.classList.toggle('open');
             });
-        });
+        }
     });
 </script>
