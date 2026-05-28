@@ -3,80 +3,237 @@ layout: default
 title: Polityka prywatności
 ---
 <style>
-    .text-document { background: var(--paper); padding: 60px 80px; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); border: 1px solid var(--paper-mid); margin-top: -60px; position: relative; z-index: 10; }
-    .text-document h2 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
-    .text-document h2:first-child { margin-top: 0; }
-    .text-document h3 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-top: 32px; margin-bottom: 12px; }
-    .text-document p { font-size: 1rem; font-weight: 300; color: var(--ink-soft); line-height: 1.75; margin-bottom: 16px; }
-    .text-document p strong { font-weight: 700; color: var(--ink); }
-    .text-document a { color: var(--grad-start); text-decoration: underline; font-weight: 500; }
-    .text-document a:hover { color: var(--ink); }
-    @media (max-width: 860px) { .text-document { padding: 40px 24px; margin-top: -40px; } }
+    /* ===== WYMUSZENIE CZARNEGO MENU NA TEJ PODSTRONIE ===== */
+    .nav {
+        background: rgba(13,13,13,0.98) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* ===== SEKCJA TYTUŁOWA ===== */
+    .page-header { 
+        padding: calc(var(--nav-h) + 60px) 40px 40px; 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        text-align: center; 
+    }
+    
+    .breadcrumbs { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 12px; 
+        font-family: var(--sans); 
+        font-size: 0.72rem; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.15em; 
+        margin-bottom: 24px; 
+        flex-wrap: wrap; 
+    }
+    
+    .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumbs a:hover { color: var(--grad-start); }
+    .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
+    .breadcrumbs .current { color: var(--grad-start); }
+    
+    .page-title { 
+        font-family: var(--serif); 
+        font-size: clamp(2.2rem, 4vw, 3.5rem); 
+        color: var(--ink); 
+        line-height: 1.15; 
+        margin-bottom: 16px; 
+    }
+    
+    .page-subtitle {
+        font-family: var(--sans); 
+        font-size: 1.05rem; 
+        color: var(--ink-soft); 
+        font-weight: 300; 
+        max-width: 600px; 
+        line-height: 1.6; 
+        margin: 0 auto; 
+    }
+
+    /* ===== OBRAZEK HERO (NA CAŁĄ SZEROKOŚĆ) ===== */
+    .page-hero-img-wrap { width: 100%; }
+    .page-hero-img { 
+        width: 100%; 
+        height: 50vh; 
+        min-height: 350px; 
+        max-height: 500px;
+        object-fit: cover; 
+        display: block; 
+    }
+
+    /* ===== CREDIBILITY BAR ===== */
+    .credibility-bar-overlap { 
+        background: var(--ink); 
+        padding: 22px 40px; 
+        position: relative; 
+        z-index: 10; 
+        margin-top: -30px; 
+        max-width: 900px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        border-radius: var(--radius-lg); 
+        box-shadow: var(--shadow-strong); 
+        width: calc(100% - 40px); 
+    }
+    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .cred-pillar { display: flex; align-items: center; gap: 12px; }
+    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
+
+    /* ===== GŁÓWNY KONTENER TREŚCI (1 KOLUMNA) ===== */
+    .page-content-wrapper { 
+        max-width: 800px; 
+        margin: 60px auto 100px; 
+        padding: 0 24px; 
+    }
+
+    /* ===== TYPOGRAFIA TREŚCI PRAWNEJ ===== */
+    .blog-content { 
+        font-family: var(--sans); 
+        font-size: 1.05rem; 
+        color: var(--ink-soft); 
+        line-height: 1.85; 
+        font-weight: 300; 
+    }
+    .blog-content h2 { 
+        font-family: var(--serif); 
+        font-size: 1.8rem; 
+        font-weight: 700; 
+        color: var(--ink); 
+        margin: 60px 0 20px; 
+    }
+    .blog-content h2:first-child { margin-top: 0; }
+    .blog-content p { margin-bottom: 24px; }
+    .blog-content strong { font-weight: 700; color: var(--ink); }
+    .blog-content a { color: var(--grad-start); text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
+    .blog-content a:hover { color: var(--ink); }
+
+    /* ===== CTA ===== */
+    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
+    .cta-content { position: relative; z-index: 2; }
+    .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
+    .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
+    .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+    /* Responsywność */
+    @media (max-width: 860px) { 
+        .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
+        .page-title { font-size: 2.2rem; }
+        .page-hero-img { min-height: 250px; height: 35vh; }
+        .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
+        .credibility-bar-inner { gap: 24px; }
+        .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
+    }
 </style>
 
-<header class="hero hero--short">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1635602739175-bab409a6e94c?q=80&w=1176&auto=format&fit=crop" alt="Tło">
+<header class="page-header reveal">
+    <div class="breadcrumbs">
+        <a href="{{ '/' | relative_url }}">Strona główna</a> 
+        <i class="las la-angle-right"></i>
+        <span class="current">Polityka prywatności</span>
     </div>
-    <div class="hero-content">
-        <div class="hero-notice reveal">
-            <div class="dots-wrap">
-                <span class="dot dot-1"></span>
-                <span class="dot dot-2"></span>
-                <span class="dot dot-3"></span>
-            </div>
-            <span>Bezpieczeństwo danych</span>
-        </div>
-        <div class="hero-eyebrow reveal delay-1">Ważne informacje</div>
-        <h1 class="reveal delay-2">Polityka <em class="grad-type">prywatności</em></h1>
-        <p class="hero-sub reveal delay-3">Zasady postępowania z danymi osobowymi oraz wykorzystywania plików cookies na stronie internetowej.</p>
-    </div>
+    <h1 class="page-title delay-1">Polityka prywatności</h1>
+    <p class="page-subtitle reveal delay-2">Zasady postępowania z danymi osobowymi oraz wykorzystywania plików cookies na mojej stronie internetowej.</p>
 </header>
 
-<main class="section">
-    <div class="container reveal delay-3">
-        <div class="text-document">
-            <h2>Administrator strony</h2>
-            <p>Osobą administrującą na tej stronie jest Natalia Szoppa, prowadząca działalność gospodarczą pod nazwą „Natalia Szoppa" (NIP: 8722358413).</p>
-            <p>W razie pytań o poniższą politykę prywatności możesz napisać do mnie na adres: <a href="mailto:natalia.szoppa@gmail.com">natalia.szoppa@gmail.com</a></p>
-            <p>Użytkownikiem jest każdy podmiot przeglądający zawartość tej strony internetowej.</p>
-            <p>Strona jest utrzymywana (hostowana) na zewnętrznych serwerach platformy GitHub Pages. Korzystając ze strony, akceptujesz zasady działania infrastruktury statycznej, która ze swojej natury jest prosta i ogranicza zbieranie danych do niezbędnego minimum technicznego służącego prawidłowemu wyświetlaniu witryny.</p>
+<div class="page-hero-img-wrap reveal delay-2">
+    <img src="https://images.unsplash.com/photo-1635602739175-bab409a6e94c?q=80&w=2000&auto=format&fit=crop" alt="Poufność i bezpieczeństwo danych" class="page-hero-img">
+</div>
 
-            <h2>Poufność danych</h2>
-            <p>Jako administrator strony gwarantuję poufność. Każde dane przekazywane drogą mailową bądź przez ewentualne formularze kontaktowe są chronione w należyty sposób. Dane osobowe gromadzę z należytą starannością oraz odpowiednio zabezpieczam je, aby osoby nieupoważnione nie miały do nich dostępu, wykorzystując w tym celu bezpieczne serwery poczty e-mail (np. infrastruktura Google / Gmail).</p>
-            <p>Twoje dane przechowuję tylko przez czas niezbędny do realizacji zleceń, ustaleń biznesowych lub ze względu na obowiązki prawne (np. księgowe).</p>
-            <p>Podanie przez Ciebie danych osobowych (np. adresu e-mail, danych do faktury) jest zawsze dobrowolne, ale jednocześnie niezbędne, by móc podjąć współpracę, złożyć zamówienie lub skontaktować się ze mną w sprawach zawodowych.</p>
-
-            <h2>Podstawa przetwarzania danych</h2>
-            <p>Dane gromadzone na tej stronie lub przekazywane mi drogą mailową przetwarzane są na podstawie Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 roku w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).</p>
-
-            <h2>Pliki cookies</h2>
-            <p>Pliki cookies to niewielkie pliki tekstowe, które są przechowywane na Twoim urządzeniu podczas korzystania ze strony internetowej. Pomagają one w prawidłowym wyświetlaniu i działaniu witryny, oraz podnoszeniu poziomu bezpieczeństwa.</p>
-            <p>Sama w sobie ta strona jest witryną statyczną i domyślnie nie instaluje zaawansowanych plików cookies śledzących użytkownika. Wyjątkiem są usługi podmiotów trzecich, o których mowa poniżej.</p>
-
-            <h2>Zgoda na pliki cookies oraz możliwość rezygnacji</h2>
-            <p>Każdy Użytkownik ma możliwość konfiguracji swojej przeglądarki internetowej w sposób uniemożliwiający przechowywanie plików cookies na swoim urządzeniu (komputerze, smartfonie, tablecie).</p>
-            <p>Pamiętaj jednak, że całkowite wyłączenie plików cookies w przeglądarce może powodować trudności w korzystaniu z pewnych zewnętrznych funkcji osadzonych na mojej lub innych stronach internetowych.</p>
-
-            <h2>Osadzone treści i Cookies podmiotów trzecich</h2>
-            <p>Moja strona może wykorzystywać funkcje zapewniane przez podmioty trzecie (np. osadzone wtyczki z portali społecznościowych, odnośniki lub analitykę), co wiąże się z wykorzystywaniem plików cookies pochodzących bezpośrednio od nich.</p>
-            <p>Artykuły i podstrony mogą zawierać osadzone treści (np. filmy z YouTube, obrazy, linki do Facebooka czy LinkedIn). Osadzone treści z innych witryn zachowują się tak samo, jakby użytkownik odwiedził bezpośrednio konkretną witrynę zewnętrzną. Witryny te mogą zbierać informacje o Tobie, używać własnych ciasteczek i monitorować Twoje interakcje, zwłaszcza jeśli posiadasz na nich aktywne i zalogowane konta.</p>
-
-            <h2>Statystyki</h2>
-            <p>Na stronie mogą być wykorzystywane narzędzia analityczne, takie jak Google Analytics czy Google Search Console, które pobierają cookies w ramach anonimowego monitorowania ruchu, popularności podstron oraz zachowań czytelników na stronie. Służy to wyłącznie celom statystycznym i poprawie jakości oferty.</p>
-
-            <h2>Kontakt e-mailowy</h2>
-            <p>Kontaktując się ze mną za pośrednictwem poczty elektronicznej, w sposób naturalny przekazujesz mi swój adres e-mail jako adres nadawcy wiadomości. W treści wiadomości lub w załącznikach (plikach do redakcji) możesz zawrzeć również inne, dodatkowe dane osobowe.</p>
-            <p>Podstawą prawną przetwarzania tych danych jest Twoja zgoda wynikająca z zainicjowania ze mną kontaktu w celu zapytania o ofertę lub nawiązania współpracy.</p>
-            <p>Twoje dane osobowe przekazywane mi w ramach kontaktu e-mailowego przetwarzane są wyłącznie w celu odpowiedzi na Twój e-mail i przeprowadzenia rozmów biznesowych. Treść korespondencji może podlegać bezpiecznej archiwizacji.</p>
-
-            <h2>Faktury i usługi księgowe</h2>
-            <p>Jeżeli podejmiemy współpracę i wystawię Ci fakturę (lub rachunek), w tym celu przetwarzam Twoje dane osobowe w zakresie niezbędnym do jej prawidłowego wystawienia (imię, nazwisko, adres, NIP). Podstawą prawną przetwarzania Twoich danych w tym przypadku jest wypełnienie prawnego obowiązku wynikającego z przepisów podatkowych i księgowych. Wystawione dokumenty uwzględniane są w dokumentacji księgowej, w związku z czym Twoje dane w sposób naturalny będą przetwarzane i bezpiecznie przechowywane przez czas wymagany przepisami prawa.</p>
-
-            <h2>Zmiany w polityce prywatności</h2>
-            <p>Zastrzegam sobie prawo do dokonywania zmian w powyższej polityce prywatności, na co mogą mieć wpływ m.in. zmiany w prawie dotyczącym ochrony danych osobowych, zmiany technologiczne na stronie lub rozszerzenie zakresu świadczonych usług. O wszelkich zmianach użytkownicy zostaną poinformowani poprzez aktualizację niniejszego dokumentu.</p>
+<div class="credibility-bar-overlap reveal delay-3">
+    <div class="credibility-bar-inner">
+        <div class="cred-pillar">
+            <i class="las la-user-shield"></i>
+            <span>100% poufności</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-lock"></i>
+            <span>Bezpieczeństwo danych</span>
+        </div>
+        <div class="cred-pillar">
+            <i class="las la-file-signature"></i>
+            <span>Zgodność z RODO</span>
         </div>
     </div>
+</div>
+
+<main class="page-content-wrapper reveal delay-4">
+    <article class="blog-content">
+        <h2>Administrator strony</h2>
+        <p>Osobą administrującą na tej stronie jest Natalia Szoppa, prowadząca działalność gospodarczą pod nazwą „Natalia Szoppa" (NIP: 8722358413).</p>
+        <p>W razie pytań o poniższą politykę prywatności możesz napisać do mnie na adres: <a href="mailto:natalia.szoppa@gmail.com">natalia.szoppa@gmail.com</a></p>
+        <p>Użytkownikiem jest każdy podmiot przeglądający zawartość tej strony internetowej.</p>
+        <p>Strona jest utrzymywana (hostowana) na zewnętrznych serwerach platformy GitHub Pages. Korzystając ze strony, akceptujesz zasady działania infrastruktury statycznej, która ze swojej natury jest prosta i ogranicza zbieranie danych do niezbędnego minimum technicznego służącego prawidłowemu wyświetlaniu witryny.</p>
+
+        <h2>Poufność danych</h2>
+        <p>Jako administrator strony gwarantuję poufność. Każde dane przekazywane drogą mailową bądź przez ewentualne formularze kontaktowe są chronione w należyty sposób. Dane osobowe gromadzę z należytą starannością oraz odpowiednio zabezpieczam je, aby osoby nieupoważnione nie miały do nich dostępu, wykorzystując w tym celu bezpieczne serwery poczty e-mail (np. infrastruktura Google / Gmail).</p>
+        <p>Twoje dane przechowuję tylko przez czas niezbędny do realizacji zleceń, ustaleń biznesowych lub ze względu na obowiązki prawne (np. księgowe).</p>
+        <p>Podanie przez Ciebie danych osobowych (np. adresu e-mail, danych do faktury) jest zawsze dobrowolne, ale jednocześnie niezbędne, by móc podjąć współpracę, złożyć zamówienie lub skontaktować się ze mną w sprawach zawodowych.</p>
+
+        <h2>Podstawa przetwarzania danych</h2>
+        <p>Dane gromadzone na tej stronie lub przekazywane mi drogą mailową przetwarzane są na podstawie Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 roku w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).</p>
+
+        <h2>Pliki cookies</h2>
+        <p>Pliki cookies to niewielkie pliki tekstowe, które są przechowywane na Twoim urządzeniu podczas korzystania ze strony internetowej. Pomagają one w prawidłowym wyświetlaniu i działaniu witryny, oraz podnoszeniu poziomu bezpieczeństwa.</p>
+        <p>Sama w sobie ta strona jest witryną statyczną i domyślnie nie instaluje zaawansowanych plików cookies śledzących użytkownika. Wyjątkiem są usługi podmiotów trzecich, o których mowa poniżej.</p>
+
+        <h2>Zgoda na pliki cookies oraz możliwość rezygnacji</h2>
+        <p>Każdy Użytkownik ma możliwość konfiguracji swojej przeglądarki internetowej w sposób uniemożliwiający przechowywanie plików cookies na swoim urządzeniu (komputerze, smartfonie, tablecie).</p>
+        <p>Pamiętaj jednak, że całkowite wyłączenie plików cookies w przeglądarce może powodować trudności w korzystaniu z pewnych zewnętrznych funkcji osadzonych na mojej lub innych stronach internetowych.</p>
+
+        <h2>Osadzone treści i Cookies podmiotów trzecich</h2>
+        <p>Moja strona może wykorzystywać funkcje zapewniane przez podmioty trzecie (np. osadzone wtyczki z portali społecznościowych, odnośniki lub analitykę), co wiąże się z wykorzystywaniem plików cookies pochodzących bezpośrednio od nich.</p>
+        <p>Artykuły i podstrony mogą zawierać osadzone treści (np. filmy z YouTube, obrazy, linki do Facebooka czy LinkedIn). Osadzone treści z innych witryn zachowują się tak samo, jakby użytkownik odwiedził bezpośrednio konkretną witrynę zewnętrzną. Witryny te mogą zbierać informacje o Tobie, używać własnych ciasteczek i monitorować Twoje interakcje, zwłaszcza jeśli posiadasz na nich aktywne i zalogowane konta.</p>
+
+        <h2>Statystyki</h2>
+        <p>Na stronie mogą być wykorzystywane narzędzia analityczne, takie jak Google Analytics czy Google Search Console, które pobierają cookies w ramach anonimowego monitorowania ruchu, popularności podstron oraz zachowań czytelników na stronie. Służy to wyłącznie celom statystycznym i poprawie jakości oferty.</p>
+
+        <h2>Kontakt e-mailowy</h2>
+        <p>Kontaktując się ze mną za pośrednictwem poczty elektronicznej, w sposób naturalny przekazujesz mi swój adres e-mail jako adres nadawcy wiadomości. W treści wiadomości lub w załącznikach (plikach do redakcji) możesz zawrzeć również inne, dodatkowe dane osobowe.</p>
+        <p>Podstawą prawną przetwarzania tych danych jest Twoja zgoda wynikająca z zainicjowania ze mną kontaktu w celu zapytania o ofertę lub nawiązania współpracy.</p>
+        <p>Twoje dane osobowe przekazywane mi w ramach kontaktu e-mailowego przetwarzane są wyłącznie w celu odpowiedzi na Twój e-mail i przeprowadzenia rozmów biznesowych. Treść korespondencji może podlegać bezpiecznej archiwizacji.</p>
+
+        <h2>Faktury i usługi księgowe</h2>
+        <p>Jeżeli podejmiemy współpracę i wystawię Ci fakturę (lub rachunek), w tym celu przetwarzam Twoje dane osobowe w zakresie niezbędnym do jej prawidłowego wystawienia (imię, nazwisko, adres, NIP). Podstawą prawną przetwarzania Twoich danych w tym przypadku jest wypełnienie prawnego obowiązku wynikającego z przepisów podatkowych i księgowych. Wystawione dokumenty uwzględniane są w dokumentacji księgowej, w związku z czym Twoje dane w sposób naturalny będą przetwarzane i bezpiecznie przechowywane przez czas wymagany przepisami prawa.</p>
+
+        <h2>Zmiany w polityce prywatności</h2>
+        <p>Zastrzegam sobie prawo do dokonywania zmian w powyższej polityce prywatności, na co mogą mieć wpływ m.in. zmiany w prawie dotyczącym ochrony danych osobowych, zmiany technologiczne na stronie lub rozszerzenie zakresu świadczonych usług. O wszelkich zmianach użytkownicy zostaną poinformowani poprzez aktualizację niniejszego dokumentu.</p>
+    </article>
 </main>
 
-<div class="grad-line-footer"></div>
+<section class="cta-section">
+    <div class="cta-content">
+        <h2 class="reveal delay-1">Twój tekst w dobrych rękach</h2>
+        <p class="reveal delay-2">Nie musisz znać się na edytorstwie czy narzędziach retoryki. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę.</p>
+        <div class="cta-btns reveal delay-3">
+            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+            <a href="{{ '/zasady-wspolpracy.html' | relative_url }}" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- Obsługa przezroczystości menu nawigacji przy scrollu ---
+        const nav = document.querySelector('.nav');
+        if (nav) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        }
+    });
+</script>
