@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Arkusz Diagnostyczny · Za kulisami języka</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Mulish:ital,wght@0,300;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+<style>
+  /* ===================== ZMIENNE KOLORÓW I FONTÓW ===================== */
+  :root {
+    --ink:        #0D0D0D;
+    --ink-soft:   #333333;
+    --ink-muted:  #666666;
+    --paper:      #FFFFFF;
+    --paper-mid:  #E5E5E5;
+    --grad-start: #6B35C8;
+    --grad-mid:   #B8409A;
+    --grad-end:   #E8772A;
+    --grad:       linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --grad-text:  linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --gold-pale:  #F5F0FF;
+    --radius:     8px;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Mulish', sans-serif;
+    --hand:  'Caveat', cursive;
+  }
+
+  /* ===================== RESET I PODSTAWA ===================== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #2a2330;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== UKŁAD DOKUMENTU ===================== */
+  .doc {
+    padding: 36px 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* ===================== STRONA (A4) ===================== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 18mm 18mm 16mm;
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--grad);
+  }
+
+  /* ===================== NAGŁÓWKI BOCZNE (PAGINY) ===================== */
+  .runner {
+    position: absolute;
+    left: 18mm; right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 700;
+  }
+  .runner.top    { top: 9mm; }
+  .runner.bottom { bottom: 8mm; color: rgba(13,13,13,0.4); }
+
+  /* ===================== TYPOGRAFIA ===================== */
+  h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; color: var(--ink); }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--grad-start);
+  }
+  .grad-type {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline;
+    padding-right: 4px;
+    padding-bottom: 0.18em;
+    margin-bottom: -0.18em;
+    line-height: 1.18;
+  }
+  
+  .title { font-family: var(--serif); font-weight: 700; font-size: 56px; line-height: 1.05; color: var(--ink); }
+  .section-title { font-family: var(--serif); font-weight: 700; font-size: 32px; line-height: 1.12; color: var(--ink); margin-bottom: 6px; }
+  .subtitle { font-weight: 300; font-size: 17px; line-height: 1.55; color: var(--ink-soft); }
+  .body { font-weight: 300; font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+
+  /* Wyróżnik "ZAKREŚLACZ" */
+  .highlight-marker {
+    background: linear-gradient(120deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 85%;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* Odręczne dopiski */
+  .handwritten-note {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--grad-start);
+    transform: rotate(-3deg);
+    line-height: 1;
+  }
+
+  /* ===================== STRUKTURA PYTANIA (DWIE KOLUMNY) ===================== */
+  .q-row { display: flex; gap: 30px; flex: 1; margin-bottom: 24px; }
+  .q-row.full { flex-direction: column; gap: 16px; }
+  
+  /* Lewa kolumna: Treść główna (70%) */
+  .q-main { flex: 1.6; display: flex; flex-direction: column; }
+  
+  /* Prawa kolumna: Z karteczkami redaktora (30%) */
+  .q-sidebar { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 36px; }
+  .q-sidebar.no-pad { padding-top: 0; }
+
+  /* ===================== RAMKI JAKO KARTECZKI (STICKY NOTES) ===================== */
+  .box { 
+    padding: 16px 14px 14px; 
+    border-radius: var(--radius); 
+    font-size: 11px; 
+    line-height: 1.5; 
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    margin-bottom: 12px;
+  }
+  .box:last-child { margin-bottom: 0; }
+  
+  /* Efekt taśmy klejącej na środku karteczki */
+  .box::before {
+    content: ''; position: absolute; top: -6px; left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 35px; height: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 2px;
+  }
+
+  .box-title { 
+    display: block; font-size: 9px; font-weight: 800; 
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; 
+  }
+  
+  .box-blue { background: #EAF3FC; color: #1f3c5c; }
+  .box-blue .box-title { color: #0055A4; }
+  .box-orange { background: #FDF4E7; color: #5c3e1f; }
+  .box-orange .box-title { color: #D16B21; }
+  .box-orange em { font-weight: 700; font-style: italic; }
+  .box-red { background: #FAEDED; color: #5c1f1f; }
+  .box-red .box-title { color: #B31B1B; }
+  .box-purple { background: var(--gold-pale); color: #371f5c; }
+  .box-purple .box-title { color: var(--grad-start); }
+
+  /* Siatka do wyrównania ramek (LEGENDA) */
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: stretch;
+    margin-top: 15px;
+  }
+  .legend-grid .box {
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===================== TABELE ===================== */
+  .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
+  .comparison-table th, .comparison-table td { border: 1px solid var(--paper-mid); padding: 10px; text-align: left; vertical-align: top; }
+  .comparison-table th { background: var(--paper-warm); font-weight: 700; color: var(--ink); width: 50%; }
+
+  /* Tabela 15 Beatów */
+  .beats-table {
+    width: 100%; border-collapse: collapse; margin: 15px 0 20px 0; font-size: 11px;
+    background: #fff; border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+  }
+  .beats-table th, .beats-table td {
+    border: 1px solid var(--paper-mid); padding: 12px 14px; text-align: left; vertical-align: middle;
+  }
+  .beats-table th { background: var(--paper-warm); font-weight: 700; color: var(--ink); text-transform: uppercase; font-size: 9px; letter-spacing: 0.05em; }
+  .beats-table td.col-beat { font-weight: 700; color: var(--ink); }
+  .beats-table td.col-tag { width: 18%; text-align: center; }
+  
+  .akt-row { background: #fafafa; font-family: var(--serif); font-size: 14px; font-weight: 700; color: var(--ink); text-align: center; font-style: italic; }
+  
+  .tag-fundament {
+    display: inline-block; background: var(--grad-start); color: #fff;
+    font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 4px 8px; border-radius: 4px; box-shadow: 0 2px 6px rgba(107, 53, 200, 0.2);
+  }
+  .tag-watek {
+    display: inline-block; background: var(--gold-pale); color: var(--grad-start);
+    font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(107, 53, 200, 0.15);
+  }
+
+  /* ===================== ELEMENTY PYTANIA ===================== */
+  .q-header-area { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; position: relative; }
+  
+  .qnum-bg {
+    position: absolute; top: -20px; left: -15px;
+    font-family: var(--serif); font-size: 55px; font-style: italic; font-weight: 700;
+    color: rgba(13,13,13,0.04); z-index: 0; pointer-events: none;
+  }
+
+  .qtitle { font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink); z-index: 1; }
+  .main-question { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.5; z-index: 1;}
+  .helper-text { font-size: 12px; font-style: italic; color: var(--ink-muted); margin-bottom: 16px; z-index: 1;}
+  
+  /* ===================== MIEJSCE NA NOTATKI (DOT GRID) ===================== */
+  .dot-grid-box {
+    position: relative; flex: 1; min-height: 120px;
+    background-color: #ffffff;
+    background-image: radial-gradient(var(--paper-mid) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    border: 2px dashed #e6e6e6; border-radius: var(--radius);
+    padding: 16px; margin-top: 4px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.01);
+  }
+  .dot-grid-box.short { min-height: 80px; }
+  
+  .dot-grid-box::before {
+    content: ''; 
+    font-family: var(--hand); font-size: 22px; color: #c9c9c9;
+    position: absolute; top: 10px; left: 16px; pointer-events: none; transform: rotate(-2deg);
+  }
+
+  /* Klasa dla komórek tabeli z tłem w kropki */
+  td.td-dot-grid {
+    background-color: #ffffff !important;
+    background-image: radial-gradient(var(--paper-mid) 1.5px, transparent 1.5px) !important;
+    background-size: 18px 18px !important;
+    vertical-align: top !important;
+  }
+
+  /* Pola do uzupełniania (linie wewnątrz dot-grid) */
+  .fill-list { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; margin-top: 10px; }
+  .fill-row { display: flex; align-items: flex-end; gap: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 4px; }
+  .fill-label { font-size: 12px; font-weight: 700; color: var(--ink); white-space: nowrap; }
+  .fill-space { flex: 1; min-height: 18px; }
+
+  /* ===================== BLOKI TEKSTOWE I SPIS TREŚCI ===================== */
+  .reading-content { 
+    background: #fff; padding: 20px; border-radius: var(--radius); 
+    border: 1px solid var(--paper-mid); margin-bottom: 20px; font-size: 12px; line-height: 1.6; color: var(--ink-soft);
+  }
+  .reading-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-bottom: 6px; margin-top: 14px; }
+  .reading-content h4:first-child { margin-top: 0; }
+  .reading-content ul { padding-left: 20px; margin-bottom: 10px; }
+  .reading-content li { margin-bottom: 4px; }
+  .reading-content p { margin-bottom: 10px; }
+
+  .toc-list { list-style: none !important; padding: 0 !important; margin-top: 12px; margin-bottom: 5px !important; }
+  .toc-list li { display: flex; justify-content: space-between; border-bottom: 1px dotted var(--paper-mid); margin-bottom: 8px !important; padding-bottom: 4px; font-weight: 600; color: var(--ink-soft); }
+  .toc-list li span:last-child { color: var(--grad-start); font-weight: 800; }
+
+  /* ===================== STRONA 1 — OKŁADKA ===================== */
+  .cover { display: grid; grid-template-rows: auto 1fr auto; height: 100%; padding-top: 4mm; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--paper-mid); }
+  .logo { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
+  .logo em { font-style: italic; font-weight: 700; }
+  .cover-mid { align-self: center; padding: 30px 0; max-width: 150mm; position: relative;}
+  
+  .cover-mid::after {
+    content: "Zacznij od razu!"; position: absolute; top: 40px; right: -40px;
+    font-family: var(--hand); font-size: 28px; color: var(--grad-end); transform: rotate(-10deg);
+  }
+
+  .cover-mid .title { margin-bottom: 22px; }
+  .grad-rule { width: 80px; height: 3px; background: var(--grad); border-radius: 2px; margin: 18px 0 24px; }
+
+  /* ===================== NAGŁÓWEK SEKCJI ===================== */
+  .section-opener { margin-bottom: 24px; padding-bottom: 14px; flex-shrink: 0; position: relative; }
+  .section-opener::after {
+      content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
+      background: linear-gradient(90deg, var(--paper-mid) 0%, transparent 100%);
+  }
+
+  /* ===================== DRUK ===================== */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #fff; }
+    .doc { padding: 0; gap: 0; }
+    .page { box-shadow: none; page-break-after: always; break-after: page; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .dot-grid-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    td.td-dot-grid { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* NAPRAWA PIKSELOZY GRADIENTU W PDF */
+    .grad-type {
+      background: none !important;
+      -webkit-text-fill-color: var(--grad-start) !important;
+      color: var(--grad-start) !important;
+      background-clip: initial !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<section class="page">
+  <div class="runner top"><span>Narzędzie diagnostyczne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="cover">
+    <div class="cover-top">
+      <div class="logo">Za kulisami <em class="grad-type">języka</em></div>
+      <div class="cover-meta">Arkusz Diagnostyczny v3</div>
+    </div>
+    <div class="cover-mid">
+      <span class="eyebrow">Karta Autora · Przed Redakcją</span>
+      <h1 class="title">Arkusz<br>diagnostyczny<br><em class="grad-type">dla autora powieści</em></h1>
+      <div class="grad-rule"></div>
+      <p class="subtitle">Ten arkusz to nie test, w którym zdaje się egzamin.<br>To <span class="highlight-marker">narzędzie diagnostyczne</span> i przestrzeń do pracy.</p>
+      <p class="body" style="margin-top: 22px;">Twoim zadaniem nie jest pochwalenie się tym, że masz odpowiedź na każde pytanie, tylko zlokalizowanie miejsc, w których odpowiedzi jeszcze nie masz. Arkusz prowadzi Cię przez 6 poziomów coraz głębszej analizy własnej książki.</p>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>1 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 16px;">
+      <h2 class="section-title">Jak korzystać z <em class="grad-type">arkusza</em></h2>
+      <p class="body">Ten arkusz najlepiej otworzyć bezpośrednio w przeglądarce i pracować na nim na bieżąco. W każdej chwili możesz go zapisać na dysku, używając skrótu <strong>Ctrl + P</strong> (Drukuj jako PDF).</p>
+  </div>
+
+  <div class="reading-content" style="margin-bottom: 16px;">
+    <h4>Spis treści</h4>
+    <ul class="toc-list">
+      <li><span>Wprowadzenie (Spis treści, Legenda, Tryb pracy)</span><span>2</span></li>
+      <li><span>Dla kogo piszesz? (Analiza intencji)</span><span>3</span></li>
+      <li><span>Sekcja 0: Szybka diagnoza fabularna</span><span>4</span></li>
+      <li><span>Sekcja I: Dlaczego w ogóle piszesz?</span><span>8</span></li>
+      <li><span>Sekcja II: Fabuła, czyli „CO”</span><span>9</span></li>
+      <li><span>Sekcja III: 15 beatów Save the Cat!</span><span>10</span></li>
+      <li><span>Sekcja IIIa: Struktura w praktyce</span><span>11</span></li>
+      <li><span>Sekcja IV: Anatomia bohatera</span><span>13</span></li>
+      <li><span>Sekcja V: Świat i oś czasu</span><span>14</span></li>
+      <li><span>Sekcja VI: Wielka integracja</span><span>16</span></li>
+      <li><span>Podsumowanie: Co dalej?</span><span>17</span></li>
+    </ul>
+  </div>
+
+  <p class="body" style="font-weight: 700; margin-bottom: 6px;">Legenda – w całym arkuszu używamy czterech rodzajów ramek:</p>
+
+  <div class="legend-grid" style="margin-top: 0; margin-bottom: 16px;">
+    <div class="box box-blue">
+      <span class="box-title">Niebieska ramka</span>
+      Tłumaczy trudne pojęcia (czym jest prolog, antagonista, beat itp.).
+    </div>
+    <div class="box box-orange">
+      <span class="box-title">Pomarańczowa ramka</span>
+      Pokazuje, jak to wygląda w konkretnej książce.
+    </div>
+    <div class="box box-red">
+      <span class="box-title">Czerwona ramka</span>
+      Ostrzeżenie przed typowym błędem początkujących autorów.
+    </div>
+    <div class="box box-purple">
+      <span class="box-title">Fioletowa ramka</span>
+      Rada redaktorska, która pomaga ruszyć z miejsca.
+    </div>
+  </div>
+
+  <div class="reading-content" style="margin-bottom: 0;">
+    <h4>Sugerowany tryb pracy:</h4>
+    <ul>
+      <li><strong>Krok 1:</strong> Odpowiadaj szczerze na pytania – wpisuj „nie wiem”, jeśli nie znasz jeszcze odpowiedzi. Zlokalizowanie braków to ważny etap!</li>
+      <li><strong>Krok 2:</strong> Pobierz <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">darmowy poradnik PDF</a>, by zapoznać się z teorią i zasadami.</li>
+      <li><strong>Krok 3:</strong> Wróć do arkusza i zobacz, co możesz udoskonalić po lekturze teorii.</li>
+      <li><strong>Krok 4:</strong> Jeśli wolisz pracować w chmurze, <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">skopiuj arkusz do Google Docs</a>.</li>
+      <li><strong>Krok 5:</strong> Jesteś chętny na więcej? Poproś o <a href="mailto:kontakt@zakulisamijezyka.pl" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">darmową konsultację mailową</a> lub wykup <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">spotkanie 1:1</a>.</li>
+    </ul>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>2 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Dla kogo <em class="grad-type">piszesz?</em></h2>
+    <p class="body">Twoja motywacja kształtuje każde zdanie. Zanim przejdziesz do diagnozy, musisz zrozumieć, kto jest prawdziwym odbiorcą Twoich słów.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-start);">
+    <h4>Autor piszący dla siebie</h4>
+    <p>Możesz pisać wyłącznie dla siebie – to wspaniała forma autoterapii i ekspresji. Taki autor bardzo często mówi: <em>„Chcę, aby moja historia była...”, „Chcę pokazać, że...”, „To mi się podoba”</em>. W centrum zawsze stoi <strong>„ja”</strong> i autorska wizja, której nie wolno zmieniać pod wpływem opinii z zewnątrz. Sukcesem jest tutaj samo ukończenie tekstu zgodnego z własnym gustem.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-end);">
+    <h4>Autor biorący pod uwagę czytelnika</h4>
+    <p>Autor, który chce dotrzeć do innych, zamienia <strong>„ja”</strong> na <strong>„oni”</strong>. Mówi: <em>„Chcę, żeby moi czytelnicy poczuli smutek”, „Chcę, żeby zobaczyli, jak to jest, kiedy...”, „Chcę, żeby czytelnicy pragnęli więcej”</em>. Taki autor zaczyna od emocji i potrzeb odbiorcy. To dla nich przeredaguje jeden akapit milion razy, nieustannie zadając sobie pytanie: <strong>„Czy to im się spodoba?”</strong>, a nie tylko „czy ja to lubię?”.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <h3 class="qtitle">Zastanów się: Gdzie jesteś na tej skali?</h3>
+      </div>
+      <div class="main-question">Jaka jest Twoja <span class="highlight-marker">główna motywacja</span> w tym konkretnym projekcie?</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple">
+        <span class="box-title">Wskazówka Redaktora</span>
+        Zajrzyj do sekcji podziękowań w swoich ulubionych książkach. Autorzy często piszą tam, co ich motywowało i komu dziękują za pomoc w „oszlifowaniu” tekstu dla dobra historii. To właśnie tam najszybciej rozpoznasz, czy autor pisał dla siebie, czy dla czytelników.
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>3 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 0</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <span class="handwritten-note" style="position: absolute; top: 10px; right: 0;">Nie wymyślaj na siłę!</span>
+    <h2 class="section-title">Szybka diagnoza <em class="grad-type">fabularna</em></h2>
+    <p class="body">Zanim zagłębisz się w szczegóły, sprawdź, czy historia ma strukturę. Jeśli na któreś pytanie nie potrafisz odpowiedzieć szczegółowo, to sygnał, że znalazłeś miejsce wymagające uwagi. Wpisz: <strong>„Jeszcze nie wiem”</strong> i jedź dalej.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">01</span>
+        <h3 class="qtitle">PROLOG: Obietnica czy zapychacz?</h3>
+      </div>
+      <div class="main-question">O czym jest Twój <span class="highlight-marker">prolog</span> i jak ta konkretna scena <span class="highlight-marker">łączy się z resztą</span> historii?</div>
+      <div class="helper-text">Pytanie pomocnicze: Jeśli usuniesz prolog, czytelnik nadal będzie wiedział, co motywuje bohatera?</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Prolog to zwiastun filmu. Jeśli w zwiastunie pokazujesz wybuch, widz oczekuje wybuchu. Musisz dotrzymać obietnicy do samego końca.</div>
+      <div class="box box-orange"><span class="box-title">Przykład z literatury</span><em>Pieśń lodu i ognia:</em> Zwiadowcy giną z rąk Białych Wędrowców. Prolog dotrzymał obietnicy: stają się centralnym zagrożeniem sagi.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Prolog „bardzo dawno temu”, bez echa w historii. Jeśli możesz go wyciąć i nikt nie zauważy – jest dekoracją.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">02</span>
+        <h3 class="qtitle">BOHATER: Komu towarzyszymy?</h3>
+      </div>
+      <div class="main-question">Kto jest głównym bohaterem, jaki ma <span class="highlight-marker">problem, cel</span> i <span class="highlight-marker">dlaczego</span> dąży do celu?</div>
+      <div class="helper-text">Pytanie pomocnicze: Jak wyglądało życie bohatera „przed”? Co musi się zmienić?</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>To osoba, której decyzje napędzają historię. To NIE jest po prostu „najfajniejsza postać”. To ta, która z czegoś rezygnuje.</div>
+      <div class="box box-purple"><span class="box-title">Rada Redaktora</span>Znajdź JEDNĄ scenę w pierwszym akcie, po której bohater nie może już wrócić do poprzedniego życia.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>4 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">03</span>
+        <h3 class="qtitle">ŚWIAT: Czy czytelnik wie, gdzie jest?</h3>
+      </div>
+      <div class="main-question">Czy Twoje miejsce akcji ma <span class="highlight-marker">nazwę, konkretny czas i zasady</span> logiczne wewnątrz świata?</div>
+      <div class="helper-text">Pytanie pomocnicze: Wymień 3 rzeczy, których w Twoim świecie NIE wolno zrobić.</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Świat to reguły (technologia, prawo, magia). Jeśli raz łamiesz zasady, czytelnik traci zaufanie.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Używanie technologii z innej epoki (np. smartfony w latach 70.) lub nagła zmiana reguł magii by uratować fabułę.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">04</span>
+        <h3 class="qtitle">ANTAGONISTA: Kto blokuje bohatera?</h3>
+      </div>
+      <div class="main-question">Kto albo co jest <span class="highlight-marker">„blokerem”</span> dla bohatera i czy pojawia się już <span class="highlight-marker">na początku</span> książki?</div>
+      <div class="helper-text">Pytanie pomocnicze: Czy Twój antagonista ma własny, logiczny cel?</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-orange"><span class="box-title">Przykład z literatury</span><em>Nędznicy:</em> Inspektor Javert nie jest „zły”. Jest fanatycznie sprawiedliwy z własnej perspektywy.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Antagonista pojawia się w połowie książki. Jeśli go nie widać, pokaż chociaż SKUTKI jego działań od 1 strony.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>5 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">05</span>
+        <h3 class="qtitle">ROLE: Kto wspiera, kto konkuruje?</h3>
+      </div>
+      <div class="main-question">Jaką <span class="highlight-marker">rolę</span> pełni każda postać wprowadzona w akcie I? (mentor, towarzysz, rywal, zwierciadło, katalizator)</div>
+      <div class="helper-text">Pytanie pomocnicze: Jeśli wyrzucisz tę postać z książki, co konkretnie się zmieni w przebiegu wydarzeń?</div>
+      <div class="dot-grid-box"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Postacie drugoplanowe mają własne cele, ale nie mogą one przyćmiewać celu głównego bohatera (chyba że to książka wielowątkowa).</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Pierwsza połowa to pomaganie przyjaciołom w ich dramatach. Czytelnik zapomina o głównym celu bohatera.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">06</span>
+        <h3 class="qtitle">TECHNIKALIA: Czy znasz postacie?</h3>
+      </div>
+      <div class="main-question">Wypełnij <span class="highlight-marker">szybki biogram</span> głównego bohatera. Jeśli zawahasz się nad odpowiedzią – jeszcze nie znasz postaci.</div>
+      
+      <div class="dot-grid-box">
+        <div class="fill-list" style="margin-top: 25px;">
+          <div class="fill-row"><span class="fill-label">Imię i wiek:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Wykształcenie / zawód:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Trzy cechy charakteru:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Największe marzenie:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Największy lęk:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Sekretna / wstydliwa cecha:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Czego nigdy nie zrobi:</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>O postaci musisz wiedzieć więcej, niż trafi do książki: wiek, blizny, nawyki, czego się boi, do jakiej muzyki tańczy.</div>
+      <div class="box box-orange"><span class="box-title">Przykład</span>Geralt w pustej karczmie siada tyłem do ściany i obserwuje wyjście. Yennefer żąda najlepszego wina. To wynika z ich charakteru.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>6 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main">
+      <div class="q-header-area">
+        <span class="qnum-bg">07</span>
+        <h3 class="qtitle">NARRACJA: Czy sam byś to przeczytał?</h3>
+      </div>
+      <div class="main-question">Czy Twoje opisy <span class="highlight-marker">wnoszą coś do fabuły</span>, czy są tylko <span class="highlight-marker">ozdobnikami</span>? Napisz, co wnoszą.</div>
+      
+      <div class="dot-grid-box" style="min-height: auto;">
+        <div style="position: relative; z-index: 2; font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-top: 5px;">
+          <p style="margin-bottom: 8px;"><strong>Przykład do analizy:</strong> Opisujesz scenę gotowania, zaczyna się niewinnie, bo od wejścia do kuchni i przygotowania rzeczy, ale potem zaczynasz opisywać krok po kroku, jak bohater ugotował rosół.</p>
+          <p style="margin-bottom: 8px;"><strong>Pytanie:</strong> Czy jest to książka, w której główny bohater jest kucharzem i jest to ważne? Czy są w tej narracji wstawki typu: <em>„uwielbiał dodawać kapustę włoską, bo przypominało mu to, jak jego zmarła babcia gotowała”</em>, czyli coś, co pozwala poznać bohatera lepiej?</p>
+          <p style="margin-bottom: 20px;">Czy nagle zrobił się z tego suchy opis, jak ugotować rosół? Wystarczy zmienić formatowanie i mamy idealny tekst do książki kucharskiej.</p>
+          
+          <div class="fill-list">
+            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Test Prawdy</span>Przeczytaj swój najdłuższy opis na głos. Jeśli sam się gubisz w piątym zdaniu, czytelnik zgubi się w drugim. Skracaj.</div>
+      <div class="box box-red"><span class="box-title">Uwaga na objętość</span>Opis w Wordzie może i wygląda na krótki, ale jak zmienisz rozmiar strony na A5, to zobaczysz, ile faktycznie będzie zajmował stron w druku. Jeśli więcej niż 2, to rozważ skrócenie go.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>7 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja I</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Dlaczego w ogóle <em class="grad-type">piszesz?</em></h2>
+    <p class="body">Ta sekcja idzie głębiej. Te odpowiedzi pomogą Ci się zmotywować w momencie załamania pracy nad tekstem.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">INTENCJA: Co było iskrą?</h3></div>
+      <div class="main-question">Co było <span class="highlight-marker">pierwszym powodem</span>, dla którego usiadłeś do klawiatury? (obraz, sen, złość)</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Iskra musi być silna, bo to ona przeprowadzi Cię przez setki godzin pracy nad książką. Mary Shelley napisała <em>Frankensteina</em> po koszmarze sennym.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">PRZESŁANIE: Co chcesz powiedzieć?</h3></div>
+      <div class="main-question">Jaką <span class="highlight-marker">jedną myśl</span> chciałbyś, żeby czytelnik zapamiętał po zamknięciu książki?</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-orange"><span class="box-title">Przykład</span><em>1984:</em> Totalitaryzm nie kończy się na ciele, kontroluje myśli.<br><em>Małe życie:</em> Trauma nie zawsze się leczy, czasem przyjaźń to wszystko, co mamy.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">CZYTELNIK: Dlaczego ma się przejmować?</h3></div>
+      <div class="main-question">Jaki <span class="highlight-marker">lęk, marzenie albo problem</span> czytelnika porusza Twoja historia?</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+  </div>
+
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">04</span><h3 class="qtitle">WARTOŚĆ: Co wynosi z lektury?</h3></div>
+      <div class="main-question"><span class="highlight-marker">Wiedzę, emocje, pocieszenie</span>, czy po prostu relaks?</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>8 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja II</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Fabuła, czyli <em class="grad-type">„CO”</em></h2>
+    <p class="body">Czy Twoja historia to logiczna reakcja łańcuchowa? Dobra fabuła: <strong>skoro stało się X, MUSI wydarzyć się Y.</strong> Przypadek nie może być motorem fabuły.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Test windy (Elevator pitch)</h3></div>
+      <div class="main-question">Opisz fabułę <span class="highlight-marker">w 3 zdaniach</span>. Wzór: [BOHATER] z [ŚWIATA] musi [CEL], zanim [ZAGROŻENIE], inaczej [STAWKA].</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Wsiadasz do windy z wydawcą. Masz 30 sekund. Liczy się tylko mięcho: kto, co chce, co przeszkadza, co jest stawką. Brak pobocznych nazwisk.</div>
+    </div>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main" style="flex: 2;">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Reakcja łańcuchowa</h3></div>
+      <div class="main-question">Wymień 5 kluczowych wydarzeń. Każde musi wynikać z poprzedniego przez <span class="highlight-marker">„DLATEGO”</span> albo <span class="highlight-marker">„ALE”</span>. Nigdy <span class="highlight-marker">„potem”</span>.</div>
+      
+      <div class="dot-grid-box" style="min-height: 180px;">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">1. Początek:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">2. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">3. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">4. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">5. Kulminacja:</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Test usunięcia</h3></div>
+      <div class="main-question">Zadaj pytanie: <span class="highlight-marker">„Jeśli to wytnę, czy historia dalej działa?”</span>. Co usunąłeś?</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+    <div class="q-sidebar no-pad">
+      <div class="box box-purple"><span class="box-title">Rada Redaktora</span>Bohaterowie, którzy są ofiarami przypadku, są nudni. Jeśli utknąłeś, zapytaj: „Co najgorszego może się stać przez błąd bohatera?”.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>9 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja III</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 10px;">
+    <h2 class="section-title">15 beatów <em class="grad-type">Save the Cat!</em></h2>
+    <p class="body">Szkielet historii oparty na metodzie Blake'a Snydera. Beat to moment, w którym historia zmienia tor.</p>
+  </div>
+
+  <table class="beats-table">
+    <tr>
+      <th style="width: 32%;">Nr. i Nazwa Beatu</th>
+      <th style="width: 18%; text-align: center;">Znaczenie</th>
+      <th style="width: 50%;">Funkcja w historii</th>
+    </tr>
+    
+    <tr><td colspan="3" class="akt-row">AKT I (Pierwsze 20–25%)</td></tr>
+    <tr>
+      <td class="col-beat">1. Obraz początkowy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Świat bohatera zanim wszystko się zmieni. Lustro dla obrazu w finale.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">2. Przedstawienie tematu</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Ktoś wypowiada zdanie streszczające przesłanie historii. Bohater go nie rozumie.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">3. Konfiguracja</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Poznajemy życie „przed” i główną wadę bohatera (czego musi się oduczyć).</td>
+    </tr>
+    <tr>
+      <td class="col-beat">4. Katalizator</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Wydarzenie wybijające z rutyny. Punkt bez powrotu (np. list z Hogwartu).</td>
+    </tr>
+    <tr>
+      <td class="col-beat">5. Debata</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Bohater waha się, czy podjąć wyzwanie, czy wrócić do bezpiecznego życia.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">6. Przejście do Aktu II</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Świadoma decyzja opuszczenia starego świata z własnej woli.</td>
+    </tr>
+
+    <tr><td colspan="3" class="akt-row">AKT II (Środkowe 50%)</td></tr>
+    <tr>
+      <td class="col-beat">7. Wątek B</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Relacja poboczna (np. miłość, mentor), która uczy bohatera nowej perspektywy.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">8. Zabawa i gierki</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Realizacja obietnicy gatunku (śledztwo w kryminale, nauka magii w fantasy).</td>
+    </tr>
+    <tr>
+      <td class="col-beat">9. Punkt środkowy</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Fałszywe zwycięstwo lub porażka. Środek opowieści, stawka drastycznie rośnie.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">10. Przeciwnicy zacieśniają pętlę</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Problemy rosną, wrogowie atakują z nową siłą, sojusznicy zaczynają wątpić.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">11. Wszystko stracone</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Najciemniejszy moment. Śmierć (dosłowna lub metaforyczna) czegoś kochanego.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">12. Ciemna noc duszy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Całkowita rezygnacja i smutek. Jednak to z niej rodzi się rozwiązanie.</td>
+    </tr>
+
+    <tr><td colspan="3" class="akt-row">AKT III (Ostatnie 20–25%)</td></tr>
+    <tr>
+      <td class="col-beat">13. Przejście do Aktu III</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Bohater łączy główny wątek z nauką z Wątku B. Nagle wie, co robić.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">14. Finał</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Bohater wygrywa DZIĘKI swojej przemianie i nowym umiejętnościom, a nie „pomimo”.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">15. Obraz końcowy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Lustrzane odbicie początku. Pokazuje, jak bardzo świat i bohater się zmienili.</td>
+    </tr>
+  </table>
+  
+  <div class="box box-purple" style="margin: 0;">
+    <span class="box-title">Rada Redaktora</span>
+    Jeśli Twoja fabuła jest płaska i stoi w miejscu, prawdopodobnie brakuje jej dobrego <strong>Katalizatora</strong> (aby w ogóle wystartować) lub mocnego <strong>Punktu środkowego</strong> (aby dać jej drugi oddech). Skup się na tych dwóch „Fundamentach”.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>10 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja IIIa</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 16px;">
+    <h2 class="section-title">Struktura w <em class="grad-type">praktyce</em></h2>
+    <p class="body">Rozpisz swoją historię, korzystając z pełnych 15 beatów. Skup się przede wszystkim na tych oznaczonych jako <strong>Fundament</strong>.</p>
+  </div>
+
+  <table class="beats-table" style="margin-top: 0;">
+    <colgroup>
+      <col style="width: 25%;">
+      <col style="width: 75%;">
+    </colgroup>
+    <tr>
+      <th>Nazwa Beatu</th>
+      <th>Miejsce na Twoją historię</th>
+    </tr>
+    <tr><td colspan="2" class="akt-row">AKT I (Pierwsze 20–25%)</td></tr>
+    <tr>
+      <td class="col-beat">1. Obraz początkowy<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">2. Przedstawienie tematu<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">3. Konfiguracja<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">4. Katalizator<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">5. Debata<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">6. Przejście do Aktu II<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr><td colspan="2" class="akt-row">AKT II (Środkowe 50%)</td></tr>
+    <tr>
+      <td class="col-beat">7. Wątek B<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+  </table>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>11 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja IIIa c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <table class="beats-table" style="margin-top: 0;">
+    <colgroup>
+      <col style="width: 25%;">
+      <col style="width: 75%;">
+    </colgroup>
+    <tr>
+      <td class="col-beat">8. Zabawa i gierki<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">9. Punkt środkowy<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">10. Przeciwnicy zacieśniają pętlę<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">11. Wszystko stracone<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">12. Ciemna noc duszy<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr><td colspan="2" class="akt-row">AKT III (Ostatnie 20–25%)</td></tr>
+    <tr>
+      <td class="col-beat">13. Przejście do Aktu III<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">14. Finał<br><div style="margin-top: 6px;"><span class="tag-fundament">Fundament</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+    <tr>
+      <td class="col-beat">15. Obraz końcowy<br><div style="margin-top: 6px;"><span class="tag-watek">Przydatne</span></div></td>
+      <td class="td-dot-grid" style="height: 75px;"></td>
+    </tr>
+  </table>
+
+  <div class="box box-blue" style="margin-top: 16px;">
+    <span class="box-title">Spójność Prologu</span>
+    Pamiętaj: Prolog (beat 1) może wydawać się poboczny, ale powinien wprowadzać element napędzający beat 4 i 9. Jeśli Twój początek nie pracuje na resztę, jest zbędny.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>12 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja IV</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Anatomia <em class="grad-type">bohatera</em></h2>
+    <p class="body">Postać to nie opis, to zbiór reakcji. Musisz wiedzieć, czy w stresie bohater rzuci talerzem, czy dokończy posiłek.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Wada bohatera</h3></div>
+      <div class="main-question">Jaka <span class="highlight-marker">wada (mechanizm obronny)</span> blokuje bohatera przed osiągnięciem celu?</div>
+      <div class="dot-grid-box short"></div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Wada to coś, co kiedyś bohatera chroniło, a teraz szkodzi (np. osądzanie z góry u Elizabeth Bennet).</div>
+    </div>
+  </div>
+
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main" style="flex: 2;">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Głębia charakteru (POKAŻ, nie mów)</h3></div>
+      <div class="main-question">Wybierz jedną główną cechę bohatera i opisz <span class="highlight-marker">jak objawia się fizycznie</span>. Nie używaj samego przymiotnika!</div>
+      
+      <div class="dot-grid-box" style="min-height: 180px;">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">Główna cecha:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W GESTACH (ciało):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W DZIAŁANIU (decyzje):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W MOWIE (dialog):</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-purple" style="margin-top: 20px;">
+    <span class="box-title">Rada Redaktora</span>
+    Hilo nigdy nie mówi „jestem impulsywny” – widzimy to, gdy pierwszy wyciąga broń. Jeśli zmusisz czytelnika by SAM nazwał cechę, wygrałeś. Używaj warsztatu badawczego: obserwuj ludzi w kawiarni, używaj AI jako sparingpartnera.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>13 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja V</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Świat i oś <em class="grad-type">czasu</em></h2>
+    <p class="body">Nie buduj świata podczas pisania. Świat to układ sił ograniczających bohaterów.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Pokaż, nie nazywaj</h3></div>
+      <div class="main-question">Wybierz <span class="highlight-marker">3 przymiotniki</span> świata (np. stary, duszny) i <span class="highlight-marker">pokaż je</span> przez konkretne przedmioty.</div>
+      
+      <div class="dot-grid-box" style="min-height: 160px;">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">Przymiotnik 1 + jak pokazać:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Przymiotnik 2 + jak pokazać:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Przymiotnik 3 + jak pokazać:</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Oś czasu: sprawdź liczby</h3></div>
+      <div class="main-question">Zdefiniuj <span class="highlight-marker">chronologię</span>, by uniknąć luk (np. 120-latek bez wyjaśnień używający nowoczesnej magii).</div>
+      
+      <div class="dot-grid-box">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">Rok rozpoczęcia / zakończenia akcji:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Wiek bohatera na starcie / w finale:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Wiek pobocznych postaci:</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>14 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja V c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">04</span><h3 class="qtitle">Świat w 5 rekwizytach</h3></div>
+      <div class="main-question">Wypisz <span class="highlight-marker">5 charakterystycznych rekwizytów</span>. Po czym czytelnik pozna, gdzie jest?</div>
+      
+      <div class="dot-grid-box">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">1.</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">2.</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">3.</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">4.</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">5.</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-orange"><span class="box-title">Diuna (Herbert)</span>Stillsuit, krzyż Atrydów, przyprawa, ornitoptery, sietsze. Budują klimat od pierwszej strony.</div>
+    </div>
+  </div>
+
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main">
+      <div class="q-header-area"><span class="qnum-bg">05</span><h3 class="qtitle">Reguły świata: zakazy</h3></div>
+      <div class="main-question">Wypisz <span class="highlight-marker">3 reguły</span> Twojego świata, które mają <span class="highlight-marker">konsekwencje fabularne</span>.</div>
+      
+      <div class="dot-grid-box">
+        <div class="fill-list">
+          <div class="fill-row"><span class="fill-label">Reguła 1 + konsekwencja:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Reguła 2 + konsekwencja:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Reguła 3 + konsekwencja:</span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>15 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja VI</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Wielka <em class="grad-type">integracja</em></h2>
+    <p class="body">Jak połączyć CO (fabuła), JAK (bohaterowie), GDZIE (świat) i DLACZEGO (motywacja) w żywy organizm?</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main" style="flex: 2;">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Twoja sieć naczyń połączonych</h3></div>
+      <div class="main-question"><span class="highlight-marker">Zintegruj</span> postać ze światem i fabułą.</div>
+      
+      <div class="dot-grid-box" style="min-height: auto;">
+        <div style="position: relative; z-index: 2; font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-top: 5px; padding-bottom: 10px;">
+          <p style="margin-bottom: 12px;"><strong>Przykład integracji:</strong> Mój bohater nie potrafi usiedzieć na miejscu, musi od razu zacząć działać, wchodzi innym w pół słowa, szybko podejmuje decyzje, a potem dopiero myśli, szybko się denerwuje, ale równie szybko się uspokaja, zwłaszcza gdy ktoś zrobi coś zgodnie z jego oczekiwaniami. Żyje w świecie (towarzystwo, społeczeństwo i ustrój polityczny), w którym takie cechy są pomocne, choć mogą mieć nieszczęśliwe konsekwencje.</p>
+          <p style="margin-bottom: 12px;">Miejsce akcji to fikcyjne miasto, lata 90., przedmioty i budowa świata nie odbiegają od rzeczywistości. Mój bohater musi zapanować nad sobą, bo czeka go kilka wydarzeń, które postawią go przed zupełnie nowymi wyzwaniami, na które nie jest gotowy, ale będzie musiał się stać...</p>
+          <p style="font-style: italic; color: var(--ink-muted); margin-bottom: 20px;">W ten sposób możesz opisywać i definiować swoich bohaterów. Im więcej napiszesz, tym lepiej.</p>
+          
+          <div class="fill-list">
+            <div class="fill-row"><span class="fill-label">A) Twój rekwizyt:</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label">B) Twoja presja świata:</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label">C) Twoje zdanie integrujące:</span><div class="fill-space"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reading-content" style="margin-top: 10px;">
+    <h4>03. Końcowy test spójności</h4>
+    <p><strong>Test alternatywnego świata:</strong> Czy Twój bohater mógłby trafić do innej epoki, a historia wyglądałaby tak samo? Jeśli tak, świat to tylko dekoracja (wróć do Sekcji V).</p>
+    <p><strong>Test wymiany:</strong> Czy ktoś inny mógłby przejść tę samą fabułę i zakończyć tak samo? Jeśli tak, bohater jest wymienny (wróć do Sekcji IV).</p>
+    <p><strong>Test obietnicy:</strong> Czy motyw z prologu został rozwiązany w finale? Jeśli nie, zgubiłeś wątek.</p>
+  </div>
+
+  <div class="box box-purple" style="margin: 0; text-align: center; font-size: 13px;">
+    <span class="box-title" style="font-size: 11px; margin-bottom: 8px;">Na koniec</span>
+    Prawdziwa fabuła rodzi się tam, gdzie charakter bohatera zderza się z ograniczeniami czasu i miejsca. Katniss bez Kapitolu byłaby tylko myśliwą. <strong>Powodzenia w pisaniu!</strong>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>16 / 17</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Co <em class="grad-type">dalej?</em></h2>
+    <p class="body">Wypełniłeś arkusz. Zlokalizowałeś luki. Co teraz z tym zrobić?</p>
+  </div>
+
+  <div class="q-row full">
+    <div class="q-main">
+      
+      <div class="reading-content" style="margin-bottom: 24px; border-left: 4px solid var(--grad-end);">
+        <h4>Gratulacje! To był ogromny krok.</h4>
+        <p>Samo wypełnienie tego arkusza to potężna praca analityczna nad tekstem. Jeśli w wielu miejscach musiałeś wpisać „nie wiem” – to świetnie! Właśnie zaoszczędziłeś sobie miesięcy błądzenia we mgle. Jeśli Twój arkusz pęka od konkretów – brawo, masz już bardzo solidne fundamenty.</p>
+        <p>Teraz, gdy widzisz swoją powieść z lotu ptaka, powinieneś móc łatwiej ocenić jej stan. Czy historia wymaga jeszcze czasu na przebudowę struktury? A może to już ten moment, by pokazać tekst <strong>betaczytelnikom</strong> lub poszukać profesjonalnego <strong>redaktora językowego</strong>?</p>
+      </div>
+
+      <div class="box box-purple" style="padding: 28px; box-shadow: 0 8px 24px rgba(107, 53, 200, 0.08);">
+        <span class="box-title" style="font-size: 13px; margin-bottom: 12px;">Skorzystaj z bezpłatnej analizy</span>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--ink-soft); font-weight: 700; margin-bottom: 12px;">
+          Jeśli mimo pracy z arkuszem czujesz, że nadal w czymś utknąłeś, albo po prostu chcesz, żeby ktoś z zewnątrz rzucił okiem na Twoje odpowiedzi – z chęcią pomogę.
+        </p>
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft);">
+          Podeślij mi swój uzupełniony arkusz. Przejrzę go w ramach <strong>bezpłatnej, niezobowiązującej analizy</strong>. Doradzę Ci, nad jakimi elementami Twojej opowieści warto jeszcze usiąść, czy jest już gotowa na testy u betaczytelników, czy też śmiało możemy myśleć o ostatecznej redakcji tekstu.
+        </p>
+        
+        <div class="dot-grid-box short" style="margin-top: 20px; min-height: 70px; display: flex; align-items: center; justify-content: center; background-color: #fff;">
+          <span style="font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.05em;">[TU WPISZ SWÓJ ADRES E-MAIL]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>17 / 17</span></div>
+</section>
+
+</div>
+</body>
+</html>
