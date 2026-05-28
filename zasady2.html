@@ -12,7 +12,6 @@ title: Współpraca w szczegółach
 
     /* ===== WYMUSZENIE TŁA DLA ZAKŁADEK ===== */
     .bg-white-force { background-color: #ffffff !important; }
-    .bg-warm-force { background-color: var(--paper-warm, #F7F7F7) !important; }
 
     /* ===== SEKCJA TYTUŁOWA ===== */
     .page-header { 
@@ -117,14 +116,36 @@ title: Współpraca w szczegółach
     .blog-content p { margin-bottom: 24px; }
     .blog-content strong { font-weight: 700; color: var(--ink); }
 
-    /* ===== WAŻNE ZASADY - GRID 6 KART ===== */
+    /* Gradientowy tekst dla H2 z zasadami */
+    .blog-content h2 .grad-type { 
+        font-style: italic; 
+        font-weight: 700; 
+        background: var(--grad-text); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        background-clip: text; 
+    }
+
+    /* ===== WAŻNE ZASADY - WNĘTRZE ARTYKUŁU ===== */
+    /* Zmieniamy to na element zagnieżdżony w .blog-content */
+    .rules-section-inline {
+        background-color: var(--paper-warm);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        margin: 40px 0 60px;
+        /* Negatywne marginesy, aby rozciągnąć tło szerzej niż tekst główny, 
+           tworząc fajny efekt wizualny, tzw. "breakout" */
+        margin-left: -40px;
+        margin-right: -40px;
+    }
+
     .rules-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
-        max-width: 900px;
-        margin: 40px auto;
+        margin-bottom: 32px;
     }
+    
     .rule-card { 
         background: #fff; 
         border: 1px solid var(--paper-mid); 
@@ -150,8 +171,9 @@ title: Współpraca w szczegółach
         font-size: 1.4rem; 
         color: var(--grad-start); 
     }
-    .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
-    .rule-card p { font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+    /* Upewnijmy się, że font w kartach nie dziedziczy stylów .blog-content h3 itd. */
+    .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 12px 0; }
+    .rule-card p { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
 
     /* ===== STICKY NOTE (Płatność i umowa) ===== */
     .warning-box { 
@@ -161,12 +183,12 @@ title: Współpraca w szczegółach
         background: #fff; 
         border-radius: 0 var(--radius-lg) var(--radius-lg) 0; 
         padding: 32px; 
-        margin: 40px auto; 
-        max-width: 900px; 
         box-shadow: var(--shadow-soft); 
         border: 1px solid var(--paper-mid); 
         border-left: 3px solid var(--grad-start); 
     }
+    /* Reset p we wewnątrz warning-box */
+    .warning-box p { font-family: var(--sans); font-size: 0.95rem; line-height: 1.6; margin: 0; }
 
     /* ===== CTA ===== */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
@@ -188,8 +210,11 @@ title: Współpraca w szczegółach
         .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
         .credibility-bar-inner { gap: 24px; }
         .page-content-wrapper { margin-top: 40px; padding: 0 20px; margin-bottom: 60px; }
-        .rules-grid { grid-template-columns: 1fr; padding: 0 20px; }
-        .warning-box { margin: 40px 20px; }
+        
+        .rules-section-inline { margin-left: -20px; margin-right: -20px; padding: 30px 20px; border-radius: 0; }
+        .rules-grid { grid-template-columns: 1fr; }
+        
+        .warning-box { margin-bottom: 0; }
     }
 </style>
 
@@ -272,54 +297,50 @@ title: Współpraca w szczegółach
         <h2><span class="step-label">Krok 9</span>Gotowy produkt i Twój feedback</h2>
         <p>Odsyłam Ci plik. Zawsze załączam do niego krótkie podsumowanie lub komentarz redaktorski. Teraz czas na Twój ruch. Pamiętaj: każda wprowadzona przeze mnie zmiana to propozycja merytoryczna. Jeśli z którąś się nie zgadzasz – dyskutujemy. Ty jako Autor masz zawsze ostateczne słowo, a moim celem jest tylko to, by Twój głos wybrzmiał profesjonalnie.</p>
 
+        <h2><span class="step-label">Ważne zasady</span>Co warto wiedzieć <em class="grad-type">wcześniej</em></h2>
+
+        <div class="rules-section-inline">
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-calendar-check"></i></div>
+                    <h3>Termin to termin</h3>
+                    <p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-user-shield"></i></div>
+                    <h3>Pełna poufność</h3>
+                    <p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-users"></i></div>
+                    <h3>Dwie pary oczu</h3>
+                    <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div>
+                    <h3>Zmiana zakresu = nowa wycena</h3>
+                    <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-comments"></i></div>
+                    <h3>Komunikacja to podstawa</h3>
+                    <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-icon"><i class="las la-check-circle"></i></div>
+                    <h3>Decyzje należą do Ciebie</h3>
+                    <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
+                <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
+            </div>
+        </div>
+
     </article>
 </main>
-
-<section id="zasady" class="section bg-warm-force">
-    <div class="container--wide" style="padding-top: 60px; padding-bottom: 60px;">
-        <div class="eyebrow reveal" style="text-align: center; color: var(--grad-start);">Ważne zasady</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align:center; margin-bottom: 40px;">Co warto <br>wiedzieć <em class="grad-type">wcześniej</em></h2>
-        
-        <div class="rules-grid reveal delay-2">
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-calendar-check"></i></div>
-                <h3>Termin to termin</h3>
-                <p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-user-shield"></i></div>
-                <h3>Pełna poufność</h3>
-                <p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-users"></i></div>
-                <h3>Dwie pary oczu</h3>
-                <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div>
-                <h3>Zmiana zakresu = nowa wycena</h3>
-                <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-comments"></i></div>
-                <h3>Komunikacja to podstawa</h3>
-                <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p>
-            </div>
-            <div class="rule-card">
-                <div class="rule-icon"><i class="las la-check-circle"></i></div>
-                <h3>Decyzje należą do Ciebie</h3>
-                <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p>
-            </div>
-        </div>
-
-        <div class="warning-box reveal delay-3">
-            <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
-            <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
-        </div>
-        
-    </div>
-</section>
 
 <section class="cta-section">
     <div class="cta-content">
@@ -356,7 +377,16 @@ title: Współpraca w szczegółach
                 let clone = header.cloneNode(true);
                 let spans = clone.querySelectorAll('.step-label');
                 spans.forEach(s => s.remove());
-                let mainText = clone.innerText.trim();
+                
+                // Usunięcie również wnętrza <em>, jeśli występuje (np. dla nagłówka Ważne Zasady)
+                let ems = clone.querySelectorAll('em');
+                let extraText = "";
+                ems.forEach(e => {
+                    extraText += " " + e.innerText;
+                    e.remove();
+                });
+
+                let mainText = clone.innerText.trim() + extraText;
                 
                 a.innerText = labelText + mainText; 
                 
