@@ -3,28 +3,100 @@ layout: default
 title: Cennik
 ---
 <style>
-    /* ===== BELL NOTICE ===== */
-    .bell-notice-wrap { display: flex; justify-content: center; align-items: center; margin-bottom: 28px; height: 56px; }
-    .bell-notice { display: inline-flex; align-items: center; position: relative; opacity: 0; transform: scale(0.85); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
-    .bell-notice.visible { opacity: 1; transform: scale(1); }
-    .bell-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25); }
-    .bell-icon { font-size: 1.6rem; display: inline-block; transform-origin: top center; filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2) drop-shadow(0 0 6px rgba(245,197,24,0.7)); line-height: 1; }
-    @keyframes bell-ring { 0% { transform: rotate(0deg); } 10% { transform: rotate(24deg); } 20% { transform: rotate(-21deg); } 30% { transform: rotate(17deg); } 40% { transform: rotate(-11deg); } 50% { transform: rotate(6deg); } 60% { transform: rotate(-3deg); } 70% { transform: rotate(1deg); } 80% { transform: rotate(0deg); } 100% { transform: rotate(0deg); } }
-    .bell-icon.ring1, .bell-icon.ring2 { animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
-    .bell-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.14); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 0 100px 100px 0; padding: 0 24px 0 0; height: 40px; margin-left: -26px; padding-left: 32px; white-space: nowrap; overflow: hidden; max-width: 0; opacity: 0; transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
-    .bell-pill.expanded { max-width: 360px; opacity: 1; }
-    .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+    /* ===== WYMUSZENIE CZARNEGO MENU NA TEJ PODSTRONIE ===== */
+    .nav {
+        background: rgba(13,13,13,0.98) !important;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
 
-    /* Credibility bar */
-    .credibility-bar { background: var(--ink); padding: 22px 40px; }
-    .credibility-bar-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    /* ===== SEKCJA TYTUŁOWA ===== */
+    .page-header { 
+        padding: calc(var(--nav-h) + 60px) 40px 40px; 
+        max-width: 1000px; 
+        margin: 0 auto; 
+        text-align: center; 
+    }
+    
+    .breadcrumbs { 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        gap: 12px; 
+        font-family: var(--sans); 
+        font-size: 0.72rem; 
+        font-weight: 700; 
+        text-transform: uppercase; 
+        letter-spacing: 0.15em; 
+        margin-bottom: 24px; 
+        flex-wrap: wrap; 
+    }
+    
+    .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumbs a:hover { color: var(--grad-start); }
+    .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
+    .breadcrumbs .current { color: var(--grad-start); }
+    
+    .page-title { 
+        font-family: var(--serif); 
+        font-size: clamp(2.2rem, 4vw, 3.5rem); 
+        color: var(--ink); 
+        line-height: 1.15; 
+        margin-bottom: 0; 
+    }
+
+    /* ===== OBRAZEK HERO (NA CAŁĄ SZEROKOŚĆ) ===== */
+    .page-hero-img-wrap { width: 100%; }
+    .page-hero-img { 
+        width: 100%; 
+        height: 50vh; 
+        min-height: 400px; 
+        max-height: 600px;
+        object-fit: cover; 
+        display: block; 
+    }
+
+    /* ===== CREDIBILITY BAR ===== */
+    .credibility-bar-overlap { 
+        background: var(--ink); 
+        padding: 22px 40px; 
+        position: relative; 
+        z-index: 10; 
+        margin-top: -30px; 
+        max-width: 900px; 
+        margin-left: auto; 
+        margin-right: auto; 
+        border-radius: var(--radius-lg); 
+        box-shadow: var(--shadow-strong); 
+        width: calc(100% - 40px); 
+    }
+    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .cred-pillar { display: flex; align-items: center; gap: 12px; }
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
-    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
+    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
+    /* ===== PASEK UWAGI PRAWNEJ ===== */
+    .legal-bar { 
+        background: var(--paper-warm); 
+        border: 1px solid var(--paper-mid); 
+        border-radius: var(--radius-lg);
+        padding: 14px 40px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        gap: 12px; 
+        margin: 24px auto 60px; 
+        max-width: 900px;
+        width: calc(100% - 40px);
+    }
+    .legal-bar i { font-size: 1.2rem; color: var(--grad-start); flex-shrink: 0; }
+    .legal-bar p { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin: 0; line-height: 1.5; text-align: center; }
+    .legal-bar strong { color: var(--ink); font-weight: 700; }
+
+    /* ===== RESZTA STYLÓW CENNIKA ===== */
     .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin: 0 auto 60px; text-align: center; }
     
-    /* ===== PAKIETY "MATRIOSZKA" ===== */
+    /* PAKIETY "MATRIOSZKA" */
     .packages-container {
         position: relative;
         background: var(--gold-pale, #F5F0FF);
@@ -59,103 +131,27 @@ title: Cennik
     }
     .mega-badge i { color: var(--grad-end); font-size: 1.2rem;}
 
-    .mega-price-wrap {
-        margin-bottom: 36px;
-    }
-    .mega-price {
-        font-family: var(--serif);
-        font-size: 3rem;
-        font-weight: 700;
-        background: var(--grad-text);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-        display: inline-block;
-    }
-    .mega-price-unit {
-        font-size: 0.9rem; 
-        color: var(--ink-muted); 
-        font-family: var(--sans); 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 0.1em; 
-        display: block; 
-        margin-top: 8px;
-    }
+    .mega-price-wrap { margin-bottom: 36px; }
+    .mega-price { font-family: var(--serif); font-size: 3rem; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; display: inline-block; }
+    .mega-price-unit { font-size: 0.9rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 8px; }
 
-    .sub-packages-grid {
-        display: flex;
-        align-items: stretch;
-        justify-content: center;
-        gap: 20px;
-    }
-    .sub-package {
-        background: #fff;
-        border: 1.5px dashed var(--grad-start);
-        border-radius: var(--radius-lg);
-        padding: 40px 20px 24px;
-        flex: 1;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-    .sub-badge {
-        position: absolute;
-        top: -14px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #fff;
-        color: var(--grad-start);
-        border: 1px solid var(--grad-start);
-        padding: 6px 20px;
-        border-radius: 100px;
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        white-space: nowrap;
-    }
+    .sub-packages-grid { display: flex; align-items: stretch; justify-content: center; gap: 20px; }
+    .sub-package { background: #fff; border: 1.5px dashed var(--grad-start); border-radius: var(--radius-lg); padding: 40px 20px 24px; flex: 1; position: relative; display: flex; flex-direction: column; }
+    .sub-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #fff; color: var(--grad-start); border: 1px solid var(--grad-start); padding: 6px 20px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
     
-    .pkg-details {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: auto; /* Wypycha cenę na dół */
-    }
-    .pkg-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    .pkg-details { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: auto; }
+    .pkg-item { display: flex; flex-direction: column; align-items: center; }
     .pkg-item i { font-size: 2.2rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
     .pkg-item span { font-family: var(--sans); font-size: 0.65rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px; }
     .pkg-item strong { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); font-weight: 600; }
-    
     .pkg-item-plus { color: var(--grad-start); font-size: 1.5rem; margin-top: -10px; }
     
-    .sub-price-wrap {
-        margin-top: 32px;
-        padding-top: 20px;
-        border-top: 1px solid var(--paper-mid);
-    }
-    .sub-price {
-        font-family: var(--serif);
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--ink);
-    }
+    .sub-price-wrap { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--paper-mid); }
+    .sub-price { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink); }
     .sub-price span { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 4px;}
-    
-    .pkg-plus {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: var(--grad-start);
-        font-weight: 300;
-    }
+    .pkg-plus { display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--grad-start); font-weight: 300; }
 
-    /* ===== POJEDYNCZE USŁUGI (KAFELKI) ===== */
+    /* POJEDYNCZE USŁUGI (KAFELKI) */
     .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
     .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
     .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
@@ -168,7 +164,7 @@ title: Cennik
     .price-alt-unit { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 16px; }
     .price-note { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; font-weight: 300; line-height: 1.6; margin-top: auto; padding-top: 24px; border-top: 1px solid var(--paper-mid); }
     
-    /* ===== INFO GRID & LEGAL ===== */
+    /* INFO GRID */
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
     .info-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; }
     .info-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
@@ -178,13 +174,8 @@ title: Cennik
     .factors-list { list-style: none; padding: 0; margin: 0; }
     .factors-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
     .factors-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-    
-    .legal-bar { background: var(--paper-warm); border-top: 1px solid var(--paper-mid); border-bottom: 1px solid var(--paper-mid); padding: 14px 40px; display: flex; justify-content: center; align-items: center; gap: 12px; margin-top: 60px; }
-    .legal-bar i { font-size: 1.1rem; color: var(--grad-start); flex-shrink: 0; }
-    .legal-bar p { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin: 0; line-height: 1.5; text-align: center; }
-    .legal-bar strong { color: var(--ink); font-weight: 700; }
 
-    /* ===== CTA ===== */
+    /* CTA */
     .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
     .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
     .cta-content { position: relative; z-index: 2; }
@@ -197,9 +188,12 @@ title: Cennik
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
     
     @media (max-width: 860px) { 
+        .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
+        .page-title { font-size: 2.2rem; }
+        .page-hero-img { min-height: 250px; height: 35vh; }
+        .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
+        .credibility-bar-inner { gap: 24px; }
         .info-grid { grid-template-columns: 1fr; } 
-        .credibility-bar { padding: 18px 20px; } 
-        .credibility-bar-inner { gap: 24px; } 
         .sub-packages-grid { flex-direction: column; }
         .pkg-plus { transform: rotate(90deg); margin: 10px 0; }
     }
@@ -208,30 +202,22 @@ title: Cennik
     }
 </style>
 
-<header class="hero hero--short">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=1170&auto=format&fit=crop" alt="Tło">
+<header class="page-header reveal">
+    <div class="breadcrumbs">
+        <a href="{{ '/' | relative_url }}">Strona główna</a> 
+        <i class="las la-angle-right"></i>
+        <span>Oferta</span> 
+        <i class="las la-angle-right"></i>
+        <span class="current">Cennik</span>
     </div>
-    <div class="hero-content">
-
-        <div class="bell-notice-wrap">
-            <div class="bell-notice" id="bell-notice">
-                <div class="bell-circle">
-                    <span class="bell-icon" id="bell-icon">🔔</span>
-                </div>
-                <div class="bell-pill" id="bell-pill">
-                    <span class="bell-pill-text">Przyjmuję nowe zlecenia</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-eyebrow reveal delay-1">Cennik</div>
-        <h1 class="reveal delay-2">Przejrzyste <em class="grad-type">stawki</em></h1>
-        <p class="hero-sub reveal delay-3">Wybierz usługę solo lub skorzystaj z kompleksowego pakietu wydawniczego.</p>
-    </div>
+    <h1 class="page-title delay-1">Zobacz proponowane stawki za usługi</h1>
 </header>
 
-<div class="credibility-bar reveal delay-1">
+<div class="page-hero-img-wrap reveal delay-2">
+    <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=2000&auto=format&fit=crop" alt="Cennik i wycena" class="page-hero-img">
+</div>
+
+<div class="credibility-bar-overlap reveal delay-3">
     <div class="credibility-bar-inner">
         <div class="cred-pillar">
             <i class="las la-coins"></i>
@@ -246,6 +232,11 @@ title: Cennik
             <span>14 dni na odstąpienie</span>
         </div>
     </div>
+</div>
+
+<div class="legal-bar reveal delay-4">
+    <i class="las la-balance-scale"></i>
+    <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
 </div>
 
 <section class="section">
@@ -369,22 +360,16 @@ title: Cennik
     </div>
 </section>
 
-<div class="legal-bar reveal">
-    <i class="las la-balance-scale"></i>
-    <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
-</div>
-
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="reveal delay-1">Opowiedz mi o swoim projekcie</h2>
         <p class="reveal delay-2">Nie musisz od razu wiedzieć, jakiej usługi potrzebujesz. Opisz krótko swój projekt i prześlij fragment tekstu – wspólnie zastanowimy się, jaki zakres prac będzie dla Ciebie najlepszy.</p>
         <div class="cta-btns reveal delay-3">
             <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Wyślij materiały</a>
-            <a href="{{ '/zasady-wspolpracy.html' | relative_url }}" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
+            <a href="{{ site.baseurl }}/zasady-wspolpracy.html" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
         </div>
     </div>
 </section>
-
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const bellIcon   = document.getElementById('bell-icon');
