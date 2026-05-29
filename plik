@@ -2,15 +2,14 @@
 <html lang="pl">
 <head>
 <meta charset="utf-8">
-<title>Edukacyjny Przewodnik Struktury · Za kulisami dobrej książki</title>
+<title>Fundamenty Powieści · Za kulisami dobrej książki</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Mulish:ital,wght@0,300;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
 
 <style>
-  /* STYLE ZACHOWANE Z ORYGINAŁU DLA SPÓJNOŚCI WIZUALNEJ */
   :root {
     --ink:        #0D0D0D;
     --ink-soft:   #333333;
@@ -19,55 +18,146 @@
     --paper-mid:  #E5E5E5;
     --grad:       linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
     --grad-text:  linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --purple-pale: #F5F0FF;
     --radius:     8px;
-    --serif: 'Lora', Georgia, serif;
-    --sans:  'Mulish', sans-serif;
-    --hand:  'Caveat', cursive;
+    --serif: 'Lora', Georgia, serif; /* Nagłówki */
+    --sans:  'Mulish', sans-serif;  /* Tekst główny */
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #2a2330; font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  html, body {
+    background: #2a2330;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
 
-  .doc { padding: 36px 0 60px; display: flex; flex-direction: column; align-items: center; gap: 32px; }
-  .page { width: 210mm; min-height: 297mm; background: var(--paper); padding: 18mm; position: relative; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6); display: flex; flex-direction: column; }
-  .page::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--grad); }
+  .doc {
+    padding: 36px 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
 
-  .runner { position: absolute; left: 18mm; right: 18mm; display: flex; justify-content: space-between; font-size: 9px; text-transform: uppercase; color: var(--ink-muted); font-weight: 700; }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--paper);
+    padding: 18mm 0 16mm; /* Margines boczny zarządzany przez kontenery */
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+    display: flex;
+    flex-direction: column;
+  }
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--grad);
+  }
+
+  /* UKŁAD: TEKST + MARGINES NA NOTATKI */
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+    padding: 0 18mm;
+    gap: 15mm;
+  }
+
+  .main-text {
+    flex: 2; /* Główny tekst zajmuje więcej miejsca */
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    text-align: justify;
+  }
+
+  .notes-sidebar {
+    flex: 0.8; /* Margines na notatki */
+    border-left: 1px dashed var(--paper-mid);
+    padding-left: 10px;
+    position: relative;
+  }
+
+  .dot-grid {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(var(--paper-mid) 1.2px, transparent 1.2px);
+    background-size: 15px 15px;
+  }
+
+  .notes-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* NAGŁÓWKI I TYPOGRAFIA */
+  h1, h2, h3 { font-family: var(--serif); font-weight: 700; color: var(--ink); margin-bottom: 1em; }
+  .title { font-size: 42px; line-height: 1.1; margin-bottom: 20px; }
+  .section-title { font-size: 28px; border-bottom: 2px solid var(--paper-mid); padding-bottom: 10px; margin-top: 30px; }
+  
+  .grad-type {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline;
+  }
+
+  p { margin-bottom: 1.4em; }
+
+  /* STICKY NOTES (FIOLETOWE RAMKI) */
+  .sticky-note {
+    background: var(--purple-pale);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 25px 0;
+    position: relative;
+    box-shadow: 5px 5px 15px rgba(107, 53, 200, 0.05);
+    border-left: 4px solid #6B35C8;
+  }
+
+  .sticky-note::after {
+    content: 'Pamiętaj!';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #6B35C8;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .sticky-note p { margin-bottom: 0; font-size: 12px; font-weight: 600; color: #371f5c; line-height: 1.5; }
+
+  /* PAGINY */
+  .runner {
+    position: absolute;
+    left: 18mm; right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    font-size: 9px;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 700;
+  }
   .runner.top { top: 9mm; }
   .runner.bottom { bottom: 8mm; }
 
-  .title { font-family: var(--serif); font-weight: 700; font-size: 52px; line-height: 1.05; }
-  .section-title { font-family: var(--serif); font-weight: 700; font-size: 32px; margin-bottom: 8px; }
-  .grad-type { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline; }
-  
-  .eyebrow { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: #6B35C8; }
-  .body { font-size: 13px; line-height: 1.65; color: var(--ink-soft); font-weight: 300; }
-  .highlight-marker { background: linear-gradient(120deg, rgba(255, 193, 7, 0.3) 0%, rgba(255, 235, 59, 0.3) 100%); background-size: 100% 40%; background-position: 0 85%; background-repeat: no-repeat; padding: 0 4px; font-weight: 600; }
-
-  /* BOXES / NOTES */
-  .box { padding: 16px; border-radius: var(--radius); font-size: 11px; line-height: 1.5; margin-bottom: 12px; position: relative; }
-  .box-title { display: block; font-size: 9px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; }
-  .box-blue { background: #EAF3FC; color: #1f3c5c; }
-  .box-orange { background: #FDF4E7; color: #5c3e1f; }
-  .box-red { background: #FAEDED; color: #5c1f1f; }
-  .box-purple { background: #F5F0FF; color: #371f5c; }
-
-  /* LAYOUT */
-  .q-row { display: flex; gap: 24px; margin-bottom: 24px; }
-  .q-main { flex: 1.5; }
-  .q-sidebar { flex: 1; }
-
-  .dot-grid-box { background-image: radial-gradient(#E5E5E5 1.5px, transparent 1.5px); background-size: 18px 18px; border: 2px dashed #eee; border-radius: var(--radius); padding: 16px; min-height: 100px; margin-top: 10px; }
-
-  .toc-list { list-style: none; margin: 20px 0; }
-  .toc-list li { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 8px 0; font-size: 13px; }
-
-  .lesson-card { background: #f9f9f9; border-left: 4px solid #6B35C8; padding: 15px; margin-bottom: 20px; font-size: 13px; }
-  .lesson-card h4 { font-family: var(--serif); margin-bottom: 8px; color: #6B35C8; }
-
   @media print {
-    .page { box-shadow: none; margin: 0; }
-    body { background: #fff; }
+    body { background: white; }
+    .page { box-shadow: none; margin: 0; page-break-after: always; }
   }
 </style>
 </head>
@@ -76,204 +166,82 @@
 <div class="doc">
 
   <section class="page">
-    <div class="runner top"><span>Przewodnik Edukacyjny</span><span>Natalia Szoppa | Redakcja</span></div>
-    <div style="margin-top: 50mm;">
-      <span class="eyebrow">Wiedza · Warsztat · Praktyka</span>
-      <h1 class="title">Architektura<br><em class="grad-type">spójnej opowieści</em></h1>
-      <div style="width: 80px; height: 3px; background: var(--grad); margin: 24px 0;"></div>
-      <p style="font-size: 18px; font-weight: 300; line-height: 1.6;">Kompendium wiedzy o strukturze powieści, która <span class="highlight-marker">trzyma czytelnika w napięciu</span> od pierwszej do ostatniej strony.</p>
-      <p class="body" style="margin-top: 30px; max-width: 500px;">Zamiast tylko sprawdzać, uczymy jak budować. Ten arkusz przeprowadzi Cię przez mechanizmy, które sprawiają, że książka "płynie", a bohaterowie stają się żywi.</p>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 6</span></div>
-  </section>
-
-  <section class="page">
-    <div class="runner top"><span>Wstęp i Logistyka</span><span>Natalia Szoppa</span></div>
-    <h2 class="section-title">Jak korzystać z <em class="grad-type">przewodnika</em></h2>
-    <p class="body">To nie jest zwykły formularz. To narzędzie "dwa w jednym": najpierw podajemy Ci <span class="highlight-marker">pigułkę wiedzy redaktorskiej</span>, a potem prosimy o nałożenie jej na Twój własny tekst.</p>
-
-    <ul class="toc-list">
-      <li><span>Sekcja I: Anatomia Struktury (Dlaczego 3 akty?)</span><span>str. 3</span></li>
-      <li><span>Sekcja II: Krytyczne Punkty Zwrotne (Gdzie historia "pęka"?)</span><span>str. 4</span></li>
-      <li><span>Sekcja III: Katalog Błędów Technicznych (Head-hopping i inne)</span><span>str. 5</span></li>
-      <li><span>Sekcja IV: Strategia Pracy (Jak nie zgubić się w fabule?)</span><span>str. 6</span></li>
-    </ul>
-
-    <div class="box box-blue">
-      <span class="box-title">Niebieska ramka: DEFINICJA</span>
-      Tutaj tłumaczę trudne pojęcia i teorię literatury w prosty sposób.
-    </div>
-    <div class="box box-red">
-      <span class="box-title">Czerwona ramka: ALERT REDAKTORSKI</span>
-      Tutaj wytykam błędy, przez które wydawcy odrzucają propozycje, a czytelnicy zamykają książkę.
-    </div>
-    <div class="box box-purple">
-      <span class="box-title">Fioletowa ramka: ZADANIE DLA CIEBIE</span>
-      Miejsce na Twoją analizę i notatki.
-    </div>
-
-    <div class="lesson-card" style="margin-top: 20px;">
-      <h4>Złota zasada spójności</h4>
-      <p>Dobra powieść to nie zbiór scen. To **łańcuch przyczynowo-skutkowy**. Jeśli scena nie wynika z poprzedniej lub nie rodzi kolejnej – jest martwym ogniwem. Edukacja w tym arkuszu skupia się na tym, jak te ogniwa spawać.</p>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 6</span></div>
-  </section>
-
-  <section class="page">
-    <div class="runner top"><span>Sekcja I: Struktura</span><span>Natalia Szoppa</span></div>
-    <h2 class="section-title">Anatomia <em class="grad-type">trzech aktów</em></h2>
+    <div class="runner top"><span>Edukacja Autorska</span><span>Natalia Szoppa | Redakcja</span></div>
     
-    <div class="q-row">
-      <div class="q-main">
-        <div class="lesson-card">
-          <h4>Logika konstrukcji</h4>
-          <p>Większość spójnych historii opiera się na schemacie: **Równowaga → Zakłócenie → Walka o nową równowagę.**</p>
-          <ul style="margin-top: 10px; padding-left: 20px;">
-            <li><strong>Akt I (Ekspozycja):</strong> Kto? Gdzie? O co chodzi? Kończy się Incydentem Inicjującym.</li>
-            <li><strong>Akt II (Konfrontacja):</strong> Najdłuższa część. Bohater próbuje rozwiązać problem, ale ten staje się coraz trudniejszy.</li>
-            <li><strong>Akt III (Rozwiązanie):</strong> Ostateczne starcie i pokazanie, jak bohater się zmienił.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-blue">
-          <span class="box-title">Dlaczego to działa?</span>
-          Ludzki mózg od tysięcy lat poszukuje w opowieściach porządku. Struktura trzech aktów to nie ograniczenie, to mapa drogowa dla emocji czytelnika.
-        </div>
-      </div>
-    </div>
-
-    <div class="q-row">
-      <div class="q-main">
-        <div class="box box-purple">
-          <span class="box-title">Twój projekt: Test szkieletu</span>
-          Spróbuj wpisać jedno zdanie dla każdego aktu Twojej książki. Czy tworzą one logiczną całość "Jeśli..., to..., w rezultacie..."?
-        </div>
-        <div class="dot-grid-box"></div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-red">
-          <span class="box-title">Błąd: Brak Trzeciego Aktu</span>
-          Częsty błąd: historia urywa się po kulminacji. Czytelnik potrzebuje "oddechu" (rezolucji), by zobaczyć nowy świat bohatera.
-        </div>
-      </div>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 6</span></div>
-  </section>
-
-  <section class="page">
-    <div class="runner top"><span>Sekcja II: Pułapki</span><span>Natalia Szoppa</span></div>
-    <h2 class="section-title">Najczęstsze błędy <em class="grad-type">strukturalne</em></h2>
-    
-    <div class="q-row">
-      <div class="q-main">
-        <div class="lesson-card" style="border-left-color: #E8772A;">
-          <h4>1. "Błoto" w środku (Sagging Middle)</h4>
-          <p>To moment, w którym autor wprowadził już bohatera, ale nie ma pomysłu, co robić dalej przed finałem. Akcja stoi w miejscu, a bohaterowie tylko rozmawiają.</p>
-        </div>
-        <div class="lesson-card" style="border-left-color: #E8772A;">
-          <h4>2. Spóźniony punkt zapalny</h4>
-          <p>Jeśli pierwsza ważna rzecz dzieje się dopiero na 80. stronie, czytelnik prawdopodobnie już dawno odłożył książkę. "Zaczep" musi pojawić się w pierwszych 10-15% tekstu.</p>
-        </div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-orange">
-          <span class="box-title">Przykład</span>
-          W "Igrzyskach Śmierci" Incydentem Inicjującym jest zgłoszenie się Katniss na ochotnika. Dzieje się to bardzo szybko, rzucając nas od razu w wir akcji.
-        </div>
-      </div>
-    </div>
-
-    <div class="q-row">
-      <div class="q-main">
-        <div class="box box-purple">
-          <span class="box-title">Analiza tempa</span>
-          Zaznacz na osi czasu (lub liście rozdziałów), gdzie wypada Twój Punkt Środkowy (Midpoint). To moment, w którym bohater przestaje REAGOWAĆ, a zaczyna DZIAŁAĆ świadomie. Czy u Ciebie ten moment istnieje?
-        </div>
-        <div class="dot-grid-box"></div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-red">
-          <span class="box-title">Uwaga!</span>
-          Brak Midpointu to najczęstsza przyczyna nudy w połowie książki. To tu stawka musi zostać podbita tak wysoko, by nie było powrotu.
-        </div>
-      </div>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 6</span></div>
-  </section>
-
-  <section class="page">
-    <div class="runner top"><span>Sekcja III: Warsztat</span><span>Natalia Szoppa</span></div>
-    <h2 class="section-title">Katalog błędów <em class="grad-type">narracyjnych</em></h2>
-    
-    <div class="q-row">
-      <div class="q-main">
-        <div class="lesson-card">
-          <h4>Co to jest Head-hopping?</h4>
-          <p>To "skakanie po głowach". Błąd polega na tym, że w obrębie jednej sceny narrator nagle zdradza myśli różnych postaci. 
-          <br><br><em>Przykład:</em> "Marek poczuł złość [POV Marka]. Anna widziała to i pomyślała, że jest zabawny [Nagle POV Anny]". To wybija czytelnika z immersji.</p>
-        </div>
-        <div class="lesson-card">
-          <h4>Problem dwóch aktów</h4>
-          <p>Niektóre książki wyglądają tak: Problem → Rozwiązanie. Brakuje środkowej części "walki", przez co zwycięstwo bohatera wydaje się niezasłużone i zbyt łatwe.</p>
-        </div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-red">
-          <span class="box-title">Alert: Punkt zwrotny</span>
-          Jeśli Twój główny punkt zwrotny (Climax) pojawia się za wcześnie (np. w 70% książki), reszta tekstu będzie nudnym wygaszaniem emocji. Czytelnik poczuje rozczarowanie.
-        </div>
-      </div>
-    </div>
-
-    <div class="q-row">
-      <div class="q-main">
-        <div class="box box-purple">
-          <span class="box-title">Autodiagnoza</span>
-          Przejrzyj swój najbardziej emocjonalny rozdział. Czy trzymasz się perspektywy tylko jednej osoby? Jeśli nie, opisz poniżej, jak możesz rozdzielić te perspektywy na osobne sceny.
-        </div>
-        <div class="dot-grid-box"></div>
-      </div>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>5 / 6</span></div>
-  </section>
-
-  <section class="page">
-    <div class="runner top"><span>Sekcja IV: Strategia</span><span>Natalia Szoppa</span></div>
-    <h2 class="section-title">Jak pisać <em class="grad-type">spójnie?</em></h2>
-    
-    <div class="q-row">
-      <div class="q-main">
-        <p class="body" style="margin-bottom: 15px;">Pisarstwo to proces, który można uporządkować. Oto kroki, które zapobiegną pogubieniu się we własnej historii:</p>
+    <div class="content-wrapper" style="margin-top: 20mm;">
+      <div class="main-text">
+        <h1 class="title">Fundamenty spójnej <br><em class="grad-type">powieści</em></h1>
         
-        <div class="lesson-card">
-          <h4>Krok 1: Karta Sceny</h4>
-          <p>Dla każdej sceny określ: <strong>Cel bohatera | Przeszkoda | Rezultat</strong> (zmiana stanu z + na - lub odwrotnie). Jeśli scena nie zmienia stanu emocjonalnego, jest zbędna.</p>
-        </div>
+        <h2 class="section-title">Fundament I: Logika Trzech Aktów</h2>
+        
+        <p>Najczęstszym błędem, z jakim spotykam się podczas redakcji debiutanckich powieści, jest brak świadomego podziału tekstu na trzy logiczne części. Autorzy często piszą „na czuja”, dając się ponieść wenie, co skutkuje fabularnym chaosem. Powieść, podobnie jak szkolne wypracowanie, musi mieć jasny wstęp, rozwinięcie i zakończenie.</p>
+        
+        <p>Wielu debiutantów wrzuca czytelnika w środek akcji bez żadnego kontekstu lub – co gorsza – snuje opowieść, w której przez dziesiątki stron nic się nie dzieje. Zdarza się, że książka ma tylko dwa akty lub zaczyna się od środka (aktu drugiego), by potem chaotycznie wracać do przeszłości. Czytelnik nie powinien musieć domyślać się, o co chodzi w Twojej historii – Twoim zadaniem jako autora jest przeprowadzenie go przez nią za rękę, dbając o to, by każdy zwrot akcji wynikał z poprzedniego.</p>
 
-        <div class="lesson-card">
-          <h4>Krok 2: Test "Dlatego / Ale"</h4>
-          <p>Zamiast łączyć sceny słowem "Potem...", łącz je słowami "Dlatego..." lub "Ale...". To wymusza logikę przyczynową.</p>
-        </div>
-      </div>
-      <div class="q-sidebar">
-        <div class="box box-orange">
-          <span class="box-title">Wskazówka</span>
-          Użyj kolorowych samoprzylepnych karteczek na ścianie. Każdy kolor to inny wątek. Jeśli widzisz, że jeden kolor znika na 200 stron – masz lukę w spójności.
+        <div class="sticky-note">
+          <p>Pisanie „na czuja” bez znajomości struktury to proszenie się o narracyjne luki. Logika aktu to nie ograniczenie kreatywności, ale rusztowanie, na którym trzyma się Twoja wyobraźnia.</p>
         </div>
       </div>
+
+      <div class="notes-sidebar">
+        <span class="notes-label">Twoje notatki</span>
+        <div class="dot-grid"></div>
+      </div>
+    </div>
+    
+    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 3</span></div>
+  </section>
+
+  <section class="page">
+    <div class="runner top"><span>Edukacja Autorska</span><span>Natalia Szoppa | Redakcja</span></div>
+
+    <div class="content-wrapper" style="margin-top: 15mm;">
+      <div class="main-text">
+        <h2 class="section-title">Fundament II: Treść wewnątrz struktury</h2>
+        
+        <p>Nawet jeśli autorowi uda się podzielić książkę na trzy części, często okazuje się, że są one puste w środku. Akt pierwszy nie może być tylko zbiorem luźnych informacji i przemyśleń o otoczeniu bohatera. To tutaj musimy poznać jego świat sprzed zmiany, zrozumieć jego motywację i zobaczyć konkretny moment, który zburzy jego dotychczasowy porządek.</p>
+        
+        <p>W redagowanych tekstach często widzę brak wyraźnych sygnałów dla czytelnika. Zamiast budować napięcie i sugerować, co spotka bohatera w drugim akcie, autorzy serwują przypadkowe sceny, które nic nie wnoszą do fabuły. To sprawia, że historia staje się chaotyczna i statyczna. Każda sekcja musi pełnić swoją funkcję – akt pierwszy ma być fundamentem pod całą późniejszą walkę, a nie tylko „wstępem, który trzeba przetrwać”.</p>
+
+        <div class="sticky-note">
+          <p>Jeśli w akcie pierwszym nie pokażesz czytelnikowi, o co toczy się gra, nie będzie miał on powodu, by przejść do aktu drugiego. Luźne przemyślenia to nie fabuła – to pamiętnik.</p>
+        </div>
+      </div>
+
+      <div class="notes-sidebar">
+        <span class="notes-label">Twoje notatki</span>
+        <div class="dot-grid"></div>
+      </div>
     </div>
 
-    <div class="box box-purple" style="padding: 25px;">
-      <span class="box-title" style="font-size: 11px;">Twój Plan Działania</span>
-      <p style="font-size: 13px; font-weight: 700; margin-bottom: 10px;">Jakie 3 konkretne zmiany wprowadzisz w swojej strukturze po dzisiejszej lekcji?</p>
-      <div class="dot-grid-box" style="min-height: 150px;"></div>
+    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 3</span></div>
+  </section>
+
+  <section class="page">
+    <div class="runner top"><span>Edukacja Autorska</span><span>Natalia Szoppa | Redakcja</span></div>
+
+    <div class="content-wrapper" style="margin-top: 15mm;">
+      <div class="main-text">
+        <h2 class="section-title">Fundament III: Innowacja vs. Zasady</h2>
+        
+        <p>Wielu autorów, zwłaszcza debiutantów, za wszelką cenę chce stworzyć coś innowacyjnego i przełomowego. Zapominają jednak o starej zasadzie: aby łamać reguły, trzeba je najpierw doskonale znać. Innowacja w literaturze powinna być świadomym odchyleniem od normy, a nie efektem przypadku lub braku warsztatu.</p>
+        
+        <p>Gdy autor nie wie, jakie zasady rządzą spójną powieścią, jego próby bycia „oryginalnym” kończą się wielkim chaosem. Książka staje się niezrozumiała, bo mechanizmy, które powinny napędzać historię, po prostu nie działają. Świadome naginanie zasad do własnej woli pozwala tworzyć dzieła świeże, ale wciąż logiczne. Brak tej wiedzy sprawia, że innowacja staje się jedynie błędem warsztatowym, który zniechęca czytelnika i utrudnia redakcję.</p>
+
+        <div class="sticky-note">
+          <p>Najwięksi rewolucjoniści literatury zaczynali od klasycznych struktur. Zanim postanowisz napisać książkę bez punktu zwrotnego, dowiedz się, dlaczego inni go potrzebują.</p>
+        </div>
+        
+        <p style="margin-top: 40px; font-weight: 700; color: var(--grad-start);">Redakcja to nie tylko poprawianie przecinków – to dbanie o to, by Twoja wizja nie utonęła w braku logiki.</p>
+      </div>
+
+      <div class="notes-sidebar">
+        <span class="notes-label">Twoje notatki</span>
+        <div class="dot-grid"></div>
+      </div>
     </div>
 
-    <div style="margin-top: auto; text-align: center; border-top: 1px solid #eee; padding-top: 20px;">
-      <p class="body" style="font-style: italic;">Pamiętaj: Pierwszy szkic ma prawo być chaotyczny. <br> Drugi szkic to miejsce, gdzie stajesz się architektem.</p>
-    </div>
-    <div class="runner bottom"><span>ZA KULISAMI DOBREJ HISTORII</span><span>6 / 6</span></div>
+    <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 3</span></div>
   </section>
 
 </div>
