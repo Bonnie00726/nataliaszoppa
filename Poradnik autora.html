@@ -47,10 +47,11 @@
   }
 
   /* ===================== STRONA (A4) ===================== */
+ /* ===================== STRONA (A4) ===================== */
   .page {
     width: 210mm;
-    min-height: 297mm;
-    height: auto;
+    height: 297mm; /* Zmiana z min-height na sztywną wysokość A4 */
+    max-height: 297mm;
     background: var(--paper);
     color: var(--ink);
     padding: 18mm 18mm 16mm;
@@ -58,8 +59,11 @@
     box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
     page-break-after: always;
     break-after: page;
+    page-break-inside: avoid; /* Zapobiega łamaniu strony w środku sekcji */
+    break-inside: avoid;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Gwarantuje, że strona nie rozciągnie się w dół */
   }
   .page::before {
     content: '';
@@ -263,12 +267,36 @@
   .workflow.compact .wf-body p { font-size: 11px; line-height: 1.45; }
   .wf-tag { display: inline-block; font-family: var(--sans); font-size: 8px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grad-start); margin-left: 6px; vertical-align: middle; }
 
-  @page { size: A4; margin: 0; }
+ @page { 
+    size: A4; 
+    margin: 0; /* Wyłączamy marginesy przeglądarki, używamy paddingu z .page */
+  }
+  
   @media print {
-    html, body { background: #fff; }
+    html, body { 
+      background: #fff; 
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
     .doc { padding: 0; gap: 0; }
-    .page { box-shadow: none; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .grad-type { background: none !important; -webkit-text-fill-color: var(--grad-start) !important; color: var(--grad-start) !important; background-clip: initial !important; }
+    .page { 
+      box-shadow: none; 
+      margin: 0; 
+      width: 210mm;
+      height: 297mm;
+      -webkit-print-color-adjust: exact; 
+      print-color-adjust: exact; 
+      /* Minimalne zmniejszenie skali w druku zapobiega ucinaniu ostatnich linii */
+      zoom: 0.99; 
+    }
+    .grad-type { 
+      background: none !important; 
+      -webkit-text-fill-color: var(--grad-start) !important; 
+      color: var(--grad-start) !important; 
+      background-clip: initial !important; 
+    }
   }
 </style>
 </head>
