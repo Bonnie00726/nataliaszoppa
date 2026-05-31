@@ -271,7 +271,82 @@
     .grad-type { background: none !important; -webkit-text-fill-color: var(--grad-start) !important; color: var(--grad-start) !important; background-clip: initial !important; }
   }
 </style>
+
+  <style>
+  /* === USTAWIENIA STRONY A4 === */
+  @page {
+    size: A4;
+    margin: 20mm; /* Marginesy drukarskie */
+  }
+
+  * { box-sizing: border-box; }
+
+  /* === PODGLĄD EKRANOWY (symulacja A4) === */
+  body {
+    font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+    background: #e8e8e8;
+    margin: 0;
+    padding: 30px;
+  }
+
+  .book-container {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 40px auto;
+    background: #fff;
+    padding: 25mm;
+    box-shadow: 0 0 8px rgba(0,0,0,0.15);
+  }
+
+  /* === TYPOGRAFIA I ROZKŁAD TEKSTU === */
+  h1, h2, h3, h4 { page-break-after: avoid; margin-top: 1.2em; }
+  p {
+    text-align: justify;
+    hyphens: auto;
+    orphans: 2;
+    widows: 2;
+    margin-bottom: 0.8em;
+  }
+
+  /* Tabele (w poradniku jest ich sporo) */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  th, td {
+    border: 1px solid #bbb;
+    padding: 6px 8px;
+    vertical-align: top;
+  }
+  th { background: #f5f5f5; }
+
+  /* === USTAWIENIA DRUKU === */
+  @media print {
+    body {
+      background: none;
+      padding: 0;
+    }
+    .book-container {
+      width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page-number::before {
+      content: counter(page);
+    }
+  }
+</style>
 </head>
+  <div class="book-container">
 <body>
 <div class="doc">
 
@@ -1624,4 +1699,5 @@
 
 </div>
 </body>
+  </div>
 </html>
