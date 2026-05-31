@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Poradnik · Fundamenty dobrej powieści</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+<style>
+  /* ===================== ZMIENNE KOLORÓW I FONTÓW ===================== */
+  :root {
+    --ink:        #0D0D0D;
+    --ink-soft:   #333333;
+    --ink-muted:  #666666;
+    --paper:      #FFFFFF;
+    --paper-mid:  #E5E5E5;
+    --paper-warm: #F7F7F7;
+    --grad-start: #6B35C8;
+    --grad-mid:   #B8409A;
+    --grad-end:   #E8772A;
+    --grad:       linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --grad-text:  linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --gold-pale:  #F5F0FF;
+    --radius:     8px;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Mulish', sans-serif;
+    --hand:  'Caveat', cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #2a2330;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc {
+    padding: 36px 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  /* ===================== STRONA (A4) ===================== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    height: auto;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 18mm 18mm 16mm;
+    position: relative;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+    page-break-after: always;
+    break-after: page;
+    display: flex;
+    flex-direction: column;
+  }
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--grad);
+  }
+
+  .runner {
+    position: absolute;
+    left: 18mm; right: 18mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 700;
+  }
+  .runner.top    { top: 9mm; }
+  .runner.bottom { bottom: 8mm; color: rgba(13,13,13,0.4); }
+
+  h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; color: var(--ink); }
+
+  .eyebrow { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: var(--grad-start); }
+  .grad-type {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline;
+    padding-right: 4px;
+    padding-bottom: 0.18em;
+    margin-bottom: -0.18em;
+    line-height: 1.18;
+  }
+
+  .title { font-family: var(--serif); font-weight: 700; font-size: 52px; line-height: 1.05; color: var(--ink); }
+  .section-title { font-family: var(--serif); font-weight: 700; font-size: 32px; line-height: 1.12; color: var(--ink); margin-bottom: 6px; }
+  .subtitle { font-weight: 300; font-size: 17px; line-height: 1.55; color: var(--ink-soft); }
+  .body { font-weight: 300; font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+
+  .highlight-marker {
+    background: linear-gradient(120deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%);
+    background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 85%;
+    padding: 0 4px; border-radius: 3px; font-weight: 600;
+  }
+  .highlight-purple {
+    background: linear-gradient(120deg, rgba(107, 53, 200, 0.18) 0%, rgba(184, 64, 154, 0.18) 100%);
+    background-repeat: no-repeat; background-size: 100% 90%; background-position: 0 0;
+    padding: 1px 5px; border-radius: 3px; font-weight: 700; color: var(--grad-start);
+  }
+  .handwritten-note { font-family: var(--hand); font-size: 21px; color: var(--grad-start); transform: rotate(-3deg); line-height: 1; }
+
+  /* ===================== STRUKTURA ===================== */
+  .q-row { display: flex; gap: 30px; flex: 1; margin-bottom: 24px; min-height: 0; }
+  .q-row.full { flex-direction: column; gap: 16px; }
+  .q-main { flex: 1.6; display: flex; flex-direction: column; min-width: 0; }
+  .q-sidebar { flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 0; min-width: 0; }
+
+  /* ===================== TEKST LITY ===================== */
+  .prose p { font-size: 12.5px; line-height: 1.72; color: var(--ink-soft); margin-bottom: 12px; font-weight: 400; }
+  .prose p.lead { font-size: 14px; line-height: 1.7; color: var(--ink); font-weight: 600; }
+  .prose strong { color: var(--ink); font-weight: 700; }
+  .prose em { font-style: italic; }
+  .prose h3 { font-family: var(--serif); font-weight: 700; font-size: 18px; color: var(--ink); margin: 18px 0 8px; position: relative; }
+  .prose h3:first-child { margin-top: 0; }
+  .prose h4 { font-family: var(--sans); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grad-start); margin: 16px 0 6px; }
+  .prose ul, .prose ol { margin: 0 0 12px 0; padding-left: 20px; }
+  .prose li { font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 5px; }
+
+  /* ===================== LISTY METOD ===================== */
+  .method-list { display: flex; flex-direction: column; gap: 8px; margin: 10px 0 14px; }
+  .method-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
+  .method-num { color: var(--grad-start); font-weight: 700; flex-shrink: 0; font-family: var(--sans); }
+  .method-dot { color: var(--grad-start); font-weight: 700; flex-shrink: 0; font-family: var(--sans); font-size: 16px; line-height: 1; margin-top: -1px; }
+
+  .err-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--grad); color: #fff; font-family: var(--sans);
+    font-size: 12px; font-weight: 800; margin-right: 8px;
+    box-shadow: 0 2px 6px rgba(107,53,200,0.25); vertical-align: middle;
+  }
+
+  /* ===================== RAMKI ===================== */
+  .box {
+    padding: 16px 14px 14px; border-radius: var(--radius); font-size: 11px; line-height: 1.5; position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 12px;
+  }
+  .box:last-child { margin-bottom: 0; }
+  .box::before {
+    content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(-2deg);
+    width: 35px; height: 12px; background: rgba(255, 255, 255, 0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 2px;
+  }
+  .box-title { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  .box-blue   { background: #EAF3FC; color: #1f3c5c; }
+  .box-blue .box-title   { color: #0055A4; }
+  .box-orange { background: #FDF4E7; color: #5c3e1f; }
+  .box-orange .box-title { color: #D16B21; }
+  .box-red    { background: #FAEDED; color: #5c1f1f; }
+  .box-red .box-title    { color: #B31B1B; }
+  .box-purple { background: var(--gold-pale); color: #371f5c; }
+  .box-purple .box-title { color: var(--grad-start); }
+
+  .practice {
+    background: #fff; border: 1px solid var(--paper-mid); border-left: 4px solid var(--grad-end); border-radius: var(--radius);
+    padding: 14px 16px; margin: 14px 0; font-size: 12px; line-height: 1.6; color: var(--ink-soft); box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  .practice .practice-tag { display: block; font-family: var(--sans); font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grad-end); margin-bottom: 6px; }
+  .callout { background: var(--gold-pale); border-radius: var(--radius); padding: 16px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.62; color: #371f5c; border-left: 4px solid var(--grad-start); }
+  .callout strong { color: var(--grad-start); }
+  .reading-content { background: #fff; padding: 18px 20px; border-radius: var(--radius); border: 1px solid var(--paper-mid); margin-bottom: 16px; font-size: 12px; line-height: 1.62; color: var(--ink-soft); }
+  .reading-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin: 14px 0 6px; text-transform: none; letter-spacing: 0; }
+  .reading-content h4:first-child { margin-top: 0; }
+  .reading-content p { margin-bottom: 10px; }
+  .reading-content p:last-child { margin-bottom: 0; }
+
+  .comp-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 11px; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+  .comp-table th, .comp-table td { border: 1px solid var(--paper-mid); padding: 10px 12px; text-align: left; vertical-align: top; }
+  .comp-table th { background: var(--paper-warm); font-weight: 700; color: var(--ink); text-transform: uppercase; font-size: 9px; letter-spacing: 0.05em; }
+
+  /* ===================== OKŁADKA ===================== */
+  .cover { display: grid; grid-template-rows: auto 1fr auto; height: 100%; padding-top: 4mm; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--paper-mid); }
+  .logo { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
+  .logo em { font-style: italic; font-weight: 700; }
+  .cover-meta { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .cover-mid { align-self: center; padding: 30px 0; max-width: 155mm; position: relative; }
+  .cover-mid::after { content: "Twój warsztat zaczyna się tu"; position: absolute; top: 30px; right: -30px; font-family: var(--hand); font-size: 26px; color: var(--grad-end); transform: rotate(-9deg); max-width: 160px; text-align: center; line-height: 1.05; }
+  .cover-mid .title { margin-bottom: 22px; }
+  .grad-rule { width: 80px; height: 3px; background: var(--grad); border-radius: 2px; margin: 18px 0 24px; }
+  .section-opener { margin-bottom: 22px; padding-bottom: 14px; flex-shrink: 0; position: relative; }
+  .section-opener::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, var(--paper-mid) 0%, transparent 100%); }
+
+  .ba-pair { display: flex; gap: 12px; margin: 12px 0; }
+  .ba-card { flex: 1; border-radius: var(--radius); padding: 12px 14px; font-size: 11.5px; line-height: 1.55; position: relative; }
+  .ba-card .ba-tag { display: block; font-size: 8px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .ba-before { background: #FAEDED; color: #5c1f1f; }
+  .ba-before .ba-tag { color: #B31B1B; }
+  .ba-after  { background: #ECF6EC; color: #1f4d24; }
+  .ba-after .ba-tag { color: #2E7D32; }
+
+  /* Słowniczek */
+  .glossary { display: flex; flex-direction: column; gap: 0; margin-top: 4px; }
+  .gl-row { display: grid; grid-template-columns: 0.9fr 2fr; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--paper-mid); align-items: start; }
+  .gl-row:last-child { border-bottom: none; }
+  .gl-term { font-family: var(--serif); font-weight: 700; font-size: 13px; color: var(--grad-start); }
+  .gl-term .gl-en { display: block; font-family: var(--sans); font-style: italic; font-weight: 400; font-size: 10px; color: var(--ink-muted); margin-top: 2px; }
+  .gl-def { font-size: 11.5px; line-height: 1.55; color: var(--ink-soft); }
+
+  /* Lista kontrolna */
+  .checklist { display: flex; flex-direction: column; gap: 0; }
+  .check-group-title { font-family: var(--sans); font-weight: 800; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grad-start); margin: 14px 0 6px; }
+  .check-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px dotted var(--paper-mid); font-size: 12px; line-height: 1.45; color: var(--ink-soft); }
+  .check-box { flex-shrink: 0; width: 15px; height: 15px; border: 2px solid var(--grad-start); border-radius: 3px; margin-top: 1px; }
+
+  .exercise { background: #ECF6EC; border-radius: var(--radius); border-left: 4px solid #2E7D32; padding: 14px 16px; margin: 14px 0; font-size: 12px; line-height: 1.6; color: #1f4d24; box-shadow: 0 4px 12px rgba(0,0,0,0.03); position: relative; }
+  .exercise .ex-tag { display: block; font-family: var(--sans); font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #2E7D32; margin-bottom: 6px; }
+
+  .timeline { margin: 16px 0; }
+  .timeline-bar { display: grid; grid-template-columns: 1.2fr 2fr 1.2fr; gap: 4px; margin-bottom: 8px; }
+  .tl-act { text-align: center; padding: 9px 6px; border-radius: 5px; font-family: var(--serif); font-weight: 700; font-size: 12px; color: #fff; font-style: italic; }
+  .tl-act-1 { background: var(--grad-start); }
+  .tl-act-2 { background: var(--grad-mid); }
+  .tl-act-3 { background: var(--grad-end); }
+  .timeline-marks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; font-size: 9.5px; line-height: 1.3; color: var(--ink-soft); text-align: center; }
+  .tl-mark { position: relative; padding-top: 14px; }
+  .tl-mark::before { content: '▲'; position: absolute; top: 0; left: 50%; transform: translateX(-50%); color: var(--grad-start); font-size: 9px; }
+  .tl-mark strong { display: block; color: var(--ink); font-weight: 700; }
+  .tl-pct { color: var(--grad-start); font-weight: 800; }
+
+  /* ===================== WORKFLOW (kroki redakcji) ===================== */
+  .workflow { position: relative; margin: 6px 0 4px; padding-left: 4px; }
+  .workflow::before {
+    content: ''; position: absolute; left: 17px; top: 14px; bottom: 14px; width: 2px;
+    background: var(--grad); border-radius: 2px; opacity: 0.35;
+  }
+  .wf-step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; position: relative; }
+  .wf-step:last-child { margin-bottom: 0; }
+  .wf-num {
+    flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--grad); color: #fff; font-family: var(--sans); font-weight: 800; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 3px 8px rgba(107,53,200,0.3); position: relative; z-index: 1;
+  }
+  .wf-body { flex: 1; padding-top: 1px; min-width: 0; }
+  .wf-body h5 { font-family: var(--serif); font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 2px; }
+  .wf-body p { font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; font-weight: 400; }
+  .wf-body em { font-style: italic; }
+
+  /* kompaktowy wariant roadmapy */
+  .workflow.compact { margin: 12px 0; }
+  .workflow.compact::before { left: 15px; top: 12px; bottom: 12px; }
+  .workflow.compact .wf-step { margin-bottom: 20px; gap: 14px; }
+  .workflow.compact .wf-num { width: 28px; height: 28px; font-size: 13px; }
+  .workflow.compact .wf-body h5 { font-size: 13px; }
+  .workflow.compact .wf-body p { font-size: 11px; line-height: 1.45; }
+  .wf-tag { display: inline-block; font-family: var(--sans); font-size: 8px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grad-start); margin-left: 6px; vertical-align: middle; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: #fff; }
+    .doc { padding: 0; gap: 0; }
+    .page { box-shadow: none; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .grad-type { background: none !important; -webkit-text-fill-color: var(--grad-start) !important; color: var(--grad-start) !important; background-clip: initial !important; }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<section class="page">
+  <div class="runner top"><span>Poradnik dla autorów</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="cover">
+    <div class="cover-top">
+      <div class="logo">Za kulisami <em class="grad-type">dobrej książki</em></div>
+      <div class="cover-meta">Poradnik · Część I</div>
+    </div>
+    <div class="cover-mid">
+      <span class="eyebrow">Z praktyki redaktorskiej · Dla debiutantów i nie tylko</span>
+      <h1 class="title">Fundamenty<br><em class="grad-type">dobrej powieści</em></h1>
+      <div class="grad-rule"></div>
+      <p class="subtitle">Przez lata redagowania cudzych tekstów zauważyłam, że <span class="highlight-marker">debiutanci popełniają w kółko te same błędy.</span></p>
+      <p class="body" style="margin-top: 22px;">Nie dlatego, że brakuje im talentu czy pomysłów, lecz dlatego, że nikt nie pokazał im, jak działa konstrukcja powieści od podszewki. Ten poradnik to zbiór moich obserwacji z praktyki: zestaw narzędzi, które realnie pomagają uporządkować historię, zanim zaczniesz pisać, albo gdy chcesz sprawdzić, czy to, co masz, trzyma się kupy.</p>
+      <p class="body" style="margin-top: 18px; font-size: 11px; color: var(--ink-muted);">Wersja 2.0 · 2026 · Materiał towarzyszący „Arkuszowi diagnostycznemu”</p>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Jak czytać ten <em class="grad-type">poradnik</em></h2>
+    <p class="body">Główna kolumna to tekst do czytania. Na marginesie po prawej znajdziesz najważniejsze pigułki wiedzy, ostrzeżenia i rady redaktorskie.</p>
+    <p class="body" style="margin-top:10px; font-style:italic; color:var(--ink-muted);">Nie musisz opanować tego wszystkiego naraz. Wybierz jedną rzecz na raz i ćwicz ją – warsztat buduje się warstwami, nie jednym zrywem.</p>
+  </div>
+
+  <div class="reading-content" style="margin-bottom: 12px;">
+    <h4>Spis treści</h4>
+    <p style="margin-bottom:2px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ I · ZANIM ZACZNIESZ</p>
+    <p style="margin-bottom:2px;"><strong>1.</strong> Zanim napiszesz pierwsze słowo</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ II · BURZA MÓZGÓW I PLAN</p>
+    <p style="margin-bottom:2px;"><strong>2.</strong> Od pomysłu do planu (burza mózgów)</p>
+    <p style="margin-bottom:2px;"><strong>3.</strong> Pisanie z planem (test + 5 metod)</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ III · STRUKTURA, NARRACJA I JĘZYK</p>
+    <p style="margin-bottom:2px;"><strong>4.</strong> Struktura trzech aktów (+ diagram, midpoint)</p>
+    <p style="margin-bottom:2px;"><strong>5.</strong> Tempo i pacing</p>
+    <p style="margin-bottom:2px;"><strong>6.</strong> Narracja – przez czyje oczy patrzymy?</p>
+    <p style="margin-bottom:2px;"><strong>7.</strong> Dialog, który działa</p>
+    <p style="margin-bottom:2px;"><strong>8.</strong> Język i rejestr (skala, rytm, zmysły)</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ IV · BOHATER, KONFLIKT I ANTAGONISTA</p>
+    <p style="margin-bottom:2px;"><strong>9.</strong> Bohater, który zapada w pamięć</p>
+    <p style="margin-bottom:2px;"><strong>10.</strong> Konflikt wewnętrzny i stawka</p>
+    <p style="margin-bottom:2px;"><strong>11.</strong> Antagonista – siła napędowa</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ V · BŁĘDY I SAMODZIELNA REDAKCJA</p>
+    <p style="margin-bottom:2px;"><strong>12.</strong> Najczęstsze błędy strukturalne</p>
+    <p style="margin-bottom:2px;"><strong>13.</strong> Samodzielna redakcja (dystans + warstwy)</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">CZĘŚĆ VI · OD MAPY DO PRZYKŁADU</p>
+    <p style="margin-bottom:2px;"><strong>Mapa.</strong> Od czego zacząć pisanie</p>
+    <p style="margin-bottom:2px;"><strong>14.</strong> Przykład: budujemy scenę fantasy</p>
+    <p style="margin-bottom:2px;"><strong>15.</strong> Ćwiczenie podsumowujące (prawda/fałsz)</p>
+
+    <p style="margin-bottom:2px; margin-top:6px; font-weight:800; color:var(--grad-start); font-size:11px; letter-spacing:0.05em;">NARZĘDZIA</p>
+    <p style="margin-bottom:2px;"><strong>Narzędzie 1.</strong> Słowniczek pojęć</p>
+    <p style="margin-bottom:2px;"><strong>Narzędzie 2.</strong> Granice, które najczęściej mylą</p>
+    <p style="margin-bottom:2px;"><strong>Narzędzie 3.</strong> Pętla zwrotna i monitor pierwszej wersji</p>
+    <p style="margin-bottom:2px;"><strong>Podsumowanie.</strong> Co dalej? Analiza i konsultacje</p>
+    <p style="margin-bottom:0;"><strong>Narzędzie 4.</strong> Lista kontrolna autora</p>
+  </div>
+
+  <p class="body" style="font-weight: 700; margin-bottom: 8px;">W całym poradniku używam czterech rodzajów ramek:</p>
+  <div class="q-row" style="margin-bottom: 12px; gap: 15px;">
+    <div style="flex:1;">
+      <div class="box box-blue"><span class="box-title">Niebieska ramka</span>Tłumaczy pojęcie (katalizator, head hopping, rejestr itp.).</div>
+      <div class="box box-red"><span class="box-title">Czerwona ramka</span>Ostrzega przed typowym błędem początkujących.</div>
+    </div>
+    <div style="flex:1;">
+      <div class="box box-orange"><span class="box-title">Pomarańczowa ramka</span>Pokazuje przykład z literatury lub z praktyki.</div>
+      <div class="box box-purple"><span class="box-title">Fioletowa ramka</span>Rada redaktorska – jak rozwiązać problem.</div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Narzędzie 1</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Słowniczek <em class="grad-type">pojęć</em></h2>
+    <p class="body">Najważniejsze terminy użyte w poradniku – jedno miejsce, do którego możesz wracać.</p>
+  </div>
+  <div class="glossary">
+    <div class="gl-row"><div class="gl-term">Pragnienie <span class="gl-en">(want)</span></div><div class="gl-def">Świadomy, zewnętrzny cel bohatera – to, co myśli, że chce osiągnąć. Napędza fabułę.</div></div>
+    <div class="gl-row"><div class="gl-term">Potrzeba <span class="gl-en">(need)</span></div><div class="gl-def">Nieuświadomiona zmiana wewnętrzna – to, czego bohater naprawdę potrzebuje, by się rozwinąć. Konflikt między pragnieniem a potrzebą tworzy napięcie.</div></div>
+    <div class="gl-row"><div class="gl-term">Łuk postaci <span class="gl-en">(character arc)</span></div><div class="gl-def">Zmiana, jaką bohater przechodzi w historii: pozytywny (staje się lepszy), negatywny (upada) lub płaski (świat się zmienia).</div></div>
+    <div class="gl-row"><div class="gl-term">Stawka <span class="gl-en">(stakes)</span></div><div class="gl-def">To, co bohater traci, jeśli mu się nie uda. Im bardziej osobista i bolesna, tym bardziej angażuje czytelnika.</div></div>
+    <div class="gl-row"><div class="gl-term">Rana / Ghost</div><div class="gl-def">Niezagojone wydarzenie z przeszłości, które ukształtowało lęki bohatera i fałszywe przekonania. Utrudnia mu osiągnięcie celu.</div></div>
+    <div class="gl-row"><div class="gl-term">Head hopping</div><div class="gl-def">Przeskakiwanie między punktami widzenia różnych postaci w jednej scenie. Debiutancki błąd – czytelnik gubi się, czyimi oczami patrzy.</div></div>
+    <div class="gl-row"><div class="gl-term">Reflektor <span class="gl-en">(ośrodek świadomości)</span></div><div class="gl-def">Narracja w 3. osobie „przyssana” do głowy jednej postaci – widzimy scenę tylko jej oczami. Łączy dystans 3. osoby z bliskością 1.</div></div>
+    <div class="gl-row"><div class="gl-term">Plot armor</div><div class="gl-def">„Pancerz fabularny” – autor ratuje bohatera na siłę, podrzucając mu przypadkowe rozwiązania. Bohater musi na sukces zapracować.</div></div>
+    <div class="gl-row"><div class="gl-term">Information dump</div><div class="gl-def">Zrzut informacji (o świecie, historii, magii) bez osadzenia w akcji. Nudzi czytelnika.</div></div>
+    <div class="gl-row"><div class="gl-term">Rejestr</div><div class="gl-def">Stopień formalności języka. Dopasuj go do postaci, sytuacji i gatunku.</div></div>
+    <div class="gl-row"><div class="gl-term">Katalizator</div><div class="gl-def">Wydarzenie, które rozbija codzienność bohatera i zmusza go do działania. Powinien pojawić się przed 15% książki.</div></div>
+    <div class="gl-row"><div class="gl-term">Midpoint</div><div class="gl-def">Punkt środkowy (ok. 50% książki). Bohater przestaje reagować na wydarzenia i zaczyna działać aktywnie.</div></div>
+    <div class="gl-row"><div class="gl-term">Pinch point <span class="gl-en">(punkt nacisku)</span></div><div class="gl-def">Moment (ok. 37% i 62%), w którym antagonista pokazuje siłę i przypomina, co grozi bohaterowi. Trzyma akt II w napięciu.</div></div>
+    <div class="gl-row"><div class="gl-term">Mowa pozornie zależna</div><div class="gl-def">Myśli postaci wnikają w narrację bez cudzysłowu i bez „pomyślał”. Świetna przy jednym reflektorze; naprzemiennie dla kilku postaci staje się ukrytym head hoppingiem.</div></div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 1</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Zanim napiszesz <em class="grad-type">pierwsze słowo</em></h2>
+    <p class="body">Najlepsze, co możesz zrobić dla swojej powieści, zanim zaczniesz pisać: przestaw myślenie z „ja” na „czytelnik”.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="callout" style="margin-top:0;">
+        <strong>Zanim przeczytasz dalej.</strong> To, co tu napiszę, nie jest wymierzone w Ciebie ani w Twoją książkę. To zbiór postaw, które jako redaktorka widuję najczęściej, i które najbardziej szkodzą debiutantom. Czytaj to jak życzliwą, szczerą rozmowę, nie jak wyrok.
+      </div>
+
+      <p class="lead">Większość poniższych błędów nie wynika z braku warsztatu, lecz z <span class="highlight-marker">postawy</span>: z postawienia siebie w centrum, a czytelnika gdzieś w tle. Każdy autor zaczyna od pisania dla siebie – to zupełnie normalne. Książka dojrzewa wtedy, gdy zaczynasz pisać <em>także</em> dla czytelnika.</p>
+
+      <h3>1. Pisanie dla siebie zamiast dla czytelnika</h3>
+      <p>Czasem autor pisze, by przepracować własny ból albo komuś coś udowodnić. Czytelnik tego nie wie – ale czuje, że <em>coś jest nie tak</em>: bohaterowie są ofiarami, przeciwnicy karykaturami, a wszystko kręci się wokół autorskiej krzywdy. <strong>Test:</strong> czy ten tekst ma coś do powiedzenia komuś poza mną? Jeśli poza autorem nikt nie zrozumie, o co chodzi, książka zostaje prywatnym pamiętnikiem. Wystarczy jednak odwrócić uwagę ku czytelnikowi, by to zmienić.</p>
+
+      <h3>2. Brak empatii wobec czytelnika</h3>
+      <p>Założenie „czytelnik <em>powinien</em> to czytać, bo ja marzę o wydaniu” prowadzi do tekstu, który nie tłumaczy świata, nie buduje napięcia i ignoruje gatunek. <strong>Powieść to umowa:</strong> to nie czytelnik jest dla Ciebie, lecz Ty dla czytelnika.</p>
+
+      <h3>3. „Będę oryginalny za wszelką cenę”</h3>
+      <p>Oryginalność jest cenna, ale <span class="highlight-marker">łamanie zasad wymaga ich znajomości.</span> Kryminał bez rozwiązania zagadki, romans bez emocji – czytelnik czuje się oszukany.</p>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Dlaczego o tym piszę</span>Bo tych błędów nie znajdziesz w typowych poradnikach – dotyczą postawy, nie techniki. A to one najczęściej decydują, czy książka trafi do czytelnika.</div>
+      <div class="box box-red"><span class="box-title">Objaw nr 1</span>Narrator lub bohater ma rację we wszystkim. Brak szarości, brak prawdziwego konfliktu moralnego.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 1 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="q-row" style="margin-top:10px;">
+    <div class="q-main prose">
+      <h3>4. Unikanie krytyki i redakcji</h3>
+      <p>„To moje dziecko” – więc każda uwaga staje się atakiem. Tekst trafia do druku z błędami. <strong>Objaw:</strong> w recenzjach wracają te same zdania – „nudne opisy”, „nielogiczna fabuła” – a autor obraża się zamiast wyciągnąć wnioski.</p>
+
+      <h3>5. Publikacja za wszelką cenę</h3>
+      <p>Brak wydawcy → self-publishing bez redakcji, korekty i składu, z przypadkową okładką. A potem zdziwienie, że nikt nie kupuje. <span class="highlight-marker">Wydanie książki to nie cel – to narzędzie</span> dotarcia do czytelnika.</p>
+
+      <h3>6. Autofikcja bez dystansu</h3>
+      <p>Autor wrzuca do powieści własne życie i prawdziwe rozmowy. W życiu dialogi są chaotyczne – w powieści każda linijka musi <em>coś robić</em>.</p>
+
+      <table class="comp-table">
+        <tr><th>Zamiast myśleć o…</th><th>Pomyśl o…</th></tr>
+        <tr><td>sobie i swoim marzeniu</td><td>czytelniku i jego doświadczeniu</td></tr>
+        <tr><td>wydaniu książki</td><td>napisaniu książki, którą ktoś zechce przeczytać</td></tr>
+        <tr><td>oryginalności za wszelką cenę</td><td>rzetelnym warsztacie i świadomości gatunku</td></tr>
+        <tr><td>ochronie tekstu przed krytyką</td><td>wdzięczności za każdą uwagę, która go ulepsza</td></tr>
+      </table>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Profesjonalista oddaje tekst do brutalnej redakcji – i dziękuje za każdą uwagę. To nie poddanie się; to najszybsza droga, by stać się lepszym.</div>
+    </div>
+  </div>
+
+  <div class="box box-purple" style="margin:0; text-align:center; font-size:13.5px; line-height:1.6;">
+    <span class="box-title" style="font-size:11px; margin-bottom:8px;">Najważniejsze zdanie tego poradnika</span>
+    Marzenie o wydaniu książki nie upoważnia Cię do znudzenia czytelnika. Czytelnik nie ma obowiązku czytać Twojej książki ani rozumieć, ile Cię kosztowała. <strong>To Ty masz obowiązek sprawić, by chciał przewrócić stronę.</strong>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>5 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 2</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Od pomysłu <em class="grad-type">do planu</em></h2>
+    <p class="body">Debiutanci mylą zbieranie luźnych myśli z układaniem ich w plan.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      
+      <div class="box box-purple" style="margin-bottom: 22px;">
+        <span class="box-title" style="font-size: 11px;">Ważne: to Twój surowiec!</span>
+        Materiał, który zbierasz w sekcjach 2–5 – rana bohatera, jego wada, stawka, punkty zwrotne, katalizator – to w praktyce <strong>ustrukturyzowana burza mózgów</strong>. Masz już mnóstwo klocków. Teraz układamy je w logiczny plan i ciąg przyczynowo-skutkowy.
+      </div>
+
+      <p class="lead"><strong>Burza mózgów to nie plan.</strong> Najpierw zbierasz kamienie, dopiero potem budujesz dom. Pominięcie pierwszego etapu daje suchy plan i papierowe postacie.</p>
+
+      <h3>Etap 1: burza mózgów</h3>
+      <p>Notuj wszystko, co przychodzi Ci do głowy – sceny, dialogi, zwroty akcji. Nie oceniaj, nie cenzuruj. <span class="highlight-marker">Celem jest objętość, nie jakość.</span> To Twoja kopalnia surowca.</p>
+
+      <h3>Etap 2: porządkowanie</h3>
+      <p>Zacznij grupować klocki – kolory, foldery. Co należy do aktu I, co do II? Nie twórz jeszcze fabuły – tylko nadaj kategorie.</p>
+
+      <h3>Etap 3: plan właściwy</h3>
+      <p>Teraz układaj elementy w <strong>logiczną całość</strong>: scena A → scena B (bo wynika z A). Na tym etapie dokładasz brakujące ogniwa.</p>
+
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Błąd: plan z pustej głowy</span>„Akt I: wprowadzenie. Akt II: rozwinięcie.” To nie plan, to szkielet bez mięsa.</div>
+        <div class="ba-card ba-after"><span class="ba-tag">Dobrze: najpierw zbiór</span>Po segregacji notatek widzę braki – np. w akcie I brakuje punktu zwrotnego. Plan rośnie z materiału.</div>
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Przykład burzy mózgów</span>• bohater boi się psów<br>• scena w pralni – list?<br>• antagonista ma bliznę<br>• zakończenie: gorzkie<br><em>(chaos, skoki – tak ma być)</em></div>
+      <div class="box box-purple"><span class="box-title">Pamiętaj</span>Burza mózgów nie zobowiązuje Cię do użycia wszystkiego. 80% notatek może wylądować w koszu – to normalne.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>6 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 3</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Pisanie <em class="grad-type">z planem</em> (i bez)</h2>
+    <p class="body">Największy mit brzmi: „plan zabija kreatywność”. Prawda? Brak planu zabija strukturę, a zły plan zabija energię. Chodzi o dopasowanie metody do Twojego mózgu.</p>
+  </div>
+
+  <div class="prose">
+    <p class="lead">Plotter rozpisuje fabułę z góry, pantser pisze intuicyjnie. Żadne podejście nie jest lepsze – ale debiutantowi jakikolwiek plan oszczędza prostych błędów. Poniżej pięć metod, od najlżejszej do najpełniejszej; zacznij od testu.</p>
+
+    <h3>Test: która metoda jest dla Ciebie?</h3>
+    <div class="reading-content" style="margin-bottom:16px;">
+      <p style="margin-bottom:6px;"><strong>A.</strong> Lubię listy i tabele, czuję się bezpiecznie z planem → <span class="highlight-purple">metoda 1 lub 2</span></p>
+      <p style="margin-bottom:6px;"><strong>B.</strong> Uczę się przez działanie, plany mnie zamykają → <span class="highlight-purple">metoda 4 lub 5</span></p>
+      <p style="margin-bottom:0;"><strong>C.</strong> Myślę obrazami, muszę widzieć całość → <span class="highlight-purple">metoda 3</span></p>
+    </div>
+
+    <h3>Metoda 1. Klasyczny outline <span style="font-weight:400; font-size:13px; color:var(--ink-muted);">(dla plotterów)</span></h3>
+    <p>Rozpisujesz historię od początku do końca, zanim napiszesz pierwsze zdanie. Krok po kroku:</p>
+    
+    <div class="method-list">
+      <div class="method-item"><span class="method-num">1.</span><div><strong>Streść całą książkę w jednym zdaniu.</strong> Krótkie podsumowanie określające główny cel i konflikt.</div></div>
+      <div class="method-item"><span class="method-num">2.</span><div><strong>Rozwiń je w jeden akapit.</strong> Nakreśl ramy: akt I, punkt środkowy (midpoint) i akt III.</div></div>
+      <div class="method-item"><span class="method-num">3.</span><div><strong>Zrób stronę postaci.</strong> Określ pragnienie, potrzebę, wadę, ranę z przeszłości i stawkę.</div></div>
+      <div class="method-item"><span class="method-num">4.</span><div><strong>Wypisz listę scen.</strong> Każdą opisz w 1–2 zdaniach, zaznaczając co się dzieje i dlaczego.</div></div>
+      <div class="method-item"><span class="method-num">5.</span><div><strong>Sprawdź przyczynowość.</strong> Upewnij się, że każda scena logicznie wynika z poprzedniej.</div></div>
+    </div>
+    
+    <p><strong>Zaleta:</strong> nigdy nie utkniesz. <strong>Wada:</strong> możesz znudzić się historią, zanim ją napiszesz.</p>
+
+    <h3>Metoda 2. Beat sheet <span style="font-weight:400; font-size:13px; color:var(--ink-muted);">(arkusz punktów zwrotnych – lekki kręgosłup)</span></h3>
+    <p>Wypełniasz gotowy szablon punktów fabularnych. To nie szczegółowy plan – to <strong>konstrukcja nośna</strong>. Skrócona, 7-punktowa wersja dla debiutanta:</p>
+    <table class="comp-table">
+      <tr><th>Beat</th><th>Gdzie</th><th>Co znaczy</th></tr>
+      <tr><td>Otwarcie</td><td>0–1%</td><td>Codzienność bohatera i jego wada w działaniu.</td></tr>
+      <tr><td>Katalizator</td><td>do 15%</td><td>Coś rozbija status quo.</td></tr>
+      <tr><td>Debata</td><td>15–25%</td><td>Bohater waha się: działać czy nie?</td></tr>
+      <tr><td>Punkt zwrotny I</td><td>25%</td><td>Decyzja – wejście w nowy świat.</td></tr>
+      <tr><td>Midpoint</td><td>~50%</td><td>Odkrycie lub porażka; bohater zaczyna działać.</td></tr>
+      <tr><td>Klęska</td><td>~75%</td><td>Najgorszy moment, wszystko idzie źle.</td></tr>
+      <tr><td>Finał</td><td>90–99%</td><td>Bohater używa tego, czego się nauczył.</td></tr>
+    </table>
+    <p style="margin-bottom:10px;">Przy każdym beacie dopisz 1–2 zdania – i tyle. Reszta przyjdzie w pisaniu. <em>Metody 3–5 znajdziesz na następnej stronie.</em></p>
+    <div class="box box-blue" style="margin:0;">
+      <span class="box-title">Skąd wziąć szablon i jak wymyślić każdy beat?</span>
+      Tabela wyżej <strong>to</strong> szablon – nie musisz go nigdzie szukać. Żeby wypełnić każdy punkt, zadaj sobie jedno pytanie:<br>
+      <strong>Otwarcie:</strong> jak wygląda zwykły dzień bohatera i która jego wada już tu działa?<br>
+      <strong>Katalizator:</strong> co jednego dnia <em>bezpowrotnie</em> burzy tę codzienność?<br>
+      <strong>Debata:</strong> czego bohater się boi, skoro waha się przed działaniem?<br>
+      <strong>Punkt zwrotny I:</strong> jaką decyzję podejmuje, po której nie ma już odwrotu?<br>
+      <strong>Midpoint:</strong> co odkrywa albo traci, że przestaje uciekać i zaczyna działać?<br>
+      <strong>Klęska:</strong> co najgorszego może go spotkać tuż przed finałem?<br>
+      <strong>Finał:</strong> czego nauczył się po drodze i jak tego teraz używa?
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>7 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 3 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Pięć metod, które <em class="grad-type">naprawdę działają</em></h2>
+    <p class="body">Ciąg dalszy: metody 3–5. Wybierz tę, która pasuje do wyniku testu z poprzedniej strony.</p>
+  </div>
+
+  <div class="prose">
+    <h3>Metoda 3. Karty indeksowe <span style="font-weight:400; font-size:13px; color:var(--ink-muted);">(dla wzrokowców)</span></h3>
+    <p>Nie pracujesz w linii, tylko w przestrzeni. Każdą scenę zapisujesz na osobnej karteczce (lub w Trello / Miro), rozkładasz wszystkie na stole, <strong>grupujesz w akty</strong> (I, II, III) i <strong>przesuwasz</strong>, sprawdzając, co z czego wynika. Gdy kolejność jest logiczna, przepisujesz ją jako listę i piszesz. <strong>Zaleta:</strong> widzisz całość naraz – łatwo zauważyć pusty akt II albo powtórzenie.</p>
+
+    <h3>Metoda 4. Plan po brudnopisie <span style="font-weight:400; font-size:13px; color:var(--ink-muted);">(dla pantserów)</span></h3>
+    <p>Nie planujesz przed – piszesz na żywioł. Ale potem <strong>odtwarzasz plan</strong> z tego, co powstało:</p>
+    
+    <div class="method-list">
+      <div class="method-item"><span class="method-num">1.</span><div><strong>Skończ brudnopis</strong> (nie czytaj, nie poprawiaj).</div></div>
+      <div class="method-item"><span class="method-num">2.</span><div><strong>Wypisz wszystkie wydarzenia po kolei</strong> (max 2 zdania na scenę).</div></div>
+      <div class="method-item"><span class="method-num">3.</span><div><strong>Nałóż model 3 aktów:</strong> gdzie katalizator, gdzie midpoint?</div></div>
+      <div class="method-item"><span class="method-num">4.</span><div><strong>Zaznacz dziury</strong> i napraw je w drugiej wersji.</div></div>
+    </div>
+    
+    <p>Ta metoda wymaga <strong>dwóch pełnych wersji</strong>: pierwsza to surowiec, druga – właściwa historia.</p>
+
+    <h3>Metoda 5. Plan hybrydowy <span style="font-weight:400; font-size:13px; color:var(--ink-muted);">(polecana debiutantom)</span></h3>
+    <p>Złoty środek: planujesz tylko <strong>punkty krytyczne</strong>, resztę odkrywasz w pisaniu. Twój minimalny plan przed startem:</p>
+    
+    <div class="method-list">
+      <div class="method-item"><span class="method-dot">•</span><div><strong>początek</strong> (pierwsze zdanie)</div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>katalizator</strong> (do 15%)</div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>punkt zwrotny I</strong> (decyzja bez odwrotu)</div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>midpoint</strong> (od czego bohater zaczyna działać)</div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>klęska</strong></div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>finał</strong></div></div>
+      <div class="method-item"><span class="method-dot">•</span><div><strong>ostatnie zdanie</strong></div></div>
+    </div>
+    
+    <p style="margin-bottom:0;">Masz celownik, ale nie gotową trasę – możesz zbaczać, lecz się nie zgubisz. Dlatego polecam tę metodę na pierwszą powieść.</p>
+  </div>
+
+  <div class="box box-purple" style="margin:18px 0 0;">
+    <span class="box-title">Plan to nie więzienie</span>
+    Co, jeśli w połowie pisania bohater „ożyje” i zechce iść własną drogą? To dobry znak, nie katastrofa. Nie trzymaj się planu na siłę i nie porzucaj go w panice – wróć do mapy (sekcje 2–4), popraw fundament tak, by uwzględniał nowy kierunek, i pisz dalej. Plan ma Ci służyć, a nie odwrotnie.
+  </div>
+
+  <div class="exercise" style="margin-bottom:0;">
+    <span class="ex-tag">Ćwiczenie: wybierz metodę i wykonaj</span>
+    <strong>1 (outline):</strong> rozpisz 10-scenowy outline aktu I. &nbsp; <strong>2 (beat sheet):</strong> wypełnij 7 beatów (max strona). &nbsp; <strong>3 (karty):</strong> zapisz 5 scen na kartkach i rozłóż. &nbsp; <strong>4 (pantser):</strong> napisz pierwszą scenę, potem odtwórz z niej plan. &nbsp; <strong>5 (hybryda):</strong> zapisz 7 punktów krytycznych i napisz pierwszy rozdział.<br>
+    Po wszystkim zapytaj się: <em>czułam/em się zamknięta/y czy bezpieczna/y?</em> To odpowiedź, która metoda jest Twoja.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>8 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 4</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Struktura <em class="grad-type">trzech aktów</em></h2>
+    <p class="body">Akt I (zawiązanie), akt II (konfrontacja) i akt III (rozwiązanie) – każdy pełni inną funkcję w fabule.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <p>Najczęstszy błąd polega na tym, że autor dzieli książkę na trzy części, ale zapomina, że <strong>podział na akty to nie podział na rozdziały</strong>. Każdy akt ma robić coś określonego. Gdy autor o tym zapomina, akty zlewają się w jedno i <span class="highlight-marker">nie wiadomo, co jest punktem zwrotnym</span>, a co właściwym mięsem opowieści.</p>
+
+      <h3>Oś czasu i proporcje</h3>
+      <div class="timeline">
+        <div class="timeline-bar">
+          <div class="tl-act tl-act-1">Akt I</div>
+          <div class="tl-act tl-act-2">Akt II</div>
+          <div class="tl-act tl-act-3">Akt III</div>
+        </div>
+        <div class="timeline-marks">
+          <div class="tl-mark"><strong>Katalizator</strong>iskra</div>
+          <div class="tl-mark"><strong>P. Zwrotny</strong>konflikt</div>
+          <div class="tl-mark"><strong>Midpoint</strong>działanie</div>
+          <div class="tl-mark"><strong>Klęska</strong>ciemność</div>
+          <div class="tl-mark"><strong>Finał</strong>rozwiązanie</div>
+        </div>
+      </div>
+
+      <h3>Grzęzawisko drugiego aktu</h3>
+      <p>Akt II jest najdłuższy – to w nim książki najczęściej „umierają”. Lekiem jest <strong>punkt środkowy (midpoint)</strong> w połowie, który zmienia bohatera z osoby <em>reagującej</em> w <em>działającą</em>.</p>
+      <p>Drugim ratunkiem są <strong>pinch pointy</strong> (punkty nacisku) – dwa momenty, w których antagonista przypomina o sobie i pokazuje swoją siłę. Pierwszy wypada zwykle około <span class="tl-pct">37%</span>, drugi około <span class="tl-pct">62%</span> książki. Po każdym z nich stawka rośnie, a bohater nie może już spocząć. Bez nich akt II zamienia się w ciąg scen, w których niby coś się dzieje, ale presja nie narasta.</p>
+
+      <h3>Bohater reagujący kontra działający</h3>
+      <p>Mniej więcej do połowy książki bohater zwykle tylko <strong>reaguje</strong>. Działa pod wpływem strachu, próbuje przetrwać, unika konfrontacji, ucieka przed antagonistą. Zdarzenia spadają na niego z zewnątrz, a on tylko na nie odpowiada: ktoś rzuca mu kłodę pod nogi – on przez nią przeskakuje i idzie dalej.</p>
+      <p>Po midpoincie ma to się odwrócić. <strong>Bohater działający</strong> nie pyta już „dlaczego ja?”, tylko „jak rozwiązać ten problem?”. Nie tylko przeskakuje kłodę – <span class="highlight-marker">dowiaduje się, kto ją rzucił</span>, i działa tak, by więcej żadnych kłód nie było. Zaczyna tworzyć własną historię i własne wydarzenia, zamiast biernie znosić cudze.</p>
+
+      <div class="reading-content" style="margin:12px 0;">
+        <h4>Midpoint nie tylko w fantasy</h4>
+        <p style="margin-bottom:6px;">Forma jest dowolna – zewnętrzne wydarzenie, nagła świadomość albo decyzja. Nie musi być trzęsieniem ziemi; musi tylko realnie przełączyć bohatera z reagującego w działającego.</p>
+        <p style="margin-bottom:4px;"><strong>Romans:</strong> bohaterowie przestają krążyć i zaprzeczać uczuciom. Pocałunek, wyznanie albo ujawniona tajemnica sprawia, że zamiast unikać relacji, świadomie o nią walczą (albo świadomie uciekają).</p>
+        <p style="margin-bottom:4px;"><strong>Kryminał / thriller:</strong> śledczy schodzi z oficjalnego tropu i zaczyna grać własną grę – zastawia pułapkę zamiast gonić. Częsty wariant: z tropiącego staje się tropionym.</p>
+        <p style="margin-bottom:0;"><strong>Obyczaj / coming-of-age:</strong> bohater przestaje obwiniać innych i pierwszy raz robi coś wbrew dotychczasowej wadzie – dzwoni, odchodzi, przyznaje się.</p>
+      </div>
+      
+      <div class="checklist" style="margin-top:12px;">
+        <div class="check-row"><span class="check-box"></span><div><strong>Katalizator</strong> przed <span class="tl-pct">15%</span> książki.</div></div>
+        <div class="check-row"><span class="check-box"></span><div><strong>Punkt zwrotny aktu I</strong> przed <span class="tl-pct">25%</span>.</div></div>
+        <div class="check-row"><span class="check-box"></span><div><strong>Punkt środkowy (midpoint)</strong> około <span class="tl-pct">50%</span>.</div></div>
+        <div class="check-row"><span class="check-box"></span><div><strong>Główna klęska</strong> około <span class="tl-pct">75%</span>.</div></div>
+      </div>
+
+      <div class="callout" style="margin-top:14px;">
+        <strong>Procenty to diagnostyka, nie nakaz.</strong> Nie pisz „pod słupki”. To proporcje, które <em>sprawdzasz</em> w gotowym brudnopisie, a nie linie, do których naginasz fabułę. Licz wprost: jeśli celujesz w 80 tys. słów, 15% to ok. 12 tys. słów, czyli mniej więcej trzeci–czwarty rozdział. Katalizator wypadł Ci na 25%? To nie wyrok „amputuj”, tylko sygnał: sprawdź, czy początek się nie wlecze. Jeśli te 25% naprawdę pracuje na fabułę – zostaw.</div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie: trzy akty</span>Klasyczny model dramaturgiczny. Akt I zawiązuje konflikt, akt II go rozwija i piętrzy, akt III rozwiązuje.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie: pinch point</span>„Punkt nacisku” – moment, w którym antagonista pokazuje siłę i przypomina, co grozi bohaterowi. Dwa takie punkty (ok. 37% i 62%) trzymają akt II w napięciu.</div>
+      <div class="box box-orange"><span class="box-title">Prolog = obietnica</span>Prolog to jak zwiastun filmu. Jeśli możesz go wyciąć i nikt nie zauważy – to dekoracja.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Jeśli katalizator wypada znacznie później niż w 15% tekstu, to sygnał, że początek potwornie się wlecze.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Jeśli w drugiej połowie aktu II bohater wciąż tylko reaguje i czeka na ruch antagonisty, fabuła grzęźnie. Bohater musi się otrząsnąć i zacząć podejmować <strong>własne</strong> decyzje – takie, które zmieniają jego, świat i przybliżają go do celu, a nie kolejne pasmo pecha.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>9 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 5</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Tempo, czyli <em class="grad-type">pacing</em></h2>
+    <p class="body">Sztuka polega na tym, by wiedzieć, co pokazać ze szczegółami, a co skrócić.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3>Scena kontra streszczenie</h3>
+      <p>Nie każdy fragment fabuły zasługuje na to samo tempo. Czasem warto <strong>wejść z kamerą</strong> i pokazać rozmowę sekunda po sekundzie. A czasem wystarczy jedno zdanie streszczenia: <em>„Przegadali całą noc, a rano nic już nie było takie samo”</em>. Warto <span class="highlight-marker">rozwijać sceny istotne</span>, a skracać te łącznikowe.</p>
+
+      <p>Są sceny, które naprawdę pchają fabułę do przodu: dialog ujawnia coś ważnego, narrator pomaga zrozumieć sytuację, postacie czegoś się dowiadują albo zatrzymują się nad własnym zachowaniem. Te trzeba rozpisać. Ale są też zwykłe <strong>zapychacze</strong> – też potrzebne, lecz nie wymagają detalu. Nie musisz opisywać, jak bohaterowie przejeżdżają z miejsca na miejsce: czy słuchali muzyki, milczeli, patrzyli przez okno. Czasem wystarczy powiedzieć, że pojechali z punktu A do punktu B, a w radiu leciała jakaś piosenka.</p>
+
+      <p>Gdy każdy fragment rozpisujesz z tym samym detalem, wszystko zaczyna wydawać się jednakowo ważne – i prawdziwie istotne wydarzenia <span class="highlight-marker">mieszają się z błahymi</span>. Dlatego najpierw zdecyduj, które sceny muszą być rozpisane, a które mają być tylko lekkim przejściem z jednej do drugiej.</p>
+
+      <h3>Wchodź późno, wychodź wcześnie</h3>
+      <p>Zaczynaj scenę <strong>jak najpóźniej</strong> – w momencie, w którym zaczyna się dziać coś istotnego, a nie od dojazdu do pracy. I ucinaj ją <strong>tuż po kulminacji</strong>, żeby czytelnik musiał szybko przewrócić stronę.</p>
+      <p><strong>Uwaga – „późno” nie znaczy „bez uziemienia”.</strong> Jeśli beta-czytelnicy pytają „kto to? gdzie oni są?”, to nie znaczy, że masz dopisać rozbieg. To znaczy, że w pierwszym–drugim zdaniu brakuje trzech kotwic: <span class="highlight-marker">kto, gdzie, kiedy</span>. Wpleć je w akcję, nie podawaj osobno.</p>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Za zimno – czytelnik zgubiony</span><em>– Nie waż się tego robić!<br>Cofnął się o krok. Wiedział, że ona ma rację, ale było już za późno.</em><br>Kto? Gdzie? Czytelnik dryfuje.</div>
+        <div class="ba-card ba-after"><span class="ba-tag">Późno, ale uziemione</span><em>Klara zastąpiła mu drogę w drzwiach gabinetu, wciąż w płaszczu mokrym od deszczu.<br>– Nie waż się tego podpisywać!<br>Marek cofnął się o krok.</em><br>Akcja od razu, a kto/gdzie wpleciony w jedno zdanie.</div>
+      </div>
+
+      <div class="callout">
+        <strong>W praktyce.</strong> Spójrz na początek każdej swojej sceny i zapytaj: czy mogę zacząć ją akapit później? Zwykle odpowiedź brzmi „tak”.
+      </div>
+
+      <div class="exercise">
+        <span class="ex-tag">Ćwiczenie</span>
+        Weź pierwszą scenę swojego rozdziału. Wytnij <strong>pierwszy akapit</strong>, a potem <strong>ostatnie dwa zdania</strong>. Czy czegoś brakuje? Zwykle nie.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie: scena vs streszczenie</span><strong>Scena</strong> – pokazana z dialogiem i detalem. <strong>Streszczenie</strong> – skrót wydarzeń w kilku zdaniach. Tempo to świadome przeplatanie obu.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy błąd</span>Scena zaczyna się dziesięć minut za wcześnie (poranna rutyna) i kończy za późno (pożegnania). Wytnij ramy, zostaw rdzeń.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>10 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 6</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Typy <em class="grad-type">narracji</em></h2>
+    <p class="body">Autorzy rzadko pytają, jaki typ narracji pasuje do ich powieści. A to fundamentalna decyzja – nie o zaimki, lecz o to, ile czytelnik ma wiedzieć i komu ma ufać.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <p class="lead">Wybór narracji to trzy niezależne pytania. Można je mieszać, ale trzeba wiedzieć, którą odpowiedź się wybrało – inaczej narracja staje się przypadkowa.</p>
+
+      <h4>Pytanie 1: Kto mówi? (osoba gramatyczna)</h4>
+      <p><strong>Pierwsza osoba („ja”)</strong> – narrator jest postacią w świecie książki. Daje natychmiastową bliskość, ale ogranicza wiedzę do tego, co ta postać widzi i czuje.<br>
+      <strong>Trzecia osoba („on/ona”)</strong> – narrator stoi obok wydarzeń; może być niewidoczny albo aktywnie komentować.<br>
+      <strong>Druga osoba („ty”)</strong> – bardzo rzadka; czytelnik staje się bohaterem. Z początku nienaturalna, potem zwykle przezroczysta.</p>
+
+      <h4>Pytanie 2: Ile wiemy? (perspektywa)</h4>
+      <p>Tu rodzi się najwięcej błędów. <strong>Narrator wszechwiedzący</strong> ma „boską” wiedzę o myślach wszystkich, o przeszłości i przyszłości. <strong>Ośrodek świadomości</strong> (tzw. <span class="highlight-purple">reflektor</span>) to narracja w 3. osobie „przyssana” do głowy jednego bohatera – widzimy świat tylko jego oczami. To dziś najpopularniejszy model (np. <em>Harry Potter</em>).</p>
+
+      <h4>Pytanie 3: Czy ufać narratorowi? (wiarygodność)</h4>
+      <p><strong>Narrator wiarygodny</strong> – jego oceny pokrywają się z prawdą świata przedstawionego. <strong>Narrator niewiarygodny</strong> – myli się, kłamie albo nie rozumie sytuacji (naiwność, silne emocje). Autor zwykle daje czytelnikowi sygnały, że narrator błądzi.</p>
+
+      <h3>Mowa pozornie zależna <span style="font-weight:400; font-size:12px; color:var(--ink-muted);">(technika dla średniozaawansowanych)</span></h3>
+      <p>Myśli postaci wnikają w narrację <span class="highlight-marker">bez cudzysłowu</span>: <em>„Co za bezczelność. Nie zniży się do odpowiedzi.”</em> Zaciera granicę między narratorem a bohaterem – świetne przy reflektorze.</p>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Zwykła narracja</span><em>Pomyślała, że to bezczelność, i postanowiła, że nie odpowie.</em><br>Dystans: relacjonujemy myśl z zewnątrz.</div>
+        <div class="ba-card ba-after"><span class="ba-tag">Mowa pozornie zależna</span><em>Co za bezczelność. Nie zniży się do odpowiedzi.</em><br>Wchodzimy wprost do głowy postaci – bez „pomyślała”.</div>
+      </div>
+      <p style="margin-bottom:0;"><strong>Kiedy to błąd?</strong> Gdy stosujesz ją naprzemiennie dla kilku postaci w jednej scenie. Skoro myśli wsiąkają w narrację bez cudzysłowu, to przy skoku z głowy A do głowy B czytelnik nie wie już, <em>czyje</em> to myśli. To <span class="highlight-marker">head hopping tylnymi drzwiami</span> – tym groźniejszy, że niewidoczny.</p>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Trzy osie wyboru</span><strong>1.</strong> Osoba (ja / on / ty)<br><strong>2.</strong> Wiedza (wszechwiedzący / reflektor)<br><strong>3.</strong> Zaufanie (wiarygodny / nie)</div>
+      <div class="box box-blue"><span class="box-title">Reflektor (ośrodek świadomości)</span>3. osoba, ale „siedzimy” w głowie jednej postaci. Najczęstszy model współczesnej prozy – łączy dystans 3. osoby z intensywnością 1. osoby.</div>
+      <div class="box box-purple"><span class="box-title">Narrator niewiarygodny</span>Gdy narrator w 1. os. kłamie lub się myli (np. z powodu choroby). Potężne narzędzie, ale autor musi znać prawdę.</div>
+
+      <div class="box box-red"><span class="box-title">Błąd: narrator wyprzedza bohaterów</span>Autor, który nie wybrał świadomie typu narracji, nie tylko miesza style – często każe narratorowi zdradzić czytelnikowi coś, czego bohaterowie jeszcze nie odkryli. Skutek: czytamy o tym samym dwa razy – najpierw z perspektywy narratora, potem raz jeszcze, gdy postać „dochodzi” do tej wiedzy. Napięcie znika, a tekst się dłuży.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>11 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 6 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Ten sam kadr, <em class="grad-type">cztery narracje</em></h2>
+    <p class="body">Najlepiej widać różnicę na przykładzie. Angela obserwuje Jasia przy pracy – zobacz, jak zmienia się scena zależnie od techniki.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="box box-red" style="margin-top:0;">
+        <span class="box-title">Błąd: head hopping</span>
+        <em>„Angela obserwowała Jasia przy pracy, radził sobie nieźle. Jasiu układał właśnie krzesła, lubił tę pracę. Angela wiedziała, że chłopak nie zrezygnuje.”</em><br><br>
+        W trzech zdaniach, bez ostrzeżenia, przeskakujemy z głowy Angeli do głowy Jasia i z powrotem. Czytelnik traci orientację, czyimi oczami patrzy.
+      </div>
+
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>Wersja A: trzecioosobowa ograniczona (reflektor – Angela)</h4>
+        <p style="margin-bottom:0;"><em>„Angela obserwowała Jasia przy pracy. Wyglądało na to, że szkolenie pomogło, bo jego ruchy były sprawne. Gdy układał krzesła, na jego twarzy błąkał się cień uśmiechu – Angela uznała, że chyba polubił tę robotę.”</em><br>
+        <span style="font-size:11px; color:var(--ink-muted);">Widzimy tylko to, co widzi i myśli Angela.</span></p>
+      </div>
+
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>Wersja B: trzecioosobowa wszechwiedząca</h4>
+        <p style="margin-bottom:0;"><em>„Angela z satysfakcją patrzyła na Jasia, nie wiedząc jeszcze, że chłopak rzeczywiście polubił to zajęcie. Jasiu układał krzesła, ciesząc się z miarowego rytmu pracy.”</em><br>
+        <span style="font-size:11px; color:var(--ink-muted);">Narrator zna uczucia obojga w tym samym momencie.</span></p>
+      </div>
+
+      <div class="reading-content" style="margin-bottom:0;">
+        <h4>Wersja C: narrator auktorialny (komentujący)</h4>
+        <p style="margin-bottom:0;"><em>„Przyglądała się uczniowi z taką dumą, jakby sama nauczyła go trzymać ścierkę. Jasiu układał krzesła z zapałem, który – jak to u młodych bywa – miał wkrótce wygasnąć.”</em><br>
+        <span style="font-size:11px; color:var(--ink-muted);">Narrator ma własny głos, ocenia postacie i zna ich przyszłość.</span></p>
+      </div>
+
+      <div class="callout" style="margin-bottom:0;">
+        <strong>A i B wyglądają podobnie – cała różnica jest w jednym zdaniu.</strong> W reflektorze (A) napiszesz tylko: <em>„Angela uznała, że chyba polubił”</em> – to jej domysł. W wersji wszechwiedzącej (B) wolno napisać wprost: <em>„Jasiu polubił to zajęcie”</em> – to fakt, bo narrator zna głowę Jasia. Jeśli siedzisz w głowie Angeli, a stwierdzasz coś, czego ona nie może wiedzieć – wypadłaś/eś z reflektora.</div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Head hopping</span>Przeskakiwanie między głowami postaci w jednej scenie. Czytelnik gubi się, czyimi oczami patrzy.</div>
+
+      <div class="box box-purple"><span class="box-title">Reflektor a suspens</span>„Jeden reflektor na scenę” to <strong>nie</strong> „jeden punkt widzenia na całą książkę”. Tykającą bombę pod stołem pokazujesz w <strong>osobnej scenie</strong> (lub rozdziale) z innej perspektywy, a potem wracasz do bohatera, który spokojnie pije kawę. Tak rodzi się suspens. To <em>co innego</em> niż błąd ze strony 10: tam narrator wygaduje sekret w tej samej scenie, w której bohater dopiero do niego dochodzi – i czytamy o tym dwa razy.</div>
+
+      <div class="box box-red"><span class="box-title">Pułapka 1: dystans</span>Narracja wszechwiedząca jest z natury sztuczna. Tworzy dystans – czytelnik obserwuje postacie z daleka, zamiast przeżywać emocje razem z nimi. Reflektor daje intensywność, której szuka dziś czytelnik.</div>
+
+      <div class="box box-red"><span class="box-title">Pułapka 2: rozmyty głos</span>Narrator auktorialny musi mieć własny, konsekwentny ton, inteligencję i styl. Problem debiutanta to nie „wie za dużo”, lecz że nie potrafi tej wiedzy uporządkować w jednym głosie – wtedy auktorialność zamienia się w head hopping.</div>
+
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Wybierz jednego reflektora na scenę. Jeśli śledzisz postać A, a nagle wiesz, co czuje B – masz błąd perspektywy. Jeden punkt widzenia = większa siła przekazu.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>12 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 7</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Dialog, który <em class="grad-type">działa</em></h2>
+    <p class="body">Dobre dialogi to nie naturalne rozmowy z życia. Mają być od nich lepsze – bez wypełniaczy.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3>Cztery funkcje dobrego dialogu</h3>
+      <p>Każda kwestia musi robić jedno z czterech: posuwać fabułę, charakteryzować postać, budować napięcie lub tworzyć rytm. Jeśli nie robi niczego – wytnij ją.</p>
+
+      <h3>Dwa rodzaje dialogu</h3>
+      <p><strong>1. Dialog „z życia”.</strong> Debiutanci często odwzorowują rzeczywistość: ktoś wchodzi do sklepu, więc się wita, pada small talk, „co tam, jak tam”. W życiu tak jest – w powieści to balast. Te formy <span class="highlight-marker">niczego nie wnoszą</span>; nie pokazują nawet, że bohater jest uprzejmy – to grzeczności, których i tak się spodziewamy, więc czytelnik dopowiada je sobie sam. Wyjątek robisz świadomie – np. by pokazać, jak bohaterka denerwuje się przed rozmową kwalifikacyjną. Ale jeśli <em>każdy</em> dialog zaczyna się od „dzień dobry”, to błąd.</p>
+      <p><strong>2. Dialog rzeczowy.</strong> Tu drobne grzeczności lądują najwyżej w narracji, a sama wymiana zdań przekazuje najważniejsze informacje, posuwa fabułę, mówi coś o postaci albo buduje napięcie. Zanim go napiszesz, odpowiedz sobie: <span class="highlight-marker">co ta scena ma osiągnąć?</span> Świadomość celu to różnica między dialogiem rzeczowym a wypełniaczem.</p>
+
+      <h3>Podtekst <span style="font-weight:400; font-size:12px; color:var(--ink-muted);">(technika dla średniozaawansowanych)</span></h3>
+      <p>Trzeci, najsubtelniejszy rodzaj: postacie <strong>nie mówią wprost</strong> tego, co czują i czego chcą – lawirują między słowami. To mocne narzędzie, ale <span class="highlight-marker">nie do każdej sceny</span>. Sprawdza się zwłaszcza tam, gdzie bohaterowie mają problem z komunikacją. Wszędzie naraz – męczy.</p>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Na wierzchu: kolacja</span><em>– Zostawiłaś dla mnie talerz?<br>– Wystygł. Czekałam do dziewiątej.<br>– Mówiłem, że będę później.<br>– Mówiłeś. Za każdym razem mówisz.</em></div>
+        <div class="ba-card ba-after"><span class="ba-tag">Pod spodem: zdrada</span>Ani słowa o zdradzie – a czytelnik czuje ją w każdej linijce. „Wystygł” znaczy <em>„przestałam na ciebie czekać”</em>, „za każdym razem” – <em>„wiem o wszystkim”</em>. To jest podtekst.</div>
+      </div>
+
+      <h3>Błędy debiutantów</h3>
+      <p><strong>1. Dialog grzecznościowy:</strong> <em>– Cześć. – Hej. – Co słychać?</em><br>
+      <strong>2. Info dump:</strong> <em>„Jak wiesz, jesteśmy braćmi...”</em><br>
+      <strong>3. Ten sam głos:</strong> Wszyscy bohaterowie brzmią identycznie pod kątem słownictwa i składni.</p>
+
+      <h3>Didaskalia <span style="font-weight:400; font-size:12px; color:var(--ink-muted);">(wtrącenia przy kwestii, np. „powiedział”)</span></h3>
+      <p>Unikaj przesady z czasownikami (<em>wycedził, zasyczał</em>). Słowo „powiedział” jest przezroczyste jak interpunkcja. Używaj go śmiało.</p>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Podtekst</span>To, co jest ukryte pod słowami. Znaczenie domyślne.</div>
+      <div class="box box-red"><span class="box-title">Zapamiętaj</span>„Cześć, jak się masz?” w powieści to strata czasu. Wchodź do rozmowy późno, gdy jest już mięso.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Czytaj dialogi na głos, z różnymi emocjami. Czy zakrywając imiona, odgadłbyś kto mówi?</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>13 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 8</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Język i <em class="grad-type">rejestr</em></h2>
+    <p class="body">Warstwa, na której historia materializuje się w głowie czytelnika. Świetna fabuła nie pomoże, jeśli język jest drętwy, niespójny albo nużący.</p>
+  </div>
+
+  <div class="prose">
+    <h3>8.1 Język mówiony a pisany</h3>
+    <p>Debiutanci popełniają dwa przeciwstawne błędy:</p>
+    <table class="comp-table">
+      <tr><th>Błąd</th><th>Przykład</th><th>Dlaczego źle</th></tr>
+      <tr><td>Dialog pisany jak książka</td><td><em>„Czyżbyś nie zamierzał dziś spożyć posiłku?”</em></td><td>Ludzie tak nie mówią. Brzmi sztucznie.</td></tr>
+      <tr><td>Narracja pisana jak rozmowa</td><td><em>„No i wtedy on do niej, a ona na to…”</em></td><td>Nuży, brak dystansu, wszystko spłaszczone.</td></tr>
+    </table>
+    <p><strong>Zasada:</strong> dialog bliżej <strong>języka mówionego</strong> (ale lepszego – bez „yyy”, „no wiesz”, powtórzeń); narracja bliżej <strong>języka pisanego</strong> (ale nie urzędowego).</p>
+
+    <div class="ba-pair">
+      <div class="ba-card ba-before"><span class="ba-tag">Źle – dialog z wypełniaczami</span><em>– No cześć. – Hej, co tam? – Nic, a u ciebie? Słuchaj, chciałem cię o coś zapytać. – No pytaj. – Yyy, nieważne.</em></div>
+      <div class="ba-card ba-after"><span class="ba-tag">Dobrze – dialog skondensowany</span><em>– Musimy porozmawiać. – Znowu? – Tym razem to ważne.</em><br>W trzy linijki: napięcie, relacja, konflikt.</div>
+    </div>
+
+    <h3>8.2 Skala rejestru</h3>
+    <p>Rejestr to stopień oficjalności języka. Każda postać, scena i gatunek ma swój domyślny rejestr – błędem jest skakanie między nimi bez powodu.</p>
+    <table class="comp-table">
+      <tr><th>Rejestr</th><th>Kiedy</th><th>Przykład</th></tr>
+      <tr><td>Uroczysty</td><td>prolog, przełom</td><td><em>„I oto stanął u kresu wędrówki.”</em></td></tr>
+      <tr><td>Formalny</td><td>sceny urzędowe, listy</td><td><em>„Niniejszym potwierdzam odbiór pisma.”</em></td></tr>
+      <tr><td>Neutralny</td><td>domyślna narracja</td><td><em>„Odwrócił się w stronę drzwi.”</em></td></tr>
+      <tr><td>Potoczny</td><td>dialogi, 1. osoba</td><td><em>„No to co, lecimy czy nie?”</em></td></tr>
+      <tr><td>Slang / żargon</td><td>środowiskowy</td><td><em>„Zaraportuję się do dyżurnego.”</em></td></tr>
+      <tr><td>Wulgarny</td><td>bardzo rzadko, dla emocji</td><td><em>„Spadaj.”</em></td></tr>
+    </table>
+
+    <p style="margin-top:14px;"><strong>Najczęstszy błąd:</strong> rejestr skacze w obrębie jednej wypowiedzi, bez powodu. Postać brzmi wtedy jak dwie różne osoby naraz.</p>
+    <div class="ba-pair">
+      <div class="ba-card ba-before"><span class="ba-tag">Źle – rejestr skacze</span><em>– Niniejszym informuję, że nie zamierzam tego tolerować, więc się, kurwa, zamknij i spadaj, bądź łaskaw.</em><br>Urzędowy, wulgarny i uprzejmy w jednym zdaniu – brzmi sztucznie.</div>
+      <div class="ba-card ba-after"><span class="ba-tag">Dobrze – jeden rejestr</span><em>– Nie będę tego tolerował. Wyjdź.</em><br>Spójnie, twardo, w jednym tonie. Gdyby postać miała przejść na wulgarny, robi to świadomie i w osobnej kwestii.</div>
+    </div>
+
+    <div class="box box-purple" style="margin:14px 0 0;">
+      <span class="box-title">Uroczysty – przeżytek czy narzędzie?</span>
+      Rejestr uroczysty nie jest bazą współczesnej prozy, ale to nie znaczy, że jest martwy. Działa jako <strong>świadomy skok</strong>: przysięga, pogrzeb, przełomowa deklaracja. W obyczajówce użyj go na jedno–dwa zdania, celowo – wtedy wybrzmi. W fantasy może stać wyżej (mowa króla, proroctwo), ale i tu rządzi oszczędność i spójność. Granica „przesadzonego” jest prosta: <span class="highlight-marker">gdy czytelnik zaczyna zauważać język zamiast historii</span> – to już za dużo.
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>14 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 8 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Rytm zdania i <em class="grad-type">mocne czasowniki</em></h2>
+    <p class="body">Rejestr to jedno. Drugie – jak długość zdań i dobór czasowników sterują tempem i obrazem.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3>8.3 Fraza i rytm zdania</h3>
+      <p>Ciąg dalszy pacingu (sekcja 5): krótkie zdania przyspieszają, długie zwalniają.</p>
+      <div class="timeline" style="margin:10px 0 14px;">
+        <div class="timeline-bar" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="tl-act" style="background:#E8772A;">Krótkie</div>
+          <div class="tl-act" style="background:#B8409A;">Mieszane</div>
+          <div class="tl-act" style="background:#6B35C8;">Długie</div>
+        </div>
+        <div class="timeline-marks" style="grid-template-columns: repeat(3,1fr);">
+          <div class="tl-mark"><strong>Akcja, walka</strong>szybkie cięcia</div>
+          <div class="tl-mark"><strong>Opis, refleksja</strong>płynność</div>
+          <div class="tl-mark"><strong>Nastrój, zaduma</strong>przeciągnięcie</div>
+        </div>
+      </div>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Wolne (długie)</span><em>„Kiedy w końcu otworzył drzwi, zobaczył, że pokój jest pusty, a na podłodze leżą porozrzucane ubrania i pusta butelka, którą wypili poprzedniego wieczoru.”</em></div>
+        <div class="ba-card ba-after"><span class="ba-tag">Szybkie (krótkie)</span><em>„Otworzył drzwi. Pokój był pusty. Na podłodze – ubrania i butelka. Pamiętał ten wieczór. Zanim wszystko się popsuło.”</em></div>
+      </div>
+
+      <h3>8.4 Czasowniki zamiast przymiotników</h3>
+      <p>Najsłabsze zdania opierają się na „być”, „mieć”, „zrobić się”. Mocne mają <strong>dynamiczny czasownik</strong>.</p>
+      <table class="comp-table">
+        <tr><th>Słabe (być / mieć)</th><th>Mocne (dynamiczny czasownik)</th></tr>
+        <tr><td><em>Była zmęczona.</em></td><td><em>Ociężale opadła na krzesło.</em></td></tr>
+        <tr><td><em>Miał złe przeczucie.</em></td><td><em>W żołądku ścisnęło go zimno.</em></td></tr>
+        <tr><td><em>Zrobiło się ciemno.</em></td><td><em>Ciemność wsiąkała między meble.</em></td></tr>
+      </table>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Rada redaktorska</span>Czytaj dialog na głos z pauzami i emocjami. Nienaturalnie składny – przerób. Jak protokół przesłuchania – też. Cel: naturalność bez balastu.</div>
+      <div class="box box-red"><span class="box-title">Częsty błąd: niespójny rejestr</span>Powieść zaczyna się uroczyście, po trzech stronach schodzi w potoczny, a dialogi są jeszcze inne. Wybierz <strong>jeden rejestr bazowy</strong> i odchodź od niego tylko celowo.</div>
+      <div class="box box-blue"><span class="box-title">Dlaczego mocny czasownik działa?</span>Czytelnik nie chce etykiety emocji – chce ją przeżyć. Dynamiczny czasownik + konkretny detal = zapamiętany obraz.</div>
+    </div>
+  </div>
+  <div class="exercise" style="margin-bottom:0;">
+    <span class="ex-tag">Ćwiczenie: rejestr i czasowniki</span>
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 6px;">
+      <div style="display: flex; gap: 6px; align-items: flex-start;">
+        <strong>(1)</strong> <span>Weź zdanie <em>„Marek nie zgodził się na to, o co go poprosili”</em> i przepisz je w 5 rejestrach (uroczysty → wulgarny).</span>
+      </div>
+      <div style="display: flex; gap: 6px; align-items: flex-start;">
+        <strong>(2)</strong> <span>Znajdź u siebie trzy zdania z „był/miał/zrobił się” i zamień każde na <em>jeden</em> dynamiczny czasownik + konkretny detal (nie przymiotnik).</span>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>15 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 8 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Pułapki i <em class="grad-type">zmysły</em></h2>
+    <p class="body">Na koniec: czego używać z umiarem i jak sprawić, by czytelnik naprawdę wszedł w scenę.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3>8.5 Pułapki językowe</h3>
+      <p><strong>Dialekty i gwary.</strong> Dwa–trzy charakterystyczne słowa na scenę wystarczą. Cały dialog w gwarze – czytelnik spoza regionu odłoży książkę.</p>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Przesadzone</span><em>„Jo, pedzioł ci, że na wieczór przindzie, a tu ni ma go ani na pole, ani w chałupie.”</em></div>
+        <div class="ba-card ba-after"><span class="ba-tag">W sam raz</span><em>„Mówił, że przyjdzie, a tu go nie ma. Ani w polu, ani w chałupie.”</em> + jedno słowo gwarowe.</div>
+      </div>
+      <p><strong>Przekleństwa.</strong> Mają siłę tylko, gdy są rzadkie. Bohater klnący co zdanie zwykle zdradza, że autorowi brakuje słownictwa na emocje, a nie cechę postaci.</p>
+      <p style="margin-bottom:0;"><strong>Archaizmy i neologizmy.</strong> W fantasy/SF: jedno nowe słowo na rozdział. Jeśli czytelnik musi uczyć się języka, zanim zacznie historię – nie zacznie.</p>
+
+      <h3>8.6 Zasada trzech zmysłów</h3>
+      <p>Łącz zmysły w pary, by scena ożyła:</p>
+      <table class="comp-table">
+        <tr><th>Zmysł</th><th>Połącz z…</th><th>Efekt</th></tr>
+        <tr><td>wzrok</td><td>dźwięk</td><td>scena pełna, dynamiczna</td></tr>
+        <tr><td>wzrok</td><td>dotyk</td><td>intymność, napięcie</td></tr>
+        <tr><td>słuch</td><td>zapach</td><td>melancholia, nostalgia</td></tr>
+        <tr><td>dotyk</td><td>smak</td><td>realizm, cielesność</td></tr>
+      </table>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-red"><span class="box-title">Najgorszy błąd: archaizowanie byle czego</span><em>„Rzekł, aliści, bowiem, zaiste, aczkolwiek”</em> – poza eposem brzmi jak podróbka. Jeden archaizm na 10 stron jako ozdobnik – może. Więcej – męczy.</div>
+      <div class="practice"><span class="practice-tag">Przykład: scena kawiarni</span><strong>Tylko wzrok:</strong> „Usiadła przy oknie, wzięła filiżankę”. <strong>Trzy zmysły:</strong> „Szyba była zimna. Z filiżanki uniósł się zapach kardamonu. Z tyłu brzęknęła łyżeczka”.</div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>8.7 Ćwiczenie końcowe – przepisz drętwy akapit.</strong> Weź jeden akapit i przejdź 4 kroki: <strong>1.</strong> skróć o 10%, <strong>2.</strong> popraw rejestr, <strong>3.</strong> wymień „być/mieć” na dynamiczny czasownik, <strong>4.</strong> dodaj jeden zmysł (nie wzrok).<br>
+    <strong>Przed:</strong> <em>„Pokój był ciemny i zimny. Marek miał wrażenie, że ktoś go obserwuje. Bał się bardzo.”</em> &nbsp; <strong>Po:</strong> <em>„Ciemność w pokoju miała ciężar. Marek poczuł na karku zimny powiew – czyjś oddech? Strach ścisnął mu gardło.”</em>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>16 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 9</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Bohater, który <em class="grad-type">zapada w pamięć</em></h2>
+    <p class="body">Debiutanci często tworzą postacie płaskie, bo nie rozróżniają warstw, z których składa się bohater.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3>Pragnienie a potrzeba</h3>
+      <p><strong>Pragnienie</strong> to cel zewnętrzny – to, co bohater <em>myśli</em>, że chce: zdobyć władzę, odzyskać ukochaną, wygrać turniej. <strong>Potrzeba</strong> to zmiana wewnętrzna – to, co bohater <em>naprawdę</em> musi osiągnąć, by się rozwinąć: nauczyć się ufać, zaakceptować stratę, przestać być egoistą.</p>
+      <p>Bohater zwykle goni za pragnieniem, nie widząc swojej potrzeby. To właśnie <span class="highlight-marker">konflikt między tym, co chce, a tym, czego potrzebuje</span>, jest źródłem napięcia wewnętrznego, które trzyma czytelnika.</p>
+      <table class="comp-table">
+        <tr><th>Gatunek</th><th>Pragnienie (zewnętrzne)</th><th>Potrzeba (wewnętrzna)</th></tr>
+        <tr><td>Obyczaj</td><td>znaleźć pracę</td><td>uwierzyć we własną wartość</td></tr>
+        <tr><td>Romans</td><td>zdobyć tę jedną osobę</td><td>nauczyć się być wrażliwym, przestać się chronić</td></tr>
+        <tr><td>Kryminał</td><td>rozwiązać sprawę</td><td>pogodzić się z winą za dawną porażkę</td></tr>
+        <tr><td>Fantasy</td><td>pokonać mrocznego władcę</td><td>przestać szukać w innych ojca, którego stracił</td></tr>
+      </table>
+      <p style="margin-bottom:0;"><strong>Test rozdzielenia:</strong> pragnienie da się <em>zaznaczyć jako wykonane</em> („dostał pracę”). Potrzeba to zmiana, która nie ma pola do odhaczenia. Jeśli więc rozdzielasz „chęć znalezienia pracy” od „poczucia własnej wartości” – robisz to dobrze. To dwie różne warstwy, nie to samo.</p>
+
+      <h3>Motywacja: dlaczego mu na tym zależy?</h3>
+      <p>Bez motywacji cel jest pusty. Nawet <em>„zbawić świat”</em> musi mieć osobiste korzenie – na przykład: <em>„bo jako dziecko nie zdołałem uratować siostry”</em>. Motywacja zamienia abstrakcyjny cel w sprawę, o którą czytelnik potrafi się przejąć.</p>
+
+      <h3>Relacje jako dodatkowy silnik</h3>
+      <p>Bohater nie działa w próżni. <strong>Relacje</strong> – przyjaźń, miłość, rywalizacja, więź rodzic–dziecko – to drugi, często mocniejszy silnik napięcia. Najlepiej działają, gdy mają <em>własny</em> łuk: przyjaźń, która pęka pod presją; miłość, która zmusza do wyboru między celem a osobą; rywal, który wymusza na bohaterze rozwój. Zapytaj o każdą ważną relację: jak zmieni się ona od początku do końca? Jeśli odpowiedź brzmi „nijak”, relacja jest dekoracją, nie siłą.</p>
+      
+      <div class="callout">
+        <strong>Ćwiczenie: biogram w pigułce.</strong> Odpowiedz w 3 zdaniach: <strong>1.</strong> Czego mój bohater <em>pragnie</em>? <strong>2.</strong> Czego <em>potrzebuje</em>? <strong>3.</strong> Jaka <em>wada</em> stoi mu na drodze?
+      </div>
+
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie: pragnienie vs potrzeba</span><strong>Pragnienie</strong> – świadomy cel zewnętrzny. <strong>Potrzeba</strong> – nieuświadomiona zmiana wewnętrzna. Najlepsze historie grają na napięciu między nimi.</div>
+      <div class="box box-orange"><span class="box-title">Przykład</span>W <em>Skradzionym słońcu</em> bohater pragnie zemsty (cel), a potrzebuje wybaczyć samemu sobie (zmiana).</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>17 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 9 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="q-row" style="margin-top:10px;">
+    <div class="q-main prose">
+      <h3>Łuk postaci – trzy typy</h3>
+      <p>Łuk postaci (<em>character arc</em>) to zmiana, jaką bohater przechodzi w trakcie historii. Są trzy podstawowe rodzaje:</p>
+      <p><strong>Łuk pozytywny</strong> – bohater pokonuje swoją słabość i staje się lepszą wersją siebie. Klasyk: Ebenezer Scrooge.<br>
+      <strong>Łuk negatywny</strong> – bohater odrzuca szansę na zmianę i upada. Walter White z <em>Breaking Bad</em>.<br>
+      <strong>Łuk płaski</strong> – bohater już ma właściwe wartości; to świat wokół niego musi się zmienić. Sherlock Holmes, James Bond.</p>
+      <p>Musisz <span class="highlight-marker">wiedzieć, który piszesz</span>, bo inaczej zmiana bohatera będzie przypadkowa.</p>
+
+      <h3>Wada jako silnik konfliktu</h3>
+      <p>Wada to nie <em>„lubi za dużo czekolady”</em>. Prawdziwa wada <strong>utrudnia bohaterowi osiągnięcie celu</strong>: arogancja, tchórzostwo, nadmierna lojalność. To wada sprawia, że bohater podejmuje złe decyzje – a to one napędzają fabułę.</p>
+
+      <h3>Cechy: pokazuj, nie nazywaj</h3>
+      <p>Zamiast napisać <em>„był odważny”</em>, pokaż, jak biegnie pod ostrzałem, by wynieść dziecko. Czytelnik uwierzy mocniej, niż gdyby przeczytał gołą etykietę.</p>
+
+      <div class="exercise" style="margin-bottom:0;">
+        <span class="ex-tag">Ćwiczenie</span>
+        Wypisz <strong>3 cechy</strong> swojego bohater. Obok każdej zapisz <strong>jedno konkretne działanie</strong>, które ją demonstruje – bez nazywania cechy wprost.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie: łuk postaci</span>Zmiana wewnętrzna bohatera w trakcie historii. Pozytywny, negatywny lub płaski.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy błąd</span>Wada „dla ozdoby”, która nie wpływa na decyzje. Jeśli możesz ją wyciąć i fabuła się nie zmienia – to nie wada, tylko dekoracja.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Złe decyzje bohatera to nie błąd autora – to paliwo. Pozwól postaci pomylić się przez swoją wadę.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>18 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 10</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Konflikt wewnętrzny <em class="grad-type">i stawka</em></h2>
+    <p class="body">Struktura mówi, co dzieje się na zewnątrz. Ta sekcja jest o tym, dlaczego czytelnik ma się tym przejąć.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <p class="lead">Debiutanci świetnie opisują, co bohater <em>robi</em>, ale zapominają powiedzieć, <strong>dlaczego</strong> to dla niego takie trudne.</p>
+
+      <h3>Rana (Ghost)</h3>
+      <p>To coś z przeszłości bohatera, co sprawia, że jego cel jest dla niego szczególnie trudny do osiągnięcia. Rana to niezagojone wydarzenie – zdrada, strata, upokorzenie – które ukształtowało jego lęki i fałszywe przekonania o sobie. Bohater walczy nie tylko z antagonistą, lecz <span class="highlight-marker">także sam ze sobą.</span> To czyni postać żywą.</p>
+      <p><strong>Gdzie granica między „raną” a „terapią” (sekcja 1)?</strong> Rana ma napędzać <em>decyzje</em> bohatera, a nie być spowiedzią. Pokaż ją <em>w działaniu</em>, nie w monologu o przeszłości.</p>
+      <div class="ba-pair">
+        <div class="ba-card ba-before"><span class="ba-tag">Terapia – rana wyłożona wprost</span><em>Od śmierci ojca nie potrafił nikomu zaufać. Tamta strata nauczyła go, że każdy w końcu odchodzi, więc wolał nie dopuszczać ludzi do siebie.</em><br>Czytamy diagnozę, nie scenę.</div>
+        <div class="ba-card ba-after"><span class="ba-tag">Akcja – rana w zachowaniu</span><em>Wyciągnęła rękę. Cofnął dłoń, zanim zdążyła jej dotknąć.<br>– Sam to zniosę – powiedział, choć ledwo stał.</em><br>Tej samej rany nikt nie nazwał – widać ją w geście i w wyborze.</div>
+      </div>
+
+      <h3>Stawka (Stakes)</h3>
+      <p>To odpowiedź na pytanie czytelnika: <em>„i co z tego?”</em>. Jeśli bohater przegra – musi go to boleć. Najczęstszy błąd to stawka wyłącznie zewnętrzna: <em>„zło zapanuje nad światem”</em>. Brzmi poważnie, a angażuje słabo. <strong>Stawka osobista działa mocniej:</strong> <em>„straci szacunek jedynej osoby, która w niego wierzyła”</em>.</p>
+
+      <h3>Drabina stawki</h3>
+      <p>Stawkę można <strong>piętrzyć</strong> – warstwa po warstwie, od najbliższej bohaterowi do najszerszej. Klucz: rdzeń zawsze zostaje osobisty, a kolejne szczeble tylko go wzmacniają, nie zastępują.</p>
+      <div class="reading-content" style="margin-bottom:16px;">
+        <p style="margin-bottom:4px;"><strong>1. Osobista</strong> – bohater straci coś swojego (wolność, szacunek, ukochaną osobę).</p>
+        <p style="margin-bottom:4px;"><strong>2. Rodzinna / bliscy</strong> – przegrana uderzy w tych, których kocha.</p>
+        <p style="margin-bottom:4px;"><strong>3. Społeczna</strong> – ucierpi wspólnota, miasto, grupa.</p>
+        <p style="margin-bottom:0;"><strong>4. Globalna</strong> – zagrożony jest cały świat.</p>
+      </div>
+      <p>Im wyżej, tym łatwiej o pustą patetyczność. Dlatego „globalne” zagrożenie zadziała tylko wtedy, gdy nadal czujemy pod nim szczebel pierwszy – konkretną twarz, którą bohater może stracić.</p>
+
+      <div class="callout">
+        <strong>Test stawki.</strong> Dokończ zdanie: „Jeśli bohaterowi się nie uda, to…”. Jeśli odpowiedź nie zawiera niczego, co bohater <em>kocha</em> albo <em>czego się boi</em> – stawka jest zbyt zewnętrzna.
+      </div>
+
+      <div class="exercise">
+        <span class="ex-tag">Ćwiczenie</span>
+        Napisz list od bohatera do osoby, która go skrzywdziła. Nie wysyłaj go – to jest jego <strong>rana</strong>. Sprawdź, czy ma ona odbicie w fabule.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Pojęcie: stawka (stakes)</span>To odpowiedź na pytanie czytelnika: „I co z tego?”. Dobra historia to taka, w której czytelnik boi się o bohatera bardziej niż on sam o siebie.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie: rana (Ghost)</span>Niezagojone wydarzenie z przeszłości, które kształtuje lęki bohatera i utrudnia mu osiągnięcie celu.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>19 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 11</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Antagonista – <em class="grad-type">siła napędowa</em></h2>
+    <p class="body">Nie każda historia potrzebuje złoczyńcy w pelerynie, ale każda potrzebuje siły, która blokuje bohatera.</p>
+  </div>
+  <div class="q-row">
+    <div class="q-main prose">
+      <p class="lead">Debiutanci często myślą, że antagonista = „zły człowiek”. To błąd. Antagonista to <strong>wszystko, co staje między bohaterem a jego pragnieniem</strong>.</p>
+      <h3>Rodzaje antagonistów</h3>
+      <p><strong>Osoba</strong> – klasyczny czarny charakter, rywal, były partner. Najsilniejszy, gdy ma własną rację.<br>
+      <strong>System / społeczeństwo</strong> – biurokracja, niesprawiedliwe prawo, opresyjna tradycja.<br>
+      <strong>Natura / żywioł</strong> – morze, mróz, wirus. Wymaga innego rodzaju napięcia.<br>
+      <strong>Sam bohater</strong> – jego wada, lęk, nałóg. Historia wewnętrzna.</p>
+
+      <div class="box box-purple" style="margin:0 0 4px;">
+        <span class="box-title">A jak „poznać racje” sztormu, biurokracji albo wirusa?</span>
+        Rada „daj antagoniście scenę z jego perspektywy” dotyczy antagonisty-osoby. Siły nieosobowej nie obdarzasz uczuciami – nadajesz jej zamiast tego dwie rzeczy. Po pierwsze <strong>spójne reguły</strong>: sztorm, choroba czy system mają działać przewidywalnie, według własnej logiki, a nie atakować, kiedy akurat autorowi pasuje. Po drugie <strong>ludzką twarz</strong>: urzędnik, który ucieleśnia bezduszną procedurę; kapitan, który lekceważy morze; lekarz bezsilny wobec wirusa. „Poznaj jego racje” znaczy tu: poznaj logikę siły i daj jej rzecznika, z którym bohater może się zderzyć.
+      </div>
+      
+      <h3>Cechy dobrego antagonisty</h3>
+      <ul>
+        <li>Ma <strong>motywację</strong> – w jego oczach to on jest bohaterem swojej historii.</li>
+        <li>Jest <strong>wiarygodny</strong> – nawet jeśli jest potworem, działa według własnej logiki.</li>
+        <li>Stanowi <strong>wyzwanie</strong> – bohater nie może go pokonać bez wysiłku i zmiany.</li>
+      </ul>
+      <div class="callout">
+        <strong>Test antagonisty.</strong> Zamień bohatera i antagonistę miejscami. Czy historia nadal ma sens? Jeśli antagonista jest tylko pustym „złem”, zamiana nie wyjdzie.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Przykład</span>W <em>Zbrodni i karze</em> antagonista to nie tylko Porfiry, ale także własne sumienie Raskolnikowa.</div>
+      <div class="box box-red"><span class="box-title">Częsty błąd</span>Antagonista (lub jego siła) pojawia się dopiero w połowie książki. To za późno – jego obecność albo cień powinny być wyczuwalne znacznie wcześniej, inaczej pierwsza połowa nie ma realnego oporu.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Daj antagonistcie scenę z jego perspektywy (nawet jeśli nie publikujesz). Poznaj jego racje – wtedy będzie prawdziwy.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>20 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 12</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom:12px; padding-bottom:8px;">
+    <h2 class="section-title">Najczęstsze <em class="grad-type">błędy</em></h2>
+    <p class="body">Oto katalog błędów strukturalnych wynikających z braku kontroli nad historią.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <h3><span class="err-num">1</span>Plot armor (pancerz fabularny)</h3>
+      <p>Autor na siłę pomaga bohaterom: podsuwa przedmioty czy osoby z wiedzą dokładnie wtedy, gdy są potrzebne. Bohaterowie muszą na wszystko zapracować.</p>
+      
+      <h3><span class="err-num">2</span>Mówienie zamiast pokazywania</h3>
+      <p>Nie informuj, że bohater jest elokwentny czy szarmancki – pokaż to w działaniu.</p>
+
+      <h3><span class="err-num">3</span>Brak osi czasu</h3>
+      <p>Gdy nie wiesz, ile czasu upływa, rany goją się na dwóch stronach, a podróże trwają sekundę. Prowadź chronologię obok tekstu.</p>
+
+      <h3><span class="err-num">4</span>Head hopping</h3>
+      <p>Przeskakiwanie z głowy jednej postaci do drugiej w jednej scenie – czytelnik gubi, czyimi oczami patrzy. Trzymaj się <span class="highlight-marker">jednego reflektora</span> aż do zmiany kadru.</p>
+
+      <h3><span class="err-num">5</span>Niezdefiniowana narracja</h3>
+      <p>Autor nie wybrał świadomie osoby, perspektywy ani wiarygodności narratora – więc dryfują przypadkowo. Najpierw zdecyduj, <strong>kto mówi i ile wie</strong>.</p>
+
+      <h3><span class="err-num">6</span>Dialog „jak z życia”</h3>
+      <p>Kwestie odtwarzają całą rozmowę z grzecznościami i small talkiem. W powieści to balast. Wchodź w rozmowę późno, zostaw tylko to, co coś wnosi.</p>
+
+      <h3><span class="err-num">7</span>Brak uziemienia w scenie</h3>
+      <p>Rozpoczynanie akcji bez nakreślenia <em>kto, gdzie i kiedy</em>. Czytelnik gubi się w przestrzeni i nie wie, jak wyobrazić sobie sytuację.</p>
+
+      <h3><span class="err-num">8</span>Płaska, wyłącznie zewnętrzna stawka</h3>
+      <p>Zagrożenie typu "świat wybuchnie" bez powiązania go z osobistą stratą bohatera. Czytelnik nie angażuje się emocjonalnie bez osobistego ryzyka postaci.</p>
+
+      <h3><span class="err-num">9</span>Bohater wyłącznie reagujący (brak midpointu)</h3>
+      <p>Postać przez całą książkę jedynie odpowiada na ciosy i unika problemów, zamiast przejąć inicjatywę i zacząć aktywnie walczyć o swój cel.</p>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Information dump</span>Zrzut informacji. Nagła porcja wiedzy (światotwórstwo lub moralizowanie) oderwana od akcji.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Wypisz przymiotniki postaci, a potem pomyśl, JAK obnażyć je w gestach bez użycia samego słowa.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>21 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 13</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Samodzielna <em class="grad-type">redakcja</em></h2>
+    <p class="body">Pierwsza wersja służy temu, by historia zaistniała. Druga i trzecia – temu, by była dobra. Ale zacząć możesz dopiero wtedy, gdy spojrzysz na tekst <span class="highlight-marker">jak na cudzy</span>.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="callout" style="margin-top:0;">
+        <strong>Warunek wstępny: dystans.</strong> Samodzielną redakcję jesteś w stanie zrobić dopiero wtedy, gdy zdystansujesz się od tekstu i spojrzysz na niego jak na coś nie swojego. Dopóki czytasz <em>„swoje dziecko”</em>, mózg dopowiada to, co chciałaś/eś napisać – a nie to, co naprawdę jest na stronie.
+      </div>
+
+      <h3>1. Czytanie na głos</h3>
+      <p>Tam, gdzie się jąkasz albo brakuje Ci oddechu – <span class="highlight-marker">tam jest błąd</span>. To demaskuje sztuczne dialogi i złe tempo.</p>
+
+      <h3>2. Metoda odświeżenia</h3>
+      <p>Odłóż tekst na 2–4 tygodnie. Czytaj jako obcy czytelnik. Zaznacz, gdzie masz ochotę odłożyć książkę. To właśnie buduje dystans.</p>
+
+      <h3>3. Cięcie o 10%</h3>
+      <p>Weź scenę i usuń <strong>10% słów</strong> bez zmiany sensu. To najcenniejsza zasada redakcyjna: mniej znaczy więcej.</p>
+
+      <div class="exercise" style="margin-top: 18px;">
+        <span class="ex-tag">Ćwiczenie</span>
+        Wybierz stronę swojego tekstu. Przeczytaj na głos i zaznacz potknięcia. Usuń 10% słów. Gwarantuję, że brzmi lepiej.
+      </div>
+
+      <div class="practice">
+        <span class="practice-tag">Mały trik na dystans</span>
+        Wydrukuj tekst albo zmień font i kolor tła. Mózg czyta to jak nowy dokument – i nagle widzisz błędy, które „znikały” na ekranie edytora.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Najważniejsza rada</span>Nie poprawiaj rozdziału 1 po raz dwunasty, zanim nie napiszesz całości. Skończ brudnopis!</div>
+      <div class="box box-red"><span class="box-title">Błąd</span>Mylenie pisania z redagowaniem. To dwa różne tryby pracy mózgu, nie rób ich jednocześnie.</div>
+      <div class="box box-blue"><span class="box-title">Dlaczego dystans?</span>Bez niego czytasz intencję, nie tekst. Przerwa, druk na papierze albo inny font potrafią „odkleić” Cię od własnych zdań.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>22 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 13 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Warstwy <em class="grad-type">redakcji</em></h2>
+    <p class="body">Samodzielna redakcja nie zaczyna się od wszystkiego naraz. Idź warstwami – w każdym przejściu szukaj tylko jednego rodzaju błędu.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="workflow">
+        <div class="wf-step">
+          <div class="wf-num">1</div>
+          <div class="wf-body">
+            <h5>Logika i ciągłość</h5>
+            <p>Najpierw potknięcia w faktach świata. Ktoś gasi światło, a akapit dalej gasi je znowu. Zwróć tu uwagę na fragmenty, które brzmią <strong>„bez sensu”</strong> – to intuicyjny sygnał, że brakuje logiki przyczynowo-skutkowej, dziurawa jest motywacja bohatera, albo zdanie jest na tyle niefortunnie sformułowane, że całkowicie traci swoje znaczenie i wybija czytelnika z rytmu. Nie ignoruj tego wrażenia.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">2</div>
+          <div class="wf-body">
+            <h5>Narrator i perspektywa</h5>
+            <p>Szukaj akapitów chaotycznych, w których nie wiadomo, z czyjej perspektywy patrzymy. To tu wyłapiesz <em>head hopping</em> i miejsca, gdzie reflektor „przeskakuje” między postaciami.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">3</div>
+          <div class="wf-body">
+            <h5>Puste dialogi</h5>
+            <p>Teraz kwestie, które nic nie wnoszą: powitania, small talk, grzeczności od <em>„dzień dobry”</em> po <em>„do widzenia”</em>. Tnij albo przenoś do narracji.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">4</div>
+          <div class="wf-body">
+            <h5>Język i rejestr</h5>
+            <p>Na końcu warstwa słów. Czy to język mówiony, czy pisany? Czy ton wskazuje na narratora auktorialnego, czy na coś innego? Sprawdź, czy rejestr jest spójny i celowy.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Każde przejście tworzy nową wersję.</strong> Nie traktuj redakcji jako jednego „poprawiania”. To kolejne warstwy, a każda z nich daje nową wersję książki – i dokładnie tak powinno być. Książka dojrzewa przez wersje, nie przez jeden heroiczny zryw.
+      </div>
+
+      <div class="exercise" style="margin-bottom:0;">
+        <span class="ex-tag">Ćwiczenie</span>
+        Zrób <strong>jedno</strong> przejście przez rozdział, szukając wyłącznie błędów logiki. Nie poprawiaj zdań ani dialogów – tylko zaznaczaj. Zobaczysz, ile wychwycisz, gdy mózg ma jedno zadanie.
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Jedna rzecz naraz</span>Nie poprawiaj logiki, narratora i języka w jednym przejściu. Mózg gubi czujność – przeoczysz najwięcej tam, gdzie szukasz wszystkiego naraz.</div>
+      <div class="box box-orange"><span class="box-title">Każde przejście = nowa wersja</span>Każda warstwa redakcji tworzy nową wersję książki – i tak ma być. Zapisuj kolejne pliki (v1, v2, v3), żeby móc się cofnąć.</div>
+      <div class="box box-blue"><span class="box-title">Kolejność nie jest przypadkowa</span>Nie ma sensu cyzelować zdania, które i tak wytniesz przy warstwie logiki czy dialogu. Idź od grubych do drobnych.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>23 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Część VI · Mapa</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Mapa: od czego <em class="grad-type">zacząć pisanie</em></h2>
+    <p class="body">Cały poradnik w jednej mapie. To kolejność, którą polecam debiutantowi – od myślenia o czytelniku po oddanie tekstu do redakcji. Na następnej stronie przejdziemy nią krok po kroku na prostym przykładzie.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="workflow compact">
+        <div class="wf-step">
+          <div class="wf-num">1</div>
+          <div class="wf-body">
+            <h5>Nastaw głowę na czytelnika</h5>
+            <p>Zanim napiszesz pierwsze słowo, przestaw myślenie z „ja” na „czytelnik”. Książka to komunikacja, nie terapia – i umowa, w której to Ty pracujesz dla odbiorcy.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">2</div>
+          <div class="wf-body">
+            <h5>Zbuduj bohatera i stawkę</h5>
+            <p>Określ pragnienie i potrzebę, wadę, która utrudnia cel, ranę z przeszłości oraz osobistą stawkę. To rdzeń, który trzyma czytelnika.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">3</div>
+          <div class="wf-body">
+            <h5>Zrób burzę mózgów</h5>
+            <p>Notuj wszystko bez oceniania – sceny, zwroty akcji, dialogi. Celem jest objętość, nie jakość. To Twój surowiec.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">4</div>
+          <div class="wf-body">
+            <h5>Ułóż strukturę i tempo</h5>
+            <p>Posegreguj klocki w trzy akty: katalizator, punkty zwrotne, midpoint (gdzie bohater przechodzi z reagującego w działającego). Zdecyduj, co rozwinąć w scenę, a co streścić.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">5</div>
+          <div class="wf-body">
+            <h5>Wybierz narrację</h5>
+            <p>Świadomie ustal osobę, perspektywę i wiarygodność narratora. Trzymaj jednego reflektora na scenę – to broni Cię przed <em>head hoppingiem</em>. <em>Nie wiesz, co wybrać? Napisz pierwszą scenę w 1. osobie, potem przełóż na 3. – zobaczysz, co lepiej działa.</em></p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">6</div>
+          <div class="wf-body">
+            <h5>Napisz brudnopis</h5>
+            <p>Skończ całość, nie cyzelując rozdziału 1 po raz dwunasty. Pierwsza wersja ma prawo być słaba – ważne, że istnieje. Jeśli w trakcie coś nie gra, wróć świadomie do kroków 2–4 (patrz ramka obok).</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">7</div>
+          <div class="wf-body">
+            <h5>Zredaguj warstwami</h5>
+            <p>Zyskaj dystans, potem przejdź tekst osobno pod kątem logiki, narratora, pustych dialogów i języka. Każde przejście = nowa wersja.</p>
+          </div>
+        </div>
+        <div class="wf-step">
+          <div class="wf-num">8</div>
+          <div class="wf-body">
+            <h5>Oddaj do redakcji</h5>
+            <p>Profesjonalna redakcja, korekta i skład to nie cenzura, lecz najszybsza droga do lepszej książki. Przyjmuj uwagi z wdzięcznością.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-red"><span class="box-title">Pętla zwrotna (krok 6 → 2–4)</span>Mapa nie jest jednokierunkowa. Jeśli przy pisaniu odkryjesz, że <strong>bohater nie działa</strong> – wróć do kroku 2. Jeśli <strong>struktura się rozjeżdża</strong> – wróć do kroku 4. Poprawiasz fundament i piszesz dalej.</div>
+      <div class="box box-blue"><span class="box-title">Pętla ≠ kosz na 50 tysięcy słów</span>Powrót do kroku 2–4 prawie nigdy nie znaczy „wyrzuć brudnopis”. Znaczy: dopisz bohaterowi stawkę, popraw plan dalszych scen, a to, co już masz, naprawisz <em>w kolejnej wersji</em>. Nikt nie burzy domu, gdy wystarczy wzmocnić fundament.</div>
+      <div class="box box-purple"><span class="box-title">Kryzys środka czy pęknięcie fundamentu?</span><strong>Kryzys środka</strong> to normalny dołek koło połowy: nudzisz się, wątpisz, „to jest słabe”. Lekarstwo: pisz dalej, nie czytaj. <strong>Pęknięcie fundamentu</strong> jest konkretne i powtarzalne: bohater wciąż tylko reaguje, stawka nie boli, sceny nie wynikają z siebie. To pierwsze przeczekaj, drugie napraw.</div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Wracaj do wcześniejszych kroków świadomie, nie w panice. Chaos bierze się z mieszania trybów – pisania i redagowania naraz.</div>
+      <div class="box box-orange"><span class="box-title">Kolejność nie jest przypadkowa</span>Najpierw pomysł i bohater, potem struktura, dopiero na końcu szlif języka. Idź od grubych warstw do drobnych.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>24 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 14</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Przykład: <em class="grad-type">budujemy historię fantasy</em></h2>
+    <p class="body">Przejdźmy mapę z poprzedniej strony krok po kroku na prostym pomyśle. To tylko szkic – pokazuje sposób myślenia, nie gotową powieść.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main prose">
+      <div class="callout" style="margin-top:0;">
+        <strong>Punkt wyjścia.</strong> Latarniczka <em>Wena</em> mieszka na skraju krainy, w której światło z latarni odgania „cienie” – istoty pożerające wspomnienia. Pewnej nocy jej latarnia gaśnie i nie chce się zapalić.
+      </div>
+
+      <h4>Krok 1–2: czytelnik i bohater</h4>
+      <p><strong>Pragnienie:</strong> ponownie zapalić latarnię. <strong>Potrzeba:</strong> przestać żyć przeszłością. <strong>Wada:</strong> Wena nie ufa nikomu. <strong>Rana:</strong> jako dziecko przez cień straciła wspomnienia o matce. <strong>Stawka osobista:</strong> jeśli zawiedzie, zapomni także twarz brata.</p>
+
+      <h4>Krok 3: burza mózgów</h4>
+      <p>Surowiec bez oceniania: gadająca ćma, targ wspomnień, rywal-latarnik, olej z gwiazd, finał na szczycie wieży. Część trafi do kosza – i dobrze.</p>
+
+      <h4>Krok 4–5: struktura i tempo</h4>
+      <p><strong>Katalizator:</strong> latarnia gaśnie (przed 15%). <strong>Midpoint:</strong> Wena odkrywa, że to ona ją zgasiła we śnie – z reagującej staje się działającą. Drogę do wieży <em>streszczamy</em>, konfrontację z cieniem <em>rozwijamy</em> w scenę.</p>
+
+      <h4>Krok 6: narracja</h4>
+      <p>Trzecia osoba, reflektor na Wenie – bliskość bez ryzyka <em>head hoppingu</em>. Język oszczędny, zmysłowy (zapach oleju, chłód cienia).</p>
+
+      <h4>Krok 7: bohater i antagonista</h4>
+      <p>Cień nie jest „złem dla zła” – żywi się żalem, więc to lęk Weny go karmi. Antagonista odbija jej wadę.</p>
+
+      <h4>Krok 8: redakcja</h4>
+      <p>Brudnopis najpierw cały. Potem warstwy: logika (czy latarnia gaśnie spójnie?), narrator, puste dialogi, język. Każde przejście = nowa wersja.</p>
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-blue"><span class="box-title">Co dalej?</span>Mając rozpisane kroki 1–5, dopiero teraz piszemy <strong>pierwszą scenę</strong> – np. moment gaśnięcia latarni. Reszta pilnuje już tylko, by szkic nie rozsypał się przy pisaniu.</div>
+      <div class="practice" style="margin:0;">
+        <span class="practice-tag">Po co ten przykład?</span>
+        Zauważ, że żadna scena nie powstała przypadkiem. Pragnienie, rana i stawka rozpisane na początku same podpowiadają, co ma się wydarzyć – mapa zamienia chaos pomysłów w ciąg przyczynowo-skutkowy.
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>25 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Sekcja 15</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Ćwiczenie <em class="grad-type">podsumowujące</em></h2>
+    <p class="body">Sprawdź, ile zostało Ci z poradnika. Zaznacz, czy zdanie jest prawdziwe, czy fałszywe – odpowiedzi znajdziesz na dole strony.</p>
+  </div>
+  <div class="exercise" style="margin-bottom: 16px;">
+    <span class="ex-tag">Prawda czy fałsz?</span>
+    <ol style="margin-top: 8px; padding-left: 20px;">
+      <li>Pisanie z planem jest zawsze lepsze niż pisanie bez planu. &nbsp; <strong>P / F</strong></li>
+      <li>Bohater powinien po midpoincie przejść z reagującego w działającego. &nbsp; <strong>P / F</strong></li>
+      <li>W dialogu warto odtwarzać powitania i grzeczności tak jak w życiu. &nbsp; <strong>P / F</strong></li>
+      <li>Stawka osobista angażuje czytelnika mocniej niż „zło zapanuje nad światem”. &nbsp; <strong>P / F</strong></li>
+      <li>W jednej scenie można swobodnie przeskakiwać między głowami postaci. &nbsp; <strong>P / F</strong></li>
+      <li>Samodzielną redakcję najlepiej robić warstwami, jedna rzecz naraz. &nbsp; <strong>P / F</strong></li>
+      <li>Pierwsza wersja tekstu musi być od razu dopracowana. &nbsp; <strong>P / F</strong></li>
+      <li>Antagonista powinien mieć własną motywację, a nie być złem dla zła. &nbsp; <strong>P / F</strong></li>
+      <li>Katalizator najlepiej umieścić przed 15% objętości książki. &nbsp; <strong>P / F</strong></li>
+      <li>Wada bohatera powinna utrudniać mu osiągnięcie celu, a nie być tylko ozdobą. &nbsp; <strong>P / F</strong></li>
+      <li>Cechę bohatera lepiej nazwać wprost, niż pokazać ją w działaniu. &nbsp; <strong>P / F</strong></li>
+      <li>Scenę warto zaczynać późno, a kończyć tuż po kulminacji. &nbsp; <strong>P / F</strong></li>
+      <li>Czytanie tekstu na głos pomaga wychwycić sztuczne dialogi i złe tempo. &nbsp; <strong>P / F</strong></li>
+      <li>Każde przejście redakcyjne tworzy nową wersję książki – i tak ma być. &nbsp; <strong>P / F</strong></li>
+    </ol>
+  </div>
+  <div class="ba-pair">
+    <div class="ba-card ba-after"><span class="ba-tag">Odpowiedzi</span>1. F &nbsp; 2. P &nbsp; 3. F &nbsp; 4. P &nbsp; 5. F &nbsp; 6. P &nbsp; 7. F &nbsp; 8. P &nbsp; 9. P &nbsp; 10. P &nbsp; 11. F &nbsp; 12. P &nbsp; 13. P &nbsp; 14. P</div>
+    <div class="ba-card" style="background:var(--gold-pale); color:#371f5c;"><span class="ba-tag" style="color:var(--grad-start);">Jeśli się pomyliłaś/eś</span>Wróć do sekcji, której dotyczy pytanie – numery części znajdziesz w spisie treści.</div>
+  </div>
+  <div class="callout">
+    <strong>Ostatni krok.</strong> Teraz weź własną scenę i przejdź ją mapą z tej części: bohater, struktura, narracja, redakcja warstwami. To przejście od teorii do Twojego tekstu.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>26 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Narzędzie 2</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Granice, które <em class="grad-type">najczęściej mylą</em></h2>
+    <p class="body">Osiem pytań „a gdzie właściwie jest granica?”, które wracają najczęściej – każde z jednym szybkim testem. Trzymaj tę kartkę przy klawiaturze obok listy kontrolnej.</p>
+  </div>
+
+  <div class="q-row" style="gap:18px;">
+    <div style="flex:1;">
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>1. Burza mózgów czy już plan?</h4>
+        <p style="margin-bottom:0;"><strong>Test:</strong> masz już katalizator, midpoint i finał? Jeśli te trzy filary stoją – przestań zbierać pomysły i zacznij układać klocki w kolejność. Brak choćby jednego – burz dalej.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>2. Beat sheet – to już plan?</h4>
+        <p style="margin-bottom:0;">To etap pośredni: porządkowanie zamienione w nośny szkielet. Pełny plan (etap 3) to dopiero lista scen, każda w 1–2 zdaniach. Beat sheet mówi „co i kiedy”, lista scen – „jak”.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>3. Planowanie to działanie czy reakcja?</h4>
+        <p style="margin-bottom:0;"><strong>Test inicjatywy:</strong> kto narzuca ruch? Bohater odpowiada na cudzy cios, bo musi → wciąż reaguje. Z własnej woli układa plan i przejmuje inicjatywę → działa. „Planuję zemstę, bo sam tak zdecydowałem” = działanie.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:0;">
+        <h4>4. Jak długa przerwa między głowami?</h4>
+        <p style="margin-bottom:0;">Minimalna jednostka zmiany reflektora to <strong>nowa scena</strong> (zmiana czasu/miejsca lub wyraźny odstęp), nie akapit. W jednej ciągłej scenie – jeden reflektor. Pomóż czytelnikowi sygnałem: odstęp, gwiazdka albo nowy rozdział.</p>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>5. Który szczebel stawki jest obowiązkowy?</h4>
+        <p style="margin-bottom:0;"><strong>Osobisty.</strong> Nie potrzebujesz wszystkich czterech – potrzebujesz 1–2 silnych, w tym zawsze osobistego. „Ocal świat” bez niczego osobistego = słabe. Obyczajówka bez stawki globalnej = całkiem w porządku.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>6. Wada dramatyczna czy tylko kolor?</h4>
+        <p style="margin-bottom:0;"><strong>Test wycięcia:</strong> usuń cechę z fabuły. Przebieg się nie zmienia → to kolor postaci. Bohater przez nią podejmuje złą decyzję, która pcha zdarzenia → wada dramatyczna. „Niezorganizowany” staje się wadą, gdy gubi jedyny dowód.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:12px;">
+        <h4>7. Mowa pozornie zależna czy head hopping?</h4>
+        <p style="margin-bottom:0;"><strong>Test jednego właściciela:</strong> w danej scenie wszystkie myśli bez cudzysłowu należą do jednego bohatera? Złapałaś/eś myśl, której on nie mógłby pomyśleć – przeskoczyłaś/eś. Przy szybkim pisaniu: podkreśl w scenie wszystkie sądy i odczucia, sprawdź, czy mają jednego gospodarza.</p>
+      </div>
+      <div class="reading-content" style="margin-bottom:0;">
+        <h4>8. „Wchodź późno” – jak późno?</h4>
+        <p style="margin-bottom:0;"><strong>Test trzech kotwic:</strong> czy w pierwszych dwóch zdaniach czytelnik dostaje <em>kto, gdzie, kiedy</em>? Jeśli tak – możesz zacząć choćby w środku kłótni. Jeśli nie – nie cofaj sceny, tylko wpleć te kotwice w pierwsze zdanie.</p>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>27 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Narzędzie 3</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Pętla zwrotna i <em class="grad-type">monitor pierwszej wersji</em></h2>
+    <p class="body">Dwa narzędzia na sytuację, która paraliżuje najczęściej: „odkryłem błąd w połowie – co teraz?”. Procedura plus prosty monitor do wydrukowania.</p>
+  </div>
+
+  <h3>Pętla zwrotna: notuj i jedź dalej</h3>
+  <p class="body" style="margin-bottom:10px;">W rozdziale 8 odkrywasz, że bohater potrzebuje innej rany albo mocniejszej stawki. Odruch „muszę przepisać 7 rozdziałów” jest błędny i zwykle kończy brudnopis na rozdziale 8. Zamiast tego:</p>
+  <div class="workflow compact">
+    <div class="wf-step"><div class="wf-num">1</div><div class="wf-body"><h5>Nie przepisuj wstecz</h5><p>Zrób notatkę – komentarz na marginesie albo wpis na liście „do naprawy w v2”: <em>„rozdz. 1–7: zasiać nową ranę X”</em>.</p></div></div>
+    <div class="wf-step"><div class="wf-num">2</div><div class="wf-body"><h5>Pisz dalej tak, jakby poprawka już obowiązywała</h5><p>Od tego momentu nowa rana czy stawka jest faktem. Nie wracaj „dosztukować” wcześniejszych scen – stracisz rozpęd.</p></div></div>
+    <div class="wf-step"><div class="wf-num">3</div><div class="wf-body"><h5>Wstecz napraw dopiero w drugiej wersji</h5><p>Mając całość przed sobą, poprawka zajmie godziny, nie tygodnie – bo wiesz już dokładnie, czego szukasz i gdzie.</p></div></div>
+    <div class="wf-step"><div class="wf-num">4</div><div class="wf-body"><h5>Wyjątek: gdy nie wiesz, co pisać dalej</h5><p>Jeśli zmiana fundamentu (np. inny cel bohatera) blokuje dalsze pisanie – zatrzymaj się i popraw <strong>plan</strong> (kroki 2–4 mapy). Ale i wtedy poprawiasz plan, nie 7 gotowych rozdziałów.</p></div></div>
+  </div>
+  <div class="box box-purple" style="margin:14px 0 18px;">
+    <span class="box-title">Kryzys środka czy pęknięcie fundamentu?</span>
+    <strong>Kryzys środka</strong> to ogólne zwątpienie („to jest słabe, nudzę się”) – jedź dalej, nie czytaj. <strong>Pęknięcie fundamentu</strong> jest konkretne i powtarzalne: bierny bohater, stawka nie boli, sceny nie wynikają z siebie – to zanotuj do naprawy. Jedno przeczekujesz, drugie notujesz, ale brudnopis kończysz w obu wypadkach.
+  </div>
+
+  <div class="q-row" style="gap:18px;">
+    <div style="flex:1;">
+      <div class="reading-content" style="border-left:4px solid var(--grad-start); margin-bottom:0;">
+        <h4>Monitor rejestru</h4>
+        <p style="margin-bottom:6px;">Rejestr bazowy narracji: <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:90px;">&nbsp;</span></p>
+        <p style="margin-bottom:6px;">Dozwolone świadome odchylenia (gdzie / po co): <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:60px;">&nbsp;</span></p>
+        <p style="margin-bottom:10px;">Rejestr postaci w dialogu: A <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:40px;">&nbsp;</span> · B <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:40px;">&nbsp;</span> · C <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:40px;">&nbsp;</span></p>
+        <p style="margin-bottom:4px;"><strong>Test obcego ucha:</strong> przeczytaj na głos trzy akapity narracji – z początku, środka i końca. Brzmią jak jeden głos? Ten, który „odstaje”, to miejsce skoku rejestru.</p>
+        <p style="margin-bottom:0;"><strong>Test zasłoniętych didaskaliów:</strong> w scenie dialogowej zakryj „powiedział X”. Poznajesz, kto mówi? Jeśli nie – postacie mają ten sam rejestr.</p>
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div class="reading-content" style="border-left:4px solid var(--grad-end); margin-bottom:0;">
+        <h4>Monitor dystansu (tryb „pisz do końca”)</h4>
+        <p style="margin-bottom:6px;">Powroty do rozdziału 1: <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:90px;">&nbsp;</span> <span style="font-size:11px; color:var(--ink-muted);">(cel przed końcem brudnopisu: 0)</span></p>
+        <p style="margin-bottom:6px;">Parking „to działa – nie ruszać”: <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:60px;">&nbsp;</span></p>
+        <p style="margin-bottom:10px;">Lista „do naprawy w v2”: <span style="border-bottom:1px solid var(--ink-muted); display:inline-block; min-width:90px;">&nbsp;</span></p>
+        <p style="margin-bottom:0;"><strong>Zasada jednego zdania:</strong> dopóki nie napiszesz słowa „koniec”, redagujesz tylko notatkami, nie tekstem. Wątki, które już działają, chronisz właśnie po to, żeby ich nie „wypolerować” na śmierć.</p>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>28 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span>Podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Co <em class="grad-type">dalej?</em></h2>
+    <p class="body">Wypełniłaś/eś arkusz. Zlokalizowałaś/eś luki. Co teraz z tym zrobić?</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-end); margin-bottom: 24px; padding: 20px 24px;">
+    <h4 style="font-family: var(--sans); font-size: 16px; color: var(--grad-start); text-transform: none; letter-spacing: 0; margin-top: 0; margin-bottom: 12px; font-weight: 700;">Gratulacje! To był ogromny krok.</h4>
+    <p style="font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 12px;">Samo wypełnienie tego arkusza to potężna praca analityczna nad tekstem. Jeśli w wielu miejscach musiałaś/eś wpisać „nie wiem” – to świetnie! Właśnie zaoszczędziłaś/eś sobie miesięcy błądzenia we mgle. Poradnik miał na celu pomóc Ci zrozumieć te mechanizmy. <strong>Teraz wróć do Arkusza Diagnostycznego</strong> i uzupełnij braki.</p>
+    <p style="font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0;">Teraz, gdy widzisz swoją powieść z lotu ptaka, o wiele łatwiej ocenić jej stan. Czy historia wymaga przebudowy struktury? A może to już ten moment, by pokazać tekst <strong>betaczytelnikom</strong> lub poszukać profesjonalnego <strong>redaktora językowego</strong>?</p>
+  </div>
+
+  <div style="background: var(--gold-pale); border-radius: var(--radius); padding: 28px; position: relative;">
+    <h4 style="font-family: var(--sans); font-weight: 800; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grad-start); margin-top: 0; margin-bottom: 14px;">Skorzystaj z bezpłatnej analizy</h4>
+    <p style="font-size: 13px; font-weight: 700; color: #371f5c; line-height: 1.6; margin-bottom: 14px;">Jeśli po lekturze poradnika i pracy z arkuszem nadal w czymś utknęłaś/eś, albo po prostu chcesz, żeby ktoś z zewnątrz rzucił okiem na Twoje odpowiedzi – z chęcią pomogę.</p>
+    <p style="font-size: 12.5px; color: #371f5c; line-height: 1.6; margin-bottom: 12px;">Podeślij mi swój uzupełniony arkusz. Przejrzę go w ramach <strong>bezpłatnej, niezobowiązującej analizy</strong>. Doradzę Ci, nad jakimi elementami opowieści warto jeszcze usiąść, czy tekst jest gotowy na testy u betaczytelników, czy też śmiało możemy myśleć o ostatecznej redakcji tekstu.</p>
+    <p style="font-size: 12.5px; color: #371f5c; line-height: 1.6; margin-bottom: 24px;">Masz kilka opcji: <strong>darmowa konsultacja mailowa</strong>, płatna <strong>sesja 1:1</strong>, albo udostępnienie mi uzupełnionego <strong>arkusza Google Docs</strong> (napisz swoje odpowiedzi i podeślij link, a ja zostawię w nim komentarze i doradzę, co dalej).</p>
+
+    <div style="border: 2px dashed rgba(107, 53, 200, 0.4); border-radius: 8px; padding: 18px; text-align: center; background: rgba(255,255,255,0.7);">
+      <strong style="font-size: 15px; color: var(--grad-start); letter-spacing: 0.05em; font-family: var(--sans);">kontakt@zakulisamijezyka.pl</strong>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>29 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Narzędzie 4</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Lista kontrolna <em class="grad-type">autora</em></h2>
+    <p class="body">Zanim wyślesz tekst do redakcji lub wydawcy – odhacz te punkty. To minimum profesjonalizmu.</p>
+  </div>
+  <div class="checklist">
+    <div class="check-group-title">Bohater i konflikt</div>
+    <div class="check-row"><div class="check-box"></div><div>Bohater ma jasne <strong>pragnienie</strong> (cel zewnętrzny) i <strong>potrzebę</strong> (zmianę wewnętrzną).</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Wada bohatera <strong>utrudnia</strong> mu osiągnięcie celu (nie jest tylko dekoracją).</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Antagonista ma własną motywację – nie jest złem dla zła.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Stawka jest <strong>osobista</strong> – jeśli bohater przegra, straci coś, na czym mu naprawdę zależy.</div></div>
+    
+    <div class="check-group-title">Fabuła i tempo</div>
+    <div class="check-row"><div class="check-box"></div><div>Katalizator pojawia się <strong>przed 15%</strong> książki.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Punkt środkowy (midpoint) znajduje się mniej więcej w połowie – bohater zmienia się z reagującego w działającego.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Każda scena ma <strong>konflikt lub napięcie</strong> – jeśli nie, wytnij ją.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Wchodzę w scenę <strong>późno</strong> (tuż przed punktem zwrotnym), wychodzę <strong>wcześnie</strong> (tuż po kulminacji).</div></div>
+    
+    <div class="check-group-title">Dialog i narracja</div>
+    <div class="check-row"><div class="check-box"></div><div>Każda kwestia dialogu spełnia przynajmniej jedną funkcję: <strong>posuwa fabułę, charakteryzuje postać, buduje napięcie, tworzy rytm</strong>.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Dialogi mają <strong>podtekst</strong> – postacie nie mówią wprost wszystkiego.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Unikam <em>„dialogu grzecznościowego”</em> (Cześć, jak się masz?).</div></div>
+    <div class="check-row"><div class="check-box"></div><div>W obrębie jednej sceny trzymam się <strong>jednego reflektora</strong> (punktu widzenia) – nie ma <em>head hoppingu</em>.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Świadomie wybrałam/em <strong>osobę, perspektywę i wiarygodność</strong> narratora – i trzymam się ich konsekwentnie.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>W każdym opisie używam <strong>co najmniej 2–3 zmysłów</strong> (nie tylko wzroku).</div></div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>30 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span class="grad-type">Narzędzie 4 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Lista kontrolna <em class="grad-type">autora</em> (c.d.)</h2>
+    <p class="body">Ciąg dalszy: język, rejestr i ostatni etap przed wysłaniem tekstu.</p>
+  </div>
+  <div class="checklist">
+    <div class="check-group-title">Język i rejestr</div>
+    <div class="check-row"><div class="check-box"></div><div>W dialogu unikam <strong>wypełniaczy</strong> („yyy”, „no wiesz”, powitań, small talku).</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Każda postać ma <strong>spójny rejestr</strong> – nie wszyscy mówią tak samo.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Mam <strong>jeden rejestr bazowy</strong> narracji i odchodzę od niego tylko celowo.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Używam <strong>dynamicznych czasowników</strong> zamiast „być”, „mieć”, „zrobić się”.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Długość zdań <strong>kontroluje tempo</strong> – krótkie w akcji, długie w refleksji.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Dialekty, archaizmy i neologizmy stosuję <strong>z umiarem</strong> (max 1–2 na scenę).</div></div>
+
+    <div class="check-group-title">Rewizja i technika</div>
+    <div class="check-row"><div class="check-box"></div><div>Przeczytałam/em tekst <strong>na głos</strong> – poprawiłam/em miejsca, w których się jąkałem/am.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Odłożyłam/em tekst na <strong>2–4 tygodnie</strong> i przeczytałam/em jak obcy czytelnik.</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Usunęłam/em <strong>10% słów</strong> bez zmiany sensu (mniej znaczy więcej).</div></div>
+    <div class="check-row"><div class="check-box"></div><div>Bohater nie ma <strong>plot armor</strong> – każdy sukces kosztuje go wysiłek lub stratę.</div></div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>31 / 32</span></div>
+</section>
+
+<section class="page">
+  <div class="runner top"><span>Zakończenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="cover" style="display: flex; justify-content: center; text-align: center;">
+    <div class="cover-mid" style="max-width: 100%;">
+      <h1 class="title" style="font-size: 42px; margin-top: 24px;">Teraz pisz.<br><em class="grad-type">I poprawiaj.</em></h1>
+      <div class="grad-rule" style="margin: 24px auto;"></div>
+      <p class="subtitle" style="font-size: 15px;">Masz już fundamenty. Reszta to trening, czytanie i uczciwa rewizja.</p>
+      <p class="body" style="margin-top: 28px;">Poradnik nie zastąpi redakcji – ale da ci język, by rozmawiać z redaktorem i widzieć własne błędy. Nie bój się surowych opinii. Każda uwaga to skrót do lepszej książki.</p>
+      <p class="body" style="margin-top: 20px; font-style: italic;">Natalia Szoppa – redaktorka, korektorka, miłośniczka dobrych historii.</p>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>32 / 32</span></div>
+</section>
+
+</div>
+</body>
+</html>
