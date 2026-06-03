@@ -127,14 +127,11 @@ title: Współpraca w szczegółach
     }
 
     /* ===== WAŻNE ZASADY - WNĘTRZE ARTYKUŁU ===== */
-    /* Zmieniamy to na element zagnieżdżony w .blog-content */
     .rules-section-inline {
         background-color: var(--paper-warm);
         border-radius: var(--radius-lg);
         padding: 40px;
         margin: 40px 0 60px;
-        /* Negatywne marginesy, aby rozciągnąć tło szerzej niż tekst główny, 
-           tworząc fajny efekt wizualny, tzw. "breakout" */
         margin-left: -40px;
         margin-right: -40px;
     }
@@ -171,7 +168,6 @@ title: Współpraca w szczegółach
         font-size: 1.4rem; 
         color: var(--grad-start); 
     }
-    /* Upewnijmy się, że font w kartach nie dziedziczy stylów .blog-content h3 itd. */
     .rule-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--ink); margin: 0 0 12px 0; }
     .rule-card p { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; color: var(--ink-muted); line-height: 1.6; margin: 0; }
 
@@ -187,7 +183,6 @@ title: Współpraca w szczegółach
         border: 1px solid var(--paper-mid); 
         border-left: 3px solid var(--grad-start); 
     }
-    /* Reset p we wewnątrz warning-box */
     .warning-box p { font-family: var(--sans); font-size: 0.95rem; line-height: 1.6; margin: 0; }
 
     /* ===== CTA ===== */
@@ -268,19 +263,27 @@ title: Współpraca w szczegółach
     <article class="blog-content">
         
         <h2><span class="step-label">Krok 1</span>Autodiagnoza</h2>
-        <p>Pracę nad tekstem zaczynamy od fundamentów[cite: 4]. Zanim prześlesz mi materiał do redakcji, pobierz Arkusz Diagnostyczny. Zlokalizuj słabe punkty swojej fabuły. Weryfikacja struktury uchroni Cię przed poprawianiem błędów, które mogą wynikać z głębszych problemów.</p>
+        <p>Wypełnij Arkusz Diagnostyczny. Usiądź na spokojnie, przeanalizuj swoją fabułę i – co najważniejsze – nie oszukuj samego siebie. Ten etap to wyłącznie Twoja samodzielna praca. Pozwoli Ci ona wyłapać największe luki fabularne, wstępnie poprawić tekst i przygotować się do profesjonalnej współpracy. Dzięki temu unikniesz płacenia mi za wskazywanie błędów, które jesteś w stanie naprawić sam(a).</p>
 
-        <h2><span class="step-label">Krok 2</span>Darmowa Próbka (9k)</h2>
-        <p>Wypełniłeś/aś arkusz i chcesz sprawdzić, na jakim etapie jest Twój tekst? Wyślij mi formularz z próbką (do 9000 znaków). W ramach darmowej diagnozy ocenię jeden, wskazany przez Ciebie problem (np. head hopping czy pacing) i doradzę, nad czym jeszcze powinieneś popracować.</p>
+        <h2><span class="step-label">Krok 2</span>Darmowa konsultacja (Próbka)</h2>
+        <p>Pracowałeś/aś intensywnie nad tekstem z arkuszem, wyłapałeś/aś dziury, usunąłeś/aś najsłabsze fragmenty, ale dalej nie masz pewności, czy idziesz w dobrym kierunku? W ramach darmowej konsultacji wyślij mi próbkę (do 9000 znaków) przez Formularz Zgłoszeniowy. Ocenię jeden wybrany przez Ciebie problem (np. *head hopping* lub dynamikę dialogu) i wskażę obszary, nad którymi warto jeszcze popracować.</p>
 
         <h2><span class="step-label">Krok 3</span>Redakcja Strukturalna (Opcjonalnie)</h2>
-        <p>Jeśli okaże się, że tekst wymaga głębokiej przebudowy (problemy z logiką, motywacją, płaskimi bohaterami), zaoferuję Ci Redakcję Strukturalną. To praca na „mięsie” – diagnozuję luki fabularne i przygotowuję raport z lektury, a Ty samodzielnie wprowadzasz zmiany.</p>
+        <p>Jeśli po darmowej konsultacji uznasz, że potrzebujesz głębszej diagnozy dotyczącej całej książki, możesz zamówić redakcję strukturalną (Developmental Editing). W ramach tej usługi skupiam się wyłącznie na fabule – nie będę za Ciebie szlifować języka czy pisać akapitów, ale precyzyjnie wskażę fragmenty nielogiczne lub wstrzymujące akcję.</p>
+        <p><strong>Uwaga:</strong> Odesłanie pliku do mojego ponownego sprawdzenia w ramach tej samej usługi nie wchodzi w grę. Autor otrzymuje ode mnie gotowy raport i zbiór komentarzy, do których musi przysiąść sam, a nową wersję tekstu skonsultować najlepiej ze swoimi beta-czytelnikami.</p>
 
-        <h2><span class="step-label">Krok 4</span>Szlif Językowy</h2>
-        <p>Kiedy fabuła stoi twardo na nogach, wchodzę ja. Redaguję język, styl, dbam o odpowiednie tempo i eliminuję błędy[cite: 4]. Na tym etapie tekst jest wygładzany i doprowadzany do wydawniczej perfekcji. Nie ingeruję już w konstrukcję opowieści[cite: 4].</p>
+        <h2><span class="step-label">Krok 4</span>Weryfikacja przed redakcją językową</h2>
+        <p>Poprawiłeś/aś strukturę, zamknąłeś/aś fabułę, a beta-czytelnicy nie mają już merytorycznych zastrzeżeń? Możesz podesłać mi gotowy plik w Wordzie. Na podstawie szybkiego wglądu w materiał stwierdzę, czy tekst faktycznie jest już na etapie, w którym możemy bezpiecznie wejść z redakcją językową (czyli ostatecznym szlifowaniem stylu).</p>
 
-        <h2><span class="step-label">Kolejne Kroki</span>Skład DTP i Korekta Poskładowa</h2>
-        <p>Gdy tekst jest gotowy od strony literackiej, oferuję również usługi Składu DTP (przygotowanie pliku do druku lub e-booka) oraz Korekty Poskładowej (eliminacja błędów składu, takich jak sieroty czy wdowy).</p>
+        <h2><span class="step-label">Krok 5</span>Oferta i formalności</h2>
+        <p>Jeśli plik jest gotowy na szlif, odsyłam Ci informację zwrotną wraz z konkretną ofertą cenową i propozycją terminów. Wszystkie warunki zabezpieczamy umową. Z chwilą podpisania dokumentów i opłacenia faktury, oficjalnie rezerwuję dla Ciebie swój czas w kalendarzu.</p>
+
+        <h2><span class="step-label">Krok 6</span>Praca nad językiem</h2>
+        <p>Przystępuję do pracy nad Twoim tekstem. Wygładzam styl, usuwam potknięcia językowe i powtórzenia, dbając o to, by Twój autorski głos wybrzmiał jak najpełniej. Całą redakcję językową przeprowadzam w programie MS Word przy włączonej funkcji „Śledź zmiany” (Track Changes), dzięki czemu masz pełną kontrolę nad każdą dodaną przeze mnie spacją czy zmienionym szykiem zdania.</p>
+
+        <h2><span class="step-label">Krok 7</span>Rewizja i Korekta</h2>
+        <p>Odsyłam Ci zredagowany plik. Zapoznajesz się ze zmianami, akceptujesz je lub odrzucasz, odpowiadasz na moje komentarze i podejmujesz ostateczne decyzje. Po Twojej akceptacji możesz odesłać mi tekst do jednorazowej <strong>rewizji</strong> (sprawdzenia Twoich drobnych dopisków poczynionych podczas pracy z plikiem).</p>
+        <p>Jeśli Twój pakiet to obejmuje, po rewizji tekst trafia do ostatecznej <strong>korekty</strong> (wyłapywania ocalałych literówek i przecinków), a następnie (opcjonalnie) do profesjonalnego składu DTP i przygotowania wersji e-bookowych.</p>
 
         <h2><span class="step-label">Ważne zasady</span>Co warto wiedzieć <em class="grad-type">wcześniej</em></h2>
 
@@ -289,38 +292,38 @@ title: Współpraca w szczegółach
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-calendar-check"></i></div>
                     <h3>Termin to termin</h3>
-                    <p>Ustalony termin realizacji jest wiążący dla obu stron[cite: 4]. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie[cite: 4].</p>
+                    <p>Ustalony termin realizacji jest wiążący dla obu stron. Jeśli spóźnisz się z przesłaniem materiałów, mój termin ukończenia przesuwa się proporcjonalnie.</p>
                 </div>
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-user-shield"></i></div>
                     <h3>Pełna poufność</h3>
-                    <p>Twój tekst jest objęty klauzulą poufności[cite: 4]. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody[cite: 4].</p>
+                    <p>Twój tekst jest objęty klauzulą poufności. Nie udostępniam go, nie cytuję i nie używam fragmentów jako portfolio bez Twojej wyraźnej, pisemnej zgody.</p>
                 </div>
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-users"></i></div>
                     <h3>Dwie pary oczu</h3>
-                    <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd[cite: 4]. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa[cite: 4]. Po redakcji korektę powinna wykonać inna osoba[cite: 4].</p>
+                    <p>Nie wykonuję redakcji i korekty tego samego tekstu pod rząd. Przy każdym kolejnym etapie potrzebna jest świeża perspektywa. Po redakcji korektę powinna wykonać inna osoba.</p>
                 </div>
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-file-invoice-dollar"></i></div>
                     <h3>Zmiana zakresu = nowa wycena</h3>
-                    <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału[cite: 4].</p>
+                    <p>Jeśli w trakcie współpracy dodasz nowe rozdziały lub całkowicie zmienisz formę tekstu, przygotowuję osobną wycenę dla nowego materiału.</p>
                 </div>
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-comments"></i></div>
                     <h3>Komunikacja to podstawa</h3>
-                    <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę[cite: 4]? Pytaj śmiało[cite: 4]. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy[cite: 4].</p>
+                    <p>Masz pytania, wątpliwość, chcesz omówić moją poprawkę? Pytaj śmiało. Redakcja to dialog – im więcej rozmawiamy, tym lepszy będzie efekt końcowy.</p>
                 </div>
                 <div class="rule-card">
                     <div class="rule-icon"><i class="las la-check-circle"></i></div>
                     <h3>Decyzje należą do Ciebie</h3>
-                    <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja[cite: 4]. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo[cite: 4].</p>
+                    <p>Każda naniesiona przeze mnie zmiana to tylko merytoryczna propozycja. Masz pełne prawo odrzucić sugestię – tekst jest Twój i to Ty masz ostatnie słowo.</p>
                 </div>
             </div>
 
             <div class="warning-box">
                 <i class="las la-exclamation-circle" style="font-size: 2.2rem; color: var(--grad-start); line-height: 1;"></i>
-                <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury[cite: 4]. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie[cite: 4].</p></div>
+                <div><p><strong>Płatność i umowa.</strong> Nie zaczynam pracy bez podpisanej umowy i opłaconej faktury. To standard, który buduje obopólne zaufanie i pozwala mi spokojnie rezerwować czas wyłącznie dla Ciebie.</p></div>
             </div>
         </div>
 
@@ -330,9 +333,9 @@ title: Współpraca w szczegółach
 <section class="cta-section">
     <div class="cta-content">
         <h2 class="reveal delay-1">Twój tekst w dobrych rękach</h2>
-        <p class="reveal delay-2">Nie musisz znać się na edytorstwie czy narzędziach retoryki[cite: 4]. Napisz do mnie, opowiedz o swoim projekcie, a ja poprowadzę Cię przez całą resztę[cite: 4].</p>
+        <p class="reveal delay-2">Znasz już cały proces. Przejdź przez darmową autodiagnozę, napisz do mnie przez formularz, a ja poprowadzę Cię przez całą resztę.</p>
         <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+            <a href="#" class="btn-cta-white">Wypełnij formularz zgłoszeniowy</a>
             <a href="{{ '/cennik.html' | relative_url }}" class="btn-ghost">Sprawdź cennik <i class="las la-arrow-right"></i></a>
         </div>
     </div>
