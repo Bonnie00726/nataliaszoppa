@@ -38,7 +38,7 @@ title: Redakcja, korekta, skład
     font-size: 1.5rem; 
     flex-shrink: 0; /* Strzałki nie będą się kurczyć */
 }
-.diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+.diag-grid { display: grid; grid-template-columns: minmax(300px, 800px); justify-content: center; gap: 30px; margin-top: 40px; }
 .diag-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--grad-end, #d4af37); display: flex; flex-direction: column; }
 .diag-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
 .diag-card h3 i { font-size: 1.5em; color: var(--grad-end, #d4af37); }
@@ -349,14 +349,6 @@ title: Redakcja, korekta, skład
     <h3 class="path-name">Autodiagnostyka</h3>
   </div>
 
-  <div class="path-arrow"><i class="las la-angle-right"></i></div>
-
-  <div class="path-item">
-    <div class="path-icon"><i class="las la-file-pdf"></i></div>
-    <div class="path-number">Krok 2</div>
-    <h3 class="path-name">Darmowy PDF</h3>
-  </div>
-
   <div class="path-arrow path-arrow-desktop-only"><i class="las la-angle-right"></i></div>
 
   <div class="path-megapackage">
@@ -367,7 +359,7 @@ title: Redakcja, korekta, skład
       
       <div class="path-item path-item--no-border">
         <div class="path-icon"><i class="las la-edit"></i></div>
-        <div class="path-number">Krok 3</div>
+        <div class="path-number">Krok 2</div>
         <h3 class="path-name">Redakcja</h3>
       </div>
       
@@ -375,7 +367,7 @@ title: Redakcja, korekta, skład
 
       <div class="path-item path-item--no-border">
         <div class="path-icon"><i class="las la-spell-check"></i></div>
-        <div class="path-number">Krok 4</div>
+        <div class="path-number">Krok 3</div>
         <h3 class="path-name">Korekta</h3>
       </div>
     </div>
@@ -387,7 +379,7 @@ title: Redakcja, korekta, skład
       
       <div class="path-item path-item--no-border">
         <div class="path-icon"><i class="las la-layer-group"></i></div>
-        <div class="path-number">Krok 5</div>
+        <div class="path-number">Krok 4</div>
         <h3 class="path-name">Skład (DTP)</h3>
       </div>
       
@@ -395,7 +387,7 @@ title: Redakcja, korekta, skład
 
       <div class="path-item path-item--no-border">
         <div class="path-icon"><i class="las la-search-plus"></i></div>
-        <div class="path-number">Krok 6</div>
+        <div class="path-number">Krok 5</div>
         <h3 class="path-name">Korekta poskł.</h3>
       </div>
     </div>
@@ -428,17 +420,6 @@ title: Redakcja, korekta, skład
                 </ul>
                 <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz fabularny</a>
             </div>
-
-            <div class="diag-card">
-                <h3><i class="las la-spell-check"></i> Autodiagnostyka przed korektą</h3>
-                <p>Twój tekst przeszedł już redakcję u kogoś innego? Upewnij się, że język faktycznie został naprawiony i tekst nie wymaga ponownej przebudowy. Samodzielnie zweryfikujesz:</p>
-                <ul>
-                    <li>liczbę „wydmuszek słownych”</li>
-                    <li>płaskie czasowniki i generyczne rzeczowniki</li>
-                    <li>liczbę powtórzeń</li>
-                </ul>
-                <a href="#" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz formularz językowy</a>
-            </div>
             
         </div> 
     </div> 
@@ -470,7 +451,7 @@ title: Redakcja, korekta, skład
 
 <section class="section">
     <div class="container">
-        <h2 class="section-h2 reveal">Redakcja w <em>praktyce</em></h2>
+        <h2 class="section-h2 reveal">Zobacz, jak może wyglądać Twój tekst po moich <em>wskazówkach</em></h2>
         <p class="services-desc reveal delay-1" style="margin-bottom: 40px;">Spójrz na przykład poniżej. Dobra redakcja to nie tylko usuwanie literówek. To dbałość o precyzję sformułowań, eliminacja powtórzeń i nadanie tekstowi odpowiedniego tonu. Ten przykład pokazuje, jak zmiana kilku struktur językowych ulepsza opis.</p>
 
         <div class="comparison-container reveal delay-2">
@@ -520,8 +501,8 @@ title: Redakcja, korekta, skład
             <p>Opracowanie językowe, które nada Twojej książce płynność, świetny styl i bezbłędność.</p>
             
             <ul class="card-list">
-                <li><strong>Krok 3:</strong> Redakcja językowa</li>
-                <li><strong>Krok 4:</strong> Korekta po redakcji</li>
+                <li><strong>Krok 2:</strong> Redakcja językowa</li>
+                <li><strong>Krok 3:</strong> Korekta po redakcji</li>
             </ul>
             
             <button class="read-more-btn" onclick="TUTAJ_WKLEJ_SWOJ_KOD">
@@ -536,8 +517,8 @@ title: Redakcja, korekta, skład
             <p>Od surowego tekstu po gotowy produkt. Oddajesz mi plik, a ja kompleksowo zajmuję się całą resztą.</p>
             
             <ul class="card-list">
-                <li><strong>Krok 3 i 4:</strong> Redakcja i Korekta</li>
-                <li><strong>Krok 5 i 6:</strong> Skład DTP i Korekta poskładowa</li>
+                <li><strong>Krok 2 i 3:</strong> Redakcja i Korekta</li>
+                <li><strong>Krok 4 i 5:</strong> Skład DTP i Korekta poskładowa</li>
             </ul>
             
             <button class="read-more-btn" onclick="TUTAJ_WKLEJ_SWOJ_KOD">
@@ -551,8 +532,8 @@ title: Redakcja, korekta, skład
             <p>Profesjonalne przygotowanie wnętrza książki. Tworzę pliki gotowe do druku (PDF) oraz e-booki.</p>
             
             <ul class="card-list">
-                <li><strong>Krok 5:</strong> Skład DTP</li>
-                <li><strong>Krok 6:</strong> Korekta poskładowa (techniczna)</li>
+                <li><strong>Krok 4:</strong> Skład DTP</li>
+                <li><strong>Krok 5:</strong> Korekta poskładowa (techniczna)</li>
             </ul>
             
             <button class="read-more-btn" onclick="TUTAJ_WKLEJ_SWOJ_KOD">
