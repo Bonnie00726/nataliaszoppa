@@ -10,7 +10,7 @@ title: FAQs
         -webkit-backdrop-filter: blur(10px);
     }
 
-    /* ===== SEKCJA TYTUŁOWA ===== */
+    /* ===== SEKCJA TYTUŁOWA (BIAŁA, JAK NA ZDJĘCIU) ===== */
     .page-header { 
         padding: calc(var(--nav-h) + 60px) 40px 40px; 
         max-width: 1000px; 
@@ -43,6 +43,7 @@ title: FAQs
         color: var(--ink); 
         line-height: 1.15; 
         margin-bottom: 16px; 
+        font-weight: 700;
     }
     
     .page-subtitle {
@@ -55,7 +56,7 @@ title: FAQs
         margin: 0 auto; 
     }
 
-    /* ===== OBRAZEK HERO ===== */
+    /* ===== OBRAZEK HERO (SZEROKI) ===== */
     .page-hero-img-wrap { width: 100%; }
     .page-hero-img { 
         width: 100%; 
@@ -66,7 +67,7 @@ title: FAQs
         display: block; 
     }
 
-    /* ===== CREDIBILITY BAR ===== */
+    /* ===== CREDIBILITY BAR (CIEMNY PASEK NACHODZĄCY NA ZDJĘCIE) ===== */
     .credibility-bar-overlap { 
         background: var(--ink); 
         padding: 22px 40px; 
@@ -80,7 +81,7 @@ title: FAQs
         box-shadow: var(--shadow-strong); 
         width: calc(100% - 40px); 
     }
-    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; }
+    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
     .cred-pillar { display: flex; align-items: center; gap: 12px; }
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
@@ -151,7 +152,7 @@ title: FAQs
         height: 38px;
         position: relative;
         flex-shrink: 0;
-        background: var(--grad-text);
+        background: var(--grad);
         border-radius: 50%;
         transition: transform 0.3s ease, box-shadow 0.2s;
         display: flex;
@@ -174,6 +175,7 @@ title: FAQs
     
     .accordion-item.open .accordion-icon { transform: rotate(135deg); }
     
+    /* Płynne rozwijanie na max-height */
     .accordion-body {
         max-height: 0;
         overflow: hidden;
@@ -237,7 +239,7 @@ title: FAQs
 </header>
 
 <div class="page-hero-img-wrap reveal delay-2">
-    <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=2000&auto=format&fit=crop" alt="Tło — otwarta księga z piórem" class="page-hero-img">
+    <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=2000&auto=format&fit=crop" alt="Pytajniki w stylu retro" class="page-hero-img">
 </div>
 
 <div class="credibility-bar-overlap reveal delay-3">
@@ -260,7 +262,7 @@ title: FAQs
 <main class="page-content-wrapper">
     
     <div class="faq-group reveal delay-4" id="wycena">
-        <div class="faq-group-title"><i class="las la-money-bill-wave"></i> Wycena i płatności</div>
+        <div class="faq-group-title"><i class="las la-wallet"></i> Wycena i płatności</div>
         
         <div class="accordion-item open">
             <div class="accordion-header">
@@ -305,7 +307,7 @@ title: FAQs
     </div>
 
     <div class="faq-group reveal" id="proces">
-        <div class="faq-group-title"><i class="las la-cogs"></i> Proces pracy</div>
+        <div class="faq-group-title"><i class="las la-clipboard-list"></i> Proces pracy</div>
         
         <div class="accordion-item">
             <div class="accordion-header">
@@ -370,7 +372,7 @@ title: FAQs
     </div>
 
     <div class="faq-group reveal" id="uslugi">
-        <div class="faq-group-title"><i class="las la-concierge-bell"></i> Usługi</div>
+        <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
         
         <div class="accordion-item">
             <div class="accordion-header">
