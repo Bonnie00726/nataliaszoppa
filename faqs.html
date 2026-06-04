@@ -109,8 +109,11 @@ title: FAQs
     .accordion-icon::before { top: 16px; left: 9px; width: 16px; height: 2px; }
     .accordion-icon::after { top: 9px; left: 16px; width: 2px; height: 16px; }
     .accordion-item.open .accordion-icon { transform: rotate(135deg); }
-    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22,1,0.36,1), padding 0.4s ease; background: var(--paper-warm); }
-    .accordion-body.open { max-height: 1000px; padding: 10px 32px 32px 32px; border-top: 1px solid rgba(107,53,200,0.1); }
+    
+    /* Gwarancja wyświetlania po kliknięciu */
+    .accordion-body { display: none; background: var(--paper-warm); padding: 10px 32px 32px 32px; border-top: 1px solid rgba(107,53,200,0.1); }
+    .accordion-body.open { display: block; }
+    
     .accordion-body p { font-size: 1rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 16px; font-weight: 300;}
     .accordion-body p:last-child { margin-bottom: 0; }
     .accordion-body strong { color: var(--ink); font-weight: 700; }
@@ -232,7 +235,7 @@ title: FAQs
                 <div class="accordion-icon"></div>
             </div>
             <div class="accordion-body">
-                <p>Obie redakcje liczę w dniach roboczych. Wszystko zależy od tematyki i trudności tekstu[cite: 3]. Dokładny i wiążący termin otrzymasz zawsze razem z wyceną.</p>
+                <p>Obie redakcje liczę w dniach roboczych. Wszystko zależy od tematyki i trudności tekstu. Dokładny i wiążący termin otrzymasz zawsze razem z wyceną.</p>
             </div>
         </div>
 
@@ -308,7 +311,8 @@ title: FAQs
                 <div class="accordion-icon"></div>
             </div>
             <div class="accordion-body">
-                <p>Tak — to dla mnie absolutny priorytet podczas pracy językowej. Redakcja i korekta mają na celu udoskonalenie tekstu, nie zastąpienie Twojego głosu moim. Poprawiam błędy, doprecyzowuję, dbam o spójność logiczną — ale styl, ton i unikalny charakter tekstu pozostaje w 100% Twój.</p>
+                <p>Wielu redaktorów to obiecuje, ale powiedzmy sobie wprost: zależy, co dokładnie nazywasz swoim stylem. Często twórcy mylą unikalny, autorski głos z błędami składniowymi, niewłaściwym rejestrem językowym, chaosem czy łamaniem logiki (np. stosowaniem <em>plot armor</em>).</p>
+                <p>Jeśli o to pytasz – nie, nie zachowam ich. Zostaną usunięte. Każda sprawnie napisana książka opiera się na pewnym schemacie i rzemiośle. Najpierw musimy zbudować tekst na poprawnych fundamentach. Dopiero gdy opanujesz zasady, możesz świadomie je łamać i wprowadzać innowacje. Moim zadaniem jest oczyścić Twój tekst ze złych nawyków, a nie pielęgnować je pod przykrywką „stylu”.</p>
             </div>
         </div>
 
@@ -351,32 +355,30 @@ title: FAQs
             });
         }
 
-        // --- ACCORDION (KULOODPORNY) ---
+        // --- ACCORDION (KULOODPORNY PROSTY SKRYPT) ---
         const headers = document.querySelectorAll('.accordion-header');
         
         headers.forEach(header => {
-            header.addEventListener('click', function() {
-                // Znajdź okienko i jego treść (body)
-                const item = this.parentElement;
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
                 const body = item.querySelector('.accordion-body');
                 
-                // Sprawdź, czy kliknięte okienko jest otwarte
-                const isOpen = item.classList.contains('open');
-
-                // Najpierw zamykamy wszystkie okienka w tej samej grupie
-                const group = item.closest('.faq-group');
-                if (group) {
-                    group.querySelectorAll('.accordion-item').forEach(i => {
-                        i.classList.remove('open');
-                        const b = i.querySelector('.accordion-body');
-                        if (b) b.classList.remove('open');
-                    });
-                }
-
-                // Jeśli kliknięte okienko było wcześniej ZAMKNIĘTE, to je teraz otwieramy
-                if (!isOpen) {
+                // Zapisujemy, czy kliknięty był otwarty
+                const wasOpen = item.classList.contains('open');
+                
+                // Najpierw bezwzględnie zamykamy wszystkie okienka
+                document.querySelectorAll('.accordion-item').forEach(accItem => {
+                    accItem.classList.remove('open');
+                    const accBody = accItem.querySelector('.accordion-body');
+                    if (accBody) {
+                        accBody.classList.remove('open');
+                    }
+                });
+                
+                // Jeśli nasz kliknięty nie był otwarty, otwieramy go
+                if (!wasOpen) {
                     item.classList.add('open');
-                    if (body) body.classList.add('open');
+                    body.classList.add('open');
                 }
             });
         });
