@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Struktura trzech aktów – jak naprawdę działa fabuła 🎬"
+title: "Struktura trzech aktów – jak naprawdę działa fabuła"
 date: 2026-06-04 23:30:00 +0200
 author: Natalia Szoppa
 image: https://images.unsplash.com/photo-1638802538115-041e14d28d6a
