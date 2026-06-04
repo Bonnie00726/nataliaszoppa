@@ -172,7 +172,35 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(function() { bellPill.classList.add('expanded'); }, 1700);
         });
     </script>
+<script>
+    // Globalny skrypt do obsługi rozwijania FAQ (nasłuchuje kliknięć na całej stronie)
+    document.addEventListener('click', function(event) {
+        // Sprawdzamy, czy to w co kliknęliśmy, to nagłówek pytania (lub jego środek)
+        const header = event.target.closest('.accordion-header');
+        if (!header) return; // Jeśli nie, skrypt nic nie robi
+        
+        event.preventDefault(); // Zapobiega ewentualnym konfliktom
 
+        const item = header.closest('.accordion-item');
+        const body = item.querySelector('.accordion-body');
+        if (!item || !body) return;
+
+        const isOpen = item.classList.contains('open');
+
+        // Zamykamy wszystkie okienka (żeby zawsze było otwarte tylko jedno)
+        document.querySelectorAll('.accordion-item').forEach(accItem => {
+            accItem.classList.remove('open');
+            const accBody = accItem.querySelector('.accordion-body');
+            if (accBody) accBody.classList.remove('open');
+        });
+
+        // Jeśli kliknięte okienko było ZAMKNIĘTE, otwieramy je
+        if (!isOpen) {
+            item.classList.add('open');
+            body.classList.add('open');
+        }
+    });
+</script>
 
 </body>
 </html>
