@@ -1,11 +1,14 @@
 ---
 layout: post
-title: "Zanim napiszesz pierwsze słowo – pisarski reality check ✍️"
+title: "Zanim napiszesz pierwsze słowo – pisarski reality check"
 date: 2026-06-04 23:00:00 +0200
 author: Natalia Szoppa
+image: /assets/images/dan-counsell-zIwAchjDirM-unsplash.jpg
 ---
 
 Zanim napiszesz pierwsze słowo – kilka rzeczy do przemyślenia, zanim otworzysz nowy dokument. Nie chodzi tu o technikę pisania, ale o Twoje nastawienie. W pracy redaktorskiej stale widzę te same problemy, a ich główne źródło jest zwykle jedno: **autor stawia siebie w centrum, spychając czytelnika na dalszy plan.**
+
+<img src="/assets/images/dan-counsell-zIwAchjDirM-unsplash.jpg" alt="Maszyna do pisania - Dan Counsell" style="max-width: 100%; border-radius: 8px; display: block; margin: 20px auto;">
 
 ---
 
