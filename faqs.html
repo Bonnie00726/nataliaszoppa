@@ -104,7 +104,7 @@ title: FAQs
         border-radius: var(--radius-lg);
         margin-bottom: 18px;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
         box-shadow: 0 2px 8px rgba(107, 53, 200, 0.04);
     }
     
@@ -175,18 +175,12 @@ title: FAQs
     
     .accordion-item.open .accordion-icon { transform: rotate(135deg); }
     
-    /* Płynne rozwijanie na max-height */
+    /* Płynne rozwijanie przez JS-owy scrollHeight */
     .accordion-body {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
+        transition: max-height 0.3s ease, padding 0.3s ease;
         background: var(--paper-warm);
-    }
-    
-    .accordion-body.open {
-        max-height: 1500px;
-        padding: 10px 36px 36px 36px;
-        border-top: 1px solid rgba(107, 53, 200, 0.1);
     }
     
     .accordion-body p { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 18px; }
@@ -264,12 +258,12 @@ title: FAQs
     <div class="faq-group reveal delay-4" id="wycena">
         <div class="faq-group-title"><i class="las la-wallet"></i> Wycena i płatności</div>
         
-        <div class="accordion-item open">
+        <div class="accordion-item">
             <div class="accordion-header">
                 <span class="accordion-question">Jak wygląda wycena?</span>
                 <div class="accordion-icon"></div>
             </div>
-            <div class="accordion-body open">
+            <div class="accordion-body">
                 <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu. Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin.</p>
                 <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="{{ '/cennik.html' | relative_url }}">Cennik</a>.</p>
             </div>
@@ -392,7 +386,7 @@ title: FAQs
             </div>
             <div class="accordion-body">
                 <p>Wielu redaktorów to obiecuje, ale powiedzmy sobie wprost: zależy, co dokładnie nazywasz swoim stylem. Często twórcy mylą unikalny, autorski głos z błędami składniowymi, niewłaściwym rejestrem językowym, chaosem czy łamaniem logiki (np. stosowaniem <em>plot armor</em>).</p>
-                <p>Jeśli o to pytasz – nie, nie zachowam ich. Zostaną usunięte. Każda sprawnie napisana książka opiera się na pewnym schemacie i rzemiośle. Najpierw musimy zbudować tekst na poprawnych fundamentach. Dopiero gdy opanujesz zasady, możesz świadomie je łamać i wprowadzać innowacje. Moim zadaniem jest oczyścić Twój tekst ze złych nawyków, a nie pielęgnować je pod przykrywką „stylu”.</p>
+                <p>Jeśli o to pytasz – nie, nie zachowam ich. Zostaną usunięte. Każda sprawnie napisana książka opiera się na pewnym schemacie i rzemiośle. Najpierw musimy zbudować tekst na poprawnych fundamentach. Dopiero gdy opanujesz zasady, możesz świadomie je łamać i wprowadzać innowacje. Moim zadaniem jest oczyścić Twój tekst ze złych nawyków, a nie pielęgnować je pod przykrywką „stylu".</p>
             </div>
         </div>
         
@@ -414,7 +408,7 @@ title: FAQs
         <h2 class="reveal delay-1">Pisz śmiało!</h2>
         <p class="reveal delay-2">Twoja twórczość nie zawsze mieści się w schematach. Masz nietypowe pytanie? Odpowiem na nie podczas krótkiej konsultacji mailowej.</p>
         <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+            <a href="mailto:kontakt@zakulisamijezyka.pl" class="btn-cta-white">Napisz do mnie</a>
             <a href="{{ '/cennik.html' | relative_url }}" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
         </div>
     </div>
@@ -422,15 +416,52 @@ title: FAQs
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Skrypt do obsługi akordeonu (FAQs) ---
+
+        function openItem(item) {
+            const body = item.querySelector('.accordion-body');
+            item.classList.add('open');
+            body.style.maxHeight = body.scrollHeight + 'px';
+            body.style.paddingTop = '10px';
+            body.style.paddingBottom = '36px';
+            body.style.paddingLeft = '36px';
+            body.style.paddingRight = '36px';
+            body.style.borderTop = '1px solid rgba(107, 53, 200, 0.1)';
+        }
+
+        function closeItem(item) {
+            const body = item.querySelector('.accordion-body');
+            item.classList.remove('open');
+            body.style.maxHeight = '0';
+            body.style.paddingTop = '0';
+            body.style.paddingBottom = '0';
+            body.style.borderTop = 'none';
+        }
+
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const item = header.closest('.accordion-item');
-                const body = item.querySelector('.accordion-body');
                 const isOpen = item.classList.contains('open');
 
-                item.classList.toggle('open', !isOpen);
-                body.classList.toggle('open', !isOpen);
+                // Zamknij wszystkie otwarte
+                document.querySelectorAll('.accordion-item.open').forEach(openItem => closeItem(openItem));
+
+                // Otwórz kliknięty, jeśli był zamknięty
+                if (!isOpen) openItem(item);
+            });
+        });
+
+        // Padding na mobile
+        function getPadding() {
+            return window.innerWidth <= 860 ? { h: '28px', v: '30px' } : { h: '36px', v: '36px' };
+        }
+
+        // Nadpisz openItem z responsywnym paddingiem
+        const _openItem = openItem;
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.accordion-item.open').forEach(item => {
+                const body = item.querySelector('.accordion-body');
+                // Odśwież maxHeight przy zmianie szerokości (treść mogła się przepłynąć)
+                body.style.maxHeight = body.scrollHeight + 'px';
             });
         });
     });
