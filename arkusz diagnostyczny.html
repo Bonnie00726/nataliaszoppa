@@ -17,6 +17,7 @@
     --ink-muted:  #666666;
     --paper:      #FFFFFF;
     --paper-mid:  #E5E5E5;
+    --paper-warm: #F9F9F9;
     --grad-start: #6B35C8;
     --grad-mid:   #B8409A;
     --grad-end:   #E8772A;
@@ -195,6 +196,21 @@
     flex-direction: column;
   }
 
+  /* ===================== NOWE KOMPONENTY: INSTRUKCJA I SPIS TREŚCI ===================== */
+  .instruction-step { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
+  .step-number { width: 34px; height: 34px; background: var(--grad); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-weight: 800; font-size: 15px; flex-shrink: 0; box-shadow: 0 4px 10px rgba(107, 53, 200, 0.2); margin-top: 2px; }
+  .step-content { flex: 1; background: #fff; padding: 18px 22px; border-radius: var(--radius); border: 1px solid var(--paper-mid); font-size: 12px; line-height: 1.6; color: var(--ink-soft); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+  .step-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 16px; margin-bottom: 8px; margin-top: 0; }
+  
+  .toc-container { background: #fff; padding: 24px 30px; border-radius: var(--radius); border: 1px solid var(--paper-mid); box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-top: 10px; }
+  .toc-list { list-style: none !important; padding: 0 !important; margin: 0 !important; }
+  .toc-list li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--paper-mid); margin-bottom: 12px !important; padding-bottom: 6px; font-weight: 600; color: var(--ink-soft); font-size: 13px; }
+  .toc-list li:last-child { border-bottom: none; margin-bottom: 0 !important; padding-bottom: 0; }
+  .toc-list li span:last-child { color: var(--grad-start); font-weight: 800; }
+  
+  .toc-section { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-top: 16px; margin-bottom: 8px; font-weight: 700; border-bottom: 2px solid var(--paper-mid); padding-bottom: 4px; }
+  .toc-section:first-child { margin-top: 0; }
+
   /* ===================== TABELE ===================== */
   .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
   .comparison-table th, .comparison-table td { border: 1px solid var(--paper-mid); padding: 10px; text-align: left; vertical-align: top; }
@@ -270,22 +286,18 @@
   .fill-label { font-size: 12px; font-weight: 700; color: var(--ink); white-space: nowrap; }
   .fill-space { flex: 1; min-height: 18px; }
 
-  /* ===================== BLOKI TEKSTOWE I SPIS TREŚCI ===================== */
+  /* ===================== BLOKI TEKSTOWE ===================== */
   .reading-content { 
     background: #fff; padding: 20px; border-radius: var(--radius); 
     border: 1px solid var(--paper-mid); margin-bottom: 20px; font-size: 12px; line-height: 1.6; color: var(--ink-soft);
   }
-  .reading-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-bottom: 6px; margin-top: 14px; }
-  .reading-content h4:first-child { margin-top: 0; }
+  .reading-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-bottom: 6px; margin-top: 0; }
   .reading-content ul { padding-left: 20px; margin-bottom: 10px; }
   .reading-content li { margin-bottom: 4px; }
   .reading-content p { margin-bottom: 10px; }
+  .reading-content p:last-child { margin-bottom: 0; }
 
-  .toc-list { list-style: none !important; padding: 0 !important; margin-top: 12px; margin-bottom: 5px !important; }
-  .toc-list li { display: flex; justify-content: space-between; border-bottom: 1px dotted var(--paper-mid); margin-bottom: 8px !important; padding-bottom: 4px; font-weight: 600; color: var(--ink-soft); }
-  .toc-list li span:last-child { color: var(--grad-start); font-weight: 800; }
-
-  /* ===================== STRONA 1 — OKŁADKA ===================== */
+  /* ===================== STRONA 1 – OKŁADKA ===================== */
   .cover { display: grid; grid-template-rows: auto 1fr auto; height: 100%; padding-top: 4mm; }
   .cover-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--paper-mid); }
   .logo { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
@@ -306,7 +318,6 @@
       content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 1px;
       background: linear-gradient(90deg, var(--paper-mid) 0%, transparent 100%);
   }
-
 
   /* ===================== CHECKBOXY (DO WYDRUKU) ===================== */
   .check-group { margin-bottom: 18px; }
@@ -343,128 +354,173 @@
 <body>
 <div class="doc">
 
+<!-- STRONA 1: OKŁADKA -->
 <section class="page">
   <div class="runner top"><span>Narzędzie diagnostyczne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="cover">
     <div class="cover-top">
       <div class="logo">Za kulisami <em class="grad-type">dobrej książki</em></div>
-      <div class="cover-meta">Arkusz diagnostyczny </div>
+      <div class="cover-meta">Arkusz diagnostyczny</div>
     </div>
     <div class="cover-mid">
       <span class="eyebrow">Karta pracy autora · Przed Redakcją</span>
       <h1 class="title">Arkusz<br>diagnostyczny<br><em class="grad-type">dla autora powieści</em></h1>
       <div class="grad-rule"></div>
-      <p class="subtitle">Ten arkusz to nie test, to nie egzamin.<br>To <span class="highlight-marker">narzędzie, które pomoże Ci znaleźć luki,</span> i przestrzeń do pracy.</p>
-      <p class="body" style="margin-top: 22px;">Twoim zadaniem nie jest pochwalenie się tym, że masz odpowiedź na każde pytanie, tylko zlokalizowanie miejsc, w których odpowiedzi jeszcze nie masz. Arkusz prowadzi Cię przez 6 poziomów coraz głębszej analizy własnej książki.</p>
+      <p class="subtitle">Ten arkusz to nie test, to nie egzamin.<br>To <span class="highlight-marker">narzędzie, które pomoże Ci znaleźć luki i słabe punkty.</span></p>
+      <p class="body" style="margin-top: 22px;">Twoim zadaniem nie jest chwalenie się tym, że znasz odpowiedź na każde pytanie, lecz zlokalizowanie miejsc, w których odpowiedzi jeszcze nie masz. Arkusz poprowadzi Cię przez proces coraz głębszej analizy własnej książki.</p>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 26</span></div>
 </section>
 
+<!-- STRONA 2: PO CO MI TEN ARKUSZ? -->
 <section class="page">
   <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener" style="margin-bottom: 16px;">
-      <h2 class="section-title">Jak korzystać z <em class="grad-type">arkusza</em></h2>
-      <p class="body">Ten arkusz najlepiej otworzyć bezpośrednio w przeglądarce i pracować na nim na bieżąco. W każdej chwili możesz go zapisać na dysku, używając skrótu <strong>Ctrl + P</strong> (Drukuj jako PDF).</p>
+  <div class="section-opener" style="margin-bottom: 20px;">
+    <h2 class="section-title">Po co mi <em class="grad-type">ten arkusz</em>?</h2>
+    <p class="body">Krótka odpowiedź: żeby zaoszczędzić Twój czas, nerwy i pieniądze.</p>
   </div>
 
-  <div class="reading-content" style="margin-bottom: 16px;">
-    <h4>Spis treści</h4>
+  <div class="reading-content" style="border-left: 4px solid var(--grad-start); margin-bottom: 24px;">
+    <h4>Nie chcesz czytać tomów teorii?</h4>
+    <p>Nie masz czasu ani ochoty na przedzieranie się przez długie książki o teorii literatury i strukturze powieści? Wolisz pisać, zamiast tonąć w akademickich analizach? To w pełni zrozumiałe. Ten arkusz to esencja – zbiór najważniejszych, praktycznych wskazówek bez zbędnego teoretyzowania i lania wody.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-end); margin-bottom: 24px;">
+    <h4>Wyeliminuj klasyczne błędy debiutantów</h4>
+    <p>Arkusz zawiera zestawienie typowych pułapek i błędów, z którymi mierzy się niemal każdy początkujący autor. Dobra wiadomość jest taka, że większość z nich jesteś w stanie zlokalizować i wyeliminować samodzielnie. Nie potrzebujesz do tego drogich konsultacji.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-mid);">
+    <h4>Czego potrzebujesz do pracy?</h4>
+    <p>Od Ciebie wymagam wyłącznie trzech rzeczy: <strong>czasu, cierpliwości i zaangażowania</strong>. Arkusz to świetne narzędzie, ale to Ty musisz wykonać właściwą pracę. Potraktuj go jak bezlitosne, ale przyjazne lustro dla Twojego tekstu. Bądź szczery w swoich odpowiedziach, a szybko zobaczysz, gdzie Twoja historia zgrzyta, a w jakich miejscach opiera się na solidnych fundamentach.</p>
+  </div>
+  
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 26</span></div>
+</section>
+
+<!-- STRONA 3: SPIS TREŚCI -->
+<section class="page">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Co znajdziesz <em class="grad-type">w tym arkuszu</em></h2>
+  </div>
+
+  <div class="toc-container">
     <ul class="toc-list">
-      <li><span>Wprowadzenie: Spis treści</span><span>2</span></li>
-      <li><span>Legenda i tryb pracy</span><span>3</span></li>
-      <li><span>Dla kogo piszesz? (Analiza intencji)</span><span>4</span></li>
-      <li><span>Sekcja I: Dlaczego w ogóle piszesz?</span><span>5</span></li>
-      <li><span>Wybór narracji</span><span>6</span></li>
+      <div class="toc-section">Wprowadzenie</div>
+      <li><span>Po co mi ten arkusz? i Instrukcja obsługi</span><span>2</span></li>
+      
+      <div class="toc-section">Etap 1: Fundamenty Autora</div>
+      <li><span>Dla kogo i dlaczego piszesz?</span><span>5</span></li>
       <li><span>Twój proces twórczy</span><span>7</span></li>
-      <li><span>Świadomość językowa</span><span>8</span></li>
-      <li><span>Klasyczny błąd #1: Information dump</span><span>9</span></li>
-      <li><span>Klasyczny błąd #2: Plot armour</span><span>10</span></li>
-      <li><span>Sekcja 0: Szybka diagnoza fabularna</span><span>11</span></li>
-      <li><span>Sekcja III: 15 beatów Save the Cat!</span><span>15</span></li>
-      <li><span>Sekcja II: Fabuła, czyli „CO”</span><span>18</span></li>
-      <li><span>Sekcja IV: Anatomia bohatera</span><span>19</span></li>
-      <li><span>Sekcja V: Świat i oś czasu</span><span>20</span></li>
-      <li><span>Sekcja VI: Wielka integracja</span><span>22</span></li>
-      <li><span>Podsumowanie: Co dalej?</span><span>23</span></li>
+
+      <div class="toc-section">Etap 2: Szybki Skan Historii</div>
+      <li><span>Gatunek i plan wydarzeń</span><span>8</span></li>
+      <li><span>Szybka diagnoza: Prolog, Bohater i Świat</span><span>9</span></li>
+      <li><span>Szybka diagnoza: Role i Technikalia</span><span>11</span></li>
+
+      <div class="toc-section">Etap 3: Głębsze Nurkowanie</div>
+      <li><span>Fabuła i struktura (15 beatów Save the Cat!)</span><span>12</span></li>
+      <li><span>Anatomia bohatera</span><span>16</span></li>
+      <li><span>Świat pod lupą: Klimat, Oś czasu i Rekwizyty</span><span>17</span></li>
+
+      <div class="toc-section">Etap 4: Warsztat i Pułapki</div>
+      <li><span>Wybór i weryfikacja płynności narracji</span><span>19</span></li>
+      <li><span>Świadomość językowa</span><span>21</span></li>
+      <li><span>Klasyczne błędy: Information dump & Plot armour</span><span>22</span></li>
+
+      <div class="toc-section">Etap 5: Finał</div>
+      <li><span>Wielka integracja elementów</span><span>24</span></li>
+      <li><span>Studium przypadku: 450 stron chaosu</span><span>25</span></li>
+      <li><span>Podsumowanie: Co dalej?</span><span>26</span></li>
     </ul>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 26</span></div>
 </section>
-
+<!-- STRONA 4: INSTRUKCJA -->
 <section class="page">
   <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-
   <div class="section-opener" style="margin-bottom: 18px;">
     <h2 class="section-title">Instrukcja <em class="grad-type">obsługi arkusza</em></h2>
   </div>
 
-  <div class="q-row" style="align-items: flex-start; gap: 20px; margin-bottom: 0; flex: 1;">
-    <div class="q-main">
+  <div class="instruction-step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h4>Jak otworzyć i pobrać arkusz?</h4>
+      <p>Arkusz działa najlepiej wtedy, gdy otworzysz go bezpośrednio w <strong>przeglądarce internetowej</strong> – takiej jak Chrome, Firefox lub Edge. Możesz na nim pracować online albo zapisać go na dysku jako plik PDF.</p>
+      <p style="margin-top: 8px;">Aby pobrać PDF, wciśnij <strong>Ctrl + P</strong> (lub Cmd + P na Macu), z listy drukarek wybierz <strong>„Zapisz jako PDF”</strong> i koniecznie zaznacz opcję <strong>„Grafika tła”</strong> (ang. <em>Background graphics</em>). Bez tego kolory ramek, gradienty i tła zostaną pominięte.</p>
+    </div>
+  </div>
 
-      <p class="body" style="font-weight: 700; margin-bottom: 6px;">Legenda – w całym arkuszu używam czterech rodzajów ramek:</p>
+  <div class="instruction-step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h4>W czym otwierać gotowy plik PDF?</h4>
+      <p>Unikaj otwierania pliku w programie <strong>Adobe Acrobat</strong> – nie obsługuje on poprawnie wszystkich fontów internetowych użytych w dokumencie. Najlepiej sprawdzi się darmowy <strong>PDF-XChange Viewer</strong> lub po prostu ponowne użycie przeglądarki internetowej.</p>
+    </div>
+  </div>
 
-      <div class="legend-grid" style="margin-top: 0; margin-bottom: 20px;">
+  <div class="instruction-step">
+    <div class="step-number">3</div>
+    <div class="step-content" style="padding-bottom: 12px;">
+      <h4>Zrozumienie legendy</h4>
+      <p>W całym arkuszu używam czterech rodzajów ramek, które pomogą Ci w nawigacji po wskazówkach:</p>
+      <div class="legend-grid" style="margin-top: 12px;">
         <div class="box box-blue">
           <span class="box-title">Niebieska ramka</span>
-          Tłumaczy pojęcia (czym jest prolog, antagonista, beat itp.).
+          Tłumaczy pojęcia (np. czym jest prolog, antagonista, beat).
         </div>
         <div class="box box-orange">
           <span class="box-title">Pomarańczowa ramka</span>
-          Pokazuje przykłady z konkretnych książek lub z praktyki redaktorskiej.
+          Pokazuje przykłady zaczerpnięte z konkretnych książek lub z praktyki redaktorskiej.
         </div>
         <div class="box box-red">
           <span class="box-title">Czerwona ramka</span>
-          Ostrzeżenie przed typowym błędem początkujących autorów.
+          Ostrzega przed typowymi błędami początkujących autorów.
         </div>
         <div class="box box-purple">
           <span class="box-title">Fioletowa ramka</span>
-          Rada redaktorska, która sugeruje, jak rozwiązać problem.
+          Praktyczna wskazówka redaktorska, która sugeruje, jak rozwiązać zdiagnozowany problem.
         </div>
-      </div>
-
-      <div class="reading-content" style="margin-bottom: 0;">
-        <h4>Sugerowany tryb pracy:</h4>
-        <ul>
-          <li><strong>Krok 1:</strong> Odpowiadaj szczerze na pytania – wpisuj „nie wiem", jeśli nie znasz jeszcze odpowiedzi. Zlokalizowanie braków i luk to ważny etap!</li>
-          <li><strong>Krok 2:</strong> Poczytaj artykuły o narracji i innych błędach początkujących autorów.</li>
-          <li><strong>Krok 3:</strong> Wróć do arkusza i zobacz, co możesz udoskonalić po lekturze teorii.</li>
-          <li><strong>Krok 4:</strong> Jeśli chcesz, możesz odpowiedzieć na te pytania w specjalnie przygotowanym <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">pliku Google Docs</a>.</li>
-          <li><strong>Krok 5:</strong> Jesteś chętny na więcej? Poproś o <a href="mailto:kontakt@zakulisamijezyka.pl" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">darmową konsultację mailową</a> lub wykup <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">spotkanie 1:1</a>.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="q-sidebar">
-      <div class="box box-purple">
-        <span class="box-title">Jak pobrać jako PDF?</span>
-        Otwórz arkusz w przeglądarce (Chrome lub Firefox) i naciśnij <strong>Ctrl + P</strong> (lub Cmd + P na Macu). W oknie drukowania wybierz <strong>„Zapisz jako PDF"</strong> jako miejsce docelowe. Koniecznie zaznacz opcję <strong>„Grafika tła"</strong> (lub „Background graphics") — bez tego kolory ramek i gradientów nie zostaną uwzględnione i arkusz będzie wyglądał zupełnie inaczej.
-      </div>
-      <div class="box box-red">
-        <span class="box-title">Ważne: wybór przeglądarki</span>
-        Arkusz najlepiej otwierać w <strong>przeglądarce internetowej</strong> (Chrome, Firefox, Edge) lub w <strong>PDF Change Viewer</strong>. Program <strong>Adobe Acrobat nie obsługuje fontów internetowych</strong> — czcionki mogą wyświetlać się nieprawidłowo lub zostać zastąpione domyślnym krojem, co zaburza układ strony.
       </div>
     </div>
   </div>
 
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 23</span></div>
+  <div class="instruction-step" style="margin-bottom: 0;">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <h4>Sugerowane etapy pracy</h4>
+      <ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 0;">
+        <li><strong>Krok 1:</strong> Odpowiadaj szczerze – wpisuj „nie wiem”, jeśli nie znasz jeszcze odpowiedzi. Luki to też wynik!</li>
+        <li><strong>Krok 2:</strong> Poszerzaj wiedzę – poczytaj artykuły o narracji oraz o powszechnych pisarskich błędach.</li>
+        <li><strong>Krok 3:</strong> Wróć do arkusza – sprawdź, jak możesz udoskonalić historię po uzupełnieniu teorii.</li>
+        <li><strong>Krok 4:</strong> Jeśli wolisz pisać na klawiaturze, możesz wypełnić te pytania w specjalnie przygotowanym <a href="#" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">pliku Google Docs</a>.</li>
+        <li><strong>Krok 5:</strong> Potrzebujesz więcej wsparcia? Poproś o <a href="mailto:kontakt@zakulisamijezyka.pl" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">darmową konsultację mailową</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 26</span></div>
 </section>
 
+<!-- STRONA 5 -->
 <section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 1: Fundamenty Autora</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Dla kogo <em class="grad-type">piszesz?</em></h2>
-    <p class="body">Twoja motywacja kształtuje każde zdanie. Zanim przejdziesz do diagnozy, warto zdefiniować prawdziwego odbiorcę Twojej książki.</p>
+    <h2 class="section-title">Dla kogo <em class="grad-type">piszesz</em>?</h2>
+    <p class="body">Twoja motywacja kształtuje każde zdanie. Zanim przejdziesz do diagnozy, warto zdefiniować odbiorcę Twojej opowieści.</p>
   </div>
 
   <div class="reading-content" style="border-left: 4px solid var(--grad-start);">
     <h4>Autor piszący dla siebie</h4>
-    <p>Możesz pisać wyłącznie dla siebie – to wspaniała forma autoterapii i ekspresji. Taki autor bardzo często mówi: <em>„Chcę, aby moja historia była...", „Chcę pokazać, że...", „To mi się podoba"</em>. W centrum zawsze stoi <strong>„ja"</strong> i autorska wizja, której nie wolno zmieniać, której nikt nie powinien negować. Sukcesem jest tutaj samo ukończenie tekstu zgodnie z wlasnymi uczuciami i gustem.</p>
+    <p>Możesz pisać wyłącznie dla siebie – to wspaniała forma autoterapii i ekspresji. Taki autor bardzo często mówi: <em>„Chcę, aby moja historia była…”, „Chcę pokazać, że…”, „To mi się podoba”</em>. W centrum zawsze stoi <strong>„ja”</strong> i autorska wizja, której nie wolno zmieniać, której nikt nie powinien negować. Sukcesem jest tutaj samo ukończenie tekstu zgodnie z własnymi uczuciami i gustem.</p>
   </div>
 
   <div class="reading-content" style="border-left: 4px solid var(--grad-end);">
     <h4>Autor biorący pod uwagę czytelnika</h4>
-    <p>Autor, który chce dotrzeć do innych, zamienia <strong>„ja"</strong> na <strong>„oni"</strong>. Mówi: <em>„Chcę, żeby moi czytelnicy poczuli smutek", „Chcę, żeby zobaczyli, jak to jest, kiedy...", „Chcę, żeby czytelnicy nie mogli się oderwać..."</em>. Taki autor zaczyna od emocji i potrzeb odbiorcy. To dla nich przeredaguje jeden akapit milion razy, nieustannie zadając sobie pytanie: <strong>„Czy to im się spodoba?"</strong>, a nie „Czy ja to lubię?".</p>
+    <p>Autor, który chce dotrzeć do innych, zamienia <strong>„ja”</strong> na <strong>„oni”</strong>. Mówi: <em>„Chcę, żeby moi czytelnicy poczuli smutek”, „Chcę, żeby zobaczyli, jak to jest, kiedy…”, „Chcę, żeby czytelnicy nie mogli się oderwać…”</em>. Taki autor zaczyna od emocji i potrzeb odbiorcy. To dla nich przeredaguje jeden akapit milion razy, zadając sobie pytanie: <strong>„Czy to im się spodoba?”</strong>, a nie „Czy ja to lubię?”.</p>
   </div>
 
   <div class="q-row">
@@ -478,24 +534,25 @@
     <div class="q-sidebar">
       <div class="box box-purple">
         <span class="box-title">Wskazówka Redaktora</span>
-        Zajrzyj do sekcji podziękowań w swoich ulubionych książkach. Autorzy często piszą tam, co ich motywowało i komu dziękują za pomoc w „oszlifowaniu" tekstu. To właśnie tam najszybciej dowiesz się, czy autor pisał dla siebie, czy dla czytelników.
+        Zajrzyj do sekcji podziękowań w swoich ulubionych książkach. Autorzy często piszą tam, co ich naprawdę motywowało i komu dziękują za pomoc w „oszlifowaniu” tekstu. To właśnie tam najszybciej dowiesz się, czy pisali dla siebie, czy dla czytelników.
       </div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>5 / 26</span></div>
 </section>
 
+<!-- STRONA 6 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja I</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 1: Fundamenty Autora</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Dlaczego w ogóle <em class="grad-type">piszesz?</em></h2>
+    <h2 class="section-title">Dlaczego w ogóle <em class="grad-type">piszesz</em>?</h2>
     <p class="body">Ta sekcja idzie głębiej. Te odpowiedzi pomogą Ci się zmotywować w momencie kryzysu.</p>
   </div>
 
   <div class="q-row">
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">INTENCJA: Co było iskrą?</h3></div>
-      <div class="main-question">Co było <span class="highlight-marker">pierwszym powodem</span>, dla którego usiadłeś do klawiatury? (obraz, sen, złość)</div>
+      <div class="main-question">Co było <span class="highlight-marker">pierwszym powodem,</span> dla którego usiadłaś / usiadłeś do klawiatury? (obraz, sen, silna emocja)</div>
       <div class="dot-grid-box short"></div>
     </div>
     <div class="q-sidebar">
@@ -506,18 +563,18 @@
   <div class="q-row">
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">PRZESŁANIE: Co chcesz powiedzieć?</h3></div>
-      <div class="main-question">Jaką <span class="highlight-marker">jedną myśl</span> chciałbyś, żeby czytelnik zapamiętał po zamknięciu książki?</div>
+      <div class="main-question">Jaką <span class="highlight-marker">jedną myśl</span> chciałabyś / chciałbyś, żeby czytelnik zapamiętał po zamknięciu książki?</div>
       <div class="dot-grid-box short"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-orange"><span class="box-title">Przykład</span><em>1984:</em> Totalitaryzm nie kończy się na ciele, kontroluje myśli.<br><em>Małe życie:</em> Trauma nie zawsze się leczy, czasem przyjaźń to wszystko, co mamy.</div>
+      <div class="box box-orange"><span class="box-title">Przykład</span><em>Rok 1984:</em> Totalitaryzm nie kończy się na ciele, kontroluje myśli.<br><em>Małe życie:</em> Trauma nie zawsze się leczy, czasem przyjaźń to wszystko, co mamy.</div>
     </div>
   </div>
 
   <div class="q-row">
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">CZYTELNIK: Dlaczego ma się przejmować?</h3></div>
-      <div class="main-question">Jaki <span class="highlight-marker">lęk, marzenie albo problem</span> czytelnika porusza Twoja historia?</div>
+      <div class="main-question">Jaki konkretnie <span class="highlight-marker">lęk, marzenie albo problem</span> czytelnika porusza Twoja historia?</div>
       <div class="dot-grid-box short"></div>
     </div>
   </div>
@@ -525,97 +582,16 @@
   <div class="q-row" style="margin-bottom: 0;">
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">04</span><h3 class="qtitle">WARTOŚĆ: Co wynosi z lektury?</h3></div>
-      <div class="main-question"><span class="highlight-marker">Wiedzę, emocje, pocieszenie</span>, czy po prostu relaks?</div>
+      <div class="main-question"><span class="highlight-marker">Wiedzę, emocje, pocieszenie,</span> czy po prostu relaks?</div>
       <div class="dot-grid-box short"></div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>5 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>6 / 26</span></div>
 </section>
 
+<!-- STRONA 7 -->
 <section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener">
-    <h2 class="section-title">Wybór <em class="grad-type">narracji</em></h2>
-    <p class="body">Zanim przejdziesz do diagnozy fabularnej, ustal, kto opowiada Twoją historię i w jaki sposób. Każdy wybór ma konsekwencje dla całego tekstu.</p>
-  </div>
-
-  <div class="q-row">
-    <div class="q-main">
-      <div class="q-header-area">
-        <h3 class="qtitle">Kto jest narratorem Twojej historii? Jaka jest jej osoba gramatyczna?</h3>
-      </div>
-      <p class="main-question" style="margin-bottom: 14px;">Zaznacz odpowiedzi, które opisują Twój tekst:</p>
-
-      <div class="check-group">
-        <div class="check-group-label"><span class="highlight-marker">Osoba i czas narracji</span></div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Piszę w <strong>pierwszej osobie</strong> w czasie <strong>przeszłym</strong></span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Piszę w <strong>pierwszej osobie</strong> w czasie <strong>teraźniejszym</strong></span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Piszę w <strong>trzeciej osobie</strong> w czasie <strong>przeszłym</strong></span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Piszę w <strong>trzeciej osobie</strong> w czasie <strong>teraźniejszym</strong></span>
-        </div>
-      </div>
-
-      <div class="check-group">
-        <div class="check-group-label"><span class="highlight-marker">Kto opowiada historię?</span></div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Narratorem jest <strong>główny bohater i tylko on</strong></span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Jest <strong>kilku narratorów</strong>, książka ma kilka POV</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Jest <strong>jeden narrator</strong>, który opowiada historię z perspektywy tylko jednej postaci</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">W zależności od rozdziału <strong>widzimy świat z różnych perspektyw</strong></span>
-        </div>
-      </div>
-
-      <div class="check-group">
-        <div class="check-group-label"><span class="highlight-marker">Wiarygodność narratora</span></div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Mój narrator jest <strong>wiarygodny</strong> – czytelnik może mu ufać</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Mój narrator jest <strong>niewiarygodny</strong> – celowo kłamie, pomija lub zniekształca fakty</span>
-        </div>
-      </div>
-
-      <div class="dot-grid-box" style="min-height: 80px;"></div>
-    </div>
-
-    <div class="q-sidebar" style="padding-top: 20px;">
-      <div class="box box-red">
-        <span class="box-title">Uwaga: Head-hopping</span>
-        <em>Head-hopping</em> (skakanie po głowach) to nieoczekiwane przeskakiwanie z myśli jednej postaci do myśli innej w obrębie tej samej sceny. Czytelnik traci orientację, czyje emocje właśnie czyta.<br><br>
-        <strong>Przykład błędu:</strong><br>
-        <em>„Ania weszła do pokoju i poczuła smutek. Marek pomyślał, że wygląda pięknie."</em><br><br>
-        W jednym akapicie jesteśmy w głowie Ani (czuje smutek), a w następnym zdaniu w głowie Marka (myśli o jej wyglądzie). Jeśli nie określisz jasno, kto jest narratorem, ten błąd pojawi się w Twoim tekście wielokrotnie.
-      </div>
-    </div>
-  </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>6 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 1: Fundamenty Autora</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
     <h2 class="section-title">Twój proces <em class="grad-type">twórczy</em></h2>
     <p class="body">Nie ma jednej słusznej metody pisania, ale warto wiedzieć, jak pracujesz – bo od tego zależy, jakie pułapki na Ciebie czyhają.</p>
@@ -638,13 +614,13 @@
         </div>
         <div class="check-item">
           <div class="check-box"></div>
-          <span class="check-label">Miałam / miałem <strong>plan oparty na schematach</strong> typu: struktura 3 aktów, Save the Cat! lub innych znalezionych w internecie.</span>
+          <span class="check-label">Miałam / miałem <strong>plan oparty na schematach</strong> typu: struktura 3 aktów, <em>Save the Cat!</em> lub innych znalezionych w internecie.</span>
         </div>
       </div>
 
       <div class="dot-grid-box short" style="min-height: 50px; margin-bottom: 18px;">
         <div class="fill-list" style="margin-top: 8px;">
-          <div class="fill-row"><span class="fill-label">Jakich?</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Jakich konkretnie schematów?</span><div class="fill-space"></div></div>
         </div>
       </div>
 
@@ -667,168 +643,58 @@
         </div>
       </div>
 
-      <div class="main-question" style="margin-top: 8px;">Jeśli miałabyś / miałbyś w kilku zdaniach opisać <span class="highlight-marker">proces tworzenia fabuły i bohaterów</span>, to co byś napisała / napisał?</div>
+      <div class="main-question" style="margin-top: 8px;">Jeśli miałabyś / miałbyś w kilku zdaniach opisać <span class="highlight-marker">proces tworzenia fabuły i bohaterów,</span> to co byś napisała / napisał?</div>
       <div class="dot-grid-box" style="min-height: 140px;"></div>
     </div>
 
     <div class="q-sidebar" style="padding-top: 20px;">
       <div class="box box-purple">
         <span class="box-title">Rada Redaktora</span>
-        Pisanie z planem i bez planu – nie ma lepszej lub gorszej metody, choć z doświadczenia wiem, że ci piszący bez planu bardzo często popełniają podstawowe błędy narracyjne i fabularne, a także gubią się we własnej historii – bohaterowie mają inne imiona, wykształcenie, motywacje itp. Często to też wynika z <em>plot armour</em> i chęci pomocy swoim bohaterom (tak, autorzy nieświadomie pomagają swoim bohaterom).
+        Pisanie z planem i bez planu – nie ma lepszej lub gorszej metody. Z doświadczenia wiem jednak, że ci piszący bez planu bardzo często popełniają podstawowe błędy narracyjne i gubią się we własnej historii. Często to też wynika z chęci niesienia bezustannej pomocy swoim bohaterom (autorzy nieświadomie ułatwiają postaciom wyjście z opresji, psując realizm i budując pancerz fabularny).
       </div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>7 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>7 / 26</span></div>
 </section>
 
+<!-- STRONA 8 (NOWA) -->
 <section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 2: Szybki Skan Historii</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Świadomość <em class="grad-type">językowa</em></h2>
-    <p class="body">Język to narzędzie – im lepiej je znasz, tym lepiej służy Twojej historii. Zaznacz, które z poniższych zasad świadomie stosowałaś / stosowałeś.</p>
+    <h2 class="section-title">Gatunek i <em class="grad-type">plan wydarzeń</em></h2>
+    <p class="body">Zanim zaczniesz analizować detale, sprawdźmy, czy Twoja opowieść ma ułożoną bazę i solidne fundamenty.</p>
   </div>
 
   <div class="q-row">
     <div class="q-main">
-      <div class="q-header-area">
-        <h3 class="qtitle">Zaznacz odpowiedzi, które Cię dotyczą:</h3>
-      </div>
-
-      <div class="check-group" style="margin-bottom: 14px;">
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, co to <strong>rejestr języka</strong> i świadomie go stosowałam / stosowałem.</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, że <strong>długość zdań</strong> ma znaczenie dla danej sceny, więc świadomie skracałam / skracałem zdania lub pisałam / pisałem długie, aby nadać refleksyjny styl danej scenie.</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Znam zasadę <strong>show, don't tell</strong> i starałam / starałem się nie używać płaskich czasowników (<em>mieć, wiedzieć, być, postanowić, dowiedzieć się</em> itp.).</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, na czym polega <strong>zasada trzech zmysłów</strong> i starałam / starałem się ją stosować, aby nadać scenom określony klimat.</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, jakie są <strong>różnice między językiem pisanym i mówionym</strong>.</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, co to <strong>„wydmuszki słowne"</strong> i starałam / starałem się je usuwać z tekstu, zwłaszcza z partii narracyjnych.</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"></div>
-          <span class="check-label">Wiem, co to są <strong>kolokacje i konotacje</strong>. Sprawdzałam / sprawdzałem w słownikach ich poprawność.</span>
-        </div>
-      </div>
-
-      <div class="main-question">Czy w swoim tekście stosowałaś / stosowałeś specjalne <span class="highlight-marker">zabiegi stylistyczne</span>? Jeśli tak, to jakie?</div>
-      <div class="dot-grid-box short" style="margin-bottom: 16px;"></div>
-
-      <div class="main-question">Czy uważasz, że <span class="highlight-marker">język</span> (nie chodzi tu o język obcy!), którym napisałaś / napisałeś książkę, <span class="highlight-marker">pasuje do epoki, gatunku i wydarzeń</span>?</div>
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">RYNEK: Na jakiej półce stanie Twoja książka?</h3></div>
+      <div class="main-question">Jaki to dokładnie <span class="highlight-marker">gatunek</span> i kim jest Twoja <span class="highlight-marker">grupa docelowa</span> (wiek, preferencje)?</div>
       <div class="dot-grid-box short"></div>
     </div>
+  </div>
 
-    <div class="q-sidebar" style="padding-top: 20px;">
-      <div class="box box-red">
-        <span class="box-title">Twarde vs. miękkie słowa</span>
-        Autorzy często piszą sceny akcji przy użyciu „miękkich" słów, które pasują bardziej do sceny nostalgicznej. Sceny akcji potrzebują „twardych" słów – krótkich, ostrych, z dominacją spółgłosek zwartych (<em>k, t, p, r, g</em>). Porównaj: <em>„delikatnie zsunęła się na podłogę"</em> vs <em>„runęła na ziemię"</em>. Pierwsze brzmi jak balet, drugie jak katastrofa. Dobieraj słowa nie tylko pod kątem znaczenia, ale i brzmienia.
-      </div>
-
-      <div class="box box-purple">
-        <span class="box-title">Nie musisz znać wszystkiego</span>
-        Jako autor nie musisz znać dokładnych pojęć i zasad – od tego jest redaktor. Ale jest wiele stron i książek, które w sposób przystępny uczą o języku, i nie zaszkodzi próbować tych porad stosować w praktyce. Każdy świadomy wybór stylistyczny wzmacnia Twój tekst.
-      </div>
+  <div class="q-row" style="margin-bottom: 0;">
+    <div class="q-main" style="flex: 2;">
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">BAZA: Plan wydarzeń</h3></div>
+      <div class="main-question">Wypisz w prostych punktach <span class="highlight-marker">plan wydarzeń</span> od A do Z (tak, jak robiło się to na lekcjach polskiego w szkole podstawowej). Jeśli Twoja historia jest wielowątkowa, wypisz osobny plan dla każdego głównego wątku.</div>
+      <div class="dot-grid-box" style="min-height: 250px;"></div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>8 / 23</span></div>
+  
+  <div class="box box-red" style="margin-top: 20px;">
+    <span class="box-title">Brak planu to brak opowieści</span>
+    Jeśli nie umiesz wypisać prostego planu wydarzeń dla głównego wątku w kilku prostych zdaniach, to znak, że Twoja fabuła nie ma solidnych fundamentów. Mimo to postaraj się ułożyć taki plan, zobaczysz, gdzie brakuje logicznych łączników.
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>8 / 26</span></div>
 </section>
 
+<!-- STRONA 9 -->
 <section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener">
-    <h2 class="section-title">Klasyczny błąd #1: <em class="grad-type">Information dump</em></h2>
-    <p class="body">Autor zatrzymuje akcję i wykłada czytelnikowi blok tła: historię świata, zasady magii, biografię postaci — wszystko naraz, w jednym miejscu. Informacje są, ale nikt ich nie poczuje, bo nie wynikają z działania ani emocji. Czytelnik biernie wchłania linijki tekstu zamiast przeżywać scenę.</p>
-  </div>
-
-  <div class="q-row" style="flex: 1;">
-    <div class="q-main">
-
-      <div class="check-group" style="margin-bottom: 18px;">
-        <div class="check-group-label"><span class="highlight-marker">Zaznacz, co rozpoznajesz w swoim tekście:</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Kilka akapitów z rzędu opisuje historię świata, zanim bohater zdąży cokolwiek <em>zrobić</em></span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Mentor tłumaczy zasady świata w dialogu, który brzmi jak wykład — nikt tak nie mówi</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Flashback trwa dłużej niż scena, do której nawiązuje, i niczego nie zmienia w decyzjach bohatera</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Opis wyglądu postaci pojawia się w środku sceny akcji, bo nie było go wcześniej</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Bohater „przypomina sobie" kluczową informację dokładnie wtedy, gdy autor jej potrzebuje — nie wcześniej, nie później</span></div>
-      </div>
-
-      <div class="main-question" style="margin-bottom: 8px;">Ile takich miejsc znalazłaś / znalazłeś? <span class="highlight-marker">Zapisz, zastanów się, jak możesz je zmienić.</span></div>
-      <div class="dot-grid-box" style="flex: 1; min-height: 180px;"></div>
-
-    </div>
-
-    <div class="q-sidebar" style="padding-top: 4px;">
-      <div class="box box-blue">
-        <span class="box-title">Czym jest information dump?</span>
-        Czytelnicy wchłaniają informacje przez działanie i emocje, nie przez opis. Chcesz pokazać, że bohater pochodzi z biednej rodziny? Nie pisz o tym wprost — pokaż, że liczy resztę przy kasie. <em>Show, don't tell</em> to nie tylko kwestia stylu, to mechanizm budowania wiarygodności świata bez zatrzymywania akcji.
-      </div>
-      <div class="box box-blue">
-        <span class="box-title">Jak to naprawić?</span>
-        Rozbij blok informacyjny na małe fragmenty i rozprowadź je po całym tekście — niech wynikają z sytuacji, dialogu lub decyzji bohatera. Jeśli postać musi wytłumaczyć zasady świata, nadaj temu powód fabularny: niech coś od tego wyjaśnienia zależy. Informacja podana przy okazji działania jest niewidoczna — informacja podana zamiast działania zatrzymuje historię.
-      </div>
-    </div>
-  </div>
-
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>9 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener">
-    <h2 class="section-title">Klasyczny błąd #2: <em class="grad-type">Plot armour</em></h2>
-    <p class="body">Bohater wychodzi cało z sytuacji, w której realistycznie nie miałby szans — nie dlatego, że był sprytny albo miał plan, ale dlatego że autor go uratował. Antagoniści głupieją, przypadki zawsze działają na korzyść, a świat naginany jest pod bieżące potrzeby fabuły. Często dzieje się tak, gdy w trakcie pisania autor zdaje sobie sprawę, że fabuła się nie spina, pojawia się nowy problem, a on nie ma pomysłu jak go rozwiązać.</p>
-  </div>
-
-  <div class="q-row" style="flex: 1;">
-    <div class="q-main">
-
-      <div class="check-group" style="margin-bottom: 18px;">
-        <div class="check-group-label"><span class="highlight-marker">Zaznacz, co rozpoznajesz w swoim tekście:</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Czarny charakter ma bohatera w zasięgu ręki — i zamiast działać, wygłasza monolog</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Bohater traci przytomność w krytycznym momencie i budzi się bezpieczny — bez wyjaśnienia, kto go uratował i dlaczego</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Przypadkowa postać pojawia się z dokładnie tym, czego bohater potrzebuje, w idealnej chwili</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Telefon, broń lub środek transportu zawodzą zawsze wtedy, gdy ich działanie rozwiązałoby problem zbyt prosto</span></div>
-        <div class="check-item"><div class="check-box"></div><span class="check-label">Antagonista popełnia oczywisty błąd taktyczny, którego nie popełniłby żaden rozsądny człowiek w jego sytuacji</span></div>
-      </div>
-
-      <div class="main-question" style="margin-bottom: 8px;">Czy Twoi bohaterowie mają pancerz fabularny? <span class="highlight-marker">Zapisz podejrzane miejsca i zastanów się, jak możesz je poprawić.</span></div>
-      <div class="dot-grid-box" style="flex: 1; min-height: 180px;"></div>
-
-    </div>
-
-    <div class="q-sidebar" style="padding-top: 4px;">
-      <div class="box box-orange">
-        <span class="box-title">Przykład z praktyki redaktorskiej</span>
-        W jednym z manuskryptów bohaterowie chcieli adoptować dziecko z traumą opisaną jako wyjątkowo trudną do osadzenia w rodzinie. Dyrektor ośrodka miał opory, ale na pytanie o adopcję przez chwilę się wahał, po czym oznajmił: „właściwie, gdy was zobaczyłem, uznałem, że to wy będziecie nową rodziną dla dziecka". Chwilowe bezrobocie ojca zostało skwitowane słowami „coś pan znajdzie, wierzę w pana". Cały proces adopcyjny trwał dwa miesiące. To nie był optymizm fabularny — to był plot armour.<br><br>
-        Jeśli coś przychodzi Twoim bohaterom za łatwo, a w rzeczywistości jest to trudne do zrobienia lub osiągnięcia — tworzysz dla nich plot armour. Prawdziwe przeszkody budują napięcie. Fikcyjne ułatwienia je niszczą.
-      </div>
-    </div>
-  </div>
-
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>10 / 23</span></div>
-</section>
-
-
-<section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja 0</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 2: Szybki Skan Historii</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
     <span class="handwritten-note" style="position: absolute; top: 10px; right: 0;">Nie wymyślaj na siłę!</span>
     <h2 class="section-title">Szybka diagnoza <em class="grad-type">fabularna</em></h2>
-    <p class="body">Zanim zagłębisz się w szczegóły, sprawdź, czy historia ma podstawowe elementy. Jeśli na któreś pytanie nie potrafisz odpowiedzieć szczegółowo, to sygnał, że znalazłeś miejsce wymagające uwagi. Wpisz: <strong>„Jeszcze nie wiem"</strong> i kontynuuj.</p>
+    <p class="body">Mając zarysowany powyżej plan wydarzeń, sprawdź, czy historia posiada jego podstawowe, nośne elementy. Jeśli na któreś z pytań nie potrafisz odpowiedzieć od ręki, wpisz po prostu: <strong>„Jeszcze nie wiem”</strong> i kontynuuj.</p>
   </div>
 
   <div class="q-row">
@@ -837,14 +703,14 @@
         <span class="qnum-bg">01</span>
         <h3 class="qtitle">PROLOG: Obietnica czy zapychacz?</h3>
       </div>
-      <div class="main-question">O czym jest Twój <span class="highlight-marker">prolog</span> i jak ta konkretna scena <span class="highlight-marker">łączy się z resztą</span> historii?</div>
-      <div class="helper-text">Pytanie pomocnicze: Jeśli usuniesz prolog, czytelnik nadal będzie wiedział, co motywuje bohatera?</div>
+      <div class="main-question">O czym jest Twój <span class="highlight-marker">prolog</span> i jak ta konkretna scena <span class="highlight-marker">łączy się z resztą</span> opowieści?</div>
+      <div class="helper-text">Pytanie pomocnicze: Jeśli usuniesz prolog, czy czytelnik nadal będzie wiedział, o co toczy się stawka?</div>
       <div class="dot-grid-box"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>Prolog to coś jak zwiastun filmu. Jeśli w zwiastunie pokazujesz wybuch, widz oczekuje wybuchu. Musisz dotrzymać tej obietnicy.</div>
-      <div class="box box-orange"><span class="box-title">Przykład z literatury</span><em>Pieśń lodu i ognia:</em> Zwiadowcy giną z rąk Białych Wędrowców. Prolog dotrzymał obietnicy: stają się centralnym zagrożeniem sagi.</div>
-      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Prolog „bardzo dawno temu", bez echa w historii. Jeśli możesz go wyciąć i nikt nie zauważy – jest dekoracją.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Prolog funkcjonuje niczym zwiastun filmu. Jeśli w zwiastunie pokazujesz wielki wybuch, widz oczekuje konsekwencji tego wybuchu w filmie. Musisz dotrzymać tej obietnicy.</div>
+     
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Prolog w stylu „bardzo dawno temu”, bez echa w historii. Jeśli możesz go wyciąć i nikt nie zauważy – to znak, że jest on zwykłą dekoracją.</div>
     </div>
   </div>
 
@@ -854,20 +720,21 @@
         <span class="qnum-bg">02</span>
         <h3 class="qtitle">BOHATER: Komu towarzyszymy?</h3>
       </div>
-      <div class="main-question">Kto jest głównym bohaterem, jaki ma <span class="highlight-marker">problem, cel</span> i <span class="highlight-marker">dlaczego</span> dąży do celu?</div>
-      <div class="helper-text">Pytanie pomocnicze: Jak wyglądało życie bohatera „przed"? Co musi się zmienić?</div>
+      <div class="main-question">Kto jest głównym bohaterem, jaki ma <span class="highlight-marker">problem, cel</span> i <span class="highlight-marker">dlaczego</span> dąży do jego osiągnięcia?</div>
+      <div class="helper-text">Pytanie pomocnicze: Jak wyglądało życie bohatera „przed”? Co musi ulec zmianie?</div>
       <div class="dot-grid-box"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>To osoba, której decyzje napędzają historię. To NIE jest po prostu „najfajniejsza postać". To ta, która z czegoś rezygnuje, coś robi, działa, coś chce osiągnąć.</div>
-      <div class="box box-purple"><span class="box-title">Rada Redaktora</span>Znajdź JEDNĄ scenę w pierwszym akcie, po której bohater nie może już wrócić do poprzedniego życia.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>To postać, której decyzje napędzają historię. To NIE musi być po prostu „najciekawsza postać”. To ta, która aktywnie działa, rezygnuje z wygody i czegoś bardzo chce.</div>
+      <div class="box box-purple"><span class="box-title">Rada Redaktora</span>Znajdź JEDNĄ przełomową scenę w pierwszym akcie, po której bohater nie może już absolutnie wrócić do poprzedniego życia.</div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>11 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>9 / 26</span></div>
 </section>
 
+<!-- STRONA 10 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 2: Szybki Skan Historii</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   
   <div class="q-row" style="margin-top: 10px;">
     <div class="q-main">
@@ -880,8 +747,8 @@
       <div class="dot-grid-box"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>Świat to reguły (technologia, prawo, magia). Jeśli łamiesz te zasady (często w przypływie pisarskiej weny i na potrzeby konkretnej sceny), czytelnik traci zaufanie. Zasady pokrywające się z tymi ze świata rzeczywistego, są tym bardziej ważne, bo czytelnik wie i czuje, że coś nie gra. Sama wiele razy łapałam się na myśleniu: „No nie, normlanie to tak nie działa, plot armour!".</div>
-      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Używanie technologii z innej epoki (np. smartfony w latach 70.) lub nagła zmiana reguł magii by uratować fabułę.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Świat opiera się na twardych regułach (technologia, prawo, magia). Jeśli łamiesz te zasady w przypływie pisarskiej weny na potrzeby ratowania konkretnej sceny, czytelnik momentalnie traci do Ciebie zaufanie. Sama wiele razy łapałam się na myśleniu: „No nie, normalnie to tak nie działa, to klasyczny plot armour!”.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Używanie technologii kompletnie z innej epoki (np. działające smartfony w latach 70.) lub nagła, wygodna zmiana reguł magii, aby na szybko uratować chwiejącą się fabułę.</div>
     </div>
   </div>
 
@@ -889,36 +756,37 @@
     <div class="q-main">
       <div class="q-header-area">
         <span class="qnum-bg">04</span>
-        <h3 class="qtitle">ANTAGONISTA: Kto blokuje bohatera?</h3>
+        <h3 class="qtitle">ANTAGONISTA: Kto lub co blokuje bohatera?</h3>
       </div>
-      <div class="main-question">Kto albo co jest <span class="highlight-marker">„blokerem"</span> dla bohatera i czy pojawia się już <span class="highlight-marker">na początku</span> książki?</div>
-      <div class="helper-text">Pytanie pomocnicze: Czy Twój antagonista ma własny, logiczny cel?</div>
+      <div class="main-question">Kto albo co jest ostatecznym <span class="highlight-marker">„blokerem”</span> dla bohatera i czy zarys tego zagrożenia pojawia się już <span class="highlight-marker">na początku</span> książki?</div>
+      <div class="helper-text">Pytanie pomocnicze: Czy Twój antagonista ma własny, logiczny dla niego cel?</div>
       <div class="dot-grid-box"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-orange"><span class="box-title">Przykład z literatury</span><em>Nędznicy:</em> Inspektor Javert nie jest „zły". Jest fanatycznie sprawiedliwy z własnej perspektywy.</div>
-      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Antagonista pojawia się dopiero w połowie książki. Jeśli go nie widać, pokaż chociaż SKUTKI jego działań już gdzieś na początku.</div>
+      <div class="box box-orange"><span class="box-title">Przykład z literatury</span><em>Nędznicy:</em> Nieugięty inspektor Javert nie jest obiektywie postrzegany jako „zły”. Jest po prostu fanatycznie i ślepo sprawiedliwy ze swojej własnej perspektywy.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Antagonista pojawia się dopiero w połowie książki, jak grom z jasnego nieba. Jeśli go nie widać, pokaż czytelnikowi chociaż wstrząsające SKUTKI jego działań już gdzieś na początku.</div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>12 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>10 / 26</span></div>
 </section>
 
+<!-- STRONA 11 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 2: Szybki Skan Historii</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   
   <div class="q-row" style="margin-top: 10px;">
     <div class="q-main">
       <div class="q-header-area">
         <span class="qnum-bg">05</span>
-        <h3 class="qtitle">ROLE: Kto wspiera, kto konkuruje?</h3>
+        <h3 class="qtitle">ROLE: Kto wspiera, a kto konkuruje?</h3>
       </div>
-      <div class="main-question">Jaką <span class="highlight-marker">rolę</span> pełni każda postać wprowadzona w akcie I? (mentor, towarzysz, rywal, zwierciadło, katalizator)</div>
-      <div class="helper-text">Pytanie pomocnicze: Jeśli wyrzucisz tę postać z książki, co konkretnie się zmieni w przebiegu wydarzeń?</div>
+      <div class="main-question">Jaką precyzyjnie <span class="highlight-marker">rolę</span> pełni każda nowa postać wprowadzona w akcie I? (np. mentor, wierny towarzysz, rywal, zwierciadło bohatera)</div>
+      <div class="helper-text">Pytanie pomocnicze: Jeśli usuniesz tę postać z książki, co konkretnie ulegnie zmianie w przebiegu wydarzeń?</div>
       <div class="dot-grid-box"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>Postacie drugoplanowe mają własne cele, ale nie mogą one przyćmiewać celu głównego bohatera (chyba że to książka wielowątkowa).</div>
-      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Pierwsza połowa to pomaganie przyjaciołom w ich dramatach. Czytelnik zapomina o głównym celu bohatera i wlasciwie o głównym bohaterze.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Postacie drugoplanowe zawsze mają własne, małe cele, ale nie mogą one w żadnym razie przyćmiewać wagi głównego celu bohatera.</div>
+      <div class="box box-red"><span class="box-title">Najczęstszy Błąd</span>Pierwsza połowa to jedynie bezowocne pomaganie przyjaciołom w rozwiązywaniu ich dramatów. Czytelnik szybko zapomina, o czym właściwie jest główna oś fabularna.</div>
     </div>
   </div>
 
@@ -928,315 +796,291 @@
         <span class="qnum-bg">06</span>
         <h3 class="qtitle">TECHNIKALIA: Czy znasz postacie?</h3>
       </div>
-      <div class="main-question">Wypełnij <span class="highlight-marker">szybki biogram</span> głównego bohatera. Jeśli zawahasz się nad odpowiedzią – jeszcze nie znasz postaci.</div>
+      <div class="main-question">Wypełnij ten <span class="highlight-marker">szybki biogram</span> głównego bohatera. Jeśli mocno zawahasz się nad odpowiedzią – jeszcze do końca nie znasz swojej postaci.</div>
       
       <div class="dot-grid-box">
         <div class="fill-list" style="margin-top: 25px;">
-          <div class="fill-row"><span class="fill-label">Imię i wiek:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Imię i dokładny wiek:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label">Wykształcenie / zawód:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Trzy cechy charakteru:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Trzy dominujące cechy charakteru:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label">Największe marzenie:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Największy lęk:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Sekretna / wstydliwa cecha:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Czego nigdy nie zrobi:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Największy paraliżujący lęk:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Sekretna / głęboko wstydliwa cecha:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Czego kategorycznie nigdy nie zrobi:</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>O postaci musisz wiedzieć więcej, niż trafi do książki: wiek, blizny, nawyki, czego się boi, do jakiej muzyki tańczy. Pozwoli Ci to stworzyć postać, z którą czytelnicy będę się utożsamiać lub, jeśli taki jest cel, nienawidzić. Zwróć uwagę, że fani często pytają autorów, co dana postać zrobiłaby, gdyby...</div>
-      <div class="box box-orange"><span class="box-title">Przykład</span>Geralt w pustej karczmie siada tyłem do ściany i obserwuje wyjście. Yennefer żąda najlepszego wina. To wynika z ich charakteru.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>O postaci musisz wiedzieć więcej, niż trafi finalnie do książki: wiek, stare blizny, nawyki, czego się panicznie boi, do jakiej muzyki tańczy. Pozwoli Ci to stworzyć wiarygodnego bohatera. Zwróć uwagę, że czytelnicy często pytają, co dana postać zrobiłaby gdyby... i wcale nie odnoszą się wątków z historii.</div>
+      <div class="box box-orange"><span class="box-title">Przykład</span>Wiedźmin Geralt wchodzi do pustej karczmy i siada tyłem do ściany, bacznie obserwując wejście. Yennefer z miejsca żąda dla siebie najlepszego wina. To wynika naturalnie z ich silnego charakteru.</div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>13 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>11 / 26</span></div>
 </section>
 
+<!-- STRONA 12 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja 0 c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  
-  <div class="q-row" style="margin-top: 10px;">
-    <div class="q-main">
-      <div class="q-header-area">
-        <span class="qnum-bg">07</span>
-        <h3 class="qtitle">NARRACJA: Czy sam byś to przeczytał?</h3>
-      </div>
-      <div class="main-question">Czy Twoje opisy i dialogi <span class="highlight-marker">wnoszą coś do fabuły</span>, czy są tylko <span class="highlight-marker">ozdobnikami</span>? Napisz, co wnoszą.</div>
-      
-      <div class="dot-grid-box" style="min-height: auto;">
-        <div style="position: relative; z-index: 2; font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-top: 5px;">
-          <p style="margin-bottom: 8px;"><strong>Przykład do analizy:</strong> Opisujesz scenę gotowania, zaczyna się niewinnie, bo od wejścia do kuchni i przygotowania produktów, ale potem zaczynasz opisywać krok po kroku, jak bohater ugotował rosół.</p>
-          <p style="margin-bottom: 8px;"><strong>Pytanie:</strong> Czy jest to książka, w której główny bohater jest kucharzem i jest to ważne? Czy są w tej narracji wstawki typu: <em>„Uwielbiał dodawać kapustę włoską, bo przypominało mu to, jak jego zmarła babcia gotowała"</em>, czyli coś, co pozwala poznać bohatera lepiej?</p>
-          <p style="margin-bottom: 20px;">Czy nagle zrobił się z tego suchy opis, jak ugotować rosół? Wystarczy zmienić formatowanie i mamy idealny tekst do książki kucharskiej?</p>
-          
-          <div class="fill-list">
-            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
-            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-    <div class="q-sidebar">
-      <div class="box box-purple"><span class="box-title">Test Prawdy</span>Przeczytaj swój najdłuższy opis lub dialog na głos. Jeśli sam się gubisz w piątym zdaniu, czytelnik zgubi się w drugim. Skracaj.</div>
-      <div class="box box-red"><span class="box-title">Uwaga na objętość</span>Opis w Wordzie może i wygląda na krótki, ale jak zmienisz rozmiar strony na A5, to zobaczysz, ile faktycznie będzie zajmował stron w druku. Jeśli więcej niż 2, to rozważ skrócenie go.</div>
-    </div>
-  </div>
-  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>14 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja III</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener" style="margin-bottom: 14px;">
-    <h2 class="section-title">15 beatów <em class="grad-type">Save the Cat!</em></h2>
-    <p class="body">Szkielet historii oparty na metodzie Blake'a Snydera. Beat to moment, w którym historia zmienia tor.</p>
-  </div>
-
-  <table class="beats-table" style="margin-top: 0; margin-bottom: 16px;">
-    <tr>
-      <th style="width: 32%;">Nr. i Nazwa Beatu</th>
-      <th style="width: 18%; text-align: center;">Znaczenie</th>
-      <th style="width: 50%;">Funkcja w historii</th>
-    </tr>
-    <tr><td colspan="3" class="akt-row">AKT I (Pierwsze 20–25%)</td></tr>
-    <tr>
-      <td class="col-beat">1. Obraz początkowy</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Świat bohatera zanim wszystko się zmieni. Lustro dla obrazu w finale.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">2. Przedstawienie tematu</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Ktoś wypowiada zdanie streszczające przesłanie historii. Bohater go nie rozumie.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">3. Konfiguracja</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Poznajemy życie „przed" i główną wadę bohatera (czego musi się oduczyć).</td>
-    </tr>
-    <tr>
-      <td class="col-beat">4. Katalizator</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Wydarzenie wybijające z rutyny. Punkt bez powrotu (np. list z Hogwartu).</td>
-    </tr>
-    <tr>
-      <td class="col-beat">5. Debata</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Bohater waha się, czy podjąć wyzwanie, czy wrócić do bezpiecznego życia.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">6. Przejście do Aktu II</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Świadoma decyzja opuszczenia starego świata z własnej woli.</td>
-    </tr>
-  </table>
-
-  <p class="main-question" style="margin-bottom: 8px;">Który z beatów <span class="highlight-marker">ma Twoja historia?</span></p>
-  <div class="dot-grid-box" style="flex: 1; min-height: 200px;"></div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>15 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja III c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-
-  <table class="beats-table" style="margin-top: 18mm; margin-bottom: 16px;">
-    <tr>
-      <th style="width: 32%;">Nr. i Nazwa Beatu</th>
-      <th style="width: 18%; text-align: center;">Znaczenie</th>
-      <th style="width: 50%;">Funkcja w historii</th>
-    </tr>
-    <tr><td colspan="3" class="akt-row">AKT II (Środkowe 50%)</td></tr>
-    <tr>
-      <td class="col-beat">7. Wątek B</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Relacja poboczna (np. miłość, mentor), która uczy bohatera nowej perspektywy.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">8. Zabawa i gierki</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Realizacja obietnicy gatunku (śledztwo w kryminale, nauka magii w fantasy).</td>
-    </tr>
-    <tr>
-      <td class="col-beat">9. Punkt środkowy</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Fałszywe zwycięstwo lub porażka. Środek opowieści, stawka drastycznie rośnie.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">10. Przeciwnicy zacieśniają pętlę</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Problemy rosną, wrogowie atakują z nową siłą, sojusznicy zaczynają wątpić.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">11. Wszystko stracone</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Najciemniejszy moment. Śmierć (dosłowna lub metaforyczna) czegoś kochanego.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">12. Ciemna noc duszy</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Całkowita rezygnacja i smutek. Jednak to z niej rodzi się rozwiązanie.</td>
-    </tr>
-  </table>
-
-  <p class="main-question" style="margin-bottom: 8px;">Który z beatów <span class="highlight-marker">ma Twoja historia?</span></p>
-  <div class="dot-grid-box" style="flex: 1; min-height: 200px;"></div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>16 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja III c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-
-  <table class="beats-table" style="margin-top: 18mm; margin-bottom: 16px;">
-    <tr>
-      <th style="width: 32%;">Nr. i Nazwa Beatu</th>
-      <th style="width: 18%; text-align: center;">Znaczenie</th>
-      <th style="width: 50%;">Funkcja w historii</th>
-    </tr>
-    <tr><td colspan="3" class="akt-row">AKT III (Ostatnie 20–25%)</td></tr>
-    <tr>
-      <td class="col-beat">13. Przejście do Aktu III</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Bohater łączy główny wątek z nauką z Wątku B. Nagle wie, co robić.</td>
-    </tr>
-    <tr>
-      <td class="col-beat">14. Finał</td>
-      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
-      <td>Bohater wygrywa DZIĘKI swojej przemianie i nowym umiejętnościom, a nie „pomimo".</td>
-    </tr>
-    <tr>
-      <td class="col-beat">15. Obraz końcowy</td>
-      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
-      <td>Lustrzane odbicie początku. Pokazuje, jak bardzo świat i bohater się zmienili.</td>
-    </tr>
-  </table>
-
-  <p class="main-question" style="margin-bottom: 8px;">Który z beatów <span class="highlight-marker">ma Twoja historia?</span></p>
-  <div class="dot-grid-box" style="flex: 1; min-height: 260px;"></div>
-
-  <div style="display: flex; gap: 16px; margin-top: 16px;">
-    <div class="box box-purple" style="flex:1; margin:0;">
-    <span class="box-title">Rada Redaktora</span>
-    Jeśli Twoja fabuła jest płaska i stoi w miejscu, prawdopodobnie brakuje jej dobrego <strong>Katalizatora</strong> (aby w ogóle wystartować) lub mocnego <strong>Punktu środkowego</strong> (aby dać jej drugi oddech). Skup się na tych dwóch „Fundamentach".
-  </div>
-    <div class="box box-blue" style="flex:1; margin:0;">
-    <span class="box-title">Spójność Prologu</span>
-    Pamiętaj: Prolog (beat 1) może wydawać się poboczny, ale powinien wprowadzać element napędzający beat 4 i 9. Jeśli Twój początek nie pracuje na resztę, jest zbędny.
-  </div>
-  </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>17 / 23</span></div>
-</section>
-
-<section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja II</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Fabuła, czyli <em class="grad-type">„CO"</em></h2>
-    <p class="body">Czy Twoja historia to logiczna reakcja łańcuchowa? Dobra fabuła: <strong>skoro stało się X, MUSI wydarzyć się Y.</strong> Przypadek nie może być motorem fabuły.</p>
+    <h2 class="section-title">Fabuła pod lupą, czyli <em class="grad-type">CO</em> Twojego pomysłu</h2>
+    <p class="body">Sprawdź związki przyczynowo-skutkowe w swojej historii. Dobra fabuła to łańcuch zdarzeń: skoro stało się X, to z logicznego punktu widzenia musi wydarzyć się Y.</p>
   </div>
 
   <div class="q-row">
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Test windy (Elevator pitch)</h3></div>
-      <div class="main-question">Opisz fabułę <span class="highlight-marker">w 3 zdaniach</span>. Wzór: [BOHATER] z [ŚWIATA] musi [CEL], zanim [ZAGROŻENIE], inaczej [STAWKA].</div>
-      <div class="dot-grid-box short"></div>
+      <div class="main-question">Streść fabułę w 3 zdaniach: [BOHATER] z [ŚWIATA] pragnie [CEL], zanim dopadnie go [ZAGROŻENIE], inaczej straci [STAWKA].</div>
+      <div class="dot-grid-box" style="min-height: 50px;"></div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>Wsiadasz do windy z wydawcą. Masz 30 sekund. Liczy się tylko mięcho: kto, co chce, co przeszkadza, co jest stawką. Brak pobocznych nazwisk.</div>
+      <div class="box box-blue"><span class="box-title">Pojęcie</span>Masz tylko 30 sekund na zainteresowanie wydawcy. Liczy się esencja: kto, o co walczy, co mu przeszkadza i jaka jest stawka opowieści.</div>
     </div>
   </div>
 
-  <div class="q-row">
+  <div class="q-row" style="margin-top: 10px;">
     <div class="q-main" style="flex: 2;">
       <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Reakcja łańcuchowa</h3></div>
-      <div class="main-question">Wymień 5 kluczowych wydarzeń. Każde musi wynikać z poprzedniego przez <span class="highlight-marker">„DLATEGO"</span> albo <span class="highlight-marker">„ALE"</span>. Nigdy <span class="highlight-marker">„POTEM"</span>.</div>
+      <div class="main-question">Wymień 5 kluczowych wydarzeń. Każde następne musi wynikać z poprzedniego – łącz je słowami <span class="highlight-marker">„DLATEGO”</span> lub <span class="highlight-marker">„ALE”</span> (nigdy „POTEM”).</div>
       
-      <div class="dot-grid-box" style="min-height: 180px;">
-        <div class="fill-list">
-          <div class="fill-row"><span class="fill-label">1. Początek:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">2. DLATEGO / ALE:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">3. DLATEGO / ALE:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">4. DLATEGO / ALE:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">5. Kulminacja:</span><div class="fill-space"></div></div>
+      <div class="dot-grid-box" style="min-height: auto; padding: 12px 16px 6px 16px;">
+        <div class="fill-list" style="margin-bottom: 0;">
+          <div class="fill-row" style="margin-bottom: 12px;"><span class="fill-label">1. Zdarzenie początkowe:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 12px;"><span class="fill-label">2. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 12px;"><span class="fill-label">3. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 12px;"><span class="fill-label">4. DLATEGO / ALE:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label">5. Finał (kulminacja):</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="q-row" style="margin-bottom: 0;">
-    <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Test usunięcia</h3></div>
-      <div class="main-question">Zadaj pytanie: <span class="highlight-marker">„Jeśli to wytnę, czy historia dalej działa?"</span>. Co usunąłeś?</div>
-      <div class="dot-grid-box short"></div>
+  <div class="q-row" style="margin-top: 15px;">
+    <div class="q-main" style="flex: 2;">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Test usunięcia elementu</h3></div>
+      <div class="main-question">Wybierz rozdział, co do którego masz wątpliwości, i zapytaj: <span class="highlight-marker">„Jeśli go całkowicie wytnę, czy historia straci sens?”</span> Zapisz sceny do usunięcia:</div>
+      <div class="dot-grid-box" style="min-height: 50px;"></div>
     </div>
-    <div class="q-sidebar no-pad">
-      <div class="box box-purple"><span class="box-title">Rada Redaktora</span>Bohaterowie, którzy są ofiarami przypadku, są nudni. Jeśli utknąłeś, zapytaj: „Co najgorszego może się stać przez błąd bohatera?".</div>
+    
+    <div class="q-sidebar" style="padding-top: 5px;">
+      <div class="box box-purple">
+        <span class="box-title">Rada redaktora</span>
+        Sceny nudzą, gdy bohater jest bierny. Jeśli test wykazał, że rozdział nic nie wnosi, spraw, by bohater popełnił w nim błąd. Konsekwencje tej decyzji natychmiast napędzą fabułę.
+      </div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>18 / 23</span></div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>12 / 26</span></div>
 </section>
 
+<!-- STRONA 13 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja IV</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 14px;">
+    <h2 class="section-title">Struktura: 15 beatów <em class="grad-type">Save the Cat!</em></h2>
+    <p class="body">Solidne fundamenty historii oparte na docenianej na świecie metodzie Blake'a Snydera. Beat to istotny moment, w którym wyznaczona historia nieodwracalnie zmienia swój dotychczasowy tor biegu.</p>
+  </div>
+
+  <table class="beats-table" style="margin-top: 0; margin-bottom: 16px;">
+    <tr>
+      <th style="width: 32%;">Nr i Nazwa Beatu</th>
+      <th style="width: 18%; text-align: center;">Znaczenie</th>
+      <th style="width: 50%;">Funkcja w opowieści</th>
+    </tr>
+    <tr><td colspan="3" class="akt-row">AKT I (Od początku do ok. 20–25% tekstu)</td></tr>
+    <tr>
+      <td class="col-beat">1. Obraz początkowy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Świat bohatera, zanim wszystko to bezpowrotnie się zmieni. Służy jako wyraźne lustro dla obrazu w finale.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">2. Przedstawienie tematu</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Z reguły ktoś obcy wypowiada ważne zdanie streszczające główne przesłanie historii. Bohater go jednak kompletnie nie rozumie.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">3. Konfiguracja</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Bliżej poznajemy poukładane życie „przed” zmianą i tę główną wadę bohatera (coś, z czym z czasem musi się pożegnać).</td>
+    </tr>
+    <tr>
+      <td class="col-beat">4. Katalizator (Wezwanie)</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Kluczowe wydarzenie drastycznie wybijające bohatera z rutyny. Punkt w czasie kompletnie bez powrotu do tego co było.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">5. Wewnętrzna Debata</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Bohater naturalnie się waha – kalkuluje, czy podjąć wyzwanie, czy potulnie próbować wrócić do starego życia.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">6. Przejście do Aktu II</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>W pełni świadoma i trwała decyzja dotycząca opuszczenia starego świata z własnej woli, pomimo licznych niewiadomych.</td>
+    </tr>
+  </table>
+
+  <p class="main-question" style="margin-bottom: 8px;">Który ze wspomnianych wyżej beatów <span class="highlight-marker">świadomie zarysowano w Twojej historii?</span></p>
+  <div class="dot-grid-box" style="flex: 1; min-height: 200px;"></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>13 / 26</span></div>
+</section>
+
+<!-- STRONA 14 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <table class="beats-table" style="margin-top: 18mm; margin-bottom: 16px;">
+    <tr>
+      <th style="width: 32%;">Nr i Nazwa Beatu</th>
+      <th style="width: 18%; text-align: center;">Znaczenie</th>
+      <th style="width: 50%;">Funkcja w opowieści</th>
+    </tr>
+    <tr><td colspan="3" class="akt-row">AKT II (Burzliwe, środkowe 50% objętości tekstu)</td></tr>
+    <tr>
+      <td class="col-beat">7. Ważny Wątek B</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Niespodziewana relacja poboczna (jak np. trudna miłość czy oporny mentor), która stopniowo uczy bohatera nowej perspektywy.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">8. Zabawa i gierki</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Faktyczna realizacja wciągającej obietnicy dla gatunku (pasjonujące śledztwo w kryminale, nauka magii w fantasy itp.).</td>
+    </tr>
+    <tr>
+      <td class="col-beat">9. Punkt środkowy osi</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Bardzo fałszywe zwycięstwo lub druzgocąca porażka. Równy środek opowieści, w którym realna stawka drastycznie idzie w górę.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">10. Przeciwnicy rosną w siłę</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Problemy potęgują się jak lawina, a wrogowie atakują z większą bezwzględnością; nawet sojusznicy mają momenty silnego zwątpienia.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">11. Wszystko stracone</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Niewątpliwie najciemniejszy moment książki. Bolesna śmierć – dosłowna lub metaforyczna – czegoś bardzo dla bohatera kochanego.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">12. Ciemna noc duszy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Trudna chwila rozdzierającej rezygnacji i apatii. Jednak dokładnie z niej niebawem wykuwa się stalowe rozwiązanie.</td>
+    </tr>
+  </table>
+
+  <p class="main-question" style="margin-bottom: 8px;">Który ze wspomnianych wyżej beatów <span class="highlight-marker">świadomie zarysowano w Twojej historii?</span></p>
+  <div class="dot-grid-box" style="flex: 1; min-height: 200px;"></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>14 / 26</span></div>
+</section>
+<!-- STRONA 15 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <table class="beats-table" style="margin-top: 18mm; margin-bottom: 16px;">
+    <tr>
+      <th style="width: 32%;">Nr i Nazwa Beatu</th>
+      <th style="width: 18%; text-align: center;">Znaczenie</th>
+      <th style="width: 50%;">Funkcja w opowieści</th>
+    </tr>
+    <tr><td colspan="3" class="akt-row">AKT III (Ostatnie, ekscytujące 20–25% akcji)</td></tr>
+    <tr>
+      <td class="col-beat">13. Przejście do Aktu III</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Skołowany bohater wreszcie łączy główny konflikt z życiową nauką wyniesioną z Wątku B. Olśnienie i cel – nagle wie, co musi zrobić.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">14. Kulminacyjny Finał</td>
+      <td class="col-tag"><span class="tag-fundament">Fundament</span></td>
+      <td>Nasz bohater ostatecznie wygrywa potyczkę DZIĘKI swojej wypracowanej mozolnie wewnętrznej zmianie, a w żadnym wypadku „pomimo” niej.</td>
+    </tr>
+    <tr>
+      <td class="col-beat">15. Obraz końcowy</td>
+      <td class="col-tag"><span class="tag-watek">Przydatne</span></td>
+      <td>Lustrzane odbicie obrazu z samego początku. Idealnie pokazuje czytelnikowi, jak diametralnie świat i bohater zdołali się zmienić.</td>
+    </tr>
+  </table>
+
+  <p class="main-question" style="margin-bottom: 8px;">Który ze wspomnianych wyżej beatów <span class="highlight-marker">świadomie zarysowano w Twojej historii?</span></p>
+  <div class="dot-grid-box" style="flex: 1; min-height: 260px;"></div>
+
+  <div style="display: flex; gap: 16px; margin-top: 16px;">
+    <div class="box box-purple" style="flex:1; margin:0;">
+    <span class="box-title">Rada Redaktora</span>
+    Jeśli Twoja fabuła jest niepokojąco płaska w odbiorze i stoi w miejscu, prawdopodobnie brakuje jej odczuwalnego <strong>Katalizatora</strong> (by w ogóle ruszyć z posad) lub mocnego <strong>Punktu środkowego</strong> (który zrewolucjonizuje stawkę i da drugi oddech).
+  </div>
+    <div class="box box-blue" style="flex:1; margin:0;">
+    <span class="box-title">Sprawdzaj spójność Prologu</span>
+    Nie zapomnij: Prolog (beat 1) z założenia powinien wprowadzać zarodek tego elementu, który niebawem napędzi Twój beat 4, jak i zwrot akcji zawarty w beacie 9. Inaczej jego istnienie nie ma obiektywnie większego sensu w historii.
+  </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>15 / 26</span></div>
+</section>
+
+<!-- STRONA 16 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
     <h2 class="section-title">Anatomia <em class="grad-type">bohatera</em></h2>
-    <p class="body">Postać to nie opis, to zbiór reakcji. Musisz wiedzieć, czy w stresie bohater rzuci talerzem, czy dokończy posiłek.</p>
+    <p class="body">Bohater to zbiór reakcji. To <b>JAK</b> twojej historii. Powinieneś wiedzieć, jak zachowa się w stresującej sytuacji – czy w złości rzuci talerzem, czy dokończy posiłek w milczeniu.</p>
   </div>
 
   <div class="q-row">
     <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Wada bohatera</h3></div>
-      <div class="main-question">Jaka <span class="highlight-marker">wada (mechanizm obronny)</span> blokuje bohatera przed osiągnięciem celu?</div>
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Wada i blokada bohatera</h3></div>
+      <div class="main-question">Jaka <span class="highlight-marker">wada (wewnętrzny mechanizm obronny)</span> blokuje bohatera przed osiągnięciem celu?</div>
       <div class="dot-grid-box short"></div>
     </div>
-     
+       
     <div class="q-sidebar">
-      <div class="box box-blue"><span class="box-title">Pojęcie</span>Wada to coś, co kiedyś bohatera chroniło, a teraz szkodzi (np. osądzanie u Elizabeth Bennet).</div>
+      <div class="box box-blue"><span class="box-title">Definicja</span>Wada to mechanizm, który w przeszłości chronił bohatera, a obecnie mu szkodzi (np. ocenianie po pozorach u Elizabeth w <em>Dumie i uprzedzeniu</em>).</div>
 
-      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Pragnienie a potrzeba bohatera. </div>
+      <div class="box box-purple"><span class="box-title">Rada redaktora</span>Rozróżnij cel powierzchowny (to, czego bohater chce) od celu głębokiego (tego, czego naprawdę potrzebuje).</div>
     </div>
   </div>
 
   <div class="q-row" style="margin-bottom: 0;">
     <div class="q-main" style="flex: 2;">
-      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Głębia charakteru (POKAŻ, nie mów)</h3></div>
-      <div class="main-question">Wybierz jedną główną cechę bohatera i opisz <span class="highlight-marker">jak objawia się fizycznie</span>. Nie używaj samego przymiotnika!</div>
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Głębia charakteru (POKAŻ, nie mów wprost)</h3></div>
+      <div class="main-question">Wybierz główną cechę bohatera i opisz, <span class="highlight-marker">jak przejawia się ona w jego zachowaniu.</span> Unikaj prostych przymiotników (np. „był nerwowy”).</div>
       
       <div class="dot-grid-box" style="min-height: 180px;">
         <div class="fill-list">
           <div class="fill-row"><span class="fill-label">Główna cecha:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">W GESTACH (ciało):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W gestach (mimika, mowa ciała, nawyki):</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">W DZIAŁANIU (decyzje):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W działaniu (decyzje podejmowane pod presją):</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">W MOWIE (dialog):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">W mowie (dobór słów, styl dialogu w konflikcie):</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="box box-purple" style="margin-top: 20px;">
-    <span class="box-title">Rada Redaktora</span>
-    Hilo (Miasto Jadeitu) nigdy nie mówi „jestem impulsywny" – widzimy to, gdy pierwszy sięga po broń. Jeśli zmusisz czytelnika by SAM nazwał cechę, wygrałeś. Używaj warsztatu badawczego: obserwuj ludzi w kawiarni, używaj AI jako sparingpartnera.
+    <span class="box-title">Rada redaktora</span>
+    Hilo z powieści <em>„Miasto Jadeitu”</em> nie mówi: „Jestem impulsywny”. Czytelnik widzi to, gdy bohater jako pierwszy sięga w gniewie po broń. Pozwól czytelnikowi samemu nazwać cechy Twoich postaci na podstawie ich zachowania.
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>19 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>16 / 26</span></div>
 </section>
-
+<!-- STRONA 17 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja V</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Świat i oś <em class="grad-type">czasu</em></h2>
-    <p class="body">Nie buduj świata podczas pisania. Świat to układ sił ograniczający bohaterów.</p>
+    <h2 class="section-title">Świat przedstawiony i oś <em class="grad-type">czasu</em></h2>
+    <p class="body">Dobrze skonstruowany świat to układ sił społecznych, fizycznych i magicznych, który ogranicza działania bohaterów i wymusza na nich konkretne decyzje. Nie twórz realiów w pośpiechu podczas pisania.</p>
   </div>
 
   <div class="q-row">
     <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Pokaż, nie nazywaj</h3></div>
-      <div class="main-question">Wybierz <span class="highlight-marker">3 przymiotniki</span> świata (np. stary, duszny) i <span class="highlight-marker">pokaż je</span> przez konkretne przedmioty.</div>
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Pokazuj otoczenie, zamiast je opisywać</h3></div>
+      <div class="main-question">Wybierz <span class="highlight-marker">3 przymiotniki</span> określające klimat Twojego świata (np. duszny, mroczny) i rozpisz, jak pokażesz je czytelnikowi poprzez elementy otoczenia.</div>
       
       <div class="dot-grid-box" style="min-height: 160px;">
         <div class="fill-list">
-          <div class="fill-row"><span class="fill-label">Przymiotnik 1 + jak pokazać:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Przymiotnik nr 1 + jak go pokazać:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Przymiotnik 2 + jak pokazać:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Przymiotnik nr 2 + jak go pokazać:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Przymiotnik 3 + jak pokazać:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Przymiotnik nr 3 + jak go pokazać:</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
@@ -1244,138 +1088,454 @@
 
   <div class="q-row" style="margin-bottom: 0;">
     <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Oś czasu: sprawdź liczby</h3></div>
-      <div class="main-question">Zdefiniuj <span class="highlight-marker">chronologię</span>, by uniknąć luk (np. 120-latek rano spaceruje po górach, a wieczorem sieje hejt w internecie, a powinien się w grobie przewracać).</div>
+      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Chronologia i oś czasu</h3></div>
+      <div class="main-question">Zdefiniuj <span class="highlight-marker">ramy czasowe wydarzeń,</span> aby uniknąć błędów i luk w kalendarzu opowieści.</div>
       
       <div class="dot-grid-box">
         <div class="fill-list">
-          <div class="fill-row"><span class="fill-label">Rok rozpoczęcia / zakończenia akcji: uwzględnij daty we wspomnieniach </span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Wiek bohatera na starcie / w finale:</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Wiek pobocznych postaci:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Rok rozpoczęcia i zakończenia akcji (w tym retrospekcji):</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Wiek głównego bohatera na początku i na końcu historii:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Wiek kluczowych postaci drugoplanowych:</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>20 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>17 / 26</span></div>
 </section>
-
+<!-- STRONA 18 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja V c.d.</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 3: Głębsze Nurkowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
 
   <div class="q-row" style="margin-top: 10px;">
     <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">04</span><h3 class="qtitle">Świat w 5 rekwizytach</h3></div>
-      <div class="main-question">Wypisz <span class="highlight-marker">5 charakterystycznych rekwizytów</span>. Po czym czytelnik pozna, gdzie jest?</div>
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Świat opisany rzetelnie w zaledwie 5 rekwizytach</h3></div>
+      <div class="main-question">Wypisz <span class="highlight-marker">5 charakterystycznych i namacalnych rekwizytów.</span> Po jakich materialnych detalach, na pierwszy rzut oka, czytelnik pozna, gdzie w ogóle się znajduje?</div>
       
       <div class="dot-grid-box">
         <div class="fill-list">
-          <div class="fill-row"><span class="fill-label">1.</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">2.</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">3.</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">4.</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">5.</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">1. Charakterystyczny rekwizyt:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">2. Charakterystyczny rekwizyt:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">3. Charakterystyczny rekwizyt:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">4. Charakterystyczny rekwizyt:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">5. Charakterystyczny rekwizyt:</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
     <div class="q-sidebar">
-      <div class="box box-orange"><span class="box-title">Diuna (Herbert)</span>Stillsuit, krzyż Atrydów, przyprawa, ornitoptery, sietsze. Budują klimat od pierwszej strony.</div>
+      <div class="box box-orange"><span class="box-title">Niedościgniona <em>Diuna</em> (F. Herbert)</span>Legendarny filtrfrak (stillsuit), złoty pierścień i krzyż rodowy Atrydów, bezcenny pomarańczowy melanż (przyprawa), ornitoptery czy tętniące życiem sietsze. Te drobiazgowo opisane gadżety natychmiast osadzają nas w bezkresnym klimacie pustyni od pierwszej strony.</div>
     </div>
   </div>
 
   <div class="q-row" style="margin-bottom: 0;">
     <div class="q-main">
-      <div class="q-header-area"><span class="qnum-bg">05</span><h3 class="qtitle">Reguły świata: zakazy</h3></div>
-      <div class="main-question">Wypisz <span class="highlight-marker">3 reguły</span> Twojego świata, które mają <span class="highlight-marker">konsekwencje fabularne</span>.</div>
+      <div class="q-header-area"><span class="qnum-bg">04</span><h3 class="qtitle">Żelazne reguły świata jako niepodważalne zakazy</h3></div>
+      <div class="main-question">Wypisz <span class="highlight-marker">3 twarde reguły</span> Twojego wirtualnego świata, które obiektywie niosą za sobą poważne i nieuchronne <span class="highlight-marker">konsekwencje fabularne na losy postaci.</span></div>
       
       <div class="dot-grid-box">
         <div class="fill-list">
-          <div class="fill-row"><span class="fill-label">Reguła 1 + konsekwencja:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Twarda Reguła 1 + logiczna konsekwencja jej złamania:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Reguła 2 + konsekwencja:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Twarda Reguła 2 + logiczna konsekwencja jej złamania:</span><div class="fill-space"></div></div>
           <div class="fill-row"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
-          <div class="fill-row"><span class="fill-label">Reguła 3 + konsekwencja:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label">Twarda Reguła 3 + logiczna konsekwencja jej złamania:</span><div class="fill-space"></div></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>21 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>18 / 26</span></div>
 </section>
 
+<!-- STRONA 19 -->
 <section class="page">
-  <div class="runner top"><span class="grad-type">Sekcja VI</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Wielka <em class="grad-type">integracja</em></h2>
-    <p class="body">Jak połączyć CO (fabuła), JAK (bohaterowie), GDZIE (świat) i DLACZEGO (motywacja) w żywy organizm?</p>
+    <h2 class="section-title">Wybór <em class="grad-type">narracji</em></h2>
+    <p class="body">Kto opowiada Twoją historię i w jaki sposób? Każdy wybór warsztatowy, jakiego dokonujesz, ma ogromne konsekwencje dla całego tekstu i poziomu immersji czytelnika.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <h3 class="qtitle">Kto jest narratorem Twojej historii? Jaka jest jej osoba gramatyczna?</h3>
+      </div>
+      <p class="main-question" style="margin-bottom: 14px;">Zaznacz odpowiedzi, które najlepiej opisują Twój tekst:</p>
+
+      <div class="check-group">
+        <div class="check-group-label"><span class="highlight-marker">Osoba i czas narracji</span></div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Piszę w <strong>pierwszej osobie</strong> w czasie <strong>przeszłym</strong>.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Piszę w <strong>pierwszej osobie</strong> w czasie <strong>teraźniejszym</strong>.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Piszę w <strong>trzeciej osobie</strong> w czasie <strong>przeszłym</strong>.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Piszę w <strong>trzeciej osobie</strong> w czasie <strong>teraźniejszym</strong>.</span>
+        </div>
+      </div>
+
+      <div class="check-group">
+        <div class="check-group-label"><span class="highlight-marker">Kto opowiada historię?</span></div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Narratorem jest <strong>główny bohater i wyłącznie on</strong>.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Występuje <strong>kilku narratorów</strong>, książka posiada wiele różnych perspektyw (tzw. POV).</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Mamy <strong>jednego narratora</strong>, który relacjonuje historię z punktu widzenia tylko jednej postaci.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Zależnie od rozdziału <strong>widzimy opisywany świat przez pryzmat różnych perspektyw</strong>.</span>
+        </div>
+      </div>
+
+      <div class="check-group">
+        <div class="check-group-label"><span class="highlight-marker">Wiarygodność narratora</span></div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Mój narrator jest <strong>całkowicie wiarygodny</strong> – czytelnik może bezgranicznie ufać jego słowom.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Mój narrator jest <strong>niewiarygodny</strong> – celowo mija się z prawdą, sprytnie pomija lub zniekształca fakty.</span>
+        </div>
+      </div>
+
+      <div class="dot-grid-box" style="min-height: 80px;"></div>
+    </div>
+
+    <div class="q-sidebar" style="padding-top: 20px;">
+      <div class="box box-red">
+        <span class="box-title">Uwaga: Head-hopping</span>
+        „Skakanie po głowach” (ang. <em>head-hopping</em>) to dezorientujące przeskakiwanie między intymnymi myślami różnych postaci w obrębie tej samej sceny. Odbiorca błyskawicznie traci orientację.<br><br>
+        <strong>Przykład błędu:</strong><br>
+        <em>„Ania energicznie weszła do pokoju i poczuła dotkliwy smutek. Marek pomyślał, że wygląda wprost pięknie”.</em><br><br>
+        W jednym akapicie gościmy w głowie Ani, a w następnym zdaniu wnikamy w umysł Marka. Jeśli nie utrzymasz w ryzach tego, kto jest narratorem danej sceny, błąd ten będzie regularnie osłabiał Twój tekst.
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>19 / 26</span></div>
+</section>
+
+<!-- STRONA 20 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Narracja: Czy jako czytelnik <em class="grad-type">przebrnąłbyś przez to</em>?</h2>
+    <p class="body">Nawet najlepsza historia straci na wartości, jeśli tekst będzie niepłynny i męczący w odbiorze.</p>
+  </div>
+
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main">
+      <div class="q-header-area">
+        <h3 class="qtitle">Weryfikacja jakości opisów i dialogów</h3>
+      </div>
+      <div class="main-question">Czy Twoje opisy i dialogi <span class="highlight-marker">popychają fabułę do przodu,</span> czy są tylko zbędnymi <span class="highlight-marker">ozdobnikami?</span> Zanotuj wnioski.</div>
+      
+      <div class="dot-grid-box" style="min-height: auto;">
+        <div style="position: relative; z-index: 2; font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-top: 5px;">
+          <p style="margin-bottom: 8px;"><strong>Przykład:</strong> Scena gotowania obiadu. Zamiast skupić się na akcji lub emocjach, przez dwie strony opisujesz krok po kroku przepis na rosół.</p>
+          <p style="margin-bottom: 8px;"><strong>Pytanie:</strong> Czy ten detal buduje postać lub ma znaczenie dla fabuły? Jeśli nie, to suchy tekst instruktażowy, który po prostu nuży.</p>
+          
+          <div class="fill-list">
+            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label" style="opacity: 0;">Miejsce na notatki</span><div class="fill-space"></div></div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="q-sidebar">
+      <div class="box box-purple"><span class="box-title">Test czytania na głos</span>Przeczytaj najdłuższy opis na głos. Jeśli gubisz się w konstrukcji zdań lub brakuje Ci tchu, czytelnik zmęczy się jeszcze szybciej. Skracaj bez żalu.</div>
+      <div class="box box-red"><span class="box-title">Pułapka formatu A4</span>Opis, który w Wordzie (format A4) wydaje się krótki, po złożeniu do formatu książkowego (A5) drastycznie się wydłuży. Pamiętaj, że w druku zajmie on znacznie więcej stron.</div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>20 / 26</span></div>
+</section>
+
+<!-- STRONA 21 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Świadomość <em class="grad-type">językowa</em></h2>
+    <p class="body">Świadome operowanie językiem buduje realizm opowieści. Zaznacz, które z poniższych zasad warsztatowych stosujesz w swoim tekście.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main">
+      <div class="q-header-area">
+        <h3 class="qtitle">Zaznacz cechy, które dotyczą Twojego tekstu:</h3>
+      </div>
+
+      <div class="check-group" style="margin-bottom: 14px;">
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Dostosowuję <strong>rejestr językowy</strong> do pochodzenia, wieku i sytuacji społecznej postaci.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Kontroluję <strong>długość zdań</strong> – skracam je, aby przyspieszyć akcję, i wydłużam w partiach refleksyjnych.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Stosuję zasadę <strong>„pokazuj, nie opisuj” (<em>show, don't tell</em>)</strong> i unikam nadużywania czasowników statycznych (np. <em>być, mieć, czuć</em>).</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Wdrażam <strong>zasadę trzech zmysłów</strong>, aby nadać opisywanym scenom plastyczność i klimat.</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"></div>
+          <span class="check-label">Eliminuję z narracji <strong>„wydmuszki słowne”</strong>, czyli puste zwroty niewnoszące nic do treści.</span>
+        </div>
+      </div>
+
+      <div class="main-question">Czy stosujesz w tekście celowe <span class="highlight-marker">zabiegi stylistyczne?</span> Jeśli tak, wypisz je:</div>
+      <div class="dot-grid-box short" style="margin-bottom: 16px;"></div>
+
+      <div class="main-question">Czy Twój <span class="highlight-marker">styl i rytm językowy</span> <span class="highlight-marker">pasują do realiów epoki oraz gatunku literackiego?</span></div>
+      <div class="dot-grid-box short"></div>
+    </div>
+
+    <div class="q-sidebar" style="padding-top: 20px;">
+      <div class="box box-red">
+        <span class="box-title">Dynamika kontra statyka</span>
+        O tempie scen akcji nie decydują ozdobniki, ale <strong>silne czasowniki dynamiczne</strong> oraz krótka składnia. 
+        <br><br>
+        Porównaj opisy: <em>„delikatnie osunęła się na podłogę”</em> a <em>„runęła na ziemię”</em>. Różnica nie wynika z energii samego słowa „runąć”. W dynamicznych momentach tnij przymiotniki, skracaj zdania i wybieraj czasowniki, które nie potrzebują asysty przysłówków.
+      </div>
+
+      <div class="box box-purple">
+        <span class="box-title">Nie musisz wiedzieć wszystkiego</span>
+        Nie musisz znać na pamięć terminów filologicznych – od tego jest redaktor. Warto jednak stopniowo wdrażać podstawowe zasady warsztatowe, by rozwijać swój styl.
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>21 / 26</span></div>
+</section>
+<!-- STRONA 22 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Klasyczny błąd #1: <em class="grad-type">Information dump</em></h2>
+    <p class="body">Polega na zatrzymaniu akcji, aby przekazać czytelnikowi dużą porcję wiedzy: historię świata, zasady magii czy biografię postaci. Skondensowane informacje nie wynikają z fabuły ani z emocji bohaterów, przez co nudzą i odciągają od przeżywania sceny.</p>
+  </div>
+
+  <div class="q-row" style="flex: 1;">
+    <div class="q-main">
+
+      <div class="check-group" style="margin-bottom: 18px;">
+        <div class="check-group-label"><span class="highlight-marker">Zaznacz, co rozpoznajesz w swoim tekście:</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Długie akapity opisują historię świata, zanim bohater zacznie w ogóle działać.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Mentor tłumaczy zasady świata w drętwym dialogu, który brzmi jak sztuczny wykład.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Retrospekcja (flashback) trwa dłużej niż bieżąca scena i nie wpływa na decyzje bohatera.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Bohater nagle przypomina sobie kluczową informację akurat wtedy, gdy jest ona potrzebna do rozwiązania akcji.</span></div>
+      </div>
+
+      <div class="main-question" style="margin-bottom: 8px;">Ile takich miejsc widzisz w swoim manuskrypcie? <span class="highlight-marker">Zapisz je i zastanów się, jak możesz je usunąć lub rozbić.</span></div>
+      <div class="dot-grid-box" style="flex: 1; min-height: 180px;"></div>
+
+    </div>
+
+    <div class="q-sidebar" style="padding-top: 4px;">
+      <div class="box box-blue">
+        <span class="box-title">Czym jest information dump?</span>
+        Czytelnicy najlepiej poznają świat poprzez działanie postaci i naturalne dialogi, a nie encyklopedyczne opisy. Zasada <em>„Show, don't tell”</em> to klucz do budowania realiów bez zatrzymywania akcji.
+      </div>
+      <div class="box box-purple">
+        <span class="box-title">Jak to naprawić?</span>
+        Rozbij bloki tekstu na mniejsze fragmenty i rozprosz je w powieści. Zadbaj, by informacje wynikały z sytuacji, rozmów lub decyzji bohaterów. Wiedza podana przy okazji działania jest naturalna i łatwiej przyswajalna.
+      </div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>22 / 26</span></div>
+</section>
+<!-- STRONA 24 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Klasyczny błąd #2: Niewidzialny <em class="grad-type">plot armour</em></h2>
+    <p class="body">Pancerz fabularny pojawia się wtedy, gdy bohater wychodzi cało z sytuacji bez wyjścia – nie dzięki własnemu sprytowi, ale dlatego, że autor ratuje go na siłę. Antagoniści nagle głupieją, a prawa wykreowanego świata są naginane, byle tylko uratować bohatera z opresji.</p>
+  </div>
+
+  <div class="q-row" style="flex: 1;">
+    <div class="q-main">
+
+      <div class="check-group" style="margin-bottom: 18px;">
+        <div class="check-group-label"><span class="highlight-marker">Zaznacz, co rozpoznajesz w swoim tekście:</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Czarny charakter ma bohatera na widelcu, ale zamiast działać, wygłasza długi monolog o swojej potędze.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Bohater traci przytomność w krytycznym momencie walki i budzi się bezpieczny – bez wyjaśnienia, jak do tego doszło.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Przypadkowa postać zjawia się w ostatniej sekundzie, przynosząc dokładnie to, czego bohater potrzebuje.</span></div>
+        <div class="check-item"><div class="check-box"></div><span class="check-label">Telefon lub broń psują się akurat wtedy, gdy ich użycie zbyt łatwo rozwiązałoby problem.</span></div>
+      </div>
+
+      <div class="main-question" style="margin-bottom: 8px;">Czy Twoi bohaterowie mają pancerz fabularny? <span class="highlight-marker">Zapisz poniżej wszystkie niewiarygodne lub „dziurawe” momenty w manuskrypcie.</span></div>
+      <div class="dot-grid-box" style="flex: 1; min-height: 180px;"></div>
+
+    </div>
+
+    <div class="q-sidebar" style="padding-top: 4px;">
+      <div class="box box-orange">
+        <span class="box-title">Przykład z mojej praktyki redaktorskiej</span>
+       Bohaterowie starają się o adopcję skrajnie straumatyzowanego dziecka. Początkowy opór surowego dyrektora nagle topnieje, gdy ten oświadcza: „Gdy tylko przekroczyliście próg biura, to tak naprawdę wiedziałem, że będziecie cudowną rodziną”. Problem bezrobocia ojca zaś zostaje rozwiązany: „Ach, coś pan zaraz znajdzie, bez nerwów!”. Cała rygorystyczna procedura trwa... dwa miesiące.
+      </div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>23 / 26</span></div>
+</section>
+
+<!-- STRONA 25 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 5: Finał</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Wielka <em class="grad-type">integracja</em> elementów układanki</h2>
+    <p class="body">Jak połączyć fabułę (CO), bohaterów z ich wadami (JAK), świat przedstawiony (GDZIE) oraz motywację (DLACZEGO) w spójną i angażującą całość?</p>
   </div>
 
   <div class="q-row">
     <div class="q-main" style="flex: 2;">
-      <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Twoja sieć naczyń połączonych</h3></div>
-      <div class="main-question"><span class="highlight-marker">Zintegruj</span> postać ze światem i fabułą.</div>
+      <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Twoja autorska sieć naczyń połączonych</h3></div>
+      <div class="main-question"><span class="highlight-marker">Połącz bohatera,</span> jego wady i motywacje z realiami wykreowanego świata oraz osią fabuły.</div>
       
       <div class="dot-grid-box" style="min-height: auto;">
         <div style="position: relative; z-index: 2; font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-top: 5px; padding-bottom: 10px;">
-          <p style="margin-bottom: 12px;"><strong>Przykład integracji:</strong> Mój bohater nie potrafi usiedzieć na miejscu, musi od razu zacząć działać, wchodzi innym w pół słowa, szybko podejmuje decyzje, a potem dopiero myśli, szybko się denerwuje, ale równie szybko się uspokaja, zwłaszcza gdy ktoś zrobi coś zgodnie z jego oczekiwaniami. Żyje w świecie (towarzystwo, społeczeństwo i ustrój polityczny), w którym takie cechy są pomocne, choć mogą mieć nieszczęśliwe konsekwencje.</p>
-          <p style="margin-bottom: 12px;">Miejsce akcji to fikcyjne miasto, lata 90., przedmioty i budowa świata nie odbiegają od rzeczywistości. Mój bohater musi zapanować nad sobą, bo czeka go kilka wydarzeń, które postawią go przed zupełnie nowymi wyzwaniami, na które nie jest gotowy, ale będzie musiał się stać...</p>
-          <p style="font-style: italic; color: var(--ink-muted); margin-bottom: 20px;">W ten sposób możesz opisywać i definiować swoich bohaterów. Im więcej napiszesz, tym lepiej.</p>
+          <p style="margin-bottom: 12px;"><strong>Przykład integracji:</strong> Impulsywny, agresywny bohater żyje w brutalnym, podzielonym kastowo mieście rządzącym przez opresyjny reżim. Te trudne cechy charakteru paradoksalnie pozwalają mu przetrwać na ulicy, ale generują konflikty na dłuższą metę.</p>
+          <p style="margin-bottom: 12px;">Akcja toczy się w skorumpowanym mieście w latach 90. – technologia odpowiada realiom epoki (brak smartfonów). Bohater zostanie wystawiony na próbę, która zmusi go do okiełznania gniewu i zmiany na lepsze.</p>
+          <p style="font-style: italic; color: var(--ink-muted); margin-bottom: 20px;">W ten sposób powinieneś łączyć elementy w swoich notatkach. Im silniejsze powiązania przyczynowo-skutkowe stworzysz na starcie, tym płynniejsza będzie fabuła.</p>
           
           <div class="fill-list">
-            <div class="fill-row"><span class="fill-label">A) Twój rekwizyt:</span><div class="fill-space"></div></div>
-            <div class="fill-row"><span class="fill-label">B) Twoja presja świata:</span><div class="fill-space"></div></div>
-            <div class="fill-row"><span class="fill-label">C) Twoje zdanie integrujące:</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label">A) Rekwizyt lub zjawisko ze świata przedstawionego:</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label">B) Presja społeczna lub ustrój narzucony przez otoczenie:</span><div class="fill-space"></div></div>
+            <div class="fill-row"><span class="fill-label">C) Zdanie integrujące bohatera i jego wadę z realiami świata:</span><div class="fill-space"></div></div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="reading-content" style="margin-top: 10px;">
-    <h4>03. Końcowy test spójności</h4>
-    <p><strong>Test alternatywnego świata:</strong> Czy Twój bohater mógłby trafić do innej epoki, a historia wyglądałaby tak samo? Jeśli tak, świat to tylko dekoracja (wróć do Sekcji V).</p>
-    <p><strong>Test wymiany:</strong> Czy ktoś inny mógłby przejść tę samą fabułę i zakończyć tak samo? Jeśli tak, bohater jest wymienny (wróć do Sekcji IV).</p>
-    <p><strong>Test obietnicy:</strong> Czy motyw z prologu został rozwiązany w finale? Jeśli nie, zgubiłeś wątek.</p>
+  <div class="reading-content" style="margin-top: 20px;">
+    <h4>02. Test spójności fabuły</h4>
+
+    <p><strong>Test świata:</strong> Czy historia wyglądałaby tak samo po przeniesieniu bohatera do zupełnie innych realiów lub epoki? Jeśli tak, Twój świat to tylko pusta makieta – musisz mocniej powiązać go z fabułą.</p>
+
+    <p><strong>Test charakteru:</strong> Czy ktoś o zupełnie innych cechach i wadach mógłby przejść przez tę historię w ten sam sposób? Jeśli tak, Twój bohater jest nijaki i wymienny.</p>
+
+    <p><strong>Test obietnicy:</strong> Czy główny motyw zapowiedziany w prologu został rozwiązany w finale? Jeśli brakuje tu powiązania, po drodze zgubiłeś sens opowieści.</p>
   </div>
 
-  <div class="box box-purple" style="margin: 0; text-align: center; font-size: 13px;">
-    <span class="box-title" style="font-size: 11px; margin-bottom: 8px;">Na koniec</span>
-    Prawdziwa fabuła rodzi się tam, gdzie charakter bohatera zderza się z ograniczeniami czasu i miejsca. Katniss bez Kapitolu byłaby tylko myśliwą. <strong>Powodzenia w pisaniu!</strong>
+  <div style="margin-top: 25px; padding-top: 15px; border-top: 1px solid var(--ink-light, #e2e8f0);">
+    <h5 style="font-size: 12px; font-weight: bold; text-transform: uppercase; margin-bottom: 6px; color: var(--ink-soft);">Złota myśl na koniec</h5>
+    <p style="font-size: 13px; line-height: 1.6; margin: 0;">Porywająca fabuła rodzi się z konfliktu: silny charakter bohatera musi zderzyć się z ograniczeniami świata, w którym żyje. Dobrym przykładem jest Katniss Everdeen z <em>Igrzysk Śmierci</em>. Bez opresyjnego Kapitolu pozostałaby po prostu ubogą nastolatką, która poluje w lesie, by wykarmić rodzinę. To otoczenie i rzucone wyzwanie definiują bohatera.</p>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>22 / 23</span></div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>24 / 26</span></div>
 </section>
+<!-- STRONA 26 -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 4: Warsztat i Pułapki</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Studium przypadku: <em class="grad-type">450 stron chaosu</em></h2>
+    <p class="body">Zobaczmy, jak wygląda kumulacja błędów strukturalnych w rzeczywistości. Pracowałam nad powieścią obyczajową napisaną w zaledwie 6 miesięcy. Pomysł był dobry, ale pośpiech i brak planu doprowadziły do chaosu. Oto anatomia tego tekstu – ku przestrodze.</p>
+  </div>
 
+  <div class="q-row" style="margin-top: 10px;">
+    <div class="q-main" style="flex: 2; padding-right: 15px;">
+      <div class="q-header-area"><h3 class="qtitle">Grzechy główne jednego rękopisu</h3></div>
+      
+      <div class="reading-content" style="font-size: 13px; line-height: 1.6; color: var(--ink-soft);">
+        <p style="margin-bottom: 12px;">
+          <strong>1. Fałszywe starty i zmiana koncepcji:</strong> Na samym początku autor wprowadził aż trzy wydarzenia o identycznej wadze jako punkty zwrotne. W okolicach 25% książki fabułę przejęły jednak zupełnie nowe postacie, a początkowe wątki porzucono.
+        </p>
+        
+        <p style="margin-bottom: 12px;">
+          <strong>2. Festiwal pancerzy fabularnych:</strong> Każdy kryzys gaszono ułatwieniem. Potrzebny dowód? Bohaterowie <em>„sami nie wiedzieli jak, ale znaleźli list, który wyjaśnił sytuację”</em>. Blokada prawna? Pojawia się haker, który za darmo łamie prawo, „bo trzeba sobie pomagać”.
+        </p>
+
+        <p style="margin-bottom: 12px;">
+          <strong>3. Syndrom „klonów” i brak antagonisty:</strong> W książce brakowało wyrazistego przeciwnika – drobne konflikty rozwiązywano natychmiast. Co gorsza, wszyscy bohaterowie mieli te same poglądy, a dialogi służyły jedynie wzajemnemu przytakiwaniu i prawieniu morałów.
+        </p>
+
+        <p style="margin-bottom: 16px;">
+          <strong>4. Bohaterowie zbyt idealni:</strong> Postacie były młode, piękne, bogate i wszechstronnie wykształcone. Autor tak bardzo skupił się na ich „fajności”, że zapomniał dać im ludzkie słabości, przez co stali się plastikowi.
+        </p>
+
+        <h4 style="margin-top: 15px; margin-bottom: 6px; font-size: 14px; color: var(--ink-dark); font-weight: bold;">Co stało się później?</h4>
+        <p style="margin-bottom: 0;">
+          Autor zaczął porządkować historię. Rozpisał plan wydarzeń, biogramy postaci i wątki. Po analizie okazało się, że pomysłów upchniętych w jednej książce wystarczyłoby na trzy osobne, pełnoprawne opowieści – z ciekawym motywem przeplatania się postaci znanych z wcześniejszych scen.
+        </p>
+      </div>
+    </div>
+
+    <div class="q-sidebar" style="flex: 1.1;">
+      <div class="box box-red" style="margin-bottom: 12px;">
+        <span class="box-title">Inne problemy?</span>
+        W tekście całkowicie leżała oś czasu. Daty były pomieszane, a pory roku zmieniały się losowo pod bieżące potrzeby sceny. Pisząc bez planu, autor stracił kontrolę nad własnym uniwersum.  
+      </div>
+      
+      <div class="box box-purple">
+        <span class="box-title">Wniosek: Jeden problem wystarczy</span>
+        Nie dodawaj na siłę nowych wątków i postaci, by urozmaicić fabułę. Jeśli akcje bohaterów są logiczne, historia obroni się sama.
+        <br><br>
+        Chris Wooding w 900-stronicowym <em>The Ember Blade</em> skupił się na <b>jednym konkretnym problemie</b>. Bohaterowie dążą do jego rozwiązania, a pomniejsze przeszkody naturalnie wynikają z poprzednich scen, pogłębiając przy okazji wiedzę o świecie, wadach, pragnieniach i potrzebach postaci.
+      </div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>25 / 26</span></div>
+</section>
+<!-- STRONA 26 -->
 <section class="page">
   <div class="runner top"><span class="grad-type">Podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
-    <h2 class="section-title">Co <em class="grad-type">dalej?</em></h2>
-    <p class="body">Wypełniłeś arkusz. Zlokalizowałeś luki. Co teraz z tym zrobić?</p>
+    <h2 class="section-title">Co masz zrobić z tą wiedzą <em class="grad-type">dalej</em>?</h2>
+    <p class="body">Gratulacje – za Tobą kluczowy etap pracy nad tekstem. Masz już jasność co do mocnych stron swojej historii oraz luk, które wymagają poprawy. Co zrobić z tą wiedzą dalej?</p>
   </div>
 
   <div class="q-row full">
     <div class="q-main">
       
       <div class="reading-content" style="margin-bottom: 24px; border-left: 4px solid var(--grad-end);">
-        <h4>Gratulacje! To był ogromny krok.</h4>
-        <p>Samo wypełnienie tego arkusza to potężna praca analityczna nad tekstem. Jeśli w wielu miejscach musiałeś wpisać „nie wiem" – to świetnie! Właśnie zaoszczędziłeś sobie miesięcy błądzenia we mgle. Jeśli Twój arkusz pęka od konkretów – brawo, masz już bardzo solidne fundamenty.</p>
-        <p>Teraz, gdy widzisz swoją powieść z lotu ptaka, powinieneś móc łatwiej ocenić jej stan. Czy historia wymaga jeszcze czasu na przebudowę struktury? A może to już ten moment, by pokazać tekst <strong>betaczytelnikom</strong> lub poszukać profesjonalnego <strong>redaktora językowego</strong>?</p>
+        <h4>To był duży i niezbędny krok!</h4>
+        <p>Rzetelne wypełnienie tego arkusza diagnostycznego to wymagający sprawdzian dla Twojego tekstu. Jeśli w wielu miejscach musiałeś wpisać „jeszcze nie wiem” – to świetna wiadomość. Właśnie zaoszczędziłeś miesiące błądzenia po omacku. Jeśli natomiast Twój arkusz pęka od konkretów i faktów – gratulacje. Masz solidny fundament, na którym możesz bezpiecznie budować fabułę.</p>
+        <p>Spójrz teraz na swoją opowieść z perspektywy lotu ptaka. Czas na chłodną, obiektywną ocenę: czy ta historia wymaga jeszcze gruntownej przebudowy, czy jest już gotowa na testy i możesz śmiało wysłać ją do betaczytelników?</p>
       </div>
 
       <div class="box box-purple" style="padding: 28px; box-shadow: 0 8px 24px rgba(107, 53, 200, 0.08);">
-        <span class="box-title" style="font-size: 13px; margin-bottom: 12px;">Skorzystaj z bezpłatnej analizy</span>
+        <span class="box-title" style="font-size: 13px; margin-bottom: 12px;">Skorzystaj z bezpłatnej analizy redaktorskiej</span>
         <p style="font-size: 14px; line-height: 1.6; color: var(--ink-soft); font-weight: 700; margin-bottom: 12px;">
-          Jeśli mimo pracy z arkuszem czujesz, że nadal w czymś utknąłeś, albo po prostu chcesz, żeby ktoś z zewnątrz rzucił okiem na Twoje odpowiedzi – z chęcią pomogę.
+          Jeśli praca z arkuszem Cię przytłoczyła lub czujesz, że utknąłeś w martwym punkcie – nie musisz działać sam.
         </p>
-        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft);">
-          Podeślij mi swój uzupełniony arkusz. Przejrzę go w ramach <strong>bezpłatnej, niezobowiązującej analizy</strong>. Doradzę Ci, nad jakimi elementami Twojej opowieści warto jeszcze usiąść, czy jest już gotowa na testy u betaczytelników, czy też śmiało możemy myśleć o ostatecznej redakcji tekstu.
+        
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 12px;">
+          <strong>Bezpłatna weryfikacja:</strong> Chcesz się upewnić, że Twoje poprawki działają? Prześlij mi fragment swojej powieści (do 9 000 znaków ze spacjami). Przeanalizuję go bezpłatnie i dam Ci szczerą odpowiedź, czy idziesz w dobrym kierunku.
+        </p>
+
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0;">
+          <strong>Redakcja strukturalna:</strong> Jeśli czujesz, że historia utknęła, bohaterom brakuje głębi lub łatanie dziur fabularnych Cię przerasta – chętnie pomogę. Oferuję profesjonalną redakcję strukturalną, w ramach której przeanalizuję Twój manuskrypt od podszewki i pomogę Ci ułożyć go w spójną całość.
         </p>
         
         <div class="dot-grid-box short" style="margin-top: 20px; min-height: 70px; display: flex; align-items: center; justify-content: center; background-color: #fff;">
-          <span style="font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.05em;">[TU WPISZ SWÓJ ADRES E-MAIL]</span>
+          <span style="font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.05em;">kontakt@zakulisamijezyka.pl</span>
         </div>
       </div>
 
     </div>
   </div>
-  <div class="runner bottom"><span>ZA KULISAMI JĘZYKA</span><span>23 / 23</span></div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>26 / 26</span></div>
 </section>
 
 </div>
