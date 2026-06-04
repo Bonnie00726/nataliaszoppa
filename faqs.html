@@ -351,24 +351,32 @@ title: FAQs
             });
         }
 
-        // --- ACCORDION ---
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
+        // --- ACCORDION (KULOODPORNY) ---
+        const headers = document.querySelectorAll('.accordion-header');
+        
+        headers.forEach(header => {
+            header.addEventListener('click', function() {
+                // Znajdź okienko i jego treść (body)
+                const item = this.parentElement;
                 const body = item.querySelector('.accordion-body');
+                
+                // Sprawdź, czy kliknięte okienko jest otwarte
                 const isOpen = item.classList.contains('open');
 
-                // Zamknij wszystkie w tej samej grupie
+                // Najpierw zamykamy wszystkie okienka w tej samej grupie
                 const group = item.closest('.faq-group');
-                group.querySelectorAll('.accordion-item').forEach(i => {
-                    i.classList.remove('open');
-                    i.querySelector('.accordion-body').classList.remove('open');
-                });
+                if (group) {
+                    group.querySelectorAll('.accordion-item').forEach(i => {
+                        i.classList.remove('open');
+                        const b = i.querySelector('.accordion-body');
+                        if (b) b.classList.remove('open');
+                    });
+                }
 
-                // Otwórz kliknięty (jeśli był zamknięty)
+                // Jeśli kliknięte okienko było wcześniej ZAMKNIĘTE, to je teraz otwieramy
                 if (!isOpen) {
                     item.classList.add('open');
-                    body.classList.add('open');
+                    if (body) body.classList.add('open');
                 }
             });
         });
