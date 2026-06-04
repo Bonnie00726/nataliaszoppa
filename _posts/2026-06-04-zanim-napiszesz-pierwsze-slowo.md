@@ -8,6 +8,9 @@ image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
 
 Zanim napiszesz pierwsze słowo – kilka rzeczy do przemyślenia, zanim otworzysz nowy dokument. Nie chodzi tu o technikę pisania, ale o Twoje nastawienie. W pracy redaktorskiej stale widzę te same problemy, a ich główne źródło jest zwykle jedno: **autor stawia siebie w centrum, spychając czytelnika na dalszy plan.**
 
+Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+      
+
 <img src="https://images.unsplash.com/photo-1504691342899-4d92b50853e1" alt="Pisarski reality check" style="max-width: 100%; border-radius: 8px; display: block; margin: 20px auto;">
 
 ---
