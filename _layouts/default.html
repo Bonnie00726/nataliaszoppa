@@ -15,6 +15,35 @@
         .bell-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.14); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 0 100px 100px 0; padding: 0 24px 0 0; height: 40px; margin-left: -26px; padding-left: 32px; white-space: nowrap; overflow: hidden; max-width: 0; opacity: 0; transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
         .bell-pill.expanded { max-width: 360px; opacity: 1; }
         .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+
+        /* ===== LEKKIE CHMURKI (NOTATKI W POSTACH) ===== */
+        .chmurka {
+            padding: 20px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            color: #4a4a4a;
+            margin: 30px 0;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        /* 1. Magenta - Ostrzeżenie / Uwaga */
+        .chmurka-uwaga {
+            background-color: #fdf2f8;
+            border: 1px solid #fce7f3;
+        }
+        .chmurka-uwaga strong {
+            color: #c2185b; /* Głęboka magenta podkreślająca powagę */
+        }
+
+        /* 2. Żółta - Tip / Idea */
+        .chmurka-tip {
+            background-color: #fefce8;
+            border: 1px solid #fef08a;
+        }
+        .chmurka-tip strong {
+            color: #ca8a04; /* Ciemny, czytelny żółty */
+        }
     </style>
 </head>
 <body>
@@ -26,7 +55,6 @@
     {% include footer.html %}
 
     <script>
-
 document.addEventListener('DOMContentLoaded', () => {
   // Obsługa modali w sekcji Usług
   const readMoreBtns = document.querySelectorAll('.read-more-btn');
