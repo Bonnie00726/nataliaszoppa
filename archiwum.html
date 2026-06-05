@@ -6,7 +6,7 @@ permalink: /archiwum.html
 <div class="blog-container">
     <main class="blog-content">
         <h1 style="font-family: 'Lora', serif; margin-top: 60px; margin-bottom: 15px;">Archiwum wpisów</h1>
-        <p style="margin-bottom: 40px; color: #666;">Przeglądaj wszystkie teksty opublikowane na blogu, posegregowane według lat.</p>
+        <p style="margin-bottom: 40px; color: #666;">Przeglądaj wszystkie posty.</p>
 
         {% for post in site.posts %}
             {% capture current_year %}{{ post.date | date: "%Y" }}{% endcapture %}
