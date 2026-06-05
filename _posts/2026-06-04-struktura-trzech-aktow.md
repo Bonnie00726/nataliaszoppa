@@ -4,6 +4,7 @@ title: "Struktura trzech aktów – jak naprawdę działa fabuła"
 date: 2026-06-04 23:30:00 +0200
 author: Natalia Szoppa
 image: https://images.unsplash.com/photo-1638802538115-041e14d28d6a
+tags: [struktura książki]
 ---
 
 Trójaktowa budowa fabuły należy do najstarszych modeli dramaturgicznych. Akt I zawiązuje konflikt, akt II go rozwija i piętrzy, akt III – rozwiązuje. Mechanizm wydaje się prosty, jednak właśnie z tego powodu bywa stosowany błędnie.
