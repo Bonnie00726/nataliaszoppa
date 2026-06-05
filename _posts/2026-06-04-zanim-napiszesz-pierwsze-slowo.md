@@ -19,7 +19,7 @@ Początki zawsze są dla Ciebie – to naturalny i potrzebny etap twórczości. 
 
 Czytelnik nie zna Twoich intencji, ale natychmiast wyczuje fałsz. Bohaterowie stają się wtedy płascy, a fabuła koncentruje się na Twojej krzywdzie, a nie na samej opowieści. 
 
-<div class="notice-box">
+<div class="chmurka chmurka-tip">
     <strong>Zadaj sobie proste pytanie:</strong> Czy Twój tekst niesie wartość i treść dla kogoś zupełnie obcego?
 </div>
 
@@ -46,7 +46,7 @@ Odbiorca sięga po dany gatunek z konkretnymi oczekiwaniami, a odrzucanie tych p
 
 Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje rozwój tekstu. Odbieranie każdej uwagi jako osobistej urazy prowadzi do publikowania błędów, a efekty widać później w recenzjach. 
 
-<div class="idea-box">
+<div class="chmurka chmurka-tip">
     <strong>Szybki protip:</strong> Negatywne opinie wskazujące na nudne opisy czy nielogiczną fabułę są najcenniejszą informacją zwrotną. Nie traktuj ich jak wyroku – wyciągnij wnioski i popraw materiał, zanim pójdzie w świat.
 </div>
 
@@ -54,7 +54,7 @@ Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje
 
 Rezygnacja z tradycyjnego wydawnictwa nie zwalnia Cię z całego procesu wydawniczego. Musisz zainwestować w profesjonalną redakcję, korektę i skład. 
 
-<div class="alert-magenta">
+<div class="chmurka chmurka-uwaga">
     <strong>UWAGA!</strong> Przypadkowa okładka oraz błędy w tekście natychmiast odstraszą odbiorców. To wyraźny sygnał dla czytelnika, że materiał nie przeszedł żadnej weryfikacji.
 </div>
 
