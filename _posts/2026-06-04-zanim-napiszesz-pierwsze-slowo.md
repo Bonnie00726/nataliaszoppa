@@ -20,7 +20,7 @@ Początki zawsze są dla Ciebie – to naturalny i potrzebny etap twórczości. 
 Czytelnik nie zna Twoich intencji, ale natychmiast wyczuje fałsz. Bohaterowie stają się wtedy płascy, a fabuła koncentruje się na Twojej krzywdzie, a nie na samej opowieści. 
 
 <div class="chmurka chmurka-tip">
-    <strong>Zadaj sobie proste pytanie:</strong> Czy Twój tekst niesie wartość i treść dla kogoś zupełnie obcego?
+    Zadaj sobie proste pytanie: Czy Twój tekst niesie wartość i treść dla kogoś zupełnie obcego?
 </div>
 
 <h2 id="brak-obowiazku-czytania">Czytelnik nie ma obowiązku czytać Twojej książki</h2>
