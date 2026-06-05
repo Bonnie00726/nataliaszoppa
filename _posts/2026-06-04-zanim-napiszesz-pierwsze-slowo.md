@@ -13,7 +13,7 @@ Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medi
 
 ---
 
-<h2 id="piszesz-dla-siebie-czy-czytelnika">1. Piszesz dla siebie czy dla czytelnika?</h2>
+<h2 id="piszesz-dla-siebie-czy-czytelnika">Piszesz dla siebie czy dla czytelnika?</h2>
 
 Początki zawsze są dla Ciebie – to naturalny i potrzebny etap twórczości. Problem pojawia się w chwili, gdy tekst zostaje wyłącznie z Tobą. Pisanie po to, by przepracować osobiste problemy, rzadko działa na zewnątrz. 
 
@@ -23,7 +23,7 @@ Czytelnik nie zna Twoich intencji, ale natychmiast wyczuje fałsz. Bohaterowie s
     <strong>Zadaj sobie proste pytanie:</strong> Czy Twój tekst niesie wartość i treść dla kogoś zupełnie obcego?
 </div>
 
-<h2 id="brak-obowiazku-czytania">2. Czytelnik nie ma obowiązku czytać Twojej książki</h2>
+<h2 id="brak-obowiazku-czytania">Czytelnik nie ma obowiązku czytać Twojej książki</h2>
 
 Odbiorca nie musi rozumieć Twojego wysiłku ani doceniać faktu, że ukończyłeś maszynopis – choć wielu debiutantów zakłada coś odwrotnego. 
 
@@ -33,7 +33,7 @@ Odbiorca nie musi rozumieć Twojego wysiłku ani doceniać faktu, że ukończył
 
 Jeśli Twoja strona tej wymiany jest pusta, odbiorca <span class="highlight-marker">po prostu zamknie książkę i odejdzie</span>.
 
-<h2 id="oryginalnosc-vs-warsztat">3. Oryginalność nie zastąpi warsztatu</h2>
+<h2 id="oryginalnosc-vs-warsztat">Oryginalność nie zastąpi warsztatu</h2>
 
 Łamanie reguł wymaga najpierw ich doskonałej znajomości. Każdy gatunek zawiera niepisany kontrakt z czytelnikiem:
 
@@ -42,7 +42,7 @@ Jeśli Twoja strona tej wymiany jest pusta, odbiorca <span class="highlight-mark
 
 Odbiorca sięga po dany gatunek z konkretnymi oczekiwaniami, a odrzucanie tych potrzeb wcale nie jest aktem odwagi – to po prostu brak świadomości pisarskiej.
 
-<h2 id="krytyka-buduje-tekst">4. Krytyka nie niszczy tekstu, tylko go buduje</h2>
+<h2 id="krytyka-buduje-tekst">Krytyka nie niszczy tekstu, tylko go buduje</h2>
 
 Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje rozwój tekstu. Odbieranie każdej uwagi jako osobistej urazy prowadzi do publikowania błędów, a efekty widać później w recenzjach. 
 
@@ -50,7 +50,7 @@ Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje
     <strong>Szybki protip:</strong> Negatywne opinie wskazujące na nudne opisy czy nielogiczną fabułę są najcenniejszą informacją zwrotną. Nie traktuj ich jak wyroku – wyciągnij wnioski i popraw materiał, zanim pójdzie w świat.
 </div>
 
-<h2 id="self-publishing-to-nie-skrot">5. Self-publishing to nie jest droga na skróty</h2>
+<h2 id="self-publishing-to-nie-skrot">Self-publishing to nie jest droga na skróty</h2>
 
 Rezygnacja z tradycyjnego wydawnictwa nie zwalnia Cię z całego procesu wydawniczego. Musisz zainwestować w profesjonalną redakcję, korektę i skład. 
 
@@ -60,7 +60,7 @@ Rezygnacja z tradycyjnego wydawnictwa nie zwalnia Cię z całego procesu wydawni
 
 Wydanie książki to narzędzie, nie nagroda. Publikacja ma ułatwić dotarcie do czytelnika – jeśli odbiorca ominie Twój tytuł szerokim łukiem, cały ten proces traci sens.
 
-<h2 id="dystans-w-autofikcji">6. Autofikcja wymaga odpowiedniego dystansu</h2>
+<h2 id="dystans-w-autofikcji">Autofikcja wymaga odpowiedniego dystansu</h2>
 
 Czerpanie z własnego życia jest całkowicie w porządku. Błąd tkwi w bezrefleksyjnym kopiowaniu rzeczywistości. Zapis prawdziwych wydarzeń a prawdziwy materiał literacki to dwie zupełnie różne rzeczy. 
 
