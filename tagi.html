@@ -5,8 +5,9 @@ permalink: /tagi.html
 ---
 <div class="blog-container">
     <main class="blog-content">
-        <h1>Wszystkie tagi</h1>
+        <h1 style="font-family: 'Lora', serif; margin-top: 60px; margin-bottom: 15px;">Wszystkie tagi</h1>
         
+        <!-- Chmura tagów na samej górze ułatwiająca nawigację -->
         <div class="tag-cloud" style="margin-bottom: 30px;">
             {% capture site_tags %}{% for tag in site.tags %}{{ tag[0] }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
             {% assign tags_list = site_tags | split:',' | sort %}
@@ -15,6 +16,7 @@ permalink: /tagi.html
             {% endfor %}
         </div>
 
+        <!-- Lista postów przypisanych do konkretnych tagów -->
         {% for tag in site.tags %}
         <h3 id="{{ tag[0] | cgi_escape }}" style="margin-top: 40px; border-bottom: 2px solid #eee; padding-bottom: 5px;">#{{ tag[0] }}</h3>
         <ul style="list-style-type: none; padding-left: 0;">
