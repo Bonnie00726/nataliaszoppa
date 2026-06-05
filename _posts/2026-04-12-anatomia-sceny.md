@@ -3,10 +3,9 @@ layout: post
 title: "Anatomia sceny: jak projektować doświadczenia, a nie tylko pisać tekst?"
 date: 2026-04-12
 image: "https://images.unsplash.com/photo-1552694062-ccf53289a8da?q=80&w=1170&auto=format&fit=crop"
-tags: [test, powitanie]
+tags: [struktura książki]
 ---
 
-<h1>Anatomia sceny: jak projektowa&#263; do&#347;wiadczenia, a nie tylko pisa&#263; tekst? </h1>
 <p>Zanim Tw&oacute;j m&oacute;zg zd&#261;&#380;y nazwa&#263; emocj&#281; (&bdquo;boj&#281; si&#281;&rdquo;), Twoje cia&#322;o ju&#380; wie, co to za emocja. Rejestrujesz urywany oddech, zimny pot na karku i dr&#380;enie d&#322;oni. Dopiero u&#322;amek sekundy p&oacute;&#378;niej przychodzi s&#322;owo: <b>strach</b>.</p>
 <p>Dobra scena kopiuje ten mechanizm. Do&#347;wiadczenie sensoryczne zawsze wyprzedza lingwistyczne. Je&#347;li piszesz: &bdquo;Marek by&#322; przera&#380;ony&rdquo;, dajesz czytelnikowi gotow&#261; etykietk&#281;, ale odbierasz mu prze&#380;ycie. Jak wi&#281;c przenie&#347;&#263; ten zabieg na papier?</p>
 <h2><b><span class="npf_color_monica">KROK 1: Warstwa sensoryczna</span></b> </h2>
