@@ -47,7 +47,7 @@ Odbiorca sięga po dany gatunek z konkretnymi oczekiwaniami, a odrzucanie tych p
 Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje rozwój tekstu. Odbieranie każdej uwagi jako osobistej urazy prowadzi do publikowania błędów, a efekty widać później w recenzjach. 
 
 <div class="chmurka chmurka-tip">
-    <strong>Szybki protip:</strong> Negatywne opinie wskazujące na nudne opisy czy nielogiczną fabułę są najcenniejszą informacją zwrotną. Nie traktuj ich jak wyroku – wyciągnij wnioski i popraw materiał, zanim pójdzie w świat.
+    Negatywne opinie wskazujące na nudne opisy czy nielogiczną fabułę są najcenniejszą informacją zwrotną. Nie traktuj ich jak wyroku – wyciągnij wnioski i popraw materiał, zanim pójdzie w świat.
 </div>
 
 <h2 id="self-publishing-to-nie-skrot">Self-publishing to nie jest droga na skróty</h2>
@@ -55,7 +55,7 @@ Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje
 Rezygnacja z tradycyjnego wydawnictwa nie zwalnia Cię z całego procesu wydawniczego. Musisz zainwestować w profesjonalną redakcję, korektę i skład. 
 
 <div class="chmurka chmurka-uwaga">
-    <strong>UWAGA!</strong> Przypadkowa okładka oraz błędy w tekście natychmiast odstraszą odbiorców. To wyraźny sygnał dla czytelnika, że materiał nie przeszedł żadnej weryfikacji.
+    Przypadkowa okładka oraz błędy w tekście natychmiast odstraszą odbiorców. To wyraźny sygnał dla czytelnika, że materiał nie przeszedł żadnej weryfikacji.
 </div>
 
 Wydanie książki to narzędzie, nie nagroda. Publikacja ma ułatwić dotarcie do czytelnika – jeśli odbiorca ominie Twój tytuł szerokim łukiem, cały ten proces traci sens.
