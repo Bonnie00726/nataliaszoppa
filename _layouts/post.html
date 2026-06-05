@@ -67,20 +67,6 @@ layout: default
             <ul id="results-container" style="list-style: none; padding: 0; margin: 0; font-size: 0.9em;"></ul>
         </div>
 
-        <div class="sidebar-widget recent-posts">
-            <h4 class="widget-title">Najnowsze wpisy</h4>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-                {% for post in site.posts limit:3 %}
-                    {% if post.url != page.url %}
-                    <li style="margin-bottom: 10px;">
-                        <a href="{{ post.url | relative_url }}" style="text-decoration: none; font-weight: bold; display: block;">{{ post.title }}</a>
-                        <span style="font-size: 0.8em; color: #666;">{{ post.date | date: "%d.%m.%Y" }}</span>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-
         <div class="sidebar-widget">
             <h4 class="widget-title">Popularne tagi</h4>
             <div class="tag-cloud">
@@ -99,10 +85,8 @@ layout: default
         </div>
     </aside>
 
-<!-- Skrypt SimpleJekyllSearch -->
 <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
 
-<!-- Konfiguracja wyszukiwarki -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         SimpleJekyllSearch({
@@ -116,10 +100,7 @@ layout: default
         });
     });
 </script>
-</div> <!-- KONIEC BLOG-CONTAINER -->
-
-<!-- 1. PASEK NAWIGACJI (JEDEN) FULL WIDTH -->
-<div class="post-full-nav">
+</div> <div class="post-full-nav">
     <div class="nav-item prev-item">
         {% if page.previous %}
         <a href="{{ page.previous.url | relative_url }}">
@@ -138,7 +119,6 @@ layout: default
     </div>
 </div>
 
-<!-- 2. POLECANE ARTYKUŁY (SIATKA ZDJĘĆ) FULL WIDTH -->
 <div class="recommended-grid">
     {% assign count = 0 %}
     {% for post in site.posts %}
