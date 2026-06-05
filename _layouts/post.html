@@ -112,4 +112,21 @@ layout: default
             <a href="{{ site.baseurl }}/archiwum.html" class="author-link" style="font-weight: bold;">Przejdź do archiwum <i class="las la-arrow-right"></i></a>
         </div>
     </aside>
+    <!-- Skrypt SimpleJekyllSearch -->
+<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
+
+<!-- Konfiguracja wyszukiwarki -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '{{ site.baseurl }}/search.json',
+            searchResultTemplate: '<li style="margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 8px;"><a href="{url}" style="text-decoration: none; font-weight: bold; color: #333;">{title}</a><br><span style="font-size: 0.8em; color: #666;">{date}</span></li>',
+            noResultsText: '<li style="color: #666;">Nie znaleziono wpisów...</li>',
+            limit: 5,
+            fuzzy: false
+        });
+    });
+</script>
 </div>
