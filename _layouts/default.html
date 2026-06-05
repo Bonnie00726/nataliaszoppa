@@ -64,18 +64,7 @@
         .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,18,0.7) 0%, rgba(10,8,18,0.4) 100%); }
         .hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(107,53,200,0.35) 0%, transparent 70%); }
-        .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            padding: 0 40px 40px 40px;
-            width: 100%; 
-            max-width: 900px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            margin-top: var(--nav-h); 
-        }
-
+        .hero-content { position: relative; z-index: 2; padding: 0 40px 40px 40px; width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; margin-top: var(--nav-h); }
         .hero-notice { display: inline-flex; align-items: center; justify-content: center; gap: 14px; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 10px 24px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.15); font-family: var(--sans); font-size: 0.85rem; color: #fff; margin-bottom: 36px; }
         .dots-wrap { display: flex; gap: 6px; }
         .dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse-dot 1.5s infinite ease-in-out; }
@@ -101,17 +90,7 @@
         .hero-stat-num em { font-style: italic; color: var(--grad-start); font-size: 1.8rem; }
         .hero-stat-txt { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); }
 
-        .hero-stats-clean {
-            margin-top: 20px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15); 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 36px; 
-            width: 100%;
-        }
-
+        .hero-stats-clean { margin-top: 20px; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; flex-direction: column; align-items: center; gap: 36px; width: 100%; }
         .stats-numbers { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
         .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; }
         .stat-item .num { font-family: var(--serif); font-size: 2.2rem; color: #fff; line-height: 1; margin-bottom: 6px; }
@@ -124,35 +103,24 @@
         .genre-tag { background: var(--grad-start); color: #fff; font-family: var(--sans); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 14px; border-radius: var(--radius); transition: transform 0.2s, background 0.2s; cursor: default; border: 1px solid rgba(255,255,255,0.1); }
         .genre-tag:hover { transform: translateY(-2px); background: var(--grad-mid); }
 
-        @media (max-width: 768px) {
-            .stats-numbers { gap: 32px; }
-            .stats-tags { flex-direction: column; gap: 12px; }
-        }
-
         /* LAYOUT */
         .container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
         .section { padding: 110px 0; }
         .section:nth-of-type(odd) { background: var(--paper); }
         .section:nth-of-type(even) { background: var(--paper-warm); }
-        
         .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: 20px; }
         .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 3px 4px 3px 6px; display: inline-block; }
 
-        /* O MNIE */
+        /* O MNIE, USŁUGI, KAFELKI ITD... */
         .about-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 80px; align-items: center; }
         .about-img-wrap { position: relative; padding-bottom: 28px; padding-right: 28px; }
         .about-img-wrap img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); display: block; }
         .about-img-caption { position: absolute; bottom: 0; right: 0; background: var(--grad); color: #fff; padding: 18px 22px; border-radius: var(--radius); font-family: var(--serif); font-size: 0.85rem; font-weight: 600; max-width: 180px; line-height: 1.4; box-shadow: var(--shadow-med); }
         .about-text p { font-family: var(--sans); color: var(--ink-soft); font-size: 1.0rem; margin-bottom: 20px; font-weight: 300; }
-
-        /* USŁUGI */
         .services-intro { margin-bottom: 60px; }
         .services-desc { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; margin-top: 10px; max-width: 600px; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        @media (min-width: 900px) {
-            .services-grid { grid-template-columns: repeat(4, 1fr); }
-            .service-card { grid-column: auto !important; }
-        }
+        @media (min-width: 900px) { .services-grid { grid-template-columns: repeat(4, 1fr); } .service-card { grid-column: auto !important; } }
         .service-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
         .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
         .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
@@ -161,60 +129,7 @@
         .service-icon i { font-size: 1.5rem; color: #fff; }
         .service-card h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
         .service-card p { font-family: var(--sans); font-size: 0.92rem; color: var(--ink-muted); line-height: 1.65; }
-
-        /* MISJA */
-        .mission-wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: start; }
-        .mission-aside { position: sticky; top: calc(var(--nav-h) + 40px); }
-        .mission-text p { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); margin-bottom: 24px; font-weight: 300; }
-        .blockquote { border-left: 3px solid var(--grad-start); padding: 24px 32px; background: var(--gold-pale); border-radius: 0 var(--radius) var(--radius) 0; margin: 36px 0; }
-        .blockquote p { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--ink); line-height: 1.6; margin: 0 !important; }
-        .mission-aside-card { background: var(--ink); color: #fff; padding: 36px; border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .mission-aside-card h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 16px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding-bottom: 3px; display: inline-block; }
-        .mission-aside-card p { font-family: var(--sans); font-size: 0.9rem; color: rgba(255,255,255,0.75); margin-bottom: 24px; line-height: 1.65; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--grad); color: #fff; font-family: var(--sans); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 11px 24px; border-radius: 100px; transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s; }
-        .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(107,53,200,0.4); }
-
-        /* OPINIE */
-        .reviews-desc { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); font-weight: 300; margin-top: 16px; margin-bottom: 48px; max-width: 900px; line-height: 1.7; }
-        .reviews-desc p { margin-bottom: 10px; }
-        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .review-card { background: #fff; padding: 36px 30px; border-radius: var(--radius-lg); border: 1px solid var(--paper-mid); box-shadow: var(--shadow-soft); display: flex; flex-direction: column; gap: 20px; transition: transform 0.3s, box-shadow 0.3s; }
-        .review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-        .review-stars { display: flex; gap: 3px; }
-        .review-stars i { font-size: 0.9rem; color: var(--grad-start); }
-        .review-text { font-family: var(--serif); font-size: 1.0rem; font-style: italic; color: var(--ink-soft); line-height: 1.65; flex: 1; }
-        .review-text::before { content: '\201C'; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.4rem; line-height: 0; vertical-align: -0.3em; margin-right: 2px; }
-        .review-text::after  { content: '\201D'; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.4rem; line-height: 0; vertical-align: -0.3em; margin-left: 2px; }
-        .review-author { display: flex; align-items: center; gap: 12px; padding-top: 20px; border-top: 1px solid var(--paper-mid); }
-        .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--grad); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1rem; font-weight: 700; color: #fff; flex-shrink: 0; }
-        .review-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 600; color: var(--ink); }
-        .review-role { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-muted); }
-
-        /* PROCES */
-        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
-        .steps::before { content: ''; position: absolute; top: 44px; left: 10%; right: 10%; height: 1px; background: var(--paper-mid); z-index: 0; }
-        .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 24px; position: relative; z-index: 1; }
-        .step-num { width: 56px; height: 56px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 1.4rem; font-style: italic; font-weight: 700; margin-bottom: 24px; box-shadow: var(--shadow-soft); position: relative; transition: background 0.3s; }
-        .step-num::before { content: ''; position: absolute; inset: -2px; background: var(--grad); border-radius: 50%; z-index: -1; }
-        .step-num span { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .step:hover .step-num { background: var(--ink); }
-        .step:hover .step-num span { background: linear-gradient(135deg, #fff, rgba(255,255,255,0.8)); -webkit-background-clip: text; background-clip: text; }
-        .step-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
-        .step-desc { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-muted); line-height: 1.6; }
-
-        /* PRZED I PO */
-        .comparison-container { display: flex; gap: 24px; margin-top: 40px; }
-        @media (max-width: 768px) { .comparison-container { flex-direction: column; } }
-        .comparison-box { flex: 1; border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-soft); position: relative; border: 1px solid var(--paper-mid); background: var(--paper); }
-        .comparison-box.before { border-color: #FAD4D4; }
-        .comparison-box.after { border-color: rgba(107, 53, 200, 0.2); box-shadow: var(--shadow-med); overflow: hidden; }
-        .comparison-box.after::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad); }
-        .box-header { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-        .comparison-box.before .box-header { color: #E53E3E; }
-        .comparison-box.after .box-header { color: var(--grad-start); }
-        .box-content { font-family: var(--sans); font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--ink-soft); }
-
-        /* KAFELKI */
+        
         .tiles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .tile { display: flex; flex-direction: column; align-items: flex-start; padding: 44px 36px; border-radius: var(--radius-lg); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
         .tile:hover { transform: translateY(-6px); box-shadow: var(--shadow-strong); }
@@ -232,19 +147,37 @@
         .tile--dark p { color: rgba(255,255,255,0.65); }
         .tile--gold p { color: rgba(255,255,255,0.8); }
         .tile--warm p { color: var(--ink-muted); }
-        .tile-arrow { margin-top: auto; padding-top: 28px; font-size: 1.3rem; transition: transform 0.3s; }
-        .tile:hover .tile-arrow { transform: translateX(4px); }
-        .tile--dark .tile-arrow, .tile--gold .tile-arrow { color: rgba(255,255,255,0.7); }
-        .tile--warm .tile-arrow { color: var(--green); }
 
-        /* BLOG HEADER W POŚCIE */
-        .blog-header { padding: calc(var(--nav-h) + 56px) 40px 48px; max-width: 1180px; margin: 0 auto; }
-        .blog-meta { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grad-start); margin-bottom: 16px; }
+        /* WSPÓLNE BLOG GRID (DO STRONY GŁÓWNEJ) */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        .blog-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; border: 1px solid var(--paper-mid); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+        .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
+        .blog-img { aspect-ratio: 16/9; overflow: hidden; background: var(--paper-warm); }
+        .blog-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+        .blog-card:hover .blog-img img { transform: scale(1.04); }
+        .blog-info { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+        .blog-excerpt { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-muted); line-height: 1.65; flex: 1; }
+
+        /* =======================================================
+           BLOG POST & SIDEBAR (NOWY RETRO-MODERN DESIGN Z OBRAZKA)
+           ======================================================= */
+        
+        /* 1. Header (Tytuł wyrównany do tekstu!) */
+        .blog-header { 
+            padding: calc(var(--nav-h) + 56px) 40px 48px; 
+            max-width: 880px; /* Szerokość 800px treści + 2x 40px marginesu */
+            margin: 0 auto; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            transition: padding-right 0.4s ease; /* Zsynchronizowany z kontenerem animacji wysuwania */
+        }
+        .blog-meta { width: 100%; max-width: 800px; font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--grad-start); margin-bottom: 16px; text-align: left; }
         .blog-meta span { color: var(--ink-muted); font-weight: 400; text-transform: none; letter-spacing: 0; }
-        .blog-header .blog-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--ink); line-height: 1.15; max-width: 800px; }
+        .blog-header .blog-title { width: 100%; max-width: 800px; font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 700; color: var(--ink); line-height: 1.15; text-align: left; }
         .blog-image { width: 100%; max-height: 480px; object-fit: cover; display: block; }
 
-        /* ===== BLOG POST Z WYSUWANYM SIDEBAREM ===== */
+        /* 2. Główny kontener tekstu */
         .blog-container { 
             max-width: 1180px; 
             margin: 0 auto; 
@@ -253,14 +186,21 @@
             justify-content: center;
             gap: 0; 
             align-items: start; 
-            transition: gap 0.4s ease;
+            transition: padding-right 0.4s ease;
             position: relative;
         }
-        .blog-container.sidebar-open { gap: 64px; justify-content: space-between; }
+        
+        /* Odsunięcie treści w lewo, by zrobić miejsce wysuwanemu paskowi! */
+        @media (min-width: 1200px) {
+            body.sidebar-open .blog-container, 
+            body.sidebar-open .blog-header { 
+                padding-right: 380px; 
+            }
+        }
         
         .blog-content { 
             width: 100%;
-            max-width: 800px; /* Optymalna szerokość do czytania */
+            max-width: 800px; 
             font-family: var(--sans); 
             font-size: 1.05rem; 
             color: var(--ink-soft); 
@@ -268,55 +208,130 @@
             font-weight: 300; 
             transition: max-width 0.4s ease;
         }
-        .blog-container.sidebar-open .blog-content { max-width: 100%; flex: 1; }
-        
+
+        /* 3. Wspaniały nowy Sidebar z Twojego obrazka */
         .blog-sidebar { 
-            position: sticky; 
-            top: calc(var(--nav-h) + 32px); 
-            display: flex; 
-            flex-direction: column; 
-            gap: 24px; 
-            width: 0;
-            min-width: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(30px);
-            transition: all 0.4s ease;
-            overflow: hidden;
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            bottom: 20px; 
+            width: 340px !important; 
+            max-width: 85vw; 
+            background: var(--grad-end); /* Użyty Twój pomarańcz z gradientu */
+            border-radius: 24px; 
+            z-index: 10000; 
+            padding: 60px 24px 40px; 
+            overflow-y: auto; 
+            transform: translateX(120%); 
+            opacity: 0; 
+            visibility: hidden; 
+            box-shadow: -5px 10px 30px rgba(0,0,0,0.15); 
+            transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s;
         }
-        .blog-container.sidebar-open .blog-sidebar {
-            width: 320px;
-            min-width: 320px;
+
+        /* Ozdobne kółeczka na górze sidebara (kopiujące styl retro) */
+        .blog-sidebar::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            width: 16px;
+            height: 16px;
+            background: #B8409A; /* Fiolet / Róż */
+            border-radius: 50%;
+            box-shadow: 24px 0 0 #FFE066, 48px 0 0 #6B35C8;
+        }
+
+        body.sidebar-open .blog-sidebar {
+            transform: translateX(0);
             opacity: 1;
             visibility: visible;
-            transform: translateX(0);
         }
         
-        /* Przycisk wysuwający sidebar */
+        /* 4. Przycisk wysuwający Sidebar */
         .sidebar-toggle-btn {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--grad);
+            background: var(--ink);
             color: #fff;
             border: none;
             padding: 16px 12px 16px 16px;
             border-radius: 100px 0 0 100px;
             cursor: pointer;
-            z-index: 999;
+            z-index: 10001;
             font-size: 1.6rem;
             box-shadow: -4px 0 15px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease, padding 0.3s ease;
+            transition: right 0.4s cubic-bezier(0.22,1,0.36,1), background 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         .sidebar-toggle-btn:hover { padding-right: 20px; }
+        
+        /* Kiedy sidebar jest otwarty - przycisk też się odsuwa, by go nie zasłaniać */
+        body.sidebar-open .sidebar-toggle-btn { right: 360px; background: var(--ink-soft); }
         .sidebar-toggle-btn i { transition: transform 0.4s ease; }
-        .blog-container.sidebar-open .sidebar-toggle-btn i { transform: rotate(180deg); }
+        body.sidebar-open .sidebar-toggle-btn i { transform: rotate(180deg); }
 
-        /* TYPOGRAFIA WE WPISACH */
+        /* 5. Kafelki i styl wewnątrz sidebara */
+        .sidebar-widget { 
+            background: #FFFDF2; /* Ciepły, kremowy odcień jak w referencji */
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 16px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        /* Tytuły w kafelkach z okrągłymi numerkami */
+        .widget-title { 
+            font-family: var(--sans); 
+            font-size: 1.05rem; 
+            font-weight: 800; 
+            text-transform: lowercase; 
+            letter-spacing: 0; 
+            color: var(--ink); 
+            margin-bottom: 16px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .sidebar-widget:nth-child(1) .widget-title::after { content: '01'; }
+        .sidebar-widget:nth-child(2) .widget-title::after { content: '02'; }
+        .sidebar-widget:nth-child(3) .widget-title::after { content: '03'; }
+        .sidebar-widget:nth-child(4) .widget-title::after { content: '04'; }
+        .widget-title::after {
+            background: #FFE066; 
+            color: var(--ink);
+            font-size: 0.75rem;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+        }
+
+        /* Detale wizualne w pasku bocznym */
+        .author-name { font-size: 1.1rem; font-weight: 800; text-transform: lowercase; color: var(--ink); margin-bottom: 4px; }
+        .author-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; margin-bottom: 12px; }
+        .author-link { background: var(--ink); color: #fff; padding: 12px 16px; border-radius: 8px; width: 100%; display: flex; align-items: center; justify-content: center; font-weight: 700; text-transform: lowercase; letter-spacing: 0; text-decoration: none; transition: transform 0.2s, opacity 0.2s; }
+        .author-link:hover { opacity: 0.9; transform: translateY(-2px); }
+        .author-avatar { border-radius: 12px; width: 100%; height: 160px; object-fit: cover; margin-bottom: 16px; display: block; border: none; }
+        
+        .search-box input { border: 2px solid #E5E5E5; background: #fff; border-radius: 8px; width: 100%; padding: 8px; font-family: var(--sans); outline: none; }
+        .search-box button { background: var(--ink); border-radius: 8px; color: #fff; border: none; padding: 8px 12px; cursor: pointer; }
+
+        .tag-pill { background: #fff; color: var(--ink); border: 1px solid #E5E5E5; border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; font-weight: 600; text-decoration: none; display: inline-block; }
+        .tag-cloud { gap: 8px; display: flex; flex-wrap: wrap; }
+
+
+        /* 6. TYPOGRAFIA WE WPISACH */
         .blog-content h2 { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--ink); margin: 48px 0 16px; }
         .blog-content h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--ink); margin: 36px 0 12px; }
         .blog-content p { margin-bottom: 24px; }
@@ -327,7 +342,6 @@
         .blog-content ul li::before { content: '→'; position: absolute; left: -1.5rem; color: var(--grad-mid); font-weight: 900; }
         .blog-content blockquote { background-color: #fafafa; border: 1.5px solid var(--ink); border-radius: 12px; margin: 2.5rem 0; padding: 28px 32px; color: var(--ink-soft); font-family: var(--sans); font-style: normal; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04); }
 
-        /* CHMURKI Z TIPSAMI */
         .chmurka { padding: 20px 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); color: #4a4a4a; margin: 30px 0; line-height: 1.6; font-size: 1.05em; }
         .chmurka-uwaga { background-color: #fdf2f8; border: 1px solid #fce7f3; }
         .chmurka-uwaga strong { color: #c2185b; }
@@ -372,16 +386,6 @@
         .recommended-card-title { position: relative; z-index: 2; background-color: #3f51b5; color: #ffffff; width: 100%; padding: 12px 15px; font-size: 0.9em; font-weight: 600; transition: background-color 0.3s ease; }
         .recommended-card:hover .recommended-card-title { background-color: #d81b60; }
 
-        /* WSPÓLNE BLOG GRID */
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-        .blog-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; border: 1px solid var(--paper-mid); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
-        .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-        .blog-img { aspect-ratio: 16/9; overflow: hidden; background: var(--paper-warm); }
-        .blog-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-        .blog-card:hover .blog-img img { transform: scale(1.04); }
-        .blog-info { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-        .blog-excerpt { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-muted); line-height: 1.65; flex: 1; }
-
         /* MAIN FOOTER */
         footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
         .footer-container { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
@@ -391,7 +395,7 @@
         .footer-desc { font-family: var(--sans); font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
         .footer-bottom { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.25); align-items: center; }
 
-        /* RESPONSYWNOŚĆ */
+        /* RESPONSYWNOŚĆ GLOBALNA */
         @media (max-width: 1024px) and (min-width: 601px) {
             .services-grid { grid-template-columns: repeat(2, 1fr); }
             .tiles-grid { grid-template-columns: repeat(2, 1fr); }
@@ -402,17 +406,14 @@
             :root { --nav-h: 64px; }
             .hero-content { padding: 0 24px; }
             .about-grid, .mission-wrap, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            
+            /* Naprawa Sidebara dla małych ekranów (smartfony/tablety) */
             .blog-header { padding: calc(var(--nav-h) + 32px) 20px 32px; }
+            .blog-container { padding: 32px 20px 56px; }
+            .sidebar-toggle-btn { top: auto; bottom: 30px; transform: none; right: 0; }
+            body.sidebar-open .sidebar-toggle-btn { right: 0; z-index: 10002; border-radius: 50%; padding: 16px; bottom: 40px; margin-right: 20px; }
+            
             .post-toc { padding: 0; }
-            
-            /* MOBILE SIDEBAR BEHAVIOR */
-            .blog-container { display: block; padding: 32px 20px 56px; }
-            .blog-content { max-width: 100%; }
-            .blog-sidebar { position: fixed; top: 0; right: 0; bottom: 0; width: 320px !important; max-width: 85vw; background: var(--paper-warm); z-index: 10000; padding: 40px 20px; overflow-y: auto; transform: translateX(100%); opacity: 1; visibility: visible; box-shadow: -5px 0 25px rgba(0,0,0,0.2); transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-            .blog-container.sidebar-open .blog-sidebar { transform: translateX(0); }
-            .sidebar-toggle-btn { z-index: 10001; top: auto; bottom: 30px; transform: none; }
-            .sidebar-toggle-btn:hover { padding-right: 12px; }
-            
             .reviews-grid { grid-template-columns: 1fr; }
             .steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
             .steps::before { display: none; }
@@ -439,7 +440,7 @@
             .recommended-grid { grid-template-columns: 1fr; }
         }
         
-        /* USŁUGI MODALE I ŚCIEŻKI ZACHOWANE Z TWOJEGO KODU */
+        /* USŁUGI, MODALE, ŚCIEŻKI I POZOSTAŁE STYLE GŁÓWNE Z ZACHOWANEGO KODU */
         .services-grid-2x2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
         @media (min-width: 800px) { .services-grid-2x2 { grid-template-columns: repeat(2, 1fr); } }
         .service-card--flex { display: flex; flex-direction: column; }
@@ -476,7 +477,6 @@
     {% include footer.html %}
 
     <script>
-        // MODALE, REVEAL I INNE (ZACHOWANE)
         document.addEventListener('DOMContentLoaded', () => {
             const readMoreBtns = document.querySelectorAll('.read-more-btn');
             const closeBtns = document.querySelectorAll('.close-btn');
@@ -521,17 +521,17 @@
             });
         });
 
-        // 7. WYSUWANY SIDEBAR KOD JS
+        // WYSUWANY SIDEBAR KOD JS (PRZEBUDOWANY)
         document.addEventListener('DOMContentLoaded', function() {
             var sidebarToggle = document.getElementById('sidebarToggle');
-            var blogContainer = document.getElementById('blog-container');
             
-            if (sidebarToggle && blogContainer) {
+            if (sidebarToggle) {
                 sidebarToggle.addEventListener('click', function() {
-                    blogContainer.classList.toggle('sidebar-open');
+                    // UWAGA: Toggling happens on the BODY now, so both Header and Container shift perfectly in sync!
+                    document.body.classList.toggle('sidebar-open');
                     
                     var icon = sidebarToggle.querySelector('i');
-                    if(blogContainer.classList.contains('sidebar-open')) {
+                    if(document.body.classList.contains('sidebar-open')) {
                         icon.classList.remove('la-bars');
                         icon.classList.add('la-times');
                     } else {
