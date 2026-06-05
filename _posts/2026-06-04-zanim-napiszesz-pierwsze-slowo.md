@@ -73,8 +73,6 @@ Zwykłe, życiowe wymiany zdań rzadko spełniają te podstawowe warunki.
 
 ---
 
-<h2 id="podsumowanie">7. Słowo na koniec</h2>
-
 <div class="sticky-note">
     <strong>Najważniejsze na dziś:</strong><br><br>
     Marzenie o publikacji daje świetny impuls do działania, ale Twoim ostatecznym zadaniem jest utrzymanie uwagi czytelnika. Odbiorca musi sam chcieć przewrócić kolejną stronę. Na samym końcu tylko ten fakt ma realne znaczenie.
