@@ -4,6 +4,7 @@ title: "Zanim napiszesz pierwsze słowo – pisarski reality check"
 date: 2026-06-04 23:00:00 +0200
 author: Natalia Szoppa
 image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
+tags: [porady pisarskie]
 ---
 
 Zanim napiszesz pierwsze słowo – kilka rzeczy do przemyślenia, zanim otworzysz nowy dokument. Nie chodzi tu o technikę pisania, ale o Twoje nastawienie. W pracy redaktorskiej stale widzę te same problemy, a ich główne źródło jest zwykle jedno: **autor stawia siebie w centrum, spychając czytelnika na dalszy plan.**
