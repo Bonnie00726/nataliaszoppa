@@ -68,8 +68,6 @@ Pozwalają one spojrzeć na gotowy brudnopis i zlokalizować potencjalne problem
 
 ---
 
-<h2 id="podsumowanie">Złota myśl na koniec</h2>
-
 <div class="sticky-note" markdown="1">
     <strong>Najważniejsze na dziś:</strong><br><br>
     Trójaktowa struktura porządkuje fabułę. Sama w sobie nie stworzy dobrej książki – wyznacza tylko ramy, w których autor musi umieścić przekonujące postacie, wiarygodne motywacje i napięcie, które czytelnik rzeczywiście odczuje.
