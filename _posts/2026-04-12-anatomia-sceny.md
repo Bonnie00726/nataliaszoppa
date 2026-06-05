@@ -6,44 +6,91 @@ image: "https://images.unsplash.com/photo-1552694062-ccf53289a8da?q=80&w=1170&au
 tags: [struktura książki]
 ---
 
-<p>Zanim Tw&oacute;j m&oacute;zg zd&#261;&#380;y nazwa&#263; emocj&#281; (&bdquo;boj&#281; si&#281;&rdquo;), Twoje cia&#322;o ju&#380; wie, co to za emocja. Rejestrujesz urywany oddech, zimny pot na karku i dr&#380;enie d&#322;oni. Dopiero u&#322;amek sekundy p&oacute;&#378;niej przychodzi s&#322;owo: <b>strach</b>.</p>
-<p>Dobra scena kopiuje ten mechanizm. Do&#347;wiadczenie sensoryczne zawsze wyprzedza lingwistyczne. Je&#347;li piszesz: &bdquo;Marek by&#322; przera&#380;ony&rdquo;, dajesz czytelnikowi gotow&#261; etykietk&#281;, ale odbierasz mu prze&#380;ycie. Jak wi&#281;c przenie&#347;&#263; ten zabieg na papier?</p>
-<h2><b><span class="npf_color_monica">KROK 1: Warstwa sensoryczna</span></b> </h2>
-<p>Osobi&#347;cie nazywam to <b>zasad&#261; konkretu diagnostycznego.</b></p>
-<p>Zacznij od tego, co widzi i czuje cia&#322;o, zanim posta&#263; zacznie my&#347;le&#263;. Unikaj przymiotnik&oacute;w-opinii (stary, &#322;adny, nowoczesny). Szukaj atrybut&oacute;w, kt&oacute;re zmusz&#261; czytelnika do wystawienia w&#322;asnej diagnozy.</p>
-<p class="npf_chat">Zamiast &bdquo;<b><strike>nowoczesne biuro</strike></b>&rdquo;, napisz o filcowych panelach akustycznych, biurkach do pracy na stoj&#261;co z &bdquo;w&#281;&#380;ami&rdquo; kabli i szumie ekspresu. Czytelnik sam &bdquo;poczuje&rdquo; korporacyjn&#261; nowoczesno&#347;&#263;.</p>
-<p class="npf_chat">Zamiast &bdquo;<b><strike>stara kawiarnia</strike></b>&rdquo;, napisz o sp&#281;kanej sk&oacute;rze na krzes&#322;ach, kt&oacute;ra lepi si&#281; do ud, i zapachu przypalonego mleka.</p>
-<p class="npf_quote">Pomys&#322; dla Ciebie: wybierz jeden detal, kt&oacute;ry jest unikalny dla tego miejsca. &bdquo;Mahoniowe sto&#322;y&rdquo; s&#261; wsz&#281;dzie. Ale &bdquo;blat zarysowany tysi&#261;cem nerwowych ruch&oacute;w monet&#261;&rdquo; m&oacute;wi ju&#380; konkretn&#261; histori&#281; o go&#347;ciach tego lokalu.</p>
-<h2><b><span class="npf_color_monica">KROK 2: Wejd&#378; w &#347;rodek po&#380;aru</span></b> </h2>
-<blockquote class="npf_indented"><p><b>In late, out early</b>.</p>
+Zanim Twój mózg zdąży nazwać emocję („boję się”), Twoje ciało już wie, co to za emocja. Rejestrujesz urywany oddech, zimny pot na karku i drżenie dłoni. Dopiero ułamek sekundy później przychodzi słowo: **strach**.
+
+Dobra scena kopiuje ten mechanizm. Doświadczenie sensoryczne zawsze wyprzedza lingwistyczne. Jeśli piszesz: „Marek był przerażony”, dajesz czytelnikowi gotową etykietkę, ale odbierasz mu przeżycie. Jak więc przenieść ten zabieg na papier?
+
+<h2>Warstwa sensoryczna</h2> 
+
+Osobiście nazywam to **zasadą konkretu diagnostycznego.**
+
+Zacznij od tego, co widzi i czuje ciało, zanim postać zacznie myśleć. Unikaj przymiotników-opinii (stary, ładny, nowoczesny). Szukaj atrybutów, które zmuszą czytelnika do wystawienia własnej diagnozy.
+
+<div class="chmurka chmurka-tip" markdown="1">
+Zamiast "**<strike>nowoczesne biuro</strike>**", napisz o filcowych panelach akustycznych, biurkach do pracy na stojąco z „wężami” kabli i szumie ekspresu. Czytelnik sam „poczuje” korporacyjną nowoczesność.
+
+Zamiast "**<strike>stara kawiarnia</strike>**", napisz o spękanej skórze na krzesłach, która lepi się do ud, i zapachu przypalonego mleka.
+</div>
+
+<div class="chmurka chmurka-tip" markdown="1">
+**Pomysł dla Ciebie:** wybierz jeden detal, który jest unikalny dla tego miejsca. „Mahoniowe stoły” są wszędzie. Ale „blat zarysowany tysiącem nerwowych ruchów monetą” mówi już konkretną historię o gościach tego lokalu.
+</div>
+
+<h2>Wejdź w środek pożaru</h2> 
+
+<blockquote>
+**In late, out early**.
 </blockquote>
-<p>Dobre sceny zaczynaj&#261; si&#281; w ostatnim mo&#380;liwym momencie. Nie potrzebujemy opisu parzenia kawy, wi&#261;zania but&oacute;w i stania w korku, je&#347;li scena ma dotyczy&#263; zwolnienia z pracy.</p>
-<p>Jak to zrobi&#263;? Skasuj rozbieg. Zacznij, gdy bohater k&#322;adzie ju&#380; r&#281;k&#281; na klamce gabinetu szefa. Albo jeszcze lepiej: zacznij od pierwszego zdania, kt&oacute;re pada po wej&#347;ciu do &#347;rodka.</p>
-<p class="npf_quote">Przyk&#322;ad: "Wzg&oacute;rza jak bia&#322;e s&#322;onie" Hemingwaya.<br><br>Autor nie pokazuje nam, jak para pakowa&#322;a walizki czy planowa&#322;a podr&oacute;&#380;. Scena zaczyna si&#281; na stacji kolejowej, w po&#322;owie napi&#281;tej rozmowy o &bdquo;pewnym zabiegu&rdquo;. Jeste&#347;my wrzuceni w sam &#347;rodek konfliktu bez &#380;adnego ostrze&#380;enia. Brak wst&#281;pu sprawia, &#380;e czytelnik od razu musi zacz&#261;&#263; &bdquo;uwa&#380;nie patrze&#263;&rdquo;, &#380;eby zrozumie&#263;, o co chodzi. To buduje natychmiastowe zaanga&#380;owanie.</p>
-<h2><b><span class="npf_color_monica">KROK 3: Silnik sceny</span></b> </h2>
-<p>GMC od Debry Dixon.</p>
-<p>Kiedy ju&#380; osadzisz nas w fizyczno&#347;ci i akcji, musisz odpali&#263; silnik. Zastosuj mechanizm GMC:</p>
-<ul><li>&nbsp;<b><span style="color: #ff4930">Goal (Cel):</span></b> czego bohater chce tu i teraz? (Np. podpisa&#263; ugod&#281;).</li>
-<li>&nbsp;<b><span style="color: #ff4930">Motivation (Motywacja): </span></b>dlaczego to jest dla niego wa&#380;ne? (Bo inaczej straci dom).</li>
-<li>&nbsp;<b><span style="color: #ff4930">Conflict (Konflikt): </span></b>co mu przeszkadza? (Druga strona nagle zmienia warunki).</li>
-</ul>
-<p>Bez jasnego celu posta&#263; tylko &bdquo;dryfuje&rdquo; przez tekst, a czytelnik traci pow&oacute;d, by &#347;ledzi&#263; jej losy.</p>
-<h2><b><span class="npf_color_monica">KROK 4: Mechanika konsekwencji </span></b></h2>
-<blockquote class="npf_indented"><p>&bdquo;Tak, ale...&rdquo; i &bdquo;Nie, i do tego...&rdquo;</p>
+
+Dobre sceny zaczynają się w ostatnim możliwym momencie. Nie potrzebujemy opisu parzenia kawy, wiązania butów i stania w korku, jeśli scena ma dotyczyć zwolnienia z pracy.
+
+Jak to zrobić? Skasuj rozbieg. Zacznij, gdy bohater kładzie już rękę na klamce gabinetu szefa. Albo jeszcze lepiej: zacznij od pierwszego zdania, które pada po wejściu do środka.
+
+<div class="chmurka chmurka-tip" markdown="1">
+**Przykład:** "Wzgórza jak białe słonie" Hemingwaya.
+
+Autor nie pokazuje nam, jak para pakowała walizki czy planowała podróż. Scena zaczyna się na stacji kolejowej, w połowie napiętej rozmowy o „pewnym zabiegu”. Jesteśmy wrzuceni w sam środek konfliktu bez żadnego ostrzeżenia. Brak wstępu sprawia, że czytelnik od razu musi zacząć „uważnie patrzeć”, żeby zrozumieć, o co chodzi. To buduje natychmiastowe zaangażowanie.
+</div>
+
+<h2>Silnik sceny</h2> 
+
+GMC od Debry Dixon.
+
+Kiedy już osadzisz nas w fizyczności i akcji, musisz odpalić silnik. Zastosuj mechanizm GMC:
+
+* **Goal (Cel):** czego bohater chce tu i teraz? (Np. podpisać ugodę).
+* **Motivation (Motywacja):** dlaczego to jest dla niego ważne? (Bo inaczej straci dom).
+* **Conflict (Konflikt):** co mu przeszkadza? (Druga strona nagle zmienia warunki).
+
+Bez jasnego celu postać tylko „dryfuje” przez tekst, a czytelnik traci powód, by śledzić jej losy.
+
+<h2>Mechanika konsekwencji</h2>
+
+<blockquote>
+„Tak, ale...” i „Nie, i do tego...”
 </blockquote>
-<p>To jest moment, w kt&oacute;rym dbasz o to, by ka&#380;da scena wynika&#322;a z poprzedniej. Tu budujesz realizm &#347;wiata, w kt&oacute;rym dzia&#322;ania maj&#261; swoj&#261; cen&#281;.</p>
-<p>Fonda Lee w Jade City (saga o klanach w&#322;adaj&#261;cych magicznym jadeitem) pokazuje to bezlito&#347;nie. Kiedy lider klanu zostaje zamordowany, jego m&#322;odsze rodze&#324;stwo &ndash; Hilo i Shae &ndash; postanawia dokona&#263; natychmiastowego odwetu.</p>
-<p class="npf_quote"><b><span style="color: #ff4930">TAK, ALE</span></b> Sukces z cen&#261;: udaje im si&#281; dopa&#347;&#263; i zabi&#263; ludzi, kt&oacute;rych uwa&#380;aj&#261; za winnych. Cel osi&#261;gni&#281;ty? Tak. Ale robi&#261; to pod wp&#322;ywem emocji, bez rozpoznania. Ich &bdquo;zwyci&#281;stwo&rdquo; to w rzeczywisto&#347;ci eskalacja wojny domowej, na kt&oacute;r&#261; klan nie jest gotowy. Zabijaj&#261;c kilku &#380;o&#322;nierzy wroga, wpadli w pu&#322;apk&#281; dyplomatyczn&#261;, kt&oacute;ra daje ich przeciwnikom pretekst do otwartej wojny.</p>
-<p class="npf_quote"><b><span style="color: #ff4930">NIE, I DO TEGO</span></b> Pora&#380;ka z bonusem: nie dowiaduj&#261; si&#281;, kto tak naprawd&#281; wyda&#322; rozkaz zabicia ich brata. Ich niewiedza pozostaje nietkni&#281;ta, a do tego ich pochopna akcja sprawia, &#380;e postronni mieszka&#324;cy zaczynaj&#261; postrzega&#263; ich klan jako nieobliczalnych rze&#378;nik&oacute;w, a nie stabilnych w&#322;adc&oacute;w.</p>
-<p>Pytanie dla Ciebie: co Tw&oacute;j bohater traci, kiedy wygrywa? Je&#347;li sukces jest zbyt &#322;atwy, historia traci wiarygodno&#347;&#263;.</p>
-<h2><b><span class="npf_color_monica">KROK 5: Rytm i haczyk </span></b></h2>
-<blockquote class="npf_indented"><p>Foreshadowing.</p>
+
+To jest moment, w którym dbasz o to, by każda scena wynikała z poprzedniej. Tu budujesz realizm świata, w którym działania mają swoją cenę.
+
+Fonda Lee w Jade City (saga o klanach władających magicznym jadeitem) pokazuje to bezlitośnie. Kiedy lider klanu zostaje zamordowany, jego młodsze rodzeństwo – Hilo i Shae – postanawia dokonać natychmiastowego odwetu.
+
+<div class="chmurka chmurka-tip" markdown="1">
+**TAK, ALE** Sukces z ceną: udaje im się dopaść i zabić ludzi, których uważają za winnych. Cel osiągnięty? Tak. Ale robią to pod wpływem emocji, bez rozpoznania. Ich „zwycięstwo” to w rzeczywistości eskalacja wojny domowej, na którą klan nie jest gotowy. Zabijając kilku żołnierzy wroga, wpadli w pułapkę dyplomatyczną, która daje ich przeciwnikom pretekst do otwartej wojny.
+
+**NIE, I DO TEGO** Porażka z bonusem: nie dowiadują się, kto tak naprawdę wydał rozkaz zabicia ich brata. Ich niewiedza pozostaje nietknięta, a do tego ich pochopna akcja sprawia, że postronni mieszkańcy zaczynają postrzegać ich klan jako nieobliczalnych rzeźników, a nie stabilnych władców.
+</div>
+
+Pytanie dla Ciebie: co Twój bohater traci, kiedy wygrywa? Jeśli sukces jest zbyt łatwy, historia traci wiarygodność.
+
+<h2>Rytm i haczyk</h2>
+
+<blockquote>
+Foreshadowing.
 </blockquote>
-<p>Na koniec dopasuj d&#322;ugo&#347;&#263; zda&#324; do pulsu bohatera.</p>
-<ul><li>&nbsp;Akcja/stres: kr&oacute;tkie zdania. Jak urywany oddech. &bdquo;Drzwi. Strza&#322;. Cisza&rdquo;.</li>
-<li>&nbsp;Refleksja: d&#322;ugie, p&#322;ynne konstrukcje. Daj&#261; przestrze&#324; na poczucie ci&#281;&#380;aru chwili.</li>
-</ul>
-<p>I zostaw foreshadowing. </p>
-<p class="npf_quote">Hajime Isayama w Ataku Tytan&oacute;w podrzuca detale &ndash; gest, przedmiot w tle &ndash; kt&oacute;re staj&#261; si&#281; wa&#380;ne dopiero 50 rozdzia&#322;&oacute;w p&oacute;&#378;niej. To sprawia, &#380;e czytelnik nie czuje si&#281; prowadzony za r&#281;k&#281;, ale ma wra&#380;enie, &#380;e sam odkrywa prawd&#281;.</p>
-<p>Dobra scena to taka, po kt&oacute;rej czytelnik musi na chwil&#281; od&#322;o&#380;y&#263; ksi&#261;&#380;k&#281;, &#380;eby po prostu odetchn&#261;&#263;. Nie dlatego, &#380;e by&#322;o du&#380;o s&#322;&oacute;w, ale dlatego, &#380;e poczu&#322; ci&#281;&#380;ar Twojego &#347;wiata.</p>
-<p class="npf_chat">Powy&#380;sze kroki to zestaw sprawdzonych mechanizm&oacute;w, ale pisanie to nie in&#380;ynieria l&#261;dowa. Nie ka&#380;da scena musi odhacza&#263; wszystkie punkty. Czasem Twoja intuicja podpowie Ci, by zosta&#263; w scenie d&#322;u&#380;ej lub z&#322;ama&#263; zasad&#281; &bdquo;In late&rdquo; dla budowania klimatu. Nie musisz naprawia&#263; wszystkiego schematami.</p>
+
+Na koniec dopasuj długość zdań do pulsu bohatera.
+
+* Akcja/stres: krótkie zdania. Jak urywany oddech. „Drzwi. Strzał. Cisza”.
+* Refleksja: długie, płynne konstrukcje. Dają przestrzeń na poczucie ciężaru chwili.
+
+I zostaw foreshadowing. 
+
+<div class="chmurka chmurka-tip" markdown="1">
+Hajime Isayama w Ataku Tytanów podrzuca detale – gest, przedmiot w tle – które stają się ważne dopiero 50 rozdziałów później. To sprawia, że czytelnik nie czuje się prowadzony za rękę, ale ma wrażenie, że sam odkrywa prawdę.
+</div>
+
+Dobra scena to taka, po której czytelnik musi na chwilę odłożyć książkę, żeby po prostu odetchnąć. Nie dlatego, że było dużo słów, ale dlatego, że poczuł ciężar Twojego świata.
+
+<div class="sticky-note" markdown="1">
+Powyższe kroki to zestaw sprawdzonych mechanizmów, ale pisanie to nie inżynieria lądowa. Nie każda scena musi odhaczać wszystkie punkty. Czasem Twoja intuicja podpowie Ci, by zostać w scenie dłużej lub złamać zasadę „In late” dla budowania klimatu. Nie musisz naprawiać wszystkiego schematami.
+</div>
