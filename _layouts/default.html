@@ -33,8 +33,9 @@
         html { scroll-behavior: smooth; }
         body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; overflow-x: hidden; }
 
-         /* ===== BELL NOTICE ===== */
-        .bell-notice-wrap { display: flex; justify-content: center; align-items: center; margin-bottom: 28px; height: 56px; }
+        /* ===== BELL NOTICE ===== */
+        .bell-notice-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 32px; min-height: 60px; gap: 10px; text-align: center; }
+        .bell-notice-wrap * { color: #ffffff !important; }
         .bell-notice { display: inline-flex; align-items: center; position: relative; opacity: 0; transform: scale(0.85); transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
         .bell-notice.visible { opacity: 1; transform: scale(1); }
         .bell-circle { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.15); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25); }
@@ -43,7 +44,7 @@
         .bell-icon.ring1, .bell-icon.ring2 { animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards; }
         .bell-pill { display: inline-flex; align-items: center; background: rgba(255,255,255,0.14); backdrop-filter: blur(20px) saturate(1.8); -webkit-backdrop-filter: blur(20px) saturate(1.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 0 100px 100px 0; padding: 0 24px 0 0; height: 40px; margin-left: -26px; padding-left: 32px; white-space: nowrap; overflow: hidden; max-width: 0; opacity: 0; transition: max-width 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
         .bell-pill.expanded { max-width: 360px; opacity: 1; }
-        .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+        .bell-pill-text { font-family: var(--sans); font-size: 0.78rem; font-weight: 700; color: #ffffff !important; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
 
 
         /* REVEAL */
@@ -241,8 +242,6 @@
             box-shadow: -5px 10px 30px rgba(0,0,0,0.15); 
             transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.4s;
         }
-
-    
 
         body.sidebar-open .blog-sidebar {
             transform: translateX(0);
@@ -542,6 +541,19 @@
                     }
                 });
             }
+        });
+        
+        // BELL NOTICE
+        document.addEventListener('DOMContentLoaded', function() {
+            var bellIcon   = document.querySelector('.bell-icon');
+            var bellNotice = document.querySelector('.bell-notice');
+            var bellPill   = document.querySelector('.bell-pill');
+            if (!bellNotice) return;
+            setTimeout(function() { bellNotice.classList.add('visible'); }, 200);
+            setTimeout(function() { bellIcon.classList.add('ring1'); }, 400);
+            setTimeout(function() { bellIcon.classList.remove('ring1'); }, 1200);
+            setTimeout(function() { bellIcon.classList.add('ring2'); }, 1300);
+            setTimeout(function() { if(bellPill) bellPill.classList.add('expanded'); }, 1700);
         });
     </script>
 </body>
