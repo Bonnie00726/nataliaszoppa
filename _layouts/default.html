@@ -44,6 +44,117 @@
         .chmurka-tip strong {
             color: #ca8a04; /* Ciemny, czytelny żółty */
         }
+
+        /* ===== NOWA STOPKA POSTA (FULL WIDTH) ===== */
+        /* Pasek nawigacji */
+        .post-full-nav {
+            display: flex;
+            width: 100%;
+            /* Elegancki gradient pasujący do Twojej palety */
+            background: linear-gradient(90deg, #8e24aa 0%, #d81b60 100%); 
+        }
+        .post-full-nav .nav-item {
+            flex: 1;
+            padding: 45px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .post-full-nav .nav-item a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.85);
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .post-full-nav .nav-item a:hover {
+            color: #ffffff;
+        }
+        .post-full-nav .prev-item {
+            text-align: left;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .post-full-nav .next-item {
+            text-align: right;
+        }
+        .post-full-nav .nav-label {
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .post-full-nav .nav-title {
+            font-size: 1.3em;
+            font-family: 'Lora', serif;
+        }
+
+        /* Siatka polecanych postów */
+        .recommended-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+        }
+        .recommended-card {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            background-color: #2a2a2a; 
+            display: flex;
+            align-items: flex-end;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Ściemnienie zdjęcia, by tekst był czytelny */
+        .recommended-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%);
+            transition: background 0.3s ease;
+        }
+        .recommended-card:hover::before {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        /* Pasek z tytułem jak na obrazku */
+        .recommended-card-title {
+            position: relative;
+            z-index: 2;
+            background-color: #3f51b5; /* Niebieski pasek z referencji */
+            color: #ffffff;
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .recommended-card:hover .recommended-card-title {
+            background-color: #d81b60; /* Zmiana koloru paska po najechaniu myszką */
+        }
+
+        /* Responsywność dla telefonów i tabletów */
+        @media (max-width: 950px) {
+            .recommended-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 600px) {
+            .post-full-nav {
+                flex-direction: column;
+            }
+            .post-full-nav .prev-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.15);
+                text-align: center;
+            }
+            .post-full-nav .next-item {
+                text-align: center;
+            }
+            .recommended-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
