@@ -47,21 +47,7 @@ layout: default
         
         {{ content }}
 
-      <div class="post-navigation">
-            {% if page.previous %}
-                <a href="{{ page.previous.url | relative_url }}" class="post-nav-btn nav-prev" title="{{ page.previous.title }}">
-                    <i class="las la-arrow-left"></i>
-                </a>
-            {% endif %}
-
-            {% if page.next %}
-                <a href="{{ page.next.url | relative_url }}" class="post-nav-btn nav-next" title="{{ page.next.title }}">
-                    <i class="las la-arrow-right"></i>
-                </a>
-            {% endif %}
-        </div>
-      
-        </main>
+    </main>
 
    <aside class="blog-sidebar">
         <div class="sidebar-widget author-bio">
@@ -112,7 +98,8 @@ layout: default
             <a href="{{ site.baseurl }}/archiwum.html" class="author-link" style="font-weight: bold;">Przejdź do archiwum <i class="las la-arrow-right"></i></a>
         </div>
     </aside>
-    <!-- Skrypt SimpleJekyllSearch -->
+
+<!-- Skrypt SimpleJekyllSearch -->
 <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
 
 <!-- Konfiguracja wyszukiwarki -->
@@ -129,4 +116,39 @@ layout: default
         });
     });
 </script>
+</div> <!-- KONIEC BLOG-CONTAINER -->
+
+<!-- 1. PASEK NAWIGACJI (JEDEN) FULL WIDTH -->
+<div class="post-full-nav">
+    <div class="nav-item prev-item">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}">
+            <span class="nav-label"><i class="las la-angle-left"></i> Starszy wpis</span>
+            <span class="nav-title">{{ page.previous.title }}</span>
+        </a>
+        {% endif %}
+    </div>
+    <div class="nav-item next-item">
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}">
+            <span class="nav-label">Nowszy wpis <i class="las la-angle-right"></i></span>
+            <span class="nav-title">{{ page.next.title }}</span>
+        </a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- 2. POLECANE ARTYKUŁY (SIATKA ZDJĘĆ) FULL WIDTH -->
+<div class="recommended-grid">
+    {% assign count = 0 %}
+    {% for post in site.posts %}
+        {% if post.url != page.url and count < 4 %}
+        <a href="{{ post.url | relative_url }}" class="recommended-card" style="background-image: url('{{ post.image }}');">
+            <div class="recommended-card-title">
+                {{ post.title }}
+            </div>
+        </a>
+        {% assign count = count | plus: 1 %}
+        {% endif %}
+    {% endfor %}
 </div>
