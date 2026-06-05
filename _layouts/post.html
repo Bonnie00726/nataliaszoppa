@@ -10,7 +10,12 @@ layout: default
 <img src="{{ page.image }}" alt="{{ page.title }}" class="blog-image">
 {% endif %}
 
-<div class="blog-container">
+<div class="blog-container" id="blog-container">
+    
+    <button id="sidebarToggle" class="sidebar-toggle-btn" title="Pokaż/ukryj pasek boczny">
+        <i class="las la-bars"></i>
+    </button>
+
     <main class="blog-content">
         
         <div class="post-toc" id="post-toc-wrap"></div>
