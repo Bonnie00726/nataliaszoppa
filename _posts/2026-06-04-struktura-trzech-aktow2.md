@@ -90,7 +90,7 @@ Ten etap nie ma tak sztywnych, technicznych wymogów strukturalnych jak poprzedn
 
 Wyjątkiem jest sytuacja, gdy piszesz trylogię. Wtedy akt III nie będzie typowym, ostatecznym domknięciem. Pokaże za to moment, w którym bohaterowie odnoszą sukces i zyskują chwilę wytchnienia, ale na horyzoncie już widać nowe wyzwania, które czekają na nich w drugim tomie.
 
-<h2 id="podsumowanie-czyli-po-co-ci-te-akty">Podsumowanie, czyli po po Co Ci te akty?</h2>
+<h2 id="podsumowanie-czyli-po-co-ci-te-akty">Podsumowanie, czyli po co Ci te akty?</h2>
 
 Wniosek z tego wszystkiego jest prosty: trzyaktowa struktura to Twoje najlepsze narzędzie organizacyjne. Pozwala uporządkować chaos w głowie, pogrupować luźne pomysły i przyporządkować je do odpowiednich faz opowieści. Dzięki temu budujesz solidny, stabilny fundament, a potem – fragment po fragmencie – bezpiecznie rozbudowujesz swoją historię.
 
