@@ -156,7 +156,7 @@ Narządziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyakt
 
 Poniżej znajdziesz szczegółową listę tych pojęć i ich definicje:
 
-## Najważniejsze pojęcia:
+## Najważniejsze pojęcia
 
 * **Katalizator (iskra)** – wydarzenie, które bezpowrotnie burzy dotychczasowy porządek w życiu bohatera.
 * **Punkt zwrotny (konflikt)** – moment podjęcia decyzji, po której nie ma już odwrotu; oficjalne wejście w główną fabułę.
