@@ -86,19 +86,19 @@ title: FAQs
     .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
     .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
-    /* ===== GŁÓWNY KONTENER ===== */
+    /* ===== GŁÓWNY KONTENER TREŚCI ===== */
     .page-content-wrapper { 
         max-width: 800px; 
         margin: 60px auto 100px; 
         padding: 0 24px; 
     }
 
-    /* ===== NOWOŚĆ: SEKCJA SPISU TREŚCI ===== */
+    /* ===== SEKCJA SPISU TREŚCI (3 KOLUMNY) ===== */
     .faq-toc {
         background: var(--paper-warm, #fcfbfa);
         border: 1.5px solid var(--paper-mid, #e5e5e5);
         border-radius: var(--radius-lg);
-        padding: 36px;
+        padding: 40px; 
         margin-bottom: 60px;
     }
     .faq-toc-title {
@@ -106,17 +106,18 @@ title: FAQs
         font-size: 1.4rem;
         font-weight: 700;
         margin-top: 0;
-        margin-bottom: 24px;
+        margin-bottom: 28px;
         color: var(--ink);
         display: flex;
         align-items: center;
         gap: 10px;
     }
     .faq-toc-title i { color: var(--grad-start); }
+    
     .faq-toc-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 24px;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 32px; 
     }
     .faq-toc-section h4 {
         font-family: var(--sans);
@@ -124,8 +125,10 @@ title: FAQs
         text-transform: uppercase;
         letter-spacing: 0.05em;
         margin-top: 0;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         color: var(--ink-muted);
+        border-bottom: 1px solid rgba(13, 13, 13, 0.05); 
+        padding-bottom: 6px;
     }
     .faq-toc-section ul { list-style: none; padding: 0; margin: 0; }
     .faq-toc-section li { margin-bottom: 10px; line-height: 1.4; }
@@ -139,8 +142,8 @@ title: FAQs
     }
     .faq-toc-section a:hover { color: var(--grad-start); text-decoration: underline; }
 
-    /* ===== STATYCZNE BLOKI PYTAŃ ===== */
-    html { scroll-behavior: smooth; } /* Płynne przewijanie do sekcji */
+    /* ===== BLOKI PYTAŃ (OTWARTE KARTY) ===== */
+    html { scroll-behavior: smooth; } 
     
     .faq-group { margin-bottom: 60px; }
     .faq-group-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--paper-mid); display: flex; align-items: center; gap: 14px; }
@@ -153,7 +156,6 @@ title: FAQs
         margin-bottom: 24px;
         padding: 30px 36px;
         box-shadow: 0 2px 8px rgba(107, 53, 200, 0.03);
-        /* Zabezpieczenie przed zasłanianiem przez menu po kliknięciu w spis treści */
         scroll-margin-top: calc(var(--nav-h) + 30px); 
     }
     
@@ -186,7 +188,7 @@ title: FAQs
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
     .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
-    /* RWD */
+    /* RESPONSYWNOŚĆ (RWD) */
     @media (max-width: 860px) { 
         .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
         .page-title { font-size: 2.2rem; }
@@ -194,7 +196,9 @@ title: FAQs
         .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
         .credibility-bar-inner { gap: 24px; }
         .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
-        .faq-toc { padding: 24px; margin-bottom: 40px; }
+        
+        .faq-toc { padding: 30px 24px; margin-bottom: 40px; }
+        .faq-toc-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
         .faq-card { padding: 24px; }
     }
     @media (max-width: 600px) { 
@@ -308,7 +312,7 @@ title: FAQs
         <div class="faq-card" id="wycena-5">
             <h3 class="faq-card-question">W jaki sposób podpisujemy umowę?</h3>
             <div class="faq-card-answer">
-                <p>Umowę przesyłam zawsze w zabezpieczonym formacie PDF. Dzięki temu obie strony mają gwarancję, że nikt nie ingerował w ustalony tekst i warunki. Dokument możesz podpisać na dwa wygodne sposoby:</p>
+                <p>Umowę przesyłam zawsze w zabezpieczonym formacie PDF. Dzięki temu obie strony mają gwarancję, że nikt nie ingerował w ustalony tekst i warunki. Dokument możesz podpisąć na dwa wygodne sposoby:</p>
                 <ul style="padding-left: 20px; color: var(--ink-soft); font-weight: 300; line-height: 1.8;">
                     <li style="margin-bottom: 8px;"><strong>Elektronicznie:</strong> najszybsza opcja to wykorzystanie bezpłatnego, państwowego Profilu Zaufanego (podpis ePUAP) lub platform do e-podpisu.</li>
                     <li><strong>Tradycyjnie:</strong> możesz wydrukować dokument, złożyć odręczny podpis, a następnie odesłać mi jego czytelny skan (lub wyraźne zdjęcie dobrej jakości).</li>
@@ -367,7 +371,7 @@ title: FAQs
             <h3 class="faq-card-question">Nie umiem pracować w trybie śledzenia zmian, co zrobić?</h3>
             <div class="faq-card-answer">
                 <p>Praca w trybie „Śledzenia zmian” (Track Changes) w MS Word lub w „Trybie sugestii” w Google Docs to absolutny standard branżowy i podstawa naszej współpracy. Bez tego nie będziesz w stanie bezpiecznie akceptować lub odrzucać moich poprawek ani odpowiadać na komentarze.</p>
-                <p>Jeśli nigdy z tego nie korzystał/-aś, nie martw się – to bardzo intuicyjne narzędzie. Wymagam jednak, abyś zapoznał/-a się z jego działaniem <strong>zanim</strong> rozpoczniemy pracę. Wpisz w YouTube hasło <em>„śledzenie zmian Word poradnik”</em> i obejrzyj krótki tutorial.</p>
+                <p>Jeśli nigdy z tego nie korzystał/-aś, nie martw się – to bardzo intuicyjne narzędzie. Wymagam jednak, abyś zapoznał/-a sią z jego działaniem <strong>zanim</strong> rozpoczniemy pracę. Wpisz w YouTube hasło <em>„śledzenie zmian Word poradnik”</em> i obejrzyj krótki tutorial.</p>
             </div>
         </div>
     </div>
