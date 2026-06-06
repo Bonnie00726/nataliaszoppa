@@ -7,6 +7,8 @@ image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
 tags: [porady pisarskie, warsztat]
 ---
 
+Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
+
 Porozmawiajmy chwilę o Twoim nastawieniu. Dlaczego właściwie piszesz? Dla kogo to robisz? Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
 
 Twój język, struktura tekstu, a nawet sam pomysł <span class="highlight-marker">bardzo szybko zdradzą mi odpowiedź</span> na te pytania. Wielu autorów zastanawia się, skąd mogę to wiedzieć, skoro nawet ze sobą nie rozmawialiśmy (nie mam mediów społecznościowych, więc też nie podejrzę, jak ktoś opowiada o swoim projekcie). Moi uczniowie też za każdym razem są w szoku, kiedy od razu wiem, że praca domowa była pisana na spółkę z kimś innym – i bezbłędnie wskazuję, kto komu pomagał!
@@ -23,8 +25,6 @@ Ten ukryty cel zdradza zresztą nie tylko sama powieść, ale też to, w jaki sp
 
 * **Gdy mówisz: „Chcę wydać książkę”** – w większości przypadków sugeruje to, że piszesz dla siebie i pod siebie. Stawiasz siebie w centrum, a każda krytyka zaboli Cię mocniej, niż powinna.
 * **Gdy mówisz: „Muszę napisać książkę, którą ludzie będą chcieli czytać”** – nie spychasz czytelnika na dalszy plan. <span class="highlight-marker">Myślisz o nim na każdym etapie pracy</span>, bo widzisz w tym przedsięwzięciu swój potencjalny zawód.
-
-Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
 
 ---
 
@@ -62,7 +62,7 @@ Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruc
 
 Na koniec zostawię Cię jeszcze z cytatem George'ego Orwella: 
 
-*„Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym”.**(George Orwell, Dlaczego piszę?)*
+*„Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym”.* *(George Orwell, Dlaczego piszę?)*
 
 Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="highlight-marker">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
