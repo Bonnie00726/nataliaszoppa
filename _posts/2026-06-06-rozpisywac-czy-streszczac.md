@@ -3,9 +3,8 @@ layout: post
 title: "Rozpisywać czy streszczać? Jak kontrolować tempo powieści"
 date: 2026-06-06 11:00:00 +0200
 author: Natalia Szoppa
-image: https://images.unsplash.com/photo-1621446113284-53ca198c7fa7?auto=format&fit=crop&w=2000&q=80
+image: [https://images.unsplash.com/photo-1621446113284-53ca198c7fa7]
 tags: [porady pisarskie, warsztat, tempo]
-excerpt: "Co warto skrócić do jednego lakonicznego zdania, a co rozpisać z aptekarską precyzją? Dowiedz się, jak zarządzać tempem (pacingiem) i nie zanudzić czytelnika."
 ---
 
 Prosta odpowiedź brzmi: i jedno, i drugie. Nieco dłuższa wyjaśni Ci, co warto skrócić nawet do jednego, lakonicznego zdania, a co należy rozpisać z aptekarską precyzją – sekunda po sekundzie.
