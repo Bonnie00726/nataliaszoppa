@@ -7,9 +7,9 @@ image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
 tags: [porady pisarskie, warsztat]
 ---
 
-Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
-
 Porozmawiajmy chwilę o Twoim nastawieniu. Dlaczego właściwie piszesz? Dla kogo to robisz? Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
+
+Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
 
 Twój język, struktura tekstu, a nawet sam pomysł <span class="highlight-marker">bardzo szybko zdradzą mi odpowiedź</span> na te pytania. Wielu autorów zastanawia się, skąd mogę to wiedzieć, skoro nawet ze sobą nie rozmawialiśmy (nie mam mediów społecznościowych, więc też nie podejrzę, jak ktoś opowiada o swoim projekcie). Moi uczniowie też za każdym razem są w szoku, kiedy od razu wiem, że praca domowa była pisana na spółkę z kimś innym – i bezbłędnie wskazuję, kto komu pomagał!
 
