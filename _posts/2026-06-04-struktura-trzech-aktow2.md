@@ -3,7 +3,7 @@ layout: post
 title: "Struktura trzech aktów – podstawa dobrej książki"
 date: 2026-06-04 10:00:00 +0200
 author: Natalia Szoppa
-image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
+image: [https://images.unsplash.com/photo-1638802538115-041e14d28d6a]
 tags: [porady pisarskie, warsztat, struktura]
 ---
 
@@ -108,6 +108,8 @@ tags: [porady pisarskie, warsztat, struktura]
   }
 }
 </style>
+
+<a href="https://unsplash.com/photos/a-multicolored-building-made-of-wooden-blocks-7ezVb0oTQ6M">Zdjęcie, żródło: Unsplash</a>
 
 W moim poprzednim artykule pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: dla kogo właściwie piszesz?
 
