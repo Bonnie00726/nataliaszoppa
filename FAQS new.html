@@ -1,185 +1,140 @@
+---
+layout: null
+title: FAQs
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - O co najczęściej pytacie?</title>
     
-    <title>FAQs | Natalia Szoppa | Redakcja, korekta, skład</title>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://nataliaszoppa.com/#website",
-          "url": "https://nataliaszoppa.com/",
-          "name": "Natalia Szoppa",
-          "alternateName": "Natalia Szoppa"
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://languagestudymaterials.blog/czesto%20zadawane%20pytania#webpage",
-          "url": "https://languagestudymaterials.blog/czesto%20zadawane%20pytania",
-          "name": "FAQs | Natalia Szoppa | Redakcja, korekta, skład",
-          "isPartOf": {
-            "@id": "https://nataliaszoppa.com/#website"
-          }
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Natalia Szoppa",
-              "item": "https://nataliaszoppa.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "FAQs"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
+    <!-- Podpięcie ikon Line Awesome, bez których ikony przy pytaniach nie zadziałają -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-nav-tools/libs/line-awesome/1.3.0/css/line-awesome.min.css">
 
-    <meta property="og:title" content="FAQs | Natalia Szoppa | Redakcja, korekta, skład">
-    <meta property="og:site_name" content="Natalia Szoppa">
-    <meta property="og:url" content="https://languagestudymaterials.blog/czesto%20zadawane%20pytania">
-    <meta property="og:type" content="website">
-    <meta name="apple-mobile-web-app-title" content="Natalia Szoppa">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    
     <style>
+        /* Tutaj znajdują się Twoje style CSS */
         :root {
-            --ink:        #0D0D0D;
-            --ink-soft:   #333333;
-            --ink-muted:  #666666;
-            --paper:      #FFFFFF;
-            --paper-warm: #F7F7F7;
-            --paper-mid:  #E5E5E5;
-            --grad-start: #6B35C8; 
-            --grad-mid:   #B8409A;
-            --grad-end:   #E8772A;
-            --grad:       linear-gradient(135deg, var(--grad-start) 0%, var(--grad-mid) 50%, var(--grad-end) 100%);
-            --grad-text:  linear-gradient(135deg, var(--grad-start) 0%, var(--grad-mid) 50%, var(--grad-end) 100%);
-            
-            --shadow-soft:   0 4px 24px rgba(13,13,13,0.06);
-            --shadow-med:    0 8px 40px rgba(13,13,13,0.10);
-            --shadow-strong: 0 20px 60px rgba(13,13,13,0.15);
-            --shadow-faq:    0 2px 8px rgba(107, 53, 200, 0.04);
-            --nav-h: 76px;
-            --serif: 'Lora', Georgia, serif;
-            --sans:  'Mulish', sans-serif;
-            --radius:    4px;
-            --radius-lg: 12px;
+            --sans: 'Montserrat', sans-serif;
+            --serif: 'Playfair Display', serif;
+            --ink: #0d0d0d;
+            --ink-soft: #4a4a4a;
+            --ink-muted: #8a8a8a;
+            --paper-mid: #e5e5e5;
+            --paper-warm: #fcfbfa;
+            --grad-start: #6b35c8;
+            --grad: linear-gradient(135deg, #6b35c8 0%, #b8409a 100%);
+            --grad-text: linear-gradient(135deg, #6b35c8 0%, #e8772a 100%);
+            --radius-lg: 16px;
+            --shadow-strong: 0 20px 40px rgba(0,0,0,0.1);
+            --nav-h: 80px;
         }
 
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.75; overflow-x: hidden; }
-
-        /* ── Scroll reveal ── */
-        .js-loaded .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
-        .js-loaded .reveal.delay-1 { transition-delay: 0.1s; }
-        .js-loaded .reveal.delay-2 { transition-delay: 0.2s; }
-        .js-loaded .reveal.delay-3 { transition-delay: 0.3s; }
-        .js-loaded .reveal.active  { opacity: 1; transform: none; }
-
-        /* Transparentne Menu przyklejone do góry */
-        .nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; height: var(--nav-h); background: transparent; border-bottom: none; display: flex; align-items: center; transition: background 0.3s ease, backdrop-filter 0.3s ease; }
-        .nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-        
-        .nav-inner { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; }
-        .nav-logo { font-family: var(--serif); font-size: 1.35rem; font-weight: 700; color: #fff; text-decoration: none; position: relative; z-index: 902; }
-        .nav-logo em { font-style: italic; color: var(--grad-start); }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { font-family: var(--sans); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.2s; }
-        .nav-links a:hover, .nav-links a.active { color: #fff; }
-        .nav-right { display: flex; align-items: center; gap: 16px; position: relative; z-index: 902; }
-        .nav-cta { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; background: var(--grad); text-decoration: none; padding: 10px 22px; border-radius: 100px; transition: opacity 0.2s, transform 0.2s; }
-        .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
-
-        .mobile-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: #fff; cursor: pointer; padding: 4px; transition: color 0.2s; }
-        .mobile-toggle:hover { color: var(--grad-start); }
-
-        /* Ujednolicone Eyebrows na całej stronie */
-        .hero-eyebrow, .eyebrow { 
-            display: block; 
-            font-family: var(--sans); font-size: 0.75rem; font-weight: 700; 
-            text-transform: uppercase; letter-spacing: 0.18em; 
-            color: var(--grad-start);
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            font-family: var(--sans);
+            color: var(--ink);
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-        .hero-eyebrow { margin-bottom: 24px; color: rgba(255,255,255,0.9); }
-        .eyebrow { margin-bottom: 18px; }
 
-        /* ── HERO ── */
-        .hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; background: var(--ink);}
-        .hero-bg { position: absolute; inset: 0; z-index: 0; }
-        .hero-bg img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.4;}
-        .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,8,18,0.7) 0%, rgba(10,8,18,0.4) 100%); }
-        .hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, rgba(107,53,200,0.35) 0%, transparent 70%); }
+        /* ===== TWOJE MENU (Zastąp swoim kodem HTML jeśli chcesz) ===== */
+        .nav {
+            background: rgba(13,13,13,0.98) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 100;
+        }
+
+        /* ===== SEKCJA TYTUŁOWA ===== */
+        .page-header { 
+            padding: calc(var(--nav-h) + 60px) 40px 40px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            text-align: center; 
+        }
         
-        .hero-content { position: relative; z-index: 2; padding: 0 40px; width: 100%; max-width: 900px; display: flex; flex-direction: column; align-items: center; margin-top: var(--nav-h); padding-bottom: 80px;}
-
-        /* Nowe Zlecenia i Kropki (Pigułka nad Eyebrow) */
-        .hero-notice {
-            display: inline-flex; align-items: center; justify-content: center; gap: 14px;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            padding: 10px 24px;
-            border-radius: 100px;
-            border: 1px solid rgba(255,255,255,0.15);
-            font-family: var(--sans); font-size: 0.85rem; color: #fff;
-            margin-bottom: 36px;
+        .breadcrumbs { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 12px; 
+            font-size: 0.72rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            margin-bottom: 24px; 
+            flex-wrap: wrap; 
         }
-        .dots-wrap { display: flex; gap: 6px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; animation: pulse-dot 1.5s infinite ease-in-out; }
-        .dot-1 { background: var(--grad-start); animation-delay: 0s; }
-        .dot-2 { background: var(--grad-mid); animation-delay: 0.2s; }
-        .dot-3 { background: var(--grad-end); animation-delay: 0.4s; }
-
-        @keyframes pulse-dot {
-            0% { transform: scale(0.7); opacity: 0.4; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(0.7); opacity: 0.4; }
-        }
-
-        .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 4.5vw, 4rem); color: #fff; line-height: 1.1; font-weight: 700; margin-bottom: 24px; }
         
-        /* Gradient w tekście z zachowaniem ogonków */
-        .grad-type {
-            font-style: italic;
+        .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+        .breadcrumbs a:hover { color: var(--grad-start); }
+        .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
+        .breadcrumbs .current { color: var(--grad-start); }
+        
+        .page-title { 
+            font-family: var(--serif); 
+            font-size: clamp(2.2rem, 4vw, 3.5rem); 
+            color: var(--ink); 
+            line-height: 1.15; 
+            margin-bottom: 16px; 
             font-weight: 700;
-            background: var(--grad-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-            padding-right: 8px;   
-            padding-bottom: 15px; 
-            margin-bottom: -15px; 
+        }
+        
+        .page-subtitle {
+            font-size: 1.05rem; 
+            color: var(--ink-soft); 
+            font-weight: 300; 
+            max-width: 600px; 
+            line-height: 1.6; 
+            margin: 0 auto; 
         }
 
-        .hero-sub { font-family: var(--sans); color: rgba(255,255,255,0.75); font-size: 1.1rem; font-weight: 300; max-width: 650px; margin: 0 auto; line-height: 1.8; }
+        /* ===== OBRAZEK HERO ===== */
+        .page-hero-img-wrap { width: 100%; }
+        .page-hero-img { 
+            width: 100%; 
+            height: 50vh; 
+            min-height: 400px; 
+            max-height: 600px;
+            object-fit: cover; 
+            display: block; 
+        }
 
-        /* ── LAYOUT ── */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 40px; } 
-        .container--wide { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
-        .section { padding: 110px 0; }
+        /* ===== CREDIBILITY BAR ===== */
+        .credibility-bar-overlap { 
+            background: var(--ink); 
+            padding: 22px 40px; 
+            position: relative; 
+            z-index: 10; 
+            margin-top: -30px; 
+            max-width: 1100px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            border-radius: var(--radius-lg); 
+            box-shadow: var(--shadow-strong); 
+            width: calc(100% - 40px); 
+        }
+        .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+        .cred_pillar { display: flex; align-items: center; gap: 12px; }
+        .cred_pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
+        .cred_pillar span { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
 
-        .section-h2 { font-family: var(--serif); font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 700; color: var(--ink); margin-bottom: 16px; line-height: 1.2; }
-        .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 60px; }
+        /* ===== GŁÓWNY KONTENER TREŚCI ===== */
+        .page-content-wrapper { 
+            max-width: 800px; 
+            margin: 60px auto 100px; 
+            padding: 0 24px; 
+        }
 
-        /* ── FAQ ACCORDION STYLES ── */
-        .faq-group { margin-bottom: 60px; }
+        /* ===== AKORDEONY FAQ ===== */
+        .faq-group { margin-bottom: 60px; scroll-margin-top: 150px; }
         .faq-group-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--paper-mid); display: flex; align-items: center; gap: 14px; }
         .faq-group-title i { color: var(--grad-start); font-size: 1.8rem; }
         
@@ -190,7 +145,7 @@
             margin-bottom: 18px;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: var(--shadow-faq);
+            box-shadow: 0 2px 8px rgba(107, 53, 200, 0.04);
         }
         
         .accordion-item:hover:not(.open) {
@@ -201,7 +156,7 @@
         
         .accordion-item.open {
             border-color: var(--grad-start);
-            box-shadow: var(--shadow-soft);
+            box-shadow: 0 4px 24px rgba(13,13,13,0.06);
         }
         
         .accordion-header {
@@ -218,7 +173,6 @@
         .accordion-header:hover .accordion-question { color: var(--grad-start); }
         
         .accordion-question {
-            font-family: var(--sans);
             font-size: 1.15rem;
             font-weight: 600;
             color: var(--ink);
@@ -258,105 +212,54 @@
         .accordion-icon::before { top: 18px; left: 10px; width: 18px; height: 3px; }
         .accordion-icon::after { top: 10px; left: 18px; width: 3px; height: 18px; }
         
-        .accordion-item.open .accordion-icon {
-            transform: rotate(135deg); 
-        }
+        .accordion-item.open .accordion-icon { transform: rotate(135deg); }
         
         .accordion-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.4s ease;
+            transition: max-height 0.35s ease-in-out, padding 0.35s ease-in-out;
             background: var(--paper-warm);
         }
         
         .accordion-body.open {
-            max-height: 1500px;
+            max-height: 600px; /* Zwiększone zabezpieczenie na długie teksty */
             padding: 10px 36px 36px 36px;
             border-top: 1px solid rgba(107, 53, 200, 0.1);
         }
         
-        .accordion-body p {
-            font-size: 1.05rem;
-            color: var(--ink-soft);
-            line-height: 1.8; 
-            margin-bottom: 18px;
-        }
-        
+        .accordion-body p { font-size: 1.05rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 18px; }
         .accordion-body p:last-child { margin-bottom: 0; }
         .accordion-body strong { color: var(--ink); font-weight: 700; }
         .accordion-body a { color: var(--grad-start); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
         .accordion-body a:hover { opacity: 0.8; }
 
-        /* ── CTA ── */
-        .cta-section {
-            padding: 120px 40px;
-            text-align: center; position: relative; overflow: hidden;
-            background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-        }
-        .cta-section::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(107, 53, 200, 0.9) 0%, rgba(184, 64, 154, 0.9) 50%, rgba(232, 119, 42, 0.9) 100%);
-            z-index: 1;
-        }
+        /* ===== CTA ===== */
+        .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107, 53, 200, 0.9) 0%, rgba(184, 64, 154, 0.9) 50%, rgba(232, 119, 42, 0.9) 100%); z-index: 1; }
         .cta-content { position: relative; z-index: 2; }
-        .cta-section .eyebrow { color: rgba(255,255,255,0.8); }
+        .cta-section .eyebrow { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; color: rgba(255,255,255,0.8); }
         .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
-        .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6;}
+        .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
         .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
+        .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
         .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
         .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
 
-        /* POPRAWKA DLA POCHYLONEGO FONTU em */
-        .section-h2 em { font-style: italic; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; padding: 0.15em 0.2em; margin: -0.15em 0 -0.15em 0.1em; }
-
-        /* ── FOOTER ── */
-        footer { background: #0D0D0D; color: #fff; padding: 56px 0 32px; }
-        .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 28px; }
-        .footer-left { display: flex; flex-direction: column; }
-        .footer-right { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-        .footer-logo { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-        .footer-logo .footer-grad { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; font-style: normal; }
-        .footer-logo .sep { color: rgba(255,255,255,0.5); font-weight: 400; font-family: var(--sans); }
-        .footer-nori { color: #fff; font-weight: 700; text-transform: uppercase; }
-        .footer-studio { color: #fff; font-weight: 600; text-transform: none; }
-        .footer-desc { font-family: var(--sans); font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 24px; }
-        .footer-socials { display: flex; gap: 10px; }
-        .footer-socials a { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 1rem; transition: all 0.2s; }
-        .footer-socials a:hover { background: var(--grad); color: #fff; border-color: transparent; }
-        .footer-col h4 { font-family: var(--sans); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 16px; color: rgba(255,255,255,0.9); }
-        .footer-links { list-style: none; padding: 0; margin: 0; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { font-family: var(--sans); color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-        .footer-links a:hover { color: #fff; }
-        .footer-bottom { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: rgba(255,255,255,0.25); align-items: center;}
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 860px) {
-            .mobile-toggle { display: block; }
-            .nav-cta { display: none; }
-            .nav-links { position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 0; flex-direction: column; gap: 0; box-shadow: var(--shadow-med); border-top: 1px solid rgba(255,255,255,0.1); max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease; }
-            .nav-links.nav-open { padding: 16px 0; max-height: 400px; opacity: 1; }
-            .nav-links li { text-align: center; width: 100%; }
-            .nav-links a { display: block; padding: 16px 40px; font-size: 0.95rem; color: #fff; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-right { grid-template-columns: 1fr 1fr; }
-            .section { padding: 72px 0; }
-            .container, .container--wide { padding: 0 24px; }
-            .footer-bottom { flex-direction: column; gap: 12px; align-items: flex-start; text-align: left; }
-            .accordion-header { padding: 22px 28px; }
-            .accordion-body.open { padding: 0 28px 30px 28px; }
+        /* RWD */
+        @media (max-width: 860px) { 
+            .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
+            .page-title { font-size: 2.2rem; }
+            .page-hero-img { min-height: 250px; height: 35vh; }
+            .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
+            .credibility-bar-inner { gap: 24px; }
+            .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
+            .accordion-header { padding: 22px 28px; } 
+            .accordion-body.open { padding: 0 28px 30px 28px; } 
         }
-        @media (max-width: 600px) {
-            .nav-logo, .footer-logo { flex-direction: row; align-items: center; text-align: left; gap: 6px; }
-            .nav-logo em { display: inline; }
-            .footer-logo .sep { display: inline-block; }
-            .footer-logo { justify-content: flex-start; }
-            .faq-group-title { font-size: 1.4rem; }
-            .accordion-question { font-size: 1.05rem; padding-right: 15px; }
+        @media (max-width: 600px) { 
+            .faq-group-title { font-size: 1.4rem; } 
+            .accordion-question { font-size: 1.05rem; padding-right: 15px; } 
             .accordion-icon { width: 32px; height: 32px; }
             .accordion-icon::before { top: 15px; left: 8px; width: 16px; height: 2px; }
             .accordion-icon::after { top: 8px; left: 15px; width: 2px; height: 16px; }
@@ -364,60 +267,47 @@
     </style>
 </head>
 <body>
-<style>
-    body>iframe:first-child { display: none !important; }
-    .iframe-controls-container .iframe-controls-container.iframe-controls-container,
-    .tmblr-iframe--unified-controls,
-    .tmblr-iframe--loaded .iframe-controls--desktop .iframe-controls--phone-mobile {
-        display: none !important;
-    }
-</style>
 
-<nav class="nav" id="main-nav">
-    <div class="nav-inner">
-        <a href="https://nataliaszoppa.com/" class="nav-logo">Natalia <em>Szoppa</em></a>
-        <ul class="nav-links">
-            <li><a href="https://nataliaszoppa.com/">Strona główna</a></li>
-            <li><a href="https://languagestudymaterials.blog/cennik">Cennik</a></li>
-            <li><a href="https://languagestudymaterials.blog/Wiecej%20o%20ofercie">Oferta</a></li>
-            <li><a href="https://languagestudymaterials.blog/czesto%20zadawane%20pytania" class="active">FAQs</a></li>
-        </ul>
-        <div class="nav-right">
-            <a href="mailto:natalia.szoppa@gmail.com" class="nav-cta">Napisz do mnie</a>
-            <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
-                <i class="las la-bars"></i>
-            </button>
+    <!-- PASEK MENU NAV -->
+    <nav class="nav">
+        <!-- Tutaj możesz wkleić strukturę linków swojego menu ze strony głównej, aby zachować spójność -->
+    </nav>
+
+    <header class="page-header">
+        <div class="breadcrumbs">
+            <a href="/">Strona główna</a> 
+            <i class="las la-angle-right"></i>
+            <span class="current">FAQs</span>
         </div>
-    </div>
-</nav>
+        <h1 class="page-title">O co najczęściej pytacie?</h1>
+        <p class="page-subtitle">Zebrałam w jednym miejscu wszystko, co warto wiedzieć przed startem. Sprawdź, jak wyglądają kulisy naszej współpracy.</p>
+    </header>
 
-<header class="hero">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=731&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="pytajniki w stylu gier komputerowych">
+    <div class="page-hero-img-wrap">
+        <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=2000&auto=format&fit=crop" alt="Pytajniki w stylu retro" class="page-hero-img">
     </div>
-    <div class="hero-content">
-        <div class="hero-notice reveal">
-            <div class="dots-wrap">
-                <span class="dot dot-1"></span>
-                <span class="dot dot-2"></span>
-                <span class="dot dot-3"></span>
+
+    <div class="credibility-bar-overlap">
+        <div class="credibility-bar-inner">
+            <div class="cred_pillar">
+                <i class="las la-clock"></i>
+                <span>Odpowiedź w 48 godzin</span>
             </div>
-            <span>Przyjmuję nowe zlecenia</span>
+            <div class="cred_pillar">
+                <i class="las la-comments"></i>
+                <span>Odpowiadam na wszystkie pytania</span>
+            </div>
+            <div class="cred_pillar">
+                <i class="las la-envelope"></i>
+                <span>Kontakt mailowy</span>
+            </div>
         </div>
-        <div class="hero-eyebrow reveal delay-1">Wątpliwości?</div>
-        <h1 class="reveal delay-2">O co najczęściej <em class="grad-type">pytacie</em></h1>
-        <p class="hero-sub reveal delay-3">Zebrałam w jednym miejscu wszystko, co warto wiedzieć przed startem. Sprawdź, jak wyglądają kulisy naszej współpracy.</p>
     </div>
-</header>
 
-<section class="section">
-    <div class="container">
-        <div class="eyebrow reveal">Współpraca</div>
-        <h2 class="section-h2 reveal delay-1">Wszystko, co chcesz <em>wiedzieć</em></h2>
-        <p class="section-lead reveal delay-2">Pytania pogrupowałam tematycznie. Kliknij pytanie, żeby rozwinąć odpowiedź.</p>
-
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-money-bill-wave"></i> Wycena i płatności</div>
+    <main class="page-content-wrapper">
+        
+        <div class="faq-group" id="wycena">
+            <div class="faq-group-title"><i class="las la-wallet"></i> Wycena i płatności</div>
             
             <div class="accordion-item open">
                 <div class="accordion-header">
@@ -426,7 +316,7 @@
                 </div>
                 <div class="accordion-body open">
                     <p>Każde zlecenie wyceniam indywidualnie. Cena zależy od objętości tekstu, jego jakości, stopnia trudności oraz oczekiwanego terminu. Prześlij mi próbkę lub całość tekstu — odpiszę z wyceną zazwyczaj w ciągu 24 godzin.</p>
-                    <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="https://languagestudymaterials.blog/cennik">Cennik</a>.</p>
+                    <p>Szczegółowe stawki orientacyjne znajdziesz na stronie <a href="/cennik.html">Cennik</a>.</p>
                 </div>
             </div>
 
@@ -459,10 +349,24 @@
                     <p>Tak — prowadzę jednoosobową działalność gospodarczą i wystawiam faktury. Nie jestem płatnikiem VAT, więc na fakturze nie ma podatku VAT. Jeśli potrzebujesz faktury na firmę, prześlij mi dane do faktury przy zleceniu.</p>
                 </div>
             </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span class="accordion-question">W jaki sposób podpisujemy umowę?</span>
+                    <div class="accordion-icon"></div>
+                </div>
+                <div class="accordion-body">
+                    <p>Umowę przesyłam zawsze w zabezpieczonym formacie PDF. Dzięki temu obie strony mają gwarancję, że nikt nie ingerował w ustalony tekst i warunki. Dokument możesz podpisać na dwa wygodne sposoby:</p>
+                    <ul style="padding-left: 20px; margin-bottom: 16px; color: var(--ink-soft); font-weight: 300;">
+                        <li style="margin-bottom: 8px;"><strong>Elektronicznie:</strong> najszybsza opcja to wykorzystanie bezpłatnego, państwowego Profilu Zaufanego (podpis ePUAP) lub platform do e-podpisu.</li>
+                        <li><strong>Tradycyjnie:</strong> możesz wydrukować dokument, złożyć odręczny podpis, a następnie odesłać mi jego czytelny skan (lub wyraźne zdjęcie dobrej jakości).</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-cogs"></i> Proces pracy</div>
+        <div class="faq-group" id="proces">
+            <div class="faq-group-title"><i class="las la-clipboard-list"></i> Proces pracy</div>
             
             <div class="accordion-item">
                 <div class="accordion-header">
@@ -524,10 +428,21 @@
                     <p>Przyjmuję pliki w formatach <strong>.docx (Word), .odt lub Google Docs</strong>. Nie pracuję na plikach PDF — jeśli masz PDF, sprawdź czy możliwa jest jego konwersja do edytowalnego formatu.</p>
                 </div>
             </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span class="accordion-question">Nie umiem pracować w trybie śledzenia zmian, co zrobić?</span>
+                    <div class="accordion-icon"></div>
+                </div>
+                <div class="accordion-body">
+                    <p>Praca w trybie „Śledzenia zmian” (Track Changes) w MS Word lub w „Trybie sugestii” w Google Docs to absolutny standard branżowy i podstawa naszej współpracy. Bez tego nie będziesz w stanie bezpiecznie akceptować lub odrzucać moich poprawek ani odpowiadać na komentarze.</p>
+                    <p>Jeśli nigdy z tego nie korzystałeś/-aś, nie martw się – to bardzo intuicyjne narzędzie. Wymagam jednak, abyś zapoznał/-a się z jego działaniem <strong>zanim</strong> rozpocząemy pracę. Wpisz w YouTube hasło <em>„śledzenie zmian Word poradnik”</em> i obejrzyj krótki tutorial. Oszczędzi nam to obojgu mnóstwo stresu, a ja będę mogła skupić się na szlifowaniu Twojej powieści, zamiast na szkoleniu z obsługi edytora tekstu.</p>
+                </div>
+            </div>
         </div>
-
-        <div class="faq-group reveal">
-            <div class="faq-group-title"><i class="las la-concierge-bell"></i> Usługi</div>
+        
+        <div class="faq-group" id="uslugi">
+            <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
             
             <div class="accordion-item">
                 <div class="accordion-header">
@@ -561,113 +476,40 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </main>
 
-<section class="cta-section">
-    <div class="cta-content">
-        <div class="eyebrow reveal" style="margin-bottom: 12px; color: rgba(255,255,255,0.8); text-align: center; justify-content: center;">Nie widzisz swojego pytania?</div>
-        <h2 class="reveal delay-1">Pisz śmiało!</h2>
-        <p class="reveal delay-2">Twoja twórczość nie zawsze mieści się w schematach. Masz nietypowe pytanie? Odpowiem na nie podczas krótkiej konsultacji mailowej.</p>
-        <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-primary">Napisz do mnie</a>
-            <a href="https://languagestudymaterials.blog/cennik" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container--wide">
-        <div class="footer-grid">
-            <div class="footer-left">
-                <span class="footer-logo">
-                    <span class="footer-studio">Studio Tari</span>
-                </span>
-                <p class="footer-desc">Studio Tari to przestrzeń, w której standardy wydawnictw spotykają się z potrzebami niezależnych twórców. To miejsce, gdzie Twoja wizja zyskuje solidny, redakcyjny fundament, by mogła wybrzmieć dokładnie tak, jak to zaplanowałaś/-eś.</p>
-                <div class="footer-socials">
-                    <a href="#" aria-label="Instagram"><i class="lab la-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="lab la-linkedin-in"></i></a>
-                    <a href="#" aria-label="Behance"><i class="lab la-behance"></i></a>
-                </div>
-            </div>
-            <div class="footer-right">
-                <div class="footer-col">
-                    <h4>Mapa strony</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://nataliaszoppa.com/">Strona główna</a></li>
-                        <li><a href="https://languagestudymaterials.blog/o%20mnie">O mnie</a></li>
-                        <li><a href="https://languagestudymaterials.blog/Wiecej%20o%20ofercie">Oferta</a></li>
-                        <li><a href="https://languagestudymaterials.blog/czesto%20zadawane%20pytania">FAQs</a></li>
-                        <li><a href="https://languagestudymaterials.blog/polityka%20prywatnosci">Polityka prywatności</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>&nbsp;</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://languagestudymaterials.blog/cennik">Cennik</a></li>
-                        <li><a href="https://languagestudymaterials.blog/zasady%20wspolpracy">Zasady współpracy</a></li>
-                    </ul>
-                </div>
+    <section class="cta-section">
+        <div class="cta-content">
+            <span class="eyebrow">Nie widzisz swojego pytania?</span>
+            <h2>Pisz śmiało!</h2>
+            <p>Twoja twórczość nie zawsze mieści się w schematach. Masz nietypowe pytanie? Odpowiem na nie podczas krótkiej konsultacji mailowej.</p>
+            <div class="cta-btns">
+                <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
+                <a href="/cennik.html" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>&copy; 2021–2026 Natalia Szoppa. Wszystkie prawa zastrzeżone.</span>
-            <span>Design by Studio Tari. Powered by <strong style="font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 1.15em; letter-spacing: -1px;">tumblr</strong></span>
-        </div>
-    </div>
-</footer>
+    </section>
 
-<script>
-    document.documentElement.classList.add('js-loaded');
-    
-    // --- Scroll reveal ---
-    var revealAll = function() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('active'); }); };
-    if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('active'); io.unobserve(e.target); } });
-        }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
-        setTimeout(revealAll, 1500);
-    } else { revealAll(); }
+    <!-- TUTAJ MOŻESZ WKLEIĆ STOPKĘ (FOOTER) JEŚLI CHCESZ -->
 
-    // --- Zmiana tła paska nawigacji przy scrollowaniu ---
-    window.addEventListener('scroll', function() {
-        var nav = document.getElementById('main-nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
+    <script>
+        // Pewny, sprawdzony skrypt rozwijania – uruchamia się od razu po załadowaniu drzewa DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(event) {
+                const header = event.target.closest('.accordion-header');
+                if (!header) return; 
+                
+                const item = header.closest('.accordion-item');
+                const body = item.querySelector('.accordion-body');
+                if (!item || !body) return;
 
-    // --- Skrypt do obsługi menu mobilnego ---
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const toggleIcon = mobileToggle.querySelector('i');
+                const isOpen = item.classList.contains('open');
 
-    mobileToggle.addEventListener('click', () => {
-        const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-        mobileToggle.setAttribute('aria-expanded', !isExpanded);
-        navLinks.classList.toggle('nav-open');
-        
-        if (navLinks.classList.contains('nav-open')) {
-            toggleIcon.classList.replace('la-bars', 'la-times');
-        } else {
-            toggleIcon.classList.replace('la-times', 'la-bars');
-        }
-    });
-
-    // --- Skrypt do obsługi akordeonu (FAQs) ---
-    document.querySelectorAll('.accordion-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const item = header.closest('.accordion-item');
-            const body = item.querySelector('.accordion-body');
-            const isOpen = item.classList.contains('open');
-
-            item.classList.toggle('open', !isOpen);
-            body.classList.toggle('open', !isOpen);
+                // Przełączenie klas
+                item.classList.toggle('open', !isOpen);
+                body.classList.toggle('open', !isOpen);
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
