@@ -849,50 +849,96 @@ title: Redakcja, korekta, skład
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // === MODALE ===
-  const readMoreBtns = document.querySelectorAll('.read-more-btn');
-  const closeBtns = document.querySelectorAll('.close-btn');
-  const modals = document.querySelectorAll('.modal');
+    // === MODALE ===
+    const readMoreBtns = document.querySelectorAll('.read-more-btn');
+    const closeBtns = document.querySelectorAll('.close-btn');
+    const modals = document.querySelectorAll('.modal');
 
-  readMoreBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const targetId = btn.getAttribute('data-target');
-      const modal = document.getElementById(targetId);
-      if(modal) {
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden'; 
-      }
+    readMoreBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetId = btn.getAttribute('data-target');
+            const modal = document.getElementById(targetId);
+            if(modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; 
+            }
+        });
     });
-  });
 
-  closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btn.closest('.modal').classList.remove('show');
-      document.body.style.overflow = ''; 
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.closest('.modal').classList.remove('show');
+            document.body.style.overflow = ''; 
+        });
     });
-  });
 
-  modals.forEach(modal => {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-      }
+    modals.forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
     });
-  });
 
-  // === OBSŁUGA SZYBKIEGO FAQ ===
-  const faqQuestions = document.querySelectorAll('.faq-q-item');
-  const faqAnswers = document.querySelectorAll('.faq-a-item');
+    // === OBSŁUGA SZYBKIEGO FAQ ===
+    const faqQuestions = document.querySelectorAll('.faq-q-item');
+    const faqAnswers = document.querySelectorAll('.faq-a-item');
 
-  faqQuestions.forEach(question => {
-    question.addEventListener('click', function() {
-      faqQuestions.forEach(q => q.classList.remove('active'));
-      this.classList.add('active');
-      faqAnswers.forEach(a => a.classList.remove('active'));
-      const targetId = this.getAttribute('data-target');
-      document.getElementById(targetId).classList.add('active');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            faqQuestions.forEach(q => q.classList.remove('active'));
+            this.classList.add('active');
+            faqAnswers.forEach(a => a.classList.remove('active'));
+            const targetId = this.getAttribute('data-target');
+            const targetAnswer = document.getElementById(targetId);
+            if (targetAnswer) {
+                targetAnswer.classList.add('active');
+            }
+        });
     });
-  });
+
+    // === SILNIK MASZYNY DO PISANIA ===
+    const words = ["opowiadania", "powieści", "teksty", "książki"];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterTarget = document.getElementById('typewriter-word');
+    
+    const typeSpeed = 100;       // Prędkość pisania
+    const eraseSpeed = 50;       // Prędkość kasowania
+    const delayBetweenWords = 2000; // Jak długo słowo stoi w całości
+
+    function typeEffect() {
+        if (!typewriterTarget) return;
+
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+            typewriterTarget.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typewriterTarget.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let nextDelay = isDeleting ? eraseSpeed : typeSpeed;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+            nextDelay = delayBetweenWords;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            nextDelay = 400; // Pauza przed nowym słowem
+        }
+
+        setTimeout(typeEffect, nextDelay);
+    }
+
+    // Uruchomienie maszyny, jeśli element istnieje na tej podstronie
+    if (typewriterTarget) {
+        typeEffect();
+    }
 });
 </script>
