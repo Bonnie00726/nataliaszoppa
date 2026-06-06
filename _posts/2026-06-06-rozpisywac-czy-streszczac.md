@@ -9,7 +9,7 @@ tags: [porady pisarskie, warsztat, tempo]
 
 Prosta odpowiedź brzmi: i jedno, i drugie. Nieco dłuższa wyjaśni Ci, co warto skrócić nawet do jednego, lakonicznego zdania, a co należy rozpisać z aptekarską precyzją – sekunda po sekundzie.
 
-W moim <a href="{% post_url 2026-06-07-struktura-trzech-aktow-podstawa-dobrej-ksiazki %}">poprzednim artykule</a> rozłożyliśmy na czynniki pierwsze strukturę trzech aktów. Masz już więc fabułę ułożoną w logiczną całość, wiesz, co dzieje się w poszczególnych scenach, a Twoi bohaterowie zyskali szczegółowe portrety psychologiczne. Teraz czas na kluczowe decyzje: <span class="highlight-marker">które momenty są sercem opowieści</span>, a które pełnią jedynie funkcję „mostów” przeprowadzających czytelnika z punktu A do punktu B?
+W moim <a href="{% post_url 2026-06-04-struktura-trzech-aktow2 %}">poprzednim artykule</a> rozłożyliśmy na czynniki pierwsze strukturę trzech aktów. Masz już więc fabułę ułożoną w logiczną całość, wiesz, co dzieje się w poszczególnych scenach, a Twoi bohaterowie zyskali szczegółowe portrety psychologiczne. Teraz czas na kluczowe decyzje: <span class="highlight-marker">które momenty są sercem opowieści</span>, a które pełnią jedynie funkcję „mostów” przeprowadzających czytelnika z punktu A do punktu B?
 
 Photo by <a href="https://unsplash.com/photos/7ezVb0oTQ6M">Kari Shea</a> on <a href="https://unsplash.com">Unsplash</a>.
 
