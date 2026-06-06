@@ -1,31 +1,36 @@
 ---
 layout: post
-title: "Zanim napiszesz pierwsze słowo – pisarski reality check"
-date: 2026-06-04 23:00:00 +0200
+title: "Z jakim nastawieniem piszesz?"
+date: 2026-06-06 12:00:00 +0200
 author: Natalia Szoppa
 image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
-tags: [porady pisarskie]
+tags: [porady pisarskie, warsztat]
 ---
 
-Zanim napiszesz pierwsze słowo – kilka rzeczy do przemyślenia, zanim otworzysz nowy dokument. Nie chodzi tu o technikę pisania, ale o Twoje nastawienie. W pracy redaktorskiej stale widzę te same problemy, a ich główne źródło jest zwykle jedno: **autor stawia siebie w centrum, spychając czytelnika na dalszy plan.**
+Porozmawiajmy chwilę o Twoim nastawieniu. Dlaczego właściwie piszesz? Dla kogo to robisz? Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
+
+Twój język, struktura tekstu, a nawet sam pomysł bardzo szybko zdradzą mi odpowiedź na te pytania. Wielu autorów zastanawia się, skąd mogę to wiedzieć, skoro nawet ze sobą nie rozmawialiśmy (nie mam mediów społecznościowych, więc też nie podejrzę, jak ktoś opowiada o swoim projekcie). Moi uczniowie też za każdym razem są w szoku, kiedy od razu wiem, że praca domowa była pisana na spółkę z kimś innym – i bezbłędnie wskazuję, kto komu pomagał!
+
+Nie ma w tym jednak żadnej magii, to czysta psychologia: jeśli człowiek ma jasno wyznaczony cel, podświadomie dopasuje do niego swoje działania (w tym również język i formę przekazu), by go osiągnąć. 
+
+Jeśli głównym celem autora jest zarobek, będzie pisał w taki sposób, aby odbiorca był zadowolony. Jeśli jednak jedynym celem było po prostu samo wydanie książki, autor pisze przede wszystkim dla siebie, według własnych zasad i intuicji.
+
+Ten ukryty cel zdradza zresztą nie tylko sama powieść, ale też to, w jaki sposób o niej opowiadasz. Zwróć uwagę na to, jak mówisz o swoim pisaniu i publikacji. Zobacz, jak subtelna różnica w słowach całkowicie zmienia perspektywę:
+
+* **Gdy mówisz: „Chcę wydać książkę”** – w większości przypadków sugeruje to, że piszesz dla siebie i pod siebie. Stawiasz siebie w centrum, a każda krytyka zaboli Cię mocniej, niż powinna.
+* **Gdy mówisz: „Muszę napisać książkę, którą ludzie będą chcieli czytać”** – nie spychasz czytelnika na dalszy plan. <span class="highlight-marker">Myślisz o nim na każdym etapie pracy</span>, bo widzisz w tym przedsięwzięciu swój potencjalny zawód.
 
 Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
 
 ---
 
-<h2 id="piszesz-dla-siebie-czy-czytelnika">Piszesz dla siebie czy dla czytelnika?</h2>
+<h2 id="piszesz-dla-siebie-czy-dla-czytelnika">Piszesz dla siebie czy dla czytelnika?</h2>
 
-Początki zawsze są dla Ciebie – to naturalny i potrzebny etap twórczości. Problem pojawia się w chwili, gdy tekst zostaje wyłącznie z Tobą. Pisanie po to, by przepracować osobiste problemy, rzadko działa na zewnątrz. 
+Jasne, początki zawsze są dla Ciebie – i to zupełnie naturalny, wręcz niezbędny etap twórczości. Piszesz, bo czujesz taką potrzebę, bo zachwyciła Cię jakaś książka i chcesz stworzyć coś równie inspirującego, albo po prostu sprawia Ci to czystą frajdę. Powodów jest mnóstwo i wszystkie są świetne.
 
-Czytelnik nie zna Twoich intencji, ale natychmiast wyczuje fałsz. Bohaterowie stają się wtedy płascy, a fabuła koncentruje się na Twojej krzywdzie, a nie na samej opowieści. 
+Problem pojawia się w chwili, gdy zaczynasz na poważnie myśleć o wydaniu książki. Włożyłaś w swoje dzieło mnóstwo pracy i wysiłku, więc zakładasz, że wszystkim się spodoba, a odbiorcy docenią Twój wkład i będą się zachwycać. Ale czy na pewno? 
 
-<div class="chmurka chmurka-tip">
-    Zadaj sobie proste pytanie: Czy Twój tekst niesie wartość i treść dla kogoś zupełnie obcego?
-</div>
-
-<h2 id="brak-obowiazku-czytania">Czytelnik nie ma obowiązku czytać Twojej książki</h2>
-
-Odbiorca nie musi rozumieć Twojego wysiłku ani doceniać faktu, że ukończyłeś maszynopis – choć wielu debiutantów zakłada coś odwrotnego. 
+Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. Nie musi wiedzieć, dlaczego w ogóle usiadłaś do klawiatury. 
 
 <blockquote>
     Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas.
@@ -33,47 +38,33 @@ Odbiorca nie musi rozumieć Twojego wysiłku ani doceniać faktu, że ukończył
 
 Jeśli Twoja strona tej wymiany jest pusta, odbiorca <span class="highlight-marker">po prostu zamknie książkę i odejdzie</span>.
 
-<h2 id="oryginalnosc-vs-warsztat">Oryginalność nie zastąpi warsztatu</h2>
+<h2 id="skad-wiadomo-dla-kogo-piszesz">Skąd wiadomo, dla kogo piszesz?</h2>
 
-Łamanie reguł wymaga najpierw ich doskonałej znajomości. Każdy gatunek zawiera niepisany kontrakt z czytelnikiem:
+Nic nie istnieje w próżni. Książka na rynku staje się produktem, który musi spełniać określone standardy, a klienci mają wobec niego konkretne oczekiwania i mają też swoje przyzwyczajenia.
 
-* **Kryminał** – potrzebuje jasnego i satysfakcjonującego rozwiązania zagadki.
-* **Romans** – bezwzględnie domaga się emocjonalnego napięcia między bohaterami.
+Autor, który bierze pod uwagę swoich odbiorców, dba o te standardy. Stale rozwija warsztat, konsultuje wybory narracyjne, zmienia, przepisuje i chętnie korzysta z pomocy fachowców. Chce wiedzieć jak najwięcej, by stworzyć coś, po co czytelnik chętnie sięgnie.
 
-Odbiorca sięga po dany gatunek z konkretnymi oczekiwaniami, a odrzucanie tych potrzeb wcale nie jest aktem odwagi – to po prostu brak świadomości pisarskiej.
+Z kolei autor, który karmi się wyłącznie wizją zobaczenia swojego nazwiska na okładce, często na tym poprzestaje. Wielokrotnie słyszałam, że wydanie książki było czyimś wielkim marzeniem. Niestety, o „istnieniu” czytelników tacy twórcy dowiadywali się dopiero po premierze – i bywało to bardzo brutalne zderzenie z rzeczywistością oraz oczekiwaniami rynku.
 
-<h2 id="krytyka-buduje-tekst">Krytyka nie niszczy tekstu, tylko go buduje</h2>
+Marzenia są piękne, ale jeśli wychodzisz ze swoim pomysłem do ludzi i chcesz do nich dotrzeć, warto poznać ich preferencje. 
 
-Autorzy często traktują swoje dzieła bardzo osobiście, co skutecznie blokuje rozwój tekstu. Odbieranie każdej uwagi jako osobistej urazy prowadzi do publikowania błędów, a efekty widać później w recenzjach. 
+Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*), który kompletnie ignorował rady swoich redaktorów oraz czytelników i pisał dokładnie to, co chciał i jak chciał. I wiesz co? Dorobił się! Jest tu jednak pewien haczyk: Gege na samym początku stworzył świetną wizualnie historię z genialnym systemem mocy i wątkami, które miały potencjał na głęboką, filozoficzną rozkminę o naturze człowieka. Początek był naprawdę dobry, bo autor dostosował się do standardów i autentycznie zainteresował odbiorców. Dopiero później wyszło to, co wyszło… No cóż, *it was fun while it lasted*.
 
-<div class="chmurka chmurka-tip">
-    Negatywne opinie wskazujące na nudne opisy czy nielogiczną fabułę są najcenniejszą informacją zwrotną. Nie traktuj ich jak wyroku – wyciągnij wnioski i popraw materiał, zanim pójdzie w świat.
-</div>
+Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-<h2 id="self-publishing-to-nie-skrot">Self-publishing to nie jest droga na skróty</h2>
+*„Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować”.* — [Źródło cytatu](https://lithub.com/kurt-vonneguts-greatest-writing-advice/)
 
-Rezygnacja z tradycyjnego wydawnictwa nie zwalnia Cię z całego procesu wydawniczego. Musisz zainwestować w profesjonalną redakcję, korektę i skład. 
+Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
-<div class="chmurka chmurka-uwaga">
-    Przypadkowa okładka oraz błędy w tekście natychmiast odstraszą odbiorców. To wyraźny sygnał dla czytelnika, że materiał nie przeszedł żadnej weryfikacji.
-</div>
+Na koniec zostawię Cię jeszcze z cytatem George'ego Orwella: 
 
-Wydanie książki to narzędzie, nie nagroda. Publikacja ma ułatwić dotarcie do czytelnika – jeśli odbiorca ominie Twój tytuł szerokim łukiem, cały ten proces traci sens.
+*„Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym”.* — *George Orwell, Dlaczego piszę?*
 
-<h2 id="dystans-w-autofikcji">Autofikcja wymaga odpowiedniego dystansu</h2>
-
-Czerpanie z własnego życia jest całkowicie w porządku. Błąd tkwi w bezrefleksyjnym kopiowaniu rzeczywistości. Zapis prawdziwych wydarzeń a prawdziwy materiał literacki to dwie zupełnie różne rzeczy. 
-
-Codzienne rozmowy są zwykle chaotyczne i pełne niedomówień, podczas gdy **dialogi w powieści muszą pełnić konkretną funkcję**:
-* Budować unikalną postać,
-* Popychać fabułę do przodu,
-* Generować napięcie.
-
-Zwykłe, życiowe wymiany zdań rzadko spełniają te podstawowe warunki.
+Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="highlight-marker">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
 ---
 
 <div class="sticky-note">
     <strong>Najważniejsze na dziś:</strong><br><br>
-    Marzenie o publikacji daje świetny impuls do działania, ale Twoim ostatecznym zadaniem jest utrzymanie uwagi czytelnika. Odbiorca musi sam chcieć przewrócić kolejną stronę. Na samym końcu tylko ten fakt ma realne znaczenie.
+    Marzenie o publikacji to świetny zapalnik do działania, ale Twoim ostatecznym zadaniem jako pisarza jest utrzymanie uwagi czytelnika. Odbiorca musi sam, z własnej woli, chcieć przewrócić kolejną stronę. Na samym końcu tylko to ma realne znaczenie.
 </div>
