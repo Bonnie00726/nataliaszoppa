@@ -111,7 +111,7 @@ tags: [porady pisarskie, warsztat, struktura]
 
 <a href="https://unsplash.com/photos/a-multicolored-building-made-of-wooden-blocks-7ezVb0oTQ6M">Zdjęcie, żródło: Unsplash</a>
 
-W moim poprzednim artykule pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: dla kogo właściwie piszesz?
+W moim <a href="{% post_url 2026-06-06-z-jakim-nastawieniem-piszesz %}">poprzednim artykule</a> pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: dla kogo właściwie piszesz?
 
 Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logicczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
 
