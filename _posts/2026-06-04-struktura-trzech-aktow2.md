@@ -7,17 +7,154 @@ image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
 tags: [porady pisarskie, warsztat, struktura]
 ---
 
+<style>
+/* Styl osi czasu struktury trzech aktów */
+.three-acts-container {
+  display: flex;
+  width: 100%;
+  margin: 30px auto 85px auto;
+  box-sizing: border-box;
+}
+
+.act-col {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.act-col-1 { flex: 1.2; }
+.act-col-2 { flex: 2; }
+.act-col-3 { flex: 1.2; }
+
+.act-card {
+  padding: 15px 10px;
+  margin: 0 6px;
+  border-radius: 10px;
+  color: #ffffff !important;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+}
+
+.bg-purple { background-color: #673ab7; }
+.bg-magenta { background-color: #b8267a; }
+.bg-orange { background-color: #e67e22; }
+
+.milestone {
+  position: absolute;
+  top: 100%;
+  width: 110px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-top: 8px;
+}
+
+.milestone .arrow {
+  color: #673ab7;
+  font-size: 11px;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.milestone .m-title {
+  font-weight: bold;
+  color: #222222;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.milestone .m-desc {
+  color: #777777;
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+/* Pozycjonowanie punktów na desktopie */
+.m-katalizator { left: 50%; transform: translateX(-50%); }
+.m-zwrotny     { left: 0; transform: translateX(-50%); }
+.m-midpoint    { left: 50%; transform: translateX(-50%); }
+.m-kleska      { left: 100%; transform: translateX(-50%); }
+.m-final       { left: 50%; transform: translateX(-50%); }
+
+/* RWD - Dostosowanie do telefonów */
+@media (max-width: 680px) {
+  .three-acts-container {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .act-col {
+    flex: none;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .act-card {
+    margin: 0;
+  }
+  .milestone {
+    position: static;
+    width: 100%;
+    transform: none !important;
+    left: auto !important;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px dashed #e0e0e0;
+    padding-bottom: 8px;
+  }
+  .milestone:last-child {
+    border-bottom: none;
+  }
+}
+</style>
+
 W moim poprzednim artykule pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: dla kogo właściwie piszesz?
 
-Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logiczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
+Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logicczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
 
-Narządziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="highlight-marker">podstawowe narzędzie pisarza</span>. Poniżej przedstawiam wizualną reprezentację tej struktury jako kolorowy wykres:
+Narządziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="highlight-marker">podstawowe narzędzie pisarza</span>. Poniżej przedstawiam wizualną reprezentację tej struktury:
 
-![Struktura trzech aktów powieści](trzy-akty_struktura.png)
+<div class="three-acts-container">
+  <div class="act-col act-col-1">
+    <div class="act-card bg-purple">Akt I</div>
+    <div class="milestone m-katalizator">
+      <div class="arrow">▲</div>
+      <div class="m-title">Katalizator</div>
+      <div class="m-desc">iskra</div>
+    </div>
+  </div>
+  <div class="act-col act-col-2">
+    <div class="act-card bg-magenta">Akt II</div>
+    <div class="milestone m-zwrotny">
+      <div class="arrow">▲</div>
+      <div class="m-title">P. Zwrotny</div>
+      <div class="m-desc">konflikt</div>
+    </div>
+    <div class="milestone m-midpoint">
+      <div class="arrow">▲</div>
+      <div class="m-title">Midpoint</div>
+      <div class="m-desc">działanie</div>
+    </div>
+    <div class="milestone m-kleska">
+      <div class="arrow">▲</div>
+      <div class="m-title">Klęska</div>
+      <div class="m-desc">ciemność</div>
+    </div>
+  </div>
+  <div class="act-col act-col-3">
+    <div class="act-card bg-orange">Akt III</div>
+    <div class="milestone m-final">
+      <div class="arrow">▲</div>
+      <div class="m-title">Finał</div>
+      <div class="m-desc">rozwiązanie</div>
+    </div>
+  </div>
+</div>
 
 Poniżej znajdziesz szczegółową listę tych pojęć i ich definicje:
 
-### Najważniejsze pojęcia:
+## Najważniejsze pojęcia:
 
 * **Katalizator (iskra)** – wydarzenie, które bezpowrotnie burzy dotychczasowy porządek w życiu bohatera.
 * **Punkt zwrotny (konflikt)** – moment podjęcia decyzji, po której nie ma już odwrotu; oficjalne wejście w główną fabułę.
@@ -46,7 +183,7 @@ Chris Wooding w swojej epickiej powieści *The Ember Blade* na początku pokazuj
 
 W pewnym momencie następuje katalizator – sytuacja, która zmienia wszystko. Ojciec jednego z chłopców zostaje zatrzymany i oskarżony o działalność rebeliancką. Syn „rebelianta” nie daje temu wiary i postanawia działać. Następuje punkt zwrotny: Aren postanawia udowodnić, że jego ojciec jest niewinny.
 
-Vidzisz, jak to działa? Trzy proste punkty wystarczyły, aby przekonać ponad 5 tysięcy czytelników (patrząc na statystyki z Goodreads), że warto sprawdzić, jak ten nastoletni chłopiec poradzi sobie z systemem.
+Widzisz, jak to działa? Trzy proste punkty wystarczyły, aby przekonać ponad 5 tysięcy czytelników (patrząc na statystyki z Goodreads), że warto sprawdzić, jak ten nastoletni chłopiec poradzi sobie z systemem.
 
 <h2 id="akt-ii-czyli-rozwiniecie">Akt II, czyli rozwinięcie</h2>
 
@@ -62,7 +199,7 @@ Nasz bohater działa, wszystko idzie świetnie, ale – jak to w życiu – nagl
 
 Klęska to moment, w którym udowadnia się czytelnikowi, że stworzyło się logiczną historię i postacie pełne sprytu oraz woli walki. To tylko umacnia czytelnika w przekonaniu, że Twoja opowieść jest angażująca. Jeśli po midpoincie wszystko szłoby gładko, historię można by zakończyć w trzech kolejnych rozdziałach. Możesz też nie wprowadzać spektakularnej porażki, ale tak sterować wydarzeniami, by czytelnik siedział jak na szpilkach, czekając, aż coś runie.
 
-### Grzęzawisko aktu II – w czym leży problem?
+## Grzęzawisko aktu II – w czym leży problem?
 
 Dlaczego ten etap sprawia autorom tyle trudności? Oto najczęstsze grzechy środkowej części książki:
 
