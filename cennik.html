@@ -133,7 +133,7 @@ title: Cennik
 
     .mega-price-wrap { margin-bottom: 36px; }
     .mega-price { font-family: var(--serif); font-size: 3rem; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; display: inline-block; }
-    .mega-price-unit { font-size: 0.9rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 8px; }
+    .mega-price-unit { font-size: 0.9rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 8px; }
 
     .sub-packages-grid { display: flex; align-items: stretch; justify-content: center; gap: 20px; }
     .sub-package { background: #fff; border: 1.5px dashed var(--grad-start); border-radius: var(--radius-lg); padding: 40px 20px 24px; flex: 1; position: relative; display: flex; flex-direction: column; }
@@ -148,21 +148,29 @@ title: Cennik
     
     .sub-price-wrap { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--paper-mid); }
     .sub-price { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink); }
-    .sub-price span { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 4px;}
+    .sub-price span { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 4px;}
     .pkg-plus { display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--grad-start); font-weight: 300; }
 
-    /* POJEDYNCZE USŁUGI (KAFELKI) */
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 60px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+    /* POJEDYNCZE USŁUGI (UKŁAD STAŁY 2x2) */
+    .pricing-grid { 
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); /* Wymuszenie równego układu 2x2 */
+        gap: 24px; 
+        margin-bottom: 60px; 
+        max-width: 1000px; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
     .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
     .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
     .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); border-color: transparent; }
     .pricing-card:hover::before { transform: scaleX(1); }
     .pricing-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--paper-mid); }
+    
     .price-main { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; line-height: 1; display: inline-block; margin-bottom: 6px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 4px 6px 4px 0px; }
-    .price-unit { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); display: block; margin-bottom: 24px; }
+    .price-unit { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); block; margin-bottom: 24px; }
     .price-alt { font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .price-alt-unit { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; display: block; margin-bottom: 16px; }
-    .price-note { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; font-weight: 300; line-height: 1.6; margin-top: auto; padding-top: 24px; border-top: 1px solid var(--paper-mid); }
+    .price-alt-unit { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; block; margin-bottom: 16px; }
     
     /* INFO GRID */
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
@@ -170,7 +178,7 @@ title: Cennik
     .info-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
     .definitions-list { list-style: none; padding: 0; margin: 0; }
     .definitions-list li { background: var(--paper-warm); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600; color: var(--ink); }
-    .definitions-list li span { font-weight: 300; color: var(--ink-muted); font-size: 0.88rem; display: block; margin-top: 4px; }
+    .definitions-list li span { font-weight: 300; color: var(--ink-muted); font-size: 0.88rem; block; margin-top: 4px; }
     .factors-list { list-style: none; padding: 0; margin: 0; }
     .factors-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
     .factors-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
@@ -198,7 +206,7 @@ title: Cennik
         .pkg-plus { transform: rotate(90deg); margin: 10px 0; }
     }
     @media (max-width: 600px) { 
-        .pricing-grid { grid-template-columns: 1fr; } 
+        .pricing-grid { grid-template-columns: 1fr; } /* Mobilne zejście do 1 kolumny */
     }
 </style>
 
@@ -255,7 +263,7 @@ title: Cennik
                 
                 <div style="margin-top: 18px;">
                     <span style="font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink);">od 45 zł</span>
-                    <span style="font-size: 0.8rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 4px;">za stronę (poniżej 5 ark.)</span>
+                    <span style="font-size: 0.8rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 4px;">za stronę (poniżej 5 ark.)</span>
                 </div>
             </div>
 
@@ -280,7 +288,7 @@ title: Cennik
                         <span>za arkusz (pow. 5 arkuszy)</span>
                         <div style="margin-top: 15px;">
                             <div style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink);">od 30 zł</div>
-                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
+                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
                         </div>
                     </div>
                 </div>
@@ -307,7 +315,7 @@ title: Cennik
                         <span>za arkusz (pow. 5 arkuszy)</span>
                         <div style="margin-top: 15px;">
                             <div style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink);">od 18 zł</div>
-                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
+                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
                         </div>
                     </div>
                 </div>
@@ -324,7 +332,6 @@ title: Cennik
                 <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
                 <div class="price-alt">od 15 zł</div>
                 <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-               
             </div>
             
             <div class="pricing-card reveal delay-1">
@@ -333,7 +340,6 @@ title: Cennik
                 <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
                 <div class="price-alt">od 20 zł</div>
                 <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-                <p class="price-note">Wygładzanie stylu, eliminacja błędów i dbałość o naturalny flow, wyłącznie dla spójnych fabuł (nie obejmuje ostatecznej korekty).</p>
             </div>
 
             <div class="pricing-card reveal">
@@ -342,7 +348,6 @@ title: Cennik
                 <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
                 <div class="price-alt">od 15 zł</div>
                 <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-                <p class="price-note">Ostatnie czytanie manuskryptu przed składem. Wyłapanie ocalałych literówek, błędów ortograficznych i interpunkcyjnych.</p>
             </div>
 
             <div class="pricing-card reveal delay-1">
@@ -351,7 +356,6 @@ title: Cennik
                 <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
                 <div class="price-alt">od 20 zł</div>
                 <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-                <p class="price-note">Kompletne sformatowanie wnętrza tekstu (PDF/EPUB) połączone z korektą techniczną wyłapującą wdowy i bękarty.</p>
             </div>
         </div>
 
@@ -379,7 +383,7 @@ title: Cennik
 
 <section class="cta-section">
     <div class="cta-content">
-        <h2 class="reveal delay-1">Opowiedz mi o swoim projekcie</h2>
+        <h2 class="reveal delay-1">Opowiedź mi o swoim projekcie</h2>
         <p class="reveal delay-2">Nie musisz od razu wiedzieć, jakiej usługi potrzebujesz. Opisz krótko swój projekt i prześlij fragment tekstu – wspólnie zastanowimy się, jaki zakres prac będzie dla Ciebie najlepszy.</p>
         <div class="cta-btns reveal delay-3">
             <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Wyślij materiały</a>
@@ -387,16 +391,19 @@ title: Cennik
         </div>
     </div>
 </section>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const bellIcon   = document.getElementById('bell-icon');
     const bellNotice = document.getElementById('bell-notice');
     const bellPill   = document.getElementById('bell-pill');
 
-    setTimeout(() => bellNotice.classList.add('visible'), 200);
-    setTimeout(() => bellIcon.classList.add('ring1'), 400);
-    setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
-    setTimeout(() => bellIcon.classList.add('ring2'), 1300);
-    setTimeout(() => bellPill.classList.add('expanded'), 1700);
+    if (bellNotice) setTimeout(() => bellNotice.classList.add('visible'), 200);
+    if (bellIcon) {
+        setTimeout(() => bellIcon.classList.add('ring1'), 400);
+        setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
+        setTimeout(() => bellIcon.classList.add('ring2'), 1300);
+    }
+    if (bellPill) setTimeout(() => bellPill.classList.add('expanded'), 1700);
 });
 </script>
