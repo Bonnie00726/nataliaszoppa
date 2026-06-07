@@ -343,6 +343,16 @@
         .blog-content ul li::before { content: '→'; position: absolute; left: -1.5rem; color: var(--grad-mid); font-weight: 900; }
         .blog-content blockquote { background-color: #fafafa; border: 1.5px solid var(--ink); border-radius: 12px; margin: 2.5rem 0; padding: 28px 32px; color: var(--ink-soft); font-family: var(--sans); font-style: normal; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04); }
 
+        /* NOWY CYTAT W STYLU NEO-BRUTALIZM (Z OBRAZKA) */
+        .blog-quote { position: relative; margin: 2.5rem 0 2.5rem 1.5rem; padding: 10px 0 10px 32px; border-left: 2px solid var(--grad-start); }
+        .blog-quote::before { content: '\f10e'; font-family: 'Line Awesome Free'; font-weight: 900; position: absolute; left: -14px; top: 50%; transform: translateY(-50%); background: var(--paper); color: var(--grad-start); font-size: 1.4rem; line-height: 1; padding: 10px 0; }
+        .blog-quote p { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); font-style: normal; line-height: 1.6; margin: 0; }
+        .blog-quote-author { display: block; font-family: var(--sans); font-size: 0.95rem; font-style: italic; color: var(--ink-muted); margin-top: 14px; }
+
+        /* NOWY WYRÓŻNIK Z GRADIENTOWĄ LINIĄ */
+        .blog-highlight { position: relative; margin: 2.5rem 0 2.5rem 1.5rem; padding: 5px 0 5px 24px; font-family: var(--sans); font-size: 1.1rem; color: var(--ink-soft); line-height: 1.7; }
+        .blog-highlight::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 4px; background: var(--grad); border-radius: 4px; }
+        
         .chmurka { padding: 20px 25px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); color: #4a4a4a; margin: 30px 0; line-height: 1.6; font-size: 1.05em; }
         .chmurka-uwaga { background-color: #fdf2f8; border: 1px solid #fce7f3; }
         .chmurka-uwaga strong { color: #c2185b; }
