@@ -349,11 +349,11 @@
         .blog-quote p { font-family: var(--serif); font-size: 1.25rem; color: var(--ink); font-style: normal; line-height: 1.6; margin: 0; }
         .blog-quote-author { display: block; font-family: var(--sans); font-size: 0.95rem; font-style: italic; color: var(--ink-muted); margin-top: 14px; }
 
-       /* NOWY WYRÓŻNIK Z GRADIENTOWĄ LINIĄ */
+      /* NOWY WYRÓŻNIK Z GRADIENTOWĄ LINIĄ */
         .blog-highlight { 
             position: relative; 
             margin: 2.5rem 0 2.5rem 1.5rem; 
-            padding: 5px 0 5px 24px; 
+            padding: 0 0 0 24px; /* Zera na górze i dole, żeby box nie puchł */
             font-family: var(--sans); 
             font-size: 1.1rem; 
             color: var(--ink-soft); 
@@ -363,9 +363,8 @@
             content: ''; 
             position: absolute; 
             left: 0; 
-            top: 50%; 
-            transform: translateY(-50%); /* Idealne wyśrodkowanie w pionie */
-            height: 75%; /* Linia zajmuje 75% wysokości tekstu, dzięki czemu jest krótsza */
+            top: 7px; /* Przycięcie z góry, żeby zrównać z krawędzią liter */
+            bottom: 7px; /* Przycięcie z dołu, żeby zrównać z krawędzią liter */
             width: 4px; 
             background: var(--grad); 
             border-radius: 4px; 
