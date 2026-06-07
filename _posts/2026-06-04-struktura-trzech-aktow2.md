@@ -191,17 +191,9 @@ Widzisz, jak to działa? Trzy proste punkty wystarczyły, aby przekonać ponad 5
 
 To najtrudniejsza część, bo najłatwiej wpaść tu w pułapkę „bohatera doświadczającego” – czyli takiego, który jedynie przyjmuje ciosy od losu. Pamiętaj: każdy bohater musi w pewnym momencie zacząć reagować i działać, aby osiągnąć swój cel.
 
-W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. 
+W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. To są tzw. **punkty nacisku (*pinch points*)**.  <span class="highlight-marker">Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio od samego antagonisty.</span> To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron. Każda kolejna kłoda to wyzwanie, które ich kształtuje.
 
-<div class="blog-highlight" markdown="1">
-To są tzw. **punkty nacisku (*pinch points*)**. Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio od samego antagonisty. To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron.
-</div>
-
-Każda kolejna kłoda to wyzwanie, które ich kształtuje.
-
-<div class="blog-highlight" markdown="1">
-W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest punkt środkowy (**midpoint**).
-</div>
+ <span class="highlight-marker">W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować</span>, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest punkt środkowy (**midpoint**).
 
 Jego zadaniem jest <span class="highlight-marker">przełączenie bohatera z postawy reaktywnej na aktywną</span>. Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.
 
@@ -233,33 +225,13 @@ Próba odkrycia prawdy błyskawicznie zderza chłopca z brutalną rzeczywistośc
 
 Mimo że wydarzeń jest mnóstwo, to nie jest zbiór przypadkowych przygód. <span class="highlight-marker">Wszystko układa się w logiczną, zazębiającą się całość</span>.
 
-<div class="blog-highlight" markdown="1">
-*„Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować”.*
-**— Kurt Vonnegut**, *<a href="https://lithub.com/kurt-vonneguts-greatest-writing-advice/" target="_blank">„8 basics of creative writing”</a>*
-</div>
-
-Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
-
-Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
-
-<div class="blog-highlight" markdown="1">
-*„Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym”.*
-**— George Orwell**, *„Dlaczego piszę?”*
-</div>
-
-Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="highlight-marker">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
-
----
-
 <h2 id="akt-iii-czyli-zakonczenie">Akt III, czyli zakończenie</h2>
 
-To moment, w którym historia zmierza do **punktu kulminacyjnego**, a po nim powoli zwalnia. Problemy zapoczątkowane w momencie klęski znajdują swoje rozwiązanie, bohaterowie wygrywają i na końcu widzimy, jak odnajdują się w nowym świecie.
+To moment, w którym historia zmierza do punktu kulminacyjnego, a po nim powoli zwalnia. <span class="highlight-marker">Problemy zapoczątkowane w momencie klęski znajdują swoje rozwiązanie</span>, bohaterowie wygrywają i na końcu widzimy, jak odnajdują się w nowym świecie.
 
-<div class="blog-highlight" markdown="1">
-**Pamiętaj o jednej ważnej zasadzie: nie można zamknąć całej historii w jednym rozdziale.** Czytelnik potrzebuje czasu, aby przeżyć z bohaterami ostateczne starcie, a potem zobaczyć opadający kurz i dowiedzieć się, co stało się z postaciami po bitwie. Zbyt szybkie ucięcie opowieści pozostawia ogromny niedosyt.
-</div>
+Ten etap nie ma tak sztywnych, technicznych wymogów strukturalnych jak poprzednie akty, ale pamiętaj o jednej ważnej zasadzie: **nie można zamknąć całej historii w jednym rozdziale**. Czytelnik potrzebuje czasu, aby przeżyć z bohaterami ostateczne starcie, a potem zobaczyć opadający kurz i dowiedzieć się, co stało się z postaciami po bitwie. Zbyt szybkie ucięcie opowieści pozostawia ogromny niedosyt.
 
-Wyjątkiem jest sytuacja, gdy piszesz trylogię. Wtedy akt III nie będzie typowym, ostatecznym domknięciem. Pokaże za to moment, w którym bohaterowie odnoszą sukces i zyskują chwilę wytchnienia, ale na horyzoncie już widać nowe wyzwania, które czekają na nich w drugim tomie.
+Wyjątkiem jest sytuacja, gdy piszesz trylogię lub dylogię. Wtedy akt III nie będzie typowym, ostatecznym domknięciem. Pokaże za to moment, w którym bohaterowie odnoszą sukces i zyskują chwilę wytchnienia, ale na horyzoncie już widać nowe wyzwania, które czekają na nich w drugim tomie.
 
 <h2 id="podsumowanie-czyli-po-co-ci-te-akty">Podsumowanie, czyli po co Ci te akty?</h2>
 
@@ -267,8 +239,8 @@ Wniosek z tego wszystkiego jest prosty: trzyaktowa struktura to Twoje najlepsze 
 
 Trzymanie się tych ram daje Ci też pewność, że zachowujesz nienaganny ciąg przyczynowo-skutkowy. 
 
-<div class="blog-highlight" markdown="1">
-**Dobra fabuła nie opiera się na słowach „a potem”. Każdy wątek i każda scena musi wynikać ze słów „dlatego” lub „ale”.**
+<div class="blog-quote" markdown="1">
+Dobra fabuła **nie opiera** się na słowach **„a potem”**. Każdy wątek i każda scena musi **wynikać ze słów „dlatego” lub „ale”**.
 </div>
 
 Bohater podjął decyzję, <span class="highlight-marker">dlatego</span> spotkała go kara, <span class="highlight-marker">ale</span> na swojej drodze poznał sprzymierzeńca, <span class="highlight-marker">dlatego</span> postanowił walczyć dalej. Właśnie tak tworzy się historie, od których czytelnik nie potrafi się oderwać.
