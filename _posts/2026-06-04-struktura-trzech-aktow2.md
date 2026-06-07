@@ -109,13 +109,13 @@ tags: [porady pisarskie, warsztat, struktura]
 }
 </style>
 
-<a href="https://unsplash.com/photos/a-multicolored-building-made-of-wooden-blocks-7ezVb0oTQ6M">Zdjęcie, żródło: Unsplash</a>
+<a href="https://unsplash.com/photos/a-multicolored-building-made-of-wooden-blocks-7ezVb0oTQ6M">Zdjęcie, źródło: Unsplash</a>
 
 W moim <a href="{% post_url 2026-06-06-z-jakim-nastawieniem-piszesz %}">poprzednim artykule</a> pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: dla kogo właściwie piszesz?
 
 Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logicczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
 
-Narządziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="highlight-marker">podstawowe narzędzie pisarza</span>. Poniżej przedstawiam wizualną reprezentację tej struktury:
+Narzędziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="highlight-marker">podstawowe narzędzie pisarza</span>. Poniżej przedstawiam wizualną reprezentację tej struktury:
 
 <div class="three-acts-container">
   <div class="act-col act-col-1">
@@ -193,21 +193,25 @@ To najtrudniejsza część, bo najłatwiej wpaść tu w pułapkę „bohatera do
 
 W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. To są tzw. punkty nacisku (*pinch points*). Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio od samego antagonisty. To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron. Każda kolejna kłoda to wyzwanie, które ich kształtuje.
 
-<div class="blog-highlight" markdown="1">
+<div class="blog-quote" markdown="1">
 W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest punkt środkowy (**midpoint**).
 </div>
 
 Jego zadaniem jest <span class="highlight-marker">przełączenie bohatera z postawy reaktywnej na aktywną</span>. Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.
 
-Nasz bohater działa, wszystko idzie świetnie, ale – jak to w życiu – nagle nadchodzi klęska. To sytuacja, która pozornie niweczy cały dotychczasowy plan. Ale czy na dobre? Oczywiście, że nie. Twój bohater przeszedł już tak wiele, że w dobrych książkach zawsze znajduje rozwiązanie.
+Nasz bohater działa, wszystko idzie świetnie, ale – jak to w życiu – **nagle nadchodzi klęska**. <span class="highlight-marker">To sytuacja, która pozornie niweczy cały dotychczasowy plan.</span> Ale czy na dobre? Oczywiście, że nie. Twój bohater przeszedł już tak wiele, że w dobrych książkach zawsze znajduje rozwiązanie.
 
-Klęska to moment, w którym udowadnia się czytelnikowi, że stworzyło się logiczną historię i postacie pełne sprytu oraz woli walki. To tylko umacnia czytelnika w przekonaniu, że Twoja opowieść jest angażująca. Jeśli po midpoincie wszystko szłoby gładko, historię można by zakończyć w trzech kolejnych rozdziałach. Możesz też nie wprowadzać spektakularnej porażki, ale tak sterować wydarzeniami, by czytelnik siedział jak na szpilkach, czekając, aż coś runie.
+**Klęska to moment, w którym udowadnia się czytelnikowi, że stworzyło się logiczną historię i postacie pełne sprytu oraz woli walki.** To tylko umacnia czytelnika w przekonaniu, że Twoja opowieść jest angażująca. 
+
+<div class="blog-highlight" markdown="1">
+Jeśli po midpoincie wszystko szłoby gładko, historię można by zakończyć w trzech kolejnych rozdziałach. Możesz też nie wprowadzać spektakularnej porażki, ale tak sterować wydarzeniami, by czytelnik siedział jak na szpilkach, czekając, aż coś runie.
+</div>
 
 ## Grzęzawisko aktu II – w czym leży problem?
 
 Dlaczego ten etap sprawia autorom tyle trudności? Oto najczęstsze grzechy środkowej części książki:
 
-* **Brak jasnego celu:** Bohaterowie kręcą się w kółko, a fabuła stoi w miejscu, bo po drodze zagubił się głównym motyw i dążenia postaci.
+* **Brak jasnego celu:** Bohaterowie kręcą się w kółko, a fabuła stoi w miejscu, bo po drodze zagubił się główny motyw i dążenia postaci.
 * **Sceny-zapychacze:** Pojawiają się rozdziały, które nic nie wnoszą do akcji ani rozwoju bohaterów – służą jedynie dobiciu do założonej liczby stron.
 * **Powtarzalność:** Bohater napotyka wciąż takie same przeszkody i pokonuje je w identyczny sposób, przez co historia staje się monotonna i przewidywalna.
 
@@ -237,15 +241,16 @@ Wniosek z tego wszystkiego jest prosty: trzyaktowa struktura to Twoje najlepsze 
 
 Trzymanie się tych ram daje Ci też pewność, że zachowujesz nienaganny ciąg przyczynowo-skutkowy. 
 
-<blockquote>
-    Dobra fabuła nie opiera się na słowach „a potem”. Każdy wątek i każda scena musi wynikać ze słów „dlatego” lub „ale”.
-</blockquote>
+<div class="blog-quote" markdown="1">
+Dobra fabuła nie opiera się na słowach „a potem”. Każdy wątek i każda scena musi wynikać ze słów „dlatego” lub „ale”.
+</div>
 
 Bohater podjął decyzję, <span class="highlight-marker">dlatego</span> spotkała go kara, <span class="highlight-marker">ale</span> na swojej drodze poznał sprzymierzeńca, <span class="highlight-marker">dlatego</span> postanowił walczyć dalej. Właśnie tak tworzy się historie, od których czytelnik nie potrafi się oderwać.
 
 ---
 
-<div class="sticky-note">
-    <strong>Najważniejsze na dziś:</strong><br><br>
-    Struktura trzech aktów to nie klatka ograniczająca Twoją kreatywność, ale drogowskaz dla czytelnika. Dbając o katalizator, midpoint i logiczny finał, dajesz odbiorcy mapę, dzięki której nie zgubi się w Twoim świecie i z własnej woli przewróci kolejną stronę.
+<div class="sticky-note" markdown="1">
+**Najważniejsze na dziś:**
+
+Struktura trzech aktów to nie klatka ograniczająca Twoją kreatywność, ale drogowskaz dla czytelnika. Dbając o katalizator, midpoint i logiczny finał, dajesz odbiorcy mapę, dzięki której nie zgubi się w Twoim świecie i z własnej woli przewróci kolejną stronę.
 </div>
