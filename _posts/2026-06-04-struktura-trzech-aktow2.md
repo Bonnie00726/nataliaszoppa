@@ -193,7 +193,9 @@ To najtrudniejsza część, bo najłatwiej wpaść tu w pułapkę „bohatera do
 
 W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. To są tzw. punkty nacisku (*pinch points*). Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio od samego antagonisty. To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron. Każda kolejna kłoda to wyzwanie, które ich kształtuje.
 
+<div class="blog-highlight" markdown="1">
 W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest punkt środkowy (**midpoint**).
+</div>
 
 Jego zadaniem jest <span class="highlight-marker">przełączenie bohatera z postawy reaktywnej na aktywną</span>. Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.
 
