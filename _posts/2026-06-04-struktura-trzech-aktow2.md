@@ -193,7 +193,7 @@ To najtrudniejsza część, bo najłatwiej wpaść tu w pułapkę „bohatera do
 
 W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. To są tzw. **punkty nacisku (*pinch points*)**.  <span class="highlight-marker">Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio od samego antagonisty.</span> To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron. Każda kolejna kłoda to wyzwanie, które ich kształtuje.
 
- <span class="highlight-marker">W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować</span>, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest punkt środkowy (**midpoint**).
+ <span class="highlight-marker">W końcu musi jednak przyjść moment, w którym bohater powie: „Dość!” i zacznie reagować</span>, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest **punkt środkowy** (**midpoint**).
 
 Jego zadaniem jest <span class="highlight-marker">przełączenie bohatera z postawy reaktywnej na aktywną</span>. Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.
 
@@ -239,7 +239,7 @@ Wniosek z tego wszystkiego jest prosty: trzyaktowa struktura to Twoje najlepsze 
 
 Trzymanie się tych ram daje Ci też pewność, że zachowujesz nienaganny ciąg przyczynowo-skutkowy. 
 
-<div class="blog-quote" markdown="1">
+<div class="blog-highlight" markdown="1">
 Dobra fabuła **nie opiera** się na słowach **„a potem”**. Każdy wątek i każda scena musi **wynikać ze słów „dlatego” lub „ale”**.
 </div>
 
