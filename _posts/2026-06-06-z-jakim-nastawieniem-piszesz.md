@@ -15,9 +15,9 @@ Twój język, struktura tekstu, a nawet sam pomysł <span class="highlight-marke
 
 Nie ma w tym jednak żadnej magii, to czysta psychologia:
 
-<blockquote>
-    Jeśli człowiek ma jasno wyznaczony cel, podświadomie dopasuje do niego swoje działania (w tym również język i formę przekazu), by go osiągnąć.
-</blockquote>
+<div class="blog-highlight" markdown="1">
+Jeśli człowiek ma jasno wyznaczony cel, podświadomie dopasuje do niego swoje działania (w tym również język i formę przekazu), by go osiągnąć.
+</div>
 
 Jeśli głównym celem autora jest zarobek, będzie pisał w taki sposób, aby odbiorca był zadowolony. Jeśli jednak jedynym celem było po prostu samo wydanie książki, autor pisze przede wszystkim dla siebie, według własnych zasad i intuicji.
 
@@ -30,15 +30,15 @@ Ten ukryty cel zdradza zresztą nie tylko sama powieść, ale też to, w jaki sp
 
 <h2 id="piszesz-dla-siebie-czy-dla-czytelnika">Piszesz dla siebie czy dla czytelnika?</h2>
 
-Jasne, początki zawsze są dla Ciebie – i to zupełnie naturalny, wręcz niezbędny etap twórczości. Piszesz, bo czujesz taką potrzebę, bo zachwyciła Cię jakaś książka i chcesz stworzyć coś równie inspirującego, albo po prostu sprawia Ci to czystą frajdę. Powodów jest mnóstwo i wszystkie są świetne.
+Jasne, początki zawsze są dla Ciebie – i to zupełnie naturalny, wręcz niezbędny etap twórczości. Piszesz, bo czujesz taką potrzebę, bo zachwyciła Cię jakaś książka i chcesz stworzyć coś równie inspirującego albo po prostu sprawia Ci to czystą frajdę. Powodów jest mnóstwo i wszystkie są świetne.
 
 Problem pojawia się w chwili, gdy zaczynasz na poważnie myśleć o wydaniu książki. Włożyłaś w swoje dzieło mnóstwo pracy i wysiłku, więc zakładasz, że wszystkim się spodoba, a odbiorcy docenią Twój wkład i będą się zachwycać. Ale czy na pewno? 
 
 Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. Nie musi wiedzieć, dlaczego w ogóle usiadłaś do klawiatury. 
 
-<blockquote>
-    Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas.
-</blockquote>
+<div class="blog-highlight" markdown="1">
+Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas.
+</div>
 
 Jeśli Twoja strona tej wymiany jest pusta, odbiorca <span class="highlight-marker">po prostu zamknie książkę i odejdzie</span>.
 
@@ -56,19 +56,26 @@ Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*)
 
 Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-*„Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować”.* [(Źródło cytatu)](https://lithub.com/kurt-vonneguts-greatest-writing-advice/)
+<div class="blog-quote" markdown="1">
+Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować.
+<span class="blog-quote-author">~ Kurt Vonnegut, <a href="https://lithub.com/kurt-vonneguts-greatest-writing-advice/" target="_blank">"8 basics of creative writing"</a></span>
+</div>
 
 Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
-Na koniec zostawię Cię jeszcze z cytatem George'ego Orwella: 
+Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
 
-*„Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym”.* *(George Orwell, Dlaczego piszę?)*
+<div class="blog-quote" markdown="1">
+Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym.
+<span class="blog-quote-author">~ George Orwell, "Dlaczego piszę?"</span>
+</div>
 
 Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="highlight-marker">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
 ---
 
-<div class="sticky-note">
-    <strong>Najważniejsze na dziś:</strong><br><br>
-    Marzenie o publikacji to świetny zapalnik do działania, ale Twoim ostatecznym zadaniem jako pisarza jest utrzymanie uwagi czytelnika. Odbiorca musi sam, z własnej woli, chcieć przewrócić kolejną stronę. Na samym końcu tylko to ma realne znaczenie.
+<div class="sticky-note" markdown="1">
+**Najważniejsze na dziś:**
+
+Marzenie o publikacji to świetny zapalnik do działania, ale Twoim ostatecznym zadaniem jako pisarza jest utrzymanie uwagi czytelnika. Odbiorca musi sam, z własnej woli, chcieć przewrócić kolejną stronę. Na samym końcu tylko to ma realne znaczenie.
 </div>
