@@ -4,40 +4,91 @@ title: Redakcja, korekta, skład
 ---
 
 <style>
-/* Style dla nowych sekcji: Ścieżka Autora i Autodiagnostyka */
-.author-path { 
-    display: flex; 
-    flex-wrap: nowrap; 
-    gap: 10px; 
-    justify-content: space-between; 
-    align-items: center; 
-    margin-top: 40px; 
-    width: 100%;
-    overflow-x: auto; 
-    padding-bottom: 15px; 
+/* ========================================= */
+/* 1. UKRYCIE DOMYŚLNEGO MENU TYLKO NA GŁÓWNEJ */
+/* ========================================= */
+#main-nav { display: none !important; }
+
+/* ========================================= */
+/* 2. STYLE NOWEJ SEKCJI HERO                */
+/* ========================================= */
+.text-gradient { background: linear-gradient(90deg, #8134af, #dd5e40); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
+.hero-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; font-family: 'Plus Jakarta Sans', sans-serif;}
+.hero-container { max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px; }
+.hero-upper { background-color: #ffffff; width: 100%; padding: 40px 0 0 0; }
+.hero-navbar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 80px; position: relative; z-index: 30; }
+.hero-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: #111111; text-decoration: none; }
+.hero-nav-links { display: flex; gap: 30px; align-items: center; list-style: none; margin: 0; padding: 0;}
+.hero-nav-links a { text-decoration: none; color: #111111; font-size: 15px; font-weight: 500; transition: color 0.2s ease; }
+.hero-nav-links a:hover, .hero-nav-links a.active { color: #8134af; }
+.hero-nav-btn-text { color: #dd5e40 !important; font-weight: 600 !important; font-size: 15px !important; text-decoration: none !important; }
+
+.content-flex { display: flex; gap: 50px; width: 100%; }
+.col-left { width: 380px; flex-shrink: 0; }
+.col-right { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+.upper-left { height: 280px; position: relative; }
+.upper-right { height: 280px; }
+
+/* Książka w Hero */
+.floating-book-wrapper { position: absolute; top: 0; left: 0; width: 380px; height: 560px; z-index: 10; }
+.book-mockup { width: 100%; height: 100%; background: linear-gradient(135deg, #8134af 0%, #dd5e40 100%); border-radius: 4px 15px 15px 4px; box-shadow: 25px 30px 60px rgba(0, 0, 0, 0.25), 5px 10px 20px rgba(0, 0, 0, 0.1); position: relative; display: flex; overflow: hidden; }
+.book-spine-shadow { width: 25px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.02) 20%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 100%); border-right: 1px solid rgba(0,0,0,0.05); position: absolute; left: 0; top: 0; z-index: 5; }
+.book-cover-inner { padding: 50px 45px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; position: relative; }
+.cover-main { display: flex; flex-direction: column; }
+.cover-line { width: 35px; height: 2px; background: #ffffff; margin-bottom: 25px; }
+.cover-title { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; line-height: 1.15; color: #ffffff; margin-bottom: 8px; }
+.cover-author { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #f1ede8; font-style: italic; margin: 0; }
+
+.hero-title-main { font-family: 'Playfair Display', serif; font-size: 54px; font-weight: 700; line-height: 1.15; color: #111111; margin-bottom: 0; min-height: 2.6em; }
+.cursor { display: inline-block; width: 3px; height: 1em; background: #111111; vertical-align: text-bottom; margin-left: 5px; animation: blink 0.8s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Dół Hero */
+.hero-lower { background-color: #151515; color: #ffffff; width: 100%; padding: 0 0 100px 0; font-family: 'Plus Jakarta Sans', sans-serif;}
+.lower-left { height: 280px; }
+.lower-right { height: 280px; }
+.bottom-tags { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: #888888; margin-bottom: 20px; }
+.bottom-tags span { color: #555555; margin: 0 4px; }
+.bottom-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: #ffffff; margin-bottom: 18px; line-height: 1.2; letter-spacing: 0.5px; }
+.bottom-desc { font-size: 20px; line-height: 1.6; color: #dddddd; max-width: 520px; font-weight: 300; margin: 0;}
+
+@media (max-width: 992px) {
+    .content-flex { flex-direction: column; text-align: center; gap: 40px; }
+    .col-left { width: 100%; display: flex; justify-content: center; }
+    .upper-left { height: auto; }
+    .upper-right { height: auto; align-items: center; }
+    .floating-book-wrapper { position: relative; width: 340px; height: 500px; margin: 0 auto; }
+    .hero-title-main { font-size: 40px; min-height: 3.2em; }
+    .hero-navbar { flex-direction: column; gap: 20px; margin-bottom: 40px; }
+    .lower-left { display: none; }
+    .hero-lower { padding-top: 60px; }
+    .lower-right { height: auto; align-items: center; }
+    .bottom-desc { margin: 0 auto; }
+    .hero-nav-links { flex-direction: column; gap: 15px;}
 }
-.path-step { 
-    background: #fff; 
-    border: 1px solid #eaeaea; 
-    padding: 15px 10px; 
-    border-radius: 8px; 
-    text-align: center; 
-    flex: 1 0 130px; 
-    font-weight: bold; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02); 
-}
-.path-step span { 
-    display: block; 
-    font-size: 0.8em; 
-    font-weight: normal; 
-    color: #666; 
-    margin-bottom: 5px; 
-}
-.path-arrow { 
-    color: var(--grad-end, #d4af37); 
-    font-size: 1.5rem; 
-    flex-shrink: 0; 
-}
+
+/* ========================================= */
+/* 3. ZAKŁADKI W SEKCJI O MNIE               */
+/* ========================================= */
+.about-tabs-nav { display: flex; gap: 24px; border-bottom: 1px solid var(--paper-mid); margin-bottom: 28px; flex-wrap: wrap; }
+.tab-btn { background: none; border: none; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--ink-muted); padding: 10px 0; cursor: pointer; position: relative; transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active { color: var(--grad-start); }
+.tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0%; height: 2px; background: var(--grad); transition: width 0.3s ease; }
+.tab-btn.active::after { width: 100%; }
+.tab-content { display: none; animation: tabFadeIn 0.4s ease forwards; }
+.tab-content.active { display: block; }
+@keyframes tabFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.tab-content p { font-family: var(--sans); color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 20px; font-weight: 300; line-height: 1.7; }
+.tab-content ul.modal-list { margin-top: 10px; }
+
+/* ========================================= */
+/* 4. ZACHOWANE STYLE ORYGINALNE             */
+/* ========================================= */
+.author-path { display: flex; flex-wrap: nowrap; gap: 10px; justify-content: space-between; align-items: center; margin-top: 40px; width: 100%; overflow-x: auto; padding-bottom: 15px; }
+.path-step { background: #fff; border: 1px solid #eaeaea; padding: 15px 10px; border-radius: 8px; text-align: center; flex: 1 0 130px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.path-step span { display: block; font-size: 0.8em; font-weight: normal; color: #666; margin-bottom: 5px; }
+.path-arrow { color: var(--grad-end, #d4af37); font-size: 1.5rem; flex-shrink: 0; }
 .diag-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
 .diag-card { background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 4px solid var(--grad-end, #d4af37); display: flex; flex-direction: column; }
 .diag-card h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
@@ -51,62 +102,23 @@ title: Redakcja, korekta, skład
     .path-arrow { display: none; }
 }
 
-/* Pasek Specjalizacji (Jasny) pod Hero */
-.specializations-bar {
-    background: var(--paper-warm, #fdfbf7); 
-    padding: 30px 20px;
-    border-bottom: 1px solid var(--paper-mid, #eaeaea);
-}
-.spec-container {
-    display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto;
-}
-.spec-item {
-    display: flex; align-items: center; gap: 12px; color: var(--ink, #222); font-weight: 600; font-size: 0.95rem;
-}
-.spec-item i {
-    background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 100%));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.6rem;
-}
+.specializations-bar { background: var(--paper-warm, #fdfbf7); padding: 30px 20px; border-bottom: 1px solid var(--paper-mid, #eaeaea); }
+.spec-container { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; }
+.spec-item { display: flex; align-items: center; gap: 12px; color: var(--ink, #222); font-weight: 600; font-size: 0.95rem; }
+.spec-item i { background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 100%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.6rem; }
 
-/* Pasek Statystyk (Ciemny) */
 .stats-bar { background: var(--ink, #1a1525); padding: 60px 0; color: #fff; }
-/* Pasek Statystyk (Ciemny) */
-.stats-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* <-- To rozwiązuje problem fali (zamiast center) */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+.stats-container { display: flex; justify-content: space-between; align-items: flex-start; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .stat-block { text-align: center; flex: 1; padding: 0 15px; }
-.stat-num {
-    font-family: var(--serif, Georgia, serif); font-size: 3.8rem; font-weight: 700;
-    background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 50%, #e8772a 100%));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    margin-bottom: 8px; line-height: 1; display: inline-block; 
-}
+.stat-num { font-family: var(--serif, Georgia, serif); font-size: 3.8rem; font-weight: 700; background: var(--grad-text, linear-gradient(135deg, #6b35c8 0%, #b8409a 50%, #e8772a 100%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; line-height: 1; display: inline-block; }
 .stat-num sup { font-size: 0.5em; vertical-align: super; }
 .stat-title { font-weight: 700; font-size: 1.1rem; margin-bottom: 5px; color: #ffffff; }
 .stat-sub { font-size: 0.85rem; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
-.stat-divider {
-    width: 1px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.15);
-    margin-top: 15px; /* <-- Obniżamy nieco linie, żeby nadal ładnie celowały w środek liczb */
-}
+.stat-divider { width: 1px; height: 80px; background: rgba(255, 255, 255, 0.15); margin-top: 15px; }
 
-/* SZYBKIE FAQ */
-.faq-split-container {
-    display: flex; max-width: 1000px; margin: 60px auto 0; border-radius: var(--radius-lg);
-    overflow: hidden; box-shadow: var(--shadow-med); border: 1px solid var(--paper-mid);
-}
+.faq-split-container { display: flex; max-width: 1000px; margin: 60px auto 0; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-med); border: 1px solid var(--paper-mid); }
 .faq-questions { flex: 0 0 45%; background: #fff; display: flex; flex-direction: column; }
-.faq-q-item {
-    padding: 22px 28px; font-family: var(--sans); font-size: 1.05rem; font-weight: 600;
-    color: var(--ink); border-bottom: 1px solid var(--paper-mid); cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;
-}
+.faq-q-item { padding: 22px 28px; font-family: var(--sans); font-size: 1.05rem; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--paper-mid); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease; }
 .faq-q-item:last-child { border-bottom: none; }
 .faq-q-item:hover { background: var(--paper-warm); }
 .faq-q-item i { color: var(--ink-muted); font-size: 1.2rem; transition: color 0.3s; }
@@ -114,53 +126,19 @@ title: Redakcja, korekta, skład
 .faq-q-item.active i { color: var(--grad-start); }
 .faq-answers { flex: 1; background: var(--paper-warm); padding: 48px; display: flex; flex-direction: column; justify-content: center; }
 .faq-a-item { display: none; animation: fadeIn 0.4s ease forwards; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .faq-a-item.active { display: block; }
 .faq-a-item h3 { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin-bottom: 20px; }
 .faq-a-item p { font-family: var(--sans); font-size: 1rem; color: var(--ink-soft); line-height: 1.7; font-weight: 300; margin-bottom: 16px; }
 .faq-a-item p:last-child { margin-bottom: 0; }
 
-/* Style wnętrza modali: Obejmuje / Nie obejmuje */
-.modal-split-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    margin-bottom: 24px;
-}
-.modal-split-box {
-    border-radius: var(--radius);
-    padding: 20px;
-    border: 1px solid;
-}
-.modal-split-box h4 {
-    font-family: var(--sans);
-    font-size: 1rem;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.modal-split-box ul {
-    padding-left: 20px;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
-}
+.modal-split-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 24px; }
+.modal-split-box { border-radius: var(--radius); padding: 20px; border: 1px solid; }
+.modal-split-box h4 { font-family: var(--sans); font-size: 1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.modal-split-box ul { padding-left: 20px; font-size: 0.95rem; line-height: 1.5; margin: 0; }
 .modal-split-box ul li { margin-bottom: 8px; }
 .modal-split-box ul li:last-child { margin-bottom: 0; }
 
-/* Box podsumowujący efekt współpracy */
-.modal-delivery-box {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    background: var(--paper-warm);
-    border: 1px solid var(--paper-mid);
-    border-left: 4px solid var(--grad-start);
-    border-radius: var(--radius);
-    padding: 20px;
-    margin-bottom: 24px;
-}
+.modal-delivery-box { display: flex; gap: 16px; align-items: flex-start; background: var(--paper-warm); border: 1px solid var(--paper-mid); border-left: 4px solid var(--grad-start); border-radius: var(--radius); padding: 20px; margin-bottom: 24px; }
 .modal-delivery-box i { font-size: 2rem; color: var(--grad-start); flex-shrink: 0; }
 .modal-delivery-box strong.delivery-title { display: block; margin-bottom: 6px; font-size: 1.05rem; color: var(--ink); }
 .modal-delivery-box p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
@@ -178,31 +156,58 @@ title: Redakcja, korekta, skład
 }
 </style>
 
-<header class="hero">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1520179432903-03d08e6ef07a?q=80&w=1170&auto=format&fit=crop" alt="Tło">
-    </div>
-    <div class="hero-content">
-      <div class="bell-notice-wrap">
-    <div class="bell-notice" id="bell-notice">
-        <div class="bell-circle">
-            <span class="bell-icon" id="bell-icon">🔔</span>
+<div class="hero-wrapper">
+    <div class="hero-upper">
+        <div class="hero-container">
+            <nav class="hero-navbar">
+                <a href="{{ site.baseurl }}/index.html" class="hero-logo">Natalia Szoppa</a>
+                <ul class="hero-nav-links">
+                    <li><a href="{{ site.baseurl }}/index.html" class="active">Strona Główna</a></li>
+                    <li><a href="{{ site.baseurl }}/o-mnie.html">O mnie</a></li>
+                    <li><a href="{{ site.baseurl }}/cennik.html">Cennik</a></li>
+                    <li><a href="{{ site.baseurl }}/faqs.html">FAQs</a></li>
+                    <li><a href="mailto:nataliaszoppa@gmail.com" class="hero-nav-btn-text">Napisz do mnie</a></li>
+                </ul>
+            </nav>
+
+            <div class="content-flex">
+                <div class="col-left upper-left">
+                    <div class="floating-book-wrapper">
+                        <div class="book-mockup">
+                            <div class="book-spine-shadow"></div>
+                            <div class="book-cover-inner">
+                                <div class="cover-main">
+                                    <div class="cover-line"></div>
+                                    <h2 class="cover-title">Tytuł<br>Twojej<br>Książki</h2>
+                                    <p class="cover-author">Twój Bestseller</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-right upper-right">
+                    <h1 class="hero-title-main">
+                        Twoje <span id="typewriter-word" class="text-gradient"></span><span class="cursor"></span><br>
+                        zasługują na najlepszą oprawę
+                    </h1>
+                </div>
+            </div>
         </div>
-        <div class="bell-pill" id="bell-pill">
-            <span class="bell-pill-text">Przyjmuję nowe zlecenia</span>
+    </div>
+
+    <div class="hero-lower">
+        <div class="hero-container">
+            <div class="content-flex">
+                <div class="col-left lower-left"></div>
+                <div class="col-right lower-right">
+                    <p class="bottom-tags">Redakcja <span>&bull;</span> korekta <span>&bull;</span> skład DTP</p>
+                    <p class="bottom-title">Od szkicu do gotowej publikacji</p>
+                    <p class="bottom-desc">Pomagam twórcom publikować teksty, które robią trwałe wrażenie.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-        <div class="hero-eyebrow reveal delay-1">OD SZKICU DO GOTOWEJ PUBLIKACJI</div>
-        
-        <h1 class="reveal delay-2" style="min-height: 2.6em;">
-            Twoje <em id="typewriter-word" class="grad-type"></em><span class="cursor"></span><br>
-            zasługują na najlepszą oprawę
-        </h1>
-         <p class="hero-sub">Pomagam twórcom publikować teksty, które robią trwałe wrażenie.</p>
-    </div>
-</header>
 
 <div class="specializations-bar reveal">
     <div class="spec-container">
@@ -216,45 +221,35 @@ title: Redakcja, korekta, skład
 
 <div class="stats-bar reveal delay-1">
     <div class="stats-container">
-        
         <div class="stat-block">
             <div class="stat-num">10<sup>+</sup></div>
             <div class="stat-title">Lat doświadczenia</div>
             <div class="stat-sub">w pracy z językiem</div>
         </div>
-        
         <div class="stat-divider"></div>
-        
         <div class="stat-block">
             <div class="stat-num">120<sup>+</sup></div>
             <div class="stat-title">Projektów</div>
             <div class="stat-sub">od beletrystyki po gry</div>
         </div>
-        
         <div class="stat-divider"></div>
-        
         <div class="stat-block">
             <div class="stat-num">4</div>
             <div class="stat-title">Wydawnictwa</div>
             <div class="stat-sub">regularna współpraca</div>
         </div>
-
         <div class="stat-divider"></div>
-        
         <div class="stat-block">
             <div class="stat-num">3</div>
             <div class="stat-title">Specjalizacje</div>
             <div class="stat-sub">edytorstwo, tłumaczenia, glottodydaktyka</div>
         </div>
-
         <div class="stat-divider"></div>
-
         <div class="stat-block">
             <div class="stat-num">48<sup>h</sup></div>
             <div class="stat-title">Czas odpowiedzi</div>
             <div class="stat-sub">na zapytanie i darmową wycenę</div>
         </div>
-
     </div>
 </div>
    
@@ -266,13 +261,37 @@ title: Redakcja, korekta, skład
                 <div class="about-img-caption">„Jeśli kiedyś powiem coś mądrego, to te słowa wylądują w tej ramce!".</div>
             </div>
             <div class="about-text reveal delay-1">
-                <div class="eyebrow">O mnie</div>
+                <div class="eyebrow">Poznajmy się</div>
                 <h2 class="section-h2"> Cześć! Mam na imię <em>Natalia</em></h2>
-                <p>I tak jak ty jaram się historiami – tymi na papierze, na ekranie, w formie słownej i obrazkowej – więc mamy już coś wspólnego. Zobaczmy, w czym jeszcze nadajemy na tych samych falach.</p>
-                <p>Gdy nie pracuję…</p>
-                <p>…moja codzienność to miks, który napędza moją wyobraźnię. Kolekcjonuję Nendoroidy i wsiąkam w światy anime, resetuję głowę przy trash TV lub stawiam sobie tarota. Czasami próbuję uczyć się japońskich kanji… Piję wyłącznie czarną i zieloną herbatę oraz gromadzę to, co ma dla mnie wartość: książki, mangi, setki zdjęć mojego psa i tumblerowskie perełki blogowe dotyczące pisarstwa. </p>
-                <p>A w pracy? </p>
-                <p>Czytam i analizuję – rozkładam historie na czynniki pierwsze. Szukam rozwiązań – tam, gdzie inni widzą problem, ja staram się zobaczyć potencjał. Łączę kropki, korzystając z wiedzy zdobytej na studiach i kursach online (zarówno tych z Udemy, jak i tych za gruby hajs). Wszystko po to, by pomagać tworzyć opowieści, które zostają w głowie.</p>
+                
+                <div class="about-tabs-nav">
+                    <button class="tab-btn active" data-tab="tab-omnie">O mnie</button>
+                    <button class="tab-btn" data-tab="tab-praca">Jak pracuję z tekstem</button>
+                    <button class="tab-btn" data-tab="tab-doswiadczenie">Doświadczenie</button>
+                </div>
+
+                <div class="tab-content active" id="tab-omnie">
+                    <p>I tak jak ty jaram się historiami – tymi na papierze, na ekranie, w formie słownej i obrazkowej – więc mamy już coś wspólnego. Zobaczmy, w czym jeszcze nadajemy na tych samych falach.</p>
+                    <p><strong>Gdy nie pracuję…</strong></p>
+                    <p>…moja codzienność to miks, który napędza moją wyobraźnię. Kolekcjonuję Nendoroidy i wsiąkam w światy anime, resetuję głowę przy trash TV lub stawiam sobie tarota. Czasami próbuję uczyć się japońskich kanji… Piję wyłącznie czarną i zieloną herbatę oraz gromadzę to, co ma dla mnie wartość: książki, mangi, setki zdjęć mojego psa i tumblerowskie perełki blogowe dotyczące pisarstwa.</p>
+                </div>
+
+                <div class="tab-content" id="tab-praca">
+                    <p><strong>A w pracy?</strong></p>
+                    <p>Czytam i analizuję – rozkładam historie na czynniki pierwsze. Szukam rozwiązań – tam, gdzie inni widzą problem, ja staram się zobaczyć potencjał.</p>
+                    <p>Łączę kropki, korzystając z wiedzy zdobytej na studiach i kursach online (zarówno tych z Udemy, jak i tych za gruby hajs). Wszystko po to, by pomagać tworzyć opowieści, które zostają w głowie.</p>
+                    <a href="#misja" class="btn-primary" style="margin-top: 10px;">Moja filozofia</a>
+                </div>
+
+                <div class="tab-content" id="tab-doswiadczenie">
+                    <p>Od ponad dekady zajmuję się profesjonalną pracą z językiem. Szlifuję teksty twórców niezależnych oraz dużych wydawnictw.</p>
+                    <ul class="modal-list" style="margin-top: 20px;">
+                        <li><strong>10+ lat</strong> aktywnego doświadczenia edytorskiego.</li>
+                        <li><strong>120+ zrealizowanych projektów</strong> (od beletrystyki po gry fabularne).</li>
+                        <li>Regularna i zaufana współpraca z <strong>4 wydawnictwami</strong>.</li>
+                        <li>Trzy mocne specjalizacje: edytorstwo, tłumaczenia oraz glottodydaktyka.</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -295,27 +314,21 @@ title: Redakcja, korekta, skład
             Autodiagnoza
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Sprawdź fundamenty historii)</span>
           </div>
-
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
-
           <div class="path-step">
             <i class="las la-search" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 2</span>
             Darmowa Próbka
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Ocena wybranego fragmentu)</span>
           </div>
-
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
-
           <div class="path-step">
             <i class="las la-project-diagram" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 3</span>
             Red. strukturalna
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Pracujemy nad fabułą i strukturą)</span>
           </div>
-
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
-
           <div class="path-step">
             <i class="las la-pen-fancy" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 4</span>
@@ -337,7 +350,6 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
         <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim wyślesz tekst, <br><em>sprawdź fundamenty</em></h2>
-        
         <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 50px auto; max-width: 800px;">
            Szanuję Twój czas i budżet. Wierzę, że jako autor możesz samodzielnie podreperować fundamenty swojej historii. Zanim zdecydujesz się na redakcję językową, zlokalizuj słabe punkty w swoim pomyśle.
         </p>
@@ -353,7 +365,6 @@ title: Redakcja, korekta, skład
                 </ul>
                 <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz Arkusz (PDF)</a>
             </div>
-
             <div class="diag-card" style="border-top-color: var(--grad-start);">
                 <h3><i class="las la-envelope-open-text"></i> 2. Darmowa próbka (9k znaków)</h3>
                 <p>Wypełniłeś/aś arkusz, ale masz wątpliwości? Prześlij mi fragment tekstu (do 9000 znaków). Sprawdzę <b>jeden</b> wybrany przez Ciebie element:</p>
@@ -375,7 +386,6 @@ title: Redakcja, korekta, skład
                 <div class="eyebrow">Moja filozofia</div>
                 <h2 class="section-h2">Jak pracuję z Twoim <em>tekstem</em></h2>
                 <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
-               
                 <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko wena i pomysł są najważniejsze w procesie twórczym. Każde słowo, każdy drobny gest, każdy opis pozwala czytelnikowi stać się częścią Twojej wizji, a nie tylko biernym obserwatorem. </p>
                  <div class="blockquote">
                     <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. </p>
@@ -437,17 +447,14 @@ title: Redakcja, korekta, skład
     </div>
     
     <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 40px;">
-        
         <div class="service-card service-card--flex">
             <div class="service-icon"><i class="las la-project-diagram"></i></div>
             <h3>Redakcja Strukturalna</h3>
             <p>Analizuję ciąg przyczynowo-skutkowy, motywacje bohaterów, tempo akcji i logikę świata.</p>
-            
             <ul class="card-list">
                 <li><strong>Forma:</strong> Praca w jednym pliku! Rozbudowane komentarze i adnotacje bezpośrednio w Twoim tekście.</li>
                 <li><strong>Cel:</strong> Wskazuję problemy fabularne, a Ty samodzielnie je naprawiasz.</li>
             </ul>
-            
             <button class="read-more-btn" data-target="modal-struktura">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
         </div>
 
@@ -456,12 +463,10 @@ title: Redakcja, korekta, skład
             <div class="service-icon"><i class="las la-pen-fancy"></i></div>
             <h3>Szlif językowy</h3>
             <p>Dla tekstów o dopracowanej strukturze. Eliminuję powtórzenia, dbam o poprawność gramatyczną i stylistyczną.</p>
-            
             <ul class="card-list">
                 <li><strong>Zawiera:</strong> Redakcję językową i/lub korektę.</li>
                 <li><strong>Wymóg:</strong> Ukończona autodiagnoza i logiczna fabuła.</li>
             </ul>
-            
             <button class="read-more-btn" data-target="modal-jezyk">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
         </div>
 
@@ -469,15 +474,12 @@ title: Redakcja, korekta, skład
             <div class="service-icon"><i class="las la-layer-group"></i></div>
             <h3>Skład DTP i E-booki</h3>
             <p>Zamieniam Twój tekst w plik gotowy do druku i dystrybucji.</p>
-            
             <ul class="card-list">
                 <li><strong>Forma:</strong> Pliki PDF oraz formaty EPUB/MOBI.</li>
                 <li><strong>Zawiera:</strong> Kontrolę jakości i eliminację błędów (wdowy, bękarty itp.).</li>
             </ul>
-            
             <button class="read-more-btn" data-target="modal-dtp">Sprawdź pakiet <i class="las la-arrow-right"></i></button>
         </div>
-
     </div>
   </div>
 </section>
@@ -502,51 +504,37 @@ title: Redakcja, korekta, skład
         
         <div class="faq-split-container reveal delay-2">
             <div class="faq-questions">
-                <div class="faq-q-item active" data-target="faq-a-1">
-                    Jakie są etapy współpracy? <i class="las la-angle-right"></i>
-                </div>
-                <div class="faq-q-item" data-target="faq-a-2">
-                    Czy redakcja językowa uratuje słabą fabułę? <i class="las la-angle-right"></i>
-                </div>
-                <div class="faq-q-item" data-target="faq-a-3">
-                    Jak wygląda wycena? <i class="las la-angle-right"></i>
-                </div>
-                <div class="faq-q-item" data-target="faq-a-4">
-                    W jakim formacie przesłać tekst? <i class="las la-angle-right"></i>
-                </div>
-                <div class="faq-q-item" data-target="faq-a-5">
-                    Czy wystawiasz faktury? <i class="las la-angle-right"></i>
-                </div>
+                <div class="faq-q-item active" data-target="faq-a-1">Jakie są etapy współpracy? <i class="las la-angle-right"></i></div>
+                <div class="faq-q-item" data-target="faq-a-2">Czy redakcja językowa uratuje słabą fabułę? <i class="las la-angle-right"></i></div>
+                <div class="faq-q-item" data-target="faq-a-3">Jak wygląda wycena? <i class="las la-angle-right"></i></div>
+                <div class="faq-q-item" data-target="faq-a-4">W jakim formacie przesłać tekst? <i class="las la-angle-right"></i></div>
+                <div class="faq-q-item" data-target="faq-a-5">Czy wystawiasz faktury? <i class="las la-angle-right"></i></div>
             </div>
             
             <div class="faq-answers">
                 <div class="faq-a-item active" id="faq-a-1">
                     <p>Aby uniknąć płacenia za zbędną pracę, proces jest ściśle podzielony:</p>
-<ol style="padding-left: 20px; line-height: 1.7; margin-top: 10px;">
-    <li>Pobierasz arkusz autodiagnostyki i rzetelnie pracujesz nad swoim tekstem.</li>
-    <li>Możesz skorzystać z darmowej konsultacji.</li>
-    <li>Jeśli czujesz, że potrzebujesz pomocy ze strukturą, wybierasz redakcję strukturalną.</li>
-    <li>Gdy fabuła jest gotowa, zlecasz mi redakcję językową i korektę.</li>
-    <li>Opcjonalnie możesz zdecydować się na skład DTP i korektę poskładową.</li>
-</ol>
+                    <ol style="padding-left: 20px; line-height: 1.7; margin-top: 10px;">
+                        <li>Pobierasz arkusz autodiagnostyki i rzetelnie pracujesz nad swoim tekstem.</li>
+                        <li>Możesz skorzystać z darmowej konsultacji.</li>
+                        <li>Jeśli czujesz, że potrzebujesz pomocy ze strukturą, wybierasz redakcję strukturalną.</li>
+                        <li>Gdy fabuła jest gotowa, zlecasz mi redakcję językową i korektę.</li>
+                        <li>Opcjonalnie możesz zdecydować się na skład DTP i korektę poskładową.</li>
+                    </ol>
                 </div>
                 <div class="faq-a-item" id="faq-a-2">
-                    
                     <p>Nie. Sprawi za to, że tekst będzie poprawny, płynny i piękny stylistycznie, ale nie naprawi nudnej akcji, płaskich bohaterów czy braku logiki wydarzeń, a to może przełożyć się na brak czytelników.</p>
                     <p>Jeśli czujesz, że historia jest jakaś nijaka, potrzebujesz najpierw redakcji strukturalnej.</p>
                 </div>
                 <div class="faq-a-item" id="faq-a-3">
-                   
                     <p>Każde zlecenie wyceniam indywidualnie po zapoznaniu się z całym materiałem. Cena zależy od jakości tekstu, wybranego pakietu i terminu.</p>
                     <p>Wycena, którą odsyłam, jest całkowicie darmowa i niezobowiązująca.</p>
                 </div>
                 <div class="faq-a-item" id="faq-a-4">
-                   
                     <p>Przyjmuję pliki tekstowe: <strong>.docx (Word).</strong> Z plikami PDF pracuję wyłącznie na etapie korekty poskładowej.</p>
                     <p>Wszystkie ingerencje w tekst zawsze wprowadzam przy użyciu funkcji „Śledź zmiany”.</p>
                 </div>
                 <div class="faq-a-item" id="faq-a-5">
-                   
                     <p>Tak. Prowadzę legalną, jednoosobową działalność gospodarczą. Wystawiam faktury (bez VAT).</p>
                 </div>
             </div>
@@ -564,7 +552,6 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal">Opinie</div>
         <h2 class="section-h2 reveal delay-1">Co mówią <em>twórcy</em>?</h2>
-        
         <div class="reviews-desc reveal delay-2">
             <p>Od lat współpracuję z wydawnictwami. Moje nazwisko znajdziesz w stopkach redakcyjnych dziesiątek książek.</p>
             <p>Teraz otwieram się na bezpośrednią współpracę z niezależnymi twórcami. Chcę, żeby to Twoja opinia była tu pierwsza. Jeśli szukasz kogoś, kto przeniesie wydawniczą jakość prosto do Twojego pliku Word – napisz do mnie.</p>
@@ -651,30 +638,25 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
         <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej <em>informacji</em>?</h2>
-        
-        <div class="tiles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            
+        <div class="tiles-grid">
             <a href="cennik.html" class="tile tile--warm reveal delay-1">
                 <i class="las la-wallet"></i>
                 <h3>Cennik</h3>
                 <p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-            
             <a href="faqs.html" class="tile tile--dark reveal delay-2">
                 <i class="las la-question-circle"></i>
                 <h3>Baza wiedzy (FAQ)</h3>
                 <p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-            
             <a href="https://nataliaszoppa.com/zasady%20wspolpracy.html" class="tile tile--gold reveal delay-3">
                 <i class="las la-tools"></i>
                 <h3>Więcej o współpracy</h3>
                 <p>Dowiedz się, jak przebiega współpraca krok po kroku.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-
         </div>
     </div>
 </section>
@@ -730,10 +712,10 @@ title: Redakcja, korekta, skład
     </div>
   </div>
 </div>
+
 <div id="modal-jezyk" class="modal">
   <div class="modal-content modal-large">
     <span class="close-btn">&times;</span>
-    
     <div class="modal-header">
         <div class="eyebrow-label" style="color: var(--grad-end);">Najczęściej wybierany</div>
         <h3>Redakcja językowa</h3>
@@ -845,100 +827,61 @@ title: Redakcja, korekta, skład
   </div>
 </div>
 
-<div class="grad-line-footer"></div>
-
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // === MODALE ===
-    const readMoreBtns = document.querySelectorAll('.read-more-btn');
-    const closeBtns = document.querySelectorAll('.close-btn');
-    const modals = document.querySelectorAll('.modal');
-
-    readMoreBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetId = btn.getAttribute('data-target');
-            const modal = document.getElementById(targetId);
-            if(modal) {
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden'; 
-            }
-        });
-    });
-
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.closest('.modal').classList.remove('show');
-            document.body.style.overflow = ''; 
-        });
-    });
-
-    modals.forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-
-    // === OBSŁUGA SZYBKIEGO FAQ ===
-    const faqQuestions = document.querySelectorAll('.faq-q-item');
-    const faqAnswers = document.querySelectorAll('.faq-a-item');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            faqQuestions.forEach(q => q.classList.remove('active'));
-            this.classList.add('active');
-            faqAnswers.forEach(a => a.classList.remove('active'));
-            const targetId = this.getAttribute('data-target');
-            const targetAnswer = document.getElementById(targetId);
-            if (targetAnswer) {
-                targetAnswer.classList.add('active');
-            }
-        });
-    });
-
-    // === SILNIK MASZYNY DO PISANIA ===
-    const words = ["teksty", "pomysły", "słowa"];
-    let wordIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typewriterTarget = document.getElementById('typewriter-word');
-    
-    const typeSpeed = 100;       // Prędkość pisania
-    const eraseSpeed = 50;       // Prędkość kasowania
-    const delayBetweenWords = 2000; // Jak długo słowo stoi w całości
-
-    function typeEffect() {
-        if (!typewriterTarget) return;
-
-        const currentWord = words[wordIndex];
+    // JS DLA ZAKŁADEK W SEKCJI O MNIE
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
         
-        if (isDeleting) {
-            typewriterTarget.textContent = currentWord.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            typewriterTarget.textContent = currentWord.substring(0, charIndex + 1);
-            charIndex++;
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Usuń active ze wszystkich przycisków i treści
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Dodaj active do klikniętego przycisku i odpowiedniej treści
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-tab');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    });
+
+    // JS DLA MASZYNY DO PISANIA
+    document.addEventListener('DOMContentLoaded', () => {
+        const words = ["pomysły", "teksty", "słowa"]; 
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterTarget = document.getElementById('typewriter-word');
+        
+        const typeSpeed = 100;
+        const eraseSpeed = 50;       
+        const delayBetweenWords = 2000;
+
+        function typeEffect() {
+            if (!typewriterTarget) return;
+            const currentWord = words[wordIndex];
+            
+            if (isDeleting) {
+                typewriterTarget.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterTarget.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let nextDelay = isDeleting ? eraseSpeed : typeSpeed;
+            if (!isDeleting && charIndex === currentWord.length) {
+                nextDelay = delayBetweenWords;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                nextDelay = 400;
+            }
+            setTimeout(typeEffect, nextDelay);
         }
-
-        let nextDelay = isDeleting ? eraseSpeed : typeSpeed;
-
-        if (!isDeleting && charIndex === currentWord.length) {
-            nextDelay = delayBetweenWords;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            wordIndex = (wordIndex + 1) % words.length;
-            nextDelay = 400; // Pauza przed nowym słowem
-        }
-
-        setTimeout(typeEffect, nextDelay);
-    }
-
-    // Uruchomienie maszyny, jeśli element istnieje na tej podstronie
-    if (typewriterTarget) {
-        typeEffect();
-    }
-});
+        if (typewriterTarget) typeEffect();
+    });
 </script>
