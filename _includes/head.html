@@ -20,11 +20,15 @@
         --paper:      #FFFFFF;
         --paper-warm: #F7F7F7;
         --paper-mid:  #E5E5E5;
-        --grad-start: #6B35C8;
-        --grad-mid:   #B8409A;
-        --grad-end:   #E8772A;
+        --grad-start: #4A154B; /* Zgaszony śliwkowy */
+        --grad-end:   #C26B4D; /* Miedziany pomarańcz */
+        
+        /* Brak środka = piękny, "brudny" gradient pod skosem 135 stopni */
         --grad:       linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
         --grad-text:  linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%);
+        
+        /* Oraz przy okazji zmieniamy neonowy, fioletowy kafelek na pasującą śliwkę */
+        --green:      var(--grad-start);
         --shadow-soft:   0 4px 24px rgba(13,13,13,0.06);
         --shadow-med:    0 8px 40px rgba(13,13,13,0.10);
         --shadow-strong: 0 30px 60px rgba(13,13,13,0.20);
