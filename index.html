@@ -12,43 +12,26 @@ title: Redakcja, korekta, skład
 /* ========================================= */
 /* STYLE NOWEJ SEKCJI HERO                   */
 /* ========================================= */
-
-/* NAPRAWIONE OGONKI W TEKŚCIE Z GRADIENTEM */
 .text-gradient { 
     background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
     background-clip: text; 
     display: inline-block; 
-    padding-bottom: 0.2em;
-    margin-bottom: -0.2em; 
+    padding-bottom: 0.2em; 
+    margin-bottom: -0.2em;
 }
 
 .hero-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; font-family: var(--sans); }
 .hero-container { max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px; }
-.hero-upper { background-color: var(--paper); width: 100%; padding: 40px 0 0 0; }
+.hero-upper { background-color: #ffffff; width: 100%; padding: 40px 0 0 0; }
 .hero-navbar { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 80px; position: relative; z-index: 30; }
 .hero-logo { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--ink); text-decoration: none; }
 .hero-nav-links { display: flex; gap: 30px; align-items: center; list-style: none; margin: 0; padding: 0;}
 .hero-nav-links a { text-decoration: none; color: var(--ink); font-family: var(--sans); font-size: 15px; font-weight: 600; transition: color 0.2s ease; }
 .hero-nav-links a:hover, .hero-nav-links a.active { color: var(--grad-start); }
-
-/* NOWOŚĆ: Efekt glow na linku kontaktowym */
-.hero-nav-btn-text { 
-    color: var(--ink) !important; 
-    font-weight: 700 !important; 
-    font-size: 15px !important; 
-    text-decoration: none !important; 
-    transition: all 0.3s ease; 
-    position: relative;
-    padding: 8px 16px;
-    border-radius: 8px;
-}
-.hero-nav-btn-text:hover { 
-    color: var(--grad-end) !important; 
-    background-color: rgba(129, 52, 175, 0.05); /* Bardzo delikatne fioletowe tło */
-    box-shadow: 0 0 15px rgba(129, 52, 175, 0.1); /* Miękki blask */
-}
+.hero-nav-btn-text { color: var(--ink) !important; font-weight: 700 !important; font-size: 15px !important; text-decoration: none !important; transition: color 0.2s ease; }
+.hero-nav-btn-text:hover { color: var(--grad-end) !important; }
 
 .content-flex { display: flex; gap: 50px; width: 100%; }
 .col-left { width: 380px; flex-shrink: 0; }
@@ -57,7 +40,7 @@ title: Redakcja, korekta, skład
 .upper-right { height: 280px; }
 
 /* ========================================= */
-/* ANIMOWANA MAKIETA KSIĄŻKI                 */
+/* MAKIETA KSIĄŻKI (NIERUCHOMA ZE ZDJĘCIEM)  */
 /* ========================================= */
 .floating-book-wrapper { 
     position: absolute; 
@@ -66,55 +49,56 @@ title: Redakcja, korekta, skład
     width: 380px; 
     height: 560px; 
     z-index: 10; 
-    /* NOWOŚĆ: Pływająca animacja książki */
-    animation: floatingBook 6s ease-in-out infinite; 
+    /* Usunięto animację pływania — książka jest całkowicie nieruchoma */
 }
 
-/* Keyframes dla pływającej książki */
-@keyframes floatingBook {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); } /* Książka unosi się o 12px */
-    100% { transform: translateY(0px); }
+.book-mockup { 
+    width: 100%; 
+    height: 100%; 
+    /* Zamiana gradientu na zdjęcie jako tło okładki */
+    background-image: url('tutaj_wklej_link_do_zdjecia.jpg'); 
+    background-size: cover;
+    background-position: center;
+    border-radius: 4px 15px 15px 4px; 
+    box-shadow: 25px 30px 60px rgba(0, 0, 0, 0.25), 5px 10px 20px rgba(0, 0, 0, 0.1); 
+    position: relative; 
+    display: flex; 
+    overflow: hidden; 
 }
 
-.book-mockup { width: 100%; height: 100%; background: linear-gradient(135deg, var(--grad-start) 0%, var(--grad-end) 100%); border-radius: 4px 15px 15px 4px; box-shadow: 25px 30px 60px rgba(0, 0, 0, 0.25), 5px 10px 20px rgba(0, 0, 0, 0.1); position: relative; display: flex; overflow: hidden; }
-.book-spine-shadow { width: 25px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.02) 20%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 100%); border-right: 1px solid rgba(0,0,0,0.05); position: absolute; left: 0; top: 0; z-index: 5; }
-.book-cover-inner { padding: 50px 45px; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; position: relative; }
-.cover-main { display: flex; flex-direction: column; }
+.book-spine-shadow { position: absolute; left: 0; top: 0; width: 25px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.02) 20%, rgba(0,0,0,0.08) 40%, rgba(0,0,0,0.0) 100%); border-right: 1px solid rgba(0,0,0,0.05); z-index: 5; }
 
-/* NOWOŚĆ: Linia pod tytułem, która lekko rośnie po załadowaniu */
-.cover-line { 
-    width: 35px; 
-    height: 2px; 
-    background: #ffffff; 
-    margin-bottom: 25px; 
-    animation: growLine 1.5s ease-out forwards;
+.book-cover-inner { 
+    padding: 40px; 
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    position: relative; 
+    background-color: rgba(0, 0, 0, 0.15); /* Delikatny filtr przyciemniający całe zdjęcie dla spójności */
 }
 
-@keyframes growLine {
-    0% { width: 0; opacity: 0; }
-    100% { width: 35px; opacity: 1; }
+/* Lekkie, eleganckie, transparentne tło pod tekstem na okładce */
+.cover-main { 
+    display: flex; 
+    flex-direction: column; 
+    background-color: rgba(0, 0, 0, 0.6); /* Transparentne tło zapewniające widoczność */
+    padding: 24px 28px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px); /* Modny efekt rozmycia tła pod tekstem okładki */
+    -webkit-backdrop-filter: blur(4px);
+    width: 100%;
 }
 
-.cover-title { font-family: var(--serif); font-size: 42px; font-weight: 700; line-height: 1.15; color: #ffffff; margin-bottom: 8px; }
-.cover-author { font-family: var(--sans); font-size: 16px; color: rgba(255,255,255,0.85); font-style: italic; margin: 0; }
+.cover-line { width: 35px; height: 2px; background: #ffffff; margin-bottom: 20px; }
+.cover-title { font-family: var(--serif); font-size: 38px; font-weight: 700; line-height: 1.15; color: #ffffff; margin-bottom: 8px; }
+.cover-author { font-family: var(--sans); font-size: 15px; color: #f1ede8; font-style: italic; margin: 0; }
 
 .hero-title-main { font-family: var(--serif); font-size: clamp(2.5rem, 4vw, 3.4rem); font-weight: 700; line-height: 1.15; color: var(--ink); margin-bottom: 0; min-height: 2.6em; }
-
-/* NOWOŚĆ: Łagodniejszy kursor */
-.cursor { 
-    display: inline-block; 
-    width: 3px; 
-    height: 1em; 
-    background: var(--ink); 
-    vertical-align: text-bottom; 
-    margin-left: 5px; 
-    animation: blink 1s cubic-bezier(0.5, 0, 1, 1) infinite; /* Łagodniejsze znikanie */
-}
-@keyframes blink { 
-    0%, 100% { opacity: 1; } 
-    50% { opacity: 0; } 
-}
+.cursor { display: inline-block; width: 2px; height: 1em; background: #111111; vertical-align: text-bottom; margin-left: 5px; animation: blink 0.8s infinite; }
+@keyframes blink { 50% { opacity: 0; } }
 
 /* Dół Hero */
 .hero-lower { background-color: var(--ink); color: #ffffff; width: 100%; padding: 0 0 100px 0; font-family: var(--sans);}
@@ -130,21 +114,14 @@ title: Redakcja, korekta, skład
     .col-left { width: 100%; display: flex; justify-content: center; }
     .upper-left { height: auto; }
     .upper-right { height: auto; align-items: center; }
-    .floating-book-wrapper { position: relative; width: 340px; height: 500px; margin: 0 auto; animation: floatingBookMobile 6s ease-in-out infinite; }
-    .hero-title-main { font-size: 2.5rem; min-height: 3.2em; }
+    .floating-book-wrapper { position: relative; width: 340px; height: 500px; margin: 0 auto; }
+    .hero-title-main { font-size: 40px; min-height: 3.2em; }
     .hero-navbar { flex-direction: column; gap: 20px; margin-bottom: 40px; }
     .lower-left { display: none; }
     .hero-lower { padding-top: 60px; }
     .lower-right { height: auto; align-items: center; }
     .bottom-desc { margin: 0 auto; }
     .hero-nav-links { flex-direction: column; gap: 15px;}
-}
-
-/* Keyframes dla mobile (mniejszy skok uniesienia, żeby nie szarpało ekranem) */
-@keyframes floatingBookMobile {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
 }
 
 /* ========================================= */
@@ -221,9 +198,11 @@ title: Redakcja, korekta, skład
 }
 </style>
 
+<!-- NOWE HERO -->
 <div class="hero-wrapper">
     <div class="hero-upper">
         <div class="hero-container">
+            <!-- Własna nawigacja wewnątrz Hero -->
             <nav class="hero-navbar">
                 <a href="{{ site.baseurl }}/index.html" class="hero-logo">Natalia Szoppa</a>
                 <ul class="hero-nav-links">
@@ -260,6 +239,7 @@ title: Redakcja, korekta, skład
         </div>
     </div>
 
+    <!-- CZARNY DÓŁ HERO -->
     <div class="hero-lower">
         <div class="hero-container">
             <div class="content-flex">
@@ -318,24 +298,22 @@ title: Redakcja, korekta, skład
     </div>
 </div>
    
+<!-- ORYGINALNA SEKCJA O MNIE -->
 <section class="section" id="o-mnie">
     <div class="container">
         <div class="about-grid">
             <div class="about-img-wrap reveal">
                 <img src="https://i.imgur.com/blcFNFU.jpeg" alt="Natalia Szoppa">
-                <div class="about-img-caption">„Jeśli kiedyś powiem coś mądrego, to te słowa wylądują w tej ramce!".</div>
+                <div class="about-img-caption">„Jeśli kiedyś powiem coś mądrego, to te słowa wylądują in tej ramce!".</div>
             </div>
             <div class="about-text reveal delay-1">
                 <div class="eyebrow">Poznajmy się</div>
                 <h2 class="section-h2"> Cześć! Mam na imię <em>Natalia</em></h2>
-                
                 <p>I tak jak ty jaram się historiami – tymi na papierze, na ekranie, w formie słownej i obrazkowej – więc mamy już coś wspólnego. Zobaczmy, w czym jeszcze nadajemy na tych samych falach.</p>
-                
-                <p>W pracy czytam i analizuję – rozkładam historie na czynniki pierwsze. Szukam rozwiązań – tam, gdzie inni widzą problem, ja staram się zobaczyć potencjał. Łączę kropki, korzystając z wiedzy zdobytej na studiach i kursach online (zarówno tych z Udemy, jak i tych za gruby hajs). Wszystko po to, by pomagać tworzyć opowieści, które zostają w głowie.</p>
-                
-                <p>Od ponad dekady zajmuję się profesjonalną pracą z językiem. Szlifuję teksty twórców niezależnych oraz dużych wydawnictw: mam na koncie <strong>10+ lat</strong> aktywnego doświadczenia edytorskiego, <strong>120+ zrealizowanych projektów</strong> (od beletrystyki po gry fabularne) oraz regularną współpracę z <strong>4 wydawnictwami</strong>. Posiadam trzy mocne specjalizacje: edytorstwo, tłumaczenia oraz glottodydaktyka.</p>
-
-                <p>A gdy nie pracuję… moja codzienność to miks, który napędza moją wyobraźnię. Kolekcjonuję Nendoroidy i wsiąkam w światy anime, resetuję głowę przy trash TV lub stawiam sobie tarota. Czasami próbuję uczyć się japońskich kanji… Piję wyłącznie czarną i zieloną herbatę oraz gromadzę to, co ma dla mnie wartość: książki, mangi, setki zdjęć mojego psa i tumblerowskie perełki blogowe dotyczące pisarstwa.</p>
+                <p>Gdy nie pracuję…</p>
+                <p>…moja codzienność to miks, który napędza moją wyobraźnię. Kolekcjonuję Nendoroidy i wsiąkam w światy anime, resetuję głowę przy trash TV lub stawiam sobie tarota. Czasami próbuję uczyć się japońskich kanji… Piję wyłącznie czarną i zieloną herbatę oraz gromadzę to, co ma dla mnie wartość: książki, mangi, setki zdjęć mojego psa i tumblerowskie perełki blogowe dotyczące pisarstwa.</p>
+                <p>A w pracy?</p>
+                <p>Czytam i analizuję – rozkładam historie na czynniki pierwsze. Szukam rozwiązań – tam, gdzie inni widzą problem, ja staram się zobaczyć potencjał. Łączę kropki, korzystając z wiedzy zdobytej na studiach i kursach online (zarówno tych z Udemy, jak i tych za gruby hajs). Wszystko po to, by pomagać tworzyć opowieści, które zostają w głowie.</p>
             </div>
         </div>
     </div>
@@ -358,21 +336,27 @@ title: Redakcja, korekta, skład
             Autodiagnoza
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Sprawdź fundamenty historii)</span>
           </div>
+
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
+
           <div class="path-step">
             <i class="las la-search" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 2</span>
             Darmowa Próbka
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Ocena wybranego fragmentu)</span>
           </div>
+
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
+
           <div class="path-step">
             <i class="las la-project-diagram" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 3</span>
             Red. strukturalna
             <span style="margin-top: 5px; font-weight: normal; font-size: 0.75em;">(Pracujemy nad fabułą i strukturą)</span>
           </div>
+
           <div class="path-arrow"><i class="las la-angle-right"></i></div>
+
           <div class="path-step">
             <i class="las la-pen-fancy" style="font-size: 2rem; color: var(--grad-end); margin-bottom: 5px;"></i>
             <span>Krok 4</span>
@@ -394,6 +378,7 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal" style="text-align: center;">Darmowy bonus dla twórców</div>
         <h2 class="section-h2 reveal delay-1" style="text-align: center;">Zanim wyślesz tekst, <br><em>sprawdź fundamenty</em></h2>
+        
         <p class="services-desc reveal delay-2" style="text-align: center; margin: 0 auto 50px auto; max-width: 800px;">
            Szanuję Twój czas i budżet. Wierzę, że jako autor możesz samodzielnie podreperować fundamenty swojej historii. Zanim zdecydujesz się na redakcję językową, zlokalizuj słabe punkty w swoim pomyśle.
         </p>
@@ -409,6 +394,7 @@ title: Redakcja, korekta, skład
                 </ul>
                 <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" class="btn-primary" style="width: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">Pobierz Arkusz (PDF)</a>
             </div>
+
             <div class="diag-card" style="border-top-color: var(--grad-start);">
                 <h3><i class="las la-envelope-open-text"></i> 2. Darmowa próbka (9k znaków)</h3>
                 <p>Wypełniłeś/aś arkusz, ale masz wątpliwości? Prześlij mi fragment tekstu (do 9000 znaków). Sprawdzę <b>jeden</b> wybrany przez Ciebie element:</p>
@@ -430,6 +416,7 @@ title: Redakcja, korekta, skład
                 <div class="eyebrow">Moja filozofia</div>
                 <h2 class="section-h2">Jak pracuję z Twoim <em>tekstem</em></h2>
                 <p>W świecie, w którym każdy coś publikuje, samo <b>CO to za mało. Liczy się JAK.</b> Błędy i brak struktury w tekście odwracają uwagę od tego, co najważniejsze – od wartościowych historii i wiedzy, które próbujesz przekazać.</p>
+               
                 <p>Zawsze intrygowało mnie, dlaczego jedna historia zostaje w pamięci na lata, a inna umyka zaraz po zamknięciu książki. Dziś wiem, że nie tylko wena i pomysł są najważniejsze w procesie twórczym. Każde słowo, każdy drobny gest, każdy opis pozwala czytelnikowi stać się częścią Twojej wizji, a nie tylko biernym obserwatorem. </p>
                  <div class="blockquote">
                     <p>Moim zadaniem jest pomóc ci wydobyć z Twojego tekstu maksymalny potencjał. Każda zmiana ma na celu zbudowanie świata, bohaterów i akcji, które zostaną z Twoim czytelnikiem na długo. To nie zmiana Twojego stylu, tylko szlifowanie go, aby obie strony – ty i czytelnik – miały poczucie, że zainwestowały czas i pieniądze w coś, co pozwoliło na chwilowe oderwanie się od szarej rzeczywistości. </p>
@@ -457,7 +444,7 @@ title: Redakcja, korekta, skład
             <div class="comparison-box before">
                 <div class="box-header"><i class="las la-times-circle"></i> Pierwsza wersja Twojego tekstu</div>
                 <div class="box-content">
-                    Vadim <span class="highlight-red">wszedł</span> do środka karczmy, która <span class="highlight-red">była</span> bardzo stara. Zapach spalenizny i <span class="highlight-red">starego</span> piwa <span class="highlight-red">był</span> wyczuwalny w powietrzu. <span class="highlight-red">Ludzie</span> siedzący przy stolikach przestali <span class="highlight-red">rozmawiać</span> i popatrzyli na niego, a w ich oczach <span class="highlight-red">była</span> niechęć. On nie zwracał na nich uwagi, tylko <span class="highlight-red">poszedł</span> w stronę baru, gdzie stał <span class="highlight-red">karczmarz</span>. <span class="highlight-red">Karczmarz</span> przecierał brudną szmatą blat, który <span class="highlight-red">był</span> klejący.
+                    Vadim <span class="highlight-red">wszedł</span> do środka karczmy, która <span class="highlight-red">była</span> bardzo stara. Zapach spalenizny i <span class="highlight-red">starego</span> piwa <span class="highlight-red">był</span> wyczuwalny w powietrzu. <span class="highlight-red">Ludzie</span> siedzący przy stolikach przestali <span class="highlight-red">rozmawiać</span> i popatrzyli na niego, a w ich oczach <span class="highlight-red">była</span> niechęć. On nie zwracał na nich uwagi, tylko <span class="highlight-red">poszedł</span> w stronę baru, gdzie stał <span class="highlight-red">karczmarz</span>. <span class="highlight-red">Karczmarz</span> przecierał brudną szmatą blat, który <span class="highlight-red">była</span> klejący.
                 </div>
                 <div class="box-tags">
                     <span>✘ Powtórzenia</span>
@@ -713,161 +700,6 @@ title: Redakcja, korekta, skład
         <h3>Redakcja Strukturalna</h3>
         <p>Szczegółowa analiza całego utworu pod kątem jego kompozycji, logiki oraz konstrukcji narracyjnej. Zabezpiecza fundamenty opowieści przed rozpoczęciem prac nad warstwą językową.</p>
     </div>
-
-    <div class="modal-split-grid">
-        <div class="modal-split-box" style="background: #ECF6EC; border-color: #c8e6c9;">
-            <h4 style="color: #2E7D32;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Co obejmuje?</h4>
-            <ul style="color: #1f4d24; padding-left: 20px; margin: 8px 0;">
-                <li>Badanie ciągu przyczynowo-skutkowego oraz logicznego układu akapitów.</li>
-                <li>Spójność narracji (narracja pierwszosobowa, trzeciosobowa itp.).</li>
-                <li>Weryfikację kreacji bohaterów (ich unikalności, cech oraz relacji z odbiorcą).</li>
-                <li>Ocenę konstrukcji fabularnej (punktów zwrotnych, katalizatorów i momentów kryzysowych).</li>
-                <li>Identyfikację zjawisk <em>Plot Armor</em> oraz <em>Information Dump</em> (nadmiernych opisów).</li>
-                <li>Analizę dynamiki narracji (<em>Pacing</em>) oraz nienaturalnych, zbędnych dialogów.</li>
-                <li>Weryfikację spójności oraz wiarygodności zakończenia historii.</li>
-            </ul>
-        </div>
-        <div class="modal-split-box" style="background: #FAEDED; border-color: #ffcdd2;">
-            <h4 style="color: #B31B1B;"><i class="las la-times-circle" style="font-size: 1.4rem;"></i> Czego NIE obejmuje?</h4>
-            <ul style="color: #5c1f1f; padding-left: 20px; margin: 8px 0;">
-                <li>Korekty językowej, stylistycznej, ortograficznej oraz interpunkcyjnej.</li>
-                <li>Formatowania technicznego tekstu oraz poprawiania zapisu dialogów.</li>
-                <li>Tworzenia zewnętrznych raportów, zestawień czy tabel w plikach Excel.</li>
-                <li>Rewizji tekstu – ponownej weryfikacji po wprowadzeniu zmian przez autora.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal-delivery-box" style="margin-top: 20px;">
-        <i class="las la-box-open"></i>
-        <div>
-            <strong class="delivery-title">Co otrzymujesz w pakiecie?</strong>
-            <p>Wynikiem prac jest <strong>jeden plik tekstowy</strong> w formacie źródłowym. Wszystkie uwagi, sugestie poprawek oraz analizy błędów są umieszczane bezpośrednio w tekście w nawiasach kwadratowych lub w formie komentarzy bocznych. Taka forma ułatwia jednoczesne czytanie i analizowanie wskazówek w odpowiednim kontekście.</p>
-        </div>
-    </div>
-
-    <div class="modal-notes-section" style="margin-top: 20px; font-size: 0.95rem; line-height: 1.5; color: #444; border-top: 1px solid #eee; padding-top: 15px;">
-        <p style="margin-bottom: 10px;"><strong>Ważna zasada:</strong> Uwagi redaktorskie mają charakter analityczny i mogą opierać się na subiektywnej ocenie. Ich celem nie jest krytyka Ciebie jaki autora, lecz wskazanie obszarów wymagających samodzielnej pracy, aby podnieść jakoś tekstu.</p>
-        <p><strong>Zanim napiszesz:</strong> Aby uniknąć rozbieżności w oczekiwaniach, przed rozpoczęciem współpracy wyjaśnij pokrótce swoje potrzeby (powód wyboru tej usługi, wskazanie fragmentów wymagających szczególnej uwagi).</p>
-    </div>
-
-    <div class="modal-action" style="margin-top: 25px;">
-        <a href="https://nataliaszoppa.com/cennik.html" class="btn-primary">Sprawdż ceny</a>
-    </div>
-  </div>
-</div>
-
-<div id="modal-jezyk" class="modal">
-  <div class="modal-content modal-large">
-    <span class="close-btn">&times;</span>
-    <div class="modal-header">
-        <div class="eyebrow-label" style="color: var(--grad-end);">Najczęściej wybierany</div>
-        <h3>Redakcja językowa</h3>
-       <p style="margin-top: 15px; font-size: 0.95rem; line-height: 1.6; color: #444;">
-            <strong>Redakcja językowa</strong> skupia się wyłącznie na kwestiach związanych typowo z językiem. Praca nad tekstem obejmuje eliminację literówek, korektę składni zdań, kontrolę konotacji i kolokacji, usuwanie powtórzeń oraz weryfikację związków zgody i rządu. Sprawdzana jest pisownia łączna i rozdzielna, właściwe użycie małych i wielkich liter, prawidłowa interpunkcja tekstu oraz dialogów, a także ostateczne formatowanie pliku.
-        </p>
-    </div>
-
-    <div class="modal-split-grid">
-        <div class="modal-split-box" style="background: #ECF6EC; border-color: #c8e6c9;">
-            <h4 style="color: #2E7D32;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Co obejmuje?</h4>
-            <ul style="color: #1f4d24; line-height: 1.5;">
-                <li>Poprawność ortograficzną, interpunkcyjną i gramatyczną.</li>
-                <li>Składnię zdań, eliminację powtórzeń oraz niezręczności językowych.</li>
-                <li>Kontrolę poprawności związków frazeologicznych, kolokacji i konotacji wyrazowych.</li>
-                <li>Dbałość o płynność oraz jednolity ton całej narracji.</li>
-            </ul>
-        </div>
-        <div class="modal-split-box" style="background: #FAEDED; border-color: #ffcdd2;">
-            <h4 style="color: #B31B1B;"><i class="las la-times-circle" style="font-size: 1.4rem;"></i> Czego NIE obejmuje?</h4>
-            <ul style="color: #5c1f1f; line-height: 1.5;">
-                <li>Naprawiania poważnych wad fabularnych i błędów kompozycyjnych.</li>
-                <li>Przebudowywania struktury książki oraz pisania rozdziałów od nowa.</li>
-                <li>
-                    <em>Wyjątek:</em> wskazuję pomniejsze usterki (np. okazjonalny <em>head-hopping</em>) lub sugeruję zmiany kolejności akapitów, jednak bez głębokich modyfikacji fabuły.
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal-text-section" style="margin-top: 25px; font-size: 0.95rem; line-height: 1.6; color: #333;">
-        <h4 style="margin-bottom: 10px; color: #111; font-size: 1.1rem; font-weight: 600;">Przebieg współpracy i wymagania techniczne</h4>
-        <p>Po zakończeniu pracy otrzymasz plik w <strong>trybie śledzenia zmian</strong>. Widoczna jest w nim każda ingerencja w tekst (usunięte słowa, zmieniony szyk zdań czy dodana interpunkcja).</p>
-        
-        <div style="background: #f9f9f9; border-left: 4px solid #666; padding: 12px 15px; margin: 15px 0; font-size: 0.9rem; color: #444;">
-            <strong>Ważna uwaga techniczna:</strong> Praca na zredagowanym dokumencie wymaga znajomości funkcji śledzenia zmian oraz obsługi komentarzy. Jeśli nie miałeś(-aś) wcześniej styczności z tym narzędziem, konieczne będzie samodzielne opanowanie jego podstaw przed przystąpieniem do weryfikacji tekstu. Jest to warunek niezbędny do sprawnego i profesjonalnego przeprowadzenia procesu.
-        </div>
-
-        <p>Jako autor masz określony czas na zapoznanie się z tekstem, akceptację poprawek lub odrzucenie tych, które zmieniają Twój pierwotny zamysł. Wszelkie pytania, wątpliwości i odpowiedzi na komentarze zgłaszasz <strong>jednorazowo w jednym, zorganizowanym pliku zwrotnym</strong> lub w zbiorczym e-mailu podsumowującym. Nie prowadzę rozproszonej komunikacji przez komunikatory.</p>
-    </div>
-
-    <div class="modal-text-section" style="margin-top: 25px; font-size: 0.95rem; line-height: 1.6; color: #333;">
-        <h4 style="margin-bottom: 12px; color: #111; font-size: 1.1rem; font-weight: 600;">Dwie ścieżki współpracy do wyboru</h4>
-        
-        <div style="margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #ddd;">
-            <strong style="color: #111;">Wariant 1: Redakcja językowa + rewizja</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #555;">Po przeanalizowaniu przez Ciebie pliku ze śledzeniem zmian, w ramach jednej bezpłatnej rewizji nanoszę ostateczne, zaakceptowane poprawki, przygotowuję jednolite formatowanie techniczne (np. nagłówki) i dbam o estetyczny wygląd dokumentu.</p>
-        </div>
-        
-        <div style="margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #ddd;">
-            <strong style="color: #111;">Wariant 2: Redakcja językowa + korekta + ostateczna rewizja</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #555;">Po wdrożeniu Twoich uwag do redakcji językowej, po krótkiej przerwie przystępuję do etapu korekty (drugiego czytania tekstu, mającego na celu wyłapanie ostatnich przeoczonych detali i błędów językowych). Na tym etapie również przysługuje Ci rewizja i możliwość konsultacji przed ostatecznym zamknięciem projektu.</p>
-        </div>
-    </div>
-
-    <div class="modal-delivery-box" style="margin-top: 25px;">
-        <i class="las la-box-open"></i>
-        <div>
-            <strong class="delivery-title">Co otrzymujesz po zakończeniu współpracy?</strong>
-            <p>Zredagowany plik źródłowy. Dodatkowo po sfinalizowaniu projektu otrzymasz <strong>indywidualny zbiór najczęściej powtarzających się błędów</strong> – praktyczne podsumowanie Twoich osobistych pułapek językowych, ułatwiające dalszy rozwój pisarski.</p>
-        </div>
-    </div>
-
-    <div class="modal-action">
-        <a href="https://nataliaszoppa.com/cennik.html" class="btn-primary">Sprawdź ceny</a>
-    </div>
-  </div>
-</div>
-
-<div id="modal-dtp" class="modal">
-  <div class="modal-content modal-large">
-    <span class="close-btn">&times;</span>
-    <div class="modal-header">
-        <div class="eyebrow-label" style="color: var(--grad-start);">Finalny format</div>
-        <h3>Skład DTP i E-booki</h3>
-        <p>Przekształcam Twój tekst w gotowy do druku materiał (PDF) lub profesjonalnego e-booka (EPUB).</p>
-    </div>
-
-    <div class="modal-split-grid">
-        <div class="modal-split-box" style="background: #ECF6EC; border-color: #c8e6c9;">
-            <h4 style="color: #2E7D32;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Co obejmuje?</h4>
-            <ul style="color: #1f4d24;">
-                <li>Projekt układu strony i dobór licencjonowanej typografii.</li>
-                <li>Eliminację błędów składu (wdowy, sieroty, bękarty).</li>
-                <li>Korektę poskładową (wyłapanie ostatnich usterek wizualnych na stronie).</li>
-            </ul>
-        </div>
-        <div class="modal-split-box" style="background: #FAEDED; border-color: #ffcdd2;">
-            <h4 style="color: #B31B1B;"><i class="las la-times-circle" style="font-size: 1.4rem;"></i> Czego NIE obejmuje?</h4>
-            <ul style="color: #5c1f1f;">
-                <li>Redakcji językowej ani poprawiania stylu zdań na tym etapie.</li>
-                <li>Zmian merytorycznych i dopisywania wątków.</li>
-                <li>Tworzenia ilustracji do książki i projektowania okładki.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="modal-delivery-box">
-        <i class="las la-box-open"></i>
-        <div>
-            <strong class="delivery-title">Co otrzymujesz po współpracy?</strong>
-            <p>Gotowe <strong>pliki PDF</strong> spełniające wymogi współczesnych drukarń offsetowych/cyfrowych, oraz w pełni responsywne <strong>pliki EPUB/MOBI</strong>, gotowe do natychmiastowej dystrybucji na platformach self-publishingowych.</p>
-        </div>
-    </div>
-
-    <div class="modal-action">
-        <a href="https://nataliaszoppa.com/cennik.html" class="btn-primary">Sprawdź ceny</a>
-    </div>
   </div>
 </div>
 
@@ -908,54 +740,5 @@ title: Redakcja, korekta, skład
             setTimeout(typeEffect, nextDelay);
         }
         if (typewriterTarget) typeEffect();
-
-        // === SZYBKIE FAQ ===
-        const faqQuestions = document.querySelectorAll('.faq-q-item');
-        const faqAnswers = document.querySelectorAll('.faq-a-item');
-
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                faqQuestions.forEach(q => q.classList.remove('active'));
-                this.classList.add('active');
-                faqAnswers.forEach(a => a.classList.remove('active'));
-                const targetId = this.getAttribute('data-target');
-                const targetAnswer = document.getElementById(targetId);
-                if (targetAnswer) {
-                    targetAnswer.classList.add('active');
-                }
-            });
-        });
-
-        // === MODALE PAKIETÓW ===
-        const readMoreBtns = document.querySelectorAll('.read-more-btn');
-        const closeBtns = document.querySelectorAll('.close-btn');
-        const modals = document.querySelectorAll('.modal');
-
-        readMoreBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetId = btn.getAttribute('data-target');
-                const modal = document.getElementById(targetId);
-                if(modal) {
-                    modal.classList.add('show');
-                    document.body.style.overflow = 'hidden'; 
-                }
-            });
-        });
-
-        closeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.closest('.modal').classList.remove('show');
-                document.body.style.overflow = ''; 
-            });
-        });
-
-        modals.forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                    document.body.style.overflow = '';
-                }
-            });
-        });
     });
 </script>
