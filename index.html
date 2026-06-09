@@ -12,18 +12,7 @@ title: Redakcja, korekta, skład
 /* ========================================= */
 /* STYLE NOWEJ SEKCJI HERO                   */
 /* ========================================= */
-
-/* NAPRAWIONE OGONKI W TEKŚCIE Z GRADIENTEM */
-.text-gradient { 
-    background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    background-clip: text; 
-    display: inline-block; 
-    padding-bottom: 0.2em; /* Zabezpiecza ogonki liter (y, p, ł) przed ucięciem */
-    margin-bottom: -0.2em; /* Kompensuje padding, by nie psuć układu */
-}
-
+.text-gradient { background: linear-gradient(90deg, var(--grad-start), var(--grad-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; padding-bottom: 0.2em; margin-bottom: -0.2em;}
 .hero-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; font-family: var(--sans); }
 .hero-container { max-width: 1000px; margin: 0 auto; width: 100%; padding: 0 20px; }
 .hero-upper { background-color: var(--paper); width: 100%; padding: 40px 0 0 0; }
@@ -32,7 +21,8 @@ title: Redakcja, korekta, skład
 .hero-nav-links { display: flex; gap: 30px; align-items: center; list-style: none; margin: 0; padding: 0;}
 .hero-nav-links a { text-decoration: none; color: var(--ink); font-family: var(--sans); font-size: 15px; font-weight: 600; transition: color 0.2s ease; }
 .hero-nav-links a:hover, .hero-nav-links a.active { color: var(--grad-start); }
-.hero-nav-btn-text { color: var(--grad-end) !important; font-weight: 700 !important; font-size: 15px !important; text-decoration: none !important; }
+.hero-nav-btn-text { color: var(--ink) !important; font-weight: 700 !important; font-size: 15px !important; text-decoration: none !important; transition: color 0.2s ease; }
+.hero-nav-btn-text:hover { color: var(--grad-end) !important; }
 
 .content-flex { display: flex; gap: 50px; width: 100%; }
 .col-left { width: 380px; flex-shrink: 0; }
@@ -158,7 +148,7 @@ title: Redakcja, korekta, skład
             <nav class="hero-navbar">
                 <a href="{{ site.baseurl }}/index.html" class="hero-logo">Natalia Szoppa</a>
                 <ul class="hero-nav-links">
-                    <li><a href="{{ site.baseurl }}/index.html" class="active">Strona Główna</a></li>
+                    <li><a href="{{ site.baseurl }}/index.html">Strona Główna</a></li>
                     <li><a href="{{ site.baseurl }}/o-mnie.html">O mnie</a></li>
                     <li><a href="{{ site.baseurl }}/cennik.html">Cennik</a></li>
                     <li><a href="{{ site.baseurl }}/faqs.html">FAQs</a></li>
@@ -613,30 +603,25 @@ title: Redakcja, korekta, skład
     <div class="container">
         <div class="eyebrow reveal">Dowiedz się więcej</div>
         <h2 class="section-h2 reveal delay-1" style="margin-bottom: 40px;">Potrzebujesz więcej <em>informacji</em>?</h2>
-        
-        <div class="tiles-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            
+        <div class="tiles-grid">
             <a href="cennik.html" class="tile tile--warm reveal delay-1">
                 <i class="las la-wallet"></i>
                 <h3>Cennik</h3>
                 <p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-            
             <a href="faqs.html" class="tile tile--dark reveal delay-2">
                 <i class="las la-question-circle"></i>
                 <h3>Baza wiedzy (FAQ)</h3>
                 <p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-            
             <a href="https://nataliaszoppa.com/zasady%20wspolpracy.html" class="tile tile--gold reveal delay-3">
                 <i class="las la-tools"></i>
                 <h3>Więcej o współpracy</h3>
                 <p>Dowiedz się, jak przebiega współpraca krok po kroku.</p>
                 <div class="tile-arrow"><i class="las la-arrow-right"></i></div>
             </a>
-
         </div>
     </div>
 </section>
@@ -649,7 +634,7 @@ title: Redakcja, korekta, skład
         <h3>Redakcja Strukturalna</h3>
         <p>Szczegółowa analiza całego utworu pod kątem jego kompozycji, logiki oraz konstrukcji narracyjnej. Zabezpiecza fundamenty opowieści przed rozpoczęciem prac nad warstwą językową.</p>
     </div>
-    
+
     <div class="modal-split-grid">
         <div class="modal-split-box" style="background: #ECF6EC; border-color: #c8e6c9;">
             <h4 style="color: #2E7D32;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Co obejmuje?</h4>
@@ -809,7 +794,7 @@ title: Redakcja, korekta, skład
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // === MASZYNA DO PISANIA ===
+        // === SILNIK MASZYNY DO PISANIA ===
         const words = ["pomysły", "teksty", "słowa"]; 
         let wordIndex = 0;
         let charIndex = 0;
@@ -844,5 +829,54 @@ title: Redakcja, korekta, skład
             setTimeout(typeEffect, nextDelay);
         }
         if (typewriterTarget) typeEffect();
+
+        // === SZYBKIE FAQ ===
+        const faqQuestions = document.querySelectorAll('.faq-q-item');
+        const faqAnswers = document.querySelectorAll('.faq-a-item');
+
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                faqQuestions.forEach(q => q.classList.remove('active'));
+                this.classList.add('active');
+                faqAnswers.forEach(a => a.classList.remove('active'));
+                const targetId = this.getAttribute('data-target');
+                const targetAnswer = document.getElementById(targetId);
+                if (targetAnswer) {
+                    targetAnswer.classList.add('active');
+                }
+            });
+        });
+
+        // === MODALE PAKIETÓW ===
+        const readMoreBtns = document.querySelectorAll('.read-more-btn');
+        const closeBtns = document.querySelectorAll('.close-btn');
+        const modals = document.querySelectorAll('.modal');
+
+        readMoreBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const modal = document.getElementById(targetId);
+                if(modal) {
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden'; 
+                }
+            });
+        });
+
+        closeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.closest('.modal').classList.remove('show');
+                document.body.style.overflow = ''; 
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
     });
 </script>
