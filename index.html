@@ -40,7 +40,7 @@ title: Redakcja, korekta, skład
 .cover-author { font-family: var(--sans); font-size: 16px; color: #f1ede8; font-style: italic; margin: 0; }
 
 .hero-title-main { font-family: var(--serif); font-size: 54px; font-weight: 700; line-height: 1.15; color: #111111; margin-bottom: 0; min-height: 2.6em; }
-.cursor { display: inline-block; width: 2px; height: 1em; background: #cccccc; vertical-align: text-bottom; margin-left: 5px; animation: blink 0.8s infinite; }
+.cursor { display: inline-block; width: 2px; height: 1em; background: #111111; vertical-align: text-bottom; margin-left: 5px; animation: blink 0.8s infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 
 /* Dół Hero */
@@ -68,18 +68,55 @@ title: Redakcja, korekta, skład
 }
 
 /* ========================================= */
-/* 3. ZAKŁADKI W SEKCJI O MNIE               */
+/* 3. ZAKŁADKI W SEKCJI O MNIE (JAKO EYEBROWS) */
 /* ========================================= */
-.about-tabs-nav { display: flex; gap: 24px; border-bottom: 1px solid var(--paper-mid); margin-bottom: 28px; flex-wrap: wrap; }
-.tab-btn { background: none; border: none; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; color: var(--ink-muted); padding: 10px 0; cursor: pointer; position: relative; transition: color 0.3s; text-transform: uppercase; letter-spacing: 0.05em; }
-.tab-btn:hover { color: var(--ink); }
-.tab-btn.active { color: var(--grad-start); }
-.tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0%; height: 2px; background: var(--grad); transition: width 0.3s ease; }
-.tab-btn.active::after { width: 100%; }
+.about-eyebrow-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px; /* Taki sam margines jak w oryginalnym eyebrow */
+}
+.eyebrow-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    transition: color 0.3s;
+    position: relative;
+}
+.eyebrow-btn:hover {
+    color: var(--ink);
+}
+.eyebrow-btn.active {
+    color: var(--grad-start);
+}
+.eyebrow-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--grad-start);
+}
+.eyebrow-separator {
+    color: var(--paper-mid);
+    font-size: 0.8rem;
+}
+
 .tab-content { display: none; animation: tabFadeIn 0.4s ease forwards; }
 .tab-content.active { display: block; }
-@keyframes tabFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.tab-content p { font-family: var(--sans); color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 20px; font-weight: 300; line-height: 1.7; }
+@keyframes tabFadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.tab-content p { font-family: var(--sans); color: var(--ink-soft); font-size: 1.0rem; margin-bottom: 20px; font-weight: 300; line-height: 1.7; }
 .tab-content ul.modal-list { margin-top: 10px; }
 
 /* ========================================= */
@@ -261,14 +298,16 @@ title: Redakcja, korekta, skład
                 <div class="about-img-caption">„Jeśli kiedyś powiem coś mądrego, to te słowa wylądują w tej ramce!".</div>
             </div>
             <div class="about-text reveal delay-1">
-                <div class="eyebrow">Poznajmy się</div>
-                <h2 class="section-h2"> Cześć! Mam na imię <em>Natalia</em></h2>
                 
-                <div class="about-tabs-nav">
-                    <button class="tab-btn active" data-tab="tab-omnie">O mnie</button>
-                    <button class="tab-btn" data-tab="tab-praca">Jak pracuję z tekstem</button>
-                    <button class="tab-btn" data-tab="tab-doswiadczenie">Doświadczenie</button>
+                <div class="about-eyebrow-tabs">
+                    <button class="eyebrow-btn active" data-tab="tab-omnie">O mnie</button>
+                    <span class="eyebrow-separator">&bull;</span>
+                    <button class="eyebrow-btn" data-tab="tab-praca">Jak pracuję</button>
+                    <span class="eyebrow-separator">&bull;</span>
+                    <button class="eyebrow-btn" data-tab="tab-doswiadczenie">Doświadczenie</button>
                 </div>
+
+                <h2 class="section-h2"> Cześć! Mam na imię <em>Natalia</em></h2>
 
                 <div class="tab-content active" id="tab-omnie">
                     <p>I tak jak ty jaram się historiami – tymi na papierze, na ekranie, w formie słownej i obrazkowej – więc mamy już coś wspólnego. Zobaczmy, w czym jeszcze nadajemy na tych samych falach.</p>
@@ -674,7 +713,7 @@ title: Redakcja, korekta, skład
 <script>
     // JS DLA ZAKŁADEK W SEKCJI O MNIE
     document.addEventListener('DOMContentLoaded', () => {
-        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabBtns = document.querySelectorAll('.eyebrow-btn');
         const tabContents = document.querySelectorAll('.tab-content');
         
         tabBtns.forEach(btn => {
