@@ -1,143 +1,330 @@
 ---
-layout: default
-title: Strona główna
+layout: null
+title: Natalia Szoppa - Redaktorka & Specjalistka DTP
 ---
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalia Szoppa - Redaktorka & Specjalistka DTP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-black: #111111;
+            --text-gray: #444444; 
+            --text-muted: #888888;
+            --bg-muted: #f4f5f6; 
+            --border-color: #eaeaea;
+            --gradient: linear-gradient(135deg, #7b2cbf, #f77f00);
+            --accent-purple: #7b2cbf;
+            --radius-lg: 16px;
+        }
 
-<section style="padding-top: 100px; padding-bottom: 60px; text-align: center;">
-    <div class="container">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Katarzyna Wiśniewska" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
-        
-        <span class="section-subtitle">Katarzyna Wiśniewska</span>
-        
-        <h1 style="font-size: clamp(36px, 5vw, 56px); line-height: 1.15; letter-spacing: -1px; max-width: 900px; margin: 0 auto 25px auto; font-family: 'Lora', serif;">
-            Nadaję formę <i>słowom</i>. Szlifuję teksty do <i class="marker-highlight">perfekcji</i>.
-        </h1>
-        
-        <p style="font-size: 18px; color: var(--text-gray); max-width: 650px; margin: 0 auto 40px auto; line-height: 1.6;">
-            Pomagam niezależnym twórcom wydawać książki na najwyższym, rynkowym poziomie. Od pierwszej diagnozy fabuły po idealny skład do druku i pliki e-book.
-        </p>
-        
-        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-            <a href="{{ '/oferta.html' | relative_url }}" class="btn-gradient" style="padding: 14px 32px; font-size: 15px;">Sprawdź ofertę</a>
-            <a href="{{ '/portfolio.html' | relative_url }}" class="btn-outline" style="padding: 14px 32px; font-size: 15px;">Zobacz realizacje</a>
-        </div>
-    </div>
-</section>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Mulish', sans-serif; color: var(--text-black); background-color: var(--bg-color); line-height: 1.5; }
+        h1, h2, h3, h4, .lora-font { font-family: 'Lora', serif; color: var(--text-black); }
+        h2 i, h1 i { font-family: 'Lora', serif; font-style: italic; color: var(--text-gray); font-weight: 400; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
-<div class="container" style="margin-bottom: 100px;">
-    <div style="background-color: var(--text-black); border-radius: 20px; padding: 45px 20px; display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; gap: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.06);">
-        <div style="text-align: center; flex: 1; min-width: 150px;">
-            <div style="font-size: 48px; font-weight: 600; font-family: 'Lora', serif; line-height: 1; margin-bottom: 10px;" class="text-gradient">10<sup>+</sup></div>
-            <div style="color: #ffffff; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Lat doświadczenia</div>
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .btn-gradient {
+            background: var(--gradient); color: white; padding: 10px 24px; border-radius: 30px;
+            font-weight: 600; font-size: 14px; display: inline-block; border: none; cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.3s ease;
+        }
+        .btn-gradient:hover { opacity: 0.95; transform: translateY(-1px); }
+
+        .btn-outline {
+            background: transparent; border: 2px solid var(--text-black); color: var(--text-black);
+            padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 13px; display: inline-block;
+            cursor: pointer; transition: all 0.3s; text-align: center;
+        }
+        .btn-outline:hover { background: var(--text-black); color: white; }
+
+        .marker-highlight { position: relative; display: inline-block; z-index: 1; padding: 0 4px; }
+        .marker-highlight::before {
+            content: ''; position: absolute; inset: 0 -4px; z-index: -1; border-radius: 3px 5px 3px 5px;
+            --mark-color: 123 44 191; --mark-bg-angle: 50deg;
+            background: conic-gradient(at 0 100%, rgb(var(--mark-color) / 35%) 1% , #fff0 3%) no-repeat 0 0 / auto 120%, conic-gradient(from 180deg at 100% 0, #fff0, rgb(var(--mark-color) / 35%) 1%, #fff0 4%) no-repeat 100% 100% / auto 120%, linear-gradient(var(--mark-bg-angle), rgb(var(--mark-color) / 25%), rgb(var(--mark-color) / 10%) 75%, rgb(var(--mark-color) / 20%)) no-repeat center / auto;
+            rotate: -1deg; transform: skew(-5deg); scale: 1.05;
+        }
+
+        /* UKŁAD STRONY (SPLIT SIDEBAR) */
+        .layout-wrapper { display: flex; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
+
+        /* LEWY PASEK BOCZNY */
+        .sidebar {
+            width: 35%; position: sticky; top: 0; height: 100vh;
+            padding: 60px 40px 40px 20px; display: flex; flex-direction: column;
+            overflow-y: auto; background-color: #ffffff;
+        }
+        .profile-header { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+        .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+        .profile-info h3 { font-size: 14px; font-family: 'Mulish', sans-serif; font-weight: 700; margin-bottom: 2px; }
+        .profile-info p { font-size: 12px; color: var(--text-muted); }
+        
+        .sidebar h1 { font-size: 40px; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px; font-weight: 600; }
+        .sidebar > p { color: var(--text-gray); margin-bottom: 30px; font-size: 14px; line-height: 1.6; }
+        
+        .social-links { display: flex; gap: 8px; margin-top: auto; padding-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background-color: var(--bg-muted); border-radius: 50%; color: var(--text-black); font-size: 14px; }
+        .social-links a:hover { background: var(--text-black); color: white; transform: translateY(-2px); }
+        .copyright { margin-top: 20px; font-size: 11px; color: var(--text-muted); }
+
+        /* PRAWY KONTENER TREŚCI */
+        .main-content { flex: 1; padding: 60px 20px 80px 40px; background-color: #ffffff; }
+
+        /* MENU GÓRNE */
+        .top-nav { display: flex; justify-content: flex-end; align-items: center; gap: 30px; margin-bottom: 60px; }
+        .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; }
+        .nav-links a { color: var(--text-black); }
+        .nav-links a:hover { color: var(--accent-purple); }
+
+        /* SEKCJE */
+        section { margin-bottom: 80px; }
+        .section-header { margin-bottom: 25px; }
+        .section-header h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; }
+        .section-header p { color: var(--text-gray); margin-top: 8px; font-size: 15px; font-family: 'Mulish', sans-serif; }
+
+        /* --- NOWE STYLE DLA SLIDERA PORTFOLIO --- */
+        .slider-wrap { width: 100%; overflow: hidden; padding: 10px 0; }
+        .slider-track { display: flex; gap: 20px; animation: slide 25s linear infinite; width: max-content; }
+        .slider-wrap:hover .slider-track { animation-play-state: paused; }
+        
+        .slide-card { 
+            width: 230px; height: 300px; border-radius: var(--radius-lg); 
+            overflow: hidden; position: relative; flex-shrink: 0; 
+            background-size: cover; background-position: center; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+        }
+        .slide-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,18,0.85) 0%, transparent 60%); }
+        .slide-card span { position: absolute; bottom: 20px; left: 20px; right: 20px; font-family: 'Lora', serif; font-size: 14px; font-weight: 600; color: #fff; z-index: 1; line-height: 1.3; }
+        .slide-card em { position: absolute; top: 15px; right: 15px; background: rgba(123, 44, 191, 0.85); color: #fff; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; font-style: normal; z-index: 1; }
+        
+        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* USŁUGI & BLOG */
+        .services-grid, .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .service-card, .blog-card { background-color: var(--bg-muted); padding: 30px 25px; border-radius: 16px; display: flex; flex-direction: column; transition: all 0.3s ease; }
+        .service-card:hover { background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-3px); }
+        .service-card h3 { font-size: 18px; margin-bottom: 10px; font-weight: 700; }
+        .service-card p { font-size: 14px; color: var(--text-gray); line-height: 1.5; }
+        .service-link { font-size: 12px; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; margin-top: 15px; display: inline-block; }
+
+        .blog-card { padding: 0; overflow: hidden; text-decoration: none; }
+        .blog-img { width: 100%; height: 160px; object-fit: cover; }
+        .blog-info { padding: 20px; }
+        .blog-info h3 { font-size: 16px; margin-bottom: 6px; font-weight: 700; color: var(--text-black); }
+        .blog-meta { font-size: 12px; color: var(--text-muted); }
+
+        /* FAQ */
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+        .faq-question { font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .faq-question i { color: var(--accent-purple); font-size: 14px; transition: transform 0.3s; }
+        .faq-item.open i { transform: rotate(45deg); }
+        .faq-answer { margin-top: 12px; color: var(--text-gray); font-size: 14px; line-height: 1.6; display: none; }
+
+        /* CTA COŚ ŚWIETNEGO */
+        .cta-section { background: var(--gradient); border-radius: 16px; padding: 45px; text-align: center; color: white; margin-top: 40px; }
+        .cta-section h2 { font-size: 30px; margin-bottom: 10px; color: white; }
+        .cta-section p { font-size: 14px; margin-bottom: 25px; opacity: 0.9; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .layout-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; }
+            .main-content { padding: 40px 20px; }
+            .services-grid, .blog-grid { grid-template-columns: 1fr; }
+            .top-nav { justify-content: center; margin-bottom: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="layout-wrapper">
+    <aside class="sidebar">
+        <div class="profile-header">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Natalia Szoppa" class="profile-img">
+            <div class="profile-info">
+                <h3>Natalia Szoppa</h3>
+                <p>Redaktorka & Specjalistka DTP</p>
+            </div>
         </div>
-        <div style="width: 1px; background-color: #2a2a2a; align-self: stretch;"></div>
-        <div style="text-align: center; flex: 1; min-width: 150px;">
-            <div style="font-size: 48px; font-weight: 600; font-family: 'Lora', serif; line-height: 1; margin-bottom: 10px;" class="text-gradient">120<sup>+</sup></div>
-            <div style="color: #ffffff; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Projektów</div>
+
+        <h1>Nadaję formę <i>słowom</i>. Szlifuję teksty do <i class="marker-highlight">perfekcji</i>.</h1>
+        <p>Witaj w moim świecie! Znajdziesz tu moje redaktorskie portfolio oraz przydatne wskazówki o procesie wydawniczym i projektowaniu publikacji.</p>
+
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-        <div style="width: 1px; background-color: #2a2a2a; align-self: stretch;"></div>
-        <div style="text-align: center; flex: 1; min-width: 150px;">
-            <div style="font-size: 48px; font-weight: 600; font-family: 'Lora', serif; line-height: 1; margin-bottom: 10px;" class="text-gradient">4</div>
-            <div style="color: #ffffff; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Wydawnictwa</div>
+        <div class="copyright">
+            2026 &copy; Natalia Szoppa.
         </div>
-    </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-nav">
+            <nav class="nav-links">
+                <a href="{{ '/o-mnie.html' | relative_url }}">O mnie</a>
+                <a href="{{ '/oferta.html' | relative_url }}">Oferta</a>
+                <a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>
+                <a href="{{ '/cennik.html' | relative_url }}">Cennik</a>
+                <a href="{{ '/faq.html' | relative_url }}">FAQ</a>
+                <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+            </nav>
+        </header>
+
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>Wybrane <i>projekty</i></h2>
+                <p>Oto historie i publikacje, którym miałam przyjemność nadać ostateczny kształt.</p>
+            </div>
+            
+            <div class="slider-wrap">
+                <div class="slider-track">
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=400&q=80')">
+                        <em>Beletrystyka</em><span>Cień nad Mrocznym Borem</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1618666012174-83b441c0bc76?auto=format&fit=crop&w=400&q=80')">
+                        <em>Gra RPG</em><span>Kroniki Zapomnianych Er</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80')">
+                        <em>Skład DTP</em><span>Minimalizm w Biznesie</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80')">
+                        <em>Kryminał</em><span>Ostatni Świadek</span>
+                    </div>
+                    
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=400&q=80')">
+                        <em>Beletrystyka</em><span>Cień nad Mrocznym Borem</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1618666012174-83b441c0bc76?auto=format&fit=crop&w=400&q=80')">
+                        <em>Gra RPG</em><span>Kroniki Zapomnianych Er</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80')">
+                        <em>Skład DTP</em><span>Minimalizm w Biznesie</span>
+                    </div>
+                    <div class="slide-card" style="background-image:url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=400&q=80')">
+                        <em>Kryminał</em><span>Ostatni Świadek</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="section-header">
+                <h2>Jak mogę <i>Ci pomóc</i></h2>
+                <p>Dbam o Twoją opowieść na każdym etapie – od konstrukcji fabuły po gotowy plik do drukarni.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Redakcja strukturalna</h3>
+                    <p>Uporządkujemy konstrukcję świata, logikę wydarzeń i tempo akcji Twojej powieści.</p>
+                    <a href="{{ '/oferta.html' | relative_url }}" class="service-link">Zobacz szczegóły &rarr;</a>
+                </div>
+                <div class="service-card">
+                    <h3>Szlif językowy</h3>
+                    <p>Wypolerujemy zdania, usuniemy powtórzenia i błędy, w pełni szanując Twój głos.</p>
+                    <a href="{{ '/oferta.html' | relative_url }}" class="service-link">Zobacz szczegóły &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <div class="section-header">
+                <h2><i>Najnowsze</i> z bloga</h2>
+            </div>
+            <div class="blog-grid">
+                {% for post in site.posts limit:2 %}
+                <a href="{{ post.url | relative_url }}" class="blog-card">
+                    {% if post.image %}
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="blog-img">
+                    {% endif %}
+                    <div class="blog-info">
+                        <h3>{{ post.title }}</h3>
+                        <div class="blog-meta">{{ post.date | date: "%d.%m.%Y" }}</div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="section-header">
+                <h2><i>Pytania?</i> Mam odpowiedzi</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Przebieg współpracy</span><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">Wszystko zaczyna się od formularza i darmowej próbki tekstu. Po akceptacji wyceny i terminu podpisujemy bezpieczną umowę w formacie PDF, a Ty opłacasz zlecenie. Pracę wykonuję w profesjonalnym trybie śledzenia zmian w MS Word, abyś widział(-a) każdy mój krok.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Jakie są ceny?</span><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">Każdy tekst wyceniam w pełni indywidualnie, ponieważ zależy to od stanu technicznego pliku i stopnia skomplikowania. Orientacyjne stawki za arkusz wydawniczy oraz pojedynczą stronę normatywną znajdziesz w zakładce Cennik.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Ile trwa redakcja i korekta</span><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">Czas pracy liczę zawsze w dniach roboczych. Dokładny, wiążący i bezpieczny dla Twojego kalendarza wydawniczego termin przesyłam Ci zawsze razem z ostateczną wyceną, po zapoznaniu się z próbką lub całością tekstu.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Czy redakcja językowa to to samo co strukturalna</span><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">Nie. Redakcja strukturalna bada architekturę książki – logikę fabuły, motywacje bohaterów i tempo. Redakcję językową robimy dopiero wtedy, gdy szkielet historii jest stabilny. Skupia się ona na płynności zdań, stylu i eliminowaniu powtórzeń.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Po co mi autodiagnostyka?</span><i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">Po to, abyś nie płacił(-a) mi za poprawianie błędów konstrukcyjnych, które jesteś w stanie łatwo dostrzec i wyeliminować samodzielnie! Autodiagnostyka pozwala Ci zaoszczędzić budżet i oddać do profesjonalnej redakcji plik na znacznie wyższym poziomie.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="cta-section">
+            <h2>Zróbmy razem coś świetnego!</h2>
+            <p>Twoja historia zasługuje na profesjonalną, wydawniczą oprawę.</p>
+            <a href="mailto:natalia.szoppa@gmail.com" class="btn-gradient" style="background: white; color: black;">Napisz do mnie</a>
+        </section>
+
+    </main>
 </div>
 
-<section style="padding: 40px 0 80px 0;">
-    <div class="container" style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 300px;">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80" alt="Pisanie książki" style="width: 100%; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.08);">
-        </div>
-        <div style="flex: 1; min-width: 300px;">
-            <span class="section-subtitle" style="text-align: left;">Cześć!</span>
-            <h2 style="font-size: 36px; margin-bottom: 20px; font-family: 'Lora', serif;">Nie jestem tylko redaktorką. Jestem Twoim <i class="marker-highlight">pierwszym czytelnikiem.</i></h2>
-            <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 20px; line-height: 1.8;">Zanim tekst trafi do księgarni, musi przejść próbę ognia. Ktoś musi zadać trudne pytania, wyłapać dziury fabularne i wypolerować każde zdanie, by brzmiało dokładnie tak, jak to sobie wyobrażałeś.</p>
-            <p style="color: var(--text-gray); font-size: 16px; margin-bottom: 30px; line-height: 1.8;">Wykorzystuję moje wieloletnie doświadczenie z tradycyjnych wydawnictw, by dać niezależnym twórcom (Indie) dokładnie taką samą, bezkompromisową jakość.</p>
-            <a href="{{ '/o-mnie.html' | relative_url }}" class="btn-outline">Poznajmy się lepiej <i class="las la-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<section style="background-color: var(--bg-muted); padding: 80px 0;">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle">Współpraca</span>
-            <h2>Co mogę dla Ciebie <i>zrobić?</i></h2>
-        </div>
+<script>
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        const answer = element.nextElementSibling;
+        const isOpen = item.classList.contains('open');
         
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-            <a href="{{ '/oferta.html' | relative_url }}" style="background: white; padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border-color); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; display: block;">
-                <div style="width: 50px; height: 50px; background: var(--bg-muted); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-purple); margin-bottom: 20px;"><i class="las la-layer-group"></i></div>
-                <h3 style="font-size: 20px; font-family: 'Lora', serif; margin-bottom: 10px; color: var(--text-black);">Redakcja strukturalna</h3>
-                <p style="font-size: 14px; color: var(--text-gray);">Pomagam uporządkować fabułę, wygładzić luki logiczne i nadać tekstowi odpowiednie tempo.</p>
-            </a>
-            
-            <a href="{{ '/oferta.html' | relative_url }}" style="background: white; padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border-color); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; display: block;">
-                <div style="width: 50px; height: 50px; background: rgba(123, 44, 191, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-purple); margin-bottom: 20px;"><i class="las la-pen-nib"></i></div>
-                <h3 style="font-size: 20px; font-family: 'Lora', serif; margin-bottom: 10px; color: var(--text-black);">Szlif językowy</h3>
-                <p style="font-size: 14px; color: var(--text-gray);">Dbałość o styl, poprawność i brzmienie każdego zdania. Szlifuję tekst, zachowując Twój autorski głos.</p>
-            </a>
-            
-            <a href="{{ '/oferta.html' | relative_url }}" style="background: white; padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border-color); text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; display: block;">
-                <div style="width: 50px; height: 50px; background: var(--bg-muted); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--accent-purple); margin-bottom: 20px;"><i class="las la-book-open"></i></div>
-                <h3 style="font-size: 20px; font-family: 'Lora', serif; margin-bottom: 10px; color: var(--text-black);">Skład DTP & E-booki</h3>
-                <p style="font-size: 14px; color: var(--text-gray);">Zmieniam surowy plik tekstowy w piękną, gotową do druku lub publikacji cyfrowej, profesjonalną książkę.</p>
-            </a>
-        </div>
-    </div>
-</section>
+        if (isOpen) {
+            item.classList.remove('open');
+            answer.style.display = 'none';
+        } else {
+            item.classList.add('open');
+            answer.style.display = 'block';
+        }
+    }
+</script>
 
-<section style="padding: 100px 0;">
-    <div class="container">
-        <div style="background: var(--gradient); border-radius: 24px; padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap; box-shadow: 0 20px 50px rgba(123, 44, 191, 0.2);">
-            <div style="flex: 2; min-width: 300px; color: white;">
-                <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.9; margin-bottom: 10px; display: block;">Darmowy materiał</span>
-                <h2 style="font-size: 38px; font-family: 'Lora', serif; margin-bottom: 15px; color: white;">Autorze, <i>sprawdź się!</i></h2>
-                <p style="font-size: 16px; opacity: 0.95; margin-bottom: 0; line-height: 1.6; max-width: 500px;">Pobierz pełną check-listę autodiagnostyczną. To ponad 15 stron konkretnych przykładów wraz z rozwiązaniami, które pomogą Ci zaoszczędzić na redakcji. Wydrukuj i miej zawsze pod ręką podczas pisania!</p>
-            </div>
-            <div style="flex: 1; min-width: 200px; text-align: right;">
-                <a href="#" style="background: white; color: var(--text-black); padding: 18px 36px; border-radius: 50px; font-weight: 700; font-size: 15px; display: inline-block; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transition: transform 0.3s;">
-                    Pobierz PDF <i class="las la-download" style="margin-left: 5px;"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section style="padding-bottom: 100px;">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle">Wiedza i warsztat</span>
-            <h2>Ostatnio na <i>blogu</i></h2>
-        </div>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            {% for post in site.posts limit:3 %}
-            <a href="{{ post.url | relative_url }}" style="border-radius: 16px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.04); border: 1px solid var(--border-color); display: flex; flex-direction: column; text-decoration: none; background: white; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 15px 35px rgba(0,0,0,0.08)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.04)';">
-                
-                <div style="height: 220px; overflow: hidden; background: var(--bg-muted);">
-                    {% if post.image %}
-                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width: 100%; height: 100%; object-fit: cover;">
-                    {% endif %}
-                </div>
-                
-                <div style="padding: 30px; display: flex; flex-direction: column; flex-grow: 1;">
-                    <div style="font-size: 12px; color: var(--accent-purple); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
-                        {{ post.date | date: "%d.%m.%Y" }}
-                    </div>
-                    <h3 style="font-family: 'Mulish', sans-serif; font-size: 18px; color: var(--text-black); font-weight: 700; margin-bottom: 15px; line-height: 1.4;">
-                        {{ post.title }}
-                    </h3>
-                    <div style="margin-top: auto; font-size: 13px; font-weight: 700; color: var(--text-gray); display: flex; align-items: center; gap: 5px;">
-                        Czytaj dalej <i class="las la-arrow-right"></i>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
-        
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="{{ '/blog.html' | relative_url }}" class="btn-outline">Wszystkie wpisy</a>
-        </div>
-    </div>
-</section>
+</body>
+</html>
