@@ -3,7 +3,7 @@ layout: post
 title: "Z jakim nastawieniem piszesz?"
 date: 2026-06-06 12:00:00 +0200
 author: Natalia Szoppa
-image: https://images.unsplash.com/photo-1504691342899-4d92b50853e1
+image: "https://images.unsplash.com/photo-1504691342899-4d92b50853e1"
 tags: [porady pisarskie, warsztat]
 ---
 
