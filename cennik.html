@@ -2,374 +2,435 @@
 layout: default
 title: Cennik
 ---
+
 <style>
-    /* ===== WYMUSZENIE CZARNEGO MENU NA TEJ PODSTRONIE ===== */
-    .nav {
-        background: rgba(13,13,13,0.98) !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-
-    /* ===== SEKCJA TYTUŁOWA ===== */
-    .page-header { 
-        padding: calc(var(--nav-h) + 60px) 40px 40px; 
-        max-width: 1000px; 
-        margin: 0 auto; 
-        text-align: center; 
-    }
+    /* GWARANCJE I NOTKA PRAWNA */
+    .top-info-wrapper { margin-top: 60px; margin-bottom: 60px; display: flex; flex-direction: column; align-items: center; gap: 15px;}
     
-    .breadcrumbs { 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        gap: 12px; 
-        font-family: var(--sans); 
-        font-size: 0.72rem; 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 0.15em; 
-        margin-bottom: 24px; 
-        flex-wrap: wrap; 
+    .guarantees-bar {
+        background-color: var(--text-black);
+        color: white;
+        border-radius: 12px;
+        padding: 20px 40px;
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        flex-wrap: wrap;
     }
-    
-    .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
-    .breadcrumbs a:hover { color: var(--grad-start); }
-    .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
-    .breadcrumbs .current { color: var(--grad-start); }
-    
-    .page-title { 
-        font-family: var(--serif); 
-        font-size: clamp(2.2rem, 4vw, 3.5rem); 
-        color: var(--ink); 
-        line-height: 1.15; 
-        margin-bottom: 0; 
+    .guarantees-bar span {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
     }
+    .guarantees-bar i { font-size: 20px; color: #a272d1; }
 
-    /* ===== OBRAZEK HERO (NA CAŁĄ SZEROKOŚĆ) ===== */
-    .page-hero-img-wrap { width: 100%; }
-    .page-hero-img { 
-        width: 100%; 
-        height: 50vh; 
-        min-height: 400px; 
-        max-height: 600px;
-        object-fit: cover; 
-        display: block; 
+    .legal-note {
+        background-color: var(--bg-muted);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 12px 25px;
+        font-size: 12px;
+        color: var(--text-muted);
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
     }
+    .legal-note i { color: var(--accent-purple); margin-right: 5px; font-size: 14px;}
+    .legal-note strong { color: var(--text-gray); }
 
-    /* ===== CREDIBILITY BAR ===== */
-    .credibility-bar-overlap { 
-        background: var(--ink); 
-        padding: 22px 40px; 
-        position: relative; 
-        z-index: 10; 
-        margin-top: -30px; 
-        max-width: 900px; 
-        margin-left: auto; 
-        margin-right: auto; 
-        border-radius: var(--radius-lg); 
-        box-shadow: var(--shadow-strong); 
-        width: calc(100% - 40px); 
-    }
-    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
-    .cred-pillar { display: flex; align-items: center; gap: 12px; }
-    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
-    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
-
-    /* ===== PASEK UWAGI PRAWNEJ ===== */
-    .legal-bar { 
-        background: var(--paper-warm); 
-        border: 1px solid var(--paper-mid); 
-        border-radius: var(--radius-lg);
-        padding: 14px 40px; 
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-        gap: 12px; 
-        margin: 24px auto 60px; 
-        max-width: 900px;
-        width: calc(100% - 40px);
-    }
-    .legal-bar i { font-size: 1.2rem; color: var(--grad-start); flex-shrink: 0; }
-    .legal-bar p { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin: 0; line-height: 1.5; text-align: center; }
-    .legal-bar strong { color: var(--ink); font-weight: 700; }
-
-    /* ===== RESZTA STYLÓW CENNIKA ===== */
-    .section-lead { font-size: 1.05rem; color: var(--ink-muted); font-weight: 300; max-width: 560px; line-height: 1.75; margin: 0 auto 60px; text-align: center; }
-    
-    /* PAKIETY "MATRIOSZKA" */
-    .packages-container {
+    /* KARTA PAKIETU KOMPLEKSOWEGO */
+    .complex-package-wrapper {
         position: relative;
-        background: var(--gold-pale, #F5F0FF);
-        border: 2px solid var(--grad-start);
-        border-radius: var(--radius-lg);
-        padding: 50px 30px 40px;
-        margin: 60px auto 80px;
-        max-width: 1000px;
-        box-shadow: var(--shadow-med);
+        background-color: #fcfaff; /* Bardzo delikatny fiolet z grafiki */
+        border: 1px solid var(--accent-purple);
+        border-radius: 20px;
+        padding: 60px 40px 50px 40px;
+        margin-bottom: 80px;
         text-align: center;
     }
     
-    .mega-badge {
+    .package-badge {
         position: absolute;
-        top: -18px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--ink);
-        color: #fff;
-        padding: 8px 28px;
-        border-radius: 100px;
-        font-family: var(--sans);
-        font-size: 0.85rem;
+        top: 0; left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--text-black);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-size: 12px;
         font-weight: 700;
-        letter-spacing: 0.12em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         white-space: nowrap;
-        box-shadow: 0 6px 15px rgba(13,13,13,0.3);
-        z-index: 5;
     }
-    .mega-badge i { color: var(--grad-end); font-size: 1.2rem;}
+    .package-badge i { color: #f77f00; font-size: 14px; }
 
-    .mega-price-wrap { margin-bottom: 36px; }
-    .mega-price { font-family: var(--serif); font-size: 3rem; font-weight: 700; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; display: inline-block; }
-    .mega-price-unit { font-size: 0.9rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 8px; }
-
-    .sub-packages-grid { display: flex; align-items: stretch; justify-content: center; gap: 20px; }
-    .sub-package { background: #fff; border: 1.5px dashed var(--grad-start); border-radius: var(--radius-lg); padding: 40px 20px 24px; flex: 1; position: relative; display: flex; flex-direction: column; }
-    .sub-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #fff; color: var(--grad-start); border: 1px solid var(--grad-start); padding: 6px 20px; border-radius: 100px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; white-space: nowrap; }
-    
-    .pkg-details { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: auto; }
-    .pkg-item { display: flex; flex-direction: column; align-items: center; }
-    .pkg-item i { font-size: 2.2rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
-    .pkg-item span { font-family: var(--sans); font-size: 0.65rem; font-weight: 700; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 4px; }
-    .pkg-item strong { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); font-weight: 600; }
-    .pkg-item-plus { color: var(--grad-start); font-size: 1.5rem; margin-top: -10px; }
-    
-    .sub-price-wrap { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--paper-mid); }
-    .sub-price { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink); }
-    .sub-price span { font-size: 0.75rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 4px;}
-    .pkg-plus { display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--grad-start); font-weight: 300; }
-
-    /* POJEDYNCZE USŁUGI (UKŁAD STAŁY 2x2) */
-    .pricing-grid { 
-        display: grid; 
-        grid-template-columns: repeat(2, 1fr); /* Wymuszenie równego układu 2x2 */
-        gap: 24px; 
-        margin-bottom: 60px; 
-        max-width: 1000px; 
-        margin-left: auto; 
-        margin-right: auto; 
+    .main-prices { margin-bottom: 40px; }
+    .main-prices h3 {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-black);
+        font-family: var(--serif);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 8px;
     }
-    .pricing-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 44px 36px; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
-    .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
-    .pricing-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-med); border-color: transparent; }
-    .pricing-card:hover::before { transform: scaleX(1); }
-    .pricing-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--paper-mid); }
+    .main-prices h3 .text-gradient { font-size: 46px; line-height: 1; }
+    .main-prices h3 small { font-size: 12px; font-family: var(--sans); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-gray); opacity: 0.7;}
     
-    .price-main { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; line-height: 1; display: inline-block; margin-bottom: 6px; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 4px 6px 4px 0px; }
-    .price-unit { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); block; margin-bottom: 24px; }
-    .price-alt { font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-    .price-alt-unit { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-muted); font-weight: 600; block; margin-bottom: 16px; }
-    
-    /* INFO GRID */
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
-    .info-card { background: #fff; border: 1.5px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px; }
-    .info-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 24px; color: var(--ink); }
-    .definitions-list { list-style: none; padding: 0; margin: 0; }
-    .definitions-list li { background: var(--paper-warm); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 600; color: var(--ink); }
-    .definitions-list li span { font-weight: 300; color: var(--ink-muted); font-size: 0.88rem; block; margin-top: 4px; }
-    .factors-list { list-style: none; padding: 0; margin: 0; }
-    .factors-list li { position: relative; padding-left: 24px; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
-    .factors-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-
-    /* CTA */
-    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
-    .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107,53,200,0.9) 0%, rgba(184,64,154,0.9) 50%, rgba(232,119,42,0.9) 100%); z-index: 1; }
-    .cta-content { position: relative; z-index: 2; }
-    .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
-    .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
-    .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-    
-    @media (max-width: 860px) { 
-        .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
-        .page-title { font-size: 2.2rem; }
-        .page-hero-img { min-height: 250px; height: 35vh; }
-        .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
-        .credibility-bar-inner { gap: 24px; }
-        .info-grid { grid-template-columns: 1fr; } 
-        .sub-packages-grid { flex-direction: column; }
-        .pkg-plus { transform: rotate(90deg); margin: 10px 0; }
+    .main-prices h4 {
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--text-black);
+        font-family: var(--serif);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
     }
-    @media (max-width: 600px) { 
-        .pricing-grid { grid-template-columns: 1fr; } /* Mobilne zejście do 1 kolumny */
+    .main-prices h4 small { font-size: 11px; font-family: var(--sans); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+
+    /* Wnętrze pakietu kompleksowego */
+    .package-split {
+        display: flex;
+        align-items: stretch;
+        gap: 20px;
+        position: relative;
+    }
+    
+    .split-plus-icon {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--accent-purple);
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .split-box {
+        flex: 1;
+        background: white;
+        border: 1px dashed var(--accent-purple);
+        border-radius: 16px;
+        padding: 30px 20px;
+        position: relative;
+    }
+
+    .split-box-title {
+        position: absolute;
+        top: 0; left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border: 1px solid var(--accent-purple);
+        color: var(--accent-purple);
+        border-radius: 20px;
+        padding: 6px 16px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .split-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        margin-top: 15px;
+    }
+    .split-icon-item { text-align: center; }
+    .split-icon-item i { font-size: 24px; color: #a272d1; margin-bottom: 10px; display: block; }
+    .split-icon-item span { font-size: 13px; font-weight: 600; font-family: var(--serif); color: var(--text-black); }
+    .split-icons-plus { font-size: 16px; color: var(--accent-purple); align-self: center; margin-bottom: 25px;}
+
+    .split-divider {
+        height: 1px;
+        background: var(--border-color);
+        margin: 0 20px 25px 20px;
+    }
+
+    .split-pricing { text-align: center; }
+    .split-pricing .big-price { font-size: 26px; font-family: var(--serif); font-weight: 700; margin-bottom: 5px; color: var(--text-black);}
+    .split-pricing .unit { font-size: 12px; color: var(--text-gray); margin-bottom: 15px; }
+    .split-pricing .small-price { font-size: 18px; font-family: var(--serif); font-weight: 700; margin-bottom: 5px; color: var(--text-black);}
+
+    /* USŁUGI POJEDYNCZE (KARTY) */
+    .single-services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 80px;
+    }
+    .service-card {
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 40px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    }
+    
+    .service-card h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .service-divider {
+        height: 1px;
+        background: var(--border-color);
+        margin-bottom: 30px;
+    }
+    
+    .card-price-group { margin-bottom: 25px; }
+    .card-price-group:last-child { margin-bottom: 0; }
+    
+    .card-price-group .price { font-size: 22px; font-family: var(--serif); font-weight: 700; display: flex; align-items: baseline; gap: 8px;}
+    .card-price-group .price .text-gradient { font-size: 38px; line-height: 1; }
+    .card-price-group .unit { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px;}
+
+    /* BOKSY INFORMACYJNE (JEDNOSTKI I WYCENA) */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-bottom: 80px;
+    }
+    .info-box {
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 40px;
+    }
+    .info-box h3 {
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    
+    /* Box: Jednostki */
+    .unit-item-box {
+        background-color: var(--bg-muted);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: var(--text-gray);
+    }
+    .unit-item-box:last-child { margin-bottom: 0; }
+    .unit-item-box strong { color: var(--text-black); }
+
+    /* Box: Wycena zależy od */
+    .pricing-factors-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .pricing-factors-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: var(--text-gray);
+    }
+    .pricing-factors-list li::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 8px;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--gradient);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .guarantees-bar { flex-direction: column; gap: 20px; padding: 20px; text-align: center; }
+        .package-split { flex-direction: column; gap: 40px; }
+        .split-plus-icon { display: none; }
+        .single-services-grid { grid-template-columns: 1fr; }
+        .info-grid { grid-template-columns: 1fr; }
+        .complex-package-wrapper { padding: 50px 20px 40px 20px; }
+        .main-prices h3 { flex-direction: column; align-items: center; gap: 0; }
+        .main-prices h4 { flex-direction: column; align-items: center; gap: 5px; }
+        .package-badge { white-space: normal; text-align: center; width: 90%; }
     }
 </style>
 
-<header class="page-header reveal">
-    <div class="breadcrumbs">
-        <a href="{{ '/' | relative_url }}">Strona główna</a> 
-        <i class="las la-angle-right"></i>
-        <span>Oferta</span> 
-        <i class="las la-angle-right"></i>
-        <span class="current">Cennik</span>
+<div class="container top-info-wrapper">
+    <div class="guarantees-bar">
+        <span><i class="las la-university"></i> Przelew bankowy</span>
+        <span><i class="las la-file-signature"></i> Podpisanie umowy</span>
+        <span><i class="las la-undo"></i> 14 dni na odstąpienie</span>
     </div>
-    <h1 class="page-title delay-1">Zobacz proponowane stawki za usługi</h1>
-</header>
-
-<div class="page-hero-img-wrap reveal delay-2">
-    <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?q=80&w=2000&auto=format&fit=crop" alt="Cennik i wycena" class="page-hero-img">
-</div>
-
-<div class="credibility-bar-overlap reveal delay-3">
-    <div class="credibility-bar-inner">
-        <div class="cred-pillar">
-            <i class="las la-coins"></i>
-            <span>Przelew bankowy</span>
-        </div>
-        <div class="cred-pillar">
-            <i class="las la-file-contract"></i>
-            <span>Podpisanie umowy</span>
-        </div>
-        <div class="cred-pillar">
-            <i class="las la-undo-alt"></i>
-            <span>14 dni na odstąpienie</span>
-        </div>
+    <div class="legal-note">
+        <i class="las la-balance-scale"></i> <strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.
     </div>
 </div>
 
-<div class="legal-bar reveal delay-4">
-    <i class="las la-balance-scale"></i>
-    <p><strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.</p>
-</div>
+<div class="container">
+    
+    <section style="padding-top: 20px; padding-bottom: 20px;">
+        <div class="section-header">
+            <span class="section-subtitle">Kompleksowa obsługa po strukturze</span>
+            <h2>Dostępne <i class="marker-highlight">pakiety</i></h2>
+            <p>Fabuła gotowa? Wybierz pełen pakiet i nie martw się o szukanie kolejnych wykonawców.</p>
+        </div>
 
-<section class="section">
-    <div class="container">
-        
-        <div class="eyebrow reveal" style="text-align: center;">Kompleksowa obsługa po strukturze</div>
-        <h2 class="section-h2 reveal delay-1" style="text-align: center;">Dostępne <em>pakiety</em></h2>
-        <p class="section-lead reveal delay-2">Fabuła gotowa? Wybierz pełen pakiet i nie martw się o szukanie kolejnych wykonawców.</p>
-
-        <div class="packages-container reveal delay-3">
-            <div class="mega-badge"><i class="las la-star"></i> PAKIET KOMPLEKSOWY (OD KROKU 4) <i class="las la-star"></i></div>
-            
-            <div class="mega-price-wrap">
-                <div class="mega-price">od 450 zł</div>
-                <span class="mega-price-unit">za arkusz wydawniczy (pow. 5 arkuszy)</span>
-                
-                <div style="margin-top: 18px;">
-                    <span style="font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--ink);">od 45 zł</span>
-                    <span style="font-size: 0.8rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 4px;">za stronę (poniżej 5 ark.)</span>
-                </div>
+        <div class="complex-package-wrapper">
+            <div class="package-badge">
+                <i class="las la-star"></i> Pakiet Kompleksowy (od kroku 4) <i class="las la-star"></i>
             </div>
 
-            <div class="sub-packages-grid">
-                <div class="sub-package">
-                    <div class="sub-badge">PAKIET: SZLIF JĘZYKOWY</div>
-                    <div class="pkg-details">
-                        <div class="pkg-item">
-                            <i class="las la-pen-fancy"></i>
-                            <span>Etap 1</span>
-                            <strong>Redakcja</strong>
+            <div class="main-prices">
+                <h3>od <span class="text-gradient">450 zł</span> <small>za arkusz wydawniczy (pow. 5 arkuszy)</small></h3>
+                <h4>od 45 zł <small>za stronę (poniżej 5 ark.)</small></h4>
+            </div>
+
+            <div class="package-split">
+                <div class="split-box">
+                    <div class="split-box-title">Pakiet: Szlif Językowy</div>
+                    <div class="split-icons">
+                        <div class="split-icon-item">
+                            <i class="las la-pen"></i>
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;">Etap 1</div>
+                            <span>Redakcja</span>
                         </div>
-                        <div class="pkg-item-plus">+</div>
-                        <div class="pkg-item">
+                        <div class="split-icons-plus">+</div>
+                        <div class="split-icon-item">
                             <i class="las la-spell-check"></i>
-                            <span>Etap 2</span>
-                            <strong>Korekta</strong>
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;">Etap 2</div>
+                            <span>Korekta</span>
                         </div>
                     </div>
-                    <div class="sub-price-wrap">
-                        <div class="sub-price">od 290 zł</div>
-                        <span>za arkusz (pow. 5 arkuszy)</span>
-                        <div style="margin-top: 15px;">
-                            <div style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink);">od 30 zł</div>
-                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
-                        </div>
+                    <div class="split-divider"></div>
+                    <div class="split-pricing">
+                        <div class="big-price">od 290 zł</div>
+                        <div class="unit">za arkusz (pow. 5 arkuszy)</div>
+                        <div class="small-price">od 30 zł</div>
+                        <div class="unit" style="margin-bottom: 0;">za stronę (poniżej 5 ark.)</div>
                     </div>
                 </div>
 
-                <div class="pkg-plus">+</div>
+                <div class="split-plus-icon">+</div>
 
-                <div class="sub-package">
-                    <div class="sub-badge">PAKIET: SKŁAD I E-BOOKI</div>
-                    <div class="pkg-details">
-                        <div class="pkg-item">
+                <div class="split-box">
+                    <div class="split-box-title">Pakiet: Skład i E-booki</div>
+                    <div class="split-icons">
+                        <div class="split-icon-item">
                             <i class="las la-layer-group"></i>
-                            <span>Etap 1</span>
-                            <strong>Skład DTP</strong>
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;">Etap 1</div>
+                            <span>Skład DTP</span>
                         </div>
-                        <div class="pkg-item-plus">+</div>
-                        <div class="pkg-item">
+                        <div class="split-icons-plus">+</div>
+                        <div class="split-icon-item">
                             <i class="las la-search-plus"></i>
-                            <span>Etap 2</span>
-                            <strong>Korekta poskł.</strong>
+                            <div style="font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px;">Etap 2</div>
+                            <span>Korekta poskł.</span>
                         </div>
                     </div>
-                    <div class="sub-price-wrap">
-                        <div class="sub-price">od 180 zł</div>
-                        <span>za arkusz (pow. 5 arkuszy)</span>
-                        <div style="margin-top: 15px;">
-                            <div style="font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink);">od 18 zł</div>
-                            <span style="font-size: 0.7rem; color: var(--ink-muted); font-family: var(--sans); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; block; margin-top: 2px;">za stronę (poniżej 5 ark.)</span>
-                        </div>
+                    <div class="split-divider"></div>
+                    <div class="split-pricing">
+                        <div class="big-price">od 180 zł</div>
+                        <div class="unit">za arkusz (pow. 5 arkuszy)</div>
+                        <div class="small-price">od 18 zł</div>
+                        <div class="unit" style="margin-bottom: 0;">za stronę (poniżej 5 ark.)</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <h2 class="section-h2 reveal" style="text-align: center; margin-top: 80px;">Usługi <em>pojedyncze</em></h2>
-        <p class="section-lead reveal delay-1">Potrzebujesz wsparcia tylko na jednym konkretnym etapie? Żaden problem.</p>
-
-        <div class="pricing-grid">
-            <div class="pricing-card reveal">
-                <h3>Redakcja Strukturalna</h3>
-                <span class="price-main">od 150 zł</span>
-                <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
-                <div class="price-alt">od 15 zł</div>
-                <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-            </div>
-            
-            <div class="pricing-card reveal delay-1">
-                <h3>Redakcja Językowa</h3>
-                <span class="price-main">od 200 zł</span>
-                <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
-                <div class="price-alt">od 20 zł</div>
-                <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-            </div>
-
-            <div class="pricing-card reveal">
-                <h3>Korekta Językowa</h3>
-                <span class="price-main">od 120 zł</span>
-                <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
-                <div class="price-alt">od 15 zł</div>
-                <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-            </div>
-
-            <div class="pricing-card reveal delay-1">
-                <h3>Skład DTP i Korekta poskł.</h3>
-                <span class="price-main">od 200 zł</span>
-                <span class="price-unit">za arkusz wyd. (pow. 5 arkuszy)</span>
-                <div class="price-alt">od 20 zł</div>
-                <span class="price-alt-unit">za stronę (poniżej 5 ark.)</span>
-            </div>
+    <section style="padding-top: 20px; padding-bottom: 20px;">
+        <div class="section-header">
+            <h2>Usługi <i class="marker-highlight">pojedyncze</i></h2>
+            <p>Potrzebujesz wsparcia tylko na jednym konkretnym etapie? Żaden problem.</p>
         </div>
 
-        <div class="info-grid reveal">
-            <div class="info-card">
-                <h3>Jednostki rozliczeniowe</h3>
-                <ul class="definitions-list">
-                    <li>1 strona normatywna <span>= 1800 znaków ze spacjami</span></li>
-                    <li>1 arkusz wydawniczy <span>= 40 000 znaków ze spacjami</span></li>
-                </ul>
+        <div class="single-services-grid">
+            
+            <div class="service-card">
+                <h3>Redakcja Strukturalna</h3>
+                <div class="service-divider"></div>
+                <div class="card-price-group">
+                    <div class="price">od <span class="text-gradient">150 zł</span></div>
+                    <div class="unit">za arkusz wyd. (pow. 5 arkuszy)</div>
+                </div>
+                <div class="card-price-group">
+                    <div class="price">od 15 zł</div>
+                    <div class="unit">za stronę (poniżej 5 ark.)</div>
+                </div>
             </div>
-            <div class="info-card">
+
+            <div class="service-card">
+                <h3>Redakcja Językowa</h3>
+                <div class="service-divider"></div>
+                <div class="card-price-group">
+                    <div class="price">od <span class="text-gradient">200 zł</span></div>
+                    <div class="unit">za arkusz wyd. (pow. 5 arkuszy)</div>
+                </div>
+                <div class="card-price-group">
+                    <div class="price">od 20 zł</div>
+                    <div class="unit">za stronę (poniżej 5 ark.)</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>Korekta Językowa</h3>
+                <div class="service-divider"></div>
+                <div class="card-price-group">
+                    <div class="price">od <span class="text-gradient">120 zł</span></div>
+                    <div class="unit">za arkusz wyd. (pow. 5 arkuszy)</div>
+                </div>
+                <div class="card-price-group">
+                    <div class="price">od 15 zł</div>
+                    <div class="unit">za stronę (poniżej 5 ark.)</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <h3>Skład DTP i Korekta poskł.</h3>
+                <div class="service-divider"></div>
+                <div class="card-price-group">
+                    <div class="price">od <span class="text-gradient">200 zł</span></div>
+                    <div class="unit">za arkusz wyd. (pow. 5 arkuszy)</div>
+                </div>
+                <div class="card-price-group">
+                    <div class="price">od 20 zł</div>
+                    <div class="unit">za stronę (poniżej 5 ark.)</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section style="padding-top: 0;">
+        <div class="info-grid">
+            
+            <div class="info-box">
+                <h3>Jednostki rozliczeniowe</h3>
+                <div class="unit-item-box">
+                    <strong>1 strona normatywna</strong> = 1800 znaków ze spacjami
+                </div>
+                <div class="unit-item-box">
+                    <strong>1 arkusz wydawniczy</strong> = 40 000 znaków ze spacjami
+                </div>
+            </div>
+
+            <div class="info-box">
                 <h3>Wycena zależy od:</h3>
-                <ul class="factors-list">
+                <ul class="pricing-factors-list">
                     <li>objętości tekstu;</li>
                     <li>ilości błędów (im więcej błędów, tym więcej pracy);</li>
                     <li>stopnia trudności (artykuły naukowe, instrukcje, przypisy);</li>
@@ -377,33 +438,8 @@ title: Cennik
                     <li>dodatkowych życzeń podnoszących pracochłonność.</li>
                 </ul>
             </div>
+
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="cta-section">
-    <div class="cta-content">
-        <h2 class="reveal delay-1">Opowiedź mi o swoim projekcie</h2>
-        <p class="reveal delay-2">Nie musisz od razu wiedzieć, jakiej usługi potrzebujesz. Opisz krótko swój projekt i prześlij fragment tekstu – wspólnie zastanowimy się, jaki zakres prac będzie dla Ciebie najlepszy.</p>
-        <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Wyślij materiały</a>
-            <a href="{{ site.baseurl }}/zasady-wspolpracy.html" class="btn-ghost">Zasady współpracy <i class="las la-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const bellIcon   = document.getElementById('bell-icon');
-    const bellNotice = document.getElementById('bell-notice');
-    const bellPill   = document.getElementById('bell-pill');
-
-    if (bellNotice) setTimeout(() => bellNotice.classList.add('visible'), 200);
-    if (bellIcon) {
-        setTimeout(() => bellIcon.classList.add('ring1'), 400);
-        setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
-        setTimeout(() => bellIcon.classList.add('ring2'), 1300);
-    }
-    if (bellPill) setTimeout(() => bellPill.classList.add('expanded'), 1700);
-});
-</script>
+</div>
