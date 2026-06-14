@@ -27,7 +27,7 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Mulish', sans-serif; color: var(--text-black); background-color: var(--bg-color); line-height: 1.5; }
+        body { font-family: 'Mulish', sans-serif; color: var(--text-black); background-color: var(--bg-color); line-height: 1.5; overflow-x: hidden; }
         h1, h2, h3, h4, .lora-font { font-family: 'Lora', serif; color: var(--text-black); }
         h2 i, h1 i { font-family: 'Lora', serif; font-style: italic; color: var(--text-gray); font-weight: 400; }
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
@@ -62,20 +62,32 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         }
 
         /* UKŁAD STRONY (SPLIT SIDEBAR) */
-        .layout-wrapper { display: flex; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
+        .layout-wrapper { display: flex; max-width: 1200px; margin: 0 auto; min-height: 100vh; align-items: flex-start; }
 
-        /* LEWY PASEK BOCZNY */
+        /* LEWY PASEK BOCZNY - POPRAWIONY */
         .sidebar {
-            width: 35%; position: sticky; top: 0; height: 100vh;
-            padding: 60px 40px 40px 20px; display: flex; flex-direction: column;
-            overflow-y: auto; background-color: #ffffff;
+            flex: 0 0 32%; /* Zablokowanie szerokości - zapobiega zgniataniu */
+            max-width: 380px;
+            position: sticky; top: 0; height: 100vh;
+            padding: 60px 30px 40px 20px; 
+            display: flex; flex-direction: column;
+            overflow-y: auto; overflow-x: hidden;
+            background-color: #ffffff;
+            border-right: 1px solid var(--border-color); /* Delikatna linia oddzielająca */
         }
+        
+        /* Cienki suwak dla lewego paska */
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: #dcdcdc; border-radius: 10px; }
+        .sidebar::-webkit-scrollbar-thumb:hover { background: #c0c0c0; }
+
         .profile-header { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
         .profile-img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
         .profile-info h3 { font-size: 14px; font-family: 'Mulish', sans-serif; font-weight: 700; margin-bottom: 2px; }
         .profile-info p { font-size: 12px; color: var(--text-muted); }
         
-        .sidebar h1 { font-size: 40px; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px; font-weight: 600; }
+        .sidebar h1 { font-size: clamp(28px, 3vw, 40px); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 20px; font-weight: 600; word-wrap: break-word; }
         .sidebar > p { color: var(--text-gray); margin-bottom: 30px; font-size: 14px; line-height: 1.6; }
         
         .social-links { display: flex; gap: 8px; margin-top: auto; padding-top: 20px; }
@@ -83,12 +95,17 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         .social-links a:hover { background: var(--text-black); color: white; transform: translateY(-2px); }
         .copyright { margin-top: 20px; font-size: 11px; color: var(--text-muted); }
 
-        /* PRAWY KONTENER TREŚCI */
-        .main-content { flex: 1; padding: 60px 20px 80px 40px; background-color: #ffffff; }
+        /* PRAWY KONTENER TREŚCI - POPRAWIONY */
+        .main-content { 
+            flex: 1; 
+            min-width: 0; /* MAGIA FLEXBOXA - Zapobiega rozpychaniu przez slider na boki! */
+            padding: 60px 20px 80px 40px; 
+            background-color: #ffffff; 
+        }
 
         /* MENU GÓRNE */
         .top-nav { display: flex; justify-content: flex-end; align-items: center; gap: 30px; margin-bottom: 60px; }
-        .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; }
+        .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; flex-wrap: wrap; justify-content: flex-end; }
         .nav-links a { color: var(--text-black); }
         .nav-links a:hover { color: var(--accent-purple); }
 
@@ -98,7 +115,7 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         .section-header h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; }
         .section-header p { color: var(--text-gray); margin-top: 8px; font-size: 15px; font-family: 'Mulish', sans-serif; }
 
-        /* --- NOWE STYLE DLA SLIDERA PORTFOLIO --- */
+        /* --- STYLE DLA SLIDERA PORTFOLIO --- */
         .slider-wrap { width: 100%; overflow: hidden; padding: 10px 0; }
         .slider-track { display: flex; gap: 20px; animation: slide 25s linear infinite; width: max-content; }
         .slider-wrap:hover .slider-track { animation-play-state: paused; }
@@ -116,7 +133,7 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* USŁUGI & BLOG */
-        .services-grid, .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .services-grid, .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .service-card, .blog-card { background-color: var(--bg-muted); padding: 30px 25px; border-radius: 16px; display: flex; flex-direction: column; transition: all 0.3s ease; }
         .service-card:hover { background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transform: translateY(-3px); }
         .service-card h3 { font-size: 18px; margin-bottom: 10px; font-weight: 700; }
@@ -144,10 +161,10 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .layout-wrapper { flex-direction: column; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--border-color); }
             .main-content { padding: 40px 20px; }
-            .services-grid, .blog-grid { grid-template-columns: 1fr; }
             .top-nav { justify-content: center; margin-bottom: 40px; }
+            .nav-links { justify-content: center; }
         }
     </style>
 </head>
@@ -272,31 +289,31 @@ title: Natalia Szoppa - Redaktorka & Specjalistka DTP
                     <div class="faq-question" onclick="toggleFaq(this)">
                         <span>Przebieg współpracy</span><i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">Wszystko zaczyna się od formularza i darmowej próbki tekstu. Po akceptacji wyceny i terminu podpisujemy bezpieczną umowę w formacie PDF, a Ty opłacasz zlecenie. Pracę wykonuję w profesjonalnym trybie śledzenia zmian w MS Word, abyś widział(-a) każdy mój krok.</div>
+                    <div class="faq-answer">Wszystko zaczyna się od formularza i darmowej próbki tekstu. Po akceptacji wyceny i terminu podpisujemy umowę (w formacie PDF), a Ty opłacasz zlecenie. Pracę wykonuję w trybie śledzenia zmian w MS Word, abyś miał pełną kontrolę nad procesem.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
                         <span>Jakie są ceny?</span><i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">Każdy tekst wyceniam w pełni indywidualnie, ponieważ zależy to od stanu technicznego pliku i stopnia skomplikowania. Orientacyjne stawki za arkusz wydawniczy oraz pojedynczą stronę normatywną znajdziesz w zakładce Cennik.</div>
+                    <div class="faq-answer">Każdy tekst wyceniam indywidualnie, ponieważ zależy to od stanu pliku i stopnia skomplikowania. Orientacyjne stawki za arkusz wydawniczy oraz pojedynczą stronę normatywną znajdziesz w zakładce Cennik.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Ile trwa redakcja i korekta</span><i class="fa-solid fa-plus"></i>
+                        <span>Ile trwa redakcja i korekta?</span><i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">Czas pracy liczę zawsze w dniach roboczych. Dokładny, wiążący i bezpieczny dla Twojego kalendarza wydawniczego termin przesyłam Ci zawsze razem z ostateczną wyceną, po zapoznaniu się z próbką lub całością tekstu.</div>
+                    <div class="faq-answer">Czas pracy liczę zawsze w dniach roboczych. Dokładny i bezpieczny dla Twojego kalendarza wydawniczego termin przesyłam Ci razem z wyceną, po zapoznaniu się z Twoim tekstem.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
-                        <span>Czy redakcja językowa to to samo co strukturalna</span><i class="fa-solid fa-plus"></i>
+                        <span>Czy redakcja językowa to to samo co strukturalna?</span><i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">Nie. Redakcja strukturalna bada architekturę książki – logikę fabuły, motywacje bohaterów i tempo. Redakcję językową robimy dopiero wtedy, gdy szkielet historii jest stabilny. Skupia się ona na płynności zdań, stylu i eliminowaniu powtórzeń.</div>
+                    <div class="faq-answer">Nie. Redakcja strukturalna bada architekturę książki – logikę fabuły, motywacje i tempo. Redakcję językową robimy dopiero, gdy szkielet historii jest stabilny. Skupia się ona na płynności zdań, stylu i eliminowaniu błędów.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question" onclick="toggleFaq(this)">
                         <span>Po co mi autodiagnostyka?</span><i class="fa-solid fa-plus"></i>
                     </div>
-                    <div class="faq-answer">Po to, abyś nie płacił(-a) mi za poprawianie błędów konstrukcyjnych, które jesteś w stanie łatwo dostrzec i wyeliminować samodzielnie! Autodiagnostyka pozwala Ci zaoszczędzić budżet i oddać do profesjonalnej redakcji plik na znacznie wyższym poziomie.</div>
+                    <div class="faq-answer">Abyś nie płacił(-a) za poprawianie błędów konstrukcyjnych, które łatwo dostrzeżesz i wyeliminujesz samodzielnie. Autodiagnostyka pozwala zaoszczędzić budżet i oddać do redakcji plik na znacznie wyższym poziomie.</div>
                 </div>
             </div>
         </section>
