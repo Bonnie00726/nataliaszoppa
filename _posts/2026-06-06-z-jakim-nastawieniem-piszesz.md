@@ -52,25 +52,21 @@ Z kolei autor, który karmi się wyłącznie wizją zobaczenia swojego nazwiska 
 
 Marzenia są piękne, ale jeśli wychodzisz ze swoim pomysłem do ludzi i chcesz do nich dotrzeć, warto poznać ich preferencje. 
 
-Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*), który kompletnie ignorował rady swoich redaktorów oraz czytelników i pisał dokładnie to, co chciał i jak chciał. I wiesz co? Dorobił się! Jest tu jednak pewien haczyk: Gege na samym początku stworzył świetną wizualnie historię z genialnym systemem mocy i wątkami, które miały potencjał na głęboką, filozoficzną rozkminę o naturze człowieka. Początek był naprawdę dobry, bo <span class="highlight-marker">autor dostosował się do standardów</span> i autentycznie zainteresował odbiorców. Dopiero później wyszło to, co wyszło… No cóż, *it was fun while it lasted*.
+Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*), który kompletnie ignorował rady swoich redaktorów oraz czytelników i pisał dokładnie to, co chciał i jak chciał. I wiesz co? Dorobił się! Jest tu jednak pewien haczyk: Gege na samym początku stworzył świetną wizualnie historię z genialnym systemem mocy i wątkami, które miały potencjał na głęboką, filozoficzną rozkminę o naturze człowieka. Początek był naprawdę dobry, bo <span class="marker-highlight">autor dostosował się do standardów</span> i autentycznie zainteresował odbiorców. Dopiero później wyszło to, co wyszło… No cóż, *it was fun while it lasted*.
 
 Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-<div class="blog-quote" markdown="1">
-Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować.
-<span class="blog-quote-author">~ Kurt Vonnegut, <a href="https://lithub.com/kurt-vonneguts-greatest-writing-advice/" target="_blank">"8 basics of creative writing"</a></span>
-</div>
+> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. <span class="blog-quote-author">Kurt Vonnegut, <a href="https://lithub.com/kurt-vonneguts-greatest-writing-advice/" target="_blank"><em>8 basics of creative writing</em></a></span>
 
-Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
+
+Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie.</span> Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
 Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
 
-<div class="blog-quote" markdown="1">
-Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym.
-<span class="blog-quote-author">~ George Orwell, "Dlaczego piszę?"</span>
-</div>
+> Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym. <span class="blog-quote-author">George Orwell, <em>Dlaczego piszę?</em></span>
 
-Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="highlight-marker">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
+
+Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="marker-highlight">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
 ---
 
