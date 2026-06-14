@@ -7,7 +7,7 @@ image: "https://images.unsplash.com/photo-1504691342899-4d92b50853e1"
 tags: [porady pisarskie, warsztat]
 ---
 
-Porozmawiajmy chwilę o Twoim nastawieniu. Dlaczego właściwie piszesz? Dla kogo to robisz? Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
+Porozmawiajmy chwilę o Twoim nastawieniu. <span class="marker-highlight">Dlaczego właściwie piszesz? Dla kogo to robisz?</span> Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
 
 Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
 
@@ -15,9 +15,9 @@ Twój język, struktura tekstu, a nawet sam pomysł <span class="highlight-marke
 
 Nie ma w tym jednak żadnej magii, to czysta psychologia:
 
-<div class="blog-highlight" markdown="1">
-Jeśli człowiek ma jasno wyznaczony cel, podświadomie dopasuje do niego swoje działania (w tym również język i formę przekazu), by go osiągnąć.
-</div>
+<span class="imp-line">
+Jeśli masz ma jasno wyznaczony cel, podświadomie dopasuje do niego swoje działania (w tym również język i formę przekazu), by go osiągnąć.
+</span>
 
 Jeśli głównym celem autora jest zarobek, będzie pisał w taki sposób, aby odbiorca był zadowolony. Jeśli jednak jedynym celem było po prostu samo wydanie książki, autor pisze przede wszystkim dla siebie, według własnych zasad i intuicji.
 
@@ -34,7 +34,7 @@ Jasne, początki zawsze są dla Ciebie – i to zupełnie naturalny, wręcz niez
 
 Problem pojawia się w chwili, gdy zaczynasz na poważnie myśleć o wydaniu książki. Włożyłaś w swoje dzieło mnóstwo pracy i wysiłku, więc zakładasz, że wszystkim się spodoba, a odbiorcy docenią Twój wkład i będą się zachwycać. Ale czy na pewno? 
 
-Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. Nie musi wiedzieć, dlaczego w ogóle usiadłaś do klawiatury. 
+Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. <span class="marker-highlight">Nie musi wiedzieć, dlaczego w ogóle usiadłaś do klawiatury. </span>
 
 <div class="blog-highlight" markdown="1">
 Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas.
