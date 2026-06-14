@@ -7,7 +7,7 @@ image: "https://images.unsplash.com/photo-1504691342899-4d92b50853e1"
 tags: [porady pisarskie, warsztat]
 ---
 
-Porozmawiajmy chwilę o Twoim nastawieniu. <span class="marker-highlight">Dlaczego właściwie piszesz? Dla kogo to robisz?</span> Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
+Porozmawiajmy chwilę o Twoim nastawieniu. <span class="marker-highlight">Dlaczego właściwie piszesz?</span><span class="marker-highlight"> Dla kogo to robisz?</span> Czy traktujesz pisanie jako formę autoterapii, czy może szukasz w nim zysku? A może powód jest zupełnie inny?
 
 Photo by <a href="https://unsplash.com/@dancounsell?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dan Counsell</a> on <a href="https://unsplash.com/photos/silver-macbook-showing-application-zIwAchjDirM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash.</a>
 
@@ -51,22 +51,18 @@ Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*)
 
 Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. <span class="blog-quote-author">Kurt Vonnegut, <a href="https://lithub.com/kurt-vonneguts-greatest-writing-advice/" target="_blank">**8 basics of creative writing<**/a></span>
+> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. Kurt Vonnegut,**8 basics of creative writing**
 
-
-Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces komercyjny, po prostu ułatwiają czytelnikowi to zadanie.</span> Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
+Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces komercyjny</span>, <span class="marker-highlight">po prostu ułatwiają czytelnikowi to zadanie.</span> Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
 Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
 
 > Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym. George Orwell, **Dlaczego piszę?**
-
 
 Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="marker-highlight">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
 ---
 
 <div class="sticky-note" markdown="1">
-**Najważniejsze na dziś:**
-
 Marzenie o publikacji to świetny zapalnik do działania, ale Twoim ostatecznym zadaniem jako pisarza jest utrzymanie uwagi czytelnika. Odbiorca musi sam, z własnej woli, chcieć przewrócić kolejną stronę. Na samym końcu tylko to ma realne znaczenie.
 </div>
