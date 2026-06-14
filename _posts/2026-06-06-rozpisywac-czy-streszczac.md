@@ -3,7 +3,7 @@ layout: post
 title: "Rozpisywać czy streszczać? Jak kontrolować tempo powieści"
 date: 2026-06-06 11:00:00 +0200
 author: Natalia Szoppa
-image: [https://images.unsplash.com/photo-1621446113284-53ca198c7fa7]
+image: "https://images.unsplash.com/photo-1621446113284-53ca198c7fa7"
 tags: [porady pisarskie, warsztat, tempo]
 ---
 
