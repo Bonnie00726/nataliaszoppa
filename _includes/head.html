@@ -162,5 +162,13 @@
             .floating-cta { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 14px; }
             .section-header h2 { font-size: 28px; }
         }
+        /* Stylowanie przycisku mobile */
+        .mobile-toggle { display: none; background: none; border: none; font-size: 28px; color: var(--text-black); cursor: pointer; }
+        
+        @media (max-width: 900px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 1000; text-align: center; }
+            .nav-links.show-mobile { display: flex; } /* Ta klasa jest dodawana po kliknięciu w hamburgera */
+            .mobile-toggle { display: block; }
+        }
     </style>
 </head>
