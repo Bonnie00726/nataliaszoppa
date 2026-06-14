@@ -37,6 +37,8 @@ Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. **Nie musi wied
 
 Jeśli Twoja strona tej wymiany jest pusta, odbiorca **po prostu zamknie książkę i odejdzie**.
 
+---
+
 <h2 id="skad-wiadomo-dla-kogo-piszesz">Skąd wiadomo, dla kogo piszesz?</h2>
 
 Nic nie istnieje w próżni. <span class="marker-highlight">Książka na rynku staje się produktem</span>, który musi spełniać określone standardy, a klienci mają wobec niego konkretne oczekiwania i mają też swoje przyzwyczajenia.
@@ -59,7 +61,7 @@ Na koniec zostawię Cię jeszcze z cytatem George'a Orwella:
 
 > Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym. George Orwell, **Dlaczego piszę?**
 
-Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="marker-highlight">musisz zadbać o swojego odbiorcę</span>, a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
+Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="marker-highlight">zadbaj o swojego odbiorcę,</span> a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
 ---
 
