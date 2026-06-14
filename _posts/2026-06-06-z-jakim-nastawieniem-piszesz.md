@@ -53,7 +53,7 @@ Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*)
 
 Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. Kurt Vonnegut,**8 basics of creative writing**
+> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. Kurt Vonnegut, **8 basics of creative writing**
 
 Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces</span>, po prostu <span class="marker-highlight">ułatwiają czytelnikowi</span> to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
