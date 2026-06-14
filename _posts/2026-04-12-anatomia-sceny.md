@@ -2,7 +2,7 @@
 layout: post
 title: "Anatomia sceny: jak projektować doświadczenia, a nie tylko pisać tekst?"
 date: 2026-04-12
-image: "https://images.unsplash.com/photo-1552694062-ccf53289a8da?q=80&w=1170&auto=format&fit=crop"
+image: [https://images.unsplash.com/photo-1552694062-ccf53289a8da?q=80&w=1170&auto=format&fit=crop]
 tags: [struktura książki]
 ---
 
