@@ -43,7 +43,7 @@ Jeśli Twoja strona tej wymiany jest pusta, odbiorca **po prostu zamknie książ
 
 Nic nie istnieje w próżni. <span class="marker-highlight">Książka na rynku staje się produktem</span>, który musi spełniać określone standardy, a klienci mają wobec niego konkretne oczekiwania i mają też swoje przyzwyczajenia.
 
-Autor, który bierze pod uwagę swoich odbiorców, dba o te standardy. Stale rozwija warsztat, konsultuje wybory narracyjne, zmienia, przepisuje i chętnie korzysta z pomocy fachowców. Chce wiedzieć jak najwięcej, by stworzyć coś, po co czytelnik chętnie sięgnie.
+**Autor, który bierze pod uwagę swoich odbiorców, dba o te standardy.** Stale rozwija warsztat, konsultuje wybory narracyjne, zmienia, przepisuje i chętnie korzysta z pomocy fachowców. Chce wiedzieć jak najwięcej, by stworzyć coś, po co czytelnik chętnie sięgnie.
 
 Z kolei autor, który karmi się wyłącznie wizją zobaczenia swojego nazwiska na okładce, często na tym poprzestaje. Wielokrotnie słyszałam, że wydanie książki było czyimś wielkim marzeniem. Niestety, o „istnieniu” czytelników tacy twórcy dowiadywali się dopiero po premierze – i bywało to <span class="marker-highlight">bardzo brutalne zderzenie z rzeczywistością</span> oraz oczekiwaniami rynku.
 
