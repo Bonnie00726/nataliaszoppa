@@ -1,229 +1,119 @@
 ---
 layout: default
-title: FAQs
+title: FAQ - Najczęściej zadawane pytania
 ---
+
 <style>
-    /* ===== WYMUSZENIE CZARNEGO MENU NA TEJ PODSTRONIE ===== */
-    .nav {
-        background: rgba(13,13,13,0.98) !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+    /* SEKCJA TYTUŁOWA (HEADER) */
+    .page-header {
+        text-align: center;
+        padding: 60px 20px 40px;
+        max-width: 800px;
+        margin: 0 auto;
     }
-
-    /* ===== SEKCJA TYTUŁOWA ===== */
-    .page-header { 
-        padding: calc(var(--nav-h) + 60px) 40px 40px; 
-        max-width: 1000px; 
-        margin: 0 auto; 
-        text-align: center; 
+    .breadcrumbs {
+        display: flex; justify-content: center; align-items: center; gap: 12px;
+        font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+        margin-bottom: 25px; color: var(--text-muted);
     }
+    .breadcrumbs a:hover { color: var(--accent-purple); }
+    .breadcrumbs i { font-size: 14px; }
+    .breadcrumbs .current { color: var(--accent-purple); }
     
-    .breadcrumbs { 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        gap: 12px; 
-        font-family: var(--sans); 
-        font-size: 0.72rem; 
-        font-weight: 700; 
-        text-transform: uppercase; 
-        letter-spacing: 0.15em; 
-        margin-bottom: 24px; 
-        flex-wrap: wrap; 
-    }
-    
-    .breadcrumbs a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
-    .breadcrumbs a:hover { color: var(--grad-start); }
-    .breadcrumbs i { color: var(--paper-mid); font-size: 0.9rem; }
-    .breadcrumbs .current { color: var(--grad-start); }
-    
-    .page-title { 
-        font-family: var(--serif); 
-        font-size: clamp(2.2rem, 4vw, 3.5rem); 
-        color: var(--ink); 
-        line-height: 1.15; 
-        margin-bottom: 16px; 
-        font-weight: 700;
-    }
-    
-    .page-subtitle {
-        font-family: var(--sans); 
-        font-size: 1.05rem; 
-        color: var(--ink-soft); 
-        font-weight: 300; 
-        max-width: 600px; 
-        line-height: 1.6; 
-        margin: 0 auto; 
-    }
+    .page-title { font-size: 46px; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .page-subtitle { font-size: 16px; color: var(--text-gray); line-height: 1.6; }
 
-    /* ===== OBRAZEK HERO ===== */
-    .page-hero-img-wrap { width: 100%; }
-    .page-hero-img { 
-        width: 100%; 
-        height: 50vh; 
-        min-height: 400px; 
-        max-height: 600px;
-        object-fit: cover; 
-        display: block; 
-    }
-
-    /* ===== CREDIBILITY BAR ===== */
-    .credibility-bar-overlap { 
-        background: var(--ink); 
-        padding: 22px 40px; 
-        position: relative; 
-        z-index: 10; 
-        margin-top: -30px; 
-        max-width: 1100px; 
-        margin-left: auto; 
-        margin-right: auto; 
-        border-radius: var(--radius-lg); 
-        box-shadow: var(--shadow-strong); 
-        width: calc(100% - 40px); 
-    }
-    .credibility-bar-inner { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
-    .cred-pillar { display: flex; align-items: center; gap: 12px; }
-    .cred-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
-    .cred-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.9); }
-
-    /* ===== GŁÓWNY KONTENER TREŚCI ===== */
-    .page-content-wrapper { 
-        max-width: 800px; 
-        margin: 60px auto 100px; 
-        padding: 0 24px; 
-    }
-
-    /* ===== SEKCJA SPISU TREŚCI (3 KOLUMNY) ===== */
-    .faq-toc {
-        background: var(--paper-warm, #fcfbfa);
-        border: 1.5px solid var(--paper-mid, #e5e5e5);
-        border-radius: var(--radius-lg);
-        padding: 40px; 
-        margin-bottom: 60px;
-    }
-    .faq-toc-title {
-        font-family: var(--serif);
-        font-size: 1.4rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 28px;
-        color: var(--ink);
+    /* FAQ CREDIBILITY BAR - POPRAWIONY (W JEDNEJ LINII) */
+    .faq-credibility {
+        background: var(--text-black);
+        padding: 20px 50px;
+        border-radius: 100px; /* Kształt pigułki świetnie spaja elementy w jednej linii */
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        max-width: 900px;
+        margin: 0 auto 80px auto;
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 50px;
+        white-space: nowrap; /* Wymusza jedną linię tekstu */
     }
-    .faq-toc-title i { color: var(--grad-start); }
-    
-    .faq-toc-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 32px; 
-    }
-    .faq-toc-section h4 {
-        font-family: var(--sans);
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-top: 0;
-        margin-bottom: 14px;
-        color: var(--ink-muted);
-        border-bottom: 1px solid rgba(13, 13, 13, 0.05); 
-        padding-bottom: 6px;
-    }
-    .faq-toc-section ul { list-style: none; padding: 0; margin: 0; }
-    .faq-toc-section li { margin-bottom: 10px; line-height: 1.4; }
-    .faq-toc-section a {
-        font-family: var(--sans);
-        font-size: 0.95rem;
-        color: var(--ink);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.2s;
-    }
-    .faq-toc-section a:hover { color: var(--grad-start); text-decoration: underline; }
+    .cred-pillar { display: flex; align-items: center; gap: 12px; }
+    .cred-pillar i { font-size: 22px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .cred-pillar span { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: white; }
 
-    /* ===== BLOKI PYTAŃ (OTWARTE KARTY) ===== */
-    html { scroll-behavior: smooth; } 
-    
+    /* SPIS TREŚCI (TOC) */
+    .faq-toc {
+        background: var(--bg-muted);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 40px;
+        margin-bottom: 80px;
+    }
+    .faq-toc-title { font-size: 24px; margin-bottom: 30px; display: flex; align-items: center; gap: 12px; }
+    .faq-toc-title i { color: var(--accent-purple); }
+    .faq-toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .faq-toc-section h4 { font-family: 'Mulish', sans-serif; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); border-bottom: 1px solid var(--border-color); padding-bottom: 10px; margin-bottom: 15px; }
+    .faq-toc-section ul { list-style: none; }
+    .faq-toc-section li { margin-bottom: 12px; }
+    .faq-toc-section a { font-size: 15px; font-weight: 600; color: var(--text-black); transition: color 0.2s; }
+    .faq-toc-section a:hover { color: var(--accent-purple); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* GRUPY I KARTY FAQ */
     .faq-group { margin-bottom: 60px; }
-    .faq-group-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; padding-bottom: 12px; border-bottom: 2px solid var(--paper-mid); display: flex; align-items: center; gap: 14px; }
-    .faq-group-title i { color: var(--grad-start); font-size: 1.8rem; }
-    
+    .faq-group-title { font-size: 32px; margin-bottom: 30px; padding-bottom: 15px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 15px; }
+    .faq-group-title i { color: var(--accent-purple); }
+
     .faq-card {
-        background: #fff;
-        border: 1.5px solid var(--paper-mid);
-        border-radius: var(--radius-lg);
+        background: white;
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 35px 40px;
         margin-bottom: 24px;
-        padding: 30px 36px;
-        box-shadow: 0 2px 8px rgba(107, 53, 200, 0.03);
-        scroll-margin-top: calc(var(--nav-h) + 30px); 
+        box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        scroll-margin-top: 100px; /* Margines przy kliknięciu w kotwicę z TOC */
     }
-    
-    .faq-card-question {
-        font-family: var(--sans);
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--grad-start);
-        margin-top: 0;
-        margin-bottom: 16px;
-        line-height: 1.4;
-    }
-    
-    .faq-card-answer p { font-family: var(--sans); font-size: 1.05rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 18px; }
+    .faq-card:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,0.06); }
+    .faq-card-question { font-family: 'Mulish', sans-serif; font-size: 20px; font-weight: 700; color: var(--accent-purple); margin-bottom: 15px; line-height: 1.4; }
+    .faq-card-answer p { font-size: 16px; color: var(--text-gray); line-height: 1.8; margin-bottom: 15px; }
     .faq-card-answer p:last-child { margin-bottom: 0; }
-    .faq-card-answer strong { color: var(--ink); font-weight: 700; }
-    .faq-card-answer a { color: var(--grad-start); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
-    .faq-card-answer a:hover { opacity: 0.8; }
+    .faq-card-answer strong { color: var(--text-black); }
+    .faq-card-answer a { color: var(--accent-purple); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .faq-card-answer ul { padding-left: 20px; color: var(--text-gray); margin-bottom: 15px; line-height: 1.8; }
+    .faq-card-answer li { margin-bottom: 8px; }
 
-    /* ===== CTA ===== */
-    .cta-section { padding: 120px 40px; text-align: center; position: relative; overflow: hidden; background-image: url('https://images.unsplash.com/photo-1586806974856-c55e8b9364e4?q=80&w=1170&auto=format&fit=crop'); background-size: cover; background-position: center; }
-    .cta-section::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107, 53, 200, 0.9) 0%, rgba(184, 64, 154, 0.9) 50%, rgba(232, 119, 42, 0.9) 100%); z-index: 1; }
-    .cta-content { position: relative; z-index: 2; }
-    .cta-section .eyebrow { display: block; font-family: var(--sans); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 12px; color: rgba(255,255,255,0.8); }
-    .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); color: #fff; font-weight: 700; margin-bottom: 16px; }
-    .cta-section p { color: rgba(255,255,255,0.9); font-weight: 300; font-size: 1.05rem; max-width: 520px; margin: 0 auto 40px; line-height: 1.6; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-cta-white { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; padding: 15px 32px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; }
-    .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.2); }
-    .btn-ghost { display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 0.85rem; font-weight: 600; text-decoration: none; padding: 14px 28px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 100px; transition: background 0.2s, border-color 0.2s; background: transparent; }
-    .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
-
-    /* RESPONSYWNOŚĆ (RWD) */
-    @media (max-width: 860px) { 
-        .page-header { padding: calc(var(--nav-h) + 40px) 20px 30px; }
-        .page-title { font-size: 2.2rem; }
-        .page-hero-img { min-height: 250px; height: 35vh; }
-        .credibility-bar-overlap { margin-top: -20px; padding: 16px 20px; }
-        .credibility-bar-inner { gap: 24px; }
-        .page-content-wrapper { margin-top: 40px; padding: 0 20px; }
-        
-        .faq-toc { padding: 30px 24px; margin-bottom: 40px; }
-        .faq-toc-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; }
-        .faq-card { padding: 24px; }
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+        .page-title { font-size: 36px; }
+        .faq-toc-grid { grid-template-columns: 1fr; gap: 40px; }
+        .faq-credibility { gap: 25px; padding: 20px 30px; border-radius: 16px; }
     }
-    @media (max-width: 600px) { 
-        .faq-group-title { font-size: 1.4rem; } 
-        .faq-card-question { font-size: 1.1rem; }
-        .faq-toc-grid { grid-template-columns: 1fr; gap: 16px; }
+    @media (max-width: 600px) {
+        .faq-card { padding: 25px; }
+        .faq-group-title { font-size: 26px; }
+        .faq-credibility { 
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 20px; 
+            white-space: normal; 
+            padding: 25px; 
+        }
     }
 </style>
 
-<header class="page-header reveal">
+<header class="page-header">
     <div class="breadcrumbs">
-        <a href="{{ '/' | relative_url }}">Strona główna</a> 
+        <a href="{{ '/index.html' | relative_url }}">Strona główna</a> 
         <i class="las la-angle-right"></i>
         <span class="current">FAQs</span>
     </div>
-    <h1 class="page-title delay-1">O co najczęściej pytacie?</h1>
-    <p class="page-subtitle reveal delay-2">Zebrałam w jednym miejscu wszystko, co warto wiedzieć przed startem. Sprawdź, jak wyglądają kulisy naszej współpracy.</p>
+    <h1 class="page-title">O co najczęściej <i class="marker-highlight">pytacie?</i></h1>
+    <p class="page-subtitle">Zebrałam w jednym miejscu wszystko, co warto wiedzieć przed startem. Sprawdź, jak wyglądają kulisy naszej współpracy.</p>
 </header>
 
-<div class="page-hero-img-wrap reveal delay-2">
-    <img src="https://images.unsplash.com/photo-1699993131854-a1cde51ce9da?q=80&w=2000&auto=format&fit=crop" alt="Pytajniki w stylu retro" class="page-hero-img">
-</div>
-
-<div class="credibility-bar-overlap reveal delay-3">
-    <div class="credibility-bar-inner">
+<div class="container">
+    
+    <div class="faq-credibility">
         <div class="cred-pillar">
             <i class="las la-clock"></i>
             <span>Odpowiedź w 48 godzin</span>
@@ -237,12 +127,9 @@ title: FAQs
             <span>Kontakt mailowy</span>
         </div>
     </div>
-</div>
 
-<main class="page-content-wrapper">
-
-    <nav class="faq-toc reveal delay-4">
-        <h3 class="faq-toc-title"><i class="las la-list"></i> Szybki spis treści</h3>
+    <nav class="faq-toc">
+        <h3 class="faq-toc-title"><i class="las la-list-ul"></i> Szybki spis treści</h3>
         <div class="faq-toc-grid">
             <div class="faq-toc-section">
                 <h4>Wycena i płatności</h4>
@@ -277,7 +164,7 @@ title: FAQs
         </div>
     </nav>
     
-    <div class="faq-group reveal" id="wycena">
+    <div class="faq-group" id="wycena">
         <div class="faq-group-title"><i class="las la-wallet"></i> Wycena i płatności</div>
         
         <div class="faq-card" id="wycena-1">
@@ -313,15 +200,15 @@ title: FAQs
             <h3 class="faq-card-question">W jaki sposób podpisujemy umowę?</h3>
             <div class="faq-card-answer">
                 <p>Umowę przesyłam zawsze w zabezpieczonym formacie PDF. Dzięki temu obie strony mają gwarancję, że nikt nie ingerował w ustalony tekst i warunki. Dokument możesz podpisać na dwa wygodne sposoby:</p>
-                <ul style="padding-left: 20px; color: var(--ink-soft); font-weight: 300; line-height: 1.8;">
-                    <li style="margin-bottom: 8px;"><strong>Elektronicznie:</strong> najszybsza opcja to wykorzystanie bezpłatnego, państwowego Profilu Zaufanego (podpis ePUAP) lub platform do e-podpisu.</li>
+                <ul>
+                    <li><strong>Elektronicznie:</strong> najszybsza opcja to wykorzystanie bezpłatnego, państwowego Profilu Zaufanego (podpis ePUAP) lub platform do e-podpisu.</li>
                     <li><strong>Tradycyjnie:</strong> możesz wydrukować dokument, złożyć odręczny podpis, a następnie odesłać mi jego czytelny skan.</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="faq-group reveal" id="proces">
+    <div class="faq-group" id="proces">
         <div class="faq-group-title"><i class="las la-clipboard-list"></i> Proces pracy</div>
         
         <div class="faq-card" id="proces-1">
@@ -376,7 +263,7 @@ title: FAQs
         </div>
     </div>
 
-    <div class="faq-group reveal" id="uslugi">
+    <div class="faq-group" id="uslugi">
         <div class="faq-group-title"><i class="las la-book-reader"></i> Usługi</div>
         
         <div class="faq-card" id="uslugi-1">
@@ -401,16 +288,4 @@ title: FAQs
             </div>
         </div>
     </div>
-</main>
-
-<section class="cta-section">
-    <div class="cta-content">
-        <span class="eyebrow reveal">Nie widzisz swojego pytania?</span>
-        <h2 class="reveal delay-1">Pisz śmiało!</h2>
-        <p class="reveal delay-2">Twoja twórczość nie zawsze mieści się w schematach. Masz nietypowe pytanie? Odpowiem na nie podczas krótkiej konsultacji mailowej.</p>
-        <div class="cta-btns reveal delay-3">
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-cta-white">Napisz do mnie</a>
-            <a href="{{ '/cennik.html' | relative_url }}" class="btn-ghost">Zobacz cennik <i class="las la-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
+</div>
