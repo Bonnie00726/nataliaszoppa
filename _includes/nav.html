@@ -1,18 +1,19 @@
-<nav class="nav" id="main-nav">
-    <div class="nav-inner">
-        <a href="{{ site.baseurl }}/index.html" class="nav-logo">Natalia <em>Szoppa</em></a>
-        <ul class="nav-links">
-            <li><a href="{{ site.baseurl }}/index.html">Strona główna</a></li>
-            <li><a href="{{ site.baseurl }}/o-mnie.html">O mnie</a></li>
-            
-            <li><a href="{{ site.baseurl }}/cennik.html">Cennik</a></li>
-            <li><a href="{{ site.baseurl }}/faqs.html">FAQs</a></li>
-        </ul>
-       <div class="nav-right">
-  <a href="mailto:twoj-adres@email.com" class="nav-cta">Napisz do mnie</a>
-  <button class="mobile-toggle" aria-label="Menu" aria-expanded="false">
-    <i class="las la-bars"></i>
-  </button>
-</div>
-    </div>
-</nav>
+<header class="top-nav">
+    <a href="{{ site.baseurl }}/" class="nav-brand" style="text-decoration: none; color: inherit;">
+        Natalia <i>Szoppa</i>
+    </a>
+    
+    <nav class="nav-links" id="main-nav-links">
+        <a href="{{ site.baseurl }}/" {% if page.url == '/' or page.url == '/index.html' %}class="active"{% endif %}>Strona główna</a>
+        <a href="{{ site.baseurl }}/o-mnie.html" {% if page.url contains 'o-mnie' %}class="active"{% endif %}>O mnie</a>
+        <a href="{{ site.baseurl }}/oferta.html" {% if page.url contains 'oferta' %}class="active"{% endif %}>Oferta</a>
+        <a href="{{ site.baseurl }}/portfolio.html" {% if page.url contains 'portfolio' %}class="active"{% endif %}>Portfolio</a>
+        <a href="{{ site.baseurl }}/cennik.html" {% if page.url contains 'cennik' %}class="active"{% endif %}>Cennik</a>
+        <a href="{{ site.baseurl }}/faq.html" {% if page.url contains 'faq' %}class="active"{% endif %}>FAQ</a>
+        <a href="{{ site.baseurl }}/blog.html" {% if page.url contains 'blog' %}class="active"{% endif %}>Blog</a>
+    </nav>
+
+    <button class="mobile-toggle" aria-label="Menu" aria-expanded="false" onclick="document.getElementById('main-nav-links').classList.toggle('show-mobile')">
+        <i class="las la-bars"></i>
+    </button>
+</header>
