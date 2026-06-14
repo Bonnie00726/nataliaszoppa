@@ -53,7 +53,7 @@ Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rze
 
 > Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. Kurt Vonnegut,**8 basics of creative writing**
 
-Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces komercyjny</span>, <span class="marker-highlight">po prostu ułatwiają czytelnikowi to zadanie.</span> Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
+Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces</span>, po prostu <span class="marker-highlight">ułatwiają czytelnikowi</span> to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
 Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
 
