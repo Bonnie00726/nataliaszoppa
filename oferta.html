@@ -1,520 +1,414 @@
 ---
 layout: default
-title: Oferta
+title: Oferta - Zobacz, jak mogę Ci pomóc
 ---
 
 <style>
-    /* TOC */
-    .top-toc-wrapper { position: sticky; top: var(--nav-h); z-index: 900; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--paper-mid); padding: 18px 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-    .top-toc { display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0 auto; padding: 0; max-width: 1180px; flex-wrap: wrap; }
-    .top-toc a { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; position: relative; display: inline-block; }
-    .top-toc a:hover, .top-toc a.active { color: var(--grad-start); }
-    .top-toc a::after { content: ''; position: absolute; left: 0; bottom: -20px; width: 0; height: 3px; background: var(--grad-start); transition: width 0.3s ease; }
-    .top-toc a.active::after { width: 100%; }
+    /* ZAAWANSOWANY PASEK STATYSTYK (CREDIBILITY BAR) */
+    .hero-section { text-align: center; padding-top: 60px; padding-bottom: 40px; }
+    .hero-profile-img { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .hero-name { font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+    .hero-bio { font-size: 15px; color: var(--text-gray); max-width: 500px; margin: 0 auto 40px auto; }
+    .hero-title { font-size: 46px; line-height: 1.2; letter-spacing: -0.5px; max-width: 800px; margin: 0 auto; }
+    
+    .credibility-section { margin-bottom: 80px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.06); display: flex; flex-direction: column; }
+    .categories-bar { background-color: #fafbfc; padding: 18px 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; border-bottom: 1px solid var(--border-color); }
+    .categories-bar span { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; color: var(--text-black); }
+    .categories-bar i { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 16px; }
+    .stats-bar { background-color: var(--text-black); padding: 45px 20px; display: flex; justify-content: space-between; align-items: flex-start; }
+    .stat-item { text-align: center; flex: 1; padding: 0 10px; }
+    .stat-number { font-size: 48px; font-weight: 600; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; line-height: 1; letter-spacing: -1px; }
+    .stat-number sup { font-size: 24px; font-weight: 400; }
+    .stat-title { color: #ffffff; font-size: 13px; font-weight: 700; margin-bottom: 6px; font-family: 'Mulish', sans-serif; text-transform: uppercase; letter-spacing: 1px; }
+    .stat-desc { color: #888888; font-size: 13px; line-height: 1.4; }
+    .stat-divider { width: 1px; background-color: #2a2a2a; align-self: stretch; }
 
-    /* ===== BELL NOTICE — styl YouTube ===== */
-    .bell-notice-wrap {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 28px;
-        height: 56px;
-    }
+    /* ŚCIEŻKA PUBLIKACJI */
+    .workflow-container { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 60px; }
+    .workflow-card { background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 30px 20px; flex: 1; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.02); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .workflow-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+    .workflow-icon { font-size: 26px; margin-bottom: 15px; }
+    .workflow-icon i { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .workflow-step { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .workflow-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; font-family: 'Mulish', sans-serif; }
+    .workflow-desc { font-size: 13px; color: var(--text-gray); }
+    .workflow-arrow { color: var(--accent-purple); font-size: 20px; opacity: 0.6; }
 
-    .bell-notice {
-        display: inline-flex;
-        align-items: center;
-        position: relative;
-        opacity: 0;
-        transform: scale(0.85);
-        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-    }
+    /* ARTYKUŁ / FILOZOFIA PRACY */
+    .blog-article { max-width: 800px; margin: 0 auto; color: var(--text-gray); font-size: 16px; line-height: 1.8; margin-bottom: 20px; }
+    .blog-article h3 { font-family: 'Lora', serif; color: var(--text-black); font-size: 26px; margin-bottom: 20px; text-align: center; }
+    .blog-article p { margin-bottom: 20px; }
+    .blog-list { margin-top: 30px; list-style: none; padding: 0; }
+    .blog-list li { margin-bottom: 25px; padding-left: 45px; position: relative; }
+    .blog-list li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: 0; top: 4px; color: var(--accent-purple); font-size: 18px; background: rgba(123, 44, 191, 0.1); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+    .blog-list strong { color: var(--text-black); font-family: 'Mulish', sans-serif; font-size: 18px; display: block; margin-bottom: 5px; }
 
-    .bell-notice.visible {
-        opacity: 1;
-        transform: scale(1);
-    }
+    /* PORÓWNANIE TEKSTÓW */
+    .comparison-container { display: flex; gap: 24px; margin-top: 40px; }
+    .comparison-box { flex: 1; border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); position: relative; border: 1px solid var(--border-color); background: #ffffff; text-align: left; }
+    .comparison-box.before { border-color: #FAD4D4; }
+    .comparison-box.after { border-color: rgba(107, 53, 200, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); overflow: hidden; }
+    .comparison-box.after::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient); }
+    .box-header { font-family: var(--sans); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .comparison-box.before .box-header { color: #E53E3E; }
+    .comparison-box.after .box-header { color: var(--accent-purple); }
+    .box-content { font-family: var(--sans); font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--text-gray); }
+    .highlight-red { background-color: #FEE2E2; color: #991B1B; padding: 2px 6px; border-radius: 4px; }
+    .highlight-purple { background-color: #f3e5f5; color: var(--accent-purple); padding: 2px 6px; border-radius: 4px; font-weight: 500; }
+    .box-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; padding-top: 24px; border-top: 1px dashed var(--border-color); }
+    .box-tags span { font-family: var(--sans); font-size: 0.75rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; }
+    .comparison-box.before .box-tags span { background: #FFF5F5; color: #C53030; border: 1px solid #FEE2E2; }
+    .comparison-box.after .box-tags span { background: #f3e5f5; color: var(--accent-purple); border: 1px solid rgba(107, 53, 200, 0.15); }
 
-    /* Kółko z dzwoneczkiem — frosted glass */
-    .bell-circle {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.15);
-        backdrop-filter: blur(20px) saturate(1.8);
-        -webkit-backdrop-filter: blur(20px) saturate(1.8);
-        border: 1px solid rgba(255,255,255,0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        position: relative;
-        z-index: 2;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.25);
-    }
+    /* ZANIM WYŚLESZ (PRE-SERVICE) */
+    .pre-service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+    .pre-card { background: var(--bg-muted); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); text-align: left;}
+    .pre-card h3 { font-family: 'Mulish', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+    .pre-card h3 i { color: var(--accent-purple); }
+    .pre-card p { font-size: 14px; color: var(--text-gray); margin-bottom: 20px; }
 
-    .bell-icon {
-        font-size: 1.6rem;
-        display: inline-block;
-        transform-origin: top center;
-        filter: sepia(1) saturate(5) hue-rotate(2deg) brightness(1.2)
-                drop-shadow(0 0 6px rgba(245,197,24,0.7));
-        line-height: 1;
-    }
+    /* SEKCJA OFERTY (Karty) */
+    .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: stretch; }
+    .offer-card { background: white; border: 1px solid var(--border-color); border-radius: 20px; padding: 40px 30px; transition: all 0.3s ease; position: relative; text-align: left; }
+    .offer-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.06); }
+    .offer-icon { width: 50px; height: 50px; background: var(--bg-muted); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--accent-purple); margin-bottom: 25px; }
+    .offer-card h3 { font-size: 22px; margin-bottom: 15px; font-family: 'Lora', serif; }
+    .offer-card p { font-size: 14px; color: var(--text-gray); margin-bottom: 25px; line-height: 1.6; }
+    .offer-features { list-style: none; margin-bottom: 30px; }
+    .offer-features li { font-size: 13px; color: var(--text-gray); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+    .offer-features i { color: #10b981; margin-top: 3px; font-size: 12px; }
+    
+    .offer-card.highlighted { border: 2px solid var(--text-black); background: white; transform: scale(1.05); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08); padding: 50px 30px 40px; z-index: 2; }
+    .offer-card.highlighted:hover { transform: scale(1.05) translateY(-5px); }
+    .card-tag { position: absolute; top: 0; left: 50%; transform: translate(-50%, -50%); text-align: center; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-black); line-height: 1.3; padding: 6px 18px; z-index: 10; }
+    .card-tag::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: 4px 6px 4px 6px; background: conic-gradient(at 0 100%, rgb(123 44 191 / 35%) 1% , #fff0 3%) no-repeat 0 0 / auto 120%, conic-gradient(from 180deg at 100% 0, #fff0, rgb(123 44 191 / 35%) 1%, #fff0 4%) no-repeat 100% 100% / auto 120%, linear-gradient(50deg, rgb(123 44 191 / 25%), rgb(123 44 191 / 10%) 75%, rgb(123 44 191 / 20%)) no-repeat center / auto, #ffffff; rotate: -2deg; transform: skew(-4deg); scale: 1.05; }
 
-    @keyframes bell-ring {
-        0%   { transform: rotate(0deg); }
-        10%  { transform: rotate(24deg); }
-        20%  { transform: rotate(-21deg); }
-        30%  { transform: rotate(17deg); }
-        40%  { transform: rotate(-11deg); }
-        50%  { transform: rotate(6deg); }
-        60%  { transform: rotate(-3deg); }
-        70%  { transform: rotate(1deg); }
-        80%  { transform: rotate(0deg); }
-        100% { transform: rotate(0deg); }
-    }
+    /* PROCES BIZNESOWY */
+    .process-steps { display: flex; justify-content: space-between; gap: 20px; margin-top: 40px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 30px; left: 50px; right: 50px; height: 1px; background: var(--border-color); z-index: 1; }
+    .step-item { flex: 1; text-align: center; position: relative; z-index: 2; }
+    .step-number { width: 60px; height: 60px; background: white; border: 2px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-family: 'Lora', serif; color: var(--accent-purple); margin: 0 auto 20px auto; transition: all 0.3s; }
+    .step-item:hover .step-number { border-color: var(--accent-purple); color: white; background: var(--accent-purple); }
+    .step-item h4 { font-size: 18px; margin-bottom: 10px; font-family: 'Lora', serif; }
+    .step-item p { font-size: 13px; color: var(--text-gray); }
 
-    .bell-icon.ring1,
-    .bell-icon.ring2 {
-        animation: bell-ring 0.75s cubic-bezier(0.36,0.07,0.19,0.97) forwards;
-    }
+    /* POTRZEBUJESZ WIĘCEJ INFORMACJI? */
+    .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: left; }
+    .info-card { border-radius: 12px; padding: 40px 30px; display: flex; flex-direction: column; min-height: 320px; transition: transform 0.3s ease, box-shadow 0.3s ease; text-decoration: none; }
+    .info-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+    .info-card .icon { font-size: 26px; margin-bottom: 30px; }
+    .info-card h3 { font-size: 22px; margin-bottom: 15px; font-family: 'Lora', serif; }
+    .info-card p { font-size: 14px; line-height: 1.7; margin-bottom: 30px; }
+    .info-card .arrow { margin-top: auto; font-size: 20px; }
+    
+    .info-card.white { background: #ffffff; border: 1px solid var(--border-color); color: var(--text-black); }
+    .info-card.white .icon, .info-card.white .arrow { color: var(--accent-purple); }
+    .info-card.white p { color: var(--text-gray); }
+    .info-card.black { background: #111111; color: #ffffff; }
+    .info-card.black h3, .info-card.black .arrow { color: #ffffff; }
+    .info-card.black p { color: rgba(255, 255, 255, 0.85); }
+    .info-card.purple { background: #713bed; color: #ffffff; }
+    .info-card.purple h3, .info-card.purple .icon, .info-card.purple .arrow { color: #ffffff; }
+    .info-card.purple p { color: rgba(255, 255, 255, 0.85); }
 
-    /* Pill — zaczyna spod kółka, zachodzi pod nie lewą krawędzią */
-    .bell-pill {
-        display: inline-flex;
-        align-items: center;
-        background: rgba(255,255,255,0.14);
-        backdrop-filter: blur(20px) saturate(1.8);
-        -webkit-backdrop-filter: blur(20px) saturate(1.8);
-        border: 1px solid rgba(255,255,255,0.28);
-        border-radius: 0 100px 100px 0;
-        padding: 0 24px 0 0;
-        height: 40px;
-        margin-left: -26px; /* zachodzi pod kółko */
-        padding-left: 32px; /* odsuwa tekst od krawędzi kółka */
-        white-space: nowrap;
-        overflow: hidden;
-        max-width: 0;
-        opacity: 0;
-        transition:
-            max-width 0.55s cubic-bezier(0.22,1,0.36,1),
-            opacity 0.35s ease;
-    }
-
-    .bell-pill.expanded {
-        max-width: 360px;
-        opacity: 1;
-    }
-
-    .bell-pill-text {
-        font-family: var(--sans);
-        font-size: 0.78rem;
-        font-weight: 700;
-        color: rgba(255,255,255,0.92);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        white-space: nowrap;
-    }
-
-    /* Reszta styli */
-    .container--wide { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
-    .bg-warm { background: var(--paper-warm); }
-    .bg-white { background: var(--paper); }
-    .eyebrow-label { display: flex; align-items: center; gap: 12px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 18px; color: var(--grad-start); }
-    .sub-section-title { font-family: var(--serif); font-size: clamp(1.6rem, 2.2vw, 2rem); font-weight: 700; color: var(--ink); margin: 80px 0 32px; text-align: center; }
-    .text-content p { font-size: 1.05rem; font-weight: 300; color: var(--ink-soft); margin-bottom: 20px; line-height: 1.75; }
-    .text-content p strong { font-weight: 700; color: var(--ink); }
-    .def-box { padding: 24px 32px; border-left: 3px solid var(--grad-start); background: var(--paper-warm); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: 32px 0; }
-    .def-box h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
-    .def-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.6; }
-    .analogy-box { background: var(--paper); border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px 0; box-shadow: var(--shadow-soft); }
-    .analogy-box h4 { font-family: var(--serif); font-size: 1.2rem; font-style: italic; color: var(--ink); margin-bottom: 12px; }
-    .analogy-box p { font-size: 0.95rem; color: var(--ink-muted); margin: 0; line-height: 1.65; }
-    .warning-box { display: flex; gap: 24px; align-items: flex-start; background: #fff; border-left: 3px solid var(--grad-start); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; padding: 32px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
-    .warning-box i { font-size: 2.2rem; color: var(--grad-start); flex-shrink: 0; line-height: 1; }
-    .warning-box p { font-size: 0.95rem; color: var(--ink-muted); font-weight: 300; line-height: 1.65; margin: 0; }
-    .warning-box strong { color: var(--ink); font-weight: 700; }
-    .not-included-box { background: var(--paper-warm); border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 32px 40px; margin: 40px auto; max-width: 720px; box-shadow: var(--shadow-soft); }
-    .not-included-box h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; text-align: center; border-bottom: 1px solid var(--paper-mid); padding-bottom: 12px; }
-    .not-list { list-style: none; padding: 0; margin: 0; }
-    .not-list li { position: relative; padding-left: 28px; margin-bottom: 16px; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
-    .not-list li:last-child { margin-bottom: 0; }
-    .not-list li::before { content: '\f00d'; font-family: 'Line Awesome Free'; font-weight: 900; color: #d9534f; position: absolute; left: 0; top: 1px; font-size: 1.1rem; }
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin: 40px 0; }
-    .feature-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
-    .feature-card:hover::before { transform: scaleX(1); }
-    .feature-icon { margin-bottom: 20px; }
-    .feature-icon i { font-size: 2.8rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
-    .feature-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 16px; }
-    .feature-card p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; margin-bottom: 24px; font-weight: 300; }
-    .feature-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grad-start); background: rgba(107,53,200,0.08); padding: 6px 12px; border-radius: 4px; }
-    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 40px 0; }
-    .compare-card { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 40px 32px; box-shadow: var(--shadow-soft); transition: transform 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
-    .compare-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--paper-mid); transition: background 0.3s; }
-    .compare-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-med); }
-    .compare-card:hover::before { background: var(--grad); }
-    .compare-card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--paper-mid); }
-    .compare-list { list-style: none; padding: 0; margin: 0; }
-    .compare-list li { margin-bottom: 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink-muted); font-weight: 300; }
-    .compare-list strong { display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink); margin-bottom: 6px; }
-    .btn-gradient { display: inline-flex; align-items: center; justify-content: center; background: var(--grad); color: #fff !important; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; text-decoration: none; padding: 18px 40px; border-radius: 100px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 6px 20px rgba(107,53,200,0.3); }
-    .btn-gradient:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(107,53,200,0.5); }
-    .collab-banner { background: var(--ink); padding: 22px 40px; }
-    .collab-banner-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
-    .collab-pillar { display: flex; align-items: center; gap: 12px; }
-    .collab-pillar i { font-size: 1.6rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; flex-shrink: 0; }
-    .collab-pillar span { font-family: var(--sans); font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.75); }
-    .delivery-pack { margin: 56px auto 0; max-width: 860px; }
-    .delivery-pack-header { text-align: center; margin-bottom: 32px; }
-    .delivery-pack-header h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-    .delivery-pack-header p { font-family: var(--sans); font-size: 0.92rem; color: var(--ink-muted); font-weight: 300; }
-    .delivery-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-    .delivery-item { background: #fff; border: 1px solid var(--paper-mid); border-radius: var(--radius-lg); padding: 28px 24px; display: flex; gap: 18px; align-items: flex-start; transition: transform 0.25s, box-shadow 0.25s; position: relative; overflow: hidden; }
-    .delivery-item::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--grad); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
-    .delivery-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-med); }
-    .delivery-item:hover::before { transform: scaleX(1); }
-    .delivery-item-icon { width: 44px; height: 44px; border-radius: var(--radius); background: rgba(107,53,200,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .delivery-item-icon i { font-size: 1.5rem; background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .delivery-item-body h4 { font-family: var(--sans); font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-    .delivery-item-body p { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-muted); line-height: 1.55; margin: 0; font-weight: 300; }
-    .delivery-item--highlight { background: linear-gradient(135deg, rgba(107,53,200,0.04) 0%, rgba(232,119,42,0.04) 100%); border-color: rgba(107,53,200,0.2); }
-    .section-footer { padding: 56px 0 64px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-    .section-footer .btn-gradient { font-size: 1rem; padding: 20px 52px; }
-
- /* 1. Upewniamy się, że karta wypełnia wysokość i wypycha listę */
-.compare-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-/* 2. Zamieniamy listę w siatkę o równych wierszach */
-.compare-list {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr); /* Tworzy 3 rzędy o identycznej wysokości */
-    flex-grow: 1; /* Lista zajmuje całą pozostałą przestrzeń w karcie */
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* 3. Stylizujemy punkty listy */
-.compare-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Nagłówek i tekst zawsze od góry rzędu */
-    padding: 20px 0; /* Odstęp wewnątrz rzędu zamiast marginesu */
-}
-
-/* Usuwamy padding z góry pierwszego i dołu ostatniego elementu dla estetyki */
-.compare-list li:first-child { padding-top: 0; }
-.compare-list li:last-child { padding-bottom: 0; }
-
-/* 4. Blokujemy wysokość nagłówka (opcjonalnie, dla pewności) */
-.compare-list strong {
-    display: block;
-    min-height: 1.2em;
-    margin-bottom: 12px;
-}
-
+    /* RESPONSIVE */
     @media (max-width: 900px) {
-        .compare-grid { grid-template-columns: 1fr; }
-        .top-toc { gap: 16px; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; padding-bottom: 8px; }
-        .delivery-items { grid-template-columns: 1fr; }
+        .stats-bar { flex-wrap: wrap; gap: 30px 0; }
+        .stat-item { flex: 1 1 40%; }
+        .stat-divider { display: none; }
+        .offer-grid, .info-grid { grid-template-columns: 1fr; gap: 40px; padding-top: 20px; }
+        .offer-card.highlighted { transform: none; padding: 50px 30px 40px; }
+        .offer-card.highlighted:hover { transform: translateY(-5px); }
+        .info-card { min-height: auto; }
+        .workflow-container { flex-direction: column; gap: 15px; }
+        .workflow-card { width: 100%; }
+        .workflow-arrow { transform: rotate(90deg); margin: 5px 0; }
+        .comparison-container { flex-direction: column; }
+        .process-steps { flex-direction: column; gap: 40px; }
+        .process-steps::before { display: none; }
+        .pre-service-grid { grid-template-columns: 1fr; }
+        .hero-title { font-size: 34px; }
     }
-    @media (max-width: 860px) {
-        .container--wide { padding: 0 24px; }
-        .collab-banner { padding: 24px 20px; }
+    @media (max-width: 600px) {
+        .stat-item { flex: 1 1 100%; }
     }
 </style>
 
-<!-- HERO -->
-<header class="hero hero--short">
-    <div class="hero-bg">
-        <img src="https://images.unsplash.com/photo-1663341124289-07f994d6841d?q=80&w=659&auto=format&fit=crop" alt="schody, proces, baby steps">
-    </div>
-    <div class="hero-content">
-
-        <!-- DZWONECZEK — styl YouTube -->
-        <div class="bell-notice-wrap">
-            <div class="bell-notice" id="bell-notice">
-                <div class="bell-circle">
-                    <span class="bell-icon" id="bell-icon">🔔</span>
-                </div>
-                <div class="bell-pill" id="bell-pill">
-                    <span class="bell-pill-text">Przyjmuję nowe zlecenia</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-eyebrow reveal delay-1">Standard wydawniczy dla Twojej wizji</div>
-        <h1 class="reveal delay-2">Od <em class="grad-type">brudnopisu</em> po półki sklepowe</h1>
-        <p class="hero-sub reveal delay-3">Każdy etap, od diagnozy po skład, to wspólna praca nad tym, żeby Twój czytelnik nie mógł odłożyć książki.</p>
-    </div>
-</header>
-
-<!-- PASEK FILOZOFII WSPÓŁPRACY -->
-<div class="collab-banner reveal delay-1">
-    <div class="collab-banner-inner">
-        <div class="collab-pillar"><i class="las la-layer-group"></i><span>4 rzetelne etapy</span></div>
-        <div class="collab-pillar"><i class="las la-graduation-cap"></i><span>Aspekt edukacyjny</span></div>
-        <div class="collab-pillar"><i class="las la-comments"></i><span>Stały kontakt</span></div>
-    </div>
-</div>
-
-<!-- TOC -->
-<div class="top-toc-wrapper reveal" id="sticky-toc">
-    <ul class="top-toc" id="toc-list">
-        <li><a href="#recenzja" class="active">1. Recenzja</a></li>
-        <li><a href="#redakcja">2. Redakcja z Warsztatem</a></li>
-        <li><a href="#korekta">3. Korekta</a></li>
-        <li><a href="#dtp">4. Skład DTP</a></li>
-    </ul>
-</div>
-
-<main>
-    <!-- 1. RECENZJA -->
-    <section id="recenzja" class="section bg-white toc-section">
-        <div class="container">
-            <div class="eyebrow-label reveal">01 — Pierwszy kontakt</div>
-            <h2 class="section-h2 reveal delay-1">Recenzja: zanim wejdziemy <br>w głąb <em>zdania</em></h2>
-            <div class="text-content reveal delay-2">
-                <p>Zanim zaczniemy przesuwać przecinki, musimy wiedzieć, czy fundamenty są stabilne. Recenzja to moment, w którym Twój tekst trafia do pierwszego, bardzo wymagającego czytelnika.</p>
-                <p>Nie oceniam tu poprawności językowej. Sprawdzam, czy Twój „hak" na czytelnika działa, czy tempo narracji nie siada i czy bohaterowie budzą autentyczne emocje. To idealny krok, jeśli nie wiesz, czy Twój tekst jest już gotowy na pełną redakcję.</p>
-                <div class="def-box">
-                    <h4>Diagnoza potencjału</h4>
-                    <p>Czytam Twój tekst, notując na bieżąco moje reakcje. Otrzymujesz ode mnie szczerą, ekspercką odpowiedź na najważniejsze pytanie: "Czy czytelnik będzie chciał przewrócić kolejną stronę?".</p>
-                </div>
-            </div>
-        </div>
-        <div class="container--wide">
-            <h3 class="sub-section-title reveal">Co zyskujesz na tym etapie?</h3>
-            <div class="feature-grid reveal">
-                <div class="feature-card reveal delay-1">
-                    <div class="feature-icon"><i class="las la-heartbeat"></i></div>
-                    <h3>Audyt "Haka" i Emocji</h3>
-                    <p>Analizuję otwarcie tekstu i kluczowe momenty zwrotne. Wskazuję miejsca, w których czytelnik wstrzymuje oddech, oraz te, w których może odłożyć książkę.</p>
-                    <span class="feature-tag">Analiza odbiorcy</span>
-                </div>
-                <div class="feature-card reveal delay-2">
-                    <div class="feature-icon"><i class="las la-project-diagram"></i></div>
-                    <h3>Weryfikacja Świata i Logiki</h3>
-                    <p>Szczególnie ważne w fantastyce i RPG. Sprawdzam spójność zasad świata przedstawionego (lore) i wiarygodność motywacji postaci.</p>
-                    <span class="feature-tag">Spójność narracji</span>
-                </div>
-                <div class="feature-card reveal delay-3">
-                    <div class="feature-icon"><i class="las la-map"></i></div>
-                    <h3>Mapa Drogowa Poprawek</h3>
-                    <p>Nie zostawiam Cię tylko z opinią. Otrzymujesz konkretne sugestie, nad czym musisz popracować samodzielnie, zanim tekst trafi do głębokiej redakcji.</p>
-                    <span class="feature-tag">Kolejne kroki</span>
-                </div>
-            </div>
-        </div>
-        <div class="not-included-box reveal">
-            <h3>Czego recenzja nie obejmuje?</h3>
-            <ul class="not-list">
-                <li><strong>Poprawiania błędów:</strong> Nie wyłapuję literówek, błędów ortograficznych ani interpunkcyjnych.</li>
-                <li><strong>Redakcji językowej:</strong> Nie zmieniam szyku zdań ani nie szlifuję Twojego stylu na tym etapie.</li>
-                <li><strong>Gwarancji sukcesu:</strong> Moja opinia jest ekspercka, ale subiektywna – ostateczny odbiór zawsze należy do czytelnika.</li>
-            </ul>
-        </div>
-        <div class="container">
-            <div class="section-footer reveal">
-                <a href="/kontakt" class="btn-gradient">Zamów recenzję swojego tekstu</a>
-                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Nie wiesz, czego potrzebujesz? Napisz — razem znajdziemy właściwy punkt wejścia.</p>
-            </div>
-        </div>
+<div class="container">
+    
+    <section class="hero-section">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Katarzyna Wiśniewska" class="hero-profile-img">
+        <h2 class="hero-name">Katarzyna Wiśniewska</h2>
+        <p class="hero-bio">Redaktorka, tłumaczka i lektorka, która od 10 lat pracuje ze słowem pisanym i mówionym.</p>
+        <h1 class="hero-title">Zobacz, jak mogę Ci pomóc w Twojej <i class="marker-highlight">pisarskiej przygodzie.</i></h1>
     </section>
 
-  <!-- 2. REDAKCJA -->
-<section id="redakcja" class="section bg-warm toc-section">
-    <div class="container">
-        <!-- Eyebrow usunięty zgodnie z prośbą -->
-        <h2 class="section-h2 reveal delay-1">Redakcja: od mikro po makro</h2>
+    <div class="credibility-section">
+        <div class="categories-bar">
+            <span><i class="fa-solid fa-book"></i> Beletrystyka</span>
+            <span><i class="fa-solid fa-dice-d20"></i> Gry Fabularne</span>
+            <span><i class="fa-solid fa-comment-dots"></i> Komiksy</span>
+            <span><i class="fa-solid fa-graduation-cap"></i> Edukacja</span>
+            <span><i class="fa-solid fa-file-lines"></i> Artykuły</span>
+        </div>
         
-        <div class="text-content reveal delay-2">
-            <p>Dobra książka to mechanizm, w którym każdy trybik musi do siebie pasować. Dlatego moją pracę dzielę na dwa uzupełniające się etapy. Zaczynamy od <strong>analizy merytorycznej (makro)</strong>, czyli fundamentów Twojej historii, a kończymy na <strong>szlifie językowym (mikro)</strong>, gdzie dbam o precyzję każdego zdania.</p>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-number lora-font">10<sup>+</sup></div>
+                <div class="stat-title">Lat doświadczenia</div>
+                <div class="stat-desc">w pracy z językiem</div>
+            </div>
+            <div class="stat-divider"></div>
             
-            <p>W procesie nie polegam tylko na intuicji. Korzystam z profesjonalnych narzędzi lingwistycznych, takich jak <strong>AntConc</strong>, które pozwalają na statystyczną analizę Twojego stylu (wyłapanie nadużywanych słów czy martwych czasowników). 
-            <br><em>Ważne: nie używam do tego AI. To narzędzia analityczne, które w rękach redaktora służą do obiektywnej oceny warsztatu, a nie do generowania treści.</em></p>
-        </div>
-
-        <div class="analogy-box reveal delay-3">
-            <h4>Redakcja z Warsztatem</h4>
-            <p>Nie tylko poprawiam tekst, ale pokazuję Ci mechanizmy, które nim rządzą. Zamiast lakonicznej opinii „to mi nie gra”, otrzymujesz ode mnie twarde dane i propozycje rozwiązań oparte na uznanych strukturach narracyjnych. Wychodzisz z procesu z lepszą książką i nowymi umiejętnościami.</p>
-        </div>
-    </div>
-
-    <div class="container--wide">
-        <h3 class="sub-section-title reveal">Jak przebiega praca na tekście?</h3>
-        <div class="compare-grid reveal">
-            <!-- TABELA: MAKRO -->
-            <div class="compare-card reveal delay-1">
-                <h3>1. Architektura fabuły (Makro)</h3>
-                <ul class="compare-list">
-                    <li><strong>Struktura i tempo</strong><br>Sprawdzam, czy historia ma solidny stelaż (np. Beat Sheet). Weryfikuję punkty zwrotne i dbam, by napięcie nie opadało w połowie książki.</li>
-                    <li><strong>Bohaterowie i motywacje</strong><br>Analizuję łuk postaci. Upewniam się, że decyzje bohaterów są wiarygodne, a ich cele jasno określone i odczuwalne dla czytelnika.</li>
-                    <li><strong>Dynamika scen</strong><br>Wskazuję fragmenty, które nic nie wnoszą do fabuły. Pomagam usunąć przestoje i wzmocnić sceny o kluczowym znaczeniu.</li>
-                </ul>
+            <div class="stat-item">
+                <div class="stat-number lora-font">120<sup>+</sup></div>
+                <div class="stat-title">Projektów</div>
+                <div class="stat-desc">od beletrystyki po gry</div>
             </div>
-            <!-- TABELA: MIKRO -->
-            <div class="compare-card reveal delay-2">
-                <h3>2. Precyzja języka (Mikro)</h3>
-                <ul class="compare-list">
-                    <li><strong>Dywersyfikacja leksykalna</strong><br>Dzięki statystyce wyłapuję Twoje nawykowe powtórzenia i zastępuję „suche” czasowniki mocniejszymi odpowiednikami.</li>
-                    <li><strong>Logika i flow zdania</strong><br>Przestawiam szyk i porządkuję akapity tak, aby myśl płynęła gładko, a styl był dopasowany do klimatu opowieści.</li>
-                    <li><strong>Zasada „Show, don’t tell”</strong><br>Pracuję nad tym, by tekst przestał raportować fakty, a zaczął budować obrazy w głowie czytelnika.</li>
-                </ul>
+            <div class="stat-divider"></div>
+            
+            <div class="stat-item">
+                <div class="stat-number lora-font">4</div>
+                <div class="stat-title">Wydawnictwa</div>
+                <div class="stat-desc">regularna współpraca</div>
+            </div>
+            <div class="stat-divider"></div>
+            
+            <div class="stat-item">
+                <div class="stat-number lora-font">3</div>
+                <div class="stat-title">Specjalizacje</div>
+                <div class="stat-desc">edytorstwo, tłumaczenia,<br>glottodydaktyka</div>
+            </div>
+            <div class="stat-divider"></div>
+            
+            <div class="stat-item">
+                <div class="stat-number lora-font">48<sup>h</sup></div>
+                <div class="stat-title">Czas odpowiedzi</div>
+                <div class="stat-desc">na zapytanie i wycenę</div>
             </div>
         </div>
     </div>
 
-    <div class="container--wide">
-        <div class="delivery-pack reveal">
-            <div class="delivery-pack-header">
-                <h3>Twój pakiet po zakończeniu współpracy</h3>
-                <p>Narzędzia, które pomogą Ci pisać lepiej każdą kolejną historię</p>
+    <section style="padding-bottom: 20px;">
+        <div class="section-header">
+            <span class="section-subtitle">Ścieżka publikacji</span>
+            <h2>Etapy <i>pracy nad tekstem</i></h2>
+            <p>Jeśli zależy Ci na najlepszym efekcie, warto podążać sprawdzoną ścieżką. Pozwala ona wyeliminować błędy – od fundamentów fabuły aż po literówki – by stworzyć w pełni profesjonalną publikację.</p>
+        </div>
+        
+        <div class="workflow-container">
+            <div class="workflow-card">
+                <div class="workflow-icon"><i class="fa-regular fa-file-pdf"></i></div>
+                <div class="workflow-step">Krok 1</div>
+                <h3 class="workflow-title">Autodiagnoza</h3>
+                <p class="workflow-desc">(Sprawdź fundamenty historii)</p>
             </div>
-            <div class="delivery-items">
-                <!-- MANUSKRYPT -->
-                <div class="delivery-item delivery-item--highlight reveal delay-1">
-                    <div class="delivery-item-icon"><i class="las la-file-alt"></i></div>
-                    <div class="delivery-item-body">
-                        <h4>Zredagowany manuskrypt</h4>
-                        <p>Plik z uwagami i śledzonymi zmianami. Widzisz każdą ingerencję i decydujesz o jej finalnym kształcie.</p>
-                    </div>
-                </div>
-                <!-- RAPORT MERYTORYCZNY -->
-                <div class="delivery-item reveal delay-2">
-                    <div class="delivery-item-icon"><i class="las la-project-diagram"></i></div>
-                    <div class="delivery-item-body">
-                        <h4>Raport Merytoryczny</h4>
-                        <p>Analiza struktury oparta na 15 punktach fabularnych (Beat Sheet). Ocena łuku postaci i logiki świata.</p>
-                    </div>
-                </div>
-                <!-- RAPORT JĘZYKOWY -->
-                <div class="delivery-item reveal delay-3">
-                    <div class="delivery-item-icon"><i class="las la-chart-bar"></i></div>
-                    <div class="delivery-item-body">
-                        <h4>Raport Językowy</h4>
-                        <p>Profil Twojego stylu: statystyka nadużywanych fraz, analiza dynamiki dialogów i indywidualna lista „do poprawy”.</p>
-                    </div>
-                </div>
+            
+            <div class="workflow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+            
+            <div class="workflow-card">
+                <div class="workflow-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="workflow-step">Krok 2</div>
+                <h3 class="workflow-title">Darmowa Próbka</h3>
+                <p class="workflow-desc">(Ocena wybranego fragment)</p>
             </div>
-        </div>
-    </div>
-
-    <div class="warning-box reveal">
-        <i class="las la-exclamation-triangle"></i>
-        <div>
-            <p><strong>Czego redakcja nie zapewni?</strong></p>
-            <p>Redakcja to głęboka praca na tkance tekstu. Po jej zakończeniu i naniesieniu poprawek, książka wymaga jeszcze <strong>korekty technicznej</strong>. To niezbędny etap, by wyłapać drobne błędy, które mogły powstać podczas przebudowy zdań.</p>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="section-footer reveal">
-            <a href="/kontakt" class="btn-gradient">Wybierz redakcję od mikro po makro</a>
-            <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Masz gotowy tekst? Prześlij próbkę — sprawdzę, jakiego wsparcia potrzebuje Twoja historia.</p>
-        </div>
-    </div>
-</section>
-    <!-- 3. KOREKTA -->
-    <section id="korekta" class="section bg-white toc-section">
-        <div class="container">
-            <div class="eyebrow-label reveal">03 — Ostatnia linia obrony</div>
-            <h2 class="section-h2 reveal delay-1">Korekta Techniczna: <br>Finałowy <em>szlif</em></h2>
-            <div class="text-content reveal delay-2">
-                <p>Korekta to polerowanie diamentu, który został już oszlifowany. To etap w 100% techniczny. Nie przesuwam tu ścian, tylko sprawdzam, czy zamki działają. Dbam o to, by najdrobniejsze błędy interpunkcyjne czy literówki nie wybiły czytelnika z rytmu lektury.</p>
-                <div class="warning-box reveal delay-3">
-                    <i class="las la-exclamation-circle"></i>
-                    <p><strong>Ważna zasada:</strong> Tę usługę oferuję <strong>wyłącznie</strong> dla tekstów, które przeszły już profesjonalną redakcję (u mnie lub u innego redaktora). Nie podejmuję się korekty tekstów surowych, ponieważ same poprawki przecinków nie uratują struktury opowieści.</p>
-                </div>
+            
+            <div class="workflow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+            
+            <div class="workflow-card">
+                <div class="workflow-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                <div class="workflow-step">Krok 3</div>
+                <h3 class="workflow-title">Red. strukturalna</h3>
+                <p class="workflow-desc">(Pracujemy nad fabułą i strukturą)</p>
+            </div>
+            
+            <div class="workflow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+            
+            <div class="workflow-card">
+                <div class="workflow-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <div class="workflow-step">Krok 4</div>
+                <h3 class="workflow-title">Szlif Językowy</h3>
+                <p class="workflow-desc">(Redakcja językowa i korekta)</p>
             </div>
         </div>
-        <div class="not-included-box reveal">
-            <h3>Czego korekta nie naprawi?</h3>
-            <ul class="not-list">
-                <li><strong>Struktury opowieści:</strong> Jeśli fabuła jest nielogiczna lub tempo siada, korekta tego nie zmieni.</li>
-                <li><strong>Głębokiego stylu:</strong> Nie modyfikuję brzmienia Twojego głosu ani zasobu słownictwa, poprawiam jedynie poprawność techniczną.</li>
-                <li><strong>Dziur fabularnych:</strong> Na tym etapie skupiam się na znakach i literach, a nie na wiarygodności postaci i świata.</li>
+        
+        <div class="blog-article">
+            <h3>Zastanawiasz się, <i>dlaczego</i> ten podział jest tak ważny?</h3>
+            <p>Głęboka praca nad tekstem przypomina rzeźbienie – najpierw formujemy zgrubną bryłę, by na samym końcu polerować i szlifować detale. Jako autor jesteś w stanie samodzielnie wyeliminować całą rzeszę klasycznych błędów debiutantów – po to właśnie przygotowałam bezpłatny arkusz autodiagnozy. Pomoże Ci on spojrzeć na Twoją opowieść krytycznym okiem, zanim zaangażujesz w nią dodatkowy budżet.</p>
+            
+            <p>Oczywiście nie zostawiam Cię z tym samego. Jeśli w trakcie weryfikacji poczujesz, że utknąłeś lub masz wątpliwości – poproś o darmową próbkę na wybranym fragmencie. Przejrzę ją i nakieruję Cię z powrotem na właściwe tory.</p>
+            
+            <p>Kiedy uznasz, że historia jest już ostatecznie ukształtowana, możesz przesłać tekst do wyceny. Wtedy uczciwie ocenię, jakiego zakresu prac realnie on potrzebuje:</p>
+            
+            <ul class="blog-list">
+                <li>
+                    <strong>Redakcja strukturalna</strong>
+                    To praca na żywym organizmie fabuły. Skupiamy się na ciągach przyczynowo-skutkowych, motywacjach bohaterów, tempie akcji i budowie świata. Na tym etapie świadomie nie walczymy jeszcze o idealne zdania ani brak literówek – dlaczego? Bo w wyniku zmian całe akapity (a nawet rozdziały) mogą zostać przez Ciebie przepisane na nowo lub usunięte.
+                </li>
+                <li>
+                    <strong>Szlif językowy</strong>
+                    Do tego etapu przechodzimy, gdy szkielet opowieści jest już stabilny i nienaruszalny. Dopiero teraz z lupą przyglądamy się każdej kropce, tępimy powtórzenia wyrazowe, poprawiamy składnię i doprowadzamy język do absolutnej poprawności i elegancji – cały czas szanując przy tym Twój unikalny, autorski styl.
+                </li>
             </ul>
         </div>
-        <div class="container">
-            <div class="section-footer reveal">
-                <a href="/kontakt" class="btn-gradient">Zamów korektę techniczną</a>
-                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300;">Ostatni krok przed drukiem to skład DTP — sprawdź, co to oznacza dla Twojej książki.</p>
-            </div>
-        </div>
     </section>
 
-    <!-- 4. DTP -->
-    <section id="dtp" class="section bg-warm toc-section">
-        <div class="container">
-            <div class="eyebrow-label reveal">04 — Forma fizyczna i cyfrowa</div>
-            <h2 class="section-h2 reveal delay-1">Skład DTP: Gotowość <br>do <em>publikacji</em></h2>
-            <div class="text-content reveal delay-2">
-                <p>Ostatni krok na drodze do wydania. Zamieniam plik tekstowy w profesjonalną książkę, e-booka lub podręcznik RPG. Zadbam o to, by layout wspierał immersję z lektury, a łamanie tekstu było zgodne ze sztuką typograficzną.</p>
-                <div class="def-box">
-                    <h4>Czego możesz oczekiwać?</h4>
-                    <p>Eliminacji wdów, sierot i bękartów. Profesjonalnego doboru fontów. Przygotowania pliku PDF bezbłędnie czytanego przez drukarnie oraz responsywnych plików EPUB/MOBI, które wyglądają świetnie na każdym czytniku.</p>
+    <section class="section">
+        <div class="container" style="padding: 0;">
+           <div class="section-header">
+                <h2>Tak może wyglądać <i class="marker-highlight">Twój tekst</i></h2>
+                <p>Pierwszy szkic to dopiero początek. Aby Twoja historia naprawdę wciągała, musisz spojrzeć na swój tekst z dystansem i nie bać się odważnych zmian. Zobacz, jak kolosalną różnicę robią praca własna nad tekstem i moja redakcja językowa.</p>
+            </div>
+    
+            <div class="comparison-container">
+                <div class="comparison-box before">
+                    <div class="box-header"><i class="las la-times-circle"></i> Pierwsza wersja Twojego tekstu</div>
+                    <div class="box-content">
+                        Vadim <span class="highlight-red">wszedł</span> do środka karczmy, która <span class="highlight-red">była</span> bardzo stara. Zapach spalenizny i <span class="highlight-red">starego</span> piwa <span class="highlight-red">był</span> wyczuwalny w powietrzu. <span class="highlight-red">Ludzie</span> siedzący przy stolikach przestali <span class="highlight-red">rozmawiać</span> i popatrzyli na niego, a w ich oczach <span class="highlight-red">była</span> niechęć. On nie zwracał na nich uwagi, tylko <span class="highlight-red">poszedł</span> w stronę baru, gdzie stał <span class="highlight-red">karczmarz</span>. <span class="highlight-red">Karczmarz</span> przecierał brudną szmatą blat, który <span class="highlight-red">był</span> klejący.
+                    </div>
+                    <div class="box-tags">
+                        <span>✘ Powtórzenia</span>
+                        <span>✘ Suchy opis</span>
+                        <span>✘ Brak zmysłów</span>
+                    </div>
+                </div>
+    
+                <div class="comparison-box after">
+                    <div class="box-header"><i class="las la-check-circle"></i> Po samodzielnych poprawkach i red. językowej</div>
+                    <div class="box-content">
+                       Vadim <span class="highlight-purple">pchnął ciężkie drzwi</span>, które z <span class="highlight-purple">drażniącym</span> <span class="highlight-purple">skrzypnięciem</span> otwarły się na oścież, <span class="highlight-purple">ucinając</span> <span class="highlight-purple">gwar</span> rozmów. Wnętrze przywitało go zapachem spalenizny, <span class="highlight-purple">skwaśniałego</span> piwa i niechętnym wzrokiem <span class="highlight-purple">biesiadujących</span>. Ignorując ich spojrzenia, <span class="highlight-purple">ruszył</span> prosto ku <span class="highlight-purple">szynkwasowi,</span> gdzie gospodarz <span class="highlight-purple">leniwie</span> przecierał brudną szmatą klejący blat.
+                    </div>
+                    <div class="box-tags">
+                        <span>✔ Dynamiczny opis</span>
+                        <span>✔ Zasada 3 zmysłów</span>
+                        <span>✔ Precyzjne słowa</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="section-footer reveal">
-                <a href="/kontakt" class="btn-gradient">Wypełnij brief i rozpocznij współpracę</a>
-                <p style="font-family: var(--sans); font-size: 0.85rem; color: var(--ink-muted); margin: 0; font-weight: 300; text-align: center; max-width: 360px;">Nie wiesz, od którego etapu zacząć? Napisz — ocenię Twój tekst i zaproponuję właściwy plan działania.</p>
+    </section>
+
+    <section style="padding-top: 40px;">
+        <div class="section-header">
+            <span class="section-subtitle">Pierwsze kroki</span>
+            <h2>Wykorzystaj darmowe <i>narzędzia</i></h2>
+            <p>Szanuję Twój czas i budżet. Zanim zdecydujesz się na płatną redakcję, sprawdź słabe punkty w swoim pomyśle, aby nasza współpraca była jak najbardziej efektywna.</p>
+        </div>
+        <div class="pre-service-grid">
+            <div class="pre-card">
+                <h3><i class="fa-regular fa-file-pdf"></i> Autodiagnoza przed redakcją</h3>
+                <p>Redakcja językowa nie naprawi dziur w logice ani papierowych bohaterów. Pobierz darmowy arkusz PDF i zweryfikuj ciąg przyczynowo-skutkowy oraz głębię postaci.</p>
+                <a href="#" class="btn-outline">Pobierz arkusz (PDF)</a>
+            </div>
+            <div class="pre-card" style="background: white;">
+                <h3><i class="fa-regular fa-envelope-open"></i> Darmowa próbka (9k znaków)</h3>
+                <p>Masz wypełniony arkusz i świadomość, gdzie leżą problemy? Prześlij mi fragment tekstu, na którym zdiagnozujemy jeden wybrany przez Ciebie element warsztatu.</p>
+                <a href="{{ '/kontakt.html' | relative_url }}" class="btn-outline" style="background: var(--text-black); color: white;">Wypełnij formularz</a>
             </div>
         </div>
     </section>
-</main>
 
-<div class="grad-line-footer"></div>
+    <section>
+        <div class="section-header">
+            <h2>Wybierz pakiet <i>dla siebie</i></h2>
+            <p>Sprawdź szczegóły każdego z pakietów, klikając w wybraną kartę poniżej.</p>
+        </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+        <div class="offer-grid">
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fa-solid fa-layer-group"></i></div>
+                <h3>Redakcja strukturalna</h3>
+                <p>Analizuję ciąg przyczynowo-skutkowy, motywację bohaterów, tempo akcji i logikę świata.</p>
+                <ul class="offer-features">
+                    <li><i class="fa-solid fa-check"></i> Forma: Rozbudowane komentarze w Twoim pliku</li>
+                    <li><i class="fa-solid fa-check"></i> Cel: Wskazuję problemy, Ty je naprawiasz</li>
+                </ul>
+                <a href="#modal-strukturalna" class="btn-outline" style="width: 100%; text-align: center; margin-top: 10px;">Sprawdź szczegóły</a>
+            </div>
 
-        // BELL — sekwencja
-        const bellIcon   = document.getElementById('bell-icon');
-        const bellNotice = document.getElementById('bell-notice');
-        const bellPill   = document.getElementById('bell-pill');
+            <div class="offer-card highlighted">
+                <div class="card-tag">najczęściej<br>wybierany</div>
+                <div class="offer-icon" style="background: rgba(123, 44, 191, 0.1);"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>Szlif językowy</h3>
+                <p>Dla tekstów o dopracowanej strukturze. Eliminuję powtórzenia, dbam o poprawność gramatyczną i stylistyczną.</p>
+                <ul class="offer-features">
+                    <li><i class="fa-solid fa-check"></i> Forma: Redakcja językowa i/lub korekta</li>
+                    <li><i class="fa-solid fa-check"></i> Wymóg: Ukończona autodiagnoza i logiczna fabuła</li>
+                </ul>
+                <a href="#modal-jezykowa" class="btn-gradient" style="width: 100%; text-align: center; margin-top: 10px;">Sprawdź szczegóły</a>
+            </div>
 
-        // Pojawia się
-        setTimeout(() => bellNotice.classList.add('visible'), 200);
+            <div class="offer-card">
+                <div class="offer-icon"><i class="fa-solid fa-book-open"></i></div>
+                <h3>Skład DTP i E-booki</h3>
+                <p>Zamieniam Twój surowy tekst w profesjonalny, piękny plik gotowy do druku i dystrybucji.</p>
+                <ul class="offer-features">
+                    <li><i class="fa-solid fa-check"></i> Forma: Pliki PDF oraz formaty EPUB/MOBI</li>
+                    <li><i class="fa-solid fa-check"></i> Zawiera: Kontrolę jakości po składzie (sieroty, wdowy)</li>
+                </ul>
+                <a href="#modal-dtp" class="btn-outline" style="width: 100%; text-align: center; margin-top: 10px;">Sprawdź szczegóły</a>
+            </div>
+        </div>
+    </section>
 
-        // Dzwoni pierwszy raz
-        setTimeout(() => {
-            bellIcon.classList.add('ring1');
-        }, 400);
+    <section>
+        <div class="section-header">
+            <span class="section-subtitle">Kwestie organizacyjne</span>
+            <h2>Współpraca w <i>skrócie</i></h2>
+            <p>Od pierwszego kontaktu aż po gotowy plik. Sprawdź, jak wyglądają formalności i zasady rozliczeń.</p>
+        </div>
+        <div class="process-steps">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>Zapytanie</h4>
+                <p>Wysyłasz wiadomość przez formularz, podajesz objętość (w zzs) i załączasz plik do darmowej próbki/wyceny.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>Wycena i Umowa</h4>
+                <p>Do 48 godzin wracam z proponowaną stawką i terminem. Po akceptacji podpisujemy umowę o dzieło/współpracy.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>Płatność i Praca</h4>
+                <p>Zlecenie opłacasz z góry (lub w ustalonych ratach). Po zaksięgowaniu wpłaty przystępuję do redakcji Twojego tekstu.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h4>Gotowe!</h4>
+                <p>W ustalonym terminie otrzymujesz plik w trybie śledzenia zmian, gotowy do Twojej autoryzacji i ostatecznych szlifów.</p>
+            </div>
+        </div>
+    </section>
 
-        // Reset i drugie dzwonienie
-        setTimeout(() => bellIcon.classList.remove('ring1'), 1200);
-        setTimeout(() => bellIcon.classList.add('ring2'), 1300);
+    <section class="info-section">
+        <div class="section-header">
+            <span class="section-subtitle">Dowiedz się więcej</span>
+            <h2>Potrzebujesz więcej <i>informacji?</i></h2>
+        </div>
+        
+        <div class="info-grid">
+            <a href="{{ '/cennik.html' | relative_url }}" class="info-card white">
+                <div class="icon"><i class="las la-wallet"></i></div>
+                <h3>Cennik</h3>
+                <p>Każdy tekst traktuję jak osobną historię, a cenę dopasowuję do stopnia skomplikowania materiału i nakładu pracy.</p>
+                <div class="arrow"><i class="las la-arrow-right"></i></div>
+            </a>
+            
+            <a href="{{ '/faq.html' | relative_url }}" class="info-card black">
+                <div class="icon"><i class="las la-question-circle" style="color: #f77f00;"></i></div>
+                <h3 class="lora-font">Baza wiedzy (FAQ)</h3>
+                <p>Znajdź odpowiedzi na najczęstsze pytania dotyczące współpracy.</p>
+                <div class="arrow"><i class="las la-arrow-right" style="color: #f77f00;"></i></div>
+            </a>
+            
+            <a href="{{ '/zasady-wspolpracy.html' | relative_url }}" class="info-card purple">
+                <div class="icon"><i class="las la-tools"></i></div>
+                <h3>Więcej o współpracy</h3>
+                <p>Dowiedz się, jak dokładnie krok po kroku przebiega zorganizowana współpraca.</p>
+                <div class="arrow"><i class="las la-arrow-right"></i></div>
+            </a>
+        </div>
+    </section>
 
-        // Pill rozwija się
-        setTimeout(() => bellPill.classList.add('expanded'), 1700);
-
-        // TOC HIGHLIGHTING
-        const sections = document.querySelectorAll('.toc-section');
-        const navLinks = document.querySelectorAll('.top-toc a');
-
-        function updateTOC() {
-            let current = '';
-            sections.forEach(section => {
-                if (section.getBoundingClientRect().top <= 250) current = section.getAttribute('id');
-            });
-            if (!current && sections.length > 0) current = sections[0].getAttribute('id');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-            });
-        }
-
-        window.addEventListener('scroll', updateTOC);
-        updateTOC();
-    });
-</script>
+</div>
