@@ -1,139 +1,93 @@
 ---
 layout: default
 ---
-<header class="blog-header">
-    <div class="blog-meta">Artykuł <span>• {{ page.date | date: "%d.%m.%Y" }}</span></div>
-    <h1 class="blog-title">{{ page.title }}</h1>
+
+<header class="article-header">
+    <div class="article-meta">
+        Artykuł <span>•</span> {{ page.date | date: "%d.%m.%Y" }}
+    </div>
+    <h1 class="article-title">{{ page.title }}</h1>
 </header>
 
 {% if page.image %}
-<img src="{{ page.image }}" alt="{{ page.title }}" class="blog-image">
+<div class="article-hero-wrap">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="article-hero-img">
+</div>
 {% endif %}
 
-<div class="blog-container" id="blog-container">
+<main class="article-container">
     
-    <button id="sidebarToggle" class="sidebar-toggle-btn" title="Pokaż/ukryj pasek boczny">
-        <i class="las la-bars"></i>
-    </button>
+    <nav class="article-toc" id="post-toc-wrap" style="display: none;"></nav>
 
-    <main class="blog-content">
-        
-        <div class="post-toc" id="post-toc-wrap"></div>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var wrap = document.getElementById('post-toc-wrap');
-            var headings = document.querySelectorAll('.blog-content h2, .blog-content h3');
-            if (headings.length < 2) return;
-
-            var items = '';
-            headings.forEach(function(h, i) {
-                h.id = h.id || 'section-' + i;
-                var sub = h.tagName === 'H3' ? ' class="toc-sub"' : '';
-                items += '<li' + sub + '><a href="#' + h.id + '">' + h.textContent + '</a></li>';
-            });
-
-            wrap.innerHTML = '<div class="toc-box open">'
-                + '<div class="toc-toggle">'
-                +   '<div class="toc-toggle-left">'
-                +     '<i class="las la-list-ul"></i>'
-                +     '<span>Spis treści</span>'
-                +   '</div>'
-                +   '<i class="las la-angle-up toc-chevron"></i>'
-                + '</div>'
-                + '<div class="toc-body"><ol>' + items + '</ol></div>'
-                + '</div>';
-
-            wrap.querySelector('.toc-toggle').addEventListener('click', function() {
-                wrap.querySelector('.toc-box').classList.toggle('open');
-            });
-        });
-        </script>
-        
-        {{ content }}
-
-    </main>
-
-   <aside class="blog-sidebar">
-        <div class="sidebar-widget author-bio">
-            <h4 class="widget-title">O autorce</h4>
-            <img src="https://i.imgur.com/blcFNFU.jpeg" alt="Natalia Szoppa" class="author-avatar">
-            <div class="author-name">Natalia Szoppa</div>
-            <p class="author-desc">Redaktorka, tłumaczka i lektorka. Od 10 lat związana z językiem i historiami wszelkiej maści. Pomagam twórcom szlifować ich historie, by brzmiały profesjonalnie i wciągająco.</p>
-            <a href="{{ site.baseurl }}/o-mnie.html" class="author-link">Więcej o mnie <i class="las la-arrow-right"></i></a>
-        </div>
-
-        <div class="sidebar-widget search-widget">
-            <h4 class="widget-title">Szukaj na blogu</h4>
-            <div class="search-box" style="display: flex; gap: 5px; margin-bottom: 10px;">
-                <input type="text" id="search-input" placeholder="Wpisz frazę..." style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                <button style="padding: 8px; border: none; background: #333; color: #fff; border-radius: 4px; cursor: pointer;"><i class="las la-search"></i></button>
-            </div>
-            <ul id="results-container" style="list-style: none; padding: 0; margin: 0; font-size: 0.9em;"></ul>
-        </div>
-
-        <div class="sidebar-widget">
-            <h4 class="widget-title">Popularne tagi</h4>
-            <div class="tag-cloud">
-                {% capture site_tags %}{% for tag in site.tags %}{{ tag[0] }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
-                {% assign tags_list = site_tags | split:',' | sort %}
-                {% for tag in tags_list %}
-                    <a href="{{ site.baseurl }}/tagi.html#{{ tag | cgi_escape }}" class="tag-pill">#{{ tag }}</a>
-                {% endfor %}
-            </div>
-        </div>
-
-       <div class="sidebar-widget">
-            <h4 class="widget-title">Archiwum</h4>
-            <p style="font-size: 0.9em; margin-bottom: 24px;">Przeglądaj wszystkie posty.</p>
-            <a href="{{ site.baseurl }}/archiwum.html" class="author-link" style="font-weight: bold;">Przejdź do archiwum <i class="las la-arrow-right"></i></a>
-        </div>
-    </aside>
-
-<script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@latest/dest/simple-jekyll-search.min.js"></script>
-
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
-        SimpleJekyllSearch({
-            searchInput: document.getElementById('search-input'),
-            resultsContainer: document.getElementById('results-container'),
-            json: '{{ site.baseurl }}/search.json',
-            searchResultTemplate: '<li style="margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 8px;"><a href="{url}" style="text-decoration: none; font-weight: bold; color: #333;">{title}</a><br><span style="font-size: 0.8em; color: #666;">{date}</span></li>',
-            noResultsText: '<li style="color: #666;">Nie znaleziono wpisów...</li>',
-            limit: 5,
-            fuzzy: false
-        });
-    });
-</script>
-</div> <div class="post-full-nav">
-    <div class="nav-item prev-item">
-        {% if page.previous %}
-        <a href="{{ page.previous.url | relative_url }}">
-            <span class="nav-label"><i class="las la-angle-left"></i> Starszy wpis</span>
-            <span class="nav-title">{{ page.previous.title }}</span>
-        </a>
-        {% endif %}
-    </div>
-    <div class="nav-item next-item">
-        {% if page.next %}
-        <a href="{{ page.next.url | relative_url }}">
-            <span class="nav-label">Nowszy wpis <i class="las la-angle-right"></i></span>
-            <span class="nav-title">{{ page.next.title }}</span>
-        </a>
-        {% endif %}
-    </div>
-</div>
+        var wrap = document.getElementById('post-toc-wrap');
+        // Szukamy nagłówków tylko wewnątrz treści artykułu
+        var headings = document.querySelectorAll('.article-content h2, .article-content h3');
+        
+        // Pokazujemy spis treści tylko, jeśli są co najmniej 2 nagłówki
+        if (headings.length < 2) return;
+        wrap.style.display = 'block';
 
-<div class="recommended-grid">
-    {% assign count = 0 %}
-    {% for post in site.posts %}
-        {% if post.url != page.url and count < 4 %}
-        <a href="{{ post.url | relative_url }}" class="recommended-card" style="background-image: url('{{ post.image }}');">
-            <div class="recommended-card-title">
-                {{ post.title }}
-            </div>
+        var items = '';
+        headings.forEach(function(h, i) {
+            h.id = h.id || 'sekcja-' + i;
+            items += '<li><a href="#' + h.id + '">' + h.textContent + '</a></li>';
+        });
+
+        wrap.innerHTML = '<h3><i class="las la-list-ul"></i> Spis treści</h3><ul>' + items + '</ul>';
+    });
+    </script>
+
+    <div class="article-content">
+        {{ content }}
+    </div>
+
+    <div class="author-bio">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Katarzyna Wiśniewska" class="author-img">
+        <div class="author-info">
+            <h4>Katarzyna Wiśniewska</h4>
+            <p>Redaktorka, tłumaczka i pasjonatka spójnych fabuł. Od lat pomaga niezależnym twórcom wydawać książki na najwyższym poziomie rynkowym. Prywatnie wielka fanka espresso i starych komiksów.</p>
+        </div>
+    </div>
+
+</main>
+
+<section class="post-footer-nav">
+    
+    <div class="prev-next-bar">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | relative_url }}" class="nav-link-block prev">
+            <span class="nav-label"><i class="las la-angle-left"></i> Starszy wpis</span>
+            <span class="nav-post-title">{{ page.previous.title }}</span>
         </a>
-        {% assign count = count | plus: 1 %}
+        {% else %}
+        <div class="nav-link-block prev" style="visibility: hidden;"></div>
         {% endif %}
-    {% endfor %}
-</div>
+
+        {% if page.next %}
+        <a href="{{ page.next.url | relative_url }}" class="nav-link-block next">
+            <span class="nav-label">Nowszy wpis <i class="las la-angle-right"></i></span>
+            <span class="nav-post-title">{{ page.next.title }}</span>
+        </a>
+        {% else %}
+        <div class="nav-link-block next" style="visibility: hidden;"></div>
+        {% endif %}
+    </div>
+
+    <div class="related-posts">
+        {% assign count = 0 %}
+        {% for post in site.posts %}
+            {% if post.url != page.url and count < 3 %}
+            <a href="{{ post.url | relative_url }}" class="related-item">
+                <div class="related-img-wrap">
+                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                </div>
+                <div class="related-title-block">{{ post.title }}</div>
+            </a>
+            {% assign count = count | plus: 1 %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+</section>
