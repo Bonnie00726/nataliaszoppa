@@ -12,13 +12,35 @@ permalink: /blog.html
         text-align: center;
         padding: 0 20px;
     }
+    
     .blog-index-title {
         font-family: 'Lora', serif;
         font-size: clamp(36px, 5vw, 54px);
         color: var(--text-black);
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         letter-spacing: -0.5px;
+        line-height: 1.4; /* Zwiększony odstęp między liniami dla markera */
     }
+
+    /* PASTELOWY MARKER DO TYTUŁU GŁÓWNEGO BLOGA */
+    .title-highlight {
+        position: relative;
+        display: inline-block;
+        z-index: 1;
+        white-space: nowrap; /* Zapobiega łamaniu tła */
+    }
+
+    .title-highlight::before {
+        content: '';
+        position: absolute;
+        inset: 4px -5px -2px -5px; 
+        z-index: -1;
+        /* Pastelowy, lawendowy fiolet */
+        background: linear-gradient(90deg, #e4cbf9 0%, #eedcf9 50%, #e4cbf9 100%);
+        border-radius: 4px 8px 4px 8px;
+        transform: skew(-10deg) rotate(-1.5deg);
+    }
+
     .blog-index-subtitle {
         font-family: 'Mulish', sans-serif;
         font-size: 18px;
@@ -75,7 +97,7 @@ permalink: /blog.html
         padding: 30px;
         display: flex;
         flex-direction: column;
-        flex-grow: 1; /* Pozwala wypchnąć "Czytaj dalej" na sam dół, jeśli tytuł jest krótki */
+        flex-grow: 1; /* Wypycha "Czytaj dalej" na sam dół */
     }
     .blog-card-meta {
         font-family: 'Mulish', sans-serif;
@@ -136,8 +158,16 @@ permalink: /blog.html
 </style>
 
 <header class="blog-index-header">
-    <h1 class="blog-index-title">Wskazówki dla autorów</h1>
-    <p class="blog-index-subtitle">Praktyczna wiedza, kulisy procesu wydawniczego i redakcja bez tajemnic. Zobacz, jak pisać jeszcze lepiej.</p>
+    <span style="font-family: 'Mulish', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--accent-purple); letter-spacing: 2px; display: block; margin-bottom: 20px;">
+        Wiedza warsztatowa
+    </span>
+    
+    <h1 class="blog-index-title">
+        Praktyczne wskazówki, by<br>
+        <i class="title-highlight">rozwinąć skrzydła.</i>
+    </h1>
+    
+    <p class="blog-index-subtitle">Kulisy procesu wydawniczego i redakcja bez tajemnic. Zobacz, jak pisać jeszcze lepiej.</p>
 </header>
 
 <main class="blog-grid">
@@ -148,7 +178,7 @@ permalink: /blog.html
             {% if post.image %}
                 <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" class="blog-card-img">
             {% else %}
-                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Placeholder" class="blog-card-img">
+                <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Blog post" class="blog-card-img">
             {% endif %}
         </div>
         
