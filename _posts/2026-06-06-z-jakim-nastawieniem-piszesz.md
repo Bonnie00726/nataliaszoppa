@@ -23,8 +23,6 @@ Ten ukryty cel zdradza zresztą nie tylko sama powieść, ale też to, w jaki sp
 * **Gdy mówisz: „Chcę wydać książkę”** – w większości przypadków sugeruje to, że piszesz dla siebie i pod siebie. Stawiasz siebie w centrum, a każda krytyka zaboli Cię mocniej, niż powinna.
 * **Gdy mówisz: „Muszę napisać książkę, którą ludzie będą chcieli czytać”** – nie spychasz czytelnika na dalszy plan. <span class="highlight-marker">Myślisz o nim na każdym etapie pracy</span>, bo widzisz w tym przedsięwzięciu swój potencjalny zawód.
 
----
-
 <h2 id="piszesz-dla-siebie-czy-dla-czytelnika">Piszesz dla siebie czy dla czytelnika?</h2>
 
 Jasne, początki zawsze są dla Ciebie – i to zupełnie naturalny, wręcz niezbędny etap twórczości. Piszesz, bo czujesz taką potrzebę, bo zachwyciła Cię jakaś książka i chcesz stworzyć coś równie inspirującego albo po prostu sprawia Ci to czystą frajdę. Powodów jest mnóstwo i wszystkie są świetne.
@@ -33,11 +31,11 @@ Problem pojawia się w chwili, gdy zaczynasz na poważnie myśleć o wydaniu ksi
 
 Czytelnik nie zna Twoich intencji i nie siedzi w Twojej głowie. **Nie musi wiedzieć, dlaczego w ogóle usiadłaś do klawiatury.**
 
-<span class="marker-highlight"> Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas. </span>
+<div class="top-bottom-highlight">
+    <p>Powieść działa na zasadzie prostej transakcji: oferujesz napięcie, emocje i ciekawy świat, a czytelnik w zamian oddaje Ci swój wolny czas.</p>
+</div>
 
 Jeśli Twoja strona tej wymiany jest pusta, odbiorca **po prostu zamknie książkę i odejdzie**.
-
----
 
 <h2 id="skad-wiadomo-dla-kogo-piszesz">Skąd wiadomo, dla kogo piszesz?</h2>
 
@@ -53,18 +51,18 @@ Chyba że wybierzesz ścieżkę Gege Akutamiego (twórcy mangi *Jujutsu Kaisen*)
 
 Nie chodzi o to, by pisać ślepo pod dyktando tłumu. Mówię o szacunku do rzemiosła i fundamentalnych zasad. Genialnie podsumował to Kurt Vonnegut:
 
-> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować. Kurt Vonnegut, **8 basics of creative writing**
+> Czytelnicy chcą, aby nasze strony wyglądały bardzo podobnie do stron, które już wcześniej widzieli. Dlaczego? Ponieważ sami mają ciężkie zadanie do wykonania i potrzebują wszelkiej pomocy, jaką możemy im zaoferować.
+> <footer>Kurt Vonnegut, 8 basics of creative writing</footer>
 
 Czytanie to wymagający proces – odbiorca musi przetworzyć Twoje słowa, uruchomić wyobraźnię, przeżyć emocje. <span class="marker-highlight">Autorzy, którzy odnoszą sukces</span>, po prostu <span class="marker-highlight">ułatwiają czytelnikowi</span> to zadanie. Piszą sprawnie strukturalnie, z poszanowaniem reguł narracyjnych i języka, bo wiedzą, że po drugiej stronie siedzi żywy człowiek, któremu trzeba pomóc wejść w tę historię.
 
 Na koniec zostawię Cię jeszcze z cytatem George'a Orwella: 
 
-> Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym. George Orwell, **Dlaczego piszę?**
+> Zaczynam pisać, ponieważ jest jakieś kłamstwo, które chcę ujawnić, jakiś fakt, do którego chcę przyciągnąć uwagę, a moim początkowym celem jest zostać wysłuchanym.
+> <footer>George Orwell, Dlaczego piszę?</footer>
 
 Możesz pisać z potrzeby serca, mieć wielką misję i chcieć zmieniać świat – to wszystko jest ważne. Ale żeby to miało jakikolwiek sens, <span class="marker-highlight">zadbaj o swojego odbiorcę,</span> a on wysłucha Cię wtedy, gdy podasz mu swój pomysł w najlepszej możliwej oprawie.
 
----
-
-<div class="sticky-note" markdown="1">
+<div class="top-bottom-highlight">
 Marzenie o publikacji to świetny zapalnik do działania, ale Twoim ostatecznym zadaniem jako pisarza jest utrzymanie uwagi czytelnika. Odbiorca musi sam, z własnej woli, chcieć przewrócić kolejną stronę. Na samym końcu tylko to ma realne znaczenie.
 </div>
