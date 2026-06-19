@@ -115,7 +115,7 @@ W <a href="{% post_url 2026-06-06-z-jakim-nastawieniem-piszesz %}">poprzednim ar
 
 Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logicczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
 
-Narzędziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="marker-highlight">podstawowe narzędzie pisarza</span>. Poniżej przedstawiam wizualną reprezentację tej struktury:
+Narzędziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="marker-highlight">podstawowe narzędzie pisarza.</span> Poniżej przedstawiam wizualną reprezentację tej struktury:
 
 <div class="three-acts-container">
   <div class="act-col act-col-1">
@@ -176,7 +176,7 @@ Dobry wstęp w wypracowaniu zawiera informacje, które udowodnią czytelnikowi, 
 
 Wielu autorów pokazuje życie bohaterów jako zbiór przypadkowych wydarzeń. Coś tam się dzieje, ale nic konkretnego – ot, toczy się zwykłe życie i tak do połowy książki. Inni z kolei od razu walą z grubej rury i „atakują” czytelnika masą wątków o równej wadze. Każdy z nich niesie inne konsekwencje, których autor potem nie potrafi udźwignąć i logicznie przeprowadzić przez nie czytelnika. Są też tacy, którzy kompletnie zapominają o punkcie zwrotnym i od razu przechodzą do otwartego konfliktu.
 
-Akt I to moment, który ma <span class="marker-highlight">udowodnić czytelnikowi</span>, że Twoja historia jest <span class="marker-highlight">warta jego czasu</span>. Warto więc zadbać o to, by zawierał te trzy podstawowe kroki.
+Akt I to moment, który ma <span class="marker-highlight">udowodnić czytelnikowi,</span> że Twoja historia jest <span class="marker-highlight">warta jego czasu.</span> Warto więc zadbać o to, by zawierał te trzy podstawowe kroki.
 
 **Przykład:**
 Chris Wooding w swojej epickiej powieści *The Ember Blade* na początku pokazuje normalne życie dwójki nastoletnich chłopców. Mają swoje codzienne problemy, przygody, miłostki, konflikty z rówieśnikami i rodzicami. Autor pozwala nam ich poznać. Mamy czas, żeby się z nimi zaprzyjaźnić i zechcieć im towarzyszyć.
@@ -191,9 +191,9 @@ To najtrudniejsza część, bo najłatwiej wpaść tu w pułapkę „bohatera do
 
 W akcie II przez długi czas widzimy, jak bohaterowie zmagają się z zawirowaniami. Los rzuca im kłody pod nogi, a oni walczą z nimi – często z marnym skutkiem. To są tzw. **punkty nacisku (*pinch points*)**.  Ważne, aby przynajmniej jeden z nich pochodził bezpośrednio <span class="marker-highlight">od samego antagonisty.</span> To kluczowy etap historii. Jako autor dajesz wtedy swoim bohaterom szansę na poznanie siebie: swoich potrzeb, pragnień, wad i mocnych stron. Każda kolejna kłoda to wyzwanie, które ich kształtuje.
 
-W końcu musi jednak przyjść moment, w którym <span class="marker-highlight">bohater powie: „Dość!” i zacznie reagować</span>, analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest **punkt środkowy** (**midpoint**).
+W końcu musi jednak przyjść moment, w którym <span class="marker-highlight">bohater powie: „Dość!” i zacznie reagować,</span> analizować oraz szykować się do odwetu. Zebrał już doświadczenie, znalazł sprzymierzeńców i może zacząć realizować plan. To jest **punkt środkowy** (**midpoint**).
 
-Jego zadaniem jest <span class="marker-highlight">przełączenie bohatera z postawy reaktywnej na aktywną</span>. Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. **Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.**
+Jego zadaniem jest <span class="marker-highlight">przełączenie bohatera z postawy reaktywnej na aktywną.</span> Do tego momentu protagonista wyłącznie odpowiadał na zdarzenia zewnętrzne – ktoś rzucał mu przeszkodę, on ją omijał i schodził dalej. Po przekroczeniu midpointu bohater zaczyna samodzielnie kształtować bieg wydarzeń. **Przestaje pytać „dlaczego ja?”, a zaczyna myśleć „jak to rozwiązać?”.**
 
 Nasz bohater działa, wszystko idzie świetnie, ale – jak to w życiu – **nagle nadchodzi klęska**. <span class="highlight-marker">To sytuacja, która pozornie niweczy cały dotychczasowy plan.</span> Ale czy na dobre? Oczywiście, że nie. Twój bohater przeszedł już tak wiele, że w dobrych książkach zawsze znajduje rozwiązanie.
 
@@ -221,11 +221,11 @@ Próba odkrycia prawdy błyskawicznie zderza chłopca z brutalną rzeczywistośc
 * **Wędrówka i budowanie drużyny:** Grupa podróżuje przez okupowany kraj. Po drodze dołączają do nich nowe postacie (druidka Vika, wynalazczyni Mara). Autor raczy nas tu pobocznymi wątkami, ale to nie są zapychacze. Każda nowa osoba wprowadza świeżą dynamikę i uczy chłopców czegoś nowego.
 * **Punkt środkowy (midpoint):** Właśnie podczas tej drogi Aren w końcu dojrzewa i przechodzi z postawy reaktywnej w aktywną. Rozumie, że imperium opiera się na kłamstwie, a jego ojciec miał rację. Dowiaduje się też o tytułowym mieczu (*Ember Blade*) – legendarnym symbolu wolności. Przestaje pytać „jak po prostu przetrwać?” i postanawia działać: chce pomóc w kradzieży miecza z pilnie strzeżonej twierdzy.
 
-Mimo że wydarzeń jest mnóstwo, to nie jest zbiór przypadkowych przygód. <span class="marker-highlight">Wszystko układa się w logiczną, zazębiającą się całość</span>.
+Mimo że wydarzeń jest mnóstwo, to nie jest zbiór przypadkowych przygód. <span class="marker-highlight">Wszystko układa się w logiczną, zazębiającą się całość.</span>
 
 <h2 id="akt-iii-czyli-zakonczenie">Akt III, czyli zakończenie</h2>
 
-To moment, w którym historia zmierza do punktu kulminacyjnego, a po nim powoli zwalnia. <span class="marker-highlight">Problemy zapoczątkowane w momencie klęski znajdują swoje rozwiązanie</span>, bohaterowie wygrywają i na końcu widzimy, jak odnajdują się w nowym świecie.
+To moment, w którym historia zmierza do punktu kulminacyjnego, a po nim powoli zwalnia. <span class="marker-highlight">Problemy zapoczątkowane w momencie klęski znajdują swoje rozwiązanie,</span> bohaterowie wygrywają i na końcu widzimy, jak odnajdują się w nowym świecie.
 
 Ten etap nie ma tak sztywnych, technicznych wymogów strukturalnych jak poprzednie akty, ale pamiętaj o jednej ważnej zasadzie: **nie można zamknąć całej historii w jednym rozdziale**. Czytelnik potrzebuje czasu, aby przeżyć z bohaterami ostateczne starcie, a potem zobaczyć opadający kurz i dowiedzieć się, co stało się z postaciami po bitwie. Zbyt szybkie ucięcie opowieści pozostawia ogromny niedosyt.
 
