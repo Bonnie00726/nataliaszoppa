@@ -9,7 +9,7 @@ tags: [porady pisarskie, warsztat, tempo]
 
 Prosta odpowiedź brzmi: i jedno, i drugie. Nieco dłuższa wyjaśni Ci, co warto skrócić nawet do jednego, lakonicznego zdania, a co należy rozpisać sekunda po sekundzie.
 
-W moim <a href="{% post_url 2026-06-04-struktura-trzech-aktow2 %}">poprzednim artykule</a> rozłożyliśmy na czynniki pierwsze strukturę trzech aktów. Masz już więc fabułę ułożoną w logiczną całość, wiesz, co dzieje się w poszczególnych scenach, a Twoi bohaterowie zyskali szczegółowe portrety psychologiczne. Teraz czas na kluczowe decyzje: <span class="marker-highlight"k>tóre momenty są sercem opowieści,</span>a które pełnią jedynie <span class="marker-highlight">funkcję „mostów”</span> przeprowadzających czytelnika z punktu A do punktu B?
+W moim <a href="{% post_url 2026-06-04-struktura-trzech-aktow2 %}">poprzednim artykule</a> rozłożyliśmy na czynniki pierwsze strukturę trzech aktów. Masz już więc fabułę ułożoną w logiczną całość, wiesz, co dzieje się w poszczególnych scenach, a Twoi bohaterowie zyskali szczegółowe portrety psychologiczne. Teraz czas na kluczowe decyzje: <span class="marker-highlight">które momenty są sercem opowieści,</span> a które pełnią jedynie <span class="marker-highlight">funkcję „mostów”</span> przeprowadzających czytelnika z punktu A do punktu B?
 
 Photo by <a href="https://unsplash.com/photos/7ezVb0oTQ6M">Kari Shea</a> on <a href="https://unsplash.com">Unsplash</a>.
 
@@ -76,5 +76,5 @@ W Twojej powieści znajdą się sceny, które <span class="marker-highlight">rea
 Gdy każdy fragment tekstu traktujesz z tym samym nabożnym detalem, wszystko zaczyna wydawać się jednakowo ważne. W efekcie prawdziwie istotne zwroty akcji giną w zalewie błahej codzienności. Aby tego uniknąć, przed pisaniem każdego rozdziału zrób selekcję: co staje się pełnokrwistą sceną, a co zostaje jedynie lekkim, naszkicowanym przejściem.
 
 <div class="top-bottom-highlight">
-    Dobry pisarz to nie kronikarz, który musi zapisać każdą sekundę z życia bohatera. Twoim zadaniem jest selekcja. Rozpisuj to, co zmienia bieg historii lub emocje postaci, a całą resztę skracaj bez mrugnięcia okiem. </div>div>
+    Dobry pisarz to nie kronikarz, który musi zapisać każdą sekundę z życia bohatera. Twoim zadaniem jest selekcja. Rozpisuj to, co zmienia bieg historii lub emocje postaci, a całą resztę skracaj bez mrugnięcia okiem. </div>
 
