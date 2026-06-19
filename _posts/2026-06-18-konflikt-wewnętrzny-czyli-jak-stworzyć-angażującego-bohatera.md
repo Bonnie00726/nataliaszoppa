@@ -7,8 +7,6 @@ image: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb"
 tags: [porady pisarskie, warsztat]
 ---
 
-<h1>Konflikt wewnętrzny, czyli jak stworzyć angażującego bohatera</h1>
-
 Wielu autorów traktuje konflikt wewnętrzny jako losowy zestaw dylematów wrzuconych do fabuły. W rzeczywistości prawdziwy, angażujący konflikt wewnętrzny to czysta psychologia. To moment, w którym **rana z przeszłości bezpośrednio zderza się z bieżącą stawką historii**.
 
 Photo from <a href="https://unsplash.com/photos/man-standing-and-walking-going-on-boxing-ring-surrounded-with-people-ig7vN6OkGNE">Unsplash</a>
