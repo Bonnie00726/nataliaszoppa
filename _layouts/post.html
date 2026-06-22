@@ -372,10 +372,17 @@ layout: default
                 {% if m == '12' %}{% assign monthName = 'Grudzień' %}{% endif %}
 
                 <li>
-                    <span style="font-size: 16px; font-weight: 600; color: var(--text-black);">{{ monthName }} {{ y }}</span>
-                    <span style="color: var(--text-muted); font-size: 13px;">({{ month.items | size }})</span>
+                    <a href="{{ '/archiwum.html' | relative_url }}#rok-{{ y }}" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 16px; font-weight: 600; color: var(--text-black);">{{ monthName }} {{ y }}</span>
+                        <span style="color: var(--text-muted); font-size: 13px;">({{ month.items | size }})</span>
+                    </a>
                 </li>
             {% endfor %}
+            <li>
+                <a href="{{ '/archiwum.html' | relative_url }}" style="width: 100%; display: flex; justify-content: center; font-size: 14px; margin-top: 15px; color: var(--accent-purple);">
+                    Przejdź do pełnego archiwum &rarr;
+                </a>
+            </li>
         </ul>
     </div>
 </div>
