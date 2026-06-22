@@ -200,4 +200,170 @@ permalink: /blog.html
         
     </a>
     {% endfor %}
+    <div id="blogSidebar" class="blog-sidebar-overlay">
+    <div class="blog-sidebar-content">
+        <button class="close-sidebar" onclick="closeBlogSidebar()"><i class="las la-times"></i></button>
+
+        <h2 class="sidebar-title">Znajdź <i>artykuł</i></h2>
+        <div class="search-box">
+            <i class="las la-search"></i>
+            <input type="text" id="searchInput" placeholder="Wpisz szukaną frazę...">
+        </div>
+        <div id="searchResults" class="search-results-container"></div>
+
+        <h2 class="sidebar-title" style="margin-top: 50px;">Archiwum <i>bloga</i></h2>
+        <ul class="archive-list">
+            {% assign postsByMonth = site.posts | group_by_exp:"post", "post.date | date: '%m %Y'" %}
+            {% for month in postsByMonth %}
+                {% assign m = month.name | split: ' ' | first %}
+                {% assign y = month.name | split: ' ' | last %}
+                {% if m == '01' %}{% assign monthName = 'Styczeń' %}{% endif %}
+                {% if m == '02' %}{% assign monthName = 'Luty' %}{% endif %}
+                {% if m == '03' %}{% assign monthName = 'Marzec' %}{% endif %}
+                {% if m == '04' %}{% assign monthName = 'Kwiecień' %}{% endif %}
+                {% if m == '05' %}{% assign monthName = 'Maj' %}{% endif %}
+                {% if m == '06' %}{% assign monthName = 'Czerwiec' %}{% endif %}
+                {% if m == '07' %}{% assign monthName = 'Lipiec' %}{% endif %}
+                {% if m == '08' %}{% assign monthName = 'Sierpień' %}{% endif %}
+                {% if m == '09' %}{% assign monthName = 'Wrzesień' %}{% endif %}
+                {% if m == '10' %}{% assign monthName = 'Październik' %}{% endif %}
+                {% if m == '11' %}{% assign monthName = 'Listopad' %}{% endif %}
+                {% if m == '12' %}{% assign monthName = 'Grudzień' %}{% endif %}
+
+                <li>
+                    <span>{{ monthName }} {{ y }}</span>
+                    <span class="count">({{ month.items | size }})</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<style>
+.blog-sidebar-overlay {
+    position: fixed;
+    top: 0; right: -100%; /* Panel jest ukryty po prawej stronie */
+    width: 100%; max-width: 400px; height: 100vh;
+    background: var(--card-bg, #ffffff);
+    box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+    z-index: 10000;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+.blog-sidebar-overlay.active {
+    right: 0; /* Wysuwa panel */
+}
+.blog-sidebar-content {
+    padding: 40px;
+    position: relative;
+}
+.close-sidebar {
+    position: absolute;
+    top: 20px; right: 25px;
+    background: none; border: none;
+    font-size: 28px; cursor: pointer; color: var(--text-black);
+    transition: color 0.3s;
+}
+.close-sidebar:hover { color: var(--accent-purple); }
+
+.sidebar-title {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: var(--text-black);
+}
+.sidebar-title i { font-style: italic; font-weight: 400; }
+
+.search-box { position: relative; margin-bottom: 10px; }
+.search-box i {
+    position: absolute;
+    left: 18px; top: 50%; transform: translateY(-50%);
+    color: var(--text-muted); font-size: 20px;
+}
+.search-box input {
+    width: 100%;
+    padding: 14px 15px 14px 45px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
+    background: var(--bg-muted);
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    color: var(--text-black);
+    outline: none;
+    transition: all 0.3s;
+}
+.search-box input:focus { border-color: var(--accent-purple); background: var(--card-bg); }
+
+/* Wyniki wyszukiwania na żywo */
+.search-results-container a {
+    display: block;
+    padding: 12px 0;
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-black);
+    border-bottom: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.search-results-container a:hover { color: var(--accent-purple); }
+
+/* Lista Archiwum */
+.archive-list { list-style: none; padding: 0; margin: 0; }
+.archive-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    font-family: 'Mulish', sans-serif;
+    font-size: 15px;
+    color: var(--text-black);
+}
+.archive-list li .count { color: var(--text-muted); font-size: 13px;}
+</style>
+
+<script>
+// 1. Otwieranie i zamykanie panelu
+function openBlogSidebar() { document.getElementById('blogSidebar').classList.add('active'); }
+function closeBlogSidebar() { document.getElementById('blogSidebar').classList.remove('active'); }
+
+// 2. Skrypt Live Search oparty o Twój plik search.json
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+    let posts = [];
+
+    // Pobranie Twojej bazy artykułów
+    fetch('{{ "/search.json" | relative_url }}')
+        .then(response => response.json())
+        .then(data => { posts = data; })
+        .catch(error => console.error('Błąd ładowania wyszukiwarki:', error));
+
+    // Reakcja na wpisywanie w pole
+    searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        searchResults.innerHTML = ''; // Czyści stare wyniki
+
+        if (query.length < 2) return; // Szuka dopiero od 2 wpisanych znaków
+
+        // Szuka w tytułach lub w tagach
+        const filteredPosts = posts.filter(post =>
+            post.title.toLowerCase().includes(query) ||
+            post.tags.toLowerCase().includes(query)
+        );
+
+        // Wyświetlanie wyników
+        if (filteredPosts.length > 0) {
+            filteredPosts.forEach(post => {
+                const link = document.createElement('a');
+                link.href = post.url;
+                link.textContent = post.title;
+                searchResults.appendChild(link);
+            });
+        } else {
+            searchResults.innerHTML = '<p style="color: var(--text-muted); font-size: 14px; padding-top: 15px;">Brak artykułów pasujących do zapytania...</p>';
+        }
+    });
+});
+</script>
 </main>
