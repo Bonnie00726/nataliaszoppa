@@ -15,14 +15,13 @@
     <style>
         /* === 1. ZMIENNE KOLORYSTYCZNE I GEOMETRYCZNE === */
         :root {
-            /* Główne kolory (Jasny Off-white) */
-            --bg-color: #F8F7FA;
+            /* Główne kolory */
+            --bg-color: #ffffff;
             --text-black: #111111;
             --text-gray: #444444; 
             --text-muted: #888888;
-            --bg-muted: #EFEBF4;
-            --border-color: #DED8E6;
-            --card-bg: #FFFFFF;
+            --bg-muted: #f9f9fa;
+            --border-color: #eaeaea;
             
             /* Akcenty i Gradienty firmowe */
             --gradient: linear-gradient(135deg, #7b2cbf, #f77f00);
@@ -38,25 +37,6 @@
             --sans: 'Mulish', sans-serif;
         }
 
-        /* === TRYB CIEMNY (DARK MODE - EDGE GRAPHITE) === */
-        [data-theme="dark"] {
-            --bg-color: #2b2b2b;       /* Matowy grafit z Edge */
-            --bg-muted: #1e1e1e;       /* Ciemniejsze sekcje i stopka */
-            --card-bg: #333333;        /* Karty delikatnie jaśniejsze od tła strony */
-            --border-color: #111111;   /* Niemal czarne ramki dla ładnego odcięcia */
-            
-            /* Stonowane teksty dla ochrony oczu */
-            --text-black: #EAEAEA; 
-            --text-gray: #A0A0A0;  
-            --text-muted: #777777; 
-            
-            --gold-pale: rgba(123, 44, 191, 0.15); /* Subtelne fioletowe wyróżnienia */
-            
-            /* Mocniejsze cienie dopasowane do ciemnego tła */
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.3);
-            --shadow-med: 0 15px 40px rgba(0,0,0,0.4);
-        }
-
         /* === 2. RESET I PODSTAWOWA TYPOGRAFIA === */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
@@ -66,16 +46,12 @@
             background-color: var(--bg-color); 
             line-height: 1.6; 
             overflow-x: hidden; /* Zapobiega pojawianiu się dolnego paska przewijania */
-            
-            /* Płynne przechodzenie kolorów tła i tekstów */
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         /* Obsługa nagłówków - Lora */
         h1, h2, h3, h4, .lora-font { 
             font-family: var(--serif); 
             color: var(--text-black); 
-            transition: color 0.3s ease;
         }
         
         /* Obsługa kursywy w nagłówkach (charakterystyczne pochylenie) */
@@ -83,7 +59,6 @@
             font-style: italic; 
             color: var(--text-black); 
             font-weight: 400; 
-            transition: color 0.3s ease;
         }
         
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
@@ -140,14 +115,14 @@
             padding: 10px 24px; border-radius: 30px; font-weight: 700; font-size: 13px; display: inline-block; 
             cursor: pointer; transition: all 0.3s; text-align: center;
         }
-        .btn-outline:hover { background: var(--text-black); color: var(--bg-color); }
+        .btn-outline:hover { background: var(--text-black); color: white; }
 
         /* Nawigacja Górna */
         .top-nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 30px 5%; max-width: 1400px; margin: 0 auto;
         }
-        .nav-brand { font-family: var(--serif); font-size: 22px; font-weight: 600; transition: color 0.3s; }
+        .nav-brand { font-family: var(--serif); font-size: 22px; font-weight: 600; }
         .nav-links { display: flex; gap: 30px; font-weight: 600; font-size: 15px; }
         .nav-links a:hover, .nav-links a.active { color: var(--accent-purple); }
 
@@ -162,19 +137,17 @@
         }
         .floating-cta:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(123, 44, 191, 0.4); color: white; }
 
+       /* === ZAKTUALIZOWANE MINIMALISTYCZNE STYLE STOPKI === */
         /* STOPKA */
-        .site-footer { 
-            text-align: center; 
-            padding: 50px 20px; 
-            margin-top: 60px; 
-            font-size: 13px; 
-            color: var(--text-muted); 
-            background-color: var(--bg-muted); 
-            border-top: 3px solid transparent;
-            border-image: var(--gradient) 1;
-            box-shadow: inset 0 5px 15px rgba(0,0,0,0.02);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
+    .site-footer { 
+        text-align: center; 
+        padding: 50px 20px; /* Zwiększyłem odrobinę padding, żeby szare tło miało czym oddychać */
+        border-top: 1px solid var(--border-color); 
+        margin-top: 60px; 
+        font-size: 13px; 
+        color: var(--text-muted); 
+        background-color: var(--bg-muted); /* Magia! Lekki, elegancki szary odcień */
+    }
         
         .footer-container {
             max-width: 1100px;
@@ -198,7 +171,6 @@
             font-weight: 600;
             color: var(--text-black);
             letter-spacing: -0.2px;
-            transition: color 0.3s;
         }
         
         .footer-brand i {
@@ -255,7 +227,7 @@
                 justify-content: center;
             }
             .footer-mail:hover {
-                transform: translateY(-1px);
+                transform: translateY(-1px); /* Na mobile lepiej delikatnie w górę zamiast w bok */
             }
         }
 
@@ -274,7 +246,7 @@
 
         /* === 5. MEDIA QUERIES (Globalna Responsywność) === */
         @media (max-width: 600px) {
-            .nav-links { display: none; }
+            .nav-links { display: none; /* Ukrycie menu na mobile */ }
             .floating-cta { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 14px; }
             .section-header h2 { font-size: 28px; }
         }
@@ -282,41 +254,9 @@
         .mobile-toggle { display: none; background: none; border: none; font-size: 28px; color: var(--text-black); cursor: pointer; }
         
         @media (max-width: 900px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: var(--card-bg); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 1000; text-align: center; }
-            .nav-links.show-mobile { display: flex; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; right: 0; background: white; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); z-index: 1000; text-align: center; }
+            .nav-links.show-mobile { display: flex; } /* Ta klasa jest dodawana po kliknięciu w hamburgera */
             .mobile-toggle { display: block; }
         }
     </style>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const themeToggleBtn = document.getElementById("theme-toggle");
-        if (!themeToggleBtn) return;
-        
-        const themeIcon = themeToggleBtn.querySelector("i");
-        
-        // 1. Sprawdzenie zapisanego trybu w pamięci przeglądarki
-        const currentTheme = localStorage.getItem("theme");
-        
-        if (currentTheme === "dark") {
-            document.documentElement.setAttribute("data-theme", "dark");
-            if (themeIcon) themeIcon.classList.replace("la-moon", "la-sun");
-        }
-
-        // 2. Obsługa zdarzenia kliknięcia w przycisk przełącznika
-        themeToggleBtn.addEventListener("click", function() {
-            let theme = document.documentElement.getAttribute("data-theme");
-            
-            if (theme === "dark") {
-                document.documentElement.removeAttribute("data-theme");
-                localStorage.setItem("theme", "light");
-                if (themeIcon) themeIcon.classList.replace("la-sun", "la-moon");
-            } else {
-                document.documentElement.setAttribute("data-theme", "dark");
-                localStorage.setItem("theme", "dark");
-                if (themeIcon) themeIcon.classList.replace("la-moon", "la-sun");
-            }
-        });
-    });
-    </script>
 </head>
