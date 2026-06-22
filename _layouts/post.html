@@ -199,20 +199,25 @@ layout: default
     .floating-search-btn:hover { transform: translateY(-3px); background: var(--accent-purple); }
     .search-modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 10000; display: flex; justify-content: flex-end; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
     .search-modal-overlay.active { opacity: 1; visibility: visible; }
-    .search-modal-panel { background: white; width: 100%; max-width: 450px; height: 100%; padding: 60px 40px; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; position: relative; }
+    .search-modal-panel { background: var(--card-bg, #ffffff); width: 100%; max-width: 450px; height: 100%; padding: 60px 40px; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; position: relative; }
     .search-modal-overlay.active .search-modal-panel { transform: translateX(0); }
     .modal-close { position: absolute; top: 30px; right: 30px; background: none; border: none; font-size: 28px; color: var(--text-black); cursor: pointer; transition: color 0.2s; }
     .modal-close:hover { color: var(--accent-purple); }
-    .search-modal-panel h3 { font-family: 'Lora', serif; font-size: 28px; margin-bottom: 25px; }
+    .search-modal-panel h3 { font-family: 'Lora', serif; font-size: 28px; margin-bottom: 25px; color: var(--text-black); }
     .search-box { position: relative; margin-bottom: 50px; }
-    .search-box input { width: 100%; padding: 15px 20px 15px 50px; border: 1px solid var(--border-color); border-radius: 30px; font-family: 'Mulish', sans-serif; font-size: 15px; outline: none; background: var(--bg-muted); transition: border-color 0.3s; }
-    .search-box input:focus { border-color: var(--accent-purple); background: white; }
+    .search-box input { width: 100%; padding: 15px 20px 15px 50px; border: 1px solid var(--border-color); border-radius: 30px; font-family: 'Mulish', sans-serif; font-size: 15px; outline: none; background: var(--bg-muted); color: var(--text-black); transition: border-color 0.3s; }
+    .search-box input:focus { border-color: var(--accent-purple); background: var(--card-bg); }
     .search-box i { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 18px; }
     .archive-list { list-style: none; padding: 0; }
-    .archive-list li { margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;}
+    .archive-list li { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border-color); font-family: 'Mulish', sans-serif; font-size: 15px; color: var(--text-black); }
     .archive-list a { display: flex; justify-content: space-between; font-size: 16px; font-weight: 600; color: var(--text-black); transition: color 0.2s; text-decoration: none;}
     .archive-list a span { color: var(--text-muted); font-weight: 400; font-size: 14px; }
     .archive-list a:hover { color: var(--accent-purple); }
+    
+    /* Wyniki wyszukiwania */
+    #results-container { margin-bottom: 40px; }
+    #results-container a { display: block; padding: 12px 0; font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 600; color: var(--text-black); border-bottom: 1px solid var(--border-color); text-decoration: none; transition: color 0.2s; }
+    #results-container a:hover { color: var(--accent-purple); }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -287,7 +292,7 @@ layout: default
         <img src="https://i.imgur.com/mtNOaBr.jpeg" alt="Natalia Szoppa" class="author-img">
         <div class="author-info">
             <h4>Natalia Szoppa</h4>
-            <p>Redaktorka, tłumaczka i lektorka języka angielskiego. Psychofanka <i>Ataku Tytanów</i>, która pije do 5 kubków herbaty dziennie, od czasu do czasu stawia sobie tarota i próbuje uczyć się znaków kanji, choć od tego zawsze coś ją odciąga. Uważa, że w każdym tekście kryje się potencjał – trzeba tylko nie bać się wproawadzać odważnych zmian.</p>
+            <p>Redaktorka, tłumaczka i lektorka języka angielskiego. Psychofanka <i>Ataku Tytanów</i>, która pije do 5 kubków herbaty dziennie, od czasu do czasu stawia sobie tarota i próbuje uczyć się znaków kanji, choć od tego zawsze coś ją odciąga. Uważa, że w każdym tekście kryje się potencjał – trzeba tylko nie bać się wprowadzać odważnych zmian.</p>
             <a href="{{ '/oferta.html' | relative_url }}" class="author-btn">Zobacz ofertę</a>
         </div>
     </div>
@@ -345,18 +350,38 @@ layout: default
             <i class="las la-search"></i>
             <input type="text" placeholder="Wpisz szukaną frazę..." id="search-input">
         </div>
-        <ul id="results-container" class="archive-list" style="margin-bottom: 40px;"></ul>
+        <div id="results-container"></div>
 
         <h3 class="lora-font">Archiwum <i>bloga</i></h3>
         <ul class="archive-list">
-            <li><a href="#">Czerwiec 2026 <span>(2)</span></a></li>
-            <li><a href="#">Maj 2026 <span>(4)</span></a></li>
-            <li><a href="#">Archiwum zostanie tu podpięte</a></li>
+            {% assign postsByMonth = site.posts | group_by_exp:"post", "post.date | date: '%m %Y'" %}
+            {% for month in postsByMonth %}
+                {% assign m = month.name | split: ' ' | first %}
+                {% assign y = month.name | split: ' ' | last %}
+                {% if m == '01' %}{% assign monthName = 'Styczeń' %}{% endif %}
+                {% if m == '02' %}{% assign monthName = 'Luty' %}{% endif %}
+                {% if m == '03' %}{% assign monthName = 'Marzec' %}{% endif %}
+                {% if m == '04' %}{% assign monthName = 'Kwiecień' %}{% endif %}
+                {% if m == '05' %}{% assign monthName = 'Maj' %}{% endif %}
+                {% if m == '06' %}{% assign monthName = 'Czerwiec' %}{% endif %}
+                {% if m == '07' %}{% assign monthName = 'Lipiec' %}{% endif %}
+                {% if m == '08' %}{% assign monthName = 'Sierpień' %}{% endif %}
+                {% if m == '09' %}{% assign monthName = 'Wrzesień' %}{% endif %}
+                {% if m == '10' %}{% assign monthName = 'Październik' %}{% endif %}
+                {% if m == '11' %}{% assign monthName = 'Listopad' %}{% endif %}
+                {% if m == '12' %}{% assign monthName = 'Grudzień' %}{% endif %}
+
+                <li>
+                    <span style="font-size: 16px; font-weight: 600; color: var(--text-black);">{{ monthName }} {{ y }}</span>
+                    <span style="color: var(--text-muted); font-size: 13px;">({{ month.items | size }})</span>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
 
 <script>
+    // 1. Otwieranie i zamykanie panelu
     const openBtn = document.getElementById('openSearchModal');
     const closeBtn = document.getElementById('closeSearchModal');
     const modal = document.getElementById('searchModal');
@@ -379,4 +404,41 @@ layout: default
             }
         });
     }
+
+    // 2. Skrypt Live Search oparty o search.json
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('results-container');
+        let posts = [];
+
+        // Pobranie Twojej bazy artykułów
+        fetch('{{ "/search.json" | relative_url }}')
+            .then(response => response.json())
+            .then(data => { posts = data; })
+            .catch(error => console.error('Błąd ładowania wyszukiwarki:', error));
+
+        // Reakcja na wpisywanie w pole
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            searchResults.innerHTML = ''; 
+
+            if (query.length < 2) return; 
+
+            const filteredPosts = posts.filter(post =>
+                post.title.toLowerCase().includes(query) ||
+                post.tags.toLowerCase().includes(query)
+            );
+
+            if (filteredPosts.length > 0) {
+                filteredPosts.forEach(post => {
+                    const link = document.createElement('a');
+                    link.href = post.url;
+                    link.textContent = post.title;
+                    searchResults.appendChild(link);
+                });
+            } else {
+                searchResults.innerHTML = '<p style="color: var(--text-muted); font-size: 14px; padding-top: 15px;">Brak artykułów pasujących do zapytania...</p>';
+            }
+        });
+    });
 </script>
