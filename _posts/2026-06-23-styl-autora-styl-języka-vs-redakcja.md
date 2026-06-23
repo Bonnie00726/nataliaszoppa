@@ -51,8 +51,6 @@ Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – m
 
 Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym <span class="marker-highlight">pierwsza książka</span> to niestety bardzo często <span class="marker-highlight">chaos i zbiór przypadkowych stylów.</span> Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczeni tego rzemiosła zajmuje lata ciągłej praktyki.
 
-Pojawia się też problem zrozumienia, czym styl w ogóle jest. Musisz zapamiętać jedną kluczową zasadę: styl nie definiuje fabuły, a fabuła nie definiuje stylu. Jedno nie wyklucza drugiego.
-
 ## Dwie skrajności, czyli jak okiełznać język
 W literaturze możesz pójść w dwie zupełnie różne strony i obie mogą przynieść sukces, o ile działasz świadomie:
 
@@ -60,9 +58,13 @@ W literaturze możesz pójść w dwie zupełnie różne strony i obie mogą przy
 
 * **Przegięcie w drugą stronę:** To najczęstszy grzech debiutantów, którzy chcą brzmieć „literacko”. Używają słów, których znaczenia do końca nie rozumieją, budują monstrualnie długie zdania i mieszają wszystkie możliwe rejestry. Efekt? Powstaje potworek, którego zwyczajnie nie da się czytać. Co najgorsze, przeciętny czytelnik nawet nie dowie się, o czym była fabuła, bo cała historia zniknie, pochowana pod warstwą nieprzemyślanych popisów językowych.
 
-Styl jest wtedy, kiedy świadomie i konsekwentnie decydujesz, jakich narzędzi używasz przez całą książkę. Wspomniany wcześniej Jay Kristoff celowo jedzie po bandzie i pisze w sposób przerysowany, budując poetycko-mroczne porównania (u niego krew „tańczy niczym rubinowy jedwab w świetle umierającego księżyca”, a mogłaby poprostu... się sączyć z rany). Robi to jednak z pełną premedytacją.
+Styl jest wtedy, kiedy świadomie i konsekwentnie decydujesz, jakich narzędzi używasz przez całą książkę. Dany autor ma swój styl, ponieważ potrafi świadomie i konsekwentnie naginać język pod swoją wizję. Idealnym przykładem jest Jay Kristoff (autor m.in. *Nibynocy* czy *Wampirzego cesarstwa*).
 
-<div class="top-bottom-highlight">A teraz zadaj sobie pytanie: czy czytelnik, widząc Twoje nazwisko na okładce, będzie w stanie powiedzieć to samo o Tobie?</div>
+Kristoff ma absolutnie niepodrabialny, wręcz „przerysowany” styl, który opiera się na mrocznych, niezwykle poetyckich porównaniach. U niego krew „tańczy niczym rubinowy jedwab w świetle umierającego księżyca”, a mogłaby poprostu... się sączyć z rany. Cienie nie są zwykłymi plamami mroku, ale żywymi, drapieżnymi istotami, które łaszą się do bohaterów.
+
+**Gdy widzę jego nazwisko na okładce, doskonale wiem, czego spodziewać się po treści, po doborze słów i klimacie.**
+
+<div class="top-bottom-highlight">A teraz zadaj sobie pytanie: Czy czytelnik, widząc Twoje nazwisko na okładce, będzie w stanie powiedzieć: „O, ta autorka pisze w ten specyficzny sposób”? Czy masz tę jedną, unikatową cechę, która wyróżnia Twoją treść?</div>
 
 ## Rola redaktora, czyli jak wyrobić własny głos
 Co w takim razie zrobić, jeśli redaktor mówi Ci na wstępie: „Masz świetny styl, obiecuję, że go nie nadpiszę podczas redakcji”?
