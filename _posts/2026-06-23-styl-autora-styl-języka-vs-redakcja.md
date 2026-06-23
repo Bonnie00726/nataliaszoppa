@@ -3,24 +3,24 @@ layout: post
 title: "Styl autora, styl języka, a może styl pisania? I jak to się ma do redakcji?"
 date: 2026-06-23 12:00:00 +0200
 author: Natalia Szoppa
-image: "https://i.imgur.com/ap1BTJW.jpeg"
+image: "https://i.imgur.com/9C21BsG.jpeg"
 tags: [porady pisarskie, warsztat, redakcja]
 ---
 
-Co to właściwie jest styl? Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go ma, i jakie czynniki wpływają na to, że tak bardzo ci się on podoba?.
+<span class="marker-highlight">Co to właściwie jest styl?</span> Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go ma, i jakie czynniki wpływają na to, że tak bardzo ci się on podoba?.
 
 Słownik Merriam-Webster definiuje styl jako:
 
-*a particular manner or technique by which something is done, created, or performed
+* a particular manner or technique by which something is done, created, or performed
 
-*a distinctive manner of expression (as in writing or speech)
+* a distinctive manner of expression (as in writing or speech)
 
-Czyli w skrócie: konkretny, wyróżniający się sposób robienia czegoś. To oznacza, że w tekście lub obrazie istnieją pewne powtarzalne, wyjątkowe elementy, które jesteś w stanie bez trudu dostrzec.
+Czyli w skrócie: <span class="marker-highlight">konkretny, wyróżniający</span> się sposób robienia czegoś. To oznacza, że w tekście lub obrazie istnieją pewne powtarzalne, wyjątkowe elementy, które jesteś w stanie bez trudu dostrzec.
 
-Żeby jednak zrozumieć, skąd te elementy się biorą i jak buduje się własny styl, musimy rozłożyć go na czynniki pierwsze. Styl nie rodzi się w próżni – to logiczna piramida, w której wszystko zaczyna się od bazy: od funkcji, jaką ma spełniać Twój tekst.
+Żeby jednak zrozumieć, skąd te elementy się biorą i jak buduje się własny styl, musimy rozłożyć go na czynniki pierwsze. **Styl nie rodzi się w próżni – to logiczna piramida,** w której wszystko zaczyna się od bazy: od funkcji, jaką ma spełniać Twój tekst.
 
 ## Warstwa 1: Fundament, czyli funkcja tekstu
-Wszystko zaczyna się w momencie, gdy dzielimy teksty na różne kategorie. Wybitna niemiecka badaczka literatury i przekładu, Katharina Reiß, stworzyła klasyfikację, która idealnie to obrazuje. Pokazała, że teksty dzielą się według swoich głównych funkcji, a każda z tych kategorii – aby w ogóle działała – wymaga zupełnie innego stylu języka, innego doboru słów czy długości zdań.
+Wszystko zaczyna się w momencie, gdy dzielimy teksty na różne kategorie. Niemiecka badaczka literatury i przekładu, Katharina Reiß, stworzyła klasyfikację, która idealnie to obrazuje. Pokazała, że teksty dzielą się według swoich głównych funkcji, a każda z tych kategorii – aby w ogóle działała – wymaga zupełnie innego stylu języka, innego doboru słów czy długości zdań.
 
 * **Teksty informacyjne (koncentracja na faktach):** Ich celem jest przekazanie wiedzy. Język informacyjny jest suchy, konkretny, złożony z krótkich zdań. Brak tu metafor, a słownictwo jest neutralne. To styl newsów prasowych, instrukcji obsługi czy podręczników.
 
@@ -37,19 +37,19 @@ Gdybyś pisał powieść w XVIII czy XIX wieku, Twój język naturalnie dążył
 
 Gdy piszesz dzisiaj, w XXI wieku, styl epoki wymusza większą kondensację. Współczesny czytelnik, przyzwyczajony do szybkiego tempa, potrzebuje dynamiki. Dlatego współczesna beletrystyka rzadko toleruje ciągnące się przez trzy strony opisy przyrody.
 
+<span class="imp-line">Choć, jeśli jako autor postanowisz, że chcesz w tym stuleciu naśladować Prusa, nic nie stoi na przeszkodzie, ale najpier zapoznaj się z cechami charakterystycznymi języka tamtych czasów.</span>
+
 ## Warstwa 3: Lekcja ze sztuk wizualnych – styl to proces
-Zanim przejdziemy do samego pisania, spójrzmy na galerię obrazów. Każdy malarz czy grafik ma swoją unikalną manierę. Sama mam na półce kilkanaście tomów mang, które kupiłam wyłącznie dlatego, że zachwycił mnie styl autorki. Otwieram mangę i od razu potrafię wskazać, co mnie w niej urzeka.
+Zanim przejdziemy do samego pisania, posłuże się porównaniem do sztuki wizulanej. Każdy malarz czy grafik ma swoją unikalną manierę. Sama mam na półce kilkanaście tomów mang, które kupiłam wyłącznie dlatego, że zachwycił mnie styl autorki czy autora. **Otwieram mangę i od razu potrafię wskazać, co mnie w niej urzeka.**
 
 Weźmy na tapet mangakę Karakara Kemuri (obrazek). Dziś kojarzymy ją z niezwykle piękną, charakterystyczną, miękką kreską. Ale czy ona zawsze tak rysowała? Absolutnie nie! Ten styl stał się widoczny dopiero po którejś z kolei wydanej mandze. Jeśli poszperasz w sieci i znajdziesz jej pierwsze, wczesne rysunki (z 2005 roku!), zobaczysz zasadniczą, potężną różnicę między tamtymi surowymi panelami a mangami, które oficjalnie wydaje dzisiaj.
 
-Żaden artysta nie rodzi się z gotowym stylem. Styl się krystalizuje przez lata.
+<div class="top-bottom-highlight">Żaden artysta nie rodzi się z gotowym stylem. Styl się krystalizuje przez lata. Dokładnie tak samo jest z autorem każdej powieści.</div>
 
-Dokładnie tak samo jest z autorem każdej powieści. I tu dochodzimy do brutalnej prawdy o debiutantach.
-
-## Brutalna prawda o debiutantach (i pułapki, w które wpadają)
+## Debiutanci i pułapki, w które wpadają
 Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – myślą, że go mają, ale są *delusional*?
 
-Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym pierwsza książka to niestety bardzo często chaos i zbiór przypadkowych stylów. Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczenie tego rzemiosła zajmuje lata ciągłej praktyki.
+Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym <span class="marker-highlight">pierwsza książka</span> to niestety bardzo często <span class="marker-highlight">chaos i zbiór przypadkowych stylów.</span> Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczeni tego rzemiosła zajmuje lata ciągłej praktyki.
 
 Pojawia się też problem zrozumienia, czym styl w ogóle jest. Musisz zapamiętać jedną kluczową zasadę: styl nie definiuje fabuły, a fabuła nie definiuje stylu. Jedno nie wyklucza drugiego.
 
@@ -61,6 +61,8 @@ W literaturze możesz pójść w dwie zupełnie różne strony i obie mogą przy
 * **Przegięcie w drugą stronę:** To najczęstszy grzech debiutantów, którzy chcą brzmieć „literacko”. Używają słów, których znaczenia do końca nie rozumieją, budują monstrualnie długie zdania i mieszają wszystkie możliwe rejestry. Efekt? Powstaje potworek, którego zwyczajnie nie da się czytać. Co najgorsze, przeciętny czytelnik nawet nie dowie się, o czym była fabuła, bo cała historia zniknie, pochowana pod warstwą nieprzemyślanych popisów językowych.
 
 Styl jest wtedy, kiedy świadomie i konsekwentnie decydujesz, jakich narzędzi używasz przez całą książkę. Wspomniany wcześniej Jay Kristoff celowo jedzie po bandzie i pisze w sposób przerysowany, budując poetycko-mroczne porównania (u niego krew „tańczy niczym rubinowy jedwab w świetle umierającego księżyca”, a mogłaby poprostu... się sączyć z rany). Robi to jednak z pełną premedytacją.
+
+<div class="top-bottom-highlight">A teraz zadaj sobie pytanie: czy czytelnik, widząc Twoje nazwisko na okładce, będzie w stanie powiedzieć to samo o Tobie?</div>
 
 ## Rola redaktora, czyli jak wyrobić własny głos
 Co w takim razie zrobić, jeśli redaktor mówi Ci na wstępie: „Masz świetny styl, obiecuję, że go nie nadpiszę podczas redakcji”?
@@ -81,4 +83,4 @@ Jeżeli zależy Ci na Twojej pracy – bez względu na to, czy pisanie traktujes
 
 Jak to robić? Zacznij czytać inne książki analitycznie. Przestań śledzić tylko samą akcję. Zwracaj uwagę na strukturę tekstu. Notuj, kiedy autorzy przesadzają ze zbyt długimi, kwiecistymi opisami, a kiedy podają suche fakty. Obserwuj, jak budują napięcie krótką frazą i jak operują zwykłym, codziennym językiem, by stworzyć genialną, magnetyczną opowieść.
 
-Dopiero gdy zrozumiesz, jak te klocki są poukładane u innych, nauczysz się świadomie budować własne stylistyczne uniwersum.
+<div class="top-bottom-highlight">Dopiero gdy zrozumiesz, jak te klocki są poukładane u innych, nauczysz się świadomie budować własne stylistyczne uniwersum.</div>
