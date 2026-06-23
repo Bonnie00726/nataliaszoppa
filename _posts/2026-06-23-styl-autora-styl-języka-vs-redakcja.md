@@ -7,7 +7,7 @@ image: "https://i.imgur.com/9C21BsG.jpeg"
 tags: [porady pisarskie, warsztat, redakcja]
 ---
 
-<span class="marker-highlight">Co to właściwie jest styl?</span> Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go ma, i jakie czynniki wpływają na to, że tak bardzo ci się on podoba?.
+<span class="marker-highlight">Co to właściwie jest styl?</span> Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go w ogóle ma?
 
 Słownik Merriam-Webster definiuje styl jako:
 
