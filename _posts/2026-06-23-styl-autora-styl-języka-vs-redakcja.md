@@ -3,7 +3,7 @@ layout: post
 title: "Styl autora, styl języka, a może styl pisania? I jak to się ma do redakcji?"
 date: 2026-06-23 12:00:00 +0200
 author: Natalia Szoppa
-image: "https://i.imgur.com/CnSd6oH.jpeg"
+image: "https://i.imgur.com/ap1BTJW.jpeg"
 tags: [porady pisarskie, warsztat, redakcja]
 ---
 
