@@ -51,6 +51,12 @@ Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – m
 
 Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym <span class="marker-highlight">pierwsza książka</span> to niestety bardzo często <span class="marker-highlight">chaos i zbiór przypadkowych stylów.</span> Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczeni tego rzemiosła zajmuje lata ciągłej praktyki.
 
+Wokół samego pojęcia „stylu” narosło zresztą mnóstwo mitów, w które nagminnie wpadają nie tylko debiutanci, ale też początkujący redaktorzy czy korektorzy. Bardzo często **definiują oni styl autora poprzez jego czysto techniczne wybory narracyjne.** Przykładowo: jeśli książka składa się głównie z dialogów albo zawiera dwustronicowe opisy natury czy architektury, automatycznie uznaje się to za „unikalny styl” twórcy. Często dotyczy to również opisów, które absolutnie nic nie wnoszą do akcji. To poważna pułapka teoretyczna i warsztatowa.
+
+Choć skłonność do przesadnej szczegółowości może być cechą charakterystyczną danego pisarza, rzadko bywa ona mile widziana przez odbiorców – współczesny czytelnik w takich momentach po prostu szybko się nudzi. Rola opisu czy dialogu <span class="marker-highlight">jest przede wszystkim fabularna:</span> ma ona za zadanie przekazać konkretną informację i popchnąć akcję do przodu.
+
+Prawdziwy styl nie polega na decyzji, czy postawimy na tasiemcowe bloki tekstu, retrospekcje, czy dominację wypowiedzi bohaterów. <span class="marker-highlight">Styl definiuje</span> dopiero to, <span class="marker-highlight">jak ten opis czy dialog zostanie przedstawiony</span> – czyli jaki język zostanie użyty, jak będą skonstruowane zdania i po jakie słownictwo sięgnie autor. Decyzje typu „dużo dialogów” lub „długie opisy” to zaledwie narzędzia narracyjne, które mają pomóc w wizualnym i ciekawym przekazaniu treści. **Dlatego każdy początkujący twórca – zamiast zasłaniać się autorską wizją – musi przy każdym akapicie zadawać sobie fundamentalne pytanie: jaki jest cel fabularny tego konkretnego opisu lub dialogu?**
+
 ## Dwie skrajności, czyli jak okiełznać język
 W literaturze możesz pójść w dwie zupełnie różne strony i obie mogą przynieść sukces, o ile działasz świadomie:
 
