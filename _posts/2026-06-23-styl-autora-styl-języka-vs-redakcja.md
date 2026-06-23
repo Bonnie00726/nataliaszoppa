@@ -7,73 +7,78 @@ image: "https://i.imgur.com/ap1BTJW.jpeg"
 tags: [porady pisarskie, warsztat, redakcja]
 ---
 
-Wielu autorów traktuje styl jako losowy zestaw ozdobników wrzuconych do tekstu według własnego widzimisię. W rzeczywistości prawdziwy, dojrzały styl pisania to czyste rzemiosło. To moment, w którym **świadomy wybór narzędzi językowych bezpośrednio zderza się z funkcją i czasem powstania opowieści**.
+Co to właściwie jest styl? Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go ma, i jakie czynniki wpływają na to, że tak bardzo ci się on podoba?.
 
-Dobrze skonstruowany tekst działa na kilku poziomach: od ogólnych ram gatunkowych, przez filtry epoki, aż po unikalny głos samego twórcy. Jak ten mechanizm działa w praktyce?
+Słownik Merriam-Webster definiuje styl jako:
 
-## Anatomia stylu: funkcja jako baza, czas jako filtr
+*a particular manner or technique by which something is done, created, or performed
 
-Wszystko zaczyna się na długo przed tym, zanim czytelnik zachwyci się Twoim „niepodrabialnym głosem”. Twój tekst wkracza w proces twórczy z konkretnym celem.
+*a distinctive manner of expression (as in writing or speech)
 
-### 1. Punkt wyjścia: Funkcja tekstu i dobór narzędzi
+Czyli w skrócie: konkretny, wyróżniający się sposób robienia czegoś. To oznacza, że w tekście lub obrazie istnieją pewne powtarzalne, wyjątkowe elementy, które jesteś w stanie bez trudu dostrzec.
 
-Niemiecka badaczka literatury i przekładu, **Katharina Reiß**, stworzyła klasyfikację, która idealnie obrazuje ten fundament. Podzieliła ona teksty na trzy główne kategorie w zależności od roli, jaką mają spełniać. Każda z nich wymaga zupełnie innej struktury, długości zdań i doboru słów:
+Żeby jednak zrozumieć, skąd te elementy się biorą i jak buduje się własny styl, musimy rozłożyć go na czynniki pierwsze. Styl nie rodzi się w próżni – to logiczna piramida, w której wszystko zaczyna się od bazy: od funkcji, jaką ma spełniać Twój tekst.
 
-* **Teksty informacyjne (koncentracja na faktach):** Ich celem jest przekazanie wiedzy. Język jest tu suchy, konkretny, złożony z krótkich zdań. Dominują logiczne konstrukcje, a brakuje metafor. To styl newsów czy podręczników.
-* **Teksty ekspresywne / emotywne (koncentracja na nadawcy):** Tu najważniejszy jest autor, jego emocje i estetyka. Teksty te charakteryzują się sporą liczbą metafor i słów, które w sposób mniej precyzyjny przekazują suche fakty, ale za to silnie pobudzają wyobraźnię. To królestwo beletrystyki.
-* **Teksty operatywne / apelatywne (koncentracja na odbiorcy):** Mają wywołać konkretną reakcję. Narzędziem jest tu język korzyści (marketing) lub język mówiony, pełen skrótów myślowych i zakłóconego szyku, który skraca dystans z czytelnikiem.
+## Warstwa 1: Fundament, czyli funkcja tekstu
+Wszystko zaczyna się w momencie, gdy dzielimy teksty na różne kategorie. Wybitna niemiecka badaczka literatury i przekładu, Katharina Reiß, stworzyła klasyfikację, która idealnie to obrazuje. Pokazała, że teksty dzielą się według swoich głównych funkcji, a każda z tych kategorii – aby w ogóle działała – wymaga zupełnie innego stylu języka, innego doboru słów czy długości zdań.
 
-### 2. Katalizator: Styl epoki, który narzuca ramy
+* **Teksty informacyjne (koncentracja na faktach):** Ich celem jest przekazanie wiedzy. Język informacyjny jest suchy, konkretny, złożony z krótkich zdań. Brak tu metafor, a słownictwo jest neutralne. To styl newsów prasowych, instrukcji obsługi czy podręczników.
 
-Gdy wybierasz kategorię ekspresywną (czyli piszesz powieść), automatycznie nakłada się na nią kolejny filtr – czas. **Każda epoka ma swój styl**, który zmusza autora do wyjścia ze strefy komfortu.
+* **Teksty ekspresywne / emotywne (koncentracja na nadawcy):** Te teksty charakteryzują się sporą liczbą metafor i słów, które w sposób mniej precyzyjny przekazują suchą informację, ale za to silnie pobudzają wyobraźnię. To królestwo literatury pięknej i beletrystyki.
 
-W XVIII czy XIX wieku literacki kunszt wymagał kwiecistości – wielokrotnie złożonych zdań i unikania dosłowności. Dzisiejsza epoka wymusza kondensację. Współczesny czytelnik żyje szybko i domaga się dynamiki, przez co opisy muszą być drapieżniejsze, a zdania krótsze.
+* **Teksty operatywne / apelatywne (koncentracja na odbiorcy):** Mają wywołać reakcję, przekonać do czegoś. Tutaj idealnym przykładem jest język korzyści (styl marketingu) czy język mówiony, pełen skrótów myślowych i zakłóconego szyku zdań, który naturalnie skraca dystans.
 
-I dopiero na tym fundamencie rodzi się **Twój indywidualny styl**: świadoma decyzja, jak w ramach współczesnej epoki będziesz żonglować narzędziami językowymi, by zachować żelazną konsekwencję przez całą książkę.
+Jeśli chcesz napisać powieść, automatycznie wybierasz tekst ekspresywny. Ale to dopiero pierwszy krok.
 
-## Lekcja ze sztuk wizualnych: Styl to proces
+## Warstwa 2: Filtr czasu, czyli styl epoki
+Nawet jeśli poruszasz się w obrębie jednego gatunku, na Twój język nakłada się kolejny filtr – czas, w którym tworzysz. Każda epoka ma swój styl.
 
-Aby uciec od nierealistycznych oczekiwań, warto pamiętać, że nikt nie rodzi się z gotowym, idealnym głosem. Doskonale widać to w sztukach wizualnych.
+Gdybyś pisał powieść w XVIII czy XIX wieku, Twój język naturalnie dążyłby do kwiecistości. Długie, wielokrotnie złożone zdania, podniosłe opisy i unikanie dosłowności były wtedy normą i synonimem talentu.
 
-Weźmy pod lupę mangakę **Karakara Kemuri**:
+Gdy piszesz dzisiaj, w XXI wieku, styl epoki wymusza większą kondensację. Współczesny czytelnik, przyzwyczajony do szybkiego tempa, potrzebuje dynamiki. Dlatego współczesna beletrystyka rzadko toleruje ciągnące się przez trzy strony opisy przyrody.
 
-* **Jej styl dzisiaj:** Kojarzymy ją z charakterystyczną, niezwykle piękną i miękką kreską, która wyróżnia jej oficjalnie wydawane dzieła na tle konkurencji.
-* **Jej początki:** Styl ten nie wziął się znikąd. Stał się widoczny dopiero po którejś z kolei mandze. Bez problemu można znaleźć w sieci jej pierwsze rysunki i wczesne panele – widać w nich zasadniczą, dość sporą różnicę techniczną. Autorka musiała włożyć lata pracy, by wypracować swoją unikalną manierę.
+## Warstwa 3: Lekcja ze sztuk wizualnych – styl to proces
+Zanim przejdziemy do samego pisania, spójrzmy na galerię obrazów. Każdy malarz czy grafik ma swoją unikalną manierę. Sama mam na półce kilkanaście tomów mang, które kupiłam wyłącznie dlatego, że zachwycił mnie styl autorki. Otwieram mangę i od razu potrafię wskazać, co mnie w niej urzeka.
 
-Dokładnie tak samo jest z pisarzami. Styl potrzebuje czasu, by dojrzeć.
+Weźmy na tapet mangakę Karakara Kemuri (obrazek). Dziś kojarzymy ją z niezwykle piękną, charakterystyczną, miękką kreską. Ale czy ona zawsze tak rysowała? Absolutnie nie! Ten styl stał się widoczny dopiero po którejś z kolei wydanej mandze. Jeśli poszperasz w sieci i znajdziesz jej pierwsze, wczesne rysunki (z 2005 roku!), zobaczysz zasadniczą, potężną różnicę między tamtymi surowymi panelami a mangami, które oficjalnie wydaje dzisiaj.
 
-## Przykład z mojej praktyki
+Żaden artysta nie rodzi się z gotowym stylem. Styl się krystalizuje przez lata.
 
-Co się dzieje, gdy początkujący autor zapomni o tym mechanizmie? Otrzymujemy literacki chaos, w którym fabuła całkowicie znika pod warstwą technicznej nieporadności.
+Dokładnie tak samo jest z autorem każdej powieści. I tu dochodzimy do brutalnej prawdy o debiutantach.
 
-Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły – autorzy dbają o zwroty akcji i strukturę wydarzeń. Jednak pod kątem językowym pierwsza książka to niestety bardzo często zbiór przypadkowych stylów.
+## Brutalna prawda o debiutantach (i pułapki, w które wpadają)
+Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – myślą, że go mają, ale są *delusional*?
 
-Pracowałam nad tekstami, gdzie autorzy bezwiednie mieszali styl emotywny z informacyjnym, dorzucając do tego losowe kalki z języka mówionego. W jednym akapicie potrafił pojawić się wysoki rejestr rodem z Biblii (np. słowa typu *albowiem* czy szyk *„syna swego zaprowadzić chce”*), a tuż obok – suchy, urzędowy komunikat. Taki brak świadomości językowej sprawia, że tekst staje się niespójny i sztuczny, a czytelnik natychmiast wyczuwa fałsz.
+Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym pierwsza książka to niestety bardzo często chaos i zbiór przypadkowych stylów. Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczenie tego rzemiosła zajmuje lata ciągłej praktyki.
 
-Pamiętaj o kluczowej zasadzie: **styl nie definiuje fabuły, a fabuła nie definiuje stylu**. Masz pełne prawo napisać książkę bardzo prostym, podstawowym językiem, który słyszy się na co dzień – i jeśli historia będzie genialna, a inwersję czy mocniejszy środek stylistyczny wrzucisz tylko rzadko, dla podkreślenia emocji, czytelnik i tak da się całkowicie porwać. Najgorsze jest jednak przegięcie w drugą stronę, czyli tzw. „walenie z grubej rury” – używanie słów, których się nie rozumie i budowanie monstrualnych zdań tylko po to, by brzmieć „mądrze”. Wtedy fabuła po prostu tonie.
+Pojawia się też problem zrozumienia, czym styl w ogóle jest. Musisz zapamiętać jedną kluczową zasadę: styl nie definiuje fabuły, a fabuła nie definiuje stylu. Jedno nie wyklucza drugiego.
 
-## Zobacz, jak robi to Jay Kristoff
+## Dwie skrajności, czyli jak okiełznać język
+W literaturze możesz pójść w dwie zupełnie różne strony i obie mogą przynieść sukces, o ile działasz świadomie:
 
-Aby uciec od przypadkowości, warto uczyć się od autorów, którzy opanowali rzemiosło do perfekcji. **Jay Kristoff** (autor *Wampirzego cesarstwa*) to idealny przykład twórcy o wyrazistym stylu:
+* **Prostota, która wciąga:** Możesz używać bardzo podstawowych zdań – prostych struktur, które słyszy się na co dzień w zwykłej mowie. Nic specjalnego, żadnych fajerwerków. Ale jeśli doprawisz to genialną historią, a od czasu do czasu – dla urozmaicenia i podkreślenia emocji w ważnej scenie – wrzucisz świadomą inwersję lub mocniejszy akcent, napiszesz książkę, która potwornie wciągnie czytelnika.
 
-* **Jego świadomy wybór:** Kristoff pisze w sposób skrajnie przerysowany (*over-the-top*). Używa mrocznych, poetyckich i kinowych metafor – u niego krew nie płynie, ale *„tańczy niczym rubinowy jedwab w świetle umierającego księżyca”*.
-* **Jego konsekwencja:** Te zabiegi nie są przypadkiem. Stosuje je regularnie od pierwszej do ostatniej strony. Jeśli widzisz jego nazwisko na okładce, doskonale wiesz, jakiego języka i klimatu się spodziewać.
+* **Przegięcie w drugą stronę:** To najczęstszy grzech debiutantów, którzy chcą brzmieć „literacko”. Używają słów, których znaczenia do końca nie rozumieją, budują monstrualnie długie zdania i mieszają wszystkie możliwe rejestry. Efekt? Powstaje potworek, którego zwyczajnie nie da się czytać. Co najgorsze, przeciętny czytelnik nawet nie dowie się, o czym była fabuła, bo cała historia zniknie, pochowana pod warstwą nieprzemyślanych popisów językowych.
 
-Gdyby redaktor wyciosał z tekstu Kristoffa te wszystkie szalone porównania i skrócił zdania, zniszczyłby jego unikalność. Jeśli autor stosuje dany zabieg z pełną premedytacją – to jest styl. Jeśli dziwna konstrukcja wyskakuje losowo raz na dwadzieścia stron – to błąd, który trzeba naprawić.
+Styl jest wtedy, kiedy świadomie i konsekwentnie decydujesz, jakich narzędzi używasz przez całą książkę. Wspomniany wcześniej Jay Kristoff celowo jedzie po bandzie i pisze w sposób przerysowany, budując poetycko-mroczne porównania (u niego krew „tańczy niczym rubinowy jedwab w świetle umierającego księżyca”, a mogłaby poprostu... się sączyć z rany). Robi to jednak z pełną premedytacją.
 
-## Co na to redakcja?
+## Rola redaktora, czyli jak wyrobić własny głos
+Co w takim razie zrobić, jeśli redaktor mówi Ci na wstępie: „Masz świetny styl, obiecuję, że go nie nadpiszę podczas redakcji”?
 
-Wielu redaktorów składa debiutantom puste obietnice: *„Masz świetny styl, obiecuję, że go nie nadpiszę podczas korekty”*.
+Na Twoim miejscu zapytałabym takiego redaktora wprost: „Jak w takim razie definiuje Pan/Pani mój styl?”. Czy charakteryzuje się on specyficzną długością zdań? Sarkastycznym tonem? Świadomą inwersją? Jaką unikalną cechę jest w stanie wyłowić z Twojej książki?
 
-Na Twoim miejscu zapytałabym takiego specjalistę wprost: **„Jak w takim razie definiuje Pan/Pani mój styl?”**. Czy charakteryzuje się on konkretną długością zdań? Sarkastycznym tonem? Świadomą inwersją? Jaką unikalną cechę jest w stanie wyłowić z Twojej książki? Jeśli nie usłyszysz konkretów, prawdopodobnie masz do czynienia z kimś niekompetentnym.
+Wystrzegaj się ludzi, którzy rzucają puste obietnice, nie potrafiąc poprzeć ich konkretami.
 
-Sprawny redaktor działa jak drogowskaz:
+## Dobry redaktor to drogowskaz
+Sprawny redaktor od razu wyłapie, kiedy mieszasz style przypadkowo, a kiedy robisz coś intencjonalnie.
 
-* Zauważy chaos językowy, poinformuje Cię o nim i wspólnie z Tobą **naprawi tekst tak, aby był przejrzysty i zrozumiały**, pozwalając czytelnikowi cieszyć się historią.
-* Wskaże powtarzające się problemy (np. imiesłowiozę czy monotonię zbyt krótkich zdań), zaproponuje odpowiednie ćwiczenia warsztatowe i pokieruje Tobą tak, by pomóc Ci ten własny głos dopiero wypracować.
+Poinformuje Cię o językowym chaosie i wspólnie z Tobą naprawi tekst tak, aby był przejrzysty i zrozumiały. Wszystko po to, by czytelnik mógł czerpać maksymalną przyjemność z treści, którą chcesz mu zaprezentować.
+
+Dobry redaktor nie tylko skreśla błędy – on wskazuje problemy, sugeruje ćwiczenia warsztatowe i prowadzi debiutanta za rękę, pomagając mu ten własny, unikalny styl dopiero wypracować.
 
 ## Twoja praca domowa jako autora
+Jeżeli zależy Ci na Twojej pracy – bez względu na to, czy pisanie traktujesz jako pasję, dodatkowy zarobek, czy planujesz uczynić z niego swoje główne źródło utrzymania – musisz włożyć w to wysiłek. Twoim celem jest sprawić, by czytelnik chciał wracać po więcej. A to oznacza, że musisz zacząć pracować nad stylem i dowiadywać się więcej o samym języku.
 
-Jeżeli poważnie traktujesz pisanie – bez względu na to, czy to Twoja pasja, dodatkowy zarobek, czy cel na główną pracę – musisz włożyć wysiłek w naukę języka.
+Jak to robić? Zacznij czytać inne książki analitycznie. Przestań śledzić tylko samą akcję. Zwracaj uwagę na strukturę tekstu. Notuj, kiedy autorzy przesadzają ze zbyt długimi, kwiecistymi opisami, a kiedy podają suche fakty. Obserwuj, jak budują napięcie krótką frazą i jak operują zwykłym, codziennym językiem, by stworzyć genialną, magnetyczną opowieść.
 
-Przestań czytać książki wyłącznie dla samej akcji. **Zacznij analizować strukturę tekstów innych autorów.** Zwracaj uwagę na to, jak budują zdania, kiedy opisy stają się zbyt długie lub zbyt kwieciste, a kiedy autor celowo schodzi do skrajnego minimalizmu. Obserwuj, jak za pomocą rejestru językowego i cech mowy potocznej w dialogach inni twórcy budują unikalne osobowości swoich bohaterów.
+Dopiero gdy zrozumiesz, jak te klocki są poukładane u innych, nauczysz się świadomie budować własne stylistyczne uniwersum.
