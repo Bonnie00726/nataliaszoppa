@@ -19,13 +19,13 @@ Wszystko zaczyna się na długo przed pierwszym rozdziałem Twojej książki. Tw
 
 ### 1. Punkt wyjścia: Rana i mechanizm obronny
 
-Bohater doświadczył w przeszłości czegoś bolesnego – zdrady, straty czy odrzucenia. Ta **rana** ukształtowała jego lęki i wady. Pamiętaj, że wady bohatera nie biorą się znikąd – są jego <span class="marker-highlight">mechanizmem obronnym</span>.
+Bohater doświadczył w przeszłości czegoś bolesnego – zdrady, straty czy odrzucenia. Ta **rana** ukształtowała jego lęki i wady. Pamiętaj, że wady bohatera nie biorą się znikąd – są jego <span class="marker-highlight">mechanizmem obronnym.</span>
 
 Jeśli postać została kiedyś boleśnie zraniona, jej „wadą” może być chorobliwa nieufność, cynizm lub emocjonalny chłód. **To jej tarcza, która ma sprawić, by nikt nigdy więcej jej nie skrzywdził.**
 
 ### 2. Katalizator: Stawka, która burzy spokój
 
-Wtedy pojawia się fabuła i **stawka** (zarówno zewnętrzna, jak i wewnętrzna). Stawka zmusza bohatera do <span class="marker-highlight">wyjścia ze strefy komfortu</span>. Pokazuje mu, że aby osiągnąć cel (oprócz przysłowiowego ratowania świata), musi opuścić lub nawet odłożyć swoją tarczę.
+Wtedy pojawia się fabuła i **stawka** (zarówno zewnętrzna, jak i wewnętrzna). Stawka zmusza bohatera do <span class="marker-highlight">wyjścia ze strefy komfortu.</span> Pokazuje mu, że aby osiągnąć cel (oprócz przysłowiowego ratowania świata), musi opuścić lub nawet odłożyć swoją tarczę.
 
 I tu rodzi się **prawdziwy konflikt wewnętrzny**: bohater wie, że jeśli zrobi coś, co przestanie go chronić – jeśli zareaguje inaczej niż zwykle, otworzy się na ludzi lub podejmie ryzyko – **może stracić swoją reputację**, pozycję lub zostać ponownie zraniony. Ta wewnętrzna szamotanina między „chcę osiągnąć cel” a „muszę chronić swoją ranę” sprawia, że postać przez całą historię musi mierzyć się z samą sobą.
 
@@ -34,7 +34,7 @@ Co się dzieje, gdy autor zapomni o tym mechanizmie? Otrzymujemy tzw. „papiero
 
 Autor stworzył galerię teoretycznie najfajniejszych postaci. Na początku książki zdefiniował ich traumy i trudną przeszłość, ale... tylko o nich wspomniał. Problemy te w żaden sposób nie wpływały na zachowanie bohaterów w dalszej części fabuły.
 
-Jedna z postaci w dzieciństwie została porzucona przez rodziców. Wychowywała się w domu dziecka, u dziadków i u przypadkowych osób. W rzeczywistym świecie człowiek z taką przeszłością niemal na pewno miałby potężne problemy z zaangażowaniem się w relacje i zaufaniem drugiemu człowiekowi. Tymczasem w książce bohaterka bez problemu wchodziła w głębokie więzi, chętnie pomagała innym i bez przerwy ich umoralniała. Jej rzekoma trauma była tylko suchym faktem zapisanym w biogramie, który <span class="marker-highlight">nie miał żadnego pokrycia w jej psychice czy działaniach</span>.
+Jedna z postaci w dzieciństwie została porzucona przez rodziców. Wychowywała się w domu dziecka, u dziadków i u przypadkowych osób. W rzeczywistym świecie człowiek z taką przeszłością niemal na pewno miałby potężne problemy z zaangażowaniem się w relacje i zaufaniem drugiemu człowiekowi. Tymczasem w książce bohaterka bez problemu wchodziła w głębokie więzi, chętnie pomagała innym i bez przerwy ich umoralniała. Jej rzekoma trauma była tylko suchym faktem zapisanym w biogramie, który <span class="marker-highlight">nie miał</span> żadnego <span class="marker-highlight">pokrycia</span> w jej psychice czy działaniach.
 
 <span class="imp-line">Oczywiście, jako twórca masz prawo napisać postać, która mimo potwornego dzieciństwa zachowa wiarę w ludzi i bezgraniczny altruizm. Jednak **to musi wybrzmieć z historii, z wydarzeń i z całej fabuły**. Nie można rzucić hasła o traumie, a potem udawać, jakby nigdy nic się nie stało, pozwalając bohaterowi żyć w cudownym i łatwym świecie. Czytelnik natychmiast wyczuje ten fałsz.</span>
 
