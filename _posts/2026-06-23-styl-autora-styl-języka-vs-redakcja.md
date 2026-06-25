@@ -7,19 +7,19 @@ image: "https://i.imgur.com/9C21BsG.jpeg"
 tags: [porady pisarskie, warsztat, redakcja]
 ---
 
-<span class="marker-highlight">Co to właściwie jest styl?</span> Na pewno nie raz łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor, malarz czy grafik ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go w ogóle ma?
+<span class="marker-highlight">Co to właściwie jest styl?</span> Na pewno nie raz czy dwa łapiesz się na tym, że patrząc na czyjąś pracę lub ją komentując, mówisz: „Ten autor (malarz czy tam grafik) ma świetny styl”. No właśnie – ale co tak naprawdę sprawia, że dany twórca go w ogóle ma?
 
 Słownik Merriam-Webster definiuje styl jako:
 
-* a particular manner or technique by which something is done, created, or performed
+* *a particular manner or technique by which something is done, created, or performed*
 
-* a distinctive manner of expression (as in writing or speech)
+* *a distinctive manner of expression (as in writing or speech)*
 
 Czyli w skrócie: <span class="marker-highlight">konkretny, wyróżniający</span> się sposób robienia czegoś. To oznacza, że w tekście lub obrazie istnieją pewne powtarzalne, wyjątkowe elementy, które jesteś w stanie bez trudu dostrzec.
 
 Żeby jednak zrozumieć, skąd te elementy się biorą i jak buduje się własny styl, musimy rozłożyć go na czynniki pierwsze. **Styl nie rodzi się w próżni – to logiczna piramida,** w której wszystko zaczyna się od bazy: od funkcji, jaką ma spełniać Twój tekst.
 
-## Warstwa 1: Fundament, czyli funkcja tekstu
+## Warstwa 1: funkcja tekstu
 Wszystko zaczyna się w momencie, gdy dzielimy teksty na różne kategorie. Niemiecka badaczka literatury i przekładu, Katharina Reiß, stworzyła klasyfikację, która idealnie to obrazuje. Pokazała, że teksty dzielą się według swoich głównych funkcji, a każda z tych kategorii – aby w ogóle działała – wymaga zupełnie innego stylu języka, innego doboru słów czy długości zdań.
 
 * **Teksty informacyjne (koncentracja na faktach):** Ich celem jest przekazanie wiedzy. Język informacyjny jest suchy, konkretny, złożony z krótkich zdań. Brak tu metafor, a słownictwo jest neutralne. To styl newsów prasowych, instrukcji obsługi czy podręczników.
@@ -30,24 +30,27 @@ Wszystko zaczyna się w momencie, gdy dzielimy teksty na różne kategorie. Niem
 
 Jeśli chcesz napisać powieść, automatycznie wybierasz tekst ekspresywny. Ale to dopiero pierwszy krok.
 
-## Warstwa 2: Filtr czasu, czyli styl epoki
+## Warstwa 2: filtr czasu, czyli styl epoki
 Nawet jeśli poruszasz się w obrębie jednego gatunku, na Twój język nakłada się kolejny filtr – czas, w którym tworzysz. Każda epoka ma swój styl.
 
 Gdybyś pisał powieść w XVIII czy XIX wieku, Twój język naturalnie dążyłby do kwiecistości. Długie, wielokrotnie złożone zdania, podniosłe opisy i unikanie dosłowności były wtedy normą i synonimem talentu.
 
 Gdy piszesz dzisiaj, w XXI wieku, styl epoki wymusza większą kondensację. Współczesny czytelnik, przyzwyczajony do szybkiego tempa, potrzebuje dynamiki. Dlatego współczesna beletrystyka rzadko toleruje ciągnące się przez trzy strony opisy przyrody.
 
-<span class="imp-line">Choć, jeśli jako autor postanowisz, że chcesz w tym stuleciu naśladować Prusa, nic nie stoi na przeszkodzie, ale najpier zapoznaj się z cechami charakterystycznymi języka tamtych czasów.</span>
+<span class="imp-line">Choć, jeśli jako autor postanowisz, że chcesz w tym stuleciu naśladować Prusa, nic nie stoi na przeszkodzie, ale najpierw zapoznaj się z cechami charakterystycznymi języka tamtych czasów.</span>
 
 ## Warstwa 3: Lekcja ze sztuk wizualnych – styl to proces
-Zanim przejdziemy do samego pisania, posłuże się porównaniem do sztuki wizulanej. Każdy malarz czy grafik ma swoją unikalną manierę. Sama mam na półce kilkanaście tomów mang, które kupiłam wyłącznie dlatego, że zachwycił mnie styl autorki czy autora. **Otwieram mangę i od razu potrafię wskazać, co mnie w niej urzeka.**
-
-Weźmy na tapet mangakę Karakara Kemuri (obrazek). Dziś kojarzymy ją z niezwykle piękną, charakterystyczną, miękką kreską. Ale czy ona zawsze tak rysowała? Absolutnie nie! Ten styl stał się widoczny dopiero po którejś z kolei wydanej mandze. Jeśli poszperasz w sieci i znajdziesz jej pierwsze, wczesne rysunki (z 2005 roku!), zobaczysz zasadniczą, potężną różnicę między tamtymi surowymi panelami a mangami, które oficjalnie wydaje dzisiaj.
+Zanim przejdziemy do samego pisania, posłużę się porównaniem do sztuki wizulanej. Każdy malarz czy grafik ma swoją unikalną manierę. Sama mam na półce kilkanaście tomów mang, które kupiłam wyłącznie dlatego, że zachwycił mnie styl autorki czy autora. **Otwieram mangę i od razu potrafię wskazać, co mnie w niej urzeka.**
 
 <div class="top-bottom-highlight">Żaden artysta nie rodzi się z gotowym stylem. Styl się krystalizuje przez lata. Dokładnie tak samo jest z autorem każdej powieści.</div>
 
+Weźmy na tapet mangakę Karakara Kemuri (obrazek). Dziś kojarzymy ją z niezwykle piękną, charakterystyczną, miękką kreską. Ale czy ona zawsze tak rysowała? Absolutnie nie! Ten styl stał się widoczny dopiero po którejś z kolei wydanej mandze. Jeśli poszperasz w sieci i znajdziesz jej pierwsze, wczesne rysunki (z 2005 roku!), zobaczysz potężną różnicę między tamtymi surowymi panelami a mangami, które wydaje dzisiaj.
+
+> Daj sobie prawo do pisania słabych rzeczy, zanim nauczysz się tworzyć te świetne. Po prostu usiądź i zacznij pisać. Wyłącz swojego wewnętrznego krytyka. Zrozum, że twoja pierwsza książka po prostu nie będzie zbyt dobra – i nie ma w tym nic złego. Szlifuj warsztat, pisząc tę książkę, bo właśnie tak nauczysz się pisać. I rób to regularnie.
+> <footer> Brandon Sanderson, General Advice For New Writers</footer>
+
 ## Debiutanci i pułapki, w które wpadają
-Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – myślą, że go mają, ale są *delusional*?
+Dlaczego tak często debiutanci nie mają swojego stylu albo – co gorsza – myślą, że go mają, ale są, *well*...*delusional*?
 
 Każdy debiut jest zazwyczaj napisany w sposób przemyślany pod kątem fabuły (miejmy przynajmniej taką nadzieję). Jednak pod kątem językowym <span class="marker-highlight">pierwsza książka</span> to niestety bardzo często <span class="marker-highlight">chaos i zbiór przypadkowych stylów.</span> Początkujący autorzy mieszają styl emotywny z informacyjnym, dorzucają do tego kalki z języka mówionego, a wszystko to dzieje się całkowicie bezwiednie. Wyczyszczeni tego rzemiosła zajmuje lata ciągłej praktyki.
 
