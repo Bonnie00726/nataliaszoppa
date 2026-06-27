@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Czy opłaca się pisać książk?"
+title: "Czy opłaca się pisać książki? Prawdziwe korzyści, o których rzadko rozmawiamy"
 date: 2026-06-27 10:00:00 +0200
 author: Natalia Szoppa
 image: "https://images.unsplash.com/photo-1579621970795-87facc2f976d"
@@ -19,7 +19,9 @@ Nie wiedzieć kiedy, pisanie książek stało się w powszechnej świadomości s
 Zwróć uwagę, jak inaczej traktujemy inne pasje:
  * **Nauka języków:** Ludzie uczą się egzotycznych języków (np. chińskiego czy japońskiego) dla czystej satysfakcji. Często wymaga to 10–15 lat intensywnej nauki i sporych nakładów finansowych. Gdy mówisz znajomym, że uczujesz się arabskiego, nikt nie pyta: „Czy zostaniesz profesjonalnym tłumaczem?”. Reakcje są pozytywne i pełne ciekawości.
  * **Sport:** Kiedy ktoś zaczyna biegać lub grać w tenisa, rzadko słyszy pytania o to, czy planuje przejść na zawodowstwo.
+
 Dlaczego więc przy pisaniu automatycznie zakładamy, że musi ono stać się nowym zawodem i obowiązkiem? **To efekt lakonicznych historii sukcesu, które spłycają cały proces do schematu: *napisz, sprzedaj, bądź bogaty*.**
+
 Oczywiście, sukces finansowy jest możliwy – tak jak po kilkunastu latach nauki języka można zacząć na nim zarabiać, tak po latach pisania można wydać bestseller. Co jednak zyskujemy „tu i teraz”?
 
 ## 3 kluczowe benefity z pisania (których nie kupisz za pieniądze)
