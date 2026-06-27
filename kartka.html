@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wskazówka na dziś | Natalia Szoppa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;600;700&family=Grape+Nuts&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/css-doodle@0.38.4/css-doodle.min.js"></script>
+
+    <style>
+        /* === ZMIENNE KOLORYSTYCZNE I GEOMETRYCZNE === */
+        :root {
+            --bg-color: #ffffff;
+            --text-black: #111111;
+            --text-gray: #444444; 
+            --text-muted: #888888;
+            --bg-muted: #f9f9fa;
+            --border-color: #eaeaea;
+            --gradient: linear-gradient(135deg, #7b2cbf, #f77f00);
+            --accent-purple: #7b2cbf;
+            --serif: 'Lora', serif;
+            --sans: 'Mulish', sans-serif;
+        }
+
+        /* === RESET I PODSTAWOWA TYPOGRAFIA === */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: var(--sans); 
+            color: var(--text-black); 
+            background-color: var(--bg-muted); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4 { font-family: var(--serif); color: var(--text-black); }
+        h1 i, h2 i, h3 i { font-style: italic; color: var(--text-black); font-weight: 400; }
+
+        /* === FIOLETOWY MARKER (Zakreślacz) === */
+        .marker-highlight { 
+            position: relative; 
+            display: inline-block; 
+            z-index: 1; 
+            padding: 0 4px; 
+        }
+        .marker-highlight::before {
+            content: ''; 
+            position: absolute; 
+            inset: 0 -4px; 
+            z-index: -1; 
+            border-radius: 3px 5px 3px 5px;
+            --mark-color: 123 44 191; 
+            --mark-bg-angle: 50deg;
+            background: 
+              conic-gradient(at 0 100%, rgb(var(--mark-color) / 35%) 1% , #fff0 3%) no-repeat 0 0 / auto 120%, 
+              conic-gradient(from 180deg at 100% 0, #fff0, rgb(var(--mark-color) / 35%) 1%, #fff0 4%) no-repeat 100% 100% / auto 120%, 
+              linear-gradient(var(--mark-bg-angle), rgb(var(--mark-color) / 25%), rgb(var(--mark-color) / 10%) 75%, rgb(var(--mark-color) / 20%)) no-repeat center / auto;
+            rotate: -1deg; 
+            transform: skew(-5deg); 
+            scale: 1.05;
+        }
+
+        /* === STYL KARTKI Z ZESZYTU === */
+        #notebook-paper {
+            width: 100%;
+            max-width: 960px; 
+            height: auto;
+            min-height: 800px;
+            background-color: var(--bg-color);
+            margin: 50px auto;
+            position: relative;
+            padding-top: 120px;
+            padding-left: 160px;
+            padding-right: 60px;
+            padding-bottom: 80px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .vertical-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 140px;
+            width: 2px;
+            background-color: #db4034;
+            z-index: 2;
+        }
+
+        .horizontal-lines {
+            position: absolute;
+            top: 60px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-image: linear-gradient(
+                to bottom,
+                transparent 29px,
+                #00b0d7 29px,
+                #00b0d7 30px
+            );
+            background-size: 100% 30px;
+            z-index: 1;
+        }
+
+        .holes {
+            position: absolute;
+            left: 40px;
+            top: 150px;
+            bottom: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .hole {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-muted); 
+            border-radius: 50%;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #notebook-paper header {
+            height: 120px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        #notebook-paper header h1 {
+            font-size: 48px;
+            padding: 30px 20px 0 170px;
+            margin: 0;
+            line-height: 60px;
+        }
+
+        #notebook-paper header .date {
+            position: absolute;
+            top: 45px;
+            right: 60px;
+            font-size: 14px;
+            font-family: var(--sans);
+            color: var(--accent-purple); 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        /* === GŁÓWNY TEKST NA KARTCE === */
+        #notebook-paper #content {
+            font-size: 20px;
+            line-height: 30px; 
+            position: relative;
+            z-index: 3;
+            margin-top: 10px;
+        }
+
+        #notebook-paper #content p {
+            margin: 0 0 30px 0;
+            color: var(--text-gray);
+            /* Zmiany: mniejszy kontener i twarde równanie do lewej */
+            max-width: 480px; 
+            text-align: left;
+        }
+        
+        #notebook-paper #content strong {
+            color: var(--text-black);
+        }
+
+        /* === ODRĘCZNA FIOLETOWA RAMKA === */
+        .hand-drawn-frame {
+            border: 3px solid var(--accent-purple);
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 25px 30px;
+            background: rgba(123, 44, 191, 0.03);
+            position: relative;
+            z-index: 10;
+            transform: rotate(-1deg);
+            font-family: var(--sans);
+            box-shadow: 2px 5px 10px rgba(0,0,0,0.05);
+            font-size: 18px;
+            color: var(--text-black);
+            line-height: 1.6;
+            
+            /* Zmiany: węższy kontener i odsunięcie od boków, żeby minąć karteczki i kwiatka */
+            max-width: 400px;
+            margin-top: 50px;
+            margin-bottom: 40px;
+            margin-left: auto; /* Wyrzuca box do prawej strony */
+            margin-right: 150px; /* Robi bezpieczny bufor przed karteczkami */
+        }
+
+        .hand-drawn-frame strong {
+            color: var(--accent-purple) !important;
+        }
+
+        /* === PRZYKLEJANE KARTECZKI (SIDE NOTES) === */
+        .side-notes {
+            position: absolute;
+            right: -30px; 
+            top: 180px;   
+            list-style: none;
+            font-family: 'Grape Nuts', cursive;
+            font-size: 26px;
+            color: midnightblue;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+            width: 240px;
+            z-index: 20;
+            perspective: 50vw;
+            transform-style: preserve-3d;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-notes li {
+            padding: 15px 20px;
+            background-color: pink;
+            position: relative;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            line-height: 1.2;
+            box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .side-notes li::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: calc(100% - 2px);
+            left: 0;
+            top: 0;
+            transition: all 0.3s;
+            background-color: rgba(0, 0, 0, 0.25);
+            z-index: -1;
+            transform-origin: bottom left;
+            transform: translate3d(6px, 4px, -1px) rotate(1deg);
+            filter: blur(4px);
+        }
+
+        .side-notes li::after {
+            content: '';
+            pointer-events: none;
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+            mix-blend-mode: overlay;
+            background-image: linear-gradient(to left, #ffe4b2, #c8b188);
+        }
+
+        .side-notes li:nth-child(1) { transform: rotate(3deg); }
+        .side-notes li:nth-child(2) { transform: rotate(-2deg) translateX(8px); }
+        .side-notes li:nth-child(3) { transform: rotate(1.5deg) translateX(-5px); }
+
+        .side-notes li:hover {
+            transform: translateX(-15px) rotate(0deg) scale(1.05);
+            z-index: 25;
+        }
+
+        .side-notes li:hover::before {
+            transform: translate3d(12px, 10px, -1px) scale(0.95) rotate(2deg);
+            filter: blur(6px);
+        }
+
+        .side-notes li:hover::after { opacity: 0.6; }
+
+        /* === KWIATEK Z CSS DOODLE === */
+        .flower-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 10px; 
+            width: 300px;
+            height: 400px;
+            z-index: 2; 
+            opacity: 0.85;
+            pointer-events: none; 
+            overflow: visible;
+        }
+
+        css-doodle {
+            --rule: (
+                :doodle {
+                    @grid: 60x1 / 300px 400px;
+                    overflow: visible;
+                    contain: initial;
+                    --colors: @p(
+                        (#e9dbce, #fceade, #ea526f, #e2c290, #6b2d5c, #25ced1),
+                        (#c9cba3, #ffe1a8, #e26d5c, #723d46, #472d30),
+                        (#e42268, #fb8075, #761871, #5b7d9c, #a38cb4, #476590)
+                    );
+                }
+
+                position: absolute;
+
+                @match (i < 41) {
+                    @size: @r(10, 25)px;
+                    @place: @r(0, 100)% @r(60, 100)%;
+                    transform: rotate(calc(@p(-90, 90)deg + @r(±30)deg)) skew(@r(20)deg);
+                    background: linear-gradient(180deg, @p(--colors), @P);
+                    opacity: @r(0.3, 0.7);
+                    clip-path: @shape(
+                        points: 200;
+                        a: cos(t)*@r(9, 13)/18 - cos(2t)*5/@r(9, 18);
+                        b: cos(3t)/@r(10, 18) + cos(3t)/@r(18, 20);
+                        x: .75 * sin(t - @r(0.1))^3;
+                        y: a - b + .15;
+                    );
+                }
+
+                @match(i = 41) {
+                    @place: 57% 75%;
+                    ::after {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        content: "(";
+                        font-size: 50px;
+                        color: @p(--colors);
+                        transform: rotate(60deg) skew(60deg) scale(1.2, 3);
+                    }
+                }
+
+                @match(i > 41 && i < 60) {
+                    @size: @r(40, 80)px;
+                    @place: 50% 30%;
+                    transform: rotate(@r(360)deg) skew(@r(20)deg);
+                    transform-origin: 50% 85%;
+                    background: linear-gradient(180deg, @p(--colors), @P);
+                    opacity: @r(0.4, 0.9);
+                    clip-path: @shape(
+                        points: 200;
+                        a: cos(t)*@r(9, 13)/18 - cos(2t)*5/@r(9, 18);
+                        b: cos(3t)/@r(10, 18) + cos(3t)/@r(18, 20);
+                        x: .75 * sin(t - @r(0.1))^3;
+                        y: a - b + .15;
+                    );
+                }
+            );
+        }
+
+        /* === RESPONSYWNOŚĆ === */
+        @media (max-width: 900px) {
+            .side-notes {
+                position: relative;
+                right: auto;
+                top: auto;
+                width: 100%;
+                margin-top: 40px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .side-notes li { width: auto; max-width: 200px; }
+            .side-notes li:nth-child(n) { transform: rotate(0); margin-bottom: 10px; }
+            .side-notes li:hover { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            #notebook-paper { padding-left: 80px; padding-right: 20px; }
+            .vertical-line { left: 60px; }
+            .holes { left: 10px; }
+            .hole { width: 30px; height: 30px; }
+            #notebook-paper header h1 { padding-left: 80px; font-size: 32px; }
+            #notebook-paper header .date { position: relative; top: 0; right: 0; padding-left: 80px; margin-top: 10px;}
+            .flower-decoration { left: -50px; opacity: 0.4; } 
+            
+            /* Na mobile kasujemy restrykcje szerokości żeby tekst wypełniał ekran */
+            #notebook-paper #content p { max-width: 100%; }
+            .hand-drawn-frame {
+                max-width: 100%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="notebook-paper">
+        
+        <div class="vertical-line"></div>
+        <div class="horizontal-lines"></div>
+        <div class="holes">
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+        </div>
+
+        <div class="flower-decoration">
+            <css-doodle use="var(--rule)"></css-doodle>
+        </div>
+
+        <header>
+            <h1><i class="marker-highlight">Styl autora</i></h1>
+            <div class="date">
+                Wskazówka na dziś
+            </div>
+        </header>
+
+        <ul class="side-notes">
+            <li>Analiza tekstu</li>
+            <li>Co mnie poruszyło w tym akapicie?</li>
+            <li>Słabe teksty są OK!</li>
+        </ul>
+
+        <div id="content">
+            <p>
+                Twój styl to coś więcej niż tylko zasób słownictwa i poprawna gramatyka. To <strong>unikalny rytm zdań</strong>, sposób budowania napięcia i to, jak <strong>Twoja osobowość przebija przez tekst</strong>.
+            </p>
+            
+            <p>
+                Pamiętaj, że najlepszy styl rodzi się z autentyczności. Nie próbuj na siłę naśladować innych twórców. Zamiast tego skup się na <strong>klarowności przekazu</strong> i własnym, naturalnym głosie. Czytelnik bardzo szybko wyczuje, kiedy piszesz w 100% w zgodzie ze sobą.
+            </p>
+
+            <div class="hand-drawn-frame">
+                <strong>Ważna informacja:</strong> Najlepszym sposobem na wyrobienie własnego, niepowtarzalnego stylu jest codzienne pisanie oraz czytanie różnorodnej literatury! Zwracaj uwagę na to, co najbardziej przyciąga Twoją uwagę u innych autorów.
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+</html>
