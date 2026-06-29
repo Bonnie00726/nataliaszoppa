@@ -3,7 +3,7 @@ layout: post
 title: "Struktura trzech aktów – podstawa dobrej książki"
 date: 2026-06-04 10:00:00 +0200
 author: Natalia Szoppa
-image: "https://i.imgur.com/KmNXicK.png"
+image: "https://i.imgur.com/OrIIiCS.png"
 tags: [porady pisarskie, warsztat, struktura]
 ---
 
