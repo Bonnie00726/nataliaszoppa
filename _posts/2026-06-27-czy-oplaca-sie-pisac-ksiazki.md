@@ -17,7 +17,7 @@ Nie wiedzieć kiedy, pisanie książek stało się w powszechnej świadomości s
 
 ### Pisanie a inne hobby – podwójne standardy
 Zwróć uwagę, jak inaczej traktujemy inne pasje:
- * **Nauka języków:** Ludzie uczą się egzotycznych języków (np. chińskiego czy japońskiego) dla czystej satysfakcji. Często wymaga to 10–15 lat intensywnej nauki i sporych nakładów finansowych. Gdy mówisz znajomym, że uczujesz się arabskiego, nikt nie pyta: „Czy zostaniesz profesjonalnym tłumaczem?”. Reakcje są pozytywne i pełne ciekawości.
+ * **Nauka języków:** Ludzie uczą się egzotycznych języków (np. chińskiego czy japońskiego) dla czystej satysfakcji. Często wymaga to 10–15 lat intensywnej nauki i sporych nakładów finansowych. Gdy mówisz znajomym, że uczysz się arabskiego, nikt nie pyta: „Czy zostaniesz profesjonalnym tłumaczem?”. Reakcje są pozytywne i pełne ciekawości.
  * **Sport:** Kiedy ktoś zaczyna biegać lub grać w tenisa, rzadko słyszy pytania o to, czy planuje przejść na zawodowstwo.
 
 Dlaczego więc przy pisaniu automatycznie zakładamy, że musi ono stać się nowym zawodem i obowiązkiem? **To efekt lakonicznych historii sukcesu, które spłycają cały proces do schematu: *napisz, sprzedaj, bądź bogaty*.**
@@ -27,7 +27,7 @@ Oczywiście, sukces finansowy jest możliwy – tak jak po kilkunastu latach nau
 ## 3 kluczowe benefity z pisania (których nie kupisz za pieniądze)
 
 ### 1. Głęboki research i lekcja praktycznej psychologii
-Stworzenie logicznej fabuły i angażujących bohaterów <span class="marker-highlight">wymaga ogromnej pracy intelektualnej.</span> Musisz analizować ludzkie zachowania: co czuje człowiek po traumie? Jakie są motywacje kogoś, kto desperacko szuka akceptacji?
+Stworzenie logicznej fabuły i angażujących bohaterów <span class="marker-highlight">wymaga</span >ogromnej <span class="marker-highlight">pracy intelektualnej.</span> Musisz analizować ludzkie zachowania: co czuje człowiek po traumie? Jakie są motywacje kogoś, kto desperacko szuka akceptacji?
 
 Pisanie to w gruncie rzeczy **nauka empatii**. Przelewając te stany na papier, <span class="marker-highlight">zaczynasz lepiej rozumieć</span> mechanizmy rządzące światem, innymi ludźmi oraz... samym sobą. Książki pozwalają nam bezpiecznie doświadczać skrajnych sytuacji, których normalnie moglibyśmy nie przeżyć, i uczyć się z nich wyciągać wnioski.
 
