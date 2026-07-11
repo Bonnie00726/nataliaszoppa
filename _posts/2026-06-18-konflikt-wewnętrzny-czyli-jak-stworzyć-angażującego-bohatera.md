@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Konflikt wewnętrzny, czyli jak stworzyć angażującego bohatera"
+title: "Konflikt wewnętrzny, czyli jak stworzyć angażującego bohatera (część 1)"
 date: 2026-06-18 12:00:00 +0200
 author: Natalia Szoppa
 image: "https://images.unsplash.com/photo-1552072092-7f9b8d63efcb"
