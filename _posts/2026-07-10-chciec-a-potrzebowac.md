@@ -9,9 +9,9 @@ tags: [pisarstwo]
 
 Każdy z nas czegoś chce, ale życie brutalnie weryfikuje te pragnienia, pokazując, że często potrzebujemy czegoś zupełnie innego. **W pogoni za celami zdobywamy życiowe lekcje, rozwijamy się i zmieniamy.** Dokładnie tę samą drogę musi przejść Twój bohater, jeśli ma poruszyć i zaangażować czytelnika.
 
-Z <a href=”https://nataliaszoppa.com/2026/06/18/konflikt-wewn%C4%99trzny-czyli-jak-stworzy%C4%87-anga%C5%BCuj%C4%85cego-bohatera.html>poprzedniego wpisu</a> wiesz już, że fundamentem dobrej postaci jest jej **bagaż doświadczeń** oraz **rana z przeszłości**, która skutecznie utrudnia jej osiągnięcie celu. 
+Z <a href="https://nataliaszoppa.com/2026/06/18/konflikt-wewn%C4%99trzny-czyli-jak-stworzy%C4%87-anga%C5%BCuj%C4%85cego-bohatera.html">poprzedniego wpisu</a> wiesz już, że fundamentem dobrej postaci jest jej **bagaż doświadczeń** oraz **rana z przeszłości**, która skutecznie utrudnia jej osiągnięcie celu. 
 
-<a href=”https://unsplash.com/photos/text-6CczttZO18o”>Photo from Unsplash.</a>
+<a href="https://unsplash.com/photos/text-6CczttZO18o">Photo from Unsplash.</a>
 
 Dziś pójdziemy o krok dalej i przyjrzymy się kluczowemu dualizmowi w konstrukcji postaci: <span class="marker-highlight">chcieć (want) vs. potrzebować (need).</span>
 
