@@ -358,6 +358,26 @@ title: Zasady współpracy - Przewodnik
         50% { transform: translateY(-8px); }
         100% { transform: translateY(0); }
     }
+    /* ===== GRAFIKA NA CAŁĄ SZEROKOŚĆ (Pełen ekran) ===== */
+    .fullwidth-banner {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        margin-bottom: 80px; /* Odstęp między obrazkiem a nagłówkiem "Od rękopisu..." */
+        margin-top: 20px;
+    }
+    
+    .fullwidth-banner img {
+        width: 100%;
+        height: auto;
+        display: block;
+        /* Wyłączenie domyślnych ramek/marginesów dla obrazka */
+        margin: 0;
+        padding: 0;
+    }
 </style>
 
 <!-- NAGŁÓWEK PODSTRONY -->
@@ -399,6 +419,12 @@ title: Zasady współpracy - Przewodnik
         <p style="margin-bottom: 0;">Właśnie tak wygląda relacja autor – redaktor. <strong>Autor to szef, a redaktor to menedżer projektu.</strong> Trzymam rękę na pulsie, wskazuję rozwiązania i daję sugestie, które rozwiną Twoją fabułę. Jako szef możesz zrobić wiele sam, ale z profesjonalnym wsparciem zajdziesz znacznie dalej.</p>
     </div>
 </section>
+
+<!-- ========== NOWA GRAFIKA NA CAŁĄ SZEROKOŚĆ ========== -->
+<div class="fullwidth-banner">
+    <img src="https://i.imgur.com/StkIiVt.png" alt="Etapy współpracy - grafika" />
+</div>
+<!-- ==================================================== -->
 
 <!-- ŚCIEŻKA KROK PO KROKU (CZYSTY UKŁAD Z CYFRĄ W TLE) -->
 <section class="steps-section">
