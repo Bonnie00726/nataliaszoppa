@@ -78,7 +78,7 @@ title: Zasady współpracy - Przewodnik
         line-height: 1.6;
     }
 
-    /* ===== CREDIBILITY BAR (Czarna pigułka) ===== */
+   /* ===== CREDIBILITY BAR (Czarna pigułka z gradientowymi ikonami) ===== */
     .credibility-pill-wrapper {
         text-align: center;
         margin-bottom: 80px;
@@ -101,8 +101,10 @@ title: Zasady współpracy - Przewodnik
         gap: 10px;
     }
     .cred-item i {
-        color: #f77f00; 
-        font-size: 18px;
+        font-size: 20px; /* Lekko powiększyłem z 18px, żeby gradient był lepiej widoczny */
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .cred-item span {
         font-family: 'Mulish', sans-serif;
@@ -315,6 +317,47 @@ title: Zasady współpracy - Przewodnik
         
         .warning-card { flex-direction: column; text-align: center; padding: 35px 25px; }
     }
+    /* ===== FLOATING BUTTON (Pobieranie pliku) ===== */
+    .floating-file-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--gradient);
+        color: #ffffff;
+        padding: 14px 28px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 10px 20px rgba(123, 44, 191, 0.25);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
+        /* Wywołanie animacji lewitowania */
+        animation: floatUpDown 2.5s ease-in-out infinite;
+    }
+
+    .floating-file-btn i {
+        font-size: 26px;
+    }
+
+    /* Efekt po najechaniu myszką (zatrzymuje się i lekko powiększa) */
+    .floating-file-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 25px rgba(123, 44, 191, 0.4);
+        color: #ffffff;
+        animation-play-state: paused; 
+    }
+
+    /* Definicja animacji góra-dół */
+    @keyframes floatUpDown {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+    }
 </style>
 
 <!-- NAGŁÓWEK PODSTRONY -->
@@ -368,7 +411,14 @@ title: Zasady współpracy - Przewodnik
         <div class="step-content">
             <h3>Autodiagnoza</h3>
             <p>Wypełnij Arkusz Diagnostyczny. Usiądź na spokojnie, przeanalizuj swoją fabułę i – co najważniejsze – jako autor nie oszukuj samego siebie. Ten etap to wyłącznie Twoja samodzielna praca. Pozwoli Ci ona wyłapać największe luki fabularne i wstępnie poprawić tekst.</p>
+               <!-- TUTAJ ZNAJDUJE SIĘ LEWITUJĄCY PRZYCISK -->
+            <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" target="_blank" class="floating-file-btn">
+                <i class="las la-file-download"></i>
+                <span>Pobierz Arkusz Diagnostyczny</span>
+            </a>
+            
             <div class="step-benefit">
+          
                 <strong>Korzyść dla Ciebie:</strong> Dzięki temu samodzielnie wyeliminujesz klasyczne błędy debiutantów i unikniesz płacenia mi za wskazywanie potknięć, które jesteś w stanie naprawić sam(-a).
             </div>
         </div>
