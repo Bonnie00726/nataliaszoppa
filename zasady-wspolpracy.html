@@ -378,8 +378,62 @@ title: Zasady współpracy - Przewodnik
         margin: 0;
         padding: 0;
     }
-</style>
+    /* ===== PŁYWAJĄCY PRZYCISK KONTAKTOWY (Prawy dolny róg) ===== */
+    .floating-contact-btn {
+        position: fixed; /* Sprawia, że przycisk "pływa" na ekranie */
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: var(--gradient);
+        color: #ffffff;
+        border-radius: 50%; /* Idealne koło */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px; /* Wielkość koperty */
+        box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4);
+        z-index: 9999; /* Zawsze na samym wierzchu, nad innymi elementami */
+        text-decoration: none;
+        transition: all 0.3s ease;
+        /* Delikatna animacja pulsowania (cienia) */
+        animation: pulseGlow 2s infinite;
+    }
 
+    /* Wygląd ikony wewnątrz */
+    .floating-contact-btn i {
+        color: #ffffff;
+    }
+
+    /* Efekt po najechaniu myszką */
+    .floating-contact-btn:hover {
+        transform: translateY(-5px) scale(1.05); /* Lekko unosi się do góry */
+        box-shadow: 0 15px 35px rgba(123, 44, 191, 0.6);
+        animation: none; /* Wyłącza pulsowanie po najechaniu */
+    }
+
+    /* Definicja animacji pulsowania */
+    @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5); }
+        70% { box-shadow: 0 0 0 15px rgba(123, 44, 191, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0); }
+    }
+
+    /* Pomniejszenie przycisku na telefonach */
+    @media (max-width: 768px) {
+        .floating-contact-btn {
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 26px;
+        }
+    }
+</style>
+<!-- PŁYWAJĄCY PRZYCISK KONTAKTOWY (Prawy dolny róg) -->
+<a href="mailto:natalia.szoppa@gmail.com" class="floating-contact-btn" title="Napisz do mnie">
+    <i class="las la-envelope"></i>
+</a>
 <!-- NAGŁÓWEK PODSTRONY -->
 <header class="subpage-header">
     <div class="breadcrumbs">
