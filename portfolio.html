@@ -161,8 +161,59 @@ title: Portfolio - Moje realizacje
             scroll-snap-align: center;
         }
     }
-</style>
+    /* ===== PŁYWAJĄCY PRZYCISK KONTAKTOWY (Lewy dolny róg, nad Dark Mode) ===== */
+    .floating-contact-btn {
+        position: fixed;
+        bottom: 100px; /* Zwiększony odstęp od dołu, by zrobić miejsce na Dark Mode */
+        left: 30px;    /* Przycisk przypięty do lewej krawędzi */
+        width: 60px;
+        height: 60px;
+        background: var(--gradient);
+        color: #ffffff;
+        border-radius: 50%; /* Idealne koło */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px; /* Wielkość koperty */
+        box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4);
+        z-index: 9999; /* Zawsze na wierzchu */
+        text-decoration: none;
+        transition: all 0.3s ease;
+        /* Delikatna animacja pulsowania */
+        animation: pulseGlow 2s infinite;
+    }
 
+    .floating-contact-btn i {
+        color: #ffffff;
+    }
+
+    /* Efekt po najechaniu myszką */
+    .floating-contact-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(123, 44, 191, 0.6);
+        animation: none;
+    }
+
+    @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5); }
+        70% { box-shadow: 0 0 0 15px rgba(123, 44, 191, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0); }
+    }
+
+    /* Dopasowanie na telefonach */
+    @media (max-width: 768px) {
+        .floating-contact-btn {
+            bottom: 85px; /* Na telefonach przyciski zazwyczaj są mniejsze, więc można go dać ciut niżej */
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            font-size: 26px;
+        }
+    }
+</style>
+<a href="mailto:natalia.szoppa@gmail.com" class="floating-contact-btn" title="Napisz do mnie">
+    <i class="las la-envelope"></i>
+</a>
 <div class="container">
     
     <section class="portfolio-hero">
