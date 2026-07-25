@@ -1,9 +1,13 @@
+---
+layout: null
+title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O mnie | Natalia Szoppa | Redakcja, korekta, skład</title>
+    <title>{{ page.title }}</title>
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -12,676 +16,552 @@
       "@graph": [
         {
           "@type": "WebSite",
-          "@id": "https://nataliaszoppa.com/#website",
-          "url": "https://nataliaszoppa.com/",
+          "@id": "{{ '/' | absolute_url }}#website",
+          "url": "{{ '/' | absolute_url }}",
           "name": "Natalia Szoppa"
         },
         {
           "@type": "WebPage",
-          "@id": "https://nataliaszoppa.com/o-mnie.html#webpage",
-          "url": "https://nataliaszoppa.com/o-mnie.html",
-          "name": "O mnie | Natalia Szoppa | Redakcja, korekta, skład",
-          "isPartOf": { "@id": "https://nataliaszoppa.com/#website" }
+          "@id": "{{ '/o-mnie.html' | absolute_url }}#webpage",
+          "url": "{{ '/o-mnie.html' | absolute_url }}",
+          "name": "{{ page.title }}",
+          "isPartOf": { "@id": "{{ '/' | absolute_url }}#website" }
         }
       ]
     }
     </script>
 
-    <!-- Linki do fontów (Mulish, Lora oraz Caveat dla pisma odręcznego) -->
+    <!-- Czcionki Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
     
+    <!-- Ikony -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+
     <style>
-        /* === BAZOWE ZMIENNE (TRYB CIEMNY) === */
         :root {
-            --bg-color: #070707; 
-            --text-black: #ffffff; 
-            --text-gray: #a8a8a8; 
-            --bg-muted: #151515; 
-            --border-color: #2a2a2a; 
+            --bg-color: #ffffff;
+            --text-black: #111111;
+            --text-gray: #444444; 
+            --text-muted: #888888;
+            --bg-muted: #f9f9fa;
+            --border-color: #eaeaea;
             --gradient: linear-gradient(135deg, #7b2cbf, #f77f00);
             --accent-purple: #7b2cbf;
-            --accent-orange: #f77f00;
             --radius-lg: 16px;
+            --serif: 'Lora', serif;
             --sans: 'Mulish', sans-serif;
-            --serif: 'Lora', serif; 
-            --handwritten: 'Caveat', cursive; 
+            --handwritten: 'Caveat', cursive;
         }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body { 
-            font-family: var(--sans); 
-            color: var(--text-gray); 
-            background-color: var(--bg-color); 
-            line-height: 1.6; 
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 { 
-            font-family: var(--sans); 
-            color: var(--text-black); 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            font-weight: 800;
-        }
-        
-        a { text-decoration: none; color: inherit; }
-        
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* === WSPÓLNE KOMPONENTY === */
-        .btn-outline { background: transparent; border: 2px solid var(--text-black); color: var(--text-black); padding: 12px 28px; border-radius: 30px; font-weight: 700; font-size: 13px; display: inline-block; cursor: pointer; transition: all 0.3s; text-align: center; text-transform: uppercase; letter-spacing: 1px;}
-        .btn-outline:hover { background: var(--text-black); color: var(--bg-color); }
-        .btn-gradient { background: var(--gradient); color: white; padding: 14px 32px; border-radius: 30px; font-weight: 800; font-size: 14px; display: inline-block; border: none; cursor: pointer; text-decoration: none; transition: transform 0.2s; text-transform: uppercase; letter-spacing: 1px;}
-        .btn-gradient:hover { transform: translateY(-2px); }
-        
-        .section-subtitle { font-family: var(--sans); color: var(--text-gray); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; font-weight: 800; display: block; text-align: center; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: 36px; margin-bottom: 20px; }
-        .section-header p { font-size: 16px; color: var(--text-gray); max-width: 700px; margin: 0 auto; text-transform: none; font-weight: 400; letter-spacing: normal;}
+        body { font-family: var(--sans); color: var(--text-black); background-color: var(--bg-color); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4, .lora-font { font-family: var(--serif); color: var(--text-black); }
+        h1 i, h2 i, h3 i { font-style: italic; color: var(--text-gray); font-weight: 400; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
 
-        /* === SEKCJA HERO === */
-        .hero-creative {
-            position: relative;
-            width: 100%;
-            height: 90vh;
-            min-height: 600px;
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            overflow: hidden;
-            margin-bottom: 40px;
-        }
-        .hero-big-text {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(80px, 16vw, 280px);
-            font-weight: 900;
-            color: #ffffff;
-            white-space: nowrap;
-            letter-spacing: 8px;
-            z-index: 1;
-        }
-        .hero-image-wrapper {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%) scale(1.15); 
-            transform-origin: bottom center; 
-            height: 95%; 
-            z-index: 2;
-        }
-        .hero-person-img {
-            height: 100%;
-            width: auto;
-            display: block;
-            object-fit: contain;
-            object-position: bottom center;
-            filter: drop-shadow(0px -10px 30px rgba(0,0,0,0.5));
-        }
-        .hero-fade-bottom {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 30%;
-            background: linear-gradient(to top, var(--bg-color) 0%, transparent 100%);
-            z-index: 3;
-            pointer-events: none;
-        }
-        .hero-intro-text {
-            position: absolute;
-            bottom: 12%;
-            left: 10%;
-            z-index: 4;
-            max-width: 450px;
-        }
-        .hero-intro-text p {
-            font-size: clamp(18px, 2vw, 24px);
-            line-height: 1.4;
-            color: #e0e0e0;
-            font-weight: 300;
-            text-transform: none; 
-        }
-        .hero-intro-text p strong {
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .hero-intro-sub {
-            margin-top: 15px;
-            font-size: 13px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-        .hero-scroll-icon {
-            position: absolute;
-            bottom: 5%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 4;
-            color: #ffffff;
-            font-size: 32px;
-            animation: bounce 2s infinite;
-            opacity: 0.7;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-15px) translateX(-50%); }
-            60% { transform: translateY(-7px) translateX(-50%); }
-        }
-
-        /* === CREDIBILITY BAR === */
-        .credibility-bar { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: flex-start;
-            background: transparent; 
-            padding: 40px 0; 
-            margin: 20px 0 100px 0; 
-        }
-        .cred-item { 
-            text-align: center; 
-            flex: 1; 
-            border-right: 1px solid var(--border-color); 
-            padding: 0 15px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-start;
-        }
-        .cred-item:last-child { border-right: none; }
-        
-        .cred-icon-wrap {
-            height: 70px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .cred-item h4 { 
-            font-family: var(--serif); 
-            font-size: 56px; 
-            font-weight: 800; 
-            margin-bottom: 0; 
-            background: var(--gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            display: inline-block; 
-            line-height: 0.8; 
-            letter-spacing: -2px; 
-            text-transform: none;
-        }
-        
-        .cred-item i { 
-            font-size: 60px; 
-            margin-bottom: 0; 
-            background: var(--gradient); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            display: inline-block; 
-            line-height: 0.9;
-        }
-        
-        .cred-item .cred-desc { 
-            color: var(--text-gray); 
-            font-size: 13px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            font-family: var(--sans); 
-            line-height: 1.5;
-            max-width: 200px;
-        }
-
-        /* === ASYMETRYCZNE SEKCJE === */
-        .asym-section { display: flex; align-items: center; gap: 60px; margin-bottom: 120px; position: relative; }
-        .asym-section.reverse { flex-direction: row-reverse; }
-        .asym-content { flex: 1; }
-        .asym-content h2 { font-size: 38px; margin-bottom: 25px; line-height: 1.2; }
-        .asym-content p { color: var(--text-gray); font-size: 16px; line-height: 1.8; margin-bottom: 20px; text-transform: none; font-weight: 400; letter-spacing: normal;}
-        
-        .asym-image { flex: 1; position: relative; }
-        .asym-image img { width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: 0 15px 40px rgba(0,0,0,0.4); position: relative; z-index: 2; object-fit: cover; aspect-ratio: 4/5; }
-        .asym-image::before { content: ''; position: absolute; top: 30px; bottom: -30px; left: -30px; right: 30px; background-color: var(--bg-muted); border-radius: var(--radius-lg); z-index: 1; }
-        .asym-section.reverse .asym-image::before { left: 30px; right: -30px; background-color: #1a1a1a; }
-
-        /* === ODRĘCZNA NOTATKA O PSIE === */
-        .handwritten-note {
-            position: absolute;
-            top: -80px; 
-            left: -100px; 
-            width: 280px; 
-            padding-bottom: 40px; 
-            font-family: var(--handwritten);
-            font-size: 24px;
-            color: var(--accent-orange);
-            transform: rotate(-6deg);
-            z-index: 10;
-            text-transform: none;
-            line-height: 1.2;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-        .hand-arrow {
-            position: absolute;
-            bottom: -10px; 
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            transform: rotate(20deg);
-        }
-        
-        /* === CIEKAWOSTKI (5 KAFELKÓW NA PEŁNĄ SZEROKOŚĆ) === */
-        .fun-facts-wrapper { 
-            margin-top: 100px; 
-            margin-bottom: 100px; 
-            background-color: var(--bg-muted); 
-            padding: 80px 0;
-        }
-        
-        .fun-facts-grid { 
-            display: grid; 
-            grid-template-columns: repeat(5, 1fr); 
-            gap: 20px; 
-            max-width: 1400px; 
-            margin: 0 auto;
-            padding: 20px 20px 60px 20px;
-        }
-
-        .fact-card { 
-            background: var(--bg-color); 
-            padding: 40px 25px; 
-            border-radius: var(--radius-lg); 
-            position: relative; overflow: hidden; 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        }
-        
-        .fact-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-            background: var(--gradient);
-            z-index: 1;
-        }
-        
-        .fact-card:nth-child(odd) { transform: translateY(0); }
-        .fact-card:nth-child(even) { transform: translateY(30px); }
-        
-        .fact-card:nth-child(odd):hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-        .fact-card:nth-child(even):hover { transform: translateY(25px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
-
-        .fact-icon { font-size: 38px; color: #ffffff; margin-bottom: 20px; display: inline-block; position: relative; z-index: 2;}
-        .fact-card p { font-size: 16px; color: var(--text-gray); line-height: 1.6; position: relative; z-index: 2; text-transform: none; font-weight: 500; letter-spacing: normal;}
-
-        /* === FAQ === */
-        .faq-section {
-            margin-bottom: 120px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .faq-item {
-            border-bottom: 1px solid var(--border-color);
-            padding: 30px 0;
-        }
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: none; 
-            letter-spacing: normal;
-        }
-        .faq-icon {
-            font-size: 24px;
+        .text-gradient {
             background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            transition: transform 0.3s ease;
-            font-weight: 900; 
+            display: inline-block;
         }
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg); 
+
+        .marker-highlight { position: relative; display: inline-block; z-index: 1; padding: 0 4px; }
+        .marker-highlight::before {
+            content: ''; position: absolute; inset: 0 -4px; z-index: -1; border-radius: 3px 5px 3px 5px;
+            --mark-color: 123 44 191; --mark-bg-angle: 50deg;
+            background: conic-gradient(at 0 100%, rgb(var(--mark-color) / 35%) 1% , #fff0 3%) no-repeat 0 0 / auto 120%, conic-gradient(from 180deg at 100% 0, #fff0, rgb(var(--mark-color) / 35%) 1%, #fff0 4%) no-repeat 100% 100% / auto 120%, linear-gradient(var(--mark-bg-angle), rgb(var(--mark-color) / 25%), rgb(var(--mark-color) / 10%) 75%, rgb(var(--mark-color) / 20%)) no-repeat center / auto;
+            rotate: -1deg; transform: skew(-5deg); scale: 1.05;
         }
-        .faq-answer {
-            display: none;
-            padding-top: 20px;
+
+        /* === UKŁAD STRONY (SPLIT SIDEBAR) === */
+        .layout-wrapper { display: flex; max-width: 1200px; margin: 0 auto; min-height: 100vh; align-items: flex-start; }
+
+        /* LEWY PASEK BOCZNY */
+        .sidebar {
+            flex: 0 0 35%;
+            max-width: 400px;
+            position: sticky; top: 0; height: 100vh;
+            padding: 50px 30px 40px 20px; 
+            display: flex; flex-direction: column;
+            overflow-y: auto; overflow-x: hidden;
+            background-color: #ffffff;
+            border-right: 1px solid var(--border-color);
+        }
+        
+        .sidebar::-webkit-scrollbar { width: 4px; }
+        .sidebar::-webkit-scrollbar-track { background: transparent; }
+        .sidebar::-webkit-scrollbar-thumb { background: #dcdcdc; border-radius: 10px; }
+
+        /* === ZDJĘCIE Z EFEKTEM TŁA === */
+        .sidebar-photo-wrapper {
+            position: relative;
+            margin-bottom: 35px;
+        }
+        
+        .sidebar-photo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: -12px;
+            right: 12px;
+            bottom: -12px;
+            background: var(--gradient);
+            border-radius: var(--radius-lg);
+            z-index: 0;
+            opacity: 0.8;
+            box-shadow: 0 10px 25px rgba(123, 44, 191, 0.3);
+        }
+
+        .sidebar-photo-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            background: var(--bg-muted);
+        }
+        
+        .sidebar-photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+        }
+
+        .sidebar h1 { font-size: clamp(24px, 2.5vw, 32px); line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 15px; font-weight: 600; }
+        .sidebar > p { color: var(--text-gray); margin-bottom: 20px; font-size: 14px; line-height: 1.6; }
+        
+        .copyright { margin-top: auto; padding-top: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+        /* PRAWY KONTENER TREŚCI */
+        .main-content { 
+            flex: 1; 
+            min-width: 0; 
+            padding: 50px 30px 80px 50px; 
+            background-color: #ffffff; 
+        }
+
+        /* MENU GÓRNE */
+        .top-nav { display: flex; justify-content: flex-end; align-items: center; gap: 30px; margin-bottom: 50px; }
+        .nav-links { display: flex; gap: 20px; font-weight: 600; font-size: 14px; flex-wrap: wrap; justify-content: flex-end; }
+        .nav-links a { color: var(--text-black); }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-purple); }
+
+        /* STYL NARRACYJNY */
+        .story-block {
+            margin-bottom: 40px; 
+        }
+        .story-block h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .story-block p {
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .story-block p strong {
+            color: var(--text-black);
+        }
+
+        /* --- SLIDER ZE ZDJĘCIAMI --- */
+        .story-slider-wrap { width: 100%; overflow: hidden; padding: 10px 0; margin: 40px 0; }
+        .story-slider-track { display: flex; gap: 20px; animation: slide 25s linear infinite; width: max-content; }
+        .story-slider-wrap:hover .story-slider-track { animation-play-state: paused; }
+        
+        .story-slide-card { 
+            width: 240px; height: 320px; border-radius: var(--radius-lg); 
+            overflow: hidden; position: relative; flex-shrink: 0; 
+            background-size: cover; background-position: center; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+        .story-slide-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,18,0.75) 0%, transparent 60%); }
+        .story-slide-card span { position: absolute; bottom: 20px; left: 20px; right: 20px; font-family: var(--serif); font-size: 14px; font-weight: 600; color: #fff; z-index: 1; line-height: 1.3; }
+        .story-slide-card em { position: absolute; top: 15px; right: 15px; background: rgba(123, 44, 191, 0.9); color: #fff; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; font-style: normal; z-index: 1; }
+        
+        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* FAQ */
+        .inline-faq-container {
+            margin-top: 10px;
+            margin-bottom: 60px;
+        }
+        .faq-item { border-bottom: 1px solid var(--border-color); padding: 18px 0; }
+        .faq-item:first-child { border-top: 1px solid var(--border-color); }
+        .faq-question { font-size: 15px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        .faq-question i { color: var(--accent-purple); font-size: 14px; transition: transform 0.3s; }
+        .faq-item.open i { transform: rotate(45deg); }
+        .faq-answer { margin-top: 12px; color: var(--text-gray); font-size: 14px; line-height: 1.7; display: none; }
+
+        /* === CIEKAWOSTKI === */
+        .fun-facts-section {
+            margin-top: 60px;
+        }
+        
+        .fun-facts-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .fact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .fact-number {
+            font-family: var(--serif);
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 0.8;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+            padding-top: 5px;
+        }
+        
+        .fact-content h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+        
+        .fact-content p {
+            font-family: var(--sans);
             color: var(--text-gray);
             font-size: 15px;
-            line-height: 1.8;
-            text-transform: none;
-            font-weight: 400;
-            letter-spacing: normal;
+            line-height: 1.6;
+            margin: 0;
         }
 
-        /* === CTA === */
-        .cta-section { background: var(--gradient); border-radius: 16px; padding: 60px 45px; text-align: center; color: white; margin-bottom: 80px; }
-        
-        .cta-section h2 { 
-            font-family: var(--serif); 
-            font-size: 38px; 
-            margin-bottom: 15px; 
-            color: white; 
-            text-transform: none; 
-            letter-spacing: normal;
+        /* === ZAKOŃCZENIE I PODPIS === */
+        .signature-wrapper {
+            text-align: right;
+            margin-top: 30px;
+            padding-top: 20px;
         }
-        
-        .cta-section p { font-size: 16px; margin-bottom: 30px; opacity: 0.9; color: white; text-transform: none; font-weight: 600; letter-spacing: normal;}
-
-        /* === TOP MENU (FONT WEIGHT 400, NORMALNE LITERY) === */
-        .top-nav { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--border-color); background: var(--bg-color); position: relative; z-index: 10; }
-        .nav-links { display: flex; justify-content: center; gap: 30px; font-weight: 400; font-size: 15px; text-transform: none; letter-spacing: 1px;}
-        .nav-links a { color: #ffffff; opacity: 0.7; transition: opacity 0.3s; }
-        .nav-links a:hover { opacity: 1; color: #ffffff; }
-        .nav-links a.active { opacity: 1; color: var(--accent-purple); }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 1400px) {
-            .fun-facts-grid { 
-                display: flex; 
-                overflow-x: auto; 
-                scroll-snap-type: x mandatory; 
-                padding: 20px 5vw 60px 5vw;
-                -ms-overflow-style: none; scrollbar-width: none;
-            }
-            .fun-facts-grid::-webkit-scrollbar { display: none; }
-            .fact-card { flex: 0 0 300px; scroll-snap-align: center; }
+        .signature-wrapper img {
+            max-width: 220px;
+            height: auto;
+            opacity: 0.85;
+            display: inline-block;
         }
 
+        /* === PŁYWAJĄCE PRZYCISKI AKCJI === */
+        .floating-actions {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+        .float-btn-mail {
+            width: 60px; height: 60px; border-radius: 50%; background: var(--gradient); color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none;
+            box-shadow: 0 0 0 16px rgba(123, 44, 191, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .float-btn-mail:hover { transform: translateY(-3px); box-shadow: 0 0 0 20px rgba(123, 44, 191, 0.12); }
+        .float-btn-dark {
+            width: 60px; height: 60px; border-radius: 50%; background: #111111; color: white;
+            display: flex; align-items: center; justify-content: center; font-size: 24px; border: none; cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .float-btn-dark:hover { transform: translateY(-3px); background: #2a2a2a; }
+
+        /* MODAL TRYBU CIEMNEGO */
+        .dark-modal-overlay { 
+            position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
+            z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; 
+        }
+        .dark-modal-overlay.active { opacity: 1; visibility: visible; }
+        .dark-modal-panel { 
+            background: #ffffff; width: 90%; max-width: 500px; max-height: 90vh; padding: 50px 40px; border-radius: 20px;
+            transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); overflow-y: auto; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        .dark-modal-overlay.active .dark-modal-panel { transform: translateY(0); }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-black); }
+        .dark-intro { font-family: var(--sans); font-size: 15px; color: #444; line-height: 1.6; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eaeaea; }
+        .browser-instruction { margin-bottom: 25px; }
+        .browser-instruction:last-child { margin-bottom: 0; }
+        .browser-instruction h4 { font-family: var(--sans); font-size: 16px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; color: #111; }
+        .browser-instruction h4 i { font-size: 24px; }
+        .browser-instruction p { font-family: var(--sans); font-size: 14px; color: #444; line-height: 1.6; margin: 0; padding-left: 34px; }
+
+        /* RESPONSIVE */
         @media (max-width: 900px) {
-            .hero-intro-text { left: 5%; bottom: 15%; max-width: 90%; }
-            .hero-intro-text p { font-size: 18px; text-align: center; }
-            .hero-intro-sub { text-align: center; }
-            .hero-image-wrapper { height: 70%; }
-            
-            .asym-section, .asym-section.reverse { flex-direction: column; gap: 40px; text-align: center; margin-bottom: 80px;}
-            .asym-image::before { display: none; }
-            
-            .handwritten-note {
-                position: relative;
-                top: auto;
-                left: auto;
-                width: 100%;
-                text-align: center;
-                transform: rotate(0);
-                margin-bottom: 20px;
-                padding: 0 10px;
-            }
-            .hand-arrow { display: none; } 
-            
-            .credibility-bar { flex-direction: column; gap: 30px; padding: 0 20px; margin-bottom: 60px;}
-            .cred-item { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 30px; width: 100%; }
-            .cred-item:last-child { border-bottom: none; padding-bottom: 0; }
-            .cred-icon-wrap { height: auto; margin-bottom: 10px; }
-            
-            .fun-facts-wrapper { padding: 60px 0; margin-top: 60px; margin-bottom: 60px; }
-            .faq-section { padding: 0 20px; margin-bottom: 80px; }
-
-            @media (max-width: 600px) {
-                .fact-card:nth-child(even) { transform: translateY(0); }
-                .fact-card:nth-child(even):hover { transform: translateY(-5px); }
-                .hero-big-text { top: 40%; }
-                .section-header h2 { font-size: 28px; }
-                .asym-content h2 { font-size: 28px; }
-                .cta-section h2 { font-size: 28px; }
-            }
+            .layout-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 40px 20px; border-right: none; border-bottom: 1px solid var(--border-color); max-width: none; }
+            .sidebar-photo-wrapper { max-width: 400px; margin: 0 auto 35px auto; } 
+            .main-content { padding: 40px 20px; }
+            .top-nav { justify-content: center; margin-bottom: 40px; }
+            .nav-links { justify-content: center; }
+            .floating-actions { bottom: 20px; left: 20px; gap: 10px; transform: scale(0.85); transform-origin: bottom left; }
+            .fact-number { font-size: 34px; }
+            .fact-content h3 { font-size: 20px; }
+            .copyright { padding-top: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Nawigacja -->
-    <header class="top-nav">
-        <nav class="nav-links">
-            <a href="{{ '/o-mnie.html' | relative_url }}">O mnie</a>
-            <a href="{{ '/oferta.html' | relative_url }}">Oferta</a>
-            <a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>
-            <a href="{{ '/cennik.html' | relative_url }}">Cennik</a>
-            <a href="{{ '/faq.html' | relative_url }}">FAQ</a>
-            <a href="{{ '/blog.html' | relative_url }}">Blog</a>
-        </nav>
-    </header>
+<!-- === PŁYWAJĄCE PRZYCISKI AKCJI === -->
+<div class="floating-actions">
+    <a href="mailto:natalia.szoppa@gmail.com" class="float-btn-mail" title="Napisz do mnie" aria-label="Napisz e-mail">
+        <i class="las la-envelope"></i>
+    </a>
+    <button class="float-btn-dark" id="openDarkInfoModal" title="Oszczędzaj oczy - Tryb Ciemny" aria-label="Włącz tryb ciemny">
+        <i class="las la-moon"></i>
+    </button>
+</div>
 
-    <!-- SEKCJA HERO -->
-    <section class="hero-creative">
-        <div class="hero-big-text">NATALIA</div>
-        
-        <div class="hero-image-wrapper">
-            <img src="https://i.imgur.com/s84Zfq8.png" alt="Natalia Szoppa" class="hero-person-img">
-        </div>
-        
-        <div class="hero-fade-bottom"></div>
-
-        <div class="hero-intro-text">
-            <p>Cześć, jestem Natalia! <strong>Redaktorka, tłumaczka i lektorka.</strong> Zmieniam dobre pomysły w świetnie napisane historie.</p>
-            <div class="hero-intro-sub">Zobacz moje pełne doświadczenie poniżej</div>
-        </div>
-
-        <i class="las la-mouse hero-scroll-icon"></i>
-    </section>
-
-    <!-- KONTENER GŁÓWNY (CZĘŚĆ 1) -->
-    <div class="container">
-        
-        <!-- CREDIBILITY BAR -->
-        <div class="credibility-bar">
-            <!-- 1. Cyfra -->
-            <div class="cred-item">
-                <div class="cred-icon-wrap">
-                    <h4>10<sup>+</sup></h4>
-                </div>
-                <p class="cred-desc">Lat pracy z językiem</p>
-            </div>
-            
-            <!-- 2. Ikonka Edukacji -->
-            <div class="cred-item">
-                <div class="cred-icon-wrap">
-                    <i class="las la-graduation-cap"></i>
-                </div>
-                <p class="cred-desc">Tytuł magistra + 3 specjalizacje</p>
-            </div>
-            
-            <!-- 3. Ikonka Działalności -->
-            <div class="cred-item">
-                <div class="cred-icon-wrap">
-                    <i class="las la-briefcase"></i>
-                </div>
-                <p class="cred-desc">Własna działalność gospodarcza od 2023</p>
-            </div>
-            
-            <!-- 4. Cyfra -->
-            <div class="cred-item">
-                <div class="cred-icon-wrap">
-                    <h4>3</h4>
-                </div>
-                <p class="cred-desc">W tylu językach mówię</p>
-            </div>
-            
-            <!-- 5. Ikonka Magii -->
-            <div class="cred-item">
-                <div class="cred-icon-wrap">
-                    <i class="las la-magic"></i>
-                </div>
-                <p class="cred-desc">Pomagam wyczarować coś z niczego</p>
+<div class="layout-wrapper">
+    <!-- LEWY SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-photo-wrapper">
+            <div class="sidebar-photo-container">
+                <img src="https://i.imgur.com/s84Zfq8.png" alt="Natalia Szoppa">
             </div>
         </div>
 
-        <!-- SEKCJA 1: KWALIFIKACJE -->
-        <section class="asym-section">
-            <div class="asym-content">
-                <span class="section-subtitle">Moje doświadczenie</span>
-                <h2>Więcej niż tylko poprawianie przecinków</h2>
-                <p>Od lat pracuję z wyobraźnią twórców – pomagałam rozwinąć skrzydła epickim powieściom fantasy, mrocznym kryminałom, a także podręcznikom edukacyjnym i rozbudowanym grom RPG.</p>
-                <p>Łączę redakcję strukturalną z precyzyjnym szlifem językowym. A ponieważ zajmuję się też profesjonalnym składem DTP, doskonale wiem, jak Twój plik Worda musi być przygotowany, by w drukarni stał się piękną książką.</p>
-            </div>
-            <div class="asym-image">
-                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Natalia Szoppa przy pracy">
-            </div>
+        <h1>Redaguję, tłumaczą i <i class="marker-highlight">dbam</i> o detal</h1>
+        <p>Od ponad dekady pracuję z tekstem, pomagając autorom wydobyć pełny potencjał z ich historii.</p>
+
+        <div class="copyright">
+            2023 - 2026 &copy; Natalia Szoppa.<br>
+            Design by me, Natalia
+        </div>
+    </aside>
+
+    <!-- PRAWY KONTENER -->
+    <main class="main-content">
+        <!-- Górna nawigacja -->
+        <header class="top-nav">
+            <nav class="nav-links">
+                <a href="{{ '/o-mnie.html' | relative_url }}" class="active">O mnie</a>
+                <a href="{{ '/oferta.html' | relative_url }}">Oferta</a>
+                <a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>
+                <a href="{{ '/cennik.html' | relative_url }}">Cennik</a>
+                <a href="{{ '/faq.html' | relative_url }}">FAQ</a>
+                <a href="{{ '/blog.html' | relative_url }}">Blog</a>
+            </nav>
+        </header>
+
+        <!-- SEKCJA 1: TEKST W FORMIE OPOWIEŚCI -->
+        <section class="story-block">
+            <h2>Więcej niż tylko poprawianie przecinków</h2>
+            <p>Moja przygoda z językiem nie zaczęła się wczoraj. Przez lata pracy z wyobraźnią twórców miałam przyjemność szlifować teksty dla autorów fantasy, mrocznych kryminałów, a także rozbudowanych podręczników czy gier RPG. Wierzę, że dobra książka to nie tylko poprawna gramatyka, ale przede wszystkim chemia między narratorem a czytelnikiem.</p>
+            <p>Łączę redakcję strukturalną z precyzyjnym szlifem językowym. Co więcej, ponieważ zajmuję się również profesjonalnym składem DTP, doskonale wiem, jak przygotować plik, by w drukarni zamienił się w fizyczne dzieło sztuki.</p>
         </section>
 
-        <!-- SEKCJA 2: PODEJŚCIE (REVERSE + ZDJĘCIE PSA) -->
-        <section class="asym-section reverse">
-            <div class="asym-content">
-                <span class="section-subtitle">Jak pracuję</span>
-                <h2>Cenię szczerość i Twój czas</h2>
-                <p>Nie lubię owijać w bawełnę. Współpraca ze mną opiera się na partnerstwie i konkretach. Dlatego zawsze zachęcam twórców do samodzielnej <strong>autodiagnostyki</strong> tekstu, zanim zlecą mi pracę.</p>
-                <p>Dlaczego? Bo chcę, żebyś płacił(a) za moją wiedzę ekspercką przy architekturze książki lub przy zaawansowanym szlifie językowym, a nie za wyłapywanie błędów, które bez problemu dostrzeżesz sam(a). Gramy do jednej bramki – chcemy wydać świetny tekst.</p>
-                <a href="#" class="btn-outline" style="border-color: #fff; color: #fff; margin-top: 15px;">Zobacz ofertę</a>
-            </div>
-            <div class="asym-image">
-                <!-- Odręczna notatka poza kontenerem -->
-                <div class="handwritten-note">
-                    Zdjęcie mojego psa, ma 17 lat i pewnie dużo czasu jej nie zostało, więc chcę, żeby świat się o niej dowiedział.
-                    <!-- Ręcznie rysowana strzałka SVG -->
-                    <svg class="hand-arrow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 20 Q 50 80 90 80" fill="none" stroke="var(--accent-orange)" stroke-width="4" stroke-linecap="round"/>
-                        <path d="M 70 60 L 90 80 L 60 90" fill="none" stroke="var(--accent-orange)" stroke-width="4" stroke-linecap="round"/>
-                    </svg>
+        <!-- SLIDER ZE ZDJĘCIAMI WKOMPONOWANY W OPOWIEŚĆ -->
+        <div class="story-slider-wrap">
+            <div class="story-slider-track">
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80')">
+                    <em>Warsztat</em><span>Przy pracy nad manuskryptem</span>
                 </div>
-                <!-- ZDJĘCIE BUNI -->
-                <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" alt="Bunia, pies Natalii Szoppy">
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80')">
+                    <em>Prywatnie</em><span>Towarzyszka moich piór (Bunia)</span>
+                </div>
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80')">
+                    <em>Skład DTP</em><span>Archiwum projektów książkowych</span>
+                </div>
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1541963463532-d68292c34b19?auto=format&fit=crop&w=400&q=80')">
+                    <em>Inspiracje</em><span>Światy fantasy i RPG</span>
+                </div>
+                <!-- Duplikat dla płynnej pętli slidera -->
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80')">
+                    <em>Warsztat</em><span>Przy pracy nad manuskryptem</span>
+                </div>
+                <div class="story-slide-card" style="background-image:url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80')">
+                    <em>Prywatnie</em><span>Towarzyszka moich piór (Bunia)</span>
+                </div>
             </div>
+        </div>
+
+        <!-- SEKCJA 2: KONTYNUACJA OPOWIEŚCI -->
+        <section class="story-block">
+            <h2>Partnerstwo i szczerość w działaniu</h2>
+            <p>Nie lubię owijać w bawełnę. Współpraca ze mną opiera się na partnerstwie i konkretach. Zawsze zachęcam autorów do samodzielnej autodiagnostyki tekstu przed zleceniem mi pracy, ponieważ zależy mi, abyś płacił za ekspercką wiedzę architektoniczną lub zaawansowany szlif, a nie za literówki, które możesz wyłapać samodzielnie.</p>
+            <p>Najczęściej twórcy pytają mnie o kilka stałych kwestii, które od razu rozwiewam poniżej:</p>
         </section>
-        
-    </div>
 
-    <!-- SEKCJA 3: CIEKAWOSTKI (5 KAFELKÓW) -->
-    <section class="fun-facts-wrapper">
-        <div class="section-header">
-            <span class="section-subtitle">Po godzinach</span>
-            <h2>Krótkie ciekawostki</h2>
-            <p>Czyli to, czego nie wyczytasz ze stopki redakcyjnej w moich książkach.</p>
-        </div>
-        
-        <div class="fun-facts-grid">
-            <div class="fact-card">
-                <i class="las la-coffee fact-icon"></i>
-                <p>Piję hektolitry czarnej i zielonej herbaty</p>
-            </div>
-            <div class="fact-card">
-                <i class="las la-dragon fact-icon"></i>
-                <p>Psychofanka Ataku Tytanów i high fantasy</p>
-            </div>
-            <div class="fact-card">
-                <i class="las la-moon fact-icon"></i>
-                <p>Ulubiona karta tarota: Księżyc</p>
-            </div>
-            <div class="fact-card">
-                <i class="las la-map-marker fact-icon"></i>
-                <p>Mieszkałam we Włoszech i na północy Anglii</p>
-            </div>
-            <div class="fact-card">
-                <i class="las la-film fact-icon"></i>
-                <p>Uważam scenariusz Piratów z Karaibów za konstrukcyjny majstersztyk</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- KONTENER GŁÓWNY (CZĘŚĆ 2) -->
-    <div class="container">
-        
-        <!-- SEKCJA FAQ -->
-        <section class="faq-section">
-            <div class="section-header">
-                <span class="section-subtitle">O co często pytają twórcy</span>
-                <h2>Pytania? Mam odpowiedzi</h2>
+        <!-- SEKCJA FAQ (BEZ NAGŁÓWKA, WKOMPONOWANA W TEKST) -->
+        <div class="inline-faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Co uważasz na temat stylu autora? (Czy bardzo w niego ingerujesz?)</span><i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">Styl autora to świętość i jego unikalny odcisk palca. Moim zadaniem nie jest pisanie książki „po mojemu”, ale wydobycie z Twojego tekstu tego, co najlepsze, z pełnym poszanowaniem Twojego głosu.</div>
             </div>
             
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Co uważasz na temat stylu autora? (Czy bardzo w niego ingerujesz?)</span>
-                        <i class="las la-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Styl autora to świętość i jego unikalny odcisk palca. Moim zadaniem jako redaktorki nie jest pisanie książki "po mojemu", ale wydobycie z Twojego tekstu tego, co najlepsze. Usuwam to, co zgrzyta i blokuje płynność czytania, ale zawsze z poszanowaniem Twojego głosu.
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Dlaczego zachęcasz do autodiagnostyki przed współpracą?</span><i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">Żebyś nie płacił(-a) za poprawianie błędów konstrukcyjnych, które łatwo dostrzeżesz samodzielnie. Autodiagnostyka pozwala zaoszczędzić budżet i oddać do redakcji plik znacznie lepszy jakościowo.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Czy czytasz książki dla przyjemności, czy wszędzie widzisz błędy?</span><i class="fa-solid fa-plus"></i>
+                </div>
+                <div class="faq-answer">Zawodowe zboczenie czasem daje o sobie znać, ale gdy historia jest naprawdę wciągająca, bez problemu wyłączam „tryb redaktorki” i po prostu daję się porwać lekturze.</div>
+            </div>
+        </div>
+
+        <!-- SEKCJA: CIEKAWOSTKI -->
+        <section class="fun-facts-section story-block">
+            <h2>Po godzinach</h2>
+            <p>Skoro wiesz już, jak wygląda moja praca i na co stawiam w redakcji, oto kilka luźniejszych faktów na mój temat, których zazwyczaj nie wyczytasz ze stopki redakcyjnej w wydanych książkach.</p>
+            
+            <div class="fun-facts-list">
+                <!-- Ciekawostka 1 -->
+                <div class="fact-item">
+                    <div class="fact-number">1.</div>
+                    <div class="fact-content">
+                        <h3>Płyny <i>napędowe</i></h3>
+                        <p>Piję hektolitry czarnej i zielonej herbaty – to moje główne paliwo do pracy przy wielogodzinnych maratonach przed edytorem tekstu.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Ile zmian w pliku to dla Ciebie za dużo?</span>
-                        <i class="las la-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Dla mnie nie ma czegoś takiego jak "za dużo zmian" – to po prostu kwestia odpowiedniej usługi (często redakcji strukturalnej połączonej z językową). Zawsze jednak przeprowadzam z autorem szczerą rozmowę po pierwszej próbce. Jeśli tekst wymaga głębokiego przepisania, sugeruję najpierw pracę warsztatową i autodiagnostykę, by zaoszczędzić Twój budżet.
+                <!-- Ciekawostka 2 -->
+                <div class="fact-item">
+                    <div class="fact-number">2.</div>
+                    <div class="fact-content">
+                        <h3>Popkultura <i>i fantastyka</i></h3>
+                        <p>Jestem psychofanką serii „Atak Tytanów” oraz gatunku high fantasy. Cenię złożone światy i nieoczywiste motywacje postaci.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Od czego proponujesz zacząć pisanie?</span>
-                        <i class="las la-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        Od przelania wszystkiego, co masz w głowie, na papier, bez oglądania się na błędy, składnię czy literówki. Pierwszy szkic ma po prostu "istnieć". Dopiero gdy opowiesz sobie historię od A do Z, zaczynamy rzeźbić – organizować strukturę, dbać o logikę i szlifować język.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Czy czytasz książki dla przyjemności, czy wszędzie widzisz błędy?</span>
-                        <i class="las la-plus faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        To prawda, że zawodowe zboczenie potrafi czasem dać o sobie znać! Często zdarza mi się mimowolnie poprawiać przecinki w myślach. Jednak gdy historia jest naprawdę wciągająca i dobrze skonstruowana, bez problemu wyłączam "tryb redaktorki" i po prostu daję się porwać lekturze.
+                <!-- Ciekawostka 3 -->
+                <div class="fact-item">
+                    <div class="fact-number">3.</div>
+                    <div class="fact-content">
+                        <h3>Ulubiona <i>karta tarota</i></h3>
+                        <p>Księżyc. Interesuję się symboliką i archetypami, co bardzo często pomaga mi przy budowaniu lub naprawianiu portretów psychologicznych bohaterów.</p>
                     </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Czy potrafisz uratować słabą fabułę samą redakcją?</span>
-                        <i class="las la-plus faq-icon"></i>
+                
+                <!-- Ciekawostka 4 -->
+                <div class="fact-item">
+                    <div class="fact-number">4.</div>
+                    <div class="fact-content">
+                        <h3>Miejsca <i>na mapie</i></h3>
+                        <p>Mieszkałam we Włoszech oraz na chłodnej północy Anglii. Podróże ukształtowały moją wrażliwość i pozwoliły mi obcować z różnymi kulturami i językami.</p>
                     </div>
-                    <div class="faq-answer">
-                        Sama redakcja językowa (poprawianie zdań i przecinków) nie uratuje historii, w której brakuje logiki, motywacji postaci czy napięcia. Dlatego tak bardzo cenię redakcję strukturalną. Jeśli fundamenty są kruche, musimy je najpierw wzmocnić wspólnie – wtedy nawet najprostszy tekst może stać się literacką perełką.
+                </div>
+                
+                <!-- Ciekawostka 5 -->
+                <div class="fact-item">
+                    <div class="fact-number">5.</div>
+                    <div class="fact-content">
+                        <h3>Konstrukcyjny <i>majstersztyk</i></h3>
+                        <p>Uważam pierwszy scenariusz do „Piratów z Karaibów” (Klątwa Czarnej Perły) za absolutne arcydzieło pod kątem zawiązywania akcji, budowania postaci i zamykania wątków.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA -->
-        <section class="cta-section">
-            <h2>Czujesz, że nadajemy na tych samych falach?</h2>
-            <p>Porozmawiajmy o Twojej książce, komiksie lub systemie RPG. Zobaczmy, jak mogę Ci pomóc.</p>
-            <a href="mailto:natalia.szoppa@gmail.com" class="btn-gradient" style="background: white; color: black;">Napisz do mnie</a>
+        <!-- OSTATNI AKAPIT I ZDJĘCIE PODPISU -->
+        <section class="story-block" style="margin-top: 60px;">
+            <p>Jeśli to, o czym opowiadam, rezonuje z Twoim podejściem do pisania – zapraszam do kontaktu. Zróbmy razem coś świetnego i nadajmy Twojej historii profesjonalny szlif, na jaki zasługuje.</p>
+            
+            <div class="signature-wrapper">
+                <img src="{{ '/podpis.png' | relative_url }}" alt="Podpis Natalii Szoppy">
+            </div>
         </section>
 
-    </div>
+    </main>
+</div>
 
-    <!-- SKRYPT DO OBSŁUGI FAQ -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    
-                    faqItems.forEach(i => {
-                        i.classList.remove('active');
-                        i.querySelector('.faq-answer').style.display = 'none';
-                    });
-                    
-                    if (!isActive) {
-                        item.classList.add('active');
-                        item.querySelector('.faq-answer').style.display = 'block';
-                    }
-                });
+<!-- === OKIENKO (MODAL) Z INSTRUKCJAMI TRYBU CIEMNEGO === -->
+<div class="dark-modal-overlay" id="darkInfoModal">
+    <div class="dark-modal-panel">
+        <button class="modal-close" id="closeDarkInfoModal"><i class="las la-times"></i></button>
+        
+        <h3 class="lora-font" style="font-family: 'Lora', serif; font-size: 28px; margin-bottom: 25px; color: #111;">Wolisz <i>ciemność?</i></h3>
+        <p class="dark-intro">Pracuję nad natywnym trybem ciemnym dla mojej strony, ale jeśli Twoje oczy potrzebują odpoczynku już teraz, oto jak możesz łatwo wymusić ciemny motyw w swojej przeglądarce:</p>
+
+        <div class="browser-instruction">
+            <h4><i class="lab la-opera" style="color: #FF1B2D;"></i> Opera / Opera GX</h4>
+            <p>Opera ma to wbudowane! Kliknij ikonę <strong>Łatwa konfiguracja</strong> (suwaki w prawym górnym rogu) i zjedź w dół. Zaznacz opcję <strong>Wymuś ciemny motyw na stronach</strong>.</p>
+        </div>
+
+        <div class="browser-instruction">
+            <h4><i class="lab la-edge" style="color: #0078D7;"></i> Microsoft Edge</h4>
+            <p>Skopiuj i wklej w pasek adresu: <br><code style="background: #f4f5f6; padding: 2px 6px; border-radius: 4px;">edge://flags</code><br>Wyszukaj w eksperymentach frazę <strong>Auto Dark Mode for Web Contents</strong>, zmień na <strong>Enabled</strong> i zrestartuj przeglądarkę.</p>
+        </div>
+
+        <div class="browser-instruction">
+            <h4><i class="lab la-chrome" style="color: #4285F4;"></i> Google Chrome</h4>
+            <p>Działa to tak samo jak w Edge. Wpisz w pasek adresu <code style="background: #f4f5f6; padding: 2px 6px; border-radius: 4px;">chrome://flags</code>, odszukaj opcję <strong>Auto Dark Mode for Web Contents</strong>, włącz ją (Enabled) i zrestartuj program.</p>
+        </div>
+
+        <div class="browser-instruction">
+            <h4><i class="lab la-firefox" style="color: #FF7139;"></i> Firefox / Safari</h4>
+            <p>Najprostszym rozwiązaniem jest instalacja świetnej, darmowej wtyczki <strong>Dark Reader</strong>. Automatycznie przyciemni każdą stronę, nie psując jej wyglądu!</p>
+        </div>
+    </div>
+</div>
+
+<!-- === SKRYPTY === -->
+<script>
+    // Obsługa akordeonu FAQ
+    function toggleFaq(element) {
+        const item = element.parentElement;
+        const answer = element.nextElementSibling;
+        const isOpen = item.classList.contains('open');
+        
+        if (isOpen) {
+            item.classList.remove('open');
+            answer.style.display = 'none';
+        } else {
+            item.classList.add('open');
+            answer.style.display = 'block';
+        }
+    }
+
+    // Obsługa okienka modalu
+    document.addEventListener("DOMContentLoaded", function() {
+        const openDarkBtn = document.getElementById('openDarkInfoModal');
+        const closeDarkBtn = document.getElementById('closeDarkInfoModal');
+        const darkModal = document.getElementById('darkInfoModal');
+
+        if(openDarkBtn && closeDarkBtn && darkModal) {
+            openDarkBtn.addEventListener('click', () => {
+                darkModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
-        });
-    </script>
+
+            closeDarkBtn.addEventListener('click', () => {
+                darkModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            darkModal.addEventListener('click', (e) => {
+                if (e.target === darkModal) {
+                    darkModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
