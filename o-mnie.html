@@ -261,28 +261,33 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
         }
 
         /* === PŁYWAJĄCE PRZYCISKI AKCJI === */
-        .floating-actions {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 9999;
-        }
+       /* Animowany przycisk mail */
         .float-btn-mail {
-            width: 60px; height: 60px; border-radius: 50%; background: var(--gradient); color: white;
-            display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none;
-            box-shadow: 0 0 0 16px rgba(123, 44, 191, 0.08); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            background: var(--gradient); 
+            color: white;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 26px; 
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4);
+            transition: all 0.3s ease;
+            animation: pulseGlow 2s infinite;
         }
-        .float-btn-mail:hover { transform: translateY(-3px); box-shadow: 0 0 0 20px rgba(123, 44, 191, 0.12); }
-        .float-btn-dark {
-            width: 60px; height: 60px; border-radius: 50%; background: #111111; color: white;
-            display: flex; align-items: center; justify-content: center; font-size: 24px; border: none; cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, background 0.3s ease;
+        .float-btn-mail:hover { 
+            transform: translateY(-5px) scale(1.05); 
+            box-shadow: 0 15px 35px rgba(123, 44, 191, 0.6); 
+            animation: none;
         }
-        .float-btn-dark:hover { transform: translateY(-3px); background: #2a2a2a; }
-
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(123, 44, 191, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0); }
+        }
         /* MODAL TRYBU CIEMNEGO */
         .dark-modal-overlay { 
             position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
@@ -334,7 +339,7 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
     <aside class="sidebar">
         <div class="sidebar-photo-wrapper">
             <div class="sidebar-photo-container">
-                <img src="https://i.imgur.com/s84Zfq8.png" alt="Natalia Szoppa">
+                <img src="https://i.imgur.com/WlwNem1.jpeg" alt="Natalia Szoppa">
             </div>
         </div>
 
