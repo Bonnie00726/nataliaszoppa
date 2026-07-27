@@ -56,7 +56,7 @@
     ========================================== */
     .global-floating-btn {
         position: fixed !important;
-        bottom: 30px !important;
+        left: 30px !important; /* Wspólne ustawienie lewej strony dla obu przycisków */
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -70,9 +70,9 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
 
-    /* Przycisk Kontaktowy (Koperta - po prawej) */
+    /* Przycisk Kontaktowy (Koperta - wyżej) */
     .btn-contact-global {
-        right: 30px !important;
+        bottom: 105px !important; /* 30px od dołu + 60px księżyc + 15px odstępu = 105px */
         background: var(--gradient, linear-gradient(135deg, #7b2cbf, #f77f00));
         color: #ffffff;
         font-size: 30px;
@@ -86,9 +86,9 @@
         animation: none;
     }
 
-    /* Przycisk Trybu Ciemnego (Księżyc - po lewej) */
+    /* Przycisk Trybu Ciemnego (Księżyc - na samym dole) */
     .btn-dark-global {
-        left: 30px !important;
+        bottom: 30px !important;
         background: var(--text-black, #111111);
         color: white;
         font-size: 24px;
@@ -131,16 +131,16 @@
     ========================================== */
     @media (max-width: 768px) {
         .global-floating-btn {
-            bottom: 20px !important; /* Idealne wyrównanie w pionie dla telefonów */
+            left: 20px !important; /* Wspólne wyrównanie lewej krawędzi dla telefonów */
             width: 50px;
             height: 50px;
         }
         .btn-contact-global {
-            right: 20px !important;
+            bottom: 85px !important; /* 20px od dołu + 50px księżyc + 15px odstępu = 85px */
             font-size: 26px;
         }
         .btn-dark-global {
-            left: 20px !important;
+            bottom: 20px !important;
             font-size: 22px;
         }
     }
