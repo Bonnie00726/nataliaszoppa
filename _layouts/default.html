@@ -9,66 +9,105 @@
 
     {% include footer.html %}
 
-    <button class="floating-dark-btn" id="openDarkInfoModal" title="Oszczędzaj oczy - Tryb Ciemny">
+    <!-- ==========================================
+         GLOBALNE PŁYWAJĄCE PRZYCISKI AKCJI 
+    =========================================== -->
+    <a href="mailto:natalia.szoppa@gmail.com" class="global-floating-btn btn-contact-global" title="Napisz do mnie" aria-label="Napisz e-mail">
+        <i class="las la-envelope"></i>
+    </a>
+    
+    <button class="global-floating-btn btn-dark-global" id="openDarkInfoModal" title="Oszczędzaj oczy - Tryb Ciemny" aria-label="Włącz tryb ciemny">
         <i class="las la-moon"></i>
     </button>
 
-  <div class="dark-modal-overlay" id="darkInfoModal">
-    <div class="dark-modal-panel">
-        <button class="modal-close" id="closeDarkInfoModal"><i class="las la-times"></i></button>
-        
-        <h3 class="lora-font">Wolisz <i>ciemność?</i></h3>
-        <p class="dark-intro">Pracuję nad natywnym trybem ciemnym dla mojej strony, ale jeśli Twoje oczy potrzebują odpoczynku już teraz, oto jak możesz łatwo wymusić ciemny motyw w swojej przeglądarce:</p>
+    <!-- Modal Trybu Ciemnego -->
+    <div class="dark-modal-overlay" id="darkInfoModal">
+        <div class="dark-modal-panel">
+            <button class="modal-close" id="closeDarkInfoModal"><i class="las la-times"></i></button>
+            
+            <h3 class="lora-font">Wolisz <i>ciemność?</i></h3>
+            <p class="dark-intro">Pracuję nad natywnym trybem ciemnym dla mojej strony, ale jeśli Twoje oczy potrzebują odpoczynku już teraz, oto jak możesz łatwo wymusić ciemny motyw w swojej przeglądarce:</p>
 
-        <div class="browser-instruction">
-            <h4><i class="lab la-opera" style="color: #FF1B2D;"></i> Opera / Opera GX</h4>
-            <p>Opera ma to wbudowane! Kliknij ikonę <strong>Łatwa konfiguracja</strong> (suwaki w prawym górnym rogu) i zjedź w dół. Zaznacz opcję <strong>Wymuś ciemny motyw na stronach</strong>.</p>
-        </div>
+            <div class="browser-instruction">
+                <h4><i class="lab la-opera" style="color: #FF1B2D;"></i> Opera / Opera GX</h4>
+                <p>Opera ma to wbudowane! Kliknij ikonę <strong>Łatwa konfiguracja</strong> (suwaki w prawym górnym rogu) i zjedź w dół. Zaznacz opcję <strong>Wymuś ciemny motyw na stronach</strong>.</p>
+            </div>
 
-        <div class="browser-instruction">
-            <h4><i class="lab la-edge" style="color: #0078D7;"></i> Microsoft Edge</h4>
-            <p>Skopiuj i wklej w pasek adresu: <br><code style="background: var(--bg-muted); padding: 2px 6px; border-radius: 4px;">edge://flags</code><br>Wyszukaj w eksperymentach frazę <strong>Auto Dark Mode for Web Contents</strong>, zmień na <strong>Enabled</strong> i zrestartuj przeglądarkę.</p>
-        </div>
+            <div class="browser-instruction">
+                <h4><i class="lab la-edge" style="color: #0078D7;"></i> Microsoft Edge</h4>
+                <p>Skopiuj i wklej w pasek adresu: <br><code style="background: var(--bg-muted); padding: 2px 6px; border-radius: 4px;">edge://flags</code><br>Wyszukaj w eksperymentach frazę <strong>Auto Dark Mode for Web Contents</strong>, zmień na <strong>Enabled</strong> i zrestartuj przeglądarkę.</p>
+            </div>
 
-        <div class="browser-instruction">
-            <h4><i class="lab la-chrome" style="color: #4285F4;"></i> Google Chrome</h4>
-            <p>Działa to tak samo jak w Edge. Wpisz w pasek adresu <code style="background: var(--bg-muted); padding: 2px 6px; border-radius: 4px;">chrome://flags</code>, odszukaj opcję <strong>Auto Dark Mode for Web Contents</strong>, włącz ją (Enabled) i zrestartuj program.</p>
-        </div>
+            <div class="browser-instruction">
+                <h4><i class="lab la-chrome" style="color: #4285F4;"></i> Google Chrome</h4>
+                <p>Działa to tak samo jak w Edge. Wpisz w pasek adresu <code style="background: var(--bg-muted); padding: 2px 6px; border-radius: 4px;">chrome://flags</code>, odszukaj opcję <strong>Auto Dark Mode for Web Contents</strong>, włącz ją (Enabled) i zrestartuj program.</p>
+            </div>
 
-        <div class="browser-instruction">
-            <h4><i class="lab la-firefox" style="color: #FF7139;"></i> Firefox / Safari</h4>
-            <p>Najprostszym rozwiązaniem jest instalacja świetnej, darmowej wtyczki <strong>Dark Reader</strong>. Automatycznie przyciemni każdą stronę, nie psując jej wyglądu!</p>
+            <div class="browser-instruction">
+                <h4><i class="lab la-firefox" style="color: #FF7139;"></i> Firefox / Safari</h4>
+                <p>Najprostszym rozwiązaniem jest instalacja świetnej, darmowej wtyczki <strong>Dark Reader</strong>. Automatycznie przyciemni każdą stronę, nie psując jej wyglądu!</p>
+            </div>
         </div>
     </div>
-</div>
 
 <style>
-    /* Przycisk po lewej stronie - teraz czarny */
-    .floating-dark-btn { 
-        position: fixed; 
-        bottom: 30px; 
-        left: 30px; 
-        z-index: 9999; 
-        background: var(--text-black); 
-        color: white; 
-        width: 60px; 
-        height: 60px; 
-        border-radius: 50%; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        font-size: 24px; 
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
-        cursor: pointer; 
-        transition: transform 0.3s ease, background 0.3s; 
-        border: none; 
-    }
-    .floating-dark-btn:hover { 
-        transform: translateY(-3px); 
-        background: var(--accent-purple); 
+    /* ==========================================
+       STYLE PŁYWAJĄCYCH PRZYCISKÓW
+    ========================================== */
+    .global-floating-btn {
+        position: fixed !important;
+        bottom: 30px !important;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
     }
 
-    /* Nakładka i Panel okienka */
+    /* Przycisk Kontaktowy (Koperta - po prawej) */
+    .btn-contact-global {
+        right: 30px !important;
+        background: var(--gradient, linear-gradient(135deg, #7b2cbf, #f77f00));
+        color: #ffffff;
+        font-size: 30px;
+        box-shadow: 0 10px 25px rgba(123, 44, 191, 0.4);
+        animation: pulseGlowGlobal 2s infinite;
+    }
+    .btn-contact-global i { color: #ffffff; }
+    .btn-contact-global:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(123, 44, 191, 0.6);
+        animation: none;
+    }
+
+    /* Przycisk Trybu Ciemnego (Księżyc - po lewej) */
+    .btn-dark-global {
+        left: 30px !important;
+        background: var(--text-black, #111111);
+        color: white;
+        font-size: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    .btn-dark-global:hover {
+        transform: translateY(-3px);
+        background: var(--accent-purple, #7b2cbf);
+    }
+
+    @keyframes pulseGlowGlobal {
+        0% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5); }
+        70% { box-shadow: 0 0 0 15px rgba(123, 44, 191, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0); }
+    }
+
+    /* ==========================================
+       STYLE MODALU TRYBU CIEMNEGO
+    ========================================== */
     .dark-modal-overlay { 
         position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
         z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; 
@@ -80,7 +119,6 @@
     }
     .dark-modal-overlay.active .dark-modal-panel { transform: translateY(0); }
 
-    /* Wnętrze okienka */
     .dark-intro { font-family: 'Mulish', sans-serif; font-size: 15px; color: var(--text-gray); line-height: 1.6; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
     .browser-instruction { margin-bottom: 25px; }
     .browser-instruction:last-child { margin-bottom: 0; }
@@ -88,8 +126,26 @@
     .browser-instruction h4 i { font-size: 24px; }
     .browser-instruction p { font-family: 'Mulish', sans-serif; font-size: 14px; color: var(--text-gray); line-height: 1.6; margin: 0; padding-left: 34px; }
 
+    /* ==========================================
+       MEDIA QUERIES (RESPONSYWNOŚĆ)
+    ========================================== */
+    @media (max-width: 768px) {
+        .global-floating-btn {
+            bottom: 20px !important; /* Idealne wyrównanie w pionie dla telefonów */
+            width: 50px;
+            height: 50px;
+        }
+        .btn-contact-global {
+            right: 20px !important;
+            font-size: 26px;
+        }
+        .btn-dark-global {
+            left: 20px !important;
+            font-size: 22px;
+        }
+    }
+
     @media (max-width: 600px) {
-        .floating-dark-btn { bottom: 20px; left: 20px; width: 50px; height: 50px; font-size: 20px; }
         .dark-modal-panel { padding: 40px 25px; }
         .browser-instruction p { padding-left: 0; margin-top: 5px; }
     }
