@@ -229,6 +229,8 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
             padding-top: 5px;
+            min-width: 45px; 
+            text-align: left;
         }
         
         .fact-content h3 {
@@ -257,6 +259,36 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             height: auto;
             opacity: 0.85;
             display: inline-block;
+        }
+
+        /* === PRZYCISK CALL TO ACTION === */
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            font-family: var(--sans);
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff !important;
+            background: var(--gradient);
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(123, 44, 191, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(123, 44, 191, 0.5);
+        }
+
+        .cta-button i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover i {
+            transform: translateX(5px);
         }
 
         /* === PŁYWAJĄCE PRZYCISKI AKCJI === */
@@ -332,7 +364,14 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             .main-content { padding: 40px 20px; }
             .top-nav { justify-content: center; margin-bottom: 40px; }
             .nav-links { justify-content: center; }
-            .floating-actions { bottom: 20px; left: 20px; gap: 10px; transform: scale(0.85); transform-origin: bottom left; }
+            .floating-actions { 
+                bottom: 20px; 
+                left: auto; 
+                right: 20px; 
+                gap: 15px; 
+                transform: scale(0.85); 
+                transform-origin: bottom right; 
+            }
             .fact-number { font-size: 34px; }
             .fact-content h3 { font-size: 20px; }
             .copyright { padding-top: 10px; }
@@ -519,11 +558,11 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             </div>
         </section>
 
-        <!-- OSTATNI AKAPIT I ZDJĘCIE PODPISU -->
-        <section class="story-block" style="margin-top: 60px;">
-            <p>Jeśli to, o czym opowiadam, rezonuje z Twoim podejściem do pisania – zapraszam do kontaktu. Zróbmy razem coś świetnego!</p>
-            
-            
+        <!-- OSTATNI AKAPIT I CALL TO ACTION -->
+        <section class="story-block" style="margin-top: 60px; text-align: center;">
+            <a href="mailto:natalia.szoppa@gmail.com" class="cta-button">
+                Zróbmy razem coś świetnego! <i class="las la-arrow-right"></i>
+            </a>
         </section>
 
     </main>
