@@ -313,8 +313,9 @@ title: Cennik
     /* Dopasowanie na telefonach */
     @media (max-width: 768px) {
         .floating-contact-btn {
-            bottom: 85px; /* Na telefonach przyciski zazwyczaj są mniejsze, więc można go dać ciut niżej */
-            left: 20px;
+            bottom: 85px; 
+            left: auto; /* Usunięcie przypięcia do lewej krawędzi */
+            right: 20px; /* Przypięcie do prawej krawędzi (zgodnie z poprzednim widokiem) */
             width: 50px;
             height: 50px;
             font-size: 26px;
