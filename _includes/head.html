@@ -260,48 +260,25 @@
             .mobile-toggle { display: block; }
         }
         /* ==========================================
-   STYLOWANIE LINKÓW W TEKŚCIE (GRADIENT)
+   WYJĄTEK DLA SPISU TREŚCI (TOC) - OPCJA ATOMOWA
 ========================================== */
-p a, li a, .faq-answer a {
-    background: var(--gradient, linear-gradient(135deg, #7b2cbf, #f77f00));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    transition: opacity 0.3s ease;
-    display: inline; /* Naprawia błędy z nakładaniem gradientu w niektórych przeglądarkach */
+#markdown-toc a, #markdown-toc li a, 
+.toc a, .toc li a, 
+.spis-tresci a, .spis-tresci li a {
+    background: transparent !important;
+    -webkit-background-clip: border-box !important;
+    -webkit-text-fill-color: var(--text-black) !important; /* Wymuszony czarny kolor tekstu */
+    color: var(--text-black) !important;
+    font-weight: 400 !important; /* Zdejmujemy pogrubienie */
 }
 
-/* Lekkie rozjaśnienie po najechaniu */
-p a:hover, li a:hover, .faq-answer a:hover {
-    opacity: 0.7;
-}
-
-/* ZABEZPIECZENIE: Przyciski nie mogą być przezroczyste */
-p a.cta-button, li a.cta-button, 
-p a.btn-gradient, li a.btn-gradient,
-p a.btn-outline, li a.btn-outline {
-    -webkit-text-fill-color: initial;
-    background-clip: border-box;
-}
-
-/* ==========================================
-   WYJĄTEK DLA SPISU TREŚCI (TOC)
-========================================== */
-#markdown-toc a, .toc a, .spis-tresci a {
-    /* Resetujemy gradient */
-    background: none;
-    -webkit-text-fill-color: initial;
-    display: block; /* Spis treści wygląda lepiej blokowo */
-    
-    /* Ustawiamy zwykły czarny kolor */
-    color: var(--text-black);
-    font-weight: 400;
-    transition: color 0.3s ease;
-}
-
-#markdown-toc a:hover, .toc a:hover, .spis-tresci a:hover {
-    color: var(--accent-purple); /* Fioletowy kolor przy najechaniu (hover) */
-    opacity: 1;
+/* Kolor spisu treści po najechaniu myszką */
+#markdown-toc a:hover, #markdown-toc li a:hover, 
+.toc a:hover, .toc li a:hover, 
+.spis-tresci a:hover, .spis-tresci li a:hover {
+    -webkit-text-fill-color: var(--accent-purple) !important; 
+    color: var(--accent-purple) !important;
+    opacity: 1 !important;
 }
     </style>
 </head>
