@@ -75,8 +75,20 @@ layout: default
         font-family: 'Mulish', sans-serif; font-weight: 700; color: var(--accent-purple); font-size: 15px;
     }
     .article-toc li:last-child { margin-bottom: 0; }
-    .article-toc a { font-family: 'Mulish', sans-serif; font-weight: 600; font-size: 15px; color: var(--text-gray); transition: color 0.2s; text-decoration: none; }
-    .article-toc a:hover { color: var(--accent-purple); }
+    
+    /* LINKI W SPISIE TREŚCI - WYJĄTEK OD PODKREŚLEŃ */
+    .article-toc a { 
+        font-family: 'Mulish', sans-serif; 
+        font-weight: 600; 
+        font-size: 15px; 
+        color: var(--text-gray); 
+        transition: color 0.2s; 
+        text-decoration: none; 
+    }
+    .article-toc a:hover { 
+        color: var(--accent-purple); 
+        text-decoration: none; /* Brak podkreślenia w spisie */
+    }
 
     /* --- TYPOGRAFIA RESZTY TEKSTU (LORA) --- */
     .article-content { font-family: 'Lora', serif; font-size: 18px; line-height: 1.85; color: #333333; }
@@ -90,11 +102,44 @@ layout: default
     
     .article-content p { margin-bottom: 25px; }
 
+    /* --- LINKI W TEKŚCIE ARTYKUŁU (PODKREŚLENIE I ZMIANA KOLORU) --- */
+    .article-content a,
+    .first-paragraph-container a {
+        color: inherit; /* Taki sam kolor jak otaczający tekst */
+        font-weight: inherit; /* Taka sama grubość jak otaczający tekst */
+        text-decoration: underline; /* Podkreślenie */
+        text-underline-offset: 3px; /* Odsunięcie linii od tekstu */
+        transition: color 0.3s ease;
+    }
+    
+    .article-content a:hover,
+    .first-paragraph-container a:hover {
+        color: var(--accent-purple); /* Zmienia się na fioletowy */
+    }
+
+    /* Zabezpieczenie dla przycisków w treści */
+    .article-content a.btn-gradient,
+    .article-content a.btn-outline,
+    .article-content a.cta-button {
+        text-decoration: none !important;
+        font-weight: 600;
+    }
+    .article-content a.btn-gradient,
+    .article-content a.cta-button {
+        color: #ffffff !important;
+    }
+    .article-content a.btn-outline {
+        color: var(--text-black) !important;
+    }
+    .article-content a.btn-outline:hover {
+        color: #ffffff !important;
+    }
+
     /* Listy ze strzałkami */
     .article-content ul { list-style: none; padding-left: 0; margin-bottom: 30px; }
     .article-content ul li { position: relative; padding-left: 30px; margin-bottom: 12px; }
     .article-content ul li::before {
-        content: '\f105'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+        content: '105'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
         position: absolute; left: 0; top: 4px; font-size: 14px;
         background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
@@ -106,7 +151,7 @@ layout: default
         border: 1px solid var(--border-color); background: #ffffff; text-align: center; border-radius: 4px;
     }
     .article-content blockquote::before {
-        content: '\f10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+        content: '10d'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
         position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
         background: var(--gradient); color: white; width: 44px; height: 44px; border-radius: 50%;
         display: flex; align-items: center; justify-content: center; font-size: 16px; font-style: normal;
