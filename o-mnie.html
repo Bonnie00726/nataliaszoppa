@@ -477,6 +477,50 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             .copyright { padding-top: 10px; }
             .edu-trigger-btn { top: 75%; }
         }
+        /* ==========================================
+   STYLOWANIE LINKÓW W TEKŚCIE (GRADIENT)
+========================================== */
+p a, li a, .faq-answer a {
+    background: var(--gradient, linear-gradient(135deg, #7b2cbf, #f77f00));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    transition: opacity 0.3s ease;
+    display: inline; /* Naprawia błędy z nakładaniem gradientu w niektórych przeglądarkach */
+}
+
+/* Lekkie rozjaśnienie po najechaniu */
+p a:hover, li a:hover, .faq-answer a:hover {
+    opacity: 0.7;
+}
+
+/* ZABEZPIECZENIE: Przyciski nie mogą być przezroczyste */
+p a.cta-button, li a.cta-button, 
+p a.btn-gradient, li a.btn-gradient,
+p a.btn-outline, li a.btn-outline {
+    -webkit-text-fill-color: initial;
+    background-clip: border-box;
+}
+
+/* ==========================================
+   WYJĄTEK DLA SPISU TREŚCI (TOC)
+========================================== */
+#markdown-toc a, .toc a, .spis-tresci a {
+    /* Resetujemy gradient */
+    background: none;
+    -webkit-text-fill-color: initial;
+    display: block; /* Spis treści wygląda lepiej blokowo */
+    
+    /* Ustawiamy zwykły czarny kolor */
+    color: var(--text-black);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+#markdown-toc a:hover, .toc a:hover, .spis-tresci a:hover {
+    color: var(--accent-purple); /* Fioletowy kolor przy najechaniu (hover) */
+    opacity: 1;
+}
     </style>
 </head>
 <body>
