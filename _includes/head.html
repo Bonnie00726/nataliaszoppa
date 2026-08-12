@@ -62,9 +62,11 @@
         }
         
         a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
-        /* Stylowanie linków tekstowych (gradient) */
+       /* ==========================================
+   STYLOWANIE LINKÓW W TEKŚCIE (GRADIENT)
+========================================== */
 p a, li a, .faq-answer a {
-    background: var(--gradient);
+    background: var(--gradient, linear-gradient(135deg, #7b2cbf, #f77f00));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
@@ -75,8 +77,28 @@ p a:hover, li a:hover, .faq-answer a:hover {
     opacity: 0.7;
 }
 
+/* Zabezpieczenie dla przycisków */
 p a.btn-gradient, p a.btn-outline, li a.btn-gradient, li a.btn-outline {
     -webkit-text-fill-color: initial;
+}
+
+/* ==========================================
+   WYJĄTEK DLA SPISU TREŚCI (TOC)
+========================================== */
+#markdown-toc a, .toc a, .spis-tresci a, .table-of-contents a {
+    /* Resetujemy gradient */
+    background: none;
+    -webkit-text-fill-color: initial;
+    
+    /* Ustawiamy standardowy wygląd */
+    color: var(--text-black);
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+#markdown-toc a:hover, .toc a:hover, .spis-tresci a:hover, .table-of-contents a:hover {
+    color: var(--accent-purple); /* Po najechaniu robi się fioletowy zamiast wyblaknąć */
+    opacity: 1;
 }
 
         /* === 3. CHARAKTERYSTYCZNE EFEKTY WIZUALNE === */
