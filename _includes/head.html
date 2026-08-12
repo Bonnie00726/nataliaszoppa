@@ -259,26 +259,32 @@
             .nav-links.show-mobile { display: flex; } /* Ta klasa jest dodawana po kliknięciu w hamburgera */
             .mobile-toggle { display: block; }
         }
-        /* ==========================================
-   WYJĄTEK DLA SPISU TREŚCI (TOC) - OPCJA ATOMOWA
+      /* ==========================================
+   STYLOWANIE LINKÓW W TEKŚCIE I SPISACH TREŚCI
 ========================================== */
-#markdown-toc a, #markdown-toc li a, 
-.toc a, .toc li a, 
-.spis-tresci a, .spis-tresci li a {
-    background: transparent !important;
-    -webkit-background-clip: border-box !important;
-    -webkit-text-fill-color: var(--text-black) !important; /* Wymuszony czarny kolor tekstu */
-    color: var(--text-black) !important;
-    font-weight: 400 !important; /* Zdejmujemy pogrubienie */
+p a, li a, .faq-answer a {
+    color: inherit; /* Przyjmuje kolor otaczającego tekstu */
+    font-weight: 700; /* Lekkie pogrubienie, by wyróżnić link */
+    transition: color 0.3s ease;
 }
 
-/* Kolor spisu treści po najechaniu myszką */
-#markdown-toc a:hover, #markdown-toc li a:hover, 
-.toc a:hover, .toc li a:hover, 
-.spis-tresci a:hover, .spis-tresci li a:hover {
-    -webkit-text-fill-color: var(--accent-purple) !important; 
-    color: var(--accent-purple) !important;
-    opacity: 1 !important;
+/* Kolor po najechaniu myszką (Hover) */
+p a:hover, li a:hover, .faq-answer a:hover {
+    color: var(--accent-purple); /* Zmienia się na fioletowy */
+}
+
+/* ZABEZPIECZENIE: Przyciski typu Call to Action pozostają białe */
+p a.cta-button, li a.cta-button, 
+p a.btn-gradient, li a.btn-gradient,
+p a.btn-outline, li a.btn-outline {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+p a.btn-outline, li a.btn-outline {
+    color: var(--text-black) !important;
+}
+p a.btn-outline:hover, li a.btn-outline:hover {
+    color: #ffffff !important;
 }
     </style>
 </head>
