@@ -291,7 +291,7 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             transform: translateX(5px);
         }
 
-        /* === PŁYWAJĄCE PRZYCISKI AKCJI === */
+        /* === PŁYWAJĄCE PRZYCISKI AKCJI (LEWA STRONA) === */
         .floating-actions {
             position: fixed;
             bottom: 30px;
@@ -356,6 +356,106 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
         .browser-instruction h4 i { font-size: 24px; }
         .browser-instruction p { font-family: var(--sans); font-size: 14px; color: #444; line-height: 1.6; margin: 0; padding-left: 34px; }
 
+        /* === PANEL EDUKACJI (SLIDE-IN PRAWY) === */
+        .edu-trigger-btn {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 15px 15px 15px 20px;
+            border-radius: 30px 0 0 30px;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: -5px 5px 15px rgba(123, 44, 191, 0.25);
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+
+        .edu-trigger-btn:hover {
+            padding-right: 20px;
+            padding-left: 25px;
+            box-shadow: -5px 8px 20px rgba(123, 44, 191, 0.4);
+        }
+
+        .education-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: #ffffff;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+            z-index: 10001;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 50px 40px;
+            overflow-y: auto;
+        }
+
+        .education-panel.active {
+            right: 0;
+        }
+
+        .edu-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-black);
+            transition: color 0.3s;
+        }
+
+        .edu-close-btn:hover {
+            color: var(--accent-purple);
+        }
+
+        .edu-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .edu-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .edu-list li:last-child {
+            border-bottom: none;
+        }
+
+        .edu-list li::before {
+            content: '•';
+            color: var(--accent-purple);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        .edu-list li strong {
+            display: block;
+            color: var(--text-black);
+            font-size: 16px;
+            margin-bottom: 5px;
+            font-family: var(--serif);
+        }
+
+        .edu-list li p {
+            color: var(--text-gray);
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .layout-wrapper { flex-direction: column; }
@@ -366,28 +466,33 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             .nav-links { justify-content: center; }
             .floating-actions { 
                 bottom: 20px; 
-                left: auto; 
-                right: 20px; 
+                left: 20px; /* Przeniesione na lewą na telefonach by było pod ręką, edukacja jest z prawej */
+                right: auto;
                 gap: 15px; 
                 transform: scale(0.85); 
-                transform-origin: bottom right; 
+                transform-origin: bottom left; 
             }
             .fact-number { font-size: 34px; }
             .fact-content h3 { font-size: 20px; }
             .copyright { padding-top: 10px; }
+            .edu-trigger-btn { top: 75%; }
         }
     </style>
 </head>
 <body>
 
-<!-- === PŁYWAJĄCE PRZYCISKI AKCJI === -->
+<!-- === PŁYWAJĄCE PRZYCISKI AKCJI (LEWA STRONA) === -->
 <div class="floating-actions">
-
+    <a href="mailto:natalia.szoppa@gmail.com" class="float-btn-mail" title="Napisz do mnie" aria-label="Napisz e-mail">
+        <i class="las la-envelope"></i>
+    </a>
+    
     <button class="float-btn-dark" id="openDarkInfoModal" title="Oszczędzaj oczy - Tryb Ciemny" aria-label="Włącz tryb ciemny">
         <i class="las la-moon"></i>
     </button>
 </div>
 
+<!-- === UKŁAD GŁÓWNY === -->
 <div class="layout-wrapper">
     <!-- LEWY SIDEBAR -->
     <aside class="sidebar">
@@ -409,7 +514,7 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
         <!-- Górna nawigacja -->
         <header class="top-nav">
             <nav class="nav-links">
-                <a href="{{ '/index.html' | relative_url }}" class="active">Strona główna</a>
+                <a href="{{ '/index.html' | relative_url }}">Strona główna</a>
                 <a href="{{ '/oferta.html' | relative_url }}">Oferta</a>
                 <a href="{{ '/portfolio.html' | relative_url }}">Portfolio</a>
                 <a href="{{ '/cennik.html' | relative_url }}">Cennik</a>
@@ -566,6 +671,46 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
     </main>
 </div>
 
+<!-- === PRZYCISK WYSUWAJĄCY PANEL EDUKACJI (PRAWA STRONA) === -->
+<button class="edu-trigger-btn" id="openEduPanel" title="Moje kompetencje" aria-label="Rozwiń panel edukacji">
+    <i class="fa-solid fa-graduation-cap"></i>
+</button>
+
+<!-- === PANEL EDUKACJI (SLIDE-IN) === -->
+<div class="education-panel" id="educationPanel">
+    <button class="edu-close-btn" id="closeEduPanel"><i class="las la-times"></i></button>
+    
+    <h3 class="lora-font" style="font-size: 28px; margin-bottom: 20px;">Moja <i>edukacja</i></h3>
+    <p style="color: var(--text-gray); font-size: 15px; margin-bottom: 25px;">Krótkie podsumowanie moich kompetencji i kursów, dzięki którym Twój tekst jest w dobrych rękach.</p>
+    
+    <ul class="edu-list">
+        <li>
+            <strong>Uniwersytet Pedagogiczny</strong>
+            <p>Filologia angielska (stopień magistra). Specjalizacja: tłumaczenia.</p>
+        </li>
+        <li>
+            <strong>Państwowa Wyższa Szkoła Zawodowa w Tarnowie</strong>
+            <p>Filologia angielska (stopień licencjata). Specjalizacja: tłumaczenia i edytorstwo.</p>
+        </li>
+        <li>
+            <strong>Uniwersytet Rzeszowski</strong>
+            <p>Studia podyplomowe. Specjalizacja: pedagogika w nauczaniu.</p>
+        </li>
+        <li>
+            <strong>Certyfikat CELTA (Kraków)</strong>
+            <p>Prestiżowy kurs z zakresu metodologii nauczania języków obcych (Cambridge Assessment English).</p>
+        </li>
+        <li>
+            <strong>Słowna Agentka (Ewa Binda)</strong>
+            <p>Kurs z zakresu poprawności językowej z elementami biznesowymi.</p>
+        </li>
+        <li>
+            <strong>Warsztat pisarski (Udemy i inne)</strong>
+            <p>Stale poszerzam wiedzę, kończąc dziesiątki kursów dotyczących technik pisarskich, kompozycji i storytellingu. Dzięki temu potrafię wyjść poza schematy i zaproponować autorom <em>custom approach</em> – rozwiązania z zakresu redakcji idealnie dopasowane do ich unikalnego stylu i indywidualnych potrzeb tekstu.</p>
+        </li>
+    </ul>
+</div>
+
 <!-- === OKIENKO (MODAL) Z INSTRUKCJAMI TRYBU CIEMNEGO === -->
 <div class="dark-modal-overlay" id="darkInfoModal">
     <div class="dark-modal-panel">
@@ -613,7 +758,7 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
         }
     }
 
-    // Obsługa okienka modalu
+    // Obsługa okienka modalu (tryb ciemny)
     document.addEventListener("DOMContentLoaded", function() {
         const openDarkBtn = document.getElementById('openDarkInfoModal');
         const closeDarkBtn = document.getElementById('closeDarkInfoModal');
@@ -634,6 +779,28 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
                 if (e.target === darkModal) {
                     darkModal.classList.remove('active');
                     document.body.style.overflow = 'auto';
+                }
+            });
+        }
+        
+        // Obsługa bocznego panelu edukacji
+        const openEduBtn = document.getElementById('openEduPanel');
+        const closeEduBtn = document.getElementById('closeEduPanel');
+        const eduPanel = document.getElementById('educationPanel');
+
+        if(openEduBtn && closeEduBtn && eduPanel) {
+            openEduBtn.addEventListener('click', () => {
+                eduPanel.classList.add('active');
+            });
+
+            closeEduBtn.addEventListener('click', () => {
+                eduPanel.classList.remove('active');
+            });
+
+            // Ukryj panel po kliknięciu gdziekolwiek poza nim
+            document.addEventListener('click', (e) => {
+                if (eduPanel.classList.contains('active') && !eduPanel.contains(e.target) && !openEduBtn.contains(e.target)) {
+                    eduPanel.classList.remove('active');
                 }
             });
         }
