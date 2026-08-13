@@ -157,7 +157,6 @@
 </section>
 
 <!-- STRONA 2: WSTĘP I WYDMUSZKI -->
-<!-- ZMIANA: Dodano style flex do sekcji, aby cała zawartość mogła rozciągnąć się na wysokość A4 -->
 <section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
   <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="section-opener">
@@ -176,15 +175,14 @@
     <p style="margin-top: 8px; margin-bottom: 0;">Staraj się nie używać ich poza tymi funkcjami, a już na pewno unikaj ich nadmiaru.</p>
   </div>
 
-  <!-- ZMIANA: flex-grow: 1 pozwala q-row zająć całą resztę wolnego miejsca na dole strony -->
   <div class="q-row" style="display: flex; gap: 24px; flex-grow: 1; align-items: stretch; margin-bottom: 16px;">
     
-    <!-- ZMIANA: flex: 1.2 (lewa jest ciut szersza), flex-direction: column pozwala rozciągnąć notatnik w pionie -->
-    <div class="q-main" style="flex: 1.2; display: flex; flex-direction: column;">
+    <!-- ZMIANA: Sztywno przypisana szerokość na poziomie 55% z odjęciem połowy odstępu (gap) -->
+    <div class="q-main" style="flex: 0 0 calc(55% - 12px); display: flex; flex-direction: column;">
       <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Ewolucja zdania: Od chaosu do obrazu</h3></div>
       <div class="main-question">Zobacz, jak usunięcie wydmuszek i zbitek czasowników zmienia rytm:</div>
       
-      <!-- ZMIANA: Usunięto klasę dot-grid-box. Zwykły div zachowa czyste tło -->
+      <!-- Czysty kontener na tekst - bez tła z notatnika -->
       <div style="margin-top: 8px; padding-bottom: 12px;">
         <div class="fill-list" style="margin-top: 0; font-size: 12px; line-height: 1.5; color: var(--ink-soft);">
           <p><strong>Zdanie 1 (pełne wydmuszek):</strong> <em>Właściwie to Jan jakoś tak poczuł się już zmęczony i jakby pomyślał sobie, że chyba powinien już pójść spać.</em></p>
@@ -195,7 +193,7 @@
         </div>
       </div>
 
-      <!-- ZMIANA: flex-grow: 1 sprawia, że to pole rośnie aż do samego dołu -->
+      <!-- Rozciągający się notatnik do samego dołu -->
       <div class="dot-grid-box" style="margin-top: 16px; flex-grow: 1; display: flex; flex-direction: column;">
         <div class="fill-list" style="margin-top: 0; flex-grow: 1;">
           <div class="fill-row"><span class="fill-label">Wypisz wszystkie powtarzające się słowa-wydmuszki, które psują Twój tekst:</span><div class="fill-space"></div></div>
@@ -204,8 +202,8 @@
       </div>
     </div>
     
-    <!-- ZMIANA: flex: 1 sprawia, że pasek boczny jest węższy niż q-main, imitując margines -->
-    <div class="q-sidebar" style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+    <!-- ZMIANA: Sztywno przypisana szerokość na poziomie 45% (nieznacznie węższa kolumna boczna) -->
+    <div class="q-sidebar" style="flex: 0 0 calc(45% - 12px); display: flex; flex-direction: column; gap: 16px;">
       <div class="box box-red">
         <span class="box-title">Precyzja językowa</span>
         Zbitki typu <em>„pomyślał, że powinien”</em>, <em>„zdecydował, że pójdzie”</em> generują zbędne słowa i spójniki „że”. Słowo „pomyślał” jest tu często zwykłym wypełniaczem – uciekamy w nie, gdy nie mamy pomysłu, jak inaczej przekazać informacje, lub boimy się, że czytelnik nie domyśli się motywacji bohatera z opisu.
