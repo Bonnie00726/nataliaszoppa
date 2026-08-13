@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Arkusz Stylistyczny · Za kulisami dobrej książki</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Mulish:ital,wght@0,300;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+<style>
+  /* ===================== ZMIENNE KOLORÓW I FONTÓW ===================== */
+  :root {
+    --ink:        #0D0D0D;
+    --ink-soft:   #333333;
+    --ink-muted:  #666666;
+    --paper:      #FFFFFF;
+    --paper-mid:  #E5E5E5;
+    --paper-warm: #F9F9F9;
+    --grad-start: #6B35C8;
+    --grad-mid:   #B8409A;
+    --grad-end:   #E8772A;
+    --grad:       linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --grad-text:  linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --gold-pale:  #F5F0FF;
+    --radius:     8px;
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Mulish', sans-serif;
+    --hand:  'Caveat', cursive;
+  }
+
+  /* ===================== RESET I PODSTAWA ===================== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #2a2330;
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===================== UKŁAD DOKUMENTU ===================== */
+  .doc { padding: 36px 0 60px; display: flex; flex-direction: column; align-items: center; gap: 32px; }
+
+  /* ===================== STRONA (A4) ===================== */
+  .page {
+    width: 210mm; min-height: 297mm; background: var(--paper); color: var(--ink);
+    padding: 18mm 18mm 16mm; position: relative; box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .page::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 6px; background: var(--grad);
+  }
+
+  /* ===================== NAGŁÓWKI BOCZNE (PAGINY) ===================== */
+  .runner {
+    position: absolute; left: 18mm; right: 18mm; display: flex; justify-content: space-between;
+    align-items: baseline; font-family: var(--sans); font-size: 9px; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-muted); font-weight: 700;
+  }
+  .runner.top    { top: 9mm; }
+  .runner.bottom { bottom: 8mm; color: rgba(13,13,13,0.4); }
+
+  /* ===================== TYPOGRAFIA ===================== */
+  h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; color: var(--ink); }
+
+  .eyebrow { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; color: var(--grad-start); }
+  .grad-type { background: var(--grad-text); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline; padding-right: 4px; }
+  
+  .title { font-family: var(--serif); font-weight: 700; font-size: 56px; line-height: 1.05; color: var(--ink); }
+  .section-title { font-family: var(--serif); font-weight: 700; font-size: 32px; line-height: 1.12; color: var(--ink); margin-bottom: 6px; }
+  .subtitle { font-weight: 300; font-size: 17px; line-height: 1.55; color: var(--ink-soft); }
+  .body { font-weight: 300; font-size: 13px; line-height: 1.65; color: var(--ink-soft); }
+
+  .highlight-marker { background: linear-gradient(120deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%); background-repeat: no-repeat; background-size: 100% 40%; background-position: 0 85%; padding: 0 4px; border-radius: 3px; font-weight: 600; }
+
+  /* ===================== STRUKTURA PYTANIA ===================== */
+  .q-row { display: flex; gap: 30px; flex: 1; margin-bottom: 24px; align-items: stretch; }
+  .q-row.full { flex-direction: column; gap: 16px; }
+  
+  /* min-width: 0 zapobiega wypychaniu elementu poza stronę, flex narzuca sztywne proporcje */
+  .q-main { flex: 5.5; min-width: 0; display: flex; flex-direction: column; }
+  .q-sidebar { flex: 4.5; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding-top: 36px; }
+
+  /* ===================== RAMKI (STICKY NOTES) ===================== */
+  .box { padding: 16px 14px 14px; border-radius: var(--radius); font-size: 11px; line-height: 1.5; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 12px; }
+  .box::before { content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%) rotate(-2deg); width: 35px; height: 12px; background: rgba(255, 255, 255, 0.7); box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-radius: 2px; }
+  .box-title { display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+  
+  .box-blue { background: #EAF3FC; color: #1f3c5c; }
+  .box-blue .box-title { color: #0055A4; }
+  .box-orange { background: #FDF4E7; color: #5c3e1f; }
+  .box-orange .box-title { color: #D16B21; }
+  .box-red { background: #FAEDED; color: #5c1f1f; }
+  .box-red .box-title { color: #B31B1B; }
+  .box-purple { background: var(--gold-pale); color: #371f5c; }
+  .box-purple .box-title { color: var(--grad-start); }
+
+  .legend-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; align-items: stretch; margin-top: 15px; }
+
+  /* ===================== TABELE ===================== */
+  .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 11px; }
+  .comparison-table th, .comparison-table td { border: 1px solid var(--paper-mid); padding: 10px; text-align: left; vertical-align: top; }
+  .comparison-table th { background: var(--paper-warm); font-weight: 700; color: var(--ink); }
+
+  /* ===================== ELEMENTY PYTANIA ===================== */
+  .q-header-area { display: flex; align-items: baseline; gap: 8px; margin-bottom: 12px; position: relative; }
+  .qnum-bg { position: absolute; top: -20px; left: -15px; font-family: var(--serif); font-size: 55px; font-style: italic; font-weight: 700; color: rgba(13,13,13,0.04); z-index: 0; pointer-events: none; }
+  .qtitle { font-family: var(--serif); font-weight: 700; font-size: 19px; color: var(--ink); z-index: 1; }
+  .main-question { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.5; z-index: 1;}
+
+  /* ===================== MIEJSCE NA NOTATKI ===================== */
+  .dot-grid-box { position: relative; display: flex; flex-direction: column; min-height: 120px; background-color: #ffffff; background-image: radial-gradient(var(--paper-mid) 1.5px, transparent 1.5px); background-size: 18px 18px; border: 2px dashed #e6e6e6; border-radius: var(--radius); padding: 16px; margin-top: 4px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.01); }
+  .dot-grid-box.short { min-height: 80px; }
+  
+  .fill-list { display: flex; flex-direction: column; gap: 14px; position: relative; z-index: 2; margin-top: 10px; }
+  .fill-row { display: flex; align-items: flex-end; gap: 8px; border-bottom: 1px dashed #ccc; padding-bottom: 4px; }
+  /* Usunięto white-space: nowrap, aby tekst mógł się zawijać */
+  .fill-label { font-size: 12px; font-weight: 700; color: var(--ink); }
+  .fill-space { flex: 1; min-height: 18px; }
+
+  /* ===================== BLOKI TEKSTOWE ===================== */
+  .reading-content { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--paper-mid); margin-bottom: 20px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
+  .reading-content h4 { font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-bottom: 6px; margin-top: 0; }
+  
+  /* ===================== OKŁADKA ===================== */
+  .cover { display: grid; grid-template-rows: auto 1fr auto; height: 100%; padding-top: 4mm; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid var(--paper-mid); }
+  .logo { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ink); display: flex; align-items: baseline; gap: 6px; }
+  .logo em { font-style: italic; font-weight: 700; }
+  .cover-mid { align-self: center; padding: 30px 0; max-width: 150mm; position: relative;}
+  .grad-rule { width: 80px; height: 3px; background: var(--grad); border-radius: 2px; margin: 18px 0 24px; }
+  .section-opener { margin-bottom: 24px; padding-bottom: 14px; flex-shrink: 0; position: relative; border-bottom: 1px solid var(--paper-mid); }
+
+  /* ===================== DRUK ===================== */
+  @page { size: A4; margin: 0; }
+  @media print { html, body { background: #fff; } .doc { padding: 0; gap: 0; } .page { box-shadow: none; page-break-after: always; break-after: page; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+/* ===================== SPIS TREŚCI ===================== */
+  .toc-container { width: 100%; max-width: 150mm; margin: 0 auto; padding-top: 10px; flex-grow: 1; }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-section { font-family: var(--serif); font-size: 16px; font-weight: 700; color: var(--grad-start); margin: 24px 0 8px; border-bottom: 1px solid var(--paper-mid); padding-bottom: 4px; letter-spacing: 0.02em; }
+  .toc-list li { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; font-size: 13px; color: var(--ink-soft); position: relative; }
+  .toc-list li::after { content: ''; position: absolute; bottom: 8px; left: 0; right: 0; height: 1px; border-bottom: 1px dotted var(--ink-muted); z-index: 1; opacity: 0.4; }
+  .toc-list li span:first-child { background: var(--paper); padding-right: 12px; z-index: 2; }
+  .toc-list li span:last-child { background: var(--paper); padding-left: 12px; z-index: 2; font-weight: 700; color: var(--ink); }
+
+  /* ===================== INSTRUKCJA OBSŁUGI ===================== */
+  .instruction-step { display: flex; gap: 20px; margin-bottom: 24px; align-items: flex-start; }
+  .step-number { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--grad-start); background: var(--gold-pale); width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; box-shadow: inset 0 2px 4px rgba(107, 53, 200, 0.1); }
+  .step-content { flex: 1; padding-top: 4px; }
+  .step-content h4 { font-family: var(--serif); font-size: 16px; color: var(--ink); margin-bottom: 8px; margin-top: 0; }
+  .step-content p { font-size: 12px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="doc">
+
+<!-- STRONA: OKŁADKA CZĘŚCI 2 -->
+<section class="page">
+  <div class="runner top"><span>Narzędzie diagnostyczne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="cover">
+    
+    <div class="cover-top">
+      <div class="logo">Za kulisami <em class="grad-type">dobrej książki</em></div>
+      <div class="cover-meta" style="font-family: var(--sans); font-size: 13px; color: var(--ink-soft);">Arkusz diagnostyczny</div>
+    </div>
+    
+    <div class="cover-mid">
+      <span class="eyebrow">Karta pracy autora · Część druga</span>
+      
+      <!-- Odręczny dopisek przypominający "Zacznij od razu!" -->
+      <div style="position: absolute; right: 0; top: 15px; font-family: var(--hand); font-size: 28px; color: var(--grad-end); transform: rotate(-8deg);">Oszlifuj swój styl!</div>
+      
+      <h1 class="title">Analiza języka<br><em class="grad-type">i stylu autora</em></h1>
+      <div class="grad-rule"></div>
+      
+      <p class="subtitle" style="margin-bottom: 22px;">Ten arkusz to nie test, to nie egzamin.<br>To <span class="highlight-marker">narzędzie, które pomoże Ci znaleźć słabe punkty w Twoim warsztacie.</span></p>
+      
+      <p class="body">Twoim zadaniem nie jest udowadnianie bezbłędności tekstu, lecz zlokalizowanie miejsc, w których brakuje mu precyzji, rytmu lub dynamiki. Arkusz poprowadzi Cię przez proces zaawansowanej analizy warstwy językowej Twojej książki – od usuwania wydmuszek, aż po budowanie unikalnych głosów postaci.</p>
+    </div>
+    
+  </div>
+  <!-- Pamiętaj o dostosowaniu numeracji strony w poniższym tagu -->
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>[NUMER STRONY]</span></div>
+</section>
+
+<!-- STRONA 2: PO CO MI TEN ARKUSZ? -->
+<section class="page">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 20px;">
+    <h2 class="section-title">Po co mi <em class="grad-type">ten arkusz</em>?</h2>
+    <p class="body">Krótka odpowiedź: żeby zaoszczędzić Twój czas, Twoje pieniądze i dać odpocząć Twoim nerwom.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-start); margin-bottom: 24px;">
+    <h4>Nie chcesz czytać tomów teorii?</h4>
+    <p>Nie masz czasu ani ochoty na przedzieranie się przez długie książki o teorii literatury i strukturze powieści? Wolisz pisać, zamiast tonąć w akademickich analizach? To w pełni zrozumiałe. Ten arkusz to zbiór najważniejszych, praktycznych wskazówek bez zbędnego teoretyzowania i lania wody.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-end); margin-bottom: 24px;">
+    <h4>Wyeliminuj klasyczne błędy debiutantów</h4>
+    <p>Arkusz zawiera zestawienie typowych pułapek i błędów, z którymi mierzy się niemal każdy początkujący autor. Dobra wiadomość jest taka, że większość z nich jesteś w stanie zlokalizować i <b>wyeliminować samodzielnie</b>. Nie potrzebujesz do tego drogich konsultacji.</p>
+  </div>
+
+  <div class="reading-content" style="border-left: 4px solid var(--grad-mid);">
+    <h4>Czego potrzebujesz do pracy?</h4>
+    <p>Od Ciebie wymagam wyłącznie trzech rzeczy: <strong>czasu, cierpliwości i zaangażowania</strong>. Arkusz to świetne narzędzie, ale to Ty musisz wykonać właściwą pracę. Potraktuj go jak bezlitosne, ale przyjazne lustro dla Twojego tekstu. Bądź szczery w swoich odpowiedziach, a szybko zobaczysz, gdzie Twoja historia zgrzyta, a w jakich miejscach opiera się na solidnych fundamentach.</p>
+  </div>
+  
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 26</span></div>
+</section>
+
+<!-- STRONA 3: SPIS TREŚCI -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener">
+    <h2 class="section-title">Co znajdziesz <em class="grad-type">w tym arkuszu</em></h2>
+    <p class="body">Część druga: Analiza języka i stylu autora.</p>
+  </div>
+
+  <div class="toc-container">
+    <ul class="toc-list">
+      
+      <div class="toc-section">Wprowadzenie</div>
+      <li><span>Po co mi ten arkusz? & Instrukcja obsługi</span><span>2</span></li>
+      
+      <div class="toc-section">Etap 1: Mikrostruktura Słowa</div>
+      <li><span>Wydmuszki językowe: słowo jako narzędzie</span><span>5</span></li>
+      <li><span>Czasowniki: płaskie vs. dynamiczne</span><span>6</span></li>
+
+      <div class="toc-section">Etap 2: Techniki Narracyjne i Rytm</div>
+      <li><span>Show, don't tell: obraz czy raport?</span><span>7</span></li>
+      <li><span>Muzyka tekstu: rytm i długość zdań</span><span>8</span></li>
+      <li><span>Pułapka schematów: podmiot + czasownik</span><span>9</span></li>
+
+      <div class="toc-section">Etap 3: Styl i Rejestry</div>
+      <li><span>Świadomy dobór stylu a pułapki AI</span><span>10</span></li>
+      <li><span>Rejestry języka: kod Twojej postaci</span><span>11</span></li>
+
+      <div class="toc-section">Etap 4: Głosy postaci i Finał</div>
+      <li><span>Zróżnicowanie języka: unikalny głos</span><span>12</span></li>
+      <li><span>Finał: Autodiagnoza i checklista stylu</span><span>13</span></li>
+      
+    </ul>
+  </div>
+  
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 13</span></div>
+</section>
+
+<!-- STRONA 4: INSTRUKCJA -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener" style="margin-bottom: 24px;">
+    <h2 class="section-title">Instrukcja <em class="grad-type">obsługi arkusza</em></h2>
+  </div>
+
+  <div class="instruction-step">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <h4>Jak otworzyć i pobrać arkusz?</h4>
+      <p>Arkusz działa najlepiej wtedy, gdy otworzysz go bezpośrednio w <strong>przeglądarce internetowej</strong> – takiej jak Chrome, Firefox lub Edge. Możesz na nim pracować online albo zapisać go na dysku jako plik PDF.</p>
+      <p style="margin-top: 8px;">Aby pobrać PDF, wciśnij <strong>Ctrl + P</strong> (lub Cmd + P na Macu), z listy drukarek wybierz <strong>„Zapisz jako PDF”</strong> i koniecznie zaznacz opcję <strong>„Grafika tła”</strong> (ang. <em>background graphics</em>). Bez tego kolory ramek, gradienty i tła zostaną pominięte.</p>
+    </div>
+  </div>
+
+  <div class="instruction-step">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <h4>W czym otwierać gotowy plik PDF?</h4>
+      <p>Unikaj otwierania pliku w programie <strong>Adobe Acrobat</strong> – nie obsługuje on poprawnie wszystkich fontów internetowych użytych w dokumencie. Najlepiej sprawdzi się darmowy <strong>PDF-XChange Viewer</strong> lub po prostu ponowne użycie przeglądarki internetowej.</p>
+    </div>
+  </div>
+
+  <div class="instruction-step">
+    <div class="step-number">3</div>
+    <div class="step-content" style="padding-bottom: 12px;">
+      <h4>Zrozumienie legendy</h4>
+      <p style="margin-bottom: 12px;">W całym arkuszu używam czterech rodzajów ramek, które pomogą Ci w nawigacji:</p>
+      <div class="legend-grid">
+        <div class="box box-blue">
+          <span class="box-title">Niebieska ramka</span>
+          Tłumaczy pojęcia, zasady i buduje merytoryczny fundament (np. zasada spójności rejestru).
+        </div>
+        <div class="box box-orange">
+          <span class="box-title">Pomarańczowa ramka</span>
+          Ciekawostki oraz praktyczne przykłady zaczerpnięte bezpośrednio z tekstów i redakcji.
+        </div>
+        <div class="box box-red">
+          <span class="box-title">Czerwona ramka</span>
+          Ostrzega przed typowymi błędami początkujących autorów oraz pułapkami sztucznej inteligencji.
+        </div>
+        <div class="box box-purple">
+          <span class="box-title">Fioletowa ramka</span>
+          Praktyczna wskazówka redaktorska, która podpowiada, jak technicznie zdiagnozować i rozwiązać problem.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="instruction-step" style="margin-bottom: 0; flex-grow: 1;">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <h4>Sugerowane etapy pracy</h4>
+      <ul style="padding-left: 20px; margin-top: 8px; margin-bottom: 0; font-size: 12px; color: var(--ink-soft); line-height: 1.6;">
+        <li style="margin-bottom: 4px;"><strong>Krok 1:</strong> Odpowiadaj szczerze na pytania na checkliście finałowej. Luki to też wynik!</li>
+        <li style="margin-bottom: 4px;"><strong>Krok 2:</strong> Poszerzaj wiedzę – czytaj podpowiedzi i testuj swoje akapity w dedykowanych sekcjach na notatki.</li>
+        <li style="margin-bottom: 4px;"><strong>Krok 3:</strong> Wróć do tekstu głównego swojej powieści – zrób audyt czasowników i wydmuszek za pomocą <em>Ctrl+F</em>.</li>
+        <li><strong>Krok 4:</strong> Potrzebujesz więcej wsparcia? Poproś o <a href="mailto:natalia.szoppa@gmail.com" style="color: var(--grad-start); font-weight: bold; text-decoration: none;">darmową konsultację mailową fragmentu tekstu</a>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 13</span></div>
+</section>
+
+<!-- STRONA 2: WSTĘP I WYDMUSZKI -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener">
+    <h2 class="section-title">Wydmuszki <em class="grad-type">językowe</em></h2>
+    <p class="body">Każde słowo w Twojej powieści powinno pełnić określoną funkcję. Unikaj tzw. waty słownej – słowa i sformułowania, które rozmywają przekaz, spowalniają rytm i sprawiają, że proza staje się ciężka.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    
+    <!-- LEWA KOLUMNA -->
+    <div class="q-main">
+      
+      <!-- SEKCJA 1 (dawniej 02) -->
+      <div class="q-header-area" style="margin-bottom: 24px;"><span class="qnum-bg" style="top: -15px;">01</span><h3 class="qtitle">Trzy twarze językowej „waty”</h3></div>
+    
+      <h4 style="font-family: var(--serif); color: var(--grad-start); font-size: 14px; margin-bottom: 4px; margin-top: 0;">A. Klasyczne wydmuszki i spójniki-zapychacze</h4>
+      <p style="font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 16px;">Słowa takie jak: <em>jakby, właściwie, jakoś tak, chyba, po prostu, w zasadzie</em> sprawiają, że autor brzmi, jakby sam nie był pewny tego, co pisze.</p>
+
+      <h4 style="font-family: var(--serif); color: var(--grad-mid); font-size: 14px; margin-bottom: 4px; margin-top: 0;">B. Rzeczowniki odczasownikowe (urzędowa skrobanina)</h4>
+      <p style="font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 8px;">Zamienianie prostych czasowników na ociężałe zwroty rzeczownikowe natychmiast zabija dynamikę tekstu.</p>
+      
+      <div style="background: var(--paper-warm); padding: 10px 14px; border-radius: 4px; font-size: 11px; margin-bottom: 16px;">
+        <div style="color: #c0392b; margin-bottom: 6px;"><strong>❌ ŹLE:</strong> „Marek dokonał analizy wyników badań.”</div>
+        <div style="color: #27ae60;"><strong>✅ DOBRZE:</strong> „Marek zbadał próbki.” / „Marek przeanalizował wyniki.”</div>
+      </div>
+
+      <!-- Przeniesione C z prawego panelu -->
+      <h4 style="font-family: var(--serif); color: var(--grad-end); font-size: 14px; margin-bottom: 4px; margin-top: 0;">C. Puste przymiotniki (Pułapka AI)</h4>
+      <p style="font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 8px;">Przymiotniki powinny nadawać precyzję, a nie tworzyć tani dramat.</p>
+      <div style="background: #FAEDED; border-left: 3px solid #B31B1B; padding: 10px 14px; border-radius: 0 4px 4px 0; font-size: 11px; margin-bottom: 28px; color: #5c1f1f; line-height: 1.5;">
+        <strong>⚠️ Uwaga na teksty z AI:</strong> Sztuczna inteligencja ma ogromną tendencję do nadużywania przymiotników i ich skrajnego wyolbrzymiania. Zwykły „zimny wiatr” ekspresowo zamienia się w <em>„lodowaty wiatr smagający bezlitośnie policzki”</em>. To literacka wydmuszka – brzmi jak kiczowaty melodramat.
+      </div>
+
+      <!-- SEKCJA 2 (dawniej 03) -->
+      <div class="q-header-area" style="margin-bottom: 24px;"><span class="qnum-bg" style="top: -15px;">02</span><h3 class="qtitle">Ewolucja zdania: Od chaosu do obrazu</h3></div>
+      <p style="font-size: 12px; margin-bottom: 16px; color: var(--ink-soft);">Zobacz, jak stopniowe eliminowanie wydmuszek, zbieżności czasowników i rozlewnego słownictwa całkowicie zmienia ton i moc zdania:</p>
+      
+      <div class="fill-list" style="margin-top: 0; font-size: 11.5px; line-height: 1.5; color: var(--ink-soft);">
+        <p style="margin-bottom: 12px;"><strong>Zdanie 1 (Pełne wydmuszek i niepewności):</strong><br>
+        <em>„Właściwie to Jan jakoś tak poczuł się już zmęczony i jakby pomyślał sobie, że chyba powinien już pójść spać.”</em></p>
+        
+        <p style="margin-bottom: 12px;"><strong>Zdanie 2 (Po wyczyszczeniu ze słów-zapychaczy):</strong><br>
+        <em>„Jan poczuł się zmęczony i pomyślał, że powinien pójść spać.”</em><br>
+        <span style="font-size: 10.5px; color: var(--ink-muted);">(Pozbyliśmy się „właściwie”, „jakoś tak”, „jakby” i „chyba”, ale wciąż mamy ciężką zbitkę czasowników).</span></p>
+        
+        <p><strong>Zdanie 3 (Zwięzłe, precyzyjne i dynamiczne):</strong><br>
+        <em>„Jan poczuł silne zmęczenie i postanowił położyć się spać.”</em><br>
+        <span style="font-size: 10.5px; color: var(--ink-muted);">(Słowo „postanowił” jest zwięźlejsze, nadaje bohaterowi sprawczość i eliminuje konieczność użycia łącznika „że”).</span></p>
+      </div>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <!-- Nowa ramka wyciągnięta z tekstu po lewej stronie -->
+      <div class="box box-orange">
+        <span class="box-title">Słowo to narzędzie, a nie zapychacz</span>
+        <p style="margin-bottom: 8px;">Zanim użyjesz słowa-wypełniacza z przyzwyczajenia, przypomnij sobie jego właściwą definicję słownikową. Słowa te mają swoje konkretne zadania i nie powinny pojawiać się w tekście przypadkowo.</p>
+        
+        <div style="background: rgba(255, 255, 255, 0.7); padding: 8px; border-radius: 4px; margin-bottom: 8px;">
+          <p style="margin-bottom: 6px;"><strong>Właściwie</strong> – słownikowo służy do korygowania wcześniej podanej informacji lub wskazywania na wahanie/niepewność w naturalnym dialogu.</p>
+          <p style="margin-bottom: 0; font-size: 10px; color: var(--ink-muted); font-style: italic;">(Większość wątpliwych słów warto na bieżąco weryfikować w Słowniku Języka Polskiego lub Wiktionary).</p>
+        </div>
+        
+        <p style="margin-bottom: 0; color: #c0392b; font-weight: 600;">Jeśli używasz słowa „właściwie” w zdaniu, w którym brak wahania czy korekty, tworzysz wydmuszkę.</p>
+      </div>
+
+      <div class="box box-purple">
+        <span class="box-title">Wyjątek od reguły</span>
+        Bezwzględne wycinanie wydmuszek dotyczy przede wszystkim narracji. <strong>W dialogach i monologach wewnętrznych zasady gry się zmieniają.</strong>
+        <br><br>
+        Jeśli piszesz postać niepewną siebie, zagubioną, nastolatka szukającego słów albo natrętnego gawędziarza – wydmuszki są Twoim sprzymierzeńcem! Słowa takie jak <em>„właściwie”</em>, <em>„jakby”</em> czy <em>„jakoś tak”</em> idealnie nadadzą jej indywidualny ton i pomogą zarysować osobowość w dialogu.
+      </div>
+      
+      <div class="box box-blue">
+        <span class="box-title">Wskazówka autorska</span>
+        Usuwaj wydmuszki z głosu narratora, ale dawaj je bohaterom – o ile robisz to z pełną świadomością ich funkcji.
+      </div>
+
+    </div>
+    
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>2 / 9</span></div>
+</section>
+
+<!-- STRONA 3: CZASOWNIKI -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 1: Mikrostruktura Słowa</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener">
+    <h2 class="section-title">Czasowniki: <em class="grad-type">płaskie vs. dynamiczne</em></h2>
+    <p class="body">Płaskie czasowniki nie są złe – po prostu ich nadmiar wycisza emocje w tekście i sprawia, że narracja brzmi jak sprawozdanie. Szlifowanie leksyki to czysto techniczny audyt tekstu, który natychmiast poprawia jego energię.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    
+    <!-- LEWA KOLUMNA -->
+    <div class="q-main">
+      
+      <div class="q-header-area" style="margin-bottom: 24px;"><span class="qnum-bg" style="top: -15px;">01</span><h3 class="qtitle">Zastępowanie płaskich czasowników w praktyce</h3></div>
+      <p style="font-size: 12px; margin-bottom: 16px; color: var(--ink-soft);">Zobacz, jak bez zmieniania sensu sceny, wyłącznie poprzez zmianę leksyki, nadajemy zdaniom energię:</p>
+      
+      <!-- PRZYKŁAD 1 -->
+      <div style="background: var(--paper-warm); padding: 14px 16px; border-radius: 4px; font-size: 11px; margin-bottom: 16px; line-height: 1.5;">
+        <div style="color: #c0392b; margin-bottom: 6px;"><strong>❌ SŁABO (płasko):</strong> Szedł bardzo szybko w stronę drzwi i był bardzo zły.</div>
+        <div style="color: #27ae60; margin-bottom: 8px;"><strong>⚡ MOCNO (dynamiczna leksyka):</strong> Dopadł do drzwi i szarpnął za klamkę, kipiąc ze wściekłości.</div>
+        <div style="font-size: 10px; color: var(--ink-muted); font-style: italic;">(Zamiast pisać „szedł bardzo szybko”, używamy konkretnego czasownika „dopadł”. Zamiast być zły – bohater „kipi”).</div>
+      </div>
+
+      <!-- PRZYKŁAD 2 -->
+      <div style="background: var(--paper-warm); padding: 14px 16px; border-radius: 4px; font-size: 11px; margin-bottom: 28px; line-height: 1.5;">
+        <div style="color: #c0392b; margin-bottom: 6px;"><strong>❌ SŁABO (płasko):</strong> Stwierdził, że się boi, więc zdecydował się uciec.</div>
+        <div style="color: #27ae60; margin-bottom: 8px;"><strong>⚡ MOCNO (dynamiczna leksyka):</strong> Przeszył go strach, więc rzucił się do ucieczki.</div>
+        <div style="font-size: 10px; color: var(--ink-muted); font-style: italic;">(Eliminujemy suchą deklarację „stwierdził / zdecydował” na rzecz fizycznego „przeszył” i dynamicznego „rzucił się”).</div>
+      </div>
+
+      <div class="q-header-area" style="margin-bottom: 16px;"><span class="qnum-bg" style="top: -15px;">02</span><h3 class="qtitle">Lista słów pod lupą (pójście na łatwiznę)</h3></div>
+      <p style="font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 12px;">To słowa, po które nasz mózg sięga najchętniej, bo wymagają najmniejszego wysiłku. Traktuj je jako sygnał ostrzegawczy podczas edycji tekstu:</p>
+      
+      <div style="background: #FAEDED; border-left: 3px solid #B31B1B; padding: 12px 14px; border-radius: 0 4px 4px 0; font-size: 12.5px; margin-bottom: 16px; color: #5c1f1f; font-weight: 700;">
+        być, mieć, wiedzieć, czuć, pomyśleć, zastanowić się, zdecydować, stwierdzić, postanowić
+      </div>
+      
+      <p style="font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); margin-bottom: 0;">Kiedy bohater postanawia, decyduje albo stwierdza, autor serwuje nam suchy komunikat o wyniku procesu myślowego. Tymczasem o wiele bardziej wciągający dla czytelnika jest sam moment poprzedzający decyzję – zapach parzonej kawy, drżenie dłoni, chroboczący w głowie strach czy ziewnięcie.</p>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <div class="box box-blue">
+        <span class="box-title">Show, Don't Tell vs. Leksyka</span>
+        Bardzo wielu autorów wrzuca zamianę słabych czasowników do jednego worka z zasadą <em>Show, Don’t Tell</em>.
+        <ul style="padding-left: 16px; margin-top: 8px; margin-bottom: 0; font-size: 11px;">
+          <li style="margin-bottom: 6px;"><strong>Show, Don't Tell</strong> to decyzja o koncepcji fabularnej sceny (zamiast pisać, że bohater był głodny, opisujesz burczenie w brzuchu). Pomaga wzbudzić emocje.</li>
+          <li><strong>Praca nad czasownikami</strong> to czysta dbałość o słownictwo. Nie musisz analizować głębokich intencji postaci ani zmieniać przebiegu sceny. Wymieniasz słowa na takie, które są precyzyjniejsze.</li>
+        </ul>
+      </div>
+
+      <div class="box box-purple">
+        <span class="box-title">Techniczna instrukcja dla autora</span>
+        W przeciwieństwie do tworzenia skomplikowanych metafor, szlifowanie leksyki jest proste i powtarzalne. Nie szukaj tu poezji – szukaj precyzji.
+        <ol style="padding-left: 16px; margin-top: 8px; margin-bottom: 0; font-size: 11px;">
+          <li style="margin-bottom: 6px;">Włącz w swoim edytorze opcję Wyszukaj (<strong>Ctrl + F</strong>).</li>
+          <li style="margin-bottom: 6px;">Wpisz najczęstsze formy czasownika <em>„być”</em> (był, była, byli) lub <em>„poczuł”</em>.</li>
+          <li style="margin-bottom: 6px;">Przy każdym podświetlonym zdaniu zadaj sobie pytanie: <em>„Co dokładnie robi tu moja postać lub przedmiot?”</em></li>
+          <li>Zamień opisywanie stanu na czasownik przedstawiający ruch lub reakcję.</li>
+        </ol>
+      </div>
+      
+      <div class="box box-orange">
+        <span class="box-title">Narzędzia analityczne</span>
+        Aby szybko namierzyć płaskie czasowniki w tekście, warto zaopatrzyć się w programy do statystyk słownych, takie jak strona <strong>Sketch Engine</strong> (płatny) lub program <strong>AntConc</strong> (darmowy).
+      </div>
+
+    </div>
+    
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>3 / 9</span></div>
+</section>
+
+<!-- STRONA 4: SHOW DON'T TELL -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 2: Techniki Narracyjne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="section-opener">
+    <h2 class="section-title">Show, don't tell: <em class="grad-type">obraz czy raport?</em></h2>
+    <p class="body">Jedna z najsłynniejszych pisarskich zasad. Zobacz, jak ogromna jest różnica w odbiorze tekstu, gdy zamiast tylko informować czytelnika o faktach, pozwalasz mu ich bezpośrednio doświadczyć.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    <!-- LEWA KOLUMNA (Tylko przykłady tekstowe) -->
+    <div class="q-main">
+      
+      <!-- PRZYKŁAD TELL -->
+      <div class="q-header-area" style="margin-bottom: 28px;"><span class="qnum-bg" style="top: -15px;">01</span><h3 class="qtitle">TELL (Informowanie / Raport)</h3></div>
+      <div style="background: #FAEDED; border-left: 3px solid #B31B1B; padding: 16px 18px; border-radius: 0 4px 4px 0; font-size: 11px; color: #5c1f1f; margin-bottom: 32px; line-height: 1.6;">
+        „Wszyscy w szkole wiedzieli, że Lucinda to najwredniejsze dziecko w całej trzeciej klasie. Była urocza i uważała, że z tego powodu wszystko ujdzie jej na sucho. Zawsze stawała na głowie, żeby tylko mi dokuczyć. Nie należałem do grupy „popularnych” dzieci, a ci nieliczni chłopcy, których znałem, to byli po prostu chłopcy, z którymi grałem w szachy na przerwach – trudno ich było nazwać przyjaciółmi. Do tego byłem strasznym niezdarą, więc stanowiłem dla niej idealny cel. Dręczyła mnie do tego stopnia, że cała trzecia klasa była dla mnie prawdziwym piekłem na ziemi.”
+      </div>
+
+      <!-- PRZYKŁAD SHOW -->
+      <div class="q-header-area" style="margin-bottom: 28px;"><span class="qnum-bg" style="top: -15px;">02</span><h3 class="qtitle">SHOW (Pokazywanie / Doświadczanie)</h3></div>
+      <div style="background: #EAF3FC; border-left: 3px solid #0055A4; padding: 16px 18px; border-radius: 0 4px 4px 0; font-size: 11px; color: #1f3c5c; margin-bottom: 24px; line-height: 1.6;">
+        „Gdy tylko zadzwonił dzwonek na przerwę, porwałem swoje szachy i ruszyłem w stronę drzwi, nie mogąc się doczekać kolejnej partii w moim kręgu wyrzutków. Choć na nią nie patrzyłem, czułem na sobie wzrok Lucindy – niemal fizycznie czułem, jak jej kręcone loki falują, gdy odwraca głowę, żeby nie spuścić mnie z oczu.<br><br>
+        I tak, jakże by inaczej – potknąłem się w progu.<br><br>
+        Gorączkowo zbierałem z podłogi pionki i gońce, jeden, drugi i kolejny uratowany przed zdeptaniem, dookoła coraz szybciej migały mi podeszwy, z piskiem trąc o gumową wykładzinę. Jednak gdy tylko usłyszałem pierwszy stukot obcasa, moje ręce powoli przestawały ze mną współpracować, a pionki prześlizgiwały się między palcami. Usłyszałem kolejny i jeszcze jeden. W końcu dostrzegłem parę lakierowanych bucików tuż obok mojej królowej. Lucinda czekała, aż w końcu na nią spojrzę. Uśmiechnęła się, uniosła swój błyszczący bucik i wolno, z rozmysłem, wbiła obcas w głowę mojej białej królowej.”
+      </div>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR - Analiza na czysto, bez karteczek) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <!-- Sekcja 1: Analiza -->
+      <h4 style="font-family: var(--serif); color: var(--grad-start); font-size: 15px; margin-bottom: 12px; margin-top: 0;">Dlaczego to działa? (Analiza)</h4>
+      <ul style="font-size: 11px; line-height: 1.6; color: var(--ink-soft); padding-left: 16px; margin-bottom: 24px;">
+        <li style="margin-bottom: 8px;"><strong>Różnica w przekazie:</strong> Oba teksty zmierzają do tej samej konkluzji, ale pierwszy tekst informuje o tym jak raport, a drugi pozwala to przeżyć.</li>
+        <li style="margin-bottom: 8px;"><strong>Wiara na słowo vs. Dowody:</strong> W wersji <em>Telling</em> autor każe czytelnikowi uwierzyć na słowo. W wersji <em>Showing</em> daje mu konkretne dowody i pozwala samodzielnie ocenić sytuację.</li>
+        <li style="margin-bottom: 8px;"><strong>Streszczenie vs. Jedno wydarzenie:</strong> <em>Telling</em> to lista uśrednionych faktów. <em>Showing</em> skupia się na jednym, konkretnym fragmencie czasu.</li>
+        <li style="margin-bottom: 8px;"><strong>Rola czytelnika:</strong> Pierwsza wersja pozostawia czytelnika biernym odbiorcą. Druga wciąga jego wyobraźnię i czyni go uczestnikiem sceny.</li>
+        <li><strong>Brak potrzeby nazywania:</strong> W tekście SHOW nie trzeba pisać wprost <em>„Nie miałem przyjaciół”</em> ani <em>„Była okrutna”</em>. Precyzyjny detal lśniącego bucika mówi wszystko. Pozwól czytelnikowi samemu wyciągnąć wnioski.</li>
+      </ul>
+
+      <hr style="border: 0; border-top: 1px solid var(--paper-mid); margin-bottom: 24px;">
+
+      <!-- Sekcja 2: TELL też jest ważne -->
+      <h4 style="font-family: var(--serif); color: var(--ink); font-size: 14px; margin-bottom: 12px; margin-top: 0; text-transform: uppercase; letter-spacing: 0.05em;">TELL też jest bardzo ważne!</h4>
+      <div style="font-size: 11px; line-height: 1.6; color: var(--ink-soft);">
+        <p style="margin-bottom: 8px;">Zasada „Show, don't tell” bywa źle interpretowana. <strong>Nie każdą scenę należy rozpisywać na detale!</strong></p>
+        <p style="margin-bottom: 8px;">Zwykłe informowanie (<em>tell</em>) jest absolutnie kluczowe w prozie. Służy ono do przyspieszania tempa akcji, płynnego przeskakiwania w czasie oraz – co najważniejsze – <strong>odciążania czytelnika emocjonalnie</strong>.</p>
+        <p style="margin-bottom: 0;">Zbyt długie utrzymywanie odbiorcy w trybie intensywnego „przeżywania” (<em>show</em>) prowadzi do zmęczenia materiału. Zawsze kieruj się <strong>celem fabularnym</strong> – jeśli scena nie jest kluczowa, po prostu powiedz, co się wydarzyło, i idź dalej.</p>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>4 / 9</span></div>
+</section>
+
+<!-- STRONA 5: RYTM I GARY PROVOST -->
+<section class="page">
+  <div class="runner top"><span class="grad-type">Etap 2: Rytm zdań</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 16px;">
+    <h2 class="section-title">Muzyka <em class="grad-type">tekstu</em></h2>
+    <p class="body">Krótkie zdania budują napięcie. Długie uspokajają i są dobre do melancholii. Monotonia to największy wróg.</p>
+  </div>
+
+  <div class="q-row">
+    <div class="q-main" style="flex: 1.4;">
+      <img src="https://i.imgur.com/aMKIpBH.png" alt="Gary Provost text on writing music" style="width: 100%; border-radius: var(--radius); border: 1px solid var(--paper-mid); box-shadow: 0 4px 12px rgba(0,0,0,0.03); margin-bottom: 12px;">
+      
+      <div style="font-size: 12px; line-height: 1.6; color: var(--ink-soft);">
+        <p style="margin-bottom: 8px;">Jeśli znasz angielski, już wiesz, że tekst na grafice doskonale tłumaczy, o co chodzi z rytmem. Ale spójrz na kolory – od razu zauważysz powtarzalny schemat. Autor pokazuje nam bardzo wyraźnie, że zdania zaznaczone na czerwono tworzą monotonię, ale łączenie bardzo krótkich zdań z tymi o średniej długości to klucz do przykucia uwagi czytelnika.</p>
+        
+        <p style="margin-bottom: 8px;">Dzięki różnorodności uciekamy od nudy i usypiającego, czasami nawet męczącego rytmu. Konstruując tekst w ten sposób, niepisanie komunikujemy: <em>„Patrz, tu są zdania o różnej długości, zaraz coś się będzie działo!”</em>. Zaczynamy krótko, wprowadzamy dłuższe zdanie, potem znowu krótsze, aby przyciągnąć uwagę, a na sam koniec serwujemy bardzo długie zdanie dla refleksji i rozładowania napięcia lub przekazania ważnej informacji.</p>
+        
+        <p style="margin-bottom: 8px;">Właśnie tak buduje się świadomy rytm: <strong>krótkie zdania są idealne do akcji i przyciągania uwagi, długie nadają się na refleksję.</strong> Nie możemy jednak zacząć pisać od razu od długich zdań! Czytelnik musi być „wypoczęty”, aby był przygotowany na refleksję, więc trzeba go w to odpowiednio wprowadzić krótszymi i bardziej dynamicznymi zdaniami.</p>
+
+        <p>To bardzo świadome zabiegi. Autorzy z wieloletnim doświadczeniem po prostu patrzą na swój tekst i intuicyjnie to czują: wiedzą, gdzie jest za długo, gdzie za krótko, a gdzie zaczynają przynudzać. <strong>Niemal zawsze problem z rytmem sprowadza się do braku zróżnicowania długości zdań.</strong></p>
+      </div>
+    </div>
+    
+    <div class="q-sidebar" style="padding-top: 0; flex: 1;">
+      <div class="box box-orange" style="margin-bottom: 16px;">
+        <span class="box-title">Metoda Kolorów</span>
+        Zastosuj tę techniczną metodę w swoim programie:
+        <br><br>
+        <span style="display:inline-block; width:12px; height:12px; background:#FFD54F; border-radius:2px; margin-right:4px; vertical-align:middle;"></span> <strong>Do np. 10 słów:</strong> zaznacz na żółto.<br>
+        <span style="display:inline-block; width:12px; height:12px; background:#81C784; border-radius:2px; margin-right:4px; vertical-align:middle;"></span> <strong>Do np. 15 słów:</strong> zaznacz na zielono.<br>
+        <span style="display:inline-block; width:12px; height:12px; background:#E57373; border-radius:2px; margin-right:4px; vertical-align:middle;"></span> <strong>Powyżej np. 20 słów:</strong> zaznacz na czerwono.
+        <br><br>
+        Jeśli po sformatowaniu zobaczysz kilka <strong>czerwonych</strong> linijek pod rząd, to znak, że musisz rozbić je na krótsze struktury.
+      </div>
+
+<div class="q-sidebar" style="padding-top: 0; flex: 1;">
+      <div class="box box-orange" style="margin-bottom: 16px;">
+        <span class="box-title">Pójdź o krok dalej</span>
+      <p><strong>Przeanalizuj spółgłoski i samogłoski.</strong></p>
+<p>Słowa pełne twardych spółgłosek (<em>zgrzyt, trzask, twardy, krótki</em>) są ostre i dynamiczne.</p>
+<p>Słowa bogate w samogłoski i miękkie głoski (<em>szelest, falowanie, marzenie, płynność</em>) są łagodniejsze dla ucha.</p>
+        <br>
+        Najprostszym sposobem tworzenia rytmu w tekście jest czytanie go na głos (lub odsłuchanie w aplikacji). Twoje ucho natychmiast wyłapie momenty, w których brakuje Ci tchu (zdanie jest za długie), gdzie się zacinasz (zły dobór słów) i gdzie robi się nudno (zbyt wiele zdań tej samej długości).
+      </div>
+
+      <div class="dot-grid-box" style="min-height: 120px; padding: 12px 14px;">
+        <span class="box-title" style="display: block; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; color: var(--grad-start);">Przeanalizuj swoje akapity</span>
+        <div class="fill-list" style="margin-top: 0;">
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label" style="font-size: 11px;">Zdania do __ słów:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label" style="font-size: 11px;">Zdania do __ słów:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label" style="font-size: 11px;">Zdania do __ słów:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label" style="font-size: 11px;">Zdania do __ słów:</span><div class="fill-space"></div></div>
+          <div class="fill-row" style="margin-bottom: 8px;"><span class="fill-label" style="font-size: 11px;">Zdania do __ słów:</span><div class="fill-space"></div></div>
+          <div class="fill-row"><span class="fill-label" style="font-size: 11px;"></span><div class="fill-space"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>5 / 9/span></div>
+</section>
+
+<!-- STRONA 6 PUŁAPKA SCHEMATÓW -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 2: Architektura Zdań i Rytm</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener">
+    <h2 class="section-title">Pułapka schematów: <em class="grad-type">podmiot + czasownik</em></h2>
+    <p class="body">Nawet przy zmiennej długości zdań tekst może być nudny, jeśli każde z nich ma dokładnie tę samą strukturę (zaczyna się od osoby lub zaimka).</p>
+  </div>
+
+  <!-- ZMIANA: Dodano flex: none; aby zablokować pionowe rozciąganie wiersza -->
+  <div class="q-row" style="margin-bottom: 24px; flex: none;">
+    <div class="q-main" style="padding-right: 15px;">
+      <div class="q-header-area"><span class="qnum-bg">03</span><h3 class="qtitle">Przełamywanie schematu</h3></div>
+      <div class="main-question">Zobacz, jak zmiana szyku i zróżnicowanie struktur całkowicie zmienia odbiór tej samej sceny:</div>
+      
+      <div class="reading-content" style="padding: 16px; margin-bottom: 12px; font-size: 12px; line-height: 1.6;">
+        <p style="margin-bottom: 10px; color: var(--ink-muted);"><strong>NUDNY SCHEMAT (Osoba + Czasownik):</strong><br>
+        <em>Marek podszedł do stołu. Podniósł stary list. Poczuł dreszcz.</em></p>
+
+        <p style="margin-bottom: 8px;"><strong>1. Płynność (imiesłów):</strong><br>
+        <em>Podchodząc do stołu, Marek podniósł stary list i poczuł dreszcz.</em></p>
+        
+        <p style="margin-bottom: 8px;"><strong>2. Budowanie napięcia (akcent na przedmiot):</strong><br>
+        <em>Stary list, leżący na stole, wywołał u Marka dreszcz, gdy tylko go podniósł.</em></p>
+        
+        <p style="margin-bottom: 8px;"><strong>3. Szybka akcja (styl telegraficzny):</strong><br>
+        <em>Zrobił kilka kroków w stronę stołu. Sięgnął po stary list. Przeszył go nagły dreszcz.</em></p>
+
+        <p style="margin-bottom: 0;"><strong>4. Styl literacki (słowa działające na wyobraźnię):</strong><br>
+        <em>Sięgając po starą kopertę, poczuł, jak po karku przebiega mu zimny dreszcz.</em></p>
+      </div>
+    </div>
+    
+    <div class="q-sidebar" style="padding-top: 0;">
+      <div class="box box-blue" style="margin-bottom: 16px;">
+        <span class="box-title">Paralelizm strukturalny</span>
+        Gdy autor tworzy każde zdanie w schemacie: <strong>podmiot -> orzeczenie -> dopełnienie</strong>, wprowadza czytelnika w trans, przez który ten po chwili przestaje rejestrować treść. Pamiętaj, że takie schematy często też odnoszą się do opisywania wyglądu czy zachowań. Gdy opisujesz wygląd, podświadomie możesz cały czas stosować strukturę „Miała na sobie”.
+      </div>
+
+      <div class="box box-purple">
+        <span class="box-title">Jak skutecznie łamać schemat?</span>
+        <ul style="padding-left: 16px; margin-top: 6px; margin-bottom: 0; font-size: 11px;">
+          <li style="margin-bottom: 6px;"><strong>Dla płynności:</strong> Łącz krótkie zdania imiesłowami (-ąc, -szy), ale używaj ich z umiarem.</li>
+          <li style="margin-bottom: 6px;"><strong>Dla napięcia:</strong> Przesuń okolicznik miejsca lub przedmiot na początek zdania. Zaskocz czytelnika.</li>
+          <li><strong>Dla akcji:</strong> Wyrzuć powtarzające się podmioty (Marek, on). Pozwól, by same czasowniki lub równoważniki zdań niosły szybką akcję.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="dot-grid-box" style="flex-grow: 1; display: flex; flex-direction: column;">
+    <div class="fill-list" style="margin-top: 0; flex-grow: 1;">
+      <div class="fill-row"><span class="fill-label">Spróbuj przekształcić swój własny, monotonny akapit:</span><div class="fill-space"></div></div>
+      <div class="fill-row" style="flex-grow: 1;"><span class="fill-label" style="opacity: 0;">...</span><div class="fill-space"></div></div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>9 / 13</span></div>
+</section>
+
+<!-- STRONA 7 STYL I AI -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 3: Styl i Narzędzia</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="section-opener">
+    <h2 class="section-title">Świadomy dobór stylu a <em class="grad-type">AI</em></h2>
+    <p class="body">Wielu autorów myli styl języka z własnym, indywidualnym stylem. Styl języka to po prostu szablon i narzędzie, po które sięgasz w zależności od tego, co chcesz osiągnąć. Z kolei Twój autorski głos to Twój unikalny ślad węglowy w literaturze.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    <!-- LEWA KOLUMNA -->
+    <div class="q-main">
+      
+      <div class="q-header-area" style="margin-bottom: 24px;"><span class="qnum-bg">04</span><h3 class="qtitle">Trzy funkcje i typy tekstów</h3></div>
+      
+      <p style="font-size: 12px; margin-bottom: 16px; color: var(--ink-soft);">Jako autor musisz precyzyjnie kontrolować, jaki typ tekstu serwujesz w danej scenie. Mieszanie konwencji bez wyraźnego celu wprowadza chaotyczny zgrzyt.</p>
+      
+      <div class="reading-content" style="padding: 16px 20px; margin-bottom: 20px;">
+        <!-- TYP 1 -->
+        <h4 style="color: var(--grad-start); font-size: 13px; margin-bottom: 4px; font-family: var(--serif);">1. Teksty informacyjne</h4>
+        <p style="margin-bottom: 12px; font-size: 11px; line-height: 1.5;"><strong>Cel:</strong> Szybkie i bezbłędne przekazanie wiedzy.<br>
+        <strong>Charakterystyka:</strong> Język suchy, konkretny, oparty na krótkich zdaniach. Brak rozbudowanych metafor czy sztucznie podniosłych spójników (<em>gdyż, albowiem</em>).<br>
+        <strong>Zastosowanie:</strong> Suche fakty w narracji, kiedy akcja musi pędzić do przodu.</p>
+
+        <!-- TYP 2 -->
+        <h4 style="color: var(--grad-mid); font-size: 13px; margin-bottom: 4px; font-family: var(--serif);">2. Teksty ekspresywne / emotywne</h4>
+        <p style="margin-bottom: 8px; font-size: 11px; line-height: 1.5;"><strong>Cel:</strong> Wywołanie emocji, pobudzenie wyobraźni i zbudowanie klimatu.<br>
+        <strong>Charakterystyka:</strong> Język plastyczny, pełen metafor, obrazowych porównań i dynamicznych czasowników. (Głównie beletrystyka).</p>
+        
+        <div style="background: #FAEDED; border-left: 3px solid #B31B1B; padding: 8px 12px; font-size: 11px; color: #5c1f1f; margin-bottom: 14px; border-radius: 0 4px 4px 0; line-height: 1.4;">
+          <strong>⚠️ Ostrzeżenie:</strong> Uważaj, aby Twój styl emotywny nie osunął się w językowy chaos – niechlujną mowę potoczną, pełną skrótów myślowych i gawędziarskich wydmuszek.
+        </div>
+
+        <!-- TYP 3 -->
+        <h4 style="color: var(--grad-end); font-size: 13px; margin-bottom: 4px; font-family: var(--serif);">3. Teksty operatywne / apelatywne</h4>
+        <p style="margin-bottom: 0; font-size: 11px; line-height: 1.5;"><strong>Cel:</strong> Skłonienie czytelnika do reakcji lub wywołanie natychmiastowej emocji.<br>
+        <strong>Charakterystyka:</strong> Bezpośrednie zwroty, język korzyści, elementy języka mówionego (często z zakłóconym szykiem zdania).<br>
+        <strong>Zastosowanie:</strong> Porywające przemowy postaci czy manipulacje dialogowe.</p>
+      </div>
+
+      <div class="dot-grid-box short" style="min-height: auto; padding: 16px; border-color: var(--paper-mid); background-color: var(--paper-warm);">
+        <span class="box-title" style="color: var(--grad-start); font-size: 10px; margin-bottom: 8px; display: block;">Zadaj sobie pytanie</span>
+        <p style="font-size: 12px; font-weight: 700; color: var(--ink); margin: 0; line-height: 1.5;">Czy czytelnik, biorąc do ręki Twoją książkę i czytając dowolny fragment bez patrzenia na okładkę, będzie w stanie powiedzieć: <em>„O, to na pewno ona/on! Pisze w ten swój specyficzny sposób”</em>?</p>
+      </div>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <div class="box box-purple">
+        <span class="box-title">Algorytmy: LanguageTool</span>
+        Programy tego typu są świetne w łapaniu brakujących przecinków czy literówek, ale <strong>nie myślą</strong>. Nie rozumieją dynamiki opowieści, nie czują intencji autora i nie rozwiążą problemu kulawego akapitu. Bezkrytyczne akceptowanie wszystkich poprawek może obciąć tekstowi pazury i zniszczyć Twój unikalny styl.
+      </div>
+
+      <div class="box box-blue">
+        <span class="box-title">Jak mądrze używać AI (ChatGPT)?</span>
+        <p style="margin-bottom: 8px;">Wydanie polecenia w stylu <em>„Popraw ten tekst”</em> lub <em>„Napisz to ładniej”</em> to przepis na literacką katastrofę. AI wygładzi Twój akapit do bólu, zamieniając go w generyczną, pozbawioną wyrazu papkę.</p>
+        <p style="margin-bottom: 12px;">Zamiast tego używaj AI jak <strong>wyspecjalizowanego rzemieślnika</strong> i dawaj mu precyzyjne mikrozadania:</p>
+        
+        <div style="background: rgba(255,255,255,0.7); padding: 8px 10px; border-radius: 4px; margin-bottom: 8px; font-size: 10.5px;">
+          <span style="color: #c0392b; font-weight: bold; font-size: 12px;">❌ ŹLE:</span><br><em>„Ulepsz ten opis walki.”</em>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.7); padding: 8px 10px; border-radius: 4px; margin-bottom: 8px; font-size: 10.5px;">
+          <span style="color: #27ae60; font-weight: bold; font-size: 12px;">✅ DOBRZE:</span><br><em>„Wyeliminuj z poniższego akapitu wszystkie czasowniki 'być' oraz 'stać' i zastąp je bardziej dynamicznymi odpowiednikami akcji.”</em>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.7); padding: 8px 10px; border-radius: 4px; font-size: 10.5px;">
+          <span style="color: #27ae60; font-weight: bold; font-size: 12px;">✅ DOBRZE:</span><br><em>„Wskaż w tym fragmencie miejsca, gdzie zdania mają taką samą długość i zaburzają rytm.”</em>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ZMIANA: Zaktualizowana numeracja stron, uwzględniająca to, że dokument ma łącznie 9 stron -->
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>7/ 9</span></div>
+</section>
+
+<!-- STRONA 8 REJESTRY JĘZYKOWE -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 4: Rejestry i Wiarygodność</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="section-opener">
+    <h2 class="section-title">Rejestry języka: <em class="grad-type">kod Twojej postaci</em></h2>
+    <p class="body">Rejestr to nie kwestia pojedynczych „ładnych” czy „mądrych” słówek, lecz całościowy styl wypowiedzi – obejmujący gramatykę, składnię, rytm i tonację.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    <!-- LEWA KOLUMNA -->
+    <div class="q-main">
+      
+      <!-- ZMIANA: Zwiększony margin-bottom (24px) dodaje "światło", żeby cyfra 05 nie dotykała ramki -->
+      <div class="q-header-area" style="margin-bottom: 24px;"><span class="qnum-bg">05</span><h3 class="qtitle">Spójność ponad słownictwo</h3></div>
+      
+      <div class="reading-content" style="padding: 16px; margin-bottom: 24px;">
+        <h4>1. Rejestr dotyczy całego zdania</h4>
+        <p style="margin-bottom: 12px;">Najczęstszym błędem jest doklejanie podniosłego spójnika (<em>albowiem, gdyż, iż, ależ</em>) do całkowicie potocznego lub prostego zdania. Taki zabieg nie podnosi rejestru – tworzy jedynie językowego potworka, który brzmi nienaturalnie.</p>
+        
+        <p style="margin-bottom: 8px; color: #c0392b;"><strong>BŁĄD (Mieszanie rejestrów):</strong><br>
+        <em>„Poszedłem rano po bułki do Żabki, albowiem zapomniałem kupić chleba.”</em><br>
+        <span style="font-size: 11px; color: var(--ink-muted);">Początek to potoczna mowa, a „albowiem” wygląda tu jak obcy element.</span></p>
+
+        <p style="margin-bottom: 8px; color: var(--ink-soft);"><strong>NISKI / POTOCZNY REJESTR:</strong><br>
+        <em>„Skoczyłem rano po bułki, bo zapomniałem o chlebie.”</em></p>
+
+        <p style="margin-bottom: 0; color: var(--ink-soft);"><strong>WYSOKI / OFICJALNY REJESTR:</strong><br>
+        <em>„Udałem się z samego rana do pobliskiego sklepu po pieczywo, albowiem przeoczyłem wcześniejsze zakupy.”</em></p>
+      </div>
+
+      <!-- ZMIANA: Podobnie dodane światło dla punktu 06 -->
+      <div class="q-header-area" style="margin-bottom: 20px;"><span class="qnum-bg" style="top: -15px;">06</span><h3 class="qtitle">Ściągawka: 3 poziomy rejestru</h3></div>
+      <table class="comparison-table">
+        <tr>
+          <th style="width: 20%;">Poziom</th>
+          <th style="width: 40%;">Czym się charakteryzuje?</th>
+          <th style="width: 40%;">Przykład</th>
+        </tr>
+        <tr>
+          <td><strong>Niski</strong><br><span style="font-size: 9px; color: var(--ink-muted); font-weight: normal;">(potoczny / slangowy)</span></td>
+          <td>Krótkie zdania, emocjonalność, skróty, slang, uproszczona gramatyka.</td>
+          <td><em>„Dobra, zbijam stąd, bo typ zaraz odleci.”</em></td>
+        </tr>
+        <tr>
+          <td><strong>Neutralny</strong><br><span style="font-size: 9px; color: var(--ink-muted); font-weight: normal;">(standardowy)</span></td>
+          <td>Poprawna polszczyzna, powszechne słownictwo, brak przesadnego stylu.</td>
+          <td><em>„Lepiej już pójdę, zanim on całkowicie straci panowanie nad sobą.”</em></td>
+        </tr>
+        <tr>
+          <td><strong>Wysoki</strong><br><span style="font-size: 9px; color: var(--ink-muted); font-weight: normal;">(oficjalny / literacki)</span></td>
+          <td>Złożona składnia, staranne słownictwo, brak potocyzmów, dystans.</td>
+          <td><em>„Sugeruję opuścić to miejsce, nim ten człowiek w pełni utraci nad sobą kontrolę.”</em></td>
+        </tr>
+      </table>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <div class="box box-orange">
+        <span class="box-title">Ciekawostka: Kod grupy (Socjolekt)</span>
+        Rejestr językowy zmienia się też w zależności od grupy społecznej. Jako autor, pamiętaj o dopasowaniu języka do tła postaci:
+        <ul style="padding-left: 16px; margin-top: 8px; margin-bottom: 0; font-size: 11px;">
+          <li style="margin-bottom: 6px;"><strong>Nastolatki:</strong> skróty myślowe, dynamika, slang (uwaga na przestarzałe zwroty!).</li>
+          <li style="margin-bottom: 6px;"><strong>Zawody:</strong> lekarze czy prawnicy często przenoszą branżowe nawyki składniowe do domowych rozmów.</li>
+          <li><strong>Subkultury:</strong> zamknięte grupy mają własne, unikalne kody kulturowe.</li>
+        </ul>
+      </div>
+
+      <div class="box box-blue">
+        <span class="box-title">Spójność to klucz</span>
+        Aby wysoki rejestr brzmiał wiarygodnie, dopasować trzeba całą strukturę wypowiedzi. Wyszukana składnia idzie w parze z eleganckim słownictwem, a swobodny ton – z prostymi konstrukcjami zdaniowymi.
+      </div>
+      
+      <div class="box box-purple">
+        <span class="box-title">Żelazna zasada</span>
+        Wybierz rejestr dla bohatera i <strong>trzymaj się go konsekwentnie</strong>. Zmiana tonu u danej postaci powinna wynikać wyłącznie z wyjątkowej sytuacji (np. potulny urzędnik zaczyna krzyczeć w skrajnym stresie).
+      </div>
+
+    </div>
+
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>8/ 9</span></div>
+</section>
+
+<!-- STRONA 8: GŁOSY POSTACI -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Etap 5: Głosy postaci</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+
+  <div class="section-opener">
+    <h2 class="section-title">Zróżnicowanie języka: <em class="grad-type">unikalny głos</em></h2>
+    <p class="body">Dobre dialogi poznaje się po tzw. teście ślepej próby. Jeśli usuniesz z tekstu wszystkie didaskalia (np. <em>powiedział Jan</em>), czytelnik wciąż powinien bez trudu wiedzieć, kto w danym momencie się wypowiada.</p>
+  </div>
+
+  <div class="q-row" style="flex-grow: 1;">
+    <!-- LEWA KOLUMNA -->
+    <div class="q-main">
+      
+      <!-- ZMIANA: margin-bottom zwiększony z 16px na 28px, aby odsunąć tekst od cyfry 07 -->
+      <div class="q-header-area" style="margin-bottom: 28px;"><span class="qnum-bg" style="top: -15px;">07</span><h3 class="qtitle">Ta sama sytuacja, trzy głosy</h3></div>
+      <p style="font-size: 12px; margin-bottom: 24px; color: var(--ink-soft);">Sytuacja: Bohaterowie widzą wypadek na ulicy i odpowiadają na pytanie policjanta: <em>„Co pan/pani tu widział(a)?”</em>.</p>
+      
+      <!-- PRZYKŁAD 1 -->
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-family: var(--serif); color: var(--grad-start); font-size: 14px; margin-bottom: 4px; margin-top: 0;">Głos 1: Troskliwa, gawędziarska starsza pani</h4>
+        <p style="font-size: 11px; color: var(--ink-muted); margin-bottom: 6px;">Profil: Potrzebująca kontaktu, dłuższe zdania, gęsta oprawa emocjonalna.</p>
+        <div style="background: var(--paper-warm); padding: 12px 14px; border-left: 3px solid var(--grad-start); font-style: italic; font-size: 12px; color: var(--ink-soft); border-radius: 0 4px 4px 0; line-height: 1.5;">
+          „A wie pan, panie władzo... ja to akurat w oknie stałam, bo serce mnie coś dzisiaj od rana uciska i zasnąć nie mogłam. Patrzę, a ten czerwony samochód tak strasznie pędzi! Aż mi tchu zabrakło, bo przecież tam na przejściu dzieci do szkoły chodzą... Ojej, oby tylko nikomu nic poważnego się nie stało.”
+        </div>
+      </div>
+
+      <!-- PRZYKŁAD 2 -->
+      <div style="margin-bottom: 20px;">
+        <h4 style="font-family: var(--serif); color: var(--grad-start); font-size: 14px; margin-bottom: 4px; margin-top: 0;">Głos 2: Dystyngowany starszy pan</h4>
+        <p style="font-size: 11px; color: var(--ink-muted); margin-bottom: 6px;">Profil: Z „dobrego domu”, dba o czystość języka, wysoki rejestr, precyzja, dystans.</p>
+        <div style="background: var(--paper-warm); padding: 12px 14px; border-left: 3px solid var(--grad-mid); font-style: italic; font-size: 12px; color: var(--ink-soft); border-radius: 0 4px 4px 0; line-height: 1.5;">
+          „Byłem bezpośrednim świadkiem tego niefortunnego zdarzenia. Pojazd marki Audi poruszał się z prędkością ewidentnie przekraczającą dozwolone limity. Kierujący stracił panowanie nad kierownicą w momencie manewru wymijania. Czy wymóg złożenia przeze mnie formalnych zeznań jest natychmiastowy?”
+        </div>
+      </div>
+
+      <!-- PRZYKŁAD 3 -->
+      <div>
+        <h4 style="font-family: var(--serif); color: var(--grad-start); font-size: 14px; margin-bottom: 4px; margin-top: 0;">Głos 3: Młody chłopak z osiedla</h4>
+        <p style="font-size: 11px; color: var(--ink-muted); margin-bottom: 6px;">Profil: Nastolatek, język potoczny, slang, krótkie skróty myślowe, dynamika.</p>
+        <div style="background: var(--paper-warm); padding: 12px 14px; border-left: 3px solid var(--grad-end); font-style: italic; font-size: 12px; color: var(--ink-soft); border-radius: 0 4px 4px 0; line-height: 1.5;">
+          „No stoję se z ziomkiem pod żabką, nie? I nagle słyszę normalnie pisk opon, dym z kół i chust... walnął w barierki aż miło. Typ na pewniaku leciał ze sto pięćdziesiąt. Masakra jakaś, typie, auto skasowane do kasacji.”
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- PRAWA KOLUMNA (SIDEBAR) -->
+    <div class="q-sidebar" style="padding-top: 0;">
+      
+      <div class="box box-orange">
+        <span class="box-title">Trzy filary tworzenia tonu</span>
+        <p style="margin-bottom: 8px;"><strong>1. Rejestr i słownictwo:</strong> Od potocznego i wulgarnego po podniosły, elegancki lub naszpikowany specjalistycznymi pojęciami.</p>
+        <p style="margin-bottom: 8px;"><strong>2. Długość i struktura zdań:</strong> Osoby wylewne tworzą rozbudowane zdania złożone; osoby skryte lub bardzo dynamiczne mówią rwanymi równoważnikami zdań.</p>
+        <p style="margin-bottom: 0;"><strong>3. Wstawki i nawyki słowne:</strong> Przerywniki charakteryzujące konkretną grupę (np. <em>„rozumie pan”, „no i ten”, „zatem”</em>).</p>
+      </div>
+
+      <div class="box box-blue">
+        <span class="box-title">Fundament: Kim jest postać?</span>
+        To, jak mówimy, jest bezpośrednią wypadkową tego, kim jesteśmy. Zanim napiszesz dialog, określ podstawowe cechy bohatera:
+        <ul style="padding-left: 16px; margin-top: 8px; margin-bottom: 0; font-size: 11px;">
+          <li style="margin-bottom: 6px;"><strong>Wiek i generacja:</strong> slang młodzieżowy czy tradycyjne zwroty z dawnych lat?</li>
+          <li style="margin-bottom: 6px;"><strong>Wykształcenie:</strong> język potoczny, gwarowy, akademicki czy branżowy.</li>
+          <li style="margin-bottom: 6px;"><strong>Osobowość:</strong> powściągliwość, wylewność, nerwowość, pewność siebie.</li>
+          <li><strong>Stan emocjonalny:</strong> troska, podejrzliwość, dystans.</li>
+        </ul>
+      </div>
+      
+      <div class="box box-red">
+        <span class="box-title">Żelazna zasada</span>
+        Zanim uznasz dialog za skończony, <strong>przeczytaj same kwestie w cudzysłowach</strong>, całkowicie ignorując narrację. Jeśli wypowiedzi bohaterów brzmią tak, jakby mówiła je jedna i ta sama osoba – czas zmienić ich słownictwo i rzeźbę zdań. Prawdziwe postacie żyją własnym życiem, a nie językiem narratora.
+      </div>
+
+    </div>
+
+  </div>
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>8 / 9</span></div>
+</section>
+
+<!-- STRONA 13: CHECKLISTA (FINAŁ) -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Finał: Autodiagnoza</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener">
+    <h2 class="section-title">Twoja Skala: <em class="grad-type">Diagnoza Stylu</em></h2>
+    <p class="body">Oceń swój tekst na skali od 1 do 10, gdzie 1 to absolutny brak zabiegu (monotonia/niedobór), 4-7 to idealny balans, a 10 to karykaturalna przesada.</p>
+  </div>
+
+  <table class="comparison-table" style="margin-bottom: 24px;">
+    <tr>
+      <th style="width: 25%;">Obszar języka</th>
+      <th style="width: 20%; color: var(--ink-muted); font-weight: normal; font-size: 10px;">1–3 (Niedobór)</th>
+      <th style="width: 25%; color: var(--grad-start); font-size: 11px; font-weight: 800;">4–7 (Złoty środek)</th>
+      <th style="width: 20%; color: var(--ink-muted); font-weight: normal; font-size: 10px;">8–10 (Przesada)</th>
+      <th style="width: 10%; text-align: center;">Wynik</th>
+    </tr>
+    <tr>
+      <td><strong>Dynamika czasowników</strong></td>
+      <td>Tekst oparty na płaskich: "był/miał/czuł"</td>
+      <td>Silne czasowniki obrazujące akcję</td>
+      <td>Każde słowo wymuszone, tekst jak słownik</td>
+      <td style="text-align: center;">[ &nbsp; ]</td>
+    </tr>
+    <tr>
+      <td><strong>Wydmuszki i wypełniacze</strong></td>
+      <td>Suchy, nienaturalny język</td>
+      <td>Świadome użycie (np. wahanie w dialogu)</td>
+      <td>"Właściwie", "jakoś tak" w co drugim zdaniu</td>
+      <td style="text-align: center;">[ &nbsp; ]</td>
+    </tr>
+    <tr>
+      <td><strong>Rytm zdań i długość</strong></td>
+      <td>Telegram (tylko krótkie zdania)</td>
+      <td>Zmienna melodia i długość (kolory)</td>
+      <td>Niekończące się tasiemce składniowe</td>
+      <td style="text-align: center;">[ &nbsp; ]</td>
+    </tr>
+    <tr>
+      <td><strong>Ton postaci i styl</strong></td>
+      <td>Każdy mówi głosem Autora</td>
+      <td>Spójne rejestry i dopasowanie do roli</td>
+      <td>Karykaturalne maniery i chaos potoczny</td>
+      <td style="text-align: center;">[ &nbsp; ]</td>
+    </tr>
+    <tr>
+      <td><strong>Show, don't tell</strong></td>
+      <td>Tylko raportowanie suchych faktów</td>
+      <td>Emocje pokazane konkretnym zachowaniem</td>
+      <td>Opisywanie każdej bzdury (akcja stoi)</td>
+      <td style="text-align: center;">[ &nbsp; ]</td>
+    </tr>
+  </table>
+
+  <div class="q-row full" style="flex-grow: 1; gap: 12px;">
+    
+    <div class="q-header-area" style="margin-bottom: 4px; margin-top: 8px;">
+      <span class="qnum-bg" style="top: -15px;">01</span>
+      <h3 class="qtitle">Szybki audyt przed publikacją / wysyłką</h3>
+    </div>
+    
+    <!-- Rozciągające się pole na notatki i checklistę -->
+    <div class="dot-grid-box" style="flex-grow: 1; padding: 20px; display: flex; flex-direction: column;">
+      
+      <ul style="list-style: none; padding: 0; margin: 0; font-size: 13px; line-height: 1.8; color: var(--ink-soft);">
+        <li style="border-bottom: 1px dashed var(--paper-mid); padding-bottom: 8px; margin-bottom: 8px; display: flex; gap: 12px;">
+          <span style="color: var(--grad-start); font-weight: bold;">[&nbsp;&nbsp;&nbsp;]</span> Czy moja narracja (poza dialogami) jest wolna od słów-wydmuszek?
+        </li>
+        <li style="border-bottom: 1px dashed var(--paper-mid); padding-bottom: 8px; margin-bottom: 8px; display: flex; gap: 12px;">
+          <span style="color: var(--grad-start); font-weight: bold;">[&nbsp;&nbsp;&nbsp;]</span> Czy w kluczowych scenach akcji wymieniłem płaskie czasowniki na te dynamiczne?
+        </li>
+        <li style="border-bottom: 1px dashed var(--paper-mid); padding-bottom: 8px; margin-bottom: 8px; display: flex; gap: 12px;">
+          <span style="color: var(--grad-start); font-weight: bold;">[&nbsp;&nbsp;&nbsp;]</span> Czy zróżnicowałem długość zdań, aby uniknąć monotonii?
+        </li>
+        <li style="border-bottom: 1px dashed var(--paper-mid); padding-bottom: 8px; margin-bottom: 8px; display: flex; gap: 12px;">
+          <span style="color: var(--grad-start); font-weight: bold;">[&nbsp;&nbsp;&nbsp;]</span> Czy moi bohaterowie brzmią inaczej, gdy odetnę narrację i didaskalia?
+        </li>
+        <li style="border-bottom: 1px dashed var(--paper-mid); padding-bottom: 8px; margin-bottom: 20px; display: flex; gap: 12px;">
+          <span style="color: var(--grad-start); font-weight: bold;">[&nbsp;&nbsp;&nbsp;]</span> Czy udało mi się przełamać schemat „osoba + czasownik” na początku każdego zdania?
+        </li>
+      </ul>
+
+      <span class="box-title" style="color: var(--ink-muted); font-size: 10px; margin-bottom: 8px; display: block;">Twoje notatki i cele na kolejny draft:</span>
+      <div style="flex-grow: 1;"></div>
+    </div>
+  </div>
+
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>13 / 14</span></div>
+</section>
+
+<!-- STRONA 14: PODSUMOWANIE I KONTAKT -->
+<section class="page" style="display: flex; flex-direction: column; height: 100%; min-height: 297mm;">
+  <div class="runner top"><span class="grad-type">Podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  
+  <div class="section-opener">
+    <h2 class="section-title">Co masz zrobić z tą wiedzą <em class="grad-type">dalej</em>?</h2>
+    <p class="body">Gratulacje – za Tobą kluczowy etap pracy nad tekstem. Masz już jasność co do mocnych stron swojej historii oraz luk, które wymagają poprawy. Co zrobić z tą wiedzą dalej?</p>
+  </div>
+
+  <div class="q-row full" style="flex-grow: 1;">
+    <div class="q-main">
+      
+      <div class="reading-content" style="margin-bottom: 24px; border-left: 4px solid var(--grad-end); padding: 20px 24px;">
+        <h4 style="font-size: 16px; margin-bottom: 12px;">To był duży i niezbędny krok!</h4>
+        <p style="margin-bottom: 12px;">Rzetelne wypełnienie tego arkusza diagnostycznego to wymagający sprawdzian dla Twojego tekstu. Jeśli w wielu miejscach musiałeś wpisać „jeszcze nie wiem” – to świetna wiadomość. Właśnie zaoszczędziłeś miesiące błądzenia po omacku. Jeśli natomiast Twój arkusz pęka od konkretów i faktów – gratulacje. Masz solidny fundament, na którym możesz bezpiecznie budować fabułę.</p>
+        <p style="margin-bottom: 0;">Spójrz teraz na swoją opowieść z perspektywy lotu ptaka. Czas na chłodną, obiektywną ocenę: czy ta historia wymaga jeszcze gruntownej przebudowy, czy jest już gotowa na testy i możesz śmiało wysłać ją do betaczytelników?</p>
+      </div>
+
+      <div class="box box-purple" style="padding: 32px; box-shadow: 0 8px 32px rgba(107, 53, 200, 0.08); border: 1px solid rgba(107, 53, 200, 0.1);">
+        <span class="box-title" style="font-size: 14px; margin-bottom: 16px; letter-spacing: 0.12em;">Skorzystaj z bezpłatnej analizy redaktorskiej</span>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--ink); font-weight: 700; margin-bottom: 20px;">
+          Jeśli praca z arkuszem Cię przytłoczyła lub czujesz, że utknąłeś w martwym punkcie – nie musisz działać sam.
+        </p>
+        
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px;">
+          <strong>Bezpłatna weryfikacja:</strong> Chcesz się upewnić, że Twoje poprawki działają? Prześlij mi fragment swojej powieści (do 9 000 znaków ze spacjami). Przeanalizuję go bezpłatnie i dam Ci szczerą odpowiedź, czy idziesz w dobrym kierunku i gdzie Twój styl wymaga jeszcze szlifu.
+        </p>
+
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0;">
+          <strong>Redakcja strukturalna i językowa:</strong> Jeśli czujesz, że historia utknęła, bohaterom brakuje głębi, łatanie dziur fabularnych Cię przerasta lub chcesz po prostu doszlifować językową warstwę tekstu – chętnie pomogę. Oferuję profesjonalną redakcję, w ramach której przeanalizuję Twój manuskrypt od podszewki i pomogę Ci ułożyć go w spójną całość.
+        </p>
+        
+        <div class="dot-grid-box short" style="margin-top: 24px; min-height: 70px; display: flex; align-items: center; justify-content: center; background-color: #fff; border-color: var(--paper-mid);">
+          <span style="font-family: var(--sans); font-size: 18px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.05em;">natalia.szoppa@gmail.com</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- Jeśli Twój złączony dokument ma w sumie np. 26 stron, podmień "14 / 14" na "26 / 26" -->
+  <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>14 / 14</span></div>
+</section>
+</body>
+</html>
