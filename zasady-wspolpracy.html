@@ -318,6 +318,14 @@ title: Zasady współpracy - Przewodnik
         .warning-card { flex-direction: column; text-align: center; padding: 35px 25px; }
     }
     /* ===== FLOATING BUTTON (Pobieranie pliku) ===== */
+    .floating-buttons-container {
+        display: flex;
+        gap: 15px; /* Odstęp między przyciskami */
+        margin-top: 10px;
+        margin-bottom: 10px;
+        flex-wrap: wrap; /* Przyciski zawiną się na małych ekranach */
+    }
+
     .floating-file-btn {
         display: inline-flex;
         align-items: center;
@@ -333,11 +341,14 @@ title: Zasady współpracy - Przewodnik
         text-transform: uppercase;
         letter-spacing: 1px;
         box-shadow: 0 10px 20px rgba(123, 44, 191, 0.25);
-        margin-top: 10px;
-        margin-bottom: 10px;
         transition: all 0.3s ease;
         /* Wywołanie animacji lewitowania */
         animation: floatUpDown 2.5s ease-in-out infinite;
+    }
+
+    /* Drugi przycisk może mieć np. odwrócony kierunek animacji, żeby wyglądało to ciekawiej */
+    .floating-file-btn:nth-child(2) {
+        animation-delay: 0.5s; /* Opóźnienie animacji */
     }
 
     .floating-file-btn i {
@@ -482,24 +493,29 @@ title: Zasady współpracy - Przewodnik
         <h2>Od rękopisu do gotowej książki</h2>
     </div>
 
-    <div class="process-step">
+  <div class="process-step">
         <div class="step-bg-number">1</div>
         <div class="step-content">
             <h3>Autodiagnoza</h3>
             <p>Wypełnij Arkusz Diagnostyczny. Usiądź na spokojnie, przeanalizuj swoją fabułę i – co najważniejsze – jako autor nie oszukuj samego siebie. Ten etap to wyłącznie Twoja samodzielna praca. Pozwoli Ci ona wyłapać największe luki fabularne i wstępnie poprawić tekst.</p>
-               <!-- TUTAJ ZNAJDUJE SIĘ LEWITUJĄCY PRZYCISK -->
-            <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" target="_blank" class="floating-file-btn">
-                <i class="las la-file-download"></i>
-                <span>Pobierz Arkusz Diagnostyczny</span>
-            </a>
+               
+            <!-- ZMIANA: Zmieniony kontener i dodany drugi przycisk -->
+            <div class="floating-buttons-container">
+                <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" target="_blank" class="floating-file-btn">
+                    <i class="las la-file-download"></i>
+                    <span>Fabuła</span>
+                </a>
+                <a href="https://nataliaszoppa.com/arkusz%20diagnostyczny.html" target="_blank" class="floating-file-btn">
+                    <i class="las la-file-download"></i>
+                    <span>Język</span>
+                </a>
+            </div>
             
             <div class="step-benefit">
-          
                 <strong>Korzyść dla Ciebie:</strong> Dzięki temu samodzielnie wyeliminujesz klasyczne błędy debiutantów i unikniesz płacenia mi za wskazywanie potknięć, które jesteś w stanie naprawić sam(-a).
             </div>
         </div>
     </div>
-
     <div class="process-step">
         <div class="step-bg-number">2</div>
         <div class="step-content">
