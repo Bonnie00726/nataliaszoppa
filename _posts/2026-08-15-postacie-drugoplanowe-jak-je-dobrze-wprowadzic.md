@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rola postaci drugoplanowych, czyli jak stworzyć angażującego bohatera (część 3)”
+title: "Rola postaci drugoplanowych, czyli jak stworzyć angażującego bohatera (część 3)"
 date: 2026-08-15 10:00:00 +0200
 author: Natalia Szoppa
 image: "https://images.unsplash.com/photo-1521220546621-cf34a1165c67"
@@ -34,6 +34,7 @@ Przed wprowadzeniem postaci drugoplanowej warto precyzyjnie określić jej funkc
 * Jaki ma cel i w którym miejscu jej dążenia przecinają się z celem protagonisty?
 * W jaki sposób jej obecność utrudnia lub ułatwia rozwój akcji?
 * Jakie informacje wnosi do fabuły i jakie cechy głównego bohatera pomaga uwypuklić?
+
 Warto też każdej z postaci dodać etykietkę, np. mentor, przyjaciel, rywal itp. W ten sposób Tobie jako autorowi będzie prościej przypisać odpowiednie cechy i zobaczyć, czy dana postać ma potencjał, aby ukraść miejsce protagonisty. 
 
 <div class="top-bottom-highlight">Każdy z bohaterów powinien mieć odrębny głos i własną tożsamość, lecz ich osobiste wątki muszą stale rezonować z główną osią opowieści, zamiast z nią rywalizować.</div>
