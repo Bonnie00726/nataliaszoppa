@@ -649,49 +649,59 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
     <div class="modal-header">
         <div class="eyebrow-label">Finalny format</div>
         <h3>Skład DTP i E-booki</h3>
-        <p>Przekształcam Twój tekst w gotowy do druku materiał (PDF). Wybierz szybki Pakiet Standard oparty na sprawdzonych szablonach lub dobierz płatne opcje dodatkowe, w tym wersję na czytniki (EPUB).</p>
+        <p>Wybierz spośród dwóch opcji: <strong>Pakiet Standard</strong>, gdzie wszystko jest w cenie i działamy na sprawdzonych szablonach, które możesz pobrać <a href="#" style="color: #6a1b9a; text-decoration: underline;">tutaj</a>, aby sprawdzić, która wersja fontu najbardziej Ci się podoba; lub dobierz płatne opcje dodatkowe, jeśli potrzebujesz niestandardowych rozwiązań.</p>
     </div>
 
-    <div class="modal-split-grid">
+    <div class="modal-split-grid" style="display: flex; gap: 20px; margin-bottom: 20px;">
         <!-- Pakiet Standard -->
-        <div class="modal-split-box" style="background: #ECF6EC; border-color: #c8e6c9;">
-            <h4 style="color: #2E7D32;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Pakiet Standard (w cenie)</h4>
-            <p style="font-size: 0.9rem; color: #1f4d24; margin-bottom: 10px;">Gotowe szablony pozwalające na szybką i bezproblemową realizację.</p>
-            <ul style="color: #1f4d24;">
-                <li><strong>Format:</strong> standardowy rozmiar A5 lub B5.</li>
-                <li><strong>Typografia:</strong> wybór spośród 4 darmowych, profesjonalnych fontów.</li>
-                <li><strong>Paginacja:</strong> prosta numeracja u dołu strony (do lewej, do prawej lub na środku).</li>
-                <li><strong>Korekta poskładowa:</strong> eliminacja błędów składu (wdowy, sieroty, bękarty).</li>
-                <li><strong>Plik wynikowy:</strong> czarno-biały plik PDF gotowy do druku.</li>
+        <div class="modal-split-box" style="flex: 1; padding: 20px; border: 1px solid #c8e6c9; background: #ECF6EC; border-radius: 8px;">
+            <h4 style="color: #2E7D32; margin-top: 0;"><i class="las la-check-circle" style="font-size: 1.4rem;"></i> Pakiet Standard</h4>
+            <ul style="color: #1f4d24; padding-left: 20px; margin-bottom: 0;">
+                <li><strong>Brak ilustracji:</strong> ten pakiet to czysty tekst, bez możliwości dodania grafik.</li>
+                <li><strong>Typografia:</strong> domyślnie klasyczny font w rozmiarze 12 pt ze standardową książkową interlinią (np. 15 pt). Masz jednak swobodę zmiany rozmiaru (np. na 14 pt) i interlinii w ramach pakietu.</li>
+                <li><strong>Personalizacja:</strong> wybór jednej z 4 opcji fontów oraz ustawienie paginacji (lewa, prawa, środek).</li>
+                <li><strong>Korekta poskładowa:</strong> nie tylko eliminujemy wdowy, sieroty i bękarty, ale w gratisie czytamy tekst po raz ostatni w InDesignie, wyłapując ewentualne, ostatnie literówki.</li>
             </ul>
         </div>
         
         <!-- Opcje Dodatkowe -->
-        <div class="modal-split-box" style="background: #E3F2FD; border-color: #90CAF9;">
-            <h4 style="color: #1565C0;"><i class="las la-plus-circle" style="font-size: 1.4rem;"></i> Opcje dodatkowe (płatne)</h4>
-            <p style="font-size: 0.9rem; color: #0D47A1; margin-bottom: 10px;">Wyceniane indywidualnie w zależności od skomplikowania.</p>
-            <ul style="color: #0D47A1;">
+        <div class="modal-split-box" style="flex: 1; padding: 20px; border: 1px solid #90CAF9; background: #E3F2FD; border-radius: 8px;">
+            <h4 style="color: #1565C0; margin-top: 0;"><i class="las la-plus-circle" style="font-size: 1.4rem;"></i> Opcje dodatkowe (płatne)</h4>
+            <ul style="color: #0D47A1; padding-left: 20px; margin-bottom: 0;">
                 <li><strong>E-book:</strong> konwersja publikacji do formatu EPUB/MOBI.</li>
                 <li><strong>Ozdobniki:</strong> żywa pagina na górze strony, linie, ornamenty.</li>
-                <li><strong>Niestandardowe fonty:</strong> możliwość użycia innego fontu (wymaga zakupu przez Autora i dostarczenia licencji komercyjnej).</li>
-                <li><strong>Kolory w pliku:</strong> kolorowe ilustracje wyłącznie na potrzeby PDF (uwaga: kolor nie wyświetli się na standardowym czytniku e-ink. Nie składamy pełnokolorowych poradników do druku).</li>
-                <li><strong>Umieszczanie grafik/zdjęć:</strong> zgodnie z wytycznymi Autora.</li>
+                <li><strong>Niestandardowe fonty:</strong> możliwość użycia innego fontu (wymaga zakupu i licencji od Autora).</li>
+                <li><strong>Umieszczanie grafik/zdjęć:</strong> wyceniane indywidualnie, tylko z pełnymi prawami autorskimi Autora.</li>
+                <li><strong>Kolory w pliku:</strong> wyłącznie na potrzeby PDF (czytniki e-ink wyświetlą to w skali szarości).</li>
             </ul>
         </div>
     </div>
 
-    <!-- Wymagania od Autora / Prawa autorskie -->
-    <div class="modal-delivery-box" style="background-color: #FFF3E0; border-color: #FFE0B2; margin-top: 20px;">
-        <i class="las la-exclamation-triangle" style="color: #E65100;"></i>
+    <!-- Informacja pod pakietami -->
+    <div style="background-color: #f5f5f5; border-left: 4px solid #9e9e9e; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0;">
+        <p style="margin: 0; font-size: 0.95rem; color: #424242;">
+            <strong>Drogi Kliencie</strong>, pamiętaj, że Pakiet Standard to nasz wariant wyjściowy. Jeśli nie wiesz, czego chcesz lub nie masz doświadczenia w składzie, my przejmujemy stery i dostarczamy klasyczny, uniwersalny układ, który zawsze świetnie wygląda w druku. Wszystkie dodatkowe opcje i odstępstwa wykraczające poza opisany wyżej zakres są płatne.<br><br>
+            <strong>Ważne:</strong> Jeśli masz już wybraną konkretną drukarnię i potrzebujesz, abyśmy stworzyli nowe templatki idealnie pod jej specyfikację, doliczamy zaledwie <strong>10 zł do arkusza</strong>.
+        </p>
+    </div>
+
+    <!-- Sekcja na wzór image_5d0600.png -->
+    <div class="modal-delivery-box" style="display: flex; align-items: flex-start; gap: 20px; background-color: #F8F9FA; border: 1px solid #E9ECEF; padding: 25px; border-radius: 12px; margin-bottom: 25px;">
+        <i class="las la-archive" style="font-size: 2.5rem; color: #7B1FA2; flex-shrink: 0;"></i>
         <div>
-            <strong class="delivery-title" style="color: #E65100;">Ważne: Materiały od Autora i Prawa Autorskie</strong>
-            <p style="color: #E65100; font-size: 0.95rem;">Jeśli decydujesz się na umieszczenie w książce ilustracji lub zdjęć, <strong>musisz posiadać do nich pełne prawa autorskie</strong>. Należy dostarczyć je w wysokiej jakości (najlepiej formaty wektorowe <strong>SVG</strong> lub <strong>Adobe Illustrator .ai</strong>) wraz z bardzo precyzyjnymi wytycznymi co do ich rozmiaru i umiejscowienia. Podobna zasada dotyczy płatnych, niestandardowych fontów.</p>
+            <h4 style="margin: 0 0 10px 0; font-size: 1.1rem; color: #212529;">Co otrzymujesz po zakończeniu współpracy?</h4>
+            <p style="margin: 0; font-size: 0.95rem; color: #495057; line-height: 1.6;">
+                Gotowy do druku, profesjonalnie złożony <strong>czarno-biały plik PDF</strong>. Dodatkowo, jeśli zdecydujesz się na opcje rozszerzone, otrzymasz <strong>w pełni responsywne pliki EPUB/MOBI</strong> – idealnie zoptymalizowane pod nowoczesne czytniki e-booków i gotowe do dystrybucji na platformach self-publishingowych.
+            </p>
         </div>
     </div>
 
-    <div class="modal-action">
-        <div class="modal-price">Cena (Pakiet Standard): <strong>od 200 / arkusz</strong></div>
-        <a href="{{ '/cennik.html' | relative_url }}" class="btn-primary">Sprawdź pełny cennik</a>
+    <div class="modal-action" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 20px;">
+        <div class="modal-price" style="font-size: 1.1rem;">
+            Cena: <strong>od 200 zł / arkusz</strong><br>
+            <span style="font-size: 0.85rem; color: #666;">(lub od 210 zł / arkusz z dostosowaniem pod drukarnię)</span>
+        </div>
+        <a href="{{ '/cennik.html' | relative_url }}" class="btn-primary" style="background: #6a1b9a; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Sprawdź pełny cennik</a>
     </div>
   </div>
 </div>
