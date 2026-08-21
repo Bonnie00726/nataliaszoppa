@@ -48,6 +48,7 @@ title: Cennik
     }
     .legal-note i { color: var(--accent-purple); margin-right: 5px; font-size: 14px;}
     .legal-note strong { color: var(--text-gray); }
+    .legal-note-divider { border: 0; border-top: 1px solid var(--border-color); margin: 10px auto; width: 50%; opacity: 0.5; }
 
     /* KARTA PAKIETU KOMPLEKSOWEGO */
     .complex-package-wrapper {
@@ -272,7 +273,6 @@ title: Cennik
         .package-badge { white-space: normal; text-align: center; width: 90%; }
     }
    
-
     @keyframes pulseGlow {
         0% { box-shadow: 0 0 0 0 rgba(123, 44, 191, 0.5); }
         70% { box-shadow: 0 0 0 15px rgba(123, 44, 191, 0); }
@@ -291,6 +291,7 @@ title: Cennik
         }
     }
 </style>
+
 <div class="container top-info-wrapper">
     <div class="guarantees-bar">
         <span><i class="las la-university"></i> Przelew bankowy</span>
@@ -298,7 +299,13 @@ title: Cennik
         <span><i class="las la-undo"></i> 14 dni na odstąpienie</span>
     </div>
     <div class="legal-note">
-        <i class="las la-balance-scale"></i> <strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.
+        <div style="margin-bottom: 5px;">
+            <i class="las la-balance-scale"></i> <strong>Uwaga prawna:</strong> Niniejsze ogłoszenie jest wyłącznie informacją handlową i nie stanowi oferty w myśl art. 66, § 1 Kodeksu Cywilnego.
+        </div>
+        <hr class="legal-note-divider">
+        <div>
+            <i class="las la-file-invoice-dollar"></i> <strong>Informacja o cenach:</strong> Nie jestem płatnikiem VAT, w związku z czym do podanych cen nie jest doliczany podatek. Wskazane kwoty są ostateczne i w takiej samej wysokości pojawią się na fakturze.
+        </div>
     </div>
 </div>
 
