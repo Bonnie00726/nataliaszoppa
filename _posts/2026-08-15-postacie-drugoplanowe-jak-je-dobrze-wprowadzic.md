@@ -11,13 +11,13 @@ Postacie drugoplanowe nie służą wyłącznie do zapełniania tła narracyjnego
 
 ## Antagonista jako katalizator zmian
 
-**Najważniejszą postacią** kontrastującą z protagonistą pozostaje **antagonista**. Jego zadaniem jest blokowanie dążeń głównego bohatera – bezpośrednio lub poprzez konsekwencje swoich decyzji. To właśnie te skutki wybijają protagonistę z dotychczasowego życia i zmuszają go do reakcji. Antagonista a ten sposób wprowadza punkt zwrotny. 
+**Najważniejszą postacią** kontrastującą z protagonistą pozostaje **antagonista**. Jego zadaniem jest blokowanie dążeń głównego bohatera – bezpośrednio lub poprzez konsekwencje swoich decyzji. To właśnie te skutki wybijają protagonistę z dotychczasowego życia i zmuszają go do reakcji. Antagonista w ten sposób wprowadza punkt zwrotny. 
 
 W rozbudowanej prozie antagonista nie musi być jednak postacią jednowymiarową. Jego motywacje powinny wynikać z logiki świata przedstawionego. Nawet jeśli jego działania są obiektywnie destrukcyjne lub moralnie wątpliwe, z perspektywy jego własnych przekonań, przeżyć w świecie przedstawionym i celów zachowują pełną spójność.
 
 ## Postacie wspierające: unikanie bezkrytycznej aprobaty
 
-Bohaterowie towarzyszący protagoniście <span class="marker-highlight">nie mogą być</span> wyłącznie <span class="marker-highlight">potakującym tłem</span>. Relacje oparte na nieustannej zgodzie pozbawiają tekst napięcia. Każda postać drugoplanowa powinna mieć własną motywację, temperament oraz określoną funkcję:
+Bohaterowie towarzyszący protagoniście <span class="marker-highlight">nie mogą być</span> wyłącznie <span class="marker-highlight">potakującym tłem.</span> Relacje oparte na nieustannej zgodzie pozbawiają tekst napięcia. Każda postać drugoplanowa powinna mieć własną motywację, temperament oraz określoną funkcję:
 
 * **Kontrast charakterów:** Zestawienie przeciwieństw – na przykład pragmatyka z optymistą – dynamizuje dialogi i wymusza konfrontację postaw.
 * **Tarcie w relacjach:** Sojusznicy nie zawsze muszą współpracować idealnie. Trudny charakter, ukryty interes czy skłonność do rywalizacji urealniają grupę.
