@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Struktura trzech aktów – podstawa dobrej książki"
+title: "Jak stworzyć plan fabuły powieści? Czyli o strukturze trzech aktów"
 date: 2026-06-04 10:00:00 +0200
 author: Natalia Szoppa
 image: "https://i.imgur.com/OrIIiCS.png"
@@ -111,7 +111,7 @@ tags: [porady pisarskie, warsztat, struktura]
 
 W <a href="{% post_url 2026-06-06-z-jakim-nastawieniem-piszesz %}">poprzednim artykule</a> pisałam o tym, dlaczego warto ułatwiać czytelnikowi lekturę i dlaczego warto odpowiedzieć sobie na jedno zasadnicze pytanie: <span class="marker-highlight">dla kogo właściwie piszesz?</span>
 
-Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logicczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
+Jeśli już wiesz, że chcesz pisać dla ludzi, ten tekst pomoże Ci zorganizować swoje pomysły w logiczną całość. Na pewno pamiętasz ze szkoły, że każde wypracowanie musi mieć wstęp, rozwinięcie i zakończenie. Dokładnie tak samo jest z książką.
 
 Narzędziem, które pozwala nad tym zapanować, jest klasyczna struktura trzyaktowa, <span class="marker-highlight">podstawowe narzędzie pisarza.</span> Poniżej przedstawiam wizualną reprezentację tej struktury:
 
