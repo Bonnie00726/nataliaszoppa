@@ -222,12 +222,12 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
             font-size: 26px;
         }
     }
-    /* STYLE DLA ŚCIĄGAWKI AUTORA (MODAL TIMELINE) */
-    .timeline { position: relative; padding-left: 30px; margin-top: 20px; }
+   /* STYLE DLA ŚCIĄGAWKI AUTORA (MODAL TIMELINE) - POPRAWIONE ODSTĘPY */
+    .timeline { position: relative; padding-left: 50px; margin-top: 20px; }
     .timeline::before { content: ''; position: absolute; top: 10px; bottom: 10px; left: 14px; width: 2px; background: var(--border-color); z-index: 1; }
     .timeline-step { position: relative; margin-bottom: 35px; text-align: left; }
     .timeline-step:last-child { margin-bottom: 0; }
-    .step-marker { position: absolute; left: -30px; top: 0; width: 30px; height: 30px; background: #ffffff; border: 2px solid var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: var(--accent-purple); z-index: 2; }
+    .step-marker { position: absolute; left: -50px; top: 0; width: 30px; height: 30px; background: #ffffff; border: 2px solid var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: var(--accent-purple); z-index: 2; }
     .step-content { background: var(--bg-muted); border-radius: 12px; padding: 20px 25px; border: 1px solid var(--border-color); }
     .step-content h3 { font-family: 'Lora', serif; font-size: 20px; margin-top: 0; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
     .step-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; line-height: 1.5; }
@@ -470,17 +470,17 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
         </div>
     </section>
 
-    <!-- BANER: NADAL MASZ MĘTLIK W GŁOWIE? -->
+   <!-- BANER: PODSUMOWANIE ETAPÓW (JASNY, BEZ OBRAMOWANIA) -->
     <section style="padding-top: 40px; margin-top: 20px;">
-        <div style="background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%); border-radius: 20px; padding: 50px 40px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
-            <!-- Ozdobny element tła -->
-            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent-purple); filter: blur(70px); opacity: 0.5;"></div>
+        <div style="background: #ffffff; border-radius: 20px; padding: 50px 40px; text-align: center; color: var(--text-black); box-shadow: 0 15px 40px rgba(0,0,0,0.06); position: relative; overflow: hidden;">
+            <!-- Delikatny ozdobny element tła -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: rgba(123, 44, 191, 0.05); border-radius: 50%;"></div>
             
-            <h2 style="font-family: 'Lora', serif; font-size: 28px; margin-bottom: 15px; position: relative; z-index: 2;">Nadal masz mętlik w głowie?</h2>
-            <p style="font-size: 16px; color: #cccccc; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; position: relative; z-index: 2;">
-                Pakiety brzmią świetnie, ale nie jesteś pewien, na którym etapie kreatywnym znajduje się Twój tekst? Zobacz wewnętrzną ścieżkę współpracy i sprawdź swoją gotowość krok po kroku.
+            <h2 style="font-family: 'Lora', serif; font-size: 28px; margin-bottom: 15px; position: relative; z-index: 2;">Podsumowanie etapów współpracy</h2>
+            <p style="font-size: 16px; color: var(--text-gray); max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; position: relative; z-index: 2;">
+                Pakiety brzmią świetnie, ale jeśli nadal czujesz się zdezorientowana/y, ta checklista powinna pomóc. Zobacz wewnętrzną ścieżkę i sprawdź swoją gotowość krok po kroku.
             </p>
-            <a href="#" class="btn-gradient" onclick="openModal('modal-sciagawka'); return false;" style="position: relative; z-index: 2; display: inline-block; padding: 14px 32px; font-size: 16px;">
+            <a href="#" class="btn-gradient" onclick="openModal('modal-sciagawka'); return false;" style="position: relative; z-index: 2; display: inline-block; padding: 14px 32px; font-size: 16px; text-decoration: none; border-radius: 8px;">
                 <i class="las la-clipboard-list" style="margin-right: 8px; font-size: 20px; vertical-align: middle;"></i> Otwórz Ściągawkę Autora
             </a>
         </div>
