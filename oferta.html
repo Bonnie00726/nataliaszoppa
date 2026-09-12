@@ -222,6 +222,26 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
             font-size: 26px;
         }
     }
+    /* STYLE DLA ŚCIĄGAWKI AUTORA (MODAL TIMELINE) */
+    .timeline { position: relative; padding-left: 30px; margin-top: 20px; }
+    .timeline::before { content: ''; position: absolute; top: 10px; bottom: 10px; left: 14px; width: 2px; background: var(--border-color); z-index: 1; }
+    .timeline-step { position: relative; margin-bottom: 35px; text-align: left; }
+    .timeline-step:last-child { margin-bottom: 0; }
+    .step-marker { position: absolute; left: -30px; top: 0; width: 30px; height: 30px; background: #ffffff; border: 2px solid var(--accent-purple); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: var(--accent-purple); z-index: 2; }
+    .step-content { background: var(--bg-muted); border-radius: 12px; padding: 20px 25px; border: 1px solid var(--border-color); }
+    .step-content h3 { font-family: 'Lora', serif; font-size: 20px; margin-top: 0; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+    .step-desc { font-size: 13px; color: var(--text-gray); margin-bottom: 20px; line-height: 1.5; }
+    
+    .checklist { display: flex; flex-direction: column; gap: 10px; }
+    .check-item { display: flex; align-items: flex-start; gap: 15px; cursor: pointer; padding: 12px 15px; border-radius: 8px; transition: all 0.2s ease; background: #ffffff; border: 1px solid var(--border-color); margin: 0; }
+    .check-item:hover { border-color: var(--accent-purple); }
+    .check-item input[type="checkbox"] { appearance: none; -webkit-appearance: none; width: 22px; height: 22px; border: 2px solid #ccc; border-radius: 6px; margin-top: 2px; cursor: pointer; position: relative; flex-shrink: 0; transition: all 0.2s ease; }
+    .check-item input[type="checkbox"]:checked { background-color: #2E7D32; border-color: #2E7D32; }
+    .check-item input[type="checkbox"]:checked::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: white; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 12px; }
+    .check-text { font-size: 13px; color: var(--text-black); line-height: 1.5; transition: all 0.2s ease; }
+    .check-text strong { display: block; margin-bottom: 3px; font-size: 14px; }
+    .check-item:has(input[type="checkbox"]:checked) { background: #ECF6EC; border-color: #c8e6c9; }
+    .check-item:has(input[type="checkbox"]:checked) .check-text { color: var(--text-gray); text-decoration: line-through; opacity: 0.8; }
 </style>
 <!-- PŁYWAJĄCY PRZYCISK KONTAKTOWY (Prawy dolny róg) -->
 
@@ -447,6 +467,22 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
                 </ul>
                 <a href="#" class="btn-outline" onclick="openModal('modal-dtp'); return false;" style="width: 100%; text-align: center; margin-top: 10px;">Sprawdź szczegóły</a>
             </div>
+        </div>
+    </section>
+
+    <!-- BANER: NADAL MASZ MĘTLIK W GŁOWIE? -->
+    <section style="padding-top: 40px; margin-top: 20px;">
+        <div style="background: linear-gradient(135deg, #111111 0%, #2a2a2a 100%); border-radius: 20px; padding: 50px 40px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+            <!-- Ozdobny element tła -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent-purple); filter: blur(70px); opacity: 0.5;"></div>
+            
+            <h2 style="font-family: 'Lora', serif; font-size: 28px; margin-bottom: 15px; position: relative; z-index: 2;">Nadal masz mętlik w głowie?</h2>
+            <p style="font-size: 16px; color: #cccccc; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.6; position: relative; z-index: 2;">
+                Pakiety brzmią świetnie, ale nie jesteś pewien, na którym etapie kreatywnym znajduje się Twój tekst? Zobacz wewnętrzną ścieżkę współpracy i sprawdź swoją gotowość krok po kroku.
+            </p>
+            <a href="#" class="btn-gradient" onclick="openModal('modal-sciagawka'); return false;" style="position: relative; z-index: 2; display: inline-block; padding: 14px 32px; font-size: 16px;">
+                <i class="las la-clipboard-list" style="margin-right: 8px; font-size: 20px; vertical-align: middle;"></i> Otwórz Ściągawkę Autora
+            </a>
         </div>
     </section>
 
@@ -728,6 +764,102 @@ title: Oferta - Zobacz, jak mogę Ci pomóc
             <span style="font-size: 0.85rem; color: #666; font-weight: normal;">(+10 zł/ark. za dostosowanie pod wymogi konkretnej drukarni)</span>
         </div>
         <a href="{{ '/cennik.html' | relative_url }}" class="btn-primary">Sprawdź pełny cennik</a>
+    </div>
+  </div>
+</div>
+<!-- MODAL: ŚCIĄGAWKA AUTORA -->
+<div id="modal-sciagawka" class="modal">
+  <div class="modal-content modal-large" style="max-width: 700px;">
+    <span class="close-btn">&times;</span>
+    
+    <div class="modal-header" style="text-align: center;">
+        <div class="eyebrow-label">Twój drogowskaz</div>
+        <h3>Wewnętrzna ścieżka tekstu</h3>
+        <p style="max-width: 500px; margin: 10px auto 0;">Zaznacz odpowiednie pola i upewnij się, że Twój tekst jest gotowy na przejście do wybranego przez Ciebie etapu prac.</p>
+    </div>
+
+    <div class="timeline">
+        <!-- ETAP 1 -->
+        <div class="timeline-step">
+            <div class="step-marker">1</div>
+            <div class="step-content">
+                <h3 style="color: var(--text-black);"><i class="las la-project-diagram" style="color: var(--accent-purple);"></i> Redakcja strukturalna</h3>
+                <p class="step-desc">Fundamenty opowieści. Przebudowujemy, wycinamy i sprawdzamy logikę w dokumencie tekstowym.</p>
+                <div class="checklist">
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Rozumiem cel tego etapu</strong>
+                            Wiem, że mogą pojawić się prośby o dopisanie całych scen lub usunięcie wątków, które spowalniają akcję.
+                        </span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Gotowość na zmiany</strong>
+                            Mam otwartą głowę i jestem mentalnie gotowy(-a) na ewentualne "cięcie" swojego tekstu dla jego dobra.
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAP 2 -->
+        <div class="timeline-step">
+            <div class="step-marker">2</div>
+            <div class="step-content">
+                <h3 style="color: var(--text-black);"><i class="las la-pen-nib" style="color: var(--accent-purple);"></i> Redakcja językowa</h3>
+                <p class="step-desc">Słowa mają znaczenie. Skupiamy się wyłącznie na stylu, interpunkcji i brzmieniu zdań w dokumencie Word.</p>
+                <div class="checklist">
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Fabuła jest zamknięta</strong>
+                            Ustaliliśmy, że wszystkie akapity się zgrywają. Nie planuję już dodawać nowych bohaterów, wątków ani modyfikować zakończenia.
+                        </span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Spójność i logika zagwarantowana</strong>
+                            Uważam, że fabuła spina się logicznie. Jesteśmy gotowi skupić się wyłącznie na szlifowaniu poprawności językowej i estetyce zdań.
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAP 3 -->
+        <div class="timeline-step">
+            <div class="step-marker">3</div>
+            <div class="step-content" style="border: 2px solid var(--accent-purple); background: #fdfbfb;">
+                <h3 style="color: var(--text-black);"><i class="las la-book-open" style="color: var(--accent-purple);"></i> Skład DTP i publikacja</h3>
+                <p class="step-desc">Wychodzimy z Worda! Tworzymy wizualną książkę z makiety. Zaczynamy ten proces DOPIERO po ostatecznym "amen".</p>
+                <div class="checklist">
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Tekst jest w 100% OSTATECZNY</strong>
+                            Wiem, że po przeniesieniu treści do programu graficznego (DTP) nie dopiszę już ani jednego zdania, nie zmienię wydźwięku akapitu ani nie usunę scen. Wprowadzamy tylko poprawki literówek.
+                        </span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Świadomość kosztów rewizji fabularnej</strong>
+                            Rozumiem, że jeśli podczas trwania składu nagle uznam, że chcę drastycznie przeredagować treść, oznacza to dla pracowni formatowanie wszystkiego od nowa, co wiąże się z opłaceniem nowego składu.
+                        </span>
+                    </label>
+                    <label class="check-item">
+                        <input type="checkbox">
+                        <span class="check-text">
+                            <strong>Wizualny zamysł</strong>
+                            Wiem, czy decyduję się na błyskawiczny "Pakiet Standard", czy mam własną inspirację i zamawiam opcję makiety z "Projektu Indywidualnego".
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 </div>
