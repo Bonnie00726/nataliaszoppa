@@ -17,19 +17,19 @@
     --ink-muted:  #666666;
     --paper:      #FFFFFF;
     --paper-mid:  #E5E5E5;
-    --paper-warm: #F9F8FC;
+    --paper-warm: #F9F9F9;
     --grad-start: #6B35C8;
     --grad-mid:   #B8409A;
     --grad-end:   #E8772A;
-    --grad:       linear-gradient(135deg, #6B35C8 0%, #B8409A 52%, #E8772A 100%);
-    --grad-text:  linear-gradient(135deg, #6B35C8 0%, #B8409A 50%, #E8772A 100%);
+    --grad:       linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
+    --grad-text:  linear-gradient(135deg, #6B35C8 0%, #E8772A 100%);
     --gold-pale:  #F5F0FF;
-    --bad-ink:    #B31B1B;
+    --bad-ink:    #9E2A2B;
     --bad-bg:     #FAEDED;
-    --mid-ink:    #C8641B;
+    --mid-ink:    #B85D19;
     --mid-bg:     #FDF4E7;
-    --good-ink:   #1E7E34;
-    --good-bg:    #EDF7ED;
+    --good-ink:   #2B5B84;
+    --good-bg:    #EAF3FC;
     --radius:     8px;
     --serif:      'Lora', Georgia, serif;
     --sans:       'Mulish', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -97,10 +97,10 @@
     font-weight: 700;
   }
   .runner.top    { top: 9mm; }
-  .runner.bottom { bottom: 8mm; color: rgba(13, 13, 13, 0.45); }
+  .runner.bottom { bottom: 8mm; color: rgba(13, 13, 13, 0.4); }
 
   /* ===================== TYPOGRAFIA (ZUNIFIKOWANA SKALA) ===================== */
-  h1, h2, h3, h4, h5 { margin: 0; font-weight: 700; color: var(--ink); }
+  h1, h2, h3, h4, h5 { margin: 0; font-weight: 600; color: var(--ink); }
 
   .eyebrow {
     display: inline-block;
@@ -111,16 +111,16 @@
     color: var(--grad-start);
   }
 
-  /* Naprawa uciętych ogonków (ę, ą, y, g, j) w pochyłych tekstach z gradientem */
+  /* Pełna ochrona ogonków i lewego wywinięcia kursywy (j, ę, ą, y, g) bez przesuwania osi tekstu */
   .grad-type {
     background: var(--grad-text);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     display: inline-block;
-    padding: 0.12em 0.22em 0.2em 0.06em;
-    margin: -0.12em -0.16em -0.2em -0.06em;
-    line-height: 1.25;
+    padding: 0.08em 0.22em 0.22em 0.2em;
+    margin: -0.08em -0.16em -0.22em -0.2em;
+    line-height: 1.18;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
   }
@@ -128,28 +128,28 @@
   .title {
     font-family: var(--serif);
     font-weight: 700;
-    font-size: 54px;
-    line-height: 1.12;
+    font-size: 56px;
+    line-height: 1.05;
     color: var(--ink);
   }
   .section-title {
     font-family: var(--serif);
     font-weight: 700;
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 32px;
+    line-height: 1.12;
     color: var(--ink);
     margin-bottom: 6px;
   }
   .subtitle {
     font-weight: 300;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.55;
     color: var(--ink-soft);
   }
   .body {
-    font-weight: 400;
-    font-size: 12.5px;
-    line-height: 1.6;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.65;
     color: var(--ink-soft);
   }
 
@@ -161,8 +161,8 @@
     font-weight: 400;
   }
   .prose-text-lg {
-    font-size: 12.5px;
-    line-height: 1.65;
+    font-size: 12px;
+    line-height: 1.6;
     color: var(--ink-soft);
     font-weight: 400;
   }
@@ -179,11 +179,11 @@
   .highlight-marker {
     background: linear-gradient(120deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 235, 59, 0.4) 100%);
     background-repeat: no-repeat;
-    background-size: 100% 42%;
+    background-size: 100% 40%;
     background-position: 0 85%;
     padding: 0 4px;
     border-radius: 3px;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--ink);
   }
 
@@ -219,19 +219,19 @@
     display: flex;
     align-items: baseline;
     gap: 8px;
-    margin-bottom: 16px;
-    margin-top: 6px;
+    margin-bottom: 14px;
+    margin-top: 4px;
     position: relative;
   }
   .qnum-bg {
     position: absolute;
-    top: -18px;
-    left: -12px;
+    top: -20px;
+    left: -15px;
     font-family: var(--serif);
-    font-size: 50px;
+    font-size: 55px;
     font-style: italic;
     font-weight: 700;
-    color: rgba(107, 53, 200, 0.07);
+    color: rgba(13, 13, 13, 0.04);
     z-index: 0;
     pointer-events: none;
     line-height: 1;
@@ -245,7 +245,7 @@
     z-index: 1;
   }
 
-  /* ===================== SPÓJNY SYSTEM PRZYKŁADÓW ===================== */
+  /* ===================== SPÓJNY SYSTEM PRZYKŁADÓW (STONOWANA PALETA) ===================== */
   .example-card {
     background: var(--paper-warm);
     border: 1px solid var(--paper-mid);
@@ -261,7 +261,7 @@
     margin-bottom: 10px;
   }
   .example-card-inner {
-    background: rgba(255, 255, 255, 0.82);
+    background: rgba(255, 255, 255, 0.85);
     border: 1px solid rgba(13, 13, 13, 0.08);
     border-radius: 6px;
     padding: 9px 11px;
@@ -289,7 +289,7 @@
   .ex-badge.info { color: var(--grad-start); }
 
   .ex-quote {
-    color: var(--ink);
+    color: var(--ink-soft);
     font-style: italic;
   }
   .ex-note {
@@ -314,38 +314,38 @@
   }
   .narrative-card.bad-accent {
     background: var(--bad-bg);
-    border-color: rgba(179, 27, 27, 0.22);
+    border-color: rgba(179, 27, 27, 0.16);
     border-left: 4px solid var(--bad-ink);
-    color: var(--ink-soft);
+    color: #5c1f1f;
   }
   .narrative-card.good-accent {
     background: var(--good-bg);
-    border-color: rgba(30, 126, 52, 0.22);
-    border-left: 4px solid var(--good-ink);
-    color: var(--ink-soft);
+    border-color: rgba(0, 85, 164, 0.16);
+    border-left: 4px solid #0055A4;
+    color: #1f3c5c;
   }
   .narrative-card.voice-1 {
     border-left: 4px solid var(--grad-start);
     font-style: italic;
-    color: var(--ink);
+    color: var(--ink-soft);
   }
   .narrative-card.voice-2 {
     border-left: 4px solid var(--grad-mid);
     font-style: italic;
-    color: var(--ink);
+    color: var(--ink-soft);
   }
   .narrative-card.voice-3 {
     border-left: 4px solid var(--grad-end);
     font-style: italic;
-    color: var(--ink);
+    color: var(--ink-soft);
   }
 
-  /* ===================== RAMKI BOCZNE (STICKY NOTES) ===================== */
+  /* ===================== RAMKI BOCZNE (STICKY NOTES - IDENTYCZNE Z CZ. 1) ===================== */
   .box {
-    padding: 15px 14px 13px;
+    padding: 16px 14px 14px;
     border-radius: var(--radius);
     font-size: 11px;
-    line-height: 1.55;
+    line-height: 1.5;
     position: relative;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   }
@@ -357,15 +357,15 @@
     transform: translateX(-50%) rotate(-2deg);
     width: 35px;
     height: 12px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.7);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     border-radius: 2px;
   }
   .box-title {
     display: block;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 800;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 6px;
   }
@@ -381,7 +381,7 @@
     margin-top: 6px;
     margin-bottom: 0;
     font-size: 11px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .box ol {
     list-style-type: decimal;
@@ -389,7 +389,7 @@
     margin-top: 6px;
     margin-bottom: 0;
     font-size: 11px;
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .box li {
     margin-bottom: 5px;
@@ -398,18 +398,18 @@
     margin-bottom: 0;
   }
 
-  /* Wizualizacja Gary'ego Provosta (Strona 9) */
+  /* Wizualizacja Gary'ego Provosta (Strona 9 - stonowana paleta arkusza) */
   .provost-card {
     background: #ffffff;
     border: 1px solid var(--paper-mid);
     border-radius: var(--radius);
     padding: 13px 15px;
     margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
     font-family: var(--serif);
     font-size: 11px;
     line-height: 1.65;
-    color: var(--ink);
+    color: var(--ink-soft);
   }
   .provost-card .pv-caption {
     display: flex;
@@ -426,15 +426,16 @@
     padding-bottom: 5px;
     border-bottom: 1px solid var(--paper-mid);
   }
-  .pv-hl-red    { background: #F8BBD0; background: rgba(229, 115, 115, 0.42); padding: 1px 3px; border-radius: 3px; }
-  .pv-hl-yellow { background: rgba(255, 213, 79, 0.55); padding: 1px 3px; border-radius: 3px; }
-  .pv-hl-green  { background: rgba(129, 199, 132, 0.45); padding: 1px 3px; border-radius: 3px; }
-  .pv-hl-purple { background: rgba(179, 157, 219, 0.45); padding: 1px 3px; border-radius: 3px; }
+  .pv-hl-red    { background: #FAEDED; color: #5c1f1f; padding: 1px 4px; border-radius: 3px; }
+  .pv-hl-yellow { background: #FDF4E7; color: #5c3e1f; padding: 1px 4px; border-radius: 3px; }
+  .pv-hl-green  { background: #EAF3FC; color: #1f3c5c; padding: 1px 4px; border-radius: 3px; }
+  .pv-hl-purple { background: #F5F0FF; color: #371f5c; padding: 1px 4px; border-radius: 3px; }
 
   .box-blue   { background: #EAF3FC; color: #1f3c5c; }
   .box-blue .box-title   { color: #0055A4; }
   .box-orange { background: #FDF4E7; color: #5c3e1f; }
   .box-orange .box-title { color: #D16B21; }
+  .box-orange em { font-weight: 700; font-style: italic; }
   .box-red    { background: #FAEDED; color: #5c1f1f; }
   .box-red .box-title    { color: #B31B1B; }
   .box-purple { background: var(--gold-pale); color: #371f5c; }
@@ -443,9 +444,14 @@
   .legend-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 20px;
     align-items: stretch;
     margin-top: 12px;
+  }
+  .legend-grid .box {
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ===================== TABELE ===================== */
@@ -458,7 +464,7 @@
   }
   .comparison-table th, .comparison-table td {
     border: 1px solid var(--paper-mid);
-    padding: 9px 10px;
+    padding: 10px;
     text-align: left;
     vertical-align: top;
     color: var(--ink-soft);
@@ -469,40 +475,40 @@
     color: var(--ink);
   }
 
-  /* ===================== MIEJSCE NA NOTATKI ===================== */
+  /* ===================== MIEJSCE NA NOTATKI (DOT GRID) ===================== */
   .dot-grid-box {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 115px;
+    min-height: 120px;
     background-color: #ffffff;
     background-image: radial-gradient(var(--paper-mid) 1.5px, transparent 1.5px);
     background-size: 18px 18px;
-    border: 2px dashed #dcdcdc;
+    border: 2px dashed #e6e6e6;
     border-radius: var(--radius);
-    padding: 15px;
+    padding: 16px;
     margin-top: 4px;
     box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.01);
   }
-  .dot-grid-box.short { min-height: 76px; }
+  .dot-grid-box.short { min-height: 80px; }
 
   .fill-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
     position: relative;
     z-index: 2;
-    margin-top: 6px;
+    margin-top: 10px;
   }
   .fill-row {
     display: flex;
     align-items: flex-end;
     gap: 8px;
-    border-bottom: 1px dashed #cccccc;
+    border-bottom: 1px dashed #ccc;
     padding-bottom: 4px;
   }
   .fill-label {
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--ink);
   }
@@ -511,29 +517,30 @@
   /* ===================== BLOKI TEKSTOWE (WPROWADZENIE / PODSUMOWANIE) ===================== */
   .reading-content {
     background: #ffffff;
-    padding: 18px 20px;
+    padding: 20px;
     border-radius: var(--radius);
     border: 1px solid var(--paper-mid);
     margin-bottom: 20px;
-    font-size: 12.5px;
-    line-height: 1.65;
+    font-size: 12px;
+    line-height: 1.6;
     color: var(--ink-soft);
   }
   .reading-content h4 {
     font-family: var(--serif);
     color: var(--grad-start);
     font-size: 15px;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 6px;
     margin-top: 0;
   }
+  .reading-content p { margin-bottom: 10px; }
+  .reading-content p:last-child { margin-bottom: 0; }
 
-  /* ===================== OKŁADKA ===================== */
+  /* ===================== STRONA 1 – OKŁADKA (WSPÓLNY UKŁAD Z CZ. 1) ===================== */
   .cover {
     display: grid;
     grid-template-rows: auto 1fr auto;
     height: 100%;
-    flex: 1;
     padding-top: 4mm;
   }
   .cover-top {
@@ -556,9 +563,20 @@
   .cover-mid {
     align-self: center;
     padding: 30px 0;
-    max-width: 155mm;
+    max-width: 150mm;
     position: relative;
   }
+  .cover-mid::after {
+    content: "Dopracuj język!";
+    position: absolute;
+    top: 40px;
+    right: -40px;
+    font-family: var(--hand);
+    font-size: 28px;
+    color: var(--grad-end);
+    transform: rotate(-10deg);
+  }
+  .cover-mid .title { margin-bottom: 22px; }
   .grad-rule {
     width: 80px;
     height: 3px;
@@ -566,102 +584,98 @@
     border-radius: 2px;
     margin: 18px 0 24px;
   }
+
+  /* ===================== NAGŁÓWEK SEKCJI ===================== */
   .section-opener {
-    margin-bottom: 20px;
-    padding-bottom: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 14px;
     flex-shrink: 0;
     position: relative;
-    border-bottom: 1px solid var(--paper-mid);
+  }
+  .section-opener::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--paper-mid) 0%, transparent 100%);
   }
 
-  /* ===================== SPIS TREŚCI ===================== */
+  /* ===================== SPIS TREŚCI (IDENTYCZNY Z CZ. 1) ===================== */
   .toc-container {
-    width: 100%;
-    max-width: 155mm;
-    margin: 0 auto;
-    padding-top: 6px;
-    flex-grow: 1;
+    background: #ffffff;
+    padding: 24px 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--paper-mid);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    margin-top: 10px;
   }
-  .toc-list { list-style: none; padding: 0; margin: 0; }
-  .toc-section {
-    font-family: var(--serif);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--grad-start);
-    margin: 20px 0 8px;
-    border-bottom: 1px solid var(--paper-mid);
-    padding-bottom: 4px;
-    letter-spacing: 0.02em;
-  }
+  .toc-list { list-style: none !important; padding: 0 !important; margin: 0 !important; }
   .toc-list li {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    padding: 5px 0;
-    font-size: 12.5px;
+    border-bottom: 1px dashed var(--paper-mid);
+    margin-bottom: 12px !important;
+    padding-bottom: 6px;
+    font-weight: 600;
     color: var(--ink-soft);
-    position: relative;
+    font-size: 13px;
   }
-  .toc-list li::after {
-    content: '';
-    position: absolute;
-    bottom: 8px;
-    left: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px dotted var(--ink-muted);
-    z-index: 1;
-    opacity: 0.4;
-  }
-  .toc-list li span:first-child {
-    background: var(--paper);
-    padding-right: 12px;
-    z-index: 2;
-  }
-  .toc-list li span:last-child {
-    background: var(--paper);
-    padding-left: 12px;
-    z-index: 2;
+  .toc-list li:last-child { border-bottom: none; margin-bottom: 0 !important; padding-bottom: 0; }
+  .toc-list li span:last-child { color: var(--grad-start); font-weight: 800; }
+  .toc-section {
+    font-family: var(--serif);
+    color: var(--grad-start);
+    font-size: 15px;
+    margin-top: 16px;
+    margin-bottom: 8px;
     font-weight: 700;
-    color: var(--ink);
+    border-bottom: 2px solid var(--paper-mid);
+    padding-bottom: 4px;
   }
+  .toc-section:first-child { margin-top: 0; }
 
-  /* ===================== INSTRUKCJA OBSŁUGI ===================== */
+  /* ===================== INSTRUKCJA OBSŁUGI (IDENTYCZNA Z CZ. 1) ===================== */
   .instruction-step {
     display: flex;
-    gap: 18px;
-    margin-bottom: 20px;
+    gap: 16px;
+    margin-bottom: 16px;
     align-items: flex-start;
   }
   .step-number {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--grad-start);
-    background: var(--gold-pale);
-    width: 44px;
-    height: 44px;
+    width: 34px;
+    height: 34px;
+    background: var(--grad);
+    color: #ffffff;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    flex-shrink: 0;
-    box-shadow: inset 0 2px 4px rgba(107, 53, 200, 0.1);
-  }
-  .step-content { flex: 1; padding-top: 2px; }
-  .step-content h4 {
-    font-family: var(--serif);
+    font-family: var(--sans);
+    font-weight: 800;
     font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 6px;
-    margin-top: 0;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(107, 53, 200, 0.2);
+    margin-top: 2px;
   }
-  .step-content p {
+  .step-content {
+    flex: 1;
+    background: #ffffff;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    border: 1px solid var(--paper-mid);
     font-size: 12px;
     line-height: 1.6;
     color: var(--ink-soft);
-    margin-bottom: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  }
+  .step-content h4 {
+    font-family: var(--serif);
+    color: var(--grad-start);
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 0;
   }
 
   /* ===================== LISTY PUNKTOWANE Z AKCENTEM ===================== */
@@ -698,6 +712,13 @@
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
+    .dot-grid-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .grad-type {
+      background: none !important;
+      -webkit-text-fill-color: var(--grad-start) !important;
+      color: var(--grad-start) !important;
+      background-clip: initial !important;
+    }
   }
 </style>
 </head>
@@ -706,24 +727,19 @@
 
 <!-- STRONA 1: OKŁADKA CZĘŚCI 2 -->
 <section class="page" id="page-1" data-page="1">
-  <div class="runner top"><span class="grad-type">Narzędzie diagnostyczne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span>Narzędzie diagnostyczne</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
   <div class="cover">
     <div class="cover-top">
       <div class="logo">Za kulisami <em class="grad-type">dobrej książki</em></div>
-      <div class="cover-meta" style="font-family: var(--sans); font-size: 12.5px; color: var(--ink-soft);">Arkusz diagnostyczny</div>
+      <div class="cover-meta">Arkusz diagnostyczny</div>
     </div>
 
     <div class="cover-mid">
       <span class="eyebrow">Karta pracy autora · Część druga</span>
-
-      <div style="position: absolute; right: 0; top: 15px; font-family: var(--hand); font-size: 28px; color: var(--grad-end); transform: rotate(-8deg);">Dopracuj język!</div>
-
-      <h1 class="title" style="margin-top: 8px;">Analiza <br><em class="grad-type">języka</em></h1>
+      <h1 class="title">Analiza <em class="grad-type">języka</em></h1>
       <div class="grad-rule"></div>
-
-      <p class="subtitle" style="margin-bottom: 22px;">Ten arkusz to nie test czy egzamin.<br>To <span class="highlight-marker">narzędzie, które pomoże Ci znaleźć słabe punkty w Twoim warsztacie.</span></p>
-
-      <p class="prose-text-lg">Twoim zadaniem nie jest udowadnianie bezbłędności tekstu, lecz zlokalizowanie miejsc, w których brakuje mu precyzji, rytmu lub dynamiki. Arkusz poprowadzi Cię przez proces zaawansowanej analizy warstwy językowej Twojej książki – od usuwania wydmuszek, aż po budowanie unikalnych głosów postaci.</p>
+      <p class="subtitle">Ten arkusz to nie test czy egzamin.<br>To <span class="highlight-marker">narzędzie, które pomoże Ci znaleźć słabe punkty w Twoim warsztacie.</span></p>
+      <p class="body" style="margin-top: 22px;">Twoim zadaniem nie jest udowadnianie bezbłędności tekstu, lecz zlokalizowanie miejsc, w których brakuje mu precyzji, rytmu lub dynamiki. Arkusz poprowadzi Cię przez proces zaawansowanej analizy warstwy językowej Twojej książki – od usuwania wydmuszek, aż po budowanie unikalnych głosów postaci.</p>
     </div>
   </div>
   <div class="runner bottom"><span>ZA KULISAMI DOBREJ KSIĄŻKI</span><span>1 / 16</span></div>
@@ -731,24 +747,24 @@
 
 <!-- STRONA 2: PO CO MI TEN ARKUSZ? -->
 <section class="page" id="page-2" data-page="2">
-  <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
-  <div class="section-opener">
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="section-opener" style="margin-bottom: 20px;">
     <h2 class="section-title">Po co mi <em class="grad-type">ten arkusz</em>?</h2>
     <p class="body">Krótka odpowiedź: żeby zaoszczędzić Twój czas, Twoje pieniądze i dać odpocząć Twoim nerwom.</p>
   </div>
 
-  <div class="reading-content" style="border-left: 4px solid var(--grad-start);">
+  <div class="reading-content" style="border-left: 4px solid var(--grad-start); margin-bottom: 24px;">
     <h4>Nie chcesz czytać tomów teorii?</h4>
     <p>Nie masz czasu ani ochoty na przedzieranie się przez długie książki o teorii literatury i strukturze powieści? Wolisz pisać, zamiast tonąć w akademickich analizach? To w pełni zrozumiałe. Ten arkusz to zbiór najważniejszych, praktycznych wskazówek bez zbędnego teoretyzowania i lania wody.</p>
   </div>
 
-  <div class="reading-content" style="border-left: 4px solid var(--grad-end);">
-    <h4 style="color: var(--grad-end);">Wyeliminuj klasyczne błędy debiutantów</h4>
+  <div class="reading-content" style="border-left: 4px solid var(--grad-end); margin-bottom: 24px;">
+    <h4>Wyeliminuj klasyczne błędy debiutantów</h4>
     <p>Arkusz zawiera zestawienie typowych pułapek i błędów, z którymi mierzy się niemal każdy początkujący autor. Dobra wiadomość jest taka, że większość z nich jesteś w stanie zlokalizować i <strong>wyeliminować samodzielnie</strong>. Nie potrzebujesz do tego drogich konsultacji.</p>
   </div>
 
-  <div class="reading-content" style="border-left: 4px solid var(--grad-mid); margin-bottom: 0;">
-    <h4 style="color: var(--grad-mid);">Czego potrzebujesz do pracy?</h4>
+  <div class="reading-content" style="border-left: 4px solid var(--grad-mid);">
+    <h4>Czego potrzebujesz do pracy?</h4>
     <p>Od Ciebie wymagam wyłącznie trzech rzeczy: <strong>czasu, cierpliwości i zaangażowania</strong>. Arkusz to świetne narzędzie, ale to Ty musisz wykonać właściwą pracę. Bądź szczery, autorze, w swoich odpowiedziach, a szybko zobaczysz, gdzie Twoja historia zgrzyta, a w których miejscach opiera się na solidnych fundamentach.</p>
   </div>
 
@@ -757,7 +773,7 @@
 
 <!-- STRONA 3: SPIS TREŚCI -->
 <section class="page" id="page-3" data-page="3">
-  <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
 
   <div class="section-opener">
     <h2 class="section-title">Co znajdziesz <em class="grad-type">w tym arkuszu</em></h2>
@@ -799,11 +815,10 @@
 
 <!-- STRONA 4: INSTRUKCJA OBSŁUGI -->
 <section class="page" id="page-4" data-page="4">
-  <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
 
-  <div class="section-opener">
+  <div class="section-opener" style="margin-bottom: 18px;">
     <h2 class="section-title">Instrukcja <em class="grad-type">obsługi arkusza</em></h2>
-    <p class="body">Kilka wskazówek technicznych, jak wygodnie pracować z plikiem na ekranie lub w druku.</p>
   </div>
 
   <div class="instruction-step">
@@ -811,7 +826,7 @@
     <div class="step-content">
       <h4>Jak otworzyć i pobrać arkusz?</h4>
       <p>Arkusz działa najlepiej wtedy, gdy otworzysz go bezpośrednio w <strong>przeglądarce internetowej</strong> – takiej jak Chrome, Firefox lub Edge. Możesz na nim pracować online albo zapisać go na dysku jako plik PDF.</p>
-      <p style="margin-top: 6px;">Aby pobrać PDF, wciśnij <strong>Ctrl + P</strong> (lub Cmd + P na Macu), z listy drukarek wybierz <strong>„Zapisz jako PDF”</strong> i koniecznie zaznacz opcję <strong>„Grafika tła”</strong> (ang. <em>background graphics</em>). Bez tego kolory ramek, gradienty i tła zostaną pominięte.</p>
+      <p style="margin-top: 8px;">Aby pobrać PDF, wciśnij <strong>Ctrl + P</strong> (lub Cmd + P na Macu), z listy drukarek wybierz <strong>„Zapisz jako PDF”</strong> i koniecznie zaznacz opcję <strong>„Grafika tła”</strong> (ang. <em>background graphics</em>). Bez tego kolory ramek, gradienty i tła zostaną pominięte.</p>
     </div>
   </div>
 
@@ -825,10 +840,10 @@
 
   <div class="instruction-step">
     <div class="step-number">3</div>
-    <div class="step-content">
+    <div class="step-content" style="padding-bottom: 12px;">
       <h4>Zrozumienie legendy</h4>
       <p>W całym arkuszu używam czterech rodzajów ramek, które pomogą Ci w nawigacji:</p>
-      <div class="legend-grid">
+      <div class="legend-grid" style="margin-top: 12px;">
         <div class="box box-blue">
           <span class="box-title">Niebieska ramka</span>
           Tłumaczy pojęcia, zasady i buduje merytoryczny fundament.
@@ -849,11 +864,11 @@
     </div>
   </div>
 
-  <div class="instruction-step" style="margin-bottom: 0; flex-grow: 1;">
+  <div class="instruction-step" style="margin-bottom: 0;">
     <div class="step-number">4</div>
     <div class="step-content">
       <h4>Sugerowane etapy pracy</h4>
-      <ul style="list-style-type: disc; padding-left: 18px; margin-top: 6px; margin-bottom: 0; font-size: 12px; color: var(--ink-soft); line-height: 1.6;">
+      <ul style="list-style-type: disc; padding-left: 20px; margin-top: 8px; margin-bottom: 0;">
         <li style="margin-bottom: 4px;"><strong>Krok 1:</strong> Zapoznaj się z treścią arkusza i zastanów się, które z opisanych pułapek językowych najczęściej występują w Twoim tekście.</li>
         <li style="margin-bottom: 4px;"><strong>Krok 2:</strong> Zdecyduj, co dokładnie chcesz zastosować w swoim tekście. Zastanów się, czy dany fragment faktycznie wymaga przepisania, czy może wystarczą drobne poprawki.</li>
         <li style="margin-bottom: 4px;"><strong>Krok 3:</strong> Przeczytaj poprawiony tekst na głos (lub go odsłuchaj). Testuj brzmienie i rytm – powtarzaj to do skutku!</li>
@@ -867,7 +882,7 @@
 
 <!-- STRONA 5: ZANIM ZACZNIESZ -->
 <section class="page" id="page-5" data-page="5">
-  <div class="runner top"><span class="grad-type">Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span>Wprowadzenie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
 
   <div class="section-opener">
     <h2 class="section-title">Zanim zaczniesz: język to tylko <em class="grad-type">narzędzie</em></h2>
@@ -945,11 +960,11 @@
 
       <div class="example-card compact">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Źle:</span>
+          <span class="ex-badge bad">Źle:</span>
           <span class="ex-quote">„Marek dokonał analizy wyników badań”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Dobrze:</span>
+          <span class="ex-badge good">Dobrze:</span>
           <span class="ex-quote">„Marek zbadał próbki”. / „Marek przeanalizował wyniki”.</span>
         </div>
       </div>
@@ -958,7 +973,7 @@
       <p class="prose-text" style="margin-bottom: 8px;">Przymiotniki i przysłówki służą do doprecyzowania informacji, a nie do sztucznego potęgowania emocji.</p>
 
       <div class="narrative-card bad-accent" style="margin-bottom: 18px; padding: 10px 14px;">
-        <strong style="color: var(--bad-ink);">⚠️ Uwaga na teksty z AI:</strong> Algorytmy często nadużywają przymiotników i niepotrzebnie wyolbrzymiają sytuacje. Zwykły „zimny wiatr” staje się „lodowatym wiatrem smagającym bezlitośnie policzki”. Taki styl brzmi sztucznie, melodramatycznie i zniechęca czytelnika.
+        <strong style="color: var(--bad-ink);">Uwaga na teksty z AI:</strong> Algorytmy często nadużywają przymiotników i niepotrzebnie wyolbrzymiają sytuacje. Zwykły „zimny wiatr” staje się „lodowatym wiatrem smagającym bezlitośnie policzki”. Taki styl brzmi sztucznie, melodramatycznie i zniechęca czytelnika.
       </div>
 
       <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Upraszczanie zdań w praktyce</h3></div>
@@ -966,16 +981,16 @@
 
       <div class="example-card" style="margin-bottom: 0;">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Wersja 1 (zbyt wiele słów):</span>
+          <span class="ex-badge bad">Wersja 1 (zbyt wiele słów):</span>
           <span class="ex-quote">„Właściwie to Jan jakoś tak poczuł się już zmęczony i jakby pomyślał sobie, że chyba powinien już pójść spać”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge mid">⚠️ Wersja 2 (po usunięciu zapychaczy):</span>
+          <span class="ex-badge mid">Wersja 2 (po usunięciu zapychaczy):</span>
           <span class="ex-quote">„Jan poczuł się zmęczony i pomyślał, że powinien pójść spać”.</span>
           <span class="ex-note">(Usunęliśmy „właściwie”, „jakoś tak”, „jakby” i „chyba”, ale zdanie nadal brzmi dość ciężko).</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Wersja 3 (prosto i zwięźle):</span>
+          <span class="ex-badge good">Wersja 3 (prosto i zwięźle):</span>
           <span class="ex-quote">„Jan poczuł silne zmęczenie i postanowił położyć się spać”.</span>
           <span class="ex-note">(Czasownik „postanowił” upraszcza całą konstrukcję i sprawia, że bohater staje się bardziej decyzyjny).</span>
         </div>
@@ -1026,11 +1041,11 @@
 
       <div class="example-card">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Słabo (płasko):</span>
+          <span class="ex-badge bad">Słabo (płasko):</span>
           <span class="ex-quote">„Szedł bardzo szybko w stronę drzwi i był bardzo zły”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Mocno (dynamiczna leksyka):</span>
+          <span class="ex-badge good">Mocno (dynamiczna leksyka):</span>
           <span class="ex-quote">„Dopadł do drzwi i szarpnął za klamkę, kipiąc ze wściekłości”.</span>
           <span class="ex-note">(Zamiast pisać „szedł bardzo szybko”, wstawiamy konkretne działanie – „dopadł”. Zamiast po prostu „być złym”, bohater „kipi”).</span>
         </div>
@@ -1038,11 +1053,11 @@
 
       <div class="example-card" style="margin-bottom: 26px;">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Słabo (płasko):</span>
+          <span class="ex-badge bad">Słabo (płasko):</span>
           <span class="ex-quote">„Stwierdził, że się boi, więc zdecydował się uciec”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Mocno (dynamiczna leksyka):</span>
+          <span class="ex-badge good">Mocno (dynamiczna leksyka):</span>
           <span class="ex-quote">„Przeszył go strach, więc rzucił się do ucieczki”.</span>
           <span class="ex-note">(Pozbywamy się suchej relacji „stwierdził / zdecydował”. Zastępujemy ją fizycznym odczuciem „przeszył” i wyraźnym ruchem „rzucił się”).</span>
         </div>
@@ -1102,14 +1117,14 @@
     <div class="q-main">
       <div class="q-header-area"><span class="qnum-bg">01</span><h3 class="qtitle">Tell (informowanie / raportowanie)</h3></div>
       <div class="narrative-card bad-accent" style="margin-bottom: 24px;">
-        <span class="ex-badge bad" style="display: block; margin-bottom: 6px; font-style: normal;">❌ Tell (suche podsumowanie faktów):</span>
-        <span class="ex-quote">„Wszyscy w szkole wiedzieli, że Lucinda to najwredniejsze dziecko w całej trzeciej klasie. Była urocza i uważała, że z tego powodu wszystko ujdzie jej na sucho. Zawsze stawała na głowie, żeby tylko mi dokuczyć. Nie należałem do grupy »popularnych« dzieci, a ci nieliczni chłopcy, których znałem, to byli po prostu chłopcy, z którymi grałem w szachy na przerwach – trudno ich było nazwać przyjaciółmi. Do tego byłem strasznym niezdarą, więc stanowiłem dla niej idealny cel. Dręczyła mnie do tego stopnia, że cała trzecia klasa była dla mnie prawdziwym piekłem na ziemi”.</span>
+        <span class="ex-badge bad" style="display: block; margin-bottom: 6px; font-style: normal;">Tell (suche podsumowanie faktów):</span>
+        <span class="ex-quote" style="color: inherit;">„Wszyscy w szkole wiedzieli, że Lucinda to najwredniejsze dziecko w całej trzeciej klasie. Była urocza i uważała, że z tego powodu wszystko ujdzie jej na sucho. Zawsze stawała na głowie, żeby tylko mi dokuczyć. Nie należałem do grupy »popularnych« dzieci, a ci nieliczni chłopcy, których znałem, to byli po prostu chłopcy, z którymi grałem w szachy na przerwach – trudno ich było nazwać przyjaciółmi. Do tego byłem strasznym niezdarą, więc stanowiłem dla niej idealny cel. Dręczyła mnie do tego stopnia, że cała trzecia klasa była dla mnie prawdziwym piekłem na ziemi”.</span>
       </div>
 
       <div class="q-header-area"><span class="qnum-bg">02</span><h3 class="qtitle">Show (pokazywanie / doświadczanie)</h3></div>
       <div class="narrative-card good-accent" style="margin-bottom: 0;">
-        <span class="ex-badge good" style="display: block; margin-bottom: 6px; font-style: normal;">✅ Show (konkretna scena w działaniu):</span>
-        <span class="ex-quote">„Gdy tylko zadzwonił dzwonek na przerwę, porwałem swoje szachy i ruszyłem w stronę drzwi, nie mogąc się doczekać kolejnej partii w moim kręgu wyrzutków. Choć na nią nie patrzyłem, czułem na sobie wzrok Lucindy – niemal fizycznie czułem, jak jej kręcone loki falują, gdy odwraca głowę, żeby nie spuścić mnie z oczu.<br><br>
+        <span class="ex-badge good" style="display: block; margin-bottom: 6px; font-style: normal;">Show (konkretna scena w działaniu):</span>
+        <span class="ex-quote" style="color: inherit;">„Gdy tylko zadzwonił dzwonek na przerwę, porwałem swoje szachy i ruszyłem w stronę drzwi, nie mogąc się doczekać kolejnej partii w moim kręgu wyrzutków. Choć na nią nie patrzyłem, czułem na sobie wzrok Lucindy – niemal fizycznie czułem, jak jej kręcone loki falują, gdy odwraca głowę, żeby nie spuścić mnie z oczu.<br><br>
         I tak, jakże by inaczej – potknąłem się w progu.<br><br>
         Gorączkowo zbierałem z podłogi pionki i gońce, jeden, drugi i kolejny uratowany przed zdeptaniem, dookoła coraz szybciej migały mi podeszwy, z piskiem trąc o gumową wykładzinę. Jednak gdy tylko usłyszałem pierwszy stukot obcasa, moje ręce powoli przestawały ze mną współpracować, a pionki prześlizgiwały się między palcami. Usłyszałem kolejny i jeszcze jeden. W końcu dostrzegłem parę lakierowanych bucików tuż obok mojej królowej. Lucinda czekała, aż w końcu na nią spojrzę. Uśmiechnęła się, uniosła swój błyszczący bucik i wolno, z rozmysłem, wbiła obcas w głowę mojej białej królowej”.</span>
       </div>
@@ -1194,9 +1209,9 @@
         <span class="box-title">Metoda kolorów</span>
         <p>Zastosuj tę techniczną metodę w swoim programie:</p>
         <p>
-          <span style="display:inline-block; width:11px; height:11px; background:#FFD54F; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Do np. 10 słów:</strong> zaznacz na żółto.<br>
-          <span style="display:inline-block; width:11px; height:11px; background:#81C784; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Do np. 15 słów:</strong> zaznacz na zielono.<br>
-          <span style="display:inline-block; width:11px; height:11px; background:#E57373; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Powyżej np. 20 słów:</strong> zaznacz na czerwono.
+          <span style="display:inline-block; width:11px; height:11px; background:#F5DCA8; border:1px solid #D16B21; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Do np. 10 słów:</strong> zaznacz na żółto.<br>
+          <span style="display:inline-block; width:11px; height:11px; background:#C5DDF5; border:1px solid #0055A4; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Do np. 15 słów:</strong> zaznacz na niebiesko / zielono.<br>
+          <span style="display:inline-block; width:11px; height:11px; background:#F2C6C6; border:1px solid #B31B1B; border-radius:2px; margin-right:5px; vertical-align:middle;"></span> <strong>Powyżej np. 20 słów:</strong> zaznacz na czerwono.
         </p>
         <p>Jeśli po sformatowaniu zobaczysz kilka <strong>czerwonych</strong> linijek pod rząd, to znak, że musisz rozbić je na krótsze struktury.</p>
       </div>
@@ -1237,26 +1252,26 @@
 
       <div class="example-card" style="margin-bottom: 12px;">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Nudny schemat (osoba + czasownik):</span><br>
+          <span class="ex-badge bad">Nudny schemat (osoba + czasownik):</span><br>
           <span class="ex-quote">„Marek podszedł do stołu. Podniósł stary list. Poczuł dreszcz”.</span>
         </div>
       </div>
 
       <div class="example-card" style="margin-bottom: 0;">
         <div class="ex-row">
-          <span class="ex-badge good">✅ 1. Płynność (imiesłów):</span><br>
+          <span class="ex-badge good">1. Płynność (imiesłów):</span><br>
           <span class="ex-quote">„Podchodząc do stołu, Marek podniósł stary list i poczuł dreszcz”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ 2. Budowanie napięcia (akcent na przedmiot):</span><br>
+          <span class="ex-badge good">2. Budowanie napięcia (akcent na przedmiot):</span><br>
           <span class="ex-quote">„Stary list, leżący na stole, wywołał u Marka dreszcz, gdy tylko go podniósł”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ 3. Szybka akcja (styl telegraficzny):</span><br>
+          <span class="ex-badge good">3. Szybka akcja (styl telegraficzny):</span><br>
           <span class="ex-quote">„Zrobił kilka kroków w stronę stołu. Sięgnął po stary list. Przeszył go nagły dreszcz”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ 4. Styl literacki (słowa działające na wyobraźnię):</span><br>
+          <span class="ex-badge good">4. Styl literacki (słowa działające na wyobraźnię):</span><br>
           <span class="ex-quote">„Sięgając po starą kopertę, poczuł, jak po karku przebiega mu zimny dreszcz”.</span>
         </div>
       </div>
@@ -1335,33 +1350,33 @@
 
         <div class="example-card-inner">
           <div class="ex-row">
-            <span class="ex-badge bad">❌ Słaby prompt:</span>
+            <span class="ex-badge bad">Słaby prompt:</span>
             <span class="ex-quote">„Przepisz ten akapit, żeby brzmiał dynamicznie”.</span>
           </div>
           <div class="ex-row">
-            <span class="ex-badge good">✅ Dobry prompt:</span>
+            <span class="ex-badge good">Dobry prompt:</span>
             <span class="ex-quote">„Zmień ten fragment. Mają w nim dominować zdania pojedyncze, maksymalnie 5–6 słów. Scena ma oddawać szok bohatera”.</span>
           </div>
         </div>
 
         <div class="example-card-inner">
           <div class="ex-row">
-            <span class="ex-badge bad">❌ Słaby prompt:</span>
+            <span class="ex-badge bad">Słaby prompt:</span>
             <span class="ex-quote">„Popraw te nudne czasowniki”.</span>
           </div>
           <div class="ex-row">
-            <span class="ex-badge good">✅ Dobry prompt:</span>
+            <span class="ex-badge good">Dobry prompt:</span>
             <span class="ex-quote">„Podaj 10 konkretnych, fizycznych zamienników dla czasownika »stać« w opisie starych mebli w opuszczonym pokoju”.</span>
           </div>
         </div>
 
         <div class="example-card-inner">
           <div class="ex-row">
-            <span class="ex-badge bad">❌ Słaby prompt:</span>
+            <span class="ex-badge bad">Słaby prompt:</span>
             <span class="ex-quote">„Nadaj tej postaci unikalny ton głosu”.</span>
           </div>
           <div class="ex-row">
-            <span class="ex-badge good">✅ Dobry prompt:</span>
+            <span class="ex-badge good">Dobry prompt:</span>
             <span class="ex-quote">„Przekształć ten dialog na wypowiedź mechanika z lat 90. Używaj krótkich zdań i żargonu warsztatowego. Kategorycznie unikaj patosu”.</span>
           </div>
         </div>
@@ -1438,18 +1453,18 @@
         <span class="box-title">Przykłady w praktyce</span>
 
         <div class="example-card-inner">
-          <span class="ex-badge bad">❌ Źle:</span>
+          <span class="ex-badge bad">Źle:</span>
           <span class="ex-quote">„W ponury wtorek straszliwy wypadek zniszczył spokój na skrzyżowaniu Polnej i Leśnej”.</span>
           <span class="ex-note">(Zbyt literacki język jak na suchy news).</span>
         </div>
 
         <div class="example-card-inner">
-          <span class="ex-badge good">✅ Dobrze (news):</span>
+          <span class="ex-badge good">Dobrze (news):</span>
           <span class="ex-quote">„We wtorek o 14:30 na skrzyżowaniu ulic Polnej i Leśnej doszło do zderzenia dwóch aut osobowych”.</span>
         </div>
 
         <div class="example-card-inner">
-          <span class="ex-badge good">✅ Dobrze (pismo):</span>
+          <span class="ex-badge good">Dobrze (pismo):</span>
           <span class="ex-quote">„Niniejszym wzywa się do uregulowania zaległości w terminie czternastu dni od daty doręczenia pisma”.</span>
         </div>
       </div>
@@ -1482,16 +1497,16 @@
 
       <div class="example-card" style="margin-bottom: 22px;">
         <div class="ex-row">
-          <span class="ex-badge bad">❌ Błąd (mieszanie stylów):</span>
+          <span class="ex-badge bad">Błąd (mieszanie stylów):</span>
           <span class="ex-quote">„Poszedłem rano po bułki do Żabki, albowiem zapomniałem kupić chleba”.</span>
           <span class="ex-note">(Codzienna wypowiedź mocno gryzie się tutaj z oficjalnym słowem „albowiem”).</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Styl potoczny:</span>
+          <span class="ex-badge good">Styl potoczny:</span>
           <span class="ex-quote">„Skoczyłem rano po bułki, bo zapomniałem o chlebie”.</span>
         </div>
         <div class="ex-row">
-          <span class="ex-badge good">✅ Styl oficjalny:</span>
+          <span class="ex-badge good">Styl oficjalny:</span>
           <span class="ex-quote">„Udałem się z samego rana do pobliskiego sklepu po pieczywo, albowiem przeoczyłem wcześniejsze zakupy”.</span>
         </div>
       </div>
@@ -1626,7 +1641,7 @@
     <tr>
       <th style="width: 24%;">Obszar języka</th>
       <th style="width: 21%; color: var(--bad-ink); font-weight: 700; font-size: 10.5px;">1–3 (Niedobór)</th>
-      <th style="width: 24%; color: var(--good-ink); font-size: 11px; font-weight: 800;">4–7 (Złoty środek)</th>
+      <th style="width: 24%; color: var(--grad-start); font-size: 11px; font-weight: 800;">4–7 (Złoty środek)</th>
       <th style="width: 21%; color: var(--mid-ink); font-weight: 700; font-size: 10.5px;">8–10 (Przesada)</th>
       <th style="width: 10%; text-align: center;">Wynik</th>
     </tr>
@@ -1702,37 +1717,37 @@
 
 <!-- STRONA 16: PODSUMOWANIE I KONTAKT -->
 <section class="page" id="page-16" data-page="16">
-  <div class="runner top"><span class="grad-type">Finał i podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
+  <div class="runner top"><span class="grad-type">Podsumowanie</span><span>Natalia Szoppa | Redakcja, korekta, skład DTP</span></div>
 
   <div class="section-opener">
     <h2 class="section-title">Co masz zrobić z tą wiedzą <em class="grad-type">dalej</em>?</h2>
     <p class="body">Gratulacje – za Tobą kluczowy etap pracy nad tekstem. Masz już jasność co do mocnych stron swojej historii oraz luk, które wymagają poprawy. Co zrobić z tą wiedzą dalej?</p>
   </div>
 
-  <div class="q-row full" style="flex-grow: 1;">
+  <div class="q-row full">
     <div class="q-main">
-      <div class="reading-content" style="margin-bottom: 22px; border-left: 4px solid var(--grad-end);">
-        <h4 style="color: var(--grad-end);">To był duży i niezbędny krok!</h4>
-        <p style="margin-bottom: 10px;">Rzetelne wypełnienie tego arkusza diagnostycznego to wymagający sprawdzian dla Twojego tekstu. Jeśli w wielu miejscach musiałeś wpisać „jeszcze nie wiem” – to świetna wiadomość. Właśnie zaoszczędziłeś miesiące błądzenia po omacku. Jeśli natomiast Twój arkusz pęka od konkretów i faktów – gratulacje. Masz solidny fundament, na którym możesz bezpiecznie budować fabułę.</p>
-        <p style="margin-bottom: 0;">Spójrz teraz na swoją opowieść z perspektywy lotu ptaka. Czas na chłodną, obiektywną ocenę: czy ta historia wymaga jeszcze gruntownej przebudowy, czy jest już gotowa na testy i możesz śmiało wysłać ją do betaczytelników?</p>
+      <div class="reading-content" style="margin-bottom: 24px; border-left: 4px solid var(--grad-end);">
+        <h4>To był duży i niezbędny krok!</h4>
+        <p>Rzetelne wypełnienie tego arkusza diagnostycznego to wymagający sprawdzian dla Twojego tekstu. Jeśli w wielu miejscach musiałeś wpisać „jeszcze nie wiem” – to świetna wiadomość. Właśnie zaoszczędziłeś miesiące błądzenia po omacku. Jeśli natomiast Twój arkusz pęka od konkretów i faktów – gratulacje. Masz solidny fundament, na którym możesz bezpiecznie budować fabułę.</p>
+        <p>Spójrz teraz na swoją opowieść z perspektywy lotu ptaka. Czas na chłodną, obiektywną ocenę: czy ta historia wymaga jeszcze gruntownej przebudowy, czy jest już gotowa na testy i możesz śmiało wysłać ją do betaczytelników?</p>
       </div>
 
-      <div class="box box-purple" style="padding: 28px; box-shadow: 0 8px 32px rgba(107, 53, 200, 0.08); border: 1px solid rgba(107, 53, 200, 0.12);">
-        <span class="box-title" style="font-size: 12px; margin-bottom: 12px; letter-spacing: 0.12em;">Skorzystaj z bezpłatnej analizy redaktorskiej</span>
-        <p style="font-size: 13.5px; line-height: 1.6; color: var(--ink); font-weight: 700; margin-bottom: 14px;">
+      <div class="box box-purple" style="padding: 28px; box-shadow: 0 8px 24px rgba(107, 53, 200, 0.08);">
+        <span class="box-title" style="font-size: 13px; margin-bottom: 12px;">Skorzystaj z bezpłatnej analizy redaktorskiej</span>
+        <p style="font-size: 14px; line-height: 1.6; color: var(--ink-soft); font-weight: 700; margin-bottom: 12px;">
           Jeśli praca z arkuszem Cię przytłoczyła lub czujesz, że utknąłeś w martwym punkcie – nie musisz działać sam.
         </p>
 
-        <p style="font-size: 12.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 12px;">
-          <strong style="color: var(--ink);">Bezpłatna weryfikacja:</strong> Chcesz się upewnić, że Twoje poprawki działają? Prześlij mi fragment swojej powieści (do 9&nbsp;000 znaków ze spacjami). Przeanalizuję go bezpłatnie i dam Ci szczerą odpowiedź, czy idziesz w dobrym kierunku i gdzie Twój styl wymaga jeszcze szlifu.
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 12px;">
+          <strong>Bezpłatna weryfikacja:</strong> Chcesz się upewnić, że Twoje poprawki działają? Prześlij mi fragment swojej powieści (do 9&nbsp;000 znaków ze spacjami). Przeanalizuję go bezpłatnie i dam Ci szczerą odpowiedź, czy idziesz w dobrym kierunku i gdzie Twój styl wymaga jeszcze szlifu.
         </p>
 
-        <p style="font-size: 12.5px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 0;">
-          <strong style="color: var(--ink);">Redakcja strukturalna i językowa:</strong> Jeśli czujesz, że historia utknęła, bohaterom brakuje głębi, łatanie dziur fabularnych Cię przerasta lub chcesz po prostu doszlifować językową warstwę tekstu – chętnie pomogę. Oferuję profesjonalną redakcję, w ramach której przeanalizuję Twój manuskrypt od podszewki i pomogę Ci ułożyć go w spójną całość.
+        <p style="font-size: 13px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 0;">
+          <strong>Redakcja strukturalna i językowa:</strong> Jeśli czujesz, że historia utknęła, bohaterom brakuje głębi, łatanie dziur fabularnych Cię przerasta lub chcesz po prostu doszlifować językową warstwę tekstu – chętnie pomogę. Oferuję profesjonalną redakcję, w ramach której przeanalizuję Twój manuskrypt od podszewki i pomogę Ci ułożyć go w spójną całość.
         </p>
 
-        <div class="dot-grid-box short" style="margin-top: 20px; min-height: 66px; display: flex; align-items: center; justify-content: center; background-color: #ffffff; border-color: var(--paper-mid);">
-          <a href="mailto:natalia.szoppa@gmail.com" style="font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.04em; text-decoration: none;">natalia.szoppa@gmail.com</a>
+        <div class="dot-grid-box short" style="margin-top: 20px; min-height: 70px; display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
+          <a href="mailto:natalia.szoppa@gmail.com" style="font-family: var(--sans); font-size: 17px; font-weight: 700; color: var(--grad-start); letter-spacing: 0.05em; text-decoration: none;">natalia.szoppa@gmail.com</a>
         </div>
       </div>
     </div>
