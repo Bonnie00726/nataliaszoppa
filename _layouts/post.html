@@ -4,14 +4,25 @@ layout: default
 
 <style>
     /* --- EDITORIAL HEADER (Tytuł i Metryczka) --- */
-    .aricle-header, .first-paragraph-container {
+    .article-header, .first-paragraph-container {
         max-width: 860px;
         margin-left: auto; margin-right: auto;
         padding-left: 70px; padding-right: 20px;
         text-align: left;
     }
     
-    .article-header { margin-top: 100px; margin-bottom: 30px; position: relative; z-index: 1; }
+    .article-header {
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 70px;
+        padding-right: 20px;
+        text-align: left;
+        margin-top: 100px;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+    }
 
     /* Ogromny Inicjał w tle z Tytułu */
     .title-initial {
@@ -167,6 +178,12 @@ layout: default
         content: '\f10d';
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
+        position: static;
+        transform: none;
+        width: auto;
+        height: auto;
+        border-radius: 0;
+        box-shadow: none;
         display: block;
         margin: 0 auto 14px auto;
         font-size: 20px;
@@ -203,11 +220,6 @@ layout: default
         content: '— ';
         color: var(--accent-purple);
     }
-    .article-content blockquote footer::before,
-    .article-content blockquote cite::before {
-        content: '— ';
-        color: var(--accent-purple);
-    }
 
     /* Kreska ważności (lewa strona) */
     .article-content .imp-line {
@@ -225,13 +237,20 @@ layout: default
     /* Highlighter (Magenta - Dopasowany do tekstu ciągłego) */
     .marker-highlight {
         --mark-color: 255 0 255;
+        position: static;
         display: inline;
         padding: 0 2px;
-        margin: 0 -2px;
-        border-radius: 3px 5px 3px 4px;
-        background: conic-gradient(at 0 100%, rgb(var(--mark-color) / 32%) 1%, #fff0 3%) no-repeat 0 74% / 100% 76%, conic-gradient(from 180deg at 100% 0, #fff0, rgb(var(--mark-color) / 32%) 1%, #fff0 4%) no-repeat 100% 74% / 100% 76%, linear-gradient(50deg, rgb(var(--mark-color) / 22%), rgb(var(--mark-color) / 12%) 75%, rgb(var(--mark-color) / 19%)) no-repeat 0 74% / 100% 76%;
+        margin: 0;
+        border-radius: 3px;
+        background: linear-gradient(90deg, rgb(var(--mark-color) / 28%) 0%, rgb(var(--mark-color) / 20%) 3%, rgb(var(--mark-color) / 12%) 70%, rgb(var(--mark-color) / 18%) 97%, rgb(var(--mark-color) / 28%) 100%) no-repeat 0 78% / 100% 72%;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
+    }
+    .marker-highlight::before,
+    .marker-highlight::after {
+        content: none !important;
+        display: none !important;
+        background: none !important;
     }
 
     .article-content img { max-width: 100%; height: auto; border-radius: 8px; margin: 40px 0; display: block; }
