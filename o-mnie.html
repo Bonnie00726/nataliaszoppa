@@ -172,22 +172,73 @@ title: O mnie | Natalia Szoppa - Redaktorka i tłumaczka
             color: var(--text-black);
         }
 
-        /* --- SLIDER ZE ZDJĘCIAMI --- */
-        .story-slider-wrap { width: 100%; overflow: hidden; padding: 10px 0; margin: 40px 0; }
-        .story-slider-track { display: flex; gap: 20px; animation: slide 25s linear infinite; width: max-content; }
+        /* --- SLIDER ZE ZDJĘCIAMI (PŁYNNA PĘTLA INFINITE LOOP) --- */
+        .story-slider-wrap {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+            margin: 40px 0;
+            position: relative;
+        }
+        .story-slider-track {
+            display: flex;
+            gap: 20px;
+            padding-right: 20px;
+            width: max-content;
+            animation: slide 32s linear infinite;
+            will-change: transform;
+        }
         .story-slider-wrap:hover .story-slider-track { animation-play-state: paused; }
         
         .story-slide-card { 
-            width: 240px; height: 320px; border-radius: var(--radius-lg); 
-            overflow: hidden; position: relative; flex-shrink: 0; 
-            background-size: cover; background-position: center; 
+            width: 240px;
+            height: 320px;
+            border-radius: var(--radius-lg); 
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0; 
+            background-size: cover;
+            background-position: center; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.06);
         }
-        .story-slide-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,10,18,0.75) 0%, transparent 60%); }
-        .story-slide-card span { position: absolute; bottom: 20px; left: 20px; right: 20px; font-family: var(--serif); font-size: 14px; font-weight: 600; color: #fff; z-index: 1; line-height: 1.3; }
-        .story-slide-card em { position: absolute; top: 15px; right: 15px; background: rgba(123, 44, 191, 0.9); color: #fff; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 8px; border-radius: 4px; font-style: normal; z-index: 1; }
+        .story-slide-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10,10,18,0.75) 0%, transparent 60%);
+        }
+        .story-slide-card span {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            font-family: var(--serif);
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            z-index: 1;
+            line-height: 1.3;
+        }
+        .story-slide-card em {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(123, 44, 191, 0.9);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-style: normal;
+            z-index: 1;
+        }
         
-        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes slide {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
 
         /* FAQ */
         .inline-faq-container {
@@ -522,7 +573,7 @@ p a.btn-outline, li a.btn-outline {
     opacity: 1;
 }
     </style>
-</head>
+<script src="/_aistudio-iframe.js?v=1f94f900"></script></head>
 <body>
 
 <!-- === PŁYWAJĄCE PRZYCISKI AKCJI (LEWA STRONA) === -->
@@ -580,6 +631,7 @@ p a.btn-outline, li a.btn-outline {
         <!-- SLIDER ZE ZDJĘCIAMI WKOMPONOWANY W OPOWIEŚĆ -->
         <div class="story-slider-wrap">
             <div class="story-slider-track">
+                <!-- Zestaw 1 (Wszystkie 6 zdjęć) -->
                 <div class="story-slide-card" style="background-image:url('https://i.imgur.com/nnlOKzf.jpeg')">
                     <em>Prywatnie</em><span>Bunia</span>
                 </div>
@@ -590,16 +642,35 @@ p a.btn-outline, li a.btn-outline {
                     <em>Prywatnie</em><span>Atak on Titan!</span>
                 </div>
                 <div class="story-slide-card" style="background-image:url('https://i.imgur.com/PFt0up9.jpeg')">
-                    <em>prywatnie</em><span>Tak, to ja, istnieję, jakby ktoś jeszcze miał wątpliwości.</span>
+                    <em>Prywatnie</em><span>Tak, to ja, istnieję, jakby ktoś jeszcze miał wątpliwości.</span>
                 </div>
-                <!-- Duplikat dla płynnej pętli slidera -->
                 <div class="story-slide-card" style="background-image:url('https://i.imgur.com/Kfj2qHe.jpeg')">
-                    <em>prywtnie</em><span>Zdecydowanie wolę morze <3</span>
+                    <em>Prywatnie</em><span>Zdecydowanie wolę morze <3</span>
                 </div>
                 <div class="story-slide-card" style="background-image:url('https://i.imgur.com/0ePp2Gf.jpeg')">
-                    <em>Praca</em><span>Zbieram książki, nad którymi pracowałam, choć pomału zaczyna brakowac na nie miejsca.</span>
+                    <em>Praca</em><span>Zbieram książki, nad którymi pracowałam, choć pomału zaczyna brakować na nie miejsca.</span>
+                </div>
+                <!-- Zestaw 2 (Pełny duplikat wszystkich 6 zdjęć dla płynnej pętli 360°) -->
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/nnlOKzf.jpeg')">
+                    <em>Prywatnie</em><span>Bunia</span>
+                </div>
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/6HKYPrD.png')">
+                    <em>Prywatnie</em><span>Trochę więcej Buni.</span>
+                </div>
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/emAIMEL.png')">
+                    <em>Prywatnie</em><span>Atak on Titan!</span>
+                </div>
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/PFt0up9.jpeg')">
+                    <em>Prywatnie</em><span>Tak, to ja, istnieję, jakby ktoś jeszcze miał wątpliwości.</span>
+                </div>
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/Kfj2qHe.jpeg')">
+                    <em>Prywatnie</em><span>Zdecydowanie wolę morze <3</span>
+                </div>
+                <div class="story-slide-card" aria-hidden="true" style="background-image:url('https://i.imgur.com/0ePp2Gf.jpeg')">
+                    <em>Praca</em><span>Zbieram książki, nad którymi pracowałam, choć pomału zaczyna brakować na nie miejsca.</span>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- SEKCJA 2: KONTYNUACJA OPOWIEŚCI -->
