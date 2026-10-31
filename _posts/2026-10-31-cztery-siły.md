@@ -64,6 +64,6 @@ Pisarstwo nie znosi próżni. Jeśli jako twórca świadomie zrezygnujesz ze zde
 
 Bohater bez wewnętrznego pęknięcia staje się nieśmiertelnym awatarem, a historia pozbawiona zderzenia *chcieć* a *potrzebować* redukuje się do zwykłego zapisu zdarzeń. Czytelnik natychmiast wyczuje, że nie obcuje z „żywym człowiekiem”, lecz z kukiełką przesuwaną po planszy ręką autora.
 
-Czyli, co robić?
+## Czyli, co robić?
 
 Nie bój się manewrować tymi czterema siłami. Możesz napisać historię, w której rana z przeszłości zostanie jedynie zasygnalizowana w jednym cichym geście przy kuchennym stole, podczas gdy całą uwagę skupi walka z bezwzględnym antagonistą. Możesz też napisać powieść, w której stawka zewnętrzna będzie skromna, za to walka o wyjście ze strefy komfortu stanie się epicką batalią na miarę ratowania świata.
