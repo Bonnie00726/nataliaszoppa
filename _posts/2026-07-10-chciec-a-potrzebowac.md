@@ -3,7 +3,7 @@ layout: post
 title: "Chcieć a potrzebować, czyli jak stworzyć angażującego bohatera (część 2)"
 date: 2026-07-10 10:00:00 +0200
 author: Natalia Szoppa
-image: "https://images.unsplash.com/photo-1592153444542-3d25ccf7e939"
+image: "https://images.unsplash.com/photo-1570381039627-fb3348f2a719"
 tags: [pisarstwo]
 ---
 
@@ -13,7 +13,7 @@ Z <a href="https://nataliaszoppa.com/2026/06/18/konflikt-wewn%C4%99trzny-czyli-j
 
 <a href="https://unsplash.com/photos/text-6CczttZO18o">Photo from Unsplash.</a>
 
-Dziś pójdziemy o krok dalej i przyjrzymy się kluczowemu dualizmowi w konstrukcji postaci: <span class="marker-highlight">chcieć (want) vs. potrzebować (need).</span>
+Dziś pójdziemy o krok dalej i przyjrzymy się ważnemu dualizmowi w konstrukcji postaci: <span class="marker-highlight">chcieć (want) vs. potrzebować (need).</span>
 
 ## Chcieć vs. potrzebować
 
@@ -32,7 +32,7 @@ Wewnętrzna rana, bagaż doświadczeń, stawka fabularna oraz relacja „chcieć
 
 ### Ścieżka A: Nacisk na POTRZEBĘ 
 
-Jeśli Twoim priorytetem jest pokazanie **głębokiej transformacji psychologiczne**j, cała fabuła staje się narzędziem do uleczenia bohatera. Wydarzenia zewnętrzne są dobierane tak, by bezpośrednio uderzać w jego ego i zmuszać do redefinicji własnego życia. Będzie to opowieść o wewnętrznej przemianie. 
+Jeśli Twoim priorytetem jest pokazanie **głębokiej transformacji psychologicznej**, cała fabuła staje się narzędziem do uleczenia bohatera. Wydarzenia zewnętrzne są dobierane tak, by bezpośrednio uderzać w jego ego i zmuszać do redefinicji własnego życia. Będzie to opowieść o wewnętrznej przemianie. 
 
 ### Ścieżka B: Nacisk na BAGAŻ I STAWKĘ
 
@@ -40,7 +40,7 @@ Jeśli wolisz skupić się na ranie, która zagraża osiągnięciu celu, histori
 
 ## Jak to wygląda w praktyce?
 
-Wyobraź sobie, że piszesz kryminał o detektywie z ogromnym bagażem negatywnych doświadczeń. Widział już wszystko, co najgorsze, co wykształciło w nim skrajny pesymizm i obojętność. Uważa, że wszyscy kłamią, żyje w izolacji, a jedynych przyjaciół odpycha swoim toksycznym zachowaniem.
+Wyobraź sobie, że piszesz kryminał o detektywie z ogromnym bagażem negatywnych doświadczeń. Widział już wszystko, co najgorsze, a to wykształciło w nim skrajny pesymizm i obojętność. Uważa, że wszyscy kłamią, żyje w izolacji, a jedynych przyjaciół odpycha swoim toksycznym zachowaniem.
 
 Nagle dostaje sprawę brutalnego morderstwa. **On chce znaleźć zabójcę** (cel zewnętrzny, ogólny cel fabuły).
 
@@ -50,7 +50,7 @@ Przesłuchując świadków i zbierając dowody, detektyw zaczyna widzieć w ofie
 
  * **Perspektywa POTRZEBY:** Skupiasz się na jego psychice. Detektyw dostrzega szansę na szczęśliwe życie, które wcześniej odrzucił, i zaczyna boleśnie odczuwać swoją samotność. Dochodzi do wniosku, że musi zmienić swoje życie, bo obecne zaczyna go dręczyć.
 
- * **Perspektywa BAGAŻU:** Jeśli wybierzesz drugą ścieżkę, skupisz się na akcji. Pokażesz, jak jego cynizm i góry uprzedzeń sprawiają, że fatalnie przesłuchuje świadków, zakłada z góry błędne tezy i przez to o mało nie doprowadza do ucieczki mordercy. Jego charakter staje się główną przeszkodą w śledztwie.
+ * **Perspektywa BAGAŻU:** Jeśli wybierzesz drugą ścieżkę, skupisz się na akcji. Pokażesz, jak jego cynizm i uprzedzenia sprawiają, że fatalnie przesłuchuje świadków, zakłada z góry błędne tezy i przez to o mało nie doprowadza do ucieczki mordercy. Jego charakter staje się główną przeszkodą w śledztwie.
 
 ## Warsztat pisarza: Psychologiczne dobieranie przeciwieństw
 
@@ -63,5 +63,5 @@ Najlepszym sposobem na zmuszenie bohatera do refleksji jest zderzenie go z jego 
 Wsadź bohatera w sytuację, która zmusi go do zaangażowania emocjonalnego. Postaw na jego drodze kogoś irytująco upartego, kto bezinteresownie wierzy w ludzi i pokazuje (konkretnymi czynami i argumentami), dlaczego warto walczyć o relacje. Obojętnego bohatera trzeba najpierw... wkurzyć, wytrącić z jego bezpiecznej strefy komfortu i zmusić do reakcji.
 
 <div class="top-bottom-highlight">
-Dzięki dobrze zdefiniowanemu biogramowi postaci i precyzyjnemu sparowaniu jej słabości z wyzwaniami losu, stworzysz historię, która nie tylko trzyma w napięciu, ale też buduje niesamowity klimat, wzrusza i pozwala czytelnikowi przejrzeć się w niej jak w lustrze.</div>
+Dzięki dobrze zdefiniowanemu biogramowi postaci i precyzyjnemu sparowaniu jej słabości z wyzwaniami losu, stworzysz historię, która nie tylko trzyma w napięciu, ale też buduje niesamowity klimat, wzrusza i pozwala czytelnikowi się z nią utożsamić.</div>
 
