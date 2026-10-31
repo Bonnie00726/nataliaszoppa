@@ -11,8 +11,6 @@ Każdy z nas czegoś chce, ale życie brutalnie weryfikuje te pragnienia, pokazu
 
 Z <a href="https://nataliaszoppa.com/2026/06/18/konflikt-wewn%C4%99trzny-czyli-jak-stworzy%C4%87-anga%C5%BCuj%C4%85cego-bohatera.html">poprzedniego wpisu</a> wiesz już, że fundamentem dobrej postaci jest jej **bagaż doświadczeń** oraz **rana z przeszłości**, która skutecznie utrudnia jej osiągnięcie celu. 
 
-<a href="https://unsplash.com/photos/text-6CczttZO18o">Photo from Unsplash.</a>
-
 Dziś pójdziemy o krok dalej i przyjrzymy się ważnemu dualizmowi w konstrukcji postaci: <span class="marker-highlight">chcieć (want) vs. potrzebować (need).</span>
 
 ## Chcieć vs. potrzebować
@@ -101,4 +99,7 @@ Jeśli tworzysz bohatera pysznego i trudnego do polubienia, nie bój się oprze�
 
 <div class="top-bottom-highlight">
 Dzięki dobrze zdefiniowanemu biogramowi postaci i precyzyjnemu sparowaniu jej słabości z wyzwaniami losu, stworzysz historię, która nie tylko trzyma w napięciu, ale też buduje niesamowity klimat, wzrusza i pozwala czytelnikowi się z nią utożsamić.</div>
+
+
+##### <a href="https://images.unsplash.com/photo-1570381039627-fb3348f2a719">Photo from Unsplash by Alexis Fauvet.</a>
 
