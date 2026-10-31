@@ -150,6 +150,33 @@ permalink: /blog.html
         transform: translateX(5px); /* Strzałka odsuwa się w prawo na hover */
     }
 
+    /* --- PRZYCISK ZOBACZ WIĘCEJ --- */
+    .see-more-container {
+        text-align: center;
+        margin: -40px auto 100px auto; /* Podciąga przycisk nieco wyżej pod siatkę wpisów */
+    }
+    
+    .see-more-btn {
+        font-family: 'Mulish', sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        background-color: var(--accent-purple);
+        padding: 16px 32px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s;
+    }
+    
+    .see-more-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        opacity: 0.9;
+    }
+
     /* RESPONSIVE */
     @media (max-width: 768px) {
         .blog-grid { gap: 30px; }
@@ -171,7 +198,7 @@ permalink: /blog.html
 </header>
 
 <main class="blog-grid">
-    {% for post in site.posts %}
+    {% for post in site.posts limit:9 %}
     <a href="{{ post.url | relative_url }}" class="blog-card">
         
         <div class="blog-card-img-wrap">
@@ -201,3 +228,9 @@ permalink: /blog.html
     </a>
     {% endfor %}
 </main>
+
+{% if site.posts.size > 9 %}
+<div class="see-more-container">
+    <a href="{{ '/archiwum.html' | relative_url }}" class="see-more-btn">Zobacz więcej wpisów</a>
+</div>
+{% endif %}
