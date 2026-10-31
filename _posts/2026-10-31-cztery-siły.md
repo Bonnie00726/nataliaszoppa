@@ -13,7 +13,7 @@ W tym poście zestawimy te cztery mechanizmy i zobaczymy, jak oddziałują na si
 
 ## Zanim zaczniemy
 
-Pomyśl o swoich Simach, nie wiem jak Ty, ale ja nigdy nie zastanawiałam się nad ich cechami, tylko randomowo klikałam w pierwszą lepszą opcję. Chciałam szybko przebrnąć przez ten etap, żeby dojść do tego fajnego – samo granie, ciuchy, wygląd itp. Czy taka osobowość sklecona na prędce jakoś zaburzyła mój odbiór gry? Nie, ale ja czerpałam radość z samego grania, więc to czy mój Sim aspirował do czegoś nie miało żadnego znaczenia. Inaczej jest jednak w książce – przypadkowe dobieranie cech albo w ogóle pomijanie tego etapu raczej Ci zaszkodzi, niż się przysłuży. 
+Pomyśl o swoich Simach, nie wiem jak Ty, ale ja nigdy nie zastanawiałam się nad ich cechami, tylko randomowo klikałam w pierwszą lepszą opcję. Chciałam szybko przebrnąć przez ten etap, żeby dojść do tego fajnego – samo granie, ciuchy, wygląd itp. Czy taka osobowość sklecona na prędce jakoś zaburzyła mój odbiór gry? Nie, ale ja czerpałam radość z samego grania, więc to, czy mój Sim aspirował do czegoś, nie miało żadnego znaczenia. Inaczej jest jednak w książce – przypadkowe dobieranie cech albo w ogóle pomijanie tego etapu raczej Ci zaszkodzi, niż się przysłuży. 
 
 ## Płynna granica
 
