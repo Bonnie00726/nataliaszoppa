@@ -62,6 +62,43 @@ Najlepszym sposobem na zmuszenie bohatera do refleksji jest zderzenie go z jego 
 
 Wsadź bohatera w sytuację, która zmusi go do zaangażowania emocjonalnego. Postaw na jego drodze kogoś irytująco upartego, kto bezinteresownie wierzy w ludzi i pokazuje (konkretnymi czynami i argumentami), dlaczego warto walczyć o relacje. Obojętnego bohatera trzeba najpierw... wkurzyć, wytrącić z jego bezpiecznej strefy komfortu i zmusić do reakcji.
 
+## Więcej przykładów 
+
+### <em>Frankenstein</em> Mary Shelley
+
+Wymyślony detektyw to dobry przykład, ale zbyt ogólny, więc zobaczmy, jak mechanizm **chcieć a potrzebować** działa w praktyce, takiej prawdziwej. Sięgnijmy po <em>Frankensteina</em> Mary Shelley.
+
+Główny bohater, Wiktor Frankenstein, to młody, wybitny naukowiec, którego zżera ambicja, można nawet powiedzieć, że to obsesja. Ale pod maską geniusza kryje się głęboka rana: bolesna, nieprzepracowana trauma po nagłej śmierci ukochanej matki. To właśnie to pęknięcie na jego psychice i duszy popycha go w stronę szaleńczego eksperymentu.
+
+Jak w jego przypadku wygląda zderzenie pragnienia z wewnętrzną potrzebą?
+
+* **Chcieć (cel zewnętrzny):** Wiktor chce pokonać śmierć, odkryć tajemnicę ożywiania materii i zyskać sławę. Marzy, by stać się pionierem nowej ery – stwórcą ubóstwianym przez nowy, doskonały gatunek.
+* **Potrzebować (wewnętrzna konieczność):** Wiktor potrzebuje pogodzić się z ludzką śmiertelnością i zaakceptować stratę. Na poziomie etycznym potrzebuje pokory wobec praw natury, a gdy eksperyment się udaje – wzięcia odpowiedzialności za czującą istotę, którą stworzył.
+
+### Co, gdy bohater podąża za chcieć, a całkowicie ignoruje potrzebę? 
+
+Z reguły kończy się to… tragedią.
+
+Wiktor w momencie triumfu ucieka w panice. Odrzuca Stworzenie z powodu powierzchownego wstrętu, zamiast dać mu miłość i bezpieczeństwo. Efekt? Potwór staje się, dosłownie, chodzącym ucieleśnieniem jego zaniedbanych powinności. Nieprzepracowana trauma niszczy życie Wiktora: traci najbliższych, popada w obłęd i umiera z wycieńczenia na arktycznym pustkowiu.
+
+Jeśli Twój bohater w finale wybierze swoje potrzebować – <span class="marker-highlight">osiągnie katharsis i spokój (nawet jeśli przegra cel zewnętrzny).</span> Jeśli jednak do samego końca będzie gonił wyłącznie za swoim chcieć, <span class="marker-highlight">jego historia skończy się</span> dokładnie tak jak Wiktora: <span class="marker-highlight">kompletną katastrofą.</span>
+
+### my hero academia 
+
+Zostawmy na chwilę klasykę XIX-wiecznej powieści i spójrzmy na współczesną popkulturę, a dokładniej na świat japońskiej animacji. Jeśli szukasz podręcznikowego przykładu genialnie poprowadzonej ewolucji postaci (*character development*), musisz przyjrzeć się Katsukiemu Bakugo z mangi i anime *My Hero Academia*.
+
+Bakugo poznajemy na początku historii jako kogoś, komu od najmłodszych lat wszyscy wmawiali, że jest geniuszem. Znakomita moc, wrodzony talent i nieustanny zachwyt otoczenia rozdmuchały jego ego do granic absurdu. Chłopak jest zapatrzony w siebie, agresywny i naburmuszony, traktuje innych jak przeszkody na swojej drodze, a słabszymi po prostu gardzi.
+
+###Jak w jego przypadku wygląda mechanizm chcieć a potrzebować?
+
+* **Chcieć (cel zewnętrzny):** Zostać bohaterem numer jeden, zastąpić All Mighta, być jak All Might. Bakugo definiuje sukces wyłącznie przez pryzmat dominacji, siły i „miażdżenia” rywali. Chce stanąć na podium bez niczyjej pomocy.
+
+* **Potrzebować (wewnętrzna konieczność):** Zrozumieć, że prawdziwe bohaterstwo to nie dominacja, lecz ratowanie innych i współpraca. Bakugo potrzebuje zrzucić pancerz toksycznej dumy, zaakceptować własne słabości i pojąć, że odpychając ludzi swoim cynizmem, nigdy nie osiągnie tego, czego chce. Przede wszystkim zaś: potrzebuje skonfrontować się z poczuciem winy i wybaczyć samemu sobie oraz tym, których skrzywdził swoimi zachowaniem i osobowością.
+
+W przeciwieństwie do Frankensteina Bakugo nie kończy jako ofiara własnej pychy. Autor nie daje chłopakowi taryfy ulgowej. Krok po kroku rozbija jego iluzję samowystarczalności, stawiając go w sytuacjach, w których ślepa agresja i samotność przynoszą wyłącznie porażki. Prawdziwy przełom następuje dopiero wtedy, gdy <span class="marker-highlight">Bakugo dojrzewa do swojego potrzebować:</span> uczy się grać zespołowo, osłaniać sojuszników, a w kulminacyjnym momencie potrafi schować dumę do kieszeni i szczerze przeprosić (to był piękny moment!).
+
+Jeśli tworzysz bohatera pysznego i trudnego do polubienia, nie bój się oprzeć jego fabuły na bolesnym kruszeniu jego ego. <span class="marker-highlight">Pozwól mu ponieść dotkliwe konsekwencje jego „chcieć”,</span> a potem daj mu przestrzeń, by z trudem i w pocie czoła wybrał swoje „potrzebować”.
+
 <div class="top-bottom-highlight">
 Dzięki dobrze zdefiniowanemu biogramowi postaci i precyzyjnemu sparowaniu jej słabości z wyzwaniami losu, stworzysz historię, która nie tylko trzyma w napięciu, ale też buduje niesamowity klimat, wzrusza i pozwala czytelnikowi się z nią utożsamić.</div>
 
