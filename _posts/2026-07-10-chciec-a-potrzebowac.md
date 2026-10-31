@@ -89,7 +89,7 @@ Zostawmy na chwilę klasykę XIX-wiecznej powieści i spójrzmy na współczesn�
 
 Bakugo poznajemy na początku historii jako kogoś, komu od najmłodszych lat wszyscy wmawiali, że jest geniuszem. Znakomita moc, wrodzony talent i nieustanny zachwyt otoczenia rozdmuchały jego ego do granic absurdu. Chłopak jest zapatrzony w siebie, agresywny i naburmuszony, traktuje innych jak przeszkody na swojej drodze, a słabszymi po prostu gardzi.
 
-###Jak w jego przypadku wygląda mechanizm chcieć a potrzebować?
+### Jak w jego przypadku wygląda mechanizm chcieć a potrzebować?
 
 * **Chcieć (cel zewnętrzny):** Zostać bohaterem numer jeden, zastąpić All Mighta, być jak All Might. Bakugo definiuje sukces wyłącznie przez pryzmat dominacji, siły i „miażdżenia” rywali. Chce stanąć na podium bez niczyjej pomocy.
 
